@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, shrink-to-fit=no, user-scalable=no" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="manifest" href="~/manifest.json" />
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
+    <title>@ViewData["Title"] Briza Breath & Performance</title>
+    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BrizaBreath.styles.css" asp-append-version="true" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('js/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="container body-content">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/brt.js" asp-append-version="true"></script>
+    <script src="~/js/yogic.js" asp-append-version="true"></script>
+    <script src="~/js/bre.js" asp-append-version="true"></script>
+    <script src="~/js/brw.js" asp-append-version="true"></script>
+    <script src="~/js/hum.js" asp-append-version="true"></script>
+    <script src="~/js/bb.js" asp-append-version="true"></script>
+    <script src="~/js/hat.js" asp-append-version="true"></script>
+    <script src="~/js/hatc.js" asp-append-version="true"></script>
+    <script src="~/js/ahat.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

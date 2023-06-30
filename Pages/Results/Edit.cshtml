@@ -1,0 +1,45 @@
+﻿@page
+@model BrizaBreath.Pages.Results.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Result</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Result.ResultId" />
+            <div class="form-group">
+                <label asp-for="Result.brtResultScore" class="control-label"></label>
+                <input asp-for="Result.brtResultScore" class="form-control" />
+                <span asp-validation-for="Result.brtResultScore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Result.brtResultDate" class="control-label"></label>
+                <input asp-for="Result.brtResultDate" class="form-control" />
+                <span asp-validation-for="Result.brtResultDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Result.UserId" class="control-label"></label>
+                <input asp-for="Result.UserId" class="form-control" />
+                <span asp-validation-for="Result.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

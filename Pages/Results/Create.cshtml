@@ -1,0 +1,1622 @@
+﻿@page
+@model BrizaBreath.Pages.Results.CreateModel
+
+<div id="homePage" class="open">
+    <header>
+        <img id="homelogoimg" src="/images/B_DEGRAD.png" width="55" height="55" />
+    </header>
+    <div id="homepagegrid">
+        <div class="row g-2">
+            <div class="col"><a id="programLink"><img class="homepageimgs" src="/images/brizaprogram.png" /></a></div>
+            <div class="col"><a id="breathHoldsLink"><img class="homepageimgs" src="/images/breathholds.png" /></a></div>
+            <div class="w-100"></div>
+            <div class="col"><a id="lungsExpansionLink"><img class="homepageimgs" src="/images/lungscapacity.png" /></a></div>
+            <div class="col"><a id="pranayamaLink"><img class="homepageimgs" src="/images/pranayamas.png" /></a></div>
+            <div class="w-100"></div>
+            <div class="col"><a id="mobilityLink"><img class="homepageimgs" src="/images/flexibility.png" /></a></div>
+            <div class="col"><a id="extrasLink"><img class="homepageimgs" src="/images/bonus.png" /></a></div>
+        </div>
+    </div>
+    <footer>
+        <div class="navbar">
+            <a class="active" asp-page="/Index"><i class="fa fa-home active"></i>Home</a>
+            <a id="navResults" asp-page="/Results"><i class="fa fa-line-chart"></i>Results</a>
+            <a asp-page="/Profile"><i class="fa fa-user"></i>Profile</a>
+        </div>
+    </footer>
+</div>
+<div id="programPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backProgram">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="brizaprogram">
+        <h1>Briza Program</h1>
+        <p>Start the program from the foundations and progress on your own terms. Benefits of this program:</p>
+        <ul>More energy</ul>
+        <ul>Better awareness</ul>
+        <ul>Quicker and better recovery</ul>
+        <ul>Fast healing</ul>
+        <ul>Prevent diseases</ul>
+        <ul>Balance of mind and body</ul>
+        <ul>Stress free</ul>
+        <ul>Better sleep</ul>
+        <ul>Easier breathing</ul>
+        <ul>Increased performance and endurance</ul>
+        <ul>Oxygenation of organs and muscles</ul>
+        <ul>Reduction of lactic acid and fatigue</ul>
+    </div>
+    <h4><b>Foundations</b></h4>
+    <div class="contain">
+        <div class="rowSlider">
+            <div class="row__inner">
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="nasalLink"><img class="tile__img" src="/images/nasalbreathing.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="unblockLink"><img class="tile__img" src="/images/noseunblocking.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="brtLink"><img class="tile__img" src="/images/BRT.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="diaphragmLink"><img class="tile__img" src="/images/diaphragm.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="yogicLink"><img class="tile__img" src="/images/yogic.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4><b>Basics</b></h4>
+    <div class="contain">
+        <div class="rowSlider">
+            <div class="row__inner">
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="BRT10Link"><img class="tile__img" src="/images/brtUnder10.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="BRELink"><img class="tile__img" src="/images/breathrecoverysit.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="BRWLink"><img class="tile__img" src="/images/breathrecoverywalking.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="HUMLink"><img class="tile__img" src="/images/humming.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4><b>Intermediate</b></h4>
+    <div class="contain">
+        <div class="rowSlider">
+            <div class="row__inner">
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="BRT20Link"><img class="tile__img" src="/images/brt20.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="BBLink"><img class="tile__img" src="/images/brizabreathing.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="BRT30Link"><img class="tile__img" src="/images/brt30.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="HATLink"><img class="tile__img" src="/images/hat.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4><b>Advanced</b></h4>
+    <div class="contain">
+        <div class="rowSlider">
+            <div class="row__inner">
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="BRT40Link"><img class="tile__img" src="/images/brt40.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="HATCLink"><img class="tile__img" src="/images/hatcycling.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+                <div class="tile">
+                    <div class="tile__media">
+                        <a id="AHATLink"><img class="tile__img" src="/images/advancedhat.png" /></a>
+                    </div>
+                    <div class="tile__details"></div>
+                </div>
+            </div>
+        </div>
+        <p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Program's exercises</p>
+    </div>
+</div>
+<div id="nasalBreathingPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backNasal">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Nasal Breathing</h1>
+        <video controls poster="/images/nasalbreathing.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>
+            Nasal breathing is a natural and beneficial way to breathe that can support overall health and well-being. It is important to breathe through the nose whenever possible, especially during exercise, sleep, and periods of stress or anxiety.
+            Breathing through the nose has several benefits for the body and the mind, as it is the natural and intended way for humans to breathe. Here are some of the benefits of nasal breathing:
+        </p>
+        <ul>Filters the air: The nasal passages have tiny hairs called cilia that filter out pollutants, dust, and other particles in the air, providing cleaner air to the lungs</ul>
+        <ul>Warms and humidifies the air: The nasal passages also have mucus membranes that warm and humidify the air, preventing dryness and irritation of the lungs</ul>
+        <ul>Increases oxygen uptake: Nasal breathing can increase the uptake of oxygen into the bloodstream by up to 20%, compared to mouth breathing</ul>
+        <ul>Enhances lung function: Breathing through the nose can improve lung function by engaging the diaphragm and promoting deeper, more efficient breathing</ul>
+        <ul>Reduces stress and anxiety: Nasal breathing is associated with the parasympathetic nervous system, which promotes relaxation and reduces stress and anxiety</ul>
+        <ul>Improves sleep: Nasal breathing during sleep can improve the quality of sleep, reduce snoring, and prevent sleep apnea</ul>
+        <ul>Supports oral health: Nasal breathing helps to maintain healthy oral tissues and prevent dry mouth, which can lead to dental problems</ul>
+    </div>
+
+</div>
+<div id="noseUnblockPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backUnblock">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Nose Unblocking</h1>
+        <video controls poster="/images/noseunblocking.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>
+            Learn this simple technique that will help you to breathe through the nose instantly.
+            It helps if you have a stuffed or congested nose in case you are suffering from an allergy, cold or any other reason.
+        </p>
+        <p>
+            Watch the video and follow the instructions to make sure you always breathe through your nose
+        </p>
+    </div>
+</div>
+<div id="brtSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRTset">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Breath Retention Test Settings</h1>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="brtaudio" class="audio"><img src="/images/speaker.png"></div>
+                <div id="brtmute" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeBarBRT" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectBRT" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerBRT"></audio>
+    </div>
+</div>
+<div id="brtPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRT">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Breath Retention Test</h1>
+        <video controls poster="/images/brt.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Learn this simple technique that will help you to measure your fitness level and your progress with the program. Follow the instructions below and save your score:</p>
+        <ul>1 - Find a comfortable seat and take a couple of light breaths through the nose</ul>
+        <ul>2 - EXHALE and pinch your nose, after the exhalation press 'Start' and hold your breath</ul>
+        <ul>3 - Press 'Pause' as soon as you feel a first urge to breathe (inhalation should be calm and controlled, if not you held your breath for to long), breathe normally and save your score to keep track of your progress</ul>
+        <form method="post" id="brtForm">
+            <div class="settingButtons">
+                <button id="brtSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+            </div>
+            <div id="brtResultSaved" class="resultSaved"></div>
+            <div class="timerDisplayBRT">
+                <input id="timerDisplayBRT" asp-for="Result.brtResultScore" readonly value="00 : 00" />
+            </div>
+            <div>
+                <input id="brtDate" type="text" type="hidden" asp-for="Result.brtResultDate" />
+            </div>
+            <div class="BrtBtns">
+                <button type="button" class="pauseBtnBRT" id="brtPause">Pause</button>
+                <button type="button" class="startBtnBRT" id="brtStart">Start</button>
+                <button type="button" class="stopBtnBRT" id="brtStop">Reset</button>
+            </div>
+            <div>
+                <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+            </div>
+            <div class="saveBtnBRT">
+                <input type="submit" value="Save" id="brtSave" />
+            </div>
+        </form>
+    </div>
+</div>
+<div id="diaphragmPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backDiaphragm">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Diaphragmatic Breathing</h1>
+        <video controls poster="/images/diaphragm.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>
+            Using the diaphragm to breathe has several benefits. First, it allows for a more efficient exchange of oxygen and carbon dioxide, which can help to reduce feelings of fatigue and improve overall energy levels.
+            Additionally, diaphragmatic breathing can help to reduce stress and anxiety by activating the body's relaxation response.
+            In contrast, shallow breathing, which involves primarily using the muscles in the chest and shoulders to breathe, can lead to decreased oxygen intake and an increased risk of tension and muscle strain in the neck and shoulders.
+        </p>
+        <p>
+            Watch the video and follow the instructions to make sure you always use your diaphragm to breathe
+        </p>
+    </div>
+</div>
+<div id="yogicSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backYogicSet">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Yogic Breathing Settings</h1>
+        <h4 class="volumeSettings">Length of Breath</h4>
+        <div class="timer-additional-info">
+            <b>INHALE | HOLD | EXHALE | HOLD</b>
+        </div>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusYogic">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputYogic" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="number" id="intervalDurationInputYogic" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputYogic">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineYogic">
+                <input type="number" id="breakDurationInputYogic" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2Yogic">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2Yogic">
+                <input type="number" id="breakDurationInput2Yogic" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput3Yogic">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine3Yogic">
+                <input type="number" id="breakDurationInput3Yogic" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusYogic">+</button>
+            </div>
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioYogic" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteYogic" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceYogic" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteYogic" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songYogic" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongYogic" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectYogic" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerYogic"></audio>
+    </div>
+</div>
+<div id="yogicPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backYogic">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Yogic Breathing</h1>
+        <video controls poster="/images/yogic.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Yogic breathing involves conscious control of the breath, through specific patterns of 3 parts: filling the belly, ribs and chest, and exhaling from the chest, ribs and belly last.</p>
+        <p>Find a comfortable sitting position or lay down and follow our guided breathing session below to ease your mind, body and spirit</p>
+        <div id="yogicResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="yogicSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageYogic">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxYogic">
+                        <header>Inhale</header>
+                        <span id="elapsedInIntervalYogic"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBoxYogic">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakIntervalYogic"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox2Yogic">
+                        <header>Exhale</header>
+                        <span id="elapsedInBreakInterval2Yogic"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox3Yogic">
+                        <header>Pause</header>
+                        <span id="elapsedInBreakInterval3Yogic"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnYogic">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnYogic">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnYogic">Stop</button>
+                    <form method="post" id="yogicForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="yogicDate" type="text" type="hidden" asp-for="Result.yogicResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="yogicSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneYogic" asp-for="Result.yogicIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayYogic" asp-for="Result.yogicTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="BRT10Page" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRT10">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>BRT under 10 seconds</h1>
+        <video controls poster="/images/brtUnder10.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Routine to improve your BRT with daily breathing exercises and new habits:</p>
+        <ul>Measure BRT every morning</ul>
+        <ul>Nasal breathing at all times</ul>
+        <ul>Mouthtape during sleep</ul>
+        <ul>3 to 5 times a day Breath Recovery Exercise (sitting or walking, 4 to 5 min each session)</ul>
+        <ul>Daily walks of 10 to 15 minutes mouth closed (stop walking if you feel the urge to breath through mouth and recover your breath, always through the nose)</ul>
+    </div>
+</div>
+<div id="breSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBREset">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Breath Recover Exercise Settings</h1>
+        <h4 class="volumeSettings">Length of Breath Hold</h4>
+        <div class="timer-additional-info BRE">
+            <b>INHALE | EXHALE | INHALE | EXHALE | HOLD</b>
+        </div>
+        <div class="settings-form BRE">
+            <div class="form-line BRE">
+                <button class="buttonminus" type="button" id="minusBRE">-</button>
+            </div>
+            <div class="form-line BRE">
+                <input type="hidden" id="intervalCountInputBRE" min="1">
+            </div>
+
+            <div class="form-line BRE">
+                <input type="number" id="intervalDurationInputBRE" min="1" readonly>
+            </div>
+
+            <div class="form-line BRE">
+                <input type="hidden" id="enableBreakInputBRE">
+            </div>
+
+            <div class="form-line BRE" id="breakDurationInputLineBRE">
+                <input type="number" id="breakDurationInputBRE" min="1" readonly>
+            </div>
+
+            <div class="form-line BRE">
+                <input type="hidden" id="enableBreakInput2BRE">
+            </div>
+
+            <div class="form-line BRE" id="breakDurationInputLine2BRE">
+                <input type="number" id="breakDurationInput2BRE" min="1" readonly>
+            </div>
+
+            <div class="form-line BRE">
+                <input type="hidden" id="enableBreakInput3BRE">
+            </div>
+
+            <div class="form-line BRE" id="breakDurationInputLine3BRE">
+                <input type="number" id="breakDurationInput3BRE" min="1" readonly>
+            </div>
+
+            <div class="form-line BRE">
+                <input type="hidden" id="enableBreakInput4BRE">
+            </div>
+
+            <div class="form-line BRE" id="breakDurationInputLine4BRE">
+                <input type="number" id="breakDurationInput4BRE" min="1" readonly>
+            </div>
+            <div class="form-line BRE">
+                <button class="buttonplus" type="button" id="plusBRE">+</button>
+            </div>
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioBRE" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteBRE" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceBRE" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteBRE" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songBRE" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongBRE" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectBRE" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerBRE"></audio>
+    </div>
+</div>
+<div id="BREPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRE">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Breath Recovery Exercise</h1>
+        <video controls poster="/images/breathrecoverysit.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Simple exercise that can be used to recover your breath after a physical activity or simply used as a breathing exercise to improve your BRT</p>
+        <p>Follow the guided breathing session below:</p>
+        <ul>Find a comfortable sitting position or lay down</ul>
+        <ul>Choose the appropriated breath hold time  -2 to 5 seconds</ul>
+        <ul>Breathe light on the inhalation and exhalation - 4 seconds each</ul>
+        <ul>Hold your breath after the exhalation</ul>
+        <ul>Do this exercise for 4 to 5 minutes</ul>
+        <div id="BREResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="breSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageBRE">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxBRE">
+                        <header>Inhale</header>
+                        <span id="elapsedInIntervalBRE"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBoxBRE">
+                        <header>Exhale</header>
+                        <span id="elapsedInBreakIntervalBRE"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox2BRE">
+                        <header>Inhale</header>
+                        <span id="elapsedInBreakInterval2BRE"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox3BRE">
+                        <header>Exhale</header>
+                        <span id="elapsedInBreakInterval3BRE"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox4BRE">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval4BRE"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnBRE">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnBRE">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnBRE">Stop</button>
+                    <form method="post" id="BREForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="BREDate" type="text" type="hidden" asp-for="Result.BREResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="BRESave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneBRE" asp-for="Result.BREIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayBRE" asp-for="Result.BRETotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="brwSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRWset">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Breath Recover Walking Settings</h1>
+        <h4 class="volumeSettings">Length of Breath Hold</h4>
+        <div class="timer-additional-info BRE">
+            <b>INHALE | EXHALE | INHALE | EXHALE | HOLD</b>
+        </div>
+        <div class="settings-form BRE">
+            <div class="form-line BRE">
+                <button class="buttonminus" type="button" id="minusBRW">-</button>
+            </div>
+            <div class="form-line BRE">
+                <input type="hidden" id="intervalCountInputBRW" min="1">
+            </div>
+
+            <div class="form-line BRE">
+                <input type="number" id="intervalDurationInputBRW" min="1" readonly>
+            </div>
+
+            <div class="form-line BRE">
+                <input type="hidden" id="enableBreakInputBRW">
+            </div>
+
+            <div class="form-line BRE" id="breakDurationInputLineBRW">
+                <input type="number" id="breakDurationInputBRW" min="1" readonly>
+            </div>
+
+            <div class="form-line BRE">
+                <input type="hidden" id="enableBreakInput2BRW">
+            </div>
+
+            <div class="form-line BRE" id="breakDurationInputLine2BRW">
+                <input type="number" id="breakDurationInput2BRW" min="1" readonly>
+            </div>
+
+            <div class="form-line BRE">
+                <input type="hidden" id="enableBreakInput3BRW">
+            </div>
+
+            <div class="form-line BRE" id="breakDurationInputLine3BRW">
+                <input type="number" id="breakDurationInput3BRW" min="1" readonly>
+            </div>
+
+            <div class="form-line BRE">
+                <input type="hidden" id="enableBreakInput4BRW">
+            </div>
+
+            <div class="form-line BRE" id="breakDurationInputLine4BRW">
+                <input type="number" id="breakDurationInput4BRW" min="1" readonly>
+            </div>
+            <div class="form-line BRE">
+                <button class="buttonplus" type="button" id="plusBRW">+</button>
+            </div>
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioBRW" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteBRW" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceBRW" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteBRW" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songBRW" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongBRW" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectBRW" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerBRW"></audio>
+    </div>
+</div>
+<div id="BRWPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRW">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Walking Recovery Exercise</h1>
+        <video controls poster="/images/breathrecoverywalking.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Simple exercise that can be used to recover your breath after a physical activity or simply used as a breathing exercise to improve your BRT</p>
+        <p>This exercise works just like the Breath Recovery exercise, but we do it while walking. Follow the guided breathing session below:</p>
+        <ul>Start walking, but remember to breathe light. If you can't, walk slower or go back to the sitting breath recovery exercise. If that is easy, start walking faster. Your breath will determine your pace</ul>
+        <ul>Choose the appropriated breath hold time - 2 to 5 seconds</ul>
+        <ul>Breathe light on the inhalation and exhalation - 4 seconds each</ul>
+        <ul>Hold your breath after the exhalation</ul>
+        <ul>Do this exercise for 4 to 5 minutes</ul>
+        <div id="BRWResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="brwSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">       
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageBRW">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxBRW">
+                        <header>Inhale</header>
+                        <span id="elapsedInIntervalBRW"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBoxBRW">
+                        <header>Exhale</header>
+                        <span id="elapsedInBreakIntervalBRW"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox2BRW">
+                        <header>Inhale</header>
+                        <span id="elapsedInBreakInterval2BRW"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox3BRW">
+                        <header>Exhale</header>
+                        <span id="elapsedInBreakInterval3BRW"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox4BRW">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval4BRW"></span>s
+                    </div>
+
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnBRW">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnBRW">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnBRW">Stop</button>
+                    <form method="post" id="BRWForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="BRWDate" type="text" type="hidden" asp-for="Result.BRWResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="BRWSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneBRW" asp-for="Result.BRWIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayBRW" asp-for="Result.BRWTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="humSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backHUMset">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Humming Settings</h1>
+        <h4 class="volumeSettings">Length of Breath</h4>
+        <div class="settings-form">
+            <div class="timer-additional-info">
+                <b>INHALE | HOLD | HUM | HOLD</b>
+            </div>
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusHUM">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputHUM" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="number" id="intervalDurationInputHUM" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputHUM">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineHUM">
+                <input type="number" id="breakDurationInputHUM" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2HUM">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2HUM">
+                <input type="number" id="breakDurationInput2HUM" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput3HUM">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine3HUM">
+                <input type="number" id="breakDurationInput3HUM" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusHUM">+</button>
+            </div>
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioHUM" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteHUM" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceHUM" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteHUM" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songHUM" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongHUM" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectHUM" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerHUM"></audio>
+    </div>
+</div>
+<div id="HUMPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backHUM">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Humming and Nitric Oxide</h1>
+        <video controls poster="~/images/humming.png" playsinline>
+            <source src="~/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>
+            Humming is a simple breathing exercise that has been shown to have various health benefits. One of these benefits is the potential to increase the production of nitric oxide in the body.
+            Nitric oxide is a molecule that plays an important role in various physiological processes, including vasodilation (widening of blood vessels), which can lead to improved blood flow and lower blood pressure.
+            Additionally, nitric oxide has also been shown to have anti-inflammatory and antimicrobial effects, which may provide additional health benefits.
+        </p>
+        <p>Find a comfortable sitting position or lay down, follow our guided breathing session below and produce 15x more nitric oxide to improve your overall health</p>
+        <div id="HUMResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="humSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageHUM">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxHUM">
+                        <header>Inhale</header>
+                        <span id="elapsedInIntervalHUM"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBoxHUM">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakIntervalHUM"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox2HUM">
+                        <header>Hum</header>
+                        <span id="elapsedInBreakInterval2HUM"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox3HUM">
+                        <header>Pause</header>
+                        <span id="elapsedInBreakInterval3HUM"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnHUM">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnHUM">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnHUM">Stop</button>
+                    <form method="post" id="HUMForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="HUMDate" type="text" type="hidden" asp-for="Result.HUMResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="HUMSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneHUM" asp-for="Result.HUMIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayHUM" asp-for="Result.HUMTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="BRT20Page" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRT20">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>BRT 10 to 20 seconds</h1>
+        <video controls poster="/images/brt20.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Routine to improve your BRT with daily breathing exercises and new habits:</p>
+        <ul>Measure BRT every morning</ul>
+        <ul>Nasal breathing at all times</ul>
+        <ul>Mouthtape during sleep</ul>
+        <ul>Observe your breath during the day - breath should always be calm</ul>
+        <ul>Swallow or hold your breath every time you feel a sight or yawn coming, hold your breath for 10 seconds if you miss it</ul>
+        <ul>Briza Breathing 2 to 3 times a day for 5 to 10 minutes each time</ul>
+        <ul>Light breathing through nose while walking or slow jogging. 30 to 60 minutes per day</ul>
+        <ul>If nasal breathing is easy and effortless while walking, add Walking Recovery Exercise</ul>
+    </div>
+</div>
+<div id="bbSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBBset">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Briza Breathing Settings</h1>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioBB" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteBB" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceBB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteBB" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songBB" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongBB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectBB" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerBB"></audio>
+    </div>
+</div>
+<div id="BBPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBB">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Briza Breathing</h1>
+        <video controls poster="/images/brizabreathing.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Learn how to breathe so light that if you had a feather under your nose it would not move</p>
+        <p>Find a comfortable sitting position or lay down and follow our guided breathing session below to ease your breathing pattern</p>
+        <ul>Breathe light on the inhalation and exhalation reducing the volume of air that you are breathing, so light that you can barely feel your breath</ul>
+        <ul>Sustain an air hunger for the whole session</ul>
+        <ul>If the air hunger is way too much, keep following the guidance but breathing normally until you can reduce the volume air again</ul>
+        <ul>Do this exercise for 5 to 15 minutes on each session</ul>
+        <div id="BBResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="bbSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="settings-form BB">
+                    <div class="timer-additional-info">
+                        <b>INHALE | HOLD | EXHALE | HOLD</b>
+                    </div>
+                    <div class="form-line">
+                        <button class="buttonminus" type="button" id="minusBB">-</button>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="intervalCountInputBB" min="1">
+                    </div>
+
+                    <div class="form-line">
+                        <input type="number" id="intervalDurationInputBB" min="1" readonly>
+                    </div>
+
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInputBB">
+                    </div>
+
+                    <div class="form-line" id="breakDurationInputLineBB">
+                        <input type="number" id="breakDurationInputBB" min="1" readonly>
+                    </div>
+
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput2BB">
+                    </div>
+
+                    <div class="form-line" id="breakDurationInputLine2BB">
+                        <input type="number" id="breakDurationInput2BB" min="1" readonly>
+                    </div>
+
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput3BB">
+                    </div>
+
+                    <div class="form-line" id="breakDurationInputLine3BB">
+                        <input type="number" id="breakDurationInput3BB" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <button class="buttonplus" type="button" id="plusBB">+</button>
+                    </div>
+                </div>
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageBB">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxBB">
+                        <header>Inhale</header>
+                        <span id="elapsedInIntervalBB"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBoxBB">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakIntervalBB"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox2BB">
+                        <header>Exhale</header>
+                        <span id="elapsedInBreakInterval2BB"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox3BB">
+                        <header>Pause</header>
+                        <span id="elapsedInBreakInterval3BB"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnBB">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnBB">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnBB">Stop</button>
+                    <form method="post" id="BBForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="BBDate" type="text" type="hidden" asp-for="Result.BBResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="BBSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneBB" asp-for="Result.BBIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayBB" asp-for="Result.BBTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="BRT30Page" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRT30">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>BRT 20 to 30 seconds</h1>
+        <video controls poster="/images/brt30.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Routine to improve your BRT with daily breathing exercises and new habits:</p>
+        <ul>Measure BRT every morning</ul>
+        <ul>Nasal breathing at all times</ul>
+        <ul>Mouthtape during sleep</ul>
+        <ul>Briza Breathing 3 times per day for 10 minutes each time</ul>
+        <ul>High Altitude Training once a day or at least once every second day</ul>
+        <ul>Light breathing through nose while fast walking or jogging. 30 to 60 minutes per day</ul>
+        <ul>High Altitude Training while jogging 8 to 10 sets every now and then</ul>
+        <ul>Walking Recovery Exercise after intense workouts</ul>
+    </div>
+</div>
+<div id="hatSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backHATset">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>High Altitude Training Settings</h1>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusHAT">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputHAT" min="1">
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalDurationInputHAT" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputHAT">
+            </div>
+            <div class="form-line" id="breakDurationInputLineHAT">
+                <input type="hidden" id="breakDurationInputHAT" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2HAT">
+            </div>
+            <div class="form-line" id="breakDurationInputLine2HAT">
+                <input type="hidden" id="breakDurationInput2HAT" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusHAT">+</button>
+            </div>
+        </div>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioHAT" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteHAT" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceHAT" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteHAT" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songHAT" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongHAT" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectHAT" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerHAT"></audio>
+    </div>
+</div>
+<div id="HATPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backHAT">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+    <h1>High Altitude Training</h1>
+    <video controls poster="~/images/hat.png" playsinline>
+        <source src="~/videos/movie.mp4" type="video/mp4">
+    </video>
+    <p>High altitude environments can help to improve cardiovascular fitness, strengthen muscles, stimulate the production of red blood cells, and stimulate the production of certain immune cells</p>
+    <p>Simulate a high altitude environment with this exercise and get all benefits as if you lived on top of a mountain. Read the intructions below and follow our guided session.</p>
+    <ul>Breathe normally for about 1 minute while walking</ul>
+    <ul>Whenever you're ready, press "Start", exhale, pinch your nose, hold your breath and keep on walking</ul>
+    <ul>The timer will count how long you can hold your breath while walking (walk about 1 step per second)</ul>
+    <ul>Once you feel a strong air hunger and no longer can hold your breath, press "Next"</ul>
+    <ul>Inhale and try to breathe as light as possible for 15 seconds, if you cannot breathe light you held it for too long</ul>
+    <ul>Keep walking, and breathe normally for 30 seconds, after this a new round will start</ul>
+    <ul>Do this exercise for about 8 to 10 rounds</ul>
+    <ul>Press "Stop" once you finish and save your results</ul>
+    <div id="hatResultSaved" class="resultSaved"></div>
+    <div class="settingButtons">
+            <button id="hatSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+    <div class="main-container">   
+        <div class="timer-overview">
+            <div id="timeOverviewMessageHAT">Normal Breathing</div>
+                <div class="boxHAT" id="elapsedInIntervalBoxHAT">
+                <header>Exhale & Pinch Nose</header>
+                <span id="elapsedInIntervalHAT"></span>s
+            </div>
+            <div class="boxHAT" id="elapsedInBreakIntervalBoxHAT">
+                <header>Light Breathing</header>
+                <span id="elapsedInBreakIntervalHAT"></span>s
+            </div>
+            <div class="boxHAT" id="elapsedInBreakIntervalBox2HAT">
+                <header>Normal Breathing</header>
+                <span id="elapsedInBreakInterval2HAT"></span>s
+            </div>
+                </div>
+            <div class="timer-controls">
+                <!--  Information about interval  -->
+                <button type="button" class="startBtn" id="startBtnHAT">Start</button>
+                <button type="button" class="pauseBtn" id="pauseBtnHAT">Next</button>
+                <button type="button" class="stopBtn" id="stopBtnHAT">Stop</button>
+                <button type="button" class="resetBtn" id="resetBtnHAT">Reset</button>
+                <form method="post" id="hatForm">
+                    <div>
+                        <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                    </div>
+                    <div>
+                        <input id="hatDate" type="text" type="hidden" asp-for="Result.HATResultDate" />
+                    </div>
+                    <div class="saveBtn">
+                        <input type="submit" value="Save" id="hatSave" />
+                    </div>
+                    <div class="roundbox">
+                        <div><input id="intervalsDoneHAT" asp-for="Result.HATIntervals" type="hidden" /></div>
+                        <div><input id="timerDisplayHAT" asp-for="Result.HATTotalTime" type="hidden" value="|" /></div>
+                    </div>
+                    <div id="HATResults"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
+<div id="BRT40Page" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRT40">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>BRT over 30 seconds</h1>
+        <video controls poster="~/images/brt40.png" playsinline>
+            <source src="~/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Routine to improve your BRT with daily breathing exercises and new habits:</p>
+        <ul>Measure BRT every morning</ul>
+        <ul>Briza Breathing 3 times per day for 10 minutes each time</ul>
+        <ul>Briza Breathing while exercising</ul>
+        <ul>High Altitude Training while running or cyclingy</ul>
+        <ul>Advanced High Altitude Training a couple of times per week</ul>
+        <ul>Briza Breathing for 15 minutes before going to sleep</ul>
+    </div>
+</div>
+<div id="hatcSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backHATCset">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>High Altitude Training Settings</h1>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusHATC">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputHATC" min="1">
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalDurationInputHATC" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputHATC">
+            </div>
+            <div class="form-line" id="breakDurationInputLineHATC">
+                <input type="hidden" id="breakDurationInputHATC" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2HATC">
+            </div>
+            <div class="form-line" id="breakDurationInputLine2HATC">
+                <input type="hidden" id="breakDurationInput2HATC" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusHATC">+</button>
+            </div>
+        </div>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioHATC" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteHATC" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceHATC" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteHATC" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songHATC" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongHATC" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectHATC" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerHATC"></audio>
+    </div>
+</div>
+<div id="HATCPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backHATC">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>High Altitude Training while Cycling</h1>
+        <video controls poster="~/images/hatcycling.png" playsinline>
+            <source src="~/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Bring your high altitude training to another level. Read the intructions below and follow our guided session.</p>
+        <ul>Find a quiet place where you can walk</ul>
+        <ul>Breathe normally for a few minutes while running or cycling</ul>
+        <ul>Whenever you're ready, press "Start", exhale, hold your breath and keep on running</ul>
+        <ul>The timer will count how long you can hold your breath while running</ul>
+        <ul>Once you feel a strong air hunger and no longer can hold your breath, press "Next Round"</ul>
+        <ul>Keep running, and breathe normally for 1 minute, then a new round will start</ul>
+        <ul>Do this exercise for about 8 to 10 rounds</ul>
+        <ul>Press "Stop" once you finish and save your results</ul>
+        <div id="hatcResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="hatcSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-overview">
+                <div id="timeOverviewMessageHATC">Normal Breathing</div>
+                <div class="boxHAT" id="elapsedInIntervalBoxHATC">
+                    <header>Exhale & Pinch Nose</header>
+                    <span id="elapsedInIntervalHATC"></span>s
+                </div>
+                <div class="boxHAT" id="elapsedInBreakIntervalBoxHATC">
+                    <header>Light Breathing</header>
+                    <span id="elapsedInBreakIntervalHATC"></span>s
+                </div>
+                <div class="boxHAT" id="elapsedInBreakIntervalBox2HATC">
+                    <header>Normal Breathing</header>
+                    <span id="elapsedInBreakInterval2HATC"></span>s
+                </div>
+            </div>
+            <div class="timer-controls">
+                <!--  Information about interval  -->
+                <button type="button" class="startBtn" id="startBtnHATC">Start</button>
+                <button type="button" class="pauseBtn" id="pauseBtnHATC">Next</button>
+                <button type="button" class="stopBtn" id="stopBtnHATC">Stop</button>
+                <button type="button" class="resetBtn" id="resetBtnHATC">Reset</button>
+                <form method="post" id="hatcForm">
+                    <div>
+                        <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                    </div>
+                    <div>
+                        <input id="hatcDate" type="text" type="hidden" asp-for="Result.HATCResultDate" />
+                    </div>
+                    <div class="saveBtn">
+                        <input type="submit" value="Save" id="hatcSave" />
+                    </div>
+                    <div class="roundbox">
+                        <div><input id="intervalsDoneHATC" asp-for="Result.HATCIntervals" type="hidden" /></div>
+                        <div><input id="timerDisplayHATC" asp-for="Result.HATCTotalTime" type="hidden" value="|" /></div>
+                    </div>
+                    <div id="HATCResults"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ahatSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backAHATset">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Advanced High Altitude Training Settings</h1>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusAHAT">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputAHAT" min="1">
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalDurationInputAHAT" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputAHAT">
+            </div>
+            <div class="form-line" id="breakDurationInputLineAHAT">
+                <input type="hidden" id="breakDurationInputAHAT" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2AHAT">
+            </div>
+            <div class="form-line" id="breakDurationInputLine2AHAT">
+                <input type="hidden" id="breakDurationInput2AHAT" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusAHAT">+</button>
+            </div>
+        </div>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioAHAT" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteAHAT" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceAHAT" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteAHAT" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songAHAT" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongAHAT" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectAHAT" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerAHAT"></audio>
+    </div>
+</div>
+<div id="AHATPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backAHAT">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Advanced High Altitude Training</h1>
+    <video controls poster="~/images/advancedhat.png" playsinline>
+        <source src="~/videos/movie.mp4" type="video/mp4">
+    </video>
+    <p>Bring your high altitude training to another level. Read the intructions below and follow our guided session.</p>
+    <ul>Breathe normally for about 1 minute while running</ul>
+    <ul>Whenever you're ready, press "Start", exhale, hold your breath and keep on running</ul>
+    <ul>The timer will count how long you can hold your breath while running</ul>
+    <ul>Once you feel a strong air hunger and no longer can hold your breath, press "Next Round"</ul>
+    <ul>Inhale and try to breathe as light as possible for 15 seconds, if you cannot breathe light you held it for too long</ul>
+    <ul>Keep running, and breathe normally for 30 seconds, after that a new round will start</ul>
+    <ul>Do this exercise for about 8 to 10 rounds</ul>
+    <ul>Press "Stop" once you finish and save your results</ul>
+        <div id="ahatResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="ahatSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-overview">
+                <div id="timeOverviewMessageAHAT">Normal Breathing</div>
+                <div class="boxHAT" id="elapsedInIntervalBoxAHAT">
+                    <header>Exhale & Pinch Nose</header>
+                    <span id="elapsedInIntervalAHAT"></span>s
+                </div>
+                <div class="boxHAT" id="elapsedInBreakIntervalBoxAHAT">
+                    <header>Light Breathing</header>
+                    <span id="elapsedInBreakIntervalAHAT"></span>s
+                </div>
+                <div class="boxHAT" id="elapsedInBreakIntervalBox2AHAT">
+                    <header>Normal Breathing</header>
+                    <span id="elapsedInBreakInterval2AHAT"></span>s
+                </div>
+            </div>
+            <div class="timer-controls">
+                <!--  Information about interval  -->
+                <button type="button" class="startBtn" id="startBtnAHAT">Start</button>
+                <button type="button" class="pauseBtn" id="pauseBtnAHAT">Next</button>
+                <button type="button" class="stopBtn" id="stopBtnAHAT">Stop</button>
+                <button type="button" class="resetBtn" id="resetBtnAHAT">Reset</button>
+                <form method="post" id="ahatForm">
+                    <div>
+                        <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                    </div>
+                    <div>
+                        <input id="ahatDate" type="text" type="hidden" asp-for="Result.AHATResultDate" />
+                    </div>
+                    <div class="saveBtn">
+                        <input type="submit" value="Save" id="ahatSave" />
+                    </div>
+                    <div class="roundbox">
+                        <div><input id="intervalsDoneAHAT" asp-for="Result.AHATIntervals" type="hidden" /></div>
+                        <div><input id="timerDisplayAHAT" asp-for="Result.AHATTotalTime" type="hidden" value="|" /></div>
+                    </div>
+                    <div id="AHATResults"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,188 @@
+﻿@page
+@model BrizaBreath.Pages.Results.IndexModel
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].brtResultScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].brtResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].yogicTotalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].yogicResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].yogicIntervals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].BRETotalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].BREResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].BREIntervals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].BRWTotalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].BRWResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].BRWIntervals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].HUMTotalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].HUMResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].HUMIntervals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].BBTotalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].BBResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].BBIntervals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].HATTotalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].HATResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].HATIntervals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].HATCTotalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].HATCResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].HATCIntervals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].AHATTotalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].AHATResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].AHATIntervals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].UserId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Result) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.brtResultScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brtResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.yogicTotalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.yogicResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.yogicIntervals)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.BRETotalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BREResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BREIntervals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BRWTotalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BRWResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BRWIntervals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HUMTotalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HUMResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HUMIntervals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BBTotalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BBResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BBIntervals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HATTotalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HATResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HATIntervals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HATCTotalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HATCResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HATCIntervals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AHATTotalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AHATResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AHATIntervals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ResultId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ResultId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ResultId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
