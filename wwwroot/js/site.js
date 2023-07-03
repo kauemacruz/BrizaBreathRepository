@@ -72,7 +72,20 @@ var breathHoldsLink = document.getElementById("breathHoldsLink"),
     backAHATCset = document.getElementById("backAHATCset"),
     ahatSettings = document.getElementById("ahatSettings"),
     AHATLink = document.getElementById("AHATLink"),
-    backAHATset = document.getElementById("backAHATset");
+    backAHATset = document.getElementById("backAHATset"),
+    lungsLink = document.getElementById("lungsLink"),
+    backLungs = document.getElementById("backLungs"),
+    lungsSettings = document.getElementById("lungsSettings"),
+    backLungsset = document.getElementById("backLungsset"),
+    mobilityLink = document.getElementById("mobilityLink"),
+    backMobility = document.getElementById("backMobility"),
+    backBH = document.getElementById("backBH"),
+    backPRANA = document.getElementById("backPRANA"),
+    backEXTRA = document.getElementById("backEXTRA"),
+    APLink = document.getElementById("apneaLink"),
+    backAP = document.getElementById("backAP"),
+    APSettings = document.getElementById("APSettings"),
+    backAPSet = document.getElementById("backAPSet");
 
 /*Pages*/
 var homePage = document.getElementById("homePage"),
@@ -101,7 +114,15 @@ var homePage = document.getElementById("homePage"),
     HATCPage = document.getElementById("HATCPage"),
     hatcSettingsPage = document.getElementById("hatcSettingsPage"),
     AHATPage = document.getElementById("AHATPage"),
-    ahatSettingsPage = document.getElementById("ahatSettingsPage");
+    ahatSettingsPage = document.getElementById("ahatSettingsPage"),
+    lungsPage = document.getElementById("lungsPage"),
+    lungsSettingsPage = document.getElementById("lungsSettingsPage"),
+    mobilityPage = document.getElementById("mobilityPage"),
+    BHPage = document.getElementById("BHPage"),
+    PRANAPage = document.getElementById("PRANAPage"),
+    EXTRAPage = document.getElementById("EXTRAPage"),
+    APPage = document.getElementById("APPage"),
+    APSettingsPage = document.getElementById("APSettingsPage");
      
 /*Transition functions*/
 const element = document.documentElement || document.body;
@@ -612,5 +633,166 @@ backAHATset.onclick = function () {
     }
     audioPlayerAHAT.currentTime = 0;
     openPage(ahatSettingsPage, AHATPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+lungsLink.onclick = function () {
+    openPage(homePage, lungsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    for (var i = 0; i < audioElements.length; i++) {
+        audioElements[i].muted = true;
+        audioElements[i].play();
+        setTimeout(function () {
+            audioElements[i].pause();
+            audioElements[i].currentTime = 0;
+        }, 1000);
+    }
+    playSelectedSongLungs();
+    audioPlayerLungs.muted = true;
+    setTimeout(function () {
+        audioPlayerLungs.pause();
+        audioPlayerLungs.currentTime = 0;
+    }, 1000);
+}
+backLungs.onclick = function () {
+    openPage(lungsPage, homePage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(lungsInt);
+    [lungsSeconds, lungsMinutes] = [0, 0];
+    lungsTimerRef.value = '00 : 00';
+    document.getElementById('lungsStart').style.display = 'inline';
+    document.getElementById('lungsPause').style.display = 'none';
+    document.getElementById('lungsStop').disabled = true;
+    document.getElementById('lungsStop').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('lungsSave').disabled = true;
+    document.getElementById('lungsSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('lungsResultSaved').innerHTML = "";
+    document.getElementById('lungsSettings').disabled = false;
+    document.getElementById('lungsSettings').style.color = '#49B79D';
+    if (lungsismute != true && lungsIsOn != false) {
+        audioPlayerLungs.pause();
+    }
+    audioPlayerLungs.currentTime = 0;
+    lungsIsOn = false;
+}
+lungsSettings.onclick = function () {
+    openPage(lungsPage, lungsSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backLungsset.onclick = function () {
+    if (lungsismute != true) {
+        audioPlayerLungs.pause();
+    }
+    audioPlayerLungs.currentTime = 0;
+    openPage(lungsSettingsPage, lungsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+mobilityLink.onclick = function () {
+    openPage(homePage, mobilityPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    for (var i = 0; i < audioElements.length; i++) {
+        audioElements[i].muted = true;
+        audioElements[i].play();
+        setTimeout(function () {
+            audioElements[i].pause();
+            audioElements[i].currentTime = 0;
+        }, 1000);
+    }
+}
+backMobility.onclick = function () {
+    openPage(mobilityPage, homePage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+breathHoldsLink.onclick = function () {
+    openPage(homePage, BHPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    for (var i = 0; i < audioElements.length; i++) {
+        audioElements[i].muted = true;
+        audioElements[i].play();
+        setTimeout(function () {
+            audioElements[i].pause();
+            audioElements[i].currentTime = 0;
+        }, 1000);
+    }
+}
+backBH.onclick = function () {
+    openPage(BHPage, homePage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+pranayamaLink.onclick = function () {
+    openPage(homePage, PRANAPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    for (var i = 0; i < audioElements.length; i++) {
+        audioElements[i].muted = true;
+        audioElements[i].play();
+        setTimeout(function () {
+            audioElements[i].pause();
+            audioElements[i].currentTime = 0;
+        }, 1000);
+    }
+}
+backPRANA.onclick = function () {
+    openPage(PRANAPage, homePage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+extrasLink.onclick = function () {
+    openPage(homePage, EXTRAPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    for (var i = 0; i < audioElements.length; i++) {
+        audioElements[i].muted = true;
+        audioElements[i].play();
+        setTimeout(function () {
+            audioElements[i].pause();
+            audioElements[i].currentTime = 0;
+        }, 1000);
+    }
+}
+backEXTRA.onclick = function () {
+    openPage(EXTRAPage, homePage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+APLink.onclick = function () {
+    openPage(BHPage, APPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongAP();
+    audioPlayerAP.muted = true;
+    setTimeout(function () {
+        audioPlayerAP.pause();
+        audioPlayerAP.currentTime = 0;
+    }, 1000);
+}
+backAP.onclick = function () {
+    openPage(APPage, BHPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(intAP);
+    [secondsAP, minutesAP, hoursAP] = [0, 0, 0];
+    timerRefAP.value = '00 : 00 : 00';
+    if (isSongMuteAP != true && isAPON != false) {
+        audioPlayerAP.pause();
+    }
+    audioPlayerAP.currentTime = 0;
+    timerControlsButtonsAP.pauseAP.style.display = 'none';
+    timerControlsButtonsAP.startAP.style.display = 'inline';
+    setFormDisabledStateAP(false);
+    setTimerControlsDisabledStateAP(false, true, true);
+    timerControlsButtonsAP.stopAP.style.color = "rgb(177, 177, 177)";
+    document.getElementById('APSave').disabled = true;
+    document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('APSettings').disabled = false;
+    document.getElementById('APSettings').style.color = '#49B79D';
+    stopTimerTickAP();
+    resetTimerAP();
+    isAPON = false;
+    document.getElementById('APResultSaved').innerHTML = "";
+}
+APSettings.onclick = function () {
+    openPage(APPage, APSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backAPSet.onclick = function () {
+    if (isSongMuteAP != true) {
+        audioPlayerAP.pause();
+    }
+    audioPlayerAP.currentTime = 0;
+    openPage(APSettingsPage, APPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }

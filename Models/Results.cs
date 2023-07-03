@@ -41,6 +41,13 @@ namespace BrizaBreath.Models
         public string? AHATIntervals { get; set; }
         [DataType(DataType.Date)]
         public DateTime? AHATResultDate { get; set; }
+        public string? lungsResultScore { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? lungsResultDate { get; set; }
+        public string? APTotalTime { get; set; }
+        public string? APIntervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? APResultDate { get; set; }
     }
 
 }

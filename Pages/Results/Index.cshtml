@@ -16,6 +16,12 @@
                 @Html.DisplayNameFor(model => model.Result[0].brtResultDate)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Result[0].lungsResultScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].lungsResultDate)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Result[0].yogicTotalTime)
             </th>
             <th>
@@ -88,6 +94,15 @@
                 @Html.DisplayNameFor(model => model.Result[0].AHATIntervals)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Result[0].APTotalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].APResultDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].APIntervals)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Result[0].UserId)
             </th>
             <th></th>
@@ -101,6 +116,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.brtResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lungsResultScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lungsResultDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.yogicTotalTime)
@@ -173,6 +194,15 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AHATIntervals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.APTotalTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.APResultDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.APIntervals)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserId)

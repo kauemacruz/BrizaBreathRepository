@@ -452,6 +452,8 @@ function resetBtnFunctionHATC() {
     document.getElementById('hatcSave').disabled = true;
     document.getElementById('hatcSave').style.color = 'rgb(177, 177, 177)';
     setTimerControlsDisabledStateHATC(false, true, true);
+    resetTimerHATC();
+    timerHATC.isFinishedHATC = true;
 }
 function displayTimerHATC() {
     secondsHATC++;

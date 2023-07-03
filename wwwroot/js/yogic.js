@@ -70,6 +70,8 @@ $(function () {
         setFormDisabledStateYogic(false);
         setTimerControlsDisabledStateYogic(false, true, true);
         timerControlsButtonsYogic.stopYogic.style.color = "rgb(177, 177, 177)";
+        document.getElementById('yogicSave').disabled = true;
+        document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickYogic();
         resetTimerYogic();
         isYogicON = false;

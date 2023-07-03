@@ -233,12 +233,20 @@
       "PackagePath": "staticwebassets\\images\\ujjayi.png"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\whb.png",
+      "PackagePath": "staticwebassets\\images\\whb.png"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\wimhof.png",
       "PackagePath": "staticwebassets\\images\\wimhof.png"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\yogic.png",
       "PackagePath": "staticwebassets\\images\\yogic.png"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\apnea.js",
+      "PackagePath": "staticwebassets\\js\\apnea.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\bre.js",
@@ -251,6 +259,10 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\hum.js",
       "PackagePath": "staticwebassets\\js\\hum.js"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\lungs.js",
+      "PackagePath": "staticwebassets\\js\\lungs.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\service-worker.js",

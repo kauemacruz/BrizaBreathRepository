@@ -10,7 +10,7 @@
             <div class="col"><a id="programLink"><img class="homepageimgs" src="/images/brizaprogram.png" /></a></div>
             <div class="col"><a id="breathHoldsLink"><img class="homepageimgs" src="/images/breathholds.png" /></a></div>
             <div class="w-100"></div>
-            <div class="col"><a id="lungsExpansionLink"><img class="homepageimgs" src="/images/lungscapacity.png" /></a></div>
+            <div class="col"><a id="lungsLink"><img class="homepageimgs" src="/images/lungscapacity.png" /></a></div>
             <div class="col"><a id="pranayamaLink"><img class="homepageimgs" src="/images/pranayamas.png" /></a></div>
             <div class="w-100"></div>
             <div class="col"><a id="mobilityLink"><img class="homepageimgs" src="/images/flexibility.png" /></a></div>
@@ -1266,8 +1266,8 @@
     </header>
     <div class="breathingpages">
     <h1>High Altitude Training</h1>
-    <video controls poster="~/images/hat.png" playsinline>
-        <source src="~/videos/movie.mp4" type="video/mp4">
+    <video controls poster="/images/hat.png" playsinline>
+        <source src="/videos/movie.mp4" type="video/mp4">
     </video>
     <p>High altitude environments can help to improve cardiovascular fitness, strengthen muscles, stimulate the production of red blood cells, and stimulate the production of certain immune cells</p>
     <p>Simulate a high altitude environment with this exercise and get all benefits as if you lived on top of a mountain. Read the intructions below and follow our guided session.</p>
@@ -1332,8 +1332,8 @@
     </header>
     <div class="breathingpages">
         <h1>BRT over 30 seconds</h1>
-        <video controls poster="~/images/brt40.png" playsinline>
-            <source src="~/videos/movie.mp4" type="video/mp4">
+        <video controls poster="/images/brt40.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
         </video>
         <p>Routine to improve your BRT with daily breathing exercises and new habits:</p>
         <ul>Measure BRT every morning</ul>
@@ -1422,8 +1422,8 @@
     </header>
     <div class="breathingpages">
         <h1>High Altitude Training while Cycling</h1>
-        <video controls poster="~/images/hatcycling.png" playsinline>
-            <source src="~/videos/movie.mp4" type="video/mp4">
+        <video controls poster="/images/hatcycling.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
         </video>
         <p>Bring your high altitude training to another level. Read the intructions below and follow our guided session.</p>
         <ul>Find a quiet place where you can walk</ul>
@@ -1558,8 +1558,8 @@
     </header>
     <div class="breathingpages">
         <h1>Advanced High Altitude Training</h1>
-    <video controls poster="~/images/advancedhat.png" playsinline>
-        <source src="~/videos/movie.mp4" type="video/mp4">
+    <video controls poster="/images/advancedhat.png" playsinline>
+        <source src="/videos/movie.mp4" type="video/mp4">
     </video>
     <p>Bring your high altitude training to another level. Read the intructions below and follow our guided session.</p>
     <ul>Breathe normally for about 1 minute while running</ul>
@@ -1612,6 +1612,334 @@
                     </div>
                     <div id="AHATResults"></div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="lungsSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backLungsset">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Lungs Expansion Settings</h1>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="lungsaudio" class="audio"><img src="/images/speaker.png"></div>
+                <div id="lungsmute" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeBarLungs" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectLungs" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerLungs"></audio>
+    </div>
+</div>
+<div id="lungsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backLungs">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Lungs Expansion Training</h1>
+        <video controls poster="/images/lungs.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Follow this 15 minutes video at least twice a week and learn how to expand your lungs creating more volume capacity and making full use of your breathing system</p>
+        <p>In order to track your progress of lungs expansion, follow the instructions below and save your score:</p>
+        <ul>1 - Inhale as much air as possible in one breath</ul>
+        <ul>2 - Press "Start" and exhale as slow and as long as possible until lungs are empty</ul>
+        <ul>3 - Press "Pause", get back to normal breathing and save your result</ul>
+        <form method="post" id="lungsForm">
+            <div class="settingButtons">
+                <button id="lungsSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+            </div>
+            <div id="lungsResultSaved" class="resultSaved"></div>
+            <div class="timerDisplayBRT">
+                <input id="timerDisplayLungs" asp-for="Result.lungsResultScore" readonly value="00 : 00" />
+            </div>
+            <div>
+                <input id="lungsDate" type="text" type="hidden" asp-for="Result.lungsResultDate" />
+            </div>
+            <div class="BrtBtns">
+                <button type="button" class="pauseBtnBRT" id="lungsPause">Pause</button>
+                <button type="button" class="startBtnBRT" id="lungsStart">Start</button>
+                <button type="button" class="stopBtnBRT" id="lungsStop">Reset</button>
+            </div>
+            <div>
+                <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+            </div>
+            <div class="saveBtnBRT">
+                <input type="submit" value="Save" id="lungsSave" />
+            </div>
+        </form>
+    </div>
+</div>
+<div id="mobilityPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backMobility">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Stretching & Mobility</h1>
+        <p>Stretching and mobility exercises have many benefits for the body and mind. Some of the key benefits include:</p>
+        <ul>Increased flexibility and range of motion can help to improve athletic performance by allowing you to move more efficiently and effectively</ul>
+        <ul>improvement of blood flow to the muscles, which can increase nutrient delivery and waste removal from the body</ul>
+        <ul>Lengthening and loosening of muscles, which can improve your ability to move your joints through a full range of motion</ul>
+        <ul>improvement of your body's flexibility and strength, which can reduce your risk of muscle strains, sprains, and other injuries</ul>
+        <ul>Tight muscles can contribute to poor posture, which can lead to back pain and other musculoskeletal problems. Stretching can help to improve your posture and reduce these issues</ul>
+        <ul>After exercising, stretching can help to reduce muscle soreness and stiffness by increasing blood flow to the muscles and promoting their recovery</ul>
+        <ul>Reduction of tension in the muscles and promote relaxation, which can reduce stress levels and improve overall wellbeing</ul>
+        <h2>Lower back, hips & thighs </h2>
+        <video controls poster="/images/lowerback.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Follow this 45 minutes session to gain mobility of your hips, and alleviate lower back pain. This session helps with sciatica, piriformis syndrome, thigh hips and more</p>
+        <h2>Shoulders, neck, elbows & wrists</h2>
+        <video controls poster="/images/shoulders.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Follow this 30 minutes session to gain mobility of neck and shoulder, and alleviate sore areas of the upper body. This session helps with tennis elbow, carpal tunnel, rotator cuff injuries, stiff neck, rhomboid injuries and more</p>
+        <h2>Ankles & knees</h2>
+        <video controls poster="/images/ankles.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Follow this 30 minutes session to gain mobility of ankles, and relieve knees and ankles. This session helps with flat feet, shin splints, knee discomfort, ligament or tendon damage and more  </p>
+    </div>
+</div>
+<div id="BHPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBH">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Breath Holds</h1>
+        <p>Explore our breath-holding exercises and get many potential benefits out of it. Breath holds can:</p>
+        <ul>Increase the strength and capacity of your lungs by forcing them to work harder to deliver oxygen to your body</ul>
+        <ul>Help calm your mind and reduce stress and anxiety by slowing down your heart rate and promoting relaxation</ul>
+        <ul>Improve your cardiovascular health by increasing the amount of oxygen your body can transport to your cells and tissues</ul>
+        <ul>Help you focus and clear your mind by increasing blood flow and oxygenation to the brain</ul>
+        <ul>Improve your endurance and performance in sports by increasing your ability to use oxygen efficiently and delaying the onset of fatigue</ul>
+    </div>
+    <div class="BHGrid">
+        <div class="row g-2">
+            <div class="col"><a id="apneaLink"><img class="homepageimgs" src="/images/apnea.png" /></a></div>
+            <div class="col"><a id="co2o2Link"><img class="homepageimgs" src="/images/co2o2.png" /></a></div>
+            <div class="w-100"></div>
+            <div class="col"><a id="whbLink"><img class="homepageimgs" src="/images/whb.png" /></a></div>
+            <div class="col"><a id="co2Link"><img class="homepageimgs" src="/images/co2.png" /></a></div>
+        </div>
+    </div>
+</div>
+<div id="PRANAPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backPRANA">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Pranayama</h1>
+        <p>Explore our pranayama exercises and get many potential benefits out of it. Pranayama exercises can:</p>
+        <ul>Increase the strength and capacity of your lungs by forcing them to work harder to deliver oxygen to your body</ul>
+        <ul>Help calm your mind and reduce stress and anxiety by slowing down your heart rate and promoting relaxation</ul>
+        <ul>Improve your cardiovascular health by increasing the amount of oxygen your body can transport to your cells and tissues</ul>
+        <ul>Help you focus and clear your mind by increasing blood flow and oxygenation to the brain</ul>
+        <ul>Improve your endurance and performance in sports by increasing your ability to use oxygen efficiently and delaying the onset of fatigue</ul>
+    </div>
+    <div class="BHGrid">
+        <div class="row g-2">
+            <div class="col"><a asp-page="/Ujjayi"><img class="homepageimgs" src="/images/ujjayi.png"/></a></div>
+            <div class="col"><a asp-page="/Kapalabhati"><img class="homepageimgs" src="/images/kapalabhati.png"/></a></div>
+            <div class="w-100"></div>
+            <div class="col"><a asp-page="/BoxBreathing"><img class="homepageimgs" src="/images/boxbreathing.png"/></a></div>
+            <div class="col"><a asp-page="/NadiShodhana"><img class="homepageimgs" src="/images/nadishodhana.png"/></a></div>
+            <div class="w-100"></div>
+            <div class="col"><a asp-page="/CoherentBreath"><img class="homepageimgs" src="/images/coherent.png"/></a></div>
+            <div class="col"><a asp-page="/Sitali"><img class="homepageimgs" src="/images/sitali.png"/></a></div>  
+            <div class="w-100"></div>
+            <div class="col"><a asp-page="/Nauli"><img class="homepageimgs" src="/images/nauli.png"/></a></div>
+            <div class="col"><a asp-page="/478"><img class="homepageimgs" src="/images/478.png"/></a></div>  
+        </div>
+    </div>
+</div>
+<div id="EXTRAPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backEXTRA">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Life changing tips for better health and performance</h1>
+    </div>
+    <div class="BHGrid">
+        <div class="row g-2">
+            <div class="col"><a asp-page="/Meditation"><img class="homepageimgs" src="~/images/meditation.png" /></a></div>
+            <div class="col"><a asp-page="/Sleep"><img class="homepageimgs" src="~/images/sleep.png" /></a></div>
+            <div class="w-100"></div>
+            <div class="col"><a asp-page="/Hydration"><img class="homepageimgs" src="~/images/hydration.png" /></a></div>
+            <div class="col"><a asp-page="/Shot"><img class="homepageimgs" src="~/images/shot.png" /></a></div>
+            <div class="w-100"></div>
+            <div class="col"><a asp-page="/IronLevels"><img class="homepageimgs" src="~/images/iron.png" /></a></div>
+            <div class="col"><a asp-page="/Beetroot"><img class="homepageimgs" src="~/images/beet.png" /></a></div>
+            <div class="w-100"></div>
+            <div class="col"><a asp-page="/Diet"><img class="homepageimgs" src="~/images/diet.png" /></a></div>
+            <div class="col"><a asp-page="/Sex"><img class="homepageimgs" src="~/images/sex.png" /></a></div>
+        </div>
+    </div>
+</div>
+<div id="APSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backAPSet">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Apnea Settings</h1>
+        <h4 class="volumeSettings">Length of Breath</h4>
+        <div class="timer-additional-info">
+            <b>INHALE | HOLD | EXHALE</b>
+        </div>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusAP">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputAP" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="number" id="intervalDurationInputAP" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputAP">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineAP">
+                <input type="number" id="breakDurationInputAP" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2AP">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2AP">
+                <input type="number" id="breakDurationInput2AP" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusAP">+</button>
+            </div>
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioAP" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteAP" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceAP" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteAP" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songAP" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongAP" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectAP" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerAP"></audio>
+    </div>
+</div>
+<div id="APPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backAP">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+   <div class="breathingpages">
+        <h1>Apnea Training</h1>
+        <video controls poster="/images/apnea.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>This apnea breathing technique is based on the principles of deep breathing and diaphragmatic breathing, allowing you to use the full capacity of your lungs. Start with small intervals until you are used to this technique.</p>
+        <p>Find a comfortable sitting position or lay down and follow our guided breathing session below</p>
+        <div id="APResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="APSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageAP">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxAP">
+                        <header>Inhale</header>
+                        <span id="elapsedInIntervalAP"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBoxAP">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakIntervalAP"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox2AP">
+                        <header>Exhale</header>
+                        <span id="elapsedInBreakInterval2AP"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnAP">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnAP">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnAP">Stop</button>
+                    <form method="post" id="APForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="APDate" type="text" type="hidden" asp-for="Result.APResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="APSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneAP" asp-for="Result.APIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayAP" asp-for="Result.APTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
