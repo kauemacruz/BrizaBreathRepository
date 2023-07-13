@@ -403,18 +403,9 @@ function startTimerBB() {
     setTimerControlsDisabledStateBB(true, false, true);
     timerControlsButtonsBB.stopBB.style.color = "rgb(177, 177, 177)";
     if(timerBB.isBreak3BB){
-        audioListBB[2].muted = true;
-        audioListBB[3].muted = true;
-        audioListBB[2].play();
-        audioListBB[3].play();
-        setTimeout(function () {
-            audioListBB[2].pause();
-            audioListBB[2].currentTime = 0
-            audioListBB[3].pause();
-            audioListBB[3].currentTime = 0
-        }, 1000);
-      if(!ismuteBB){
-        audioListBB[0].play();
+        if (!ismuteBB) {
+            audioListBB[0].muted = false;
+            audioListBB[0].play();
       }
     }
     isBBON = true;

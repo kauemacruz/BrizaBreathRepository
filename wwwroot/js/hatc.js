@@ -366,21 +366,8 @@ function startTimerHATC() {
     }
     intHATC = setInterval(displayTimerHATC, 1000);
     if (timerHATC.isBreak0HATC) {
-        audioListHATC[1].muted = true;
-        audioListHATC[2].muted = true;
-        audioListHATC[3].muted = true;
-        audioListHATC[1].play();
-        audioListHATC[2].play();
-        audioListHATC[3].play();
-        setTimeout(function () {
-            audioListHATC[1].pause();
-            audioListHATC[1].currentTime = 0
-            audioListHATC[2].pause();
-            audioListHATC[2].currentTime = 0
-            audioListHATC[3].pause();
-            audioListHATC[3].currentTime = 0
-        }, 1000);
         if (!ismuteHATC) {
+            audioListHATC[0].muted = false;
             audioListHATC[0].play();
         }
     }

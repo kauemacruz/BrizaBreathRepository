@@ -406,17 +406,8 @@ function startTimerYogic() {
     setTimerControlsDisabledStateYogic(true, false, true);
     timerControlsButtonsYogic.stopYogic.style.color = "rgb(177, 177, 177)";
     if (timerYogic.isBreak3Yogic) {
-        audioListYogic[2].muted = true;
-        audioListYogic[3].muted = true;
-        audioListYogic[2].play();
-        audioListYogic[3].play();
-        setTimeout(function () {
-            audioListYogic[2].pause();
-            audioListYogic[2].currentTime = 0
-            audioListYogic[3].pause();
-            audioListYogic[3].currentTime = 0
-        }, 1000);
         if (!ismuteYogic) {
+            audioListYogic[0].muted = false;
             audioListYogic[0].play();
         }
     }
@@ -570,6 +561,7 @@ function onTimerTickYogic() {
         timerYogic.elapsedInIntervalYogic++;
         if (timerYogic.elapsedInIntervalYogic > currentIntervalDurationYogic && timerYogic.isBreak4Yogic) {
             if (!ismuteYogic) {
+                audioListYogic[0].muted = false;
                 audioListYogic[0].play();
             }
             timerYogic.isBreak3Yogic = true;

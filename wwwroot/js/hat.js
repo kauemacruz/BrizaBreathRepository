@@ -366,21 +366,8 @@ function startTimerHAT() {
     }
     intHAT = setInterval(displayTimerHAT, 1000);
     if (timerHAT.isBreak0HAT) {
-        audioListHAT[1].muted = true;
-        audioListHAT[2].muted = true;
-        audioListHAT[3].muted = true;
-        audioListHAT[1].play();
-        audioListHAT[2].play();
-        audioListHAT[3].play();
-        setTimeout(function () {
-            audioListHAT[1].pause();
-            audioListHAT[1].currentTime = 0
-            audioListHAT[2].pause();
-            audioListHAT[2].currentTime = 0
-            audioListHAT[3].pause();
-            audioListHAT[3].currentTime = 0
-        }, 1000);
         if (!ismuteHAT) {
+            audioListHAT[0].muted = false;
             audioListHAT[0].play();
         }
     }

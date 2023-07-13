@@ -401,17 +401,8 @@ function startTimerHUM() {
     setTimerControlsDisabledStateHUM(true, false, true);
     timerControlsButtonsHUM.stopHUM.style.color = "rgb(177, 177, 177)";
     if (timerHUM.isBreak3HUM) {
-        audioListHUM[2].muted = true;
-        audioListHUM[3].muted = true;
-        audioListHUM[2].play();
-        audioListHUM[3].play();
-        setTimeout(function () {
-            audioListHUM[2].pause();
-            audioListHUM[2].currentTime = 0
-            audioListHUM[3].pause();
-            audioListHUM[3].currentTime = 0
-        }, 1000);
         if (!ismuteHUM) {
+            audioListHUM[0].muted = false;
             audioListHUM[0].play();
         }
     }

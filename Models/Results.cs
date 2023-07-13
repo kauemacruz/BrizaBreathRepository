@@ -48,6 +48,22 @@ namespace BrizaBreath.Models
         public string? APIntervals { get; set; }
         [DataType(DataType.Date)]
         public DateTime? APResultDate { get; set; }
+        public string? O2TotalTime { get; set; }
+        public string? O2Intervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? O2ResultDate { get; set; }
+        public string? CO2TotalTime { get; set; }
+        public string? CO2Intervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? CO2ResultDate { get; set; }
+        public string? WHTotalTime { get; set; }
+        public string? WHIntervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? WHResultDate { get; set; }
+        public string? CTTotalTime { get; set; }
+        public string? CTIntervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? CTResultDate { get; set; }
     }
 
 }

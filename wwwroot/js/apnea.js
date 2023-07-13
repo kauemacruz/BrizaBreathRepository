@@ -373,17 +373,8 @@ function startTimerAP() {
     setTimerControlsDisabledStateAP(true, false, true);
     timerControlsButtonsAP.stopAP.style.color = "rgb(177, 177, 177)";
     if (timerAP.isBreak3AP) {
-        audioListAP[2].muted = true;
-        audioListAP[3].muted = true;
-        audioListAP[2].play();
-        audioListAP[3].play();
-        setTimeout(function () {
-            audioListAP[2].pause();
-            audioListAP[2].currentTime = 0
-            audioListAP[3].pause();
-            audioListAP[3].currentTime = 0
-        }, 1000);
         if (!ismuteAP) {
+            audioListAP[0].muted = false;
             audioListAP[0].play();
         }
     }

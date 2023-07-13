@@ -1,4 +1,42 @@
-﻿/* Play all songs and pause so they can play in iphone*/
+﻿window.addEventListener('load', function () {
+    // Hide the loading indicator
+    var loadingIndicator = document.getElementById('loadingIndicator');
+    loadingIndicator.style.display = 'none';
+
+    // Display the content
+    homePage.classList.remove('hidden');
+    homePage.classList.add('open');
+});
+// Check if the Wake Lock API is available
+if ('wakeLock' in navigator) {
+    let wakeLock = null;
+
+    // Request a wake lock
+    const requestWakeLock = async () => {
+        try {
+            wakeLock = await navigator.wakeLock.request('screen');
+            console.log('Screen wake lock engaged.');
+            // Remove the click event listener after requesting the wake lock
+            document.removeEventListener('click', requestWakeLock);
+        } catch (error) {
+            console.error(`Failed to request wake lock: ${error}`);
+        }
+    };
+
+    // Add a click event listener to request the wake lock
+    document.addEventListener('click', requestWakeLock);
+
+    // Add an event listener to release the wake lock when the page is unloaded
+    window.addEventListener('unload', () => {
+        if (wakeLock !== null) {
+            wakeLock.release();
+            wakeLock = null;
+            console.log('Screen wake lock released.');
+        }
+    });
+}
+
+/* Play all songs and pause so they can play in iphone*/
 // Get the elements with the class "song-select"
 var songSelects = document.getElementsByClassName('song-select');
 // Create an array to store the audio elements
@@ -85,7 +123,21 @@ var breathHoldsLink = document.getElementById("breathHoldsLink"),
     APLink = document.getElementById("apneaLink"),
     backAP = document.getElementById("backAP"),
     APSettings = document.getElementById("APSettings"),
-    backAPSet = document.getElementById("backAPSet");
+    backAPSet = document.getElementById("backAPSet"),
+    co2o2Link = document.getElementById("co2o2Link"),
+    backO2 = document.getElementById("backO2"),
+    O2Settings = document.getElementById("O2Settings"),
+    backO2Set = document.getElementById("backO2Set"),
+    O2Btn = document.getElementById("O2Btn"),
+    CO2Btn = document.getElementById("CO2Btn"),
+    WHLink = document.getElementById("WHLink"),
+    backWH = document.getElementById("backWH"),
+    WHSettings = document.getElementById("WHSettings"),
+    backWHSet = document.getElementById("backWHset"),
+    CTLink = document.getElementById("CTLink"),
+    backCT = document.getElementById("backCT"),
+    CTSettings = document.getElementById("CTSettings"),
+    backCTSet = document.getElementById("backCTSet");
 
 /*Pages*/
 var homePage = document.getElementById("homePage"),
@@ -122,7 +174,13 @@ var homePage = document.getElementById("homePage"),
     PRANAPage = document.getElementById("PRANAPage"),
     EXTRAPage = document.getElementById("EXTRAPage"),
     APPage = document.getElementById("APPage"),
-    APSettingsPage = document.getElementById("APSettingsPage");
+    APSettingsPage = document.getElementById("APSettingsPage"),
+    O2Page = document.getElementById("O2Page"),
+    O2SettingsPage = document.getElementById("O2SettingsPage"),
+    WHPage = document.getElementById("WHPage"),
+    WHSettingsPage = document.getElementById("WHSettingsPage"),
+    CTPage = document.getElementById("CTPage"),
+    CTSettingsPage = document.getElementById("CTSettingsPage");
      
 /*Transition functions*/
 const element = document.documentElement || document.body;
@@ -220,9 +278,21 @@ yogicLink.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     playSelectedSongYogic();
     audioPlayerYogic.muted = true;
+    audioListYogic[0].muted = true;
+    audioListYogic[2].muted = true;
+    audioListYogic[3].muted = true;
+    audioListYogic[0].play();
+    audioListYogic[2].play();
+    audioListYogic[3].play();
     setTimeout(function () {
         audioPlayerYogic.pause();
         audioPlayerYogic.currentTime = 0;
+        audioListYogic[0].pause();
+        audioListYogic[0].currentTime = 0;
+        audioListYogic[2].pause();
+        audioListYogic[2].currentTime = 0;
+        audioListYogic[3].pause();
+        audioListYogic[3].currentTime = 0;
     }, 1000);
 }
 backYogic.onclick = function () {
@@ -262,9 +332,21 @@ BRELink.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     playSelectedSongBRE();
     audioPlayerBRE.muted = true;
+    audioListBRE[0].muted = true;
+    audioListBRE[2].muted = true;
+    audioListBRE[3].muted = true;
+    audioListBRE[0].play();
+    audioListBRE[2].play();
+    audioListBRE[3].play();
     setTimeout(function () {
         audioPlayerBRE.pause();
         audioPlayerBRE.currentTime = 0;
+        audioListBRE[0].pause();
+        audioListBRE[0].currentTime = 0;
+        audioListBRE[2].pause();
+        audioListBRE[2].currentTime = 0;
+        audioListBRE[3].pause();
+        audioListBRE[3].currentTime = 0;
     }, 1000);
 }
 backBRE.onclick = function () {
@@ -296,9 +378,21 @@ BRWLink.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     playSelectedSongBRW();
     audioPlayerBRW.muted = true;
+    audioListBRW[0].muted = true;
+    audioListBRW[2].muted = true;
+    audioListBRW[3].muted = true;
+    audioListBRW[0].play();
+    audioListBRW[2].play();
+    audioListBRW[3].play();
     setTimeout(function () {
         audioPlayerBRW.pause();
         audioPlayerBRW.currentTime = 0;
+        audioListBRW[0].pause();
+        audioListBRW[0].currentTime = 0;
+        audioListBRW[2].pause();
+        audioListBRW[2].currentTime = 0;
+        audioListBRW[3].pause();
+        audioListBRW[3].currentTime = 0;
     }, 1000);
 }
 backBRW.onclick = function () {
@@ -330,9 +424,21 @@ HUMLink.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     playSelectedSongHUM();
     audioPlayerHUM.muted = true;
+    audioListHUM[0].muted = true;
+    audioListHUM[2].muted = true;
+    audioListHUM[3].muted = true;
+    audioListHUM[0].play();
+    audioListHUM[2].play();
+    audioListHUM[3].play();
     setTimeout(function () {
         audioPlayerHUM.pause();
         audioPlayerHUM.currentTime = 0;
+        audioListHUM[0].pause();
+        audioListHUM[0].currentTime = 0;
+        audioListHUM[2].pause();
+        audioListHUM[2].currentTime = 0;
+        audioListHUM[3].pause();
+        audioListHUM[3].currentTime = 0;
     }, 1000);
 }
 backHUM.onclick = function () {
@@ -372,9 +478,21 @@ BBLink.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     playSelectedSongBB();
     audioPlayerBB.muted = true;
+    audioListBB[0].muted = true;
+    audioListBB[2].muted = true;
+    audioListBB[3].muted = true;
+    audioListBB[0].play();
+    audioListBB[2].play();
+    audioListBB[3].play();
     setTimeout(function () {
         audioPlayerBB.pause();
         audioPlayerBB.currentTime = 0;
+        audioListBB[0].pause();
+        audioListBB[0].currentTime = 0;
+        audioListBB[2].pause();
+        audioListBB[2].currentTime = 0;
+        audioListBB[3].pause();
+        audioListBB[3].currentTime = 0;
     }, 1000);
 }
 backBB.onclick = function () {
@@ -485,9 +603,25 @@ HATLink.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     playSelectedSongHAT();
     audioPlayerHAT.muted = true;
+    audioListHAT[0].muted = true;
+    audioListHAT[1].muted = true;
+    audioListHAT[2].muted = true;
+    audioListHAT[3].muted = true;
+    audioListHAT[0].play();
+    audioListHAT[1].play();
+    audioListHAT[2].play();
+    audioListHAT[3].play();
     setTimeout(function () {
         audioPlayerHAT.pause();
         audioPlayerHAT.currentTime = 0;
+        audioListHAT[0].pause();
+        audioListHAT[0].currentTime = 0;
+        audioListHAT[1].pause();
+        audioListHAT[1].currentTime = 0;
+        audioListHAT[2].pause();
+        audioListHAT[2].currentTime = 0;
+        audioListHAT[3].pause();
+        audioListHAT[3].currentTime = 0;
     }, 1000);
 }
 backHAT.onclick = function () {
@@ -542,9 +676,25 @@ HATCLink.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     playSelectedSongHATC();
     audioPlayerHATC.muted = true;
+    audioListHATC[0].muted = true;
+    audioListHATC[1].muted = true;
+    audioListHATC[2].muted = true;
+    audioListHATC[3].muted = true;
+    audioListHATC[0].play();
+    audioListHATC[1].play();
+    audioListHATC[2].play();
+    audioListHATC[3].play();
     setTimeout(function () {
         audioPlayerHATC.pause();
         audioPlayerHATC.currentTime = 0;
+        audioListHATC[0].pause();
+        audioListHATC[0].currentTime = 0;
+        audioListHATC[1].pause();
+        audioListHATC[1].currentTime = 0;
+        audioListHATC[2].pause();
+        audioListHATC[2].currentTime = 0;
+        audioListHATC[3].pause();
+        audioListHATC[3].currentTime = 0;
     }, 1000);
 }
 backHATC.onclick = function () {
@@ -591,9 +741,25 @@ AHATLink.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     playSelectedSongAHAT();
     audioPlayerAHAT.muted = true;
+    audioListAHAT[0].muted = true;
+    audioListAHAT[1].muted = true;
+    audioListAHAT[2].muted = true;
+    audioListAHAT[3].muted = true;
+    audioListAHAT[0].play();
+    audioListAHAT[1].play();
+    audioListAHAT[2].play();
+    audioListAHAT[3].play();
     setTimeout(function () {
         audioPlayerAHAT.pause();
         audioPlayerAHAT.currentTime = 0;
+        audioListAHAT[0].pause();
+        audioListAHAT[0].currentTime = 0;
+        audioListAHAT[1].pause();
+        audioListAHAT[1].currentTime = 0;
+        audioListAHAT[2].pause();
+        audioListAHAT[2].currentTime = 0;
+        audioListAHAT[3].pause();
+        audioListAHAT[3].currentTime = 0;
     }, 1000);
 }
 backAHAT.onclick = function () {
@@ -755,9 +921,21 @@ APLink.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     playSelectedSongAP();
     audioPlayerAP.muted = true;
+    audioListAP[0].muted = true;
+    audioListAP[2].muted = true;
+    audioListAP[3].muted = true;
+    audioListAP[0].play();
+    audioListAP[2].play();
+    audioListAP[3].play();
     setTimeout(function () {
         audioPlayerAP.pause();
         audioPlayerAP.currentTime = 0;
+        audioListAP[0].pause();
+        audioListAP[0].currentTime = 0;
+        audioListAP[2].pause();
+        audioListAP[2].currentTime = 0;
+        audioListAP[3].pause();
+        audioListAP[3].currentTime = 0;
     }, 1000);
 }
 backAP.onclick = function () {
@@ -794,5 +972,255 @@ backAPSet.onclick = function () {
     }
     audioPlayerAP.currentTime = 0;
     openPage(APSettingsPage, APPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+co2o2Link.onclick = function () {
+    openPage(BHPage, O2Page, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongO2();
+    audioPlayerO2.muted = true;
+    audioListCO2[0].muted = true;
+    audioListCO2[1].muted = true;
+    audioListCO2[2].muted = true;
+    audioListCO2[3].muted = true;
+    audioListCO2[0].play();
+    audioListCO2[1].play();
+    audioListCO2[2].play();
+    audioListCO2[3].play();
+    audioListO2[0].muted = true;
+    audioListO2[1].muted = true;
+    audioListO2[2].muted = true;
+    audioListO2[3].muted = true;
+    audioListO2[0].play();
+    audioListO2[1].play();
+    audioListO2[2].play();
+    audioListO2[3].play();
+    setTimeout(function () {
+        audioPlayerO2.pause();
+        audioPlayerO2.currentTime = 0;
+        audioListCO2[0].pause();
+        audioListCO2[0].currentTime = 0;
+        audioListCO2[1].pause();
+        audioListCO2[1].currentTime = 0;
+        audioListCO2[2].pause();
+        audioListCO2[2].currentTime = 0;
+        audioListCO2[3].pause();
+        audioListCO2[3].currentTime = 0;
+        audioListO2[0].pause();
+        audioListO2[0].currentTime = 0;
+        audioListO2[1].pause();
+        audioListO2[1].currentTime = 0;
+        audioListO2[2].pause();
+        audioListO2[2].currentTime = 0;
+        audioListO2[3].pause();
+        audioListO2[3].currentTime = 0;
+    }, 1000);
+}
+backO2.onclick = function () {
+    openPage(O2Page, BHPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById("O2Results").innerHTML = "";
+    timerRefO2.value = "|";
+    clearInterval(intO2);
+    document.getElementById('O2Settings').disabled = false;
+    document.getElementById('O2Settings').style.color = '#49B79D';
+    if (!isSongMuteO2) {
+        audioPlayerO2.pause();
+    }
+    timerControlsButtonsO2.pauseO2.style.display = 'none';
+    timerControlsButtonsO2.startO2.style.display = 'inline';
+    setFormDisabledStateO2(false);
+    setTimerControlsDisabledStateO2(false, true, true);
+    document.getElementById('stopBtnO2').style.display = 'inline';
+    timerControlsButtonsO2.stopO2.style.color = "rgb(177, 177, 177)";
+    timerControlsButtonsO2.startO2.style.color = "#0661AA";
+    stopTimerTickO2();
+    resetTimerO2();
+    timerO2.isFinishedO2 = true;
+    document.getElementById('O2Save').disabled = true;
+    document.getElementById('O2Save').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('O2ResultSaved').innerHTML = "";
+    document.getElementById("O2Results").innerHTML = "";
+    timerRefO2.value = "|";
+    clearInterval(intCO2);
+    timerControlsButtonsCO2.pauseCO2.style.display = 'none';
+    timerControlsButtonsCO2.startCO2.style.display = 'inline';
+    setFormDisabledStateCO2(false);
+    setTimerControlsDisabledStateCO2(false, true, true);
+    document.getElementById('stopBtnCO2').style.display = 'inline';
+    timerControlsButtonsCO2.stopCO2.style.color = "rgb(177, 177, 177)";
+    timerControlsButtonsCO2.startCO2.style.color = "#0661AA";
+    stopTimerTickCO2();
+    resetTimerCO2();
+    timerCO2.isFinishedCO2 = true;
+    document.getElementById('CO2Save').disabled = true;
+    document.getElementById('CO2Save').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('CO2ResultSaved').innerHTML = "";
+    document.getElementById("CO2Results").innerHTML = "";
+
+}
+O2Settings.onclick = function () {
+    openPage(O2Page, O2SettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backO2Set.onclick = function () {
+    if (isSongMuteO2 != true) {
+        audioPlayerO2.pause();
+    }
+    audioPlayerO2.currentTime = 0;
+    openPage(O2SettingsPage, O2Page, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+CO2Btn.onclick = function () {
+    document.getElementById("O2Table").style.display = 'block';
+    document.getElementById("CO2Table").style.display = 'none';
+}
+O2Btn.onclick = function () {
+    document.getElementById("CO2Table").style.display = 'block';
+    document.getElementById("O2Table").style.display = 'none';
+}
+WHLink.onclick = function () {
+    openPage(BHPage, WHPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongWH();
+    audioPlayerWH.muted = true;
+    audioListWH[0].muted = true;
+    audioListWH[1].muted = true;
+    audioListWH[2].muted = true;
+    audioListWH[3].muted = true;
+    audioListWH[4].muted = true;
+    audioListWH[5].muted = true;
+    audioListWH[6].muted = true;
+    audioListWH[0].play();
+    audioListWH[1].play();
+    audioListWH[2].play();
+    audioListWH[3].play();
+    audioListWH[4].play();
+    audioListWH[5].play();
+    audioListWH[6].play();
+    setTimeout(function () {
+        audioPlayerWH.pause();
+        audioPlayerWH.currentTime = 0;
+        audioListWH[0].pause();
+        audioListWH[0].currentTime = 0
+        audioListWH[1].pause();
+        audioListWH[1].currentTime = 0
+        audioListWH[2].pause();
+        audioListWH[2].currentTime = 0
+        audioListWH[3].pause();
+        audioListWH[3].currentTime = 0
+        audioListWH[4].pause();
+        audioListWH[4].currentTime = 0
+        audioListWH[5].pause();
+        audioListWH[5].currentTime = 0
+        audioListWH[6].pause();
+        audioListWH[6].currentTime = 0
+    }, 1000);
+}
+backWH.onclick = function () {
+    openPage(WHPage, BHPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(intWH);
+    [secondsWH, minutesWH] = [0, 0];
+    document.getElementById('WHSettings').disabled = false;
+    document.getElementById('WHSettings').style.color = '#49B79D';
+    if (!isSongMuteWH) {
+        audioPlayerWH.pause();
+    }
+    audioPlayerWH.currentTime = 0;
+    timerControlsButtonsWH.pauseWH.style.display = 'none';
+    timerControlsButtonsWH.startWH.style.display = 'inline';
+    setFormDisabledStateWH(false);
+    setTimerControlsDisabledStateWH(false, true, true);
+    timerControlsButtonsWH.stopWH.style.color = "rgb(177, 177, 177)";
+    ctxWH.clearRect(0, 0, cWH.width, cWH.height);
+    ctxWH.fillStyle = my_gradientWH;
+    ctxWH.beginPath();
+    ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
+    ctxWH.fill();
+    ctxWH.font = "bold 48px serif"
+    ctxWH.fillStyle = "white";
+    ctxWH.textAlign = "center";
+    yWH = formSettingsFieldsWH.breakDuration2WH.value;
+    ctxWH.fillText(yWH, 150, 115);
+    audioListWH[1].play();
+    document.getElementById("WHResults").innerHTML = '';
+    stopTimerTickWH();
+    resetTimerWH();
+    clearTimeout(myTimeoutWH);
+    clearTimeout(myTimeout2WH);
+}
+WHSettings.onclick = function () {
+    openPage(WHPage, WHSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backWHSet.onclick = function () {
+    if (isSongMuteWH != true) {
+        audioPlayerWH.pause();
+    }
+    audioPlayerWH.currentTime = 0;
+    openPage(WHSettingsPage, WHPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+CTLink.onclick = function () {
+    openPage(BHPage, CTPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongCT();
+    audioPlayerCT.muted = true;
+    audioListCT[0].muted = true;
+    audioListCT[1].muted = true;
+    audioListCT[2].muted = true;
+    audioListCT[3].muted = true;
+    audioListCT[0].play();
+    audioListCT[1].play();
+    audioListCT[2].play();
+    audioListCT[3].play();
+    setTimeout(function () {
+        audioPlayerCT.pause();
+        audioPlayerCT.currentTime = 0;
+        audioListCT[0].pause();
+        audioListCT[0].currentTime = 0;
+        audioListCT[1].pause();
+        audioListCT[1].currentTime = 0;
+        audioListCT[2].pause();
+        audioListCT[2].currentTime = 0;
+        audioListCT[3].pause();
+        audioListCT[3].currentTime = 0;
+    }, 1000);
+}
+backCT.onclick = function () {
+    openPage(CTPage, BHPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(intCT);
+    [secondsCT, minutesCT, hoursCT] = [0, 0, 0];
+    timerRefCT.value = '00 : 00 : 00';
+    if (isSongMuteCT != true && isCTON != false) {
+        audioPlayerCT.pause();
+    }
+    audioPlayerCT.currentTime = 0;
+    timerControlsButtonsCT.pauseCT.style.display = 'none';
+    timerControlsButtonsCT.startCT.style.display = 'inline';
+    setFormDisabledStateCT(false);
+    setTimerControlsDisabledStateCT(false, true, true);
+    timerControlsButtonsCT.stopCT.style.color = "rgb(177, 177, 177)";
+    document.getElementById('CTSave').disabled = true;
+    document.getElementById('CTSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('CTSettings').disabled = false;
+    document.getElementById('CTSettings').style.color = '#49B79D';
+    stopTimerTickCT();
+    resetTimerCT();
+    isCTON = false;
+    document.getElementById('CTResultSaved').innerHTML = "";
+}
+CTSettings.onclick = function () {
+    openPage(CTPage, CTSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backCTSet.onclick = function () {
+    if (isSongMuteCT != true) {
+        audioPlayerCT.pause();
+    }
+    audioPlayerCT.currentTime = 0;
+    openPage(CTSettingsPage, CTPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }

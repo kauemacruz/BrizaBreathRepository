@@ -1,6 +1,33 @@
 body {
     touch-action: pan-y;
 }
+/* CSS for the loading indicator */
+#loadingIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+#loadingIndicator img {
+    width: 250px;
+    height: 100px;
+    animation: blink 1s infinite;
+}
+
+/* CSS animation for the blinking image */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 iframe {
     border: none;
     position: fixed;
@@ -490,7 +517,6 @@ input#timerDisplayLungs {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     border: none;
-    font-size: 20px;
     margin-right: 1rem;
     font-size: 24px;
     background-color: transparent;
@@ -504,7 +530,6 @@ input#timerDisplayLungs {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     border: none;
-    font-size: 20px;
     margin-right: 1rem;
     font-size: 24px;
     background-color: transparent;
@@ -517,7 +542,6 @@ input#timerDisplayLungs {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     border: none;
-    font-size: 20px;
     margin-left: 1rem;
     font-size: 24px;
     background-color: transparent;
@@ -654,6 +678,7 @@ input#timerDisplayLungs {
 .audioButtons img {
     width: 20px;
     height: 20px;
+    margin-right: 25px;
 }
 .settingButtons img {
     width: 30px;
@@ -722,7 +747,47 @@ input#timerDisplayLungs {
 #elapsedInBreakIntervalBox2AHAT header,
 #elapsedInIntervalBoxAP header,
 #elapsedInBreakIntervalBoxAP header,
-#elapsedInBreakIntervalBox2AP header {
+#elapsedInBreakIntervalBox2AP header,
+#elapsedInIntervalBoxO2 header,
+#elapsedInBreakIntervalBoxO2 header,
+#elapsedInBreakIntervalBox2O2 header,
+#elapsedInBreakIntervalBoxO2 header,
+#elapsedInBreakIntervalBox3O2 header,
+#elapsedInBreakIntervalBox4O2 header,
+#elapsedInBreakIntervalBox5O2 header,
+#elapsedInBreakIntervalBox6O2 header,
+#elapsedInBreakIntervalBox7O2 header,
+#elapsedInBreakIntervalBox8O2 header,
+#elapsedInBreakIntervalBox9O2 header,
+#elapsedInBreakIntervalBox10O2 header,
+#elapsedInBreakIntervalBox11O2 header,
+#elapsedInBreakIntervalBox12O2 header,
+#elapsedInBreakIntervalBox13O2 header,
+#elapsedInBreakIntervalBox14O2 header,
+#elapsedInBreakIntervalBox15O2 header,
+#elapsedInIntervalBoxCO2 header,
+#elapsedInBreakIntervalBoxCO2 header,
+#elapsedInBreakIntervalBox2CO2 header,
+#elapsedInBreakIntervalBoxCO2 header,
+#elapsedInBreakIntervalBox3CO2 header,
+#elapsedInBreakIntervalBox4CO2 header,
+#elapsedInBreakIntervalBox5CO2 header,
+#elapsedInBreakIntervalBox6CO2 header,
+#elapsedInBreakIntervalBox7CO2 header,
+#elapsedInBreakIntervalBox8CO2 header,
+#elapsedInBreakIntervalBox9CO2 header,
+#elapsedInBreakIntervalBox10CO2 header,
+#elapsedInBreakIntervalBox11CO2 header,
+#elapsedInBreakIntervalBox12CO2 header,
+#elapsedInBreakIntervalBox13CO2 header,
+#elapsedInBreakIntervalBox14CO2 header,
+#elapsedInBreakIntervalBox15CO2 header,
+#elapsedInIntervalBoxWH header,
+#elapsedInBreakIntervalBoxWH header,
+#elapsedInBreakIntervalBox2WH header,
+#elapsedInIntervalBoxCT header,
+#elapsedInBreakIntervalBoxCT header,
+#elapsedInBreakIntervalBox2CT header {
     font-size: 30px;
 }
 
@@ -759,7 +824,45 @@ input#timerDisplayLungs {
 #elapsedInBreakInterval2AHAT,
 #elapsedInIntervalAP,
 #elapsedInBreakIntervalAP,
-#elapsedInBreakInterval2AP {
+#elapsedInBreakInterval2AP,
+#elapsedInIntervalO2,
+#elapsedInBreakIntervalO2,
+#elapsedInBreakInterval2O2,
+#elapsedInBreakInterval3O2,
+#elapsedInBreakInterval4O2,
+#elapsedInBreakInterval5O2,
+#elapsedInBreakInterval6O2,
+#elapsedInBreakInterval7O2,
+#elapsedInBreakInterval8O2,
+#elapsedInBreakInterval9O2,
+#elapsedInBreakInterval10O2,
+#elapsedInBreakInterval11O2,
+#elapsedInBreakInterval12O2,
+#elapsedInBreakInterval13O2,
+#elapsedInBreakInterval14O2,
+#elapsedInBreakInterval15O2,
+#elapsedInIntervalCO2,
+#elapsedInBreakIntervalCO2,
+#elapsedInBreakInterval2CO2,
+#elapsedInBreakInterval3CO2,
+#elapsedInBreakInterval4CO2,
+#elapsedInBreakInterval5CO2,
+#elapsedInBreakInterval6CO2,
+#elapsedInBreakInterval7CO2,
+#elapsedInBreakInterval8CO2,
+#elapsedInBreakInterval9CO2,
+#elapsedInBreakInterval10CO2,
+#elapsedInBreakInterval11CO2,
+#elapsedInBreakInterval12CO2,
+#elapsedInBreakInterval13CO2,
+#elapsedInBreakInterval14CO2,
+#elapsedInBreakInterval15CO2,
+#elapsedInIntervalWH,
+#elapsedInBreakIntervalWH,
+#elapsedInBreakInterval2WH,
+#elapsedInIntervalCT,
+#elapsedInBreakIntervalCT,
+#elapsedInBreakInterval2CT {
     font-size: 80px;
 }
 
@@ -787,7 +890,41 @@ input#timerDisplayLungs {
 #elapsedInBreakIntervalBoxAHAT,
 #elapsedInBreakIntervalBox2AHAT,
 #elapsedInBreakIntervalBoxAP,
-#elapsedInBreakIntervalBox2AP {
+#elapsedInBreakIntervalBox2AP,
+#elapsedInBreakIntervalBoxO2,
+#elapsedInBreakIntervalBox2O2,
+#elapsedInBreakIntervalBox3O2,
+#elapsedInBreakIntervalBox4O2,
+#elapsedInBreakIntervalBox5O2,
+#elapsedInBreakIntervalBox6O2,
+#elapsedInBreakIntervalBox7O2,
+#elapsedInBreakIntervalBox8O2,
+#elapsedInBreakIntervalBox9O2,
+#elapsedInBreakIntervalBox10O2,
+#elapsedInBreakIntervalBox11O2,
+#elapsedInBreakIntervalBox12O2,
+#elapsedInBreakIntervalBox13O2,
+#elapsedInBreakIntervalBox14O2,
+#elapsedInBreakIntervalBox15O2,
+#elapsedInBreakIntervalBoxCO2,
+#elapsedInBreakIntervalBox2CO2,
+#elapsedInBreakIntervalBox3CO2,
+#elapsedInBreakIntervalBox4CO2,
+#elapsedInBreakIntervalBox5CO2,
+#elapsedInBreakIntervalBox6CO2,
+#elapsedInBreakIntervalBox7CO2,
+#elapsedInBreakIntervalBox8CO2,
+#elapsedInBreakIntervalBox9CO2,
+#elapsedInBreakIntervalBox10CO2,
+#elapsedInBreakIntervalBox11CO2,
+#elapsedInBreakIntervalBox12CO2,
+#elapsedInBreakIntervalBox13CO2,
+#elapsedInBreakIntervalBox14CO2,
+#elapsedInBreakIntervalBox15CO2,
+#elapsedInBreakIntervalBoxWH,
+#elapsedInBreakIntervalBox2WH,
+#elapsedInBreakIntervalBoxCT,
+#elapsedInBreakIntervalBox2CT {
     display: none;
 }
 
@@ -796,39 +933,29 @@ input#timerDisplayLungs {
 #timeOverviewMessageBRW,
 #timeOverviewMessageHUM,
 #timeOverviewMessageBB,
-#timeOverviewMessageAP {
-    text-align: center;
-    flex: 1;
-    margin-bottom: 1rem;
-    font-size: 80px;
-    display: none;
-}
+#timeOverviewMessageAP,
+#timeOverviewMessageO2,
+#timeOverviewMessageCO2,
 #timeOverviewMessageHAT,
 #timeOverviewMessageHATC,
-#timeOverviewMessageAHAT{
+#timeOverviewMessageAHAT,
+#timeOverviewMessageWH,
+#timeOverviewMessageCT {
     text-align: center;
     flex: 1;
     margin-bottom: 1rem;
     font-size: 40px;
     display: none;
 }
-    .timer-additional-info {
+.timer-additional-info {
     font-size: 12px;
     padding-bottom: 5px;
     margin-top: 20px;
     text-align: center;
 }
-
-.timer-additional-infoWHB {
-    font-size: 12px;
-    padding-bottom: 5px;
-    margin-left: 1rem;
-}
-
 .timer-additional-info.BRE {
     font-size: 10px !important;
 }
-
 .buttonplus {
     font-size: 35px;
     padding: 0px 10px 2px 10px;
@@ -841,7 +968,6 @@ input#timerDisplayLungs {
     color: #49B79D;
     font-weight: 900;
 }
-
 .buttonminus {
     font-size: 35px;
     padding: 0px 20px 2px 10px;
@@ -854,7 +980,6 @@ input#timerDisplayLungs {
     color: #49B79D;
     font-weight: 900;
 }
-
 .roundbox {
     display: flex;
     font-size: 12px;
@@ -865,16 +990,13 @@ input#timerDisplayLungs {
     align-items: baseline;
     margin-bottom: 1rem;
 }
-
 .form-line:last-of-type {
     margin: 0;
 }
-
 .form-line label {
     flex-grow: 1;
     padding-right: .5rem;
 }
-
 .form-line input[type="number"] {
     width: 40px;
     margin-right: 5px;
@@ -895,7 +1017,6 @@ input#timerDisplayLungs {
 .timer-status {
     grid-area: status;
 }
-
 .timer-controls {
     text-align: center;
 }
@@ -917,7 +1038,7 @@ input#timerDisplayLungs {
 }
 .volume-bar {
     display: flex;
-    width: 300px;
+    width: 250px;
     margin: 0 auto;
     align-items: center;
     justify-content: space-around;
@@ -979,4 +1100,112 @@ input#intervalsDoneHAT {
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
+}
+.co2o2 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#O2Btn {
+    border: none;
+    padding: 0;
+    margin: auto;
+}
+#CO2Btn {
+    border: none;
+    padding: 0;
+    margin: auto;
+}
+.O2table {
+    text-align: center;
+    margin: auto;
+    font-size: 20px;
+    border-top: solid;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.O2table td {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-left: solid;
+    border-right: solid;
+}
+.hold {
+    border-bottom: solid;
+}
+.O2btns {
+    text-align: center;
+    font-size: 18px;
+}
+#O2Table {
+    margin-bottom: 30px;
+}
+#CO2Table{
+    margin-bottom: 30px;
+    display: none;
+}
+.gap1O2 {
+    background-color: #49b79d49;
+}
+.gap1CO2 {
+    background-color: #49b79d49;
+}
+button#startBtnWH {
+    margin-right: 0 !important;
+    width: 10rem;
+}
+input#WHSave {
+    width: 10rem;
+    margin: 0;
+}
+button#stopBtnWH {
+    color: rgb(177, 177, 177);
+    width: 10rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    margin-right: 15px;
+}
+button#resetBtnWH {
+    color: rgb(177, 177, 177);
+    width: 10rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    display: none;
+    margin-right: 15px;
+}
+#circleWH {
+    width: 100%;
+    text-align: center;
+}
+input#breakDurationInput2WH {
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    width: 100px;
+    color: #0661AA;
+}
+input#breathSpeed {
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    width: 150px;
+    color: #0661AA;
+}
+form#WHForm {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#WHResults{
+    margin-bottom: 50px;
 }

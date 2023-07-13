@@ -1,7 +1,10 @@
 ﻿@page
 @model BrizaBreath.Pages.Results.CreateModel
 
-<div id="homePage" class="open">
+<div id="loadingIndicator">
+    <img src="/images/birzabreathandperformance.png" alt="Loading...">
+</div>
+<div id="homePage" class="hidden">
     <header>
         <img id="homelogoimg" src="/images/B_DEGRAD.png" width="55" height="55" />
     </header>
@@ -1743,8 +1746,8 @@
             <div class="col"><a id="apneaLink"><img class="homepageimgs" src="/images/apnea.png" /></a></div>
             <div class="col"><a id="co2o2Link"><img class="homepageimgs" src="/images/co2o2.png" /></a></div>
             <div class="w-100"></div>
-            <div class="col"><a id="whbLink"><img class="homepageimgs" src="/images/whb.png" /></a></div>
-            <div class="col"><a id="co2Link"><img class="homepageimgs" src="/images/co2.png" /></a></div>
+            <div class="col"><a id="WHLink"><img class="homepageimgs" src="/images/whb.png" /></a></div>
+            <div class="col"><a id="CTLink"><img class="homepageimgs" src="/images/co2.png" /></a></div>
         </div>
     </div>
 </div>
@@ -1937,6 +1940,852 @@
                         <div class="roundbox">
                             <div>Rounds:<input id="intervalsDoneAP" asp-for="Result.APIntervals" readonly value="0" /></div>
                             <div>Total time:<input id="timerDisplayAP" asp-for="Result.APTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="O2SettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backO2Set">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>CO2 & O2 Table Settings</h1>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioO2" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteO2" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceO2" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteO2" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songO2" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongO2" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectO2" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerO2"></audio>
+    </div>
+</div>
+<div id="O2Page" class="hidden">
+    <header>
+        <div class="goback"><a id="backO2">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>CO2 and O2 Tables</h1>
+        <video controls poster="/images/co2o2.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <div class="settingButtons">
+            <button id="O2Settings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div id="O2Table">
+            <p>This table helps the body to get used to low levels of oxygen, by increasing the breath hold times. The time for the last breath hold should not exceed 80% of your personal best. Choose the CO2 or the O2 table, set the table to your own level and follow the guided session. 
+                During the exercise, if you cannot hold your breath for the period of the breath hold, pause, save your results and try again another time. You do not need to complete all 8 rounds. 
+            </p>
+            <p> DO NOT DO THESE EXERCISES MORE THAN ONCE ON THE SAME DAY AND DO NOT EXCEED 8 ROUNDS</p>
+            <div id="O2ResultSaved" class="resultSaved"></div>
+            <div id="CO2ResultSaved" class="resultSaved"></div>
+            <div class="co2o2">
+                <button id="O2Btn" type="button"><img src="/images/o2Btn.png"></button>
+            </div>
+            <h1>O2</h1>
+            <div class="O2btns">
+                <button class="buttonminus" type="button" id="minusO2">-</button>
+                Level <span id="levelO2"></span>
+                <button class="buttonplus" type="button" id="plusO2">+</button>
+            </div>
+            <table class="O2table">
+                <tr>
+                    <td class="gap1O2">1. Breathe - 2:00</td>
+                    <td class="gap5O2">5. Breathe - 2:00</td>
+                </tr>
+                <tr class="hold">
+                    <td class="gap1O2">Hold - <span id="levelHold1O2"></span></td>
+                    <td class="gap5O2">Hold - <span id="levelHold5O2"></span></td>
+                </tr>
+                <tr>
+                    <td class="gap2O2">2. Breathe - 2:00</td>
+                    <td class="gap6O2">6. Breathe - 2:00</td>
+                </tr>
+                <tr class="hold">
+                    <td class="gap2O2">Hold - <span id="levelHold2O2"></span></td>
+                    <td class="gap6O2">Hold - <span id="levelHold6O2"></span></td>
+                </tr>
+                <tr>
+                    <td class="gap3O2">3. Breathe - 2:00</td>
+                    <td class="gap7O2">7. Breathe - 2:00</td>
+                </tr>
+                <tr class="hold">
+                    <td class="gap3O2">Hold - <span id="levelHold3O2"></span></td>
+                    <td class="gap7O2">Hold - <span id="levelHold7O2"></span></td>
+                </tr>
+                <tr>    
+                    <td class="gap4O2">4. Breathe - 2:00</td>
+                    <td class="gap8O2">8. Breathe - 2:00</td>
+                </tr>
+                <tr class="hold">    
+                    <td class="gap4O2">Hold - <span id="levelHold4O2"></span></td>
+                    <td class="gap8O2">Hold - <span id="levelHold8O2"></span></td>
+                </tr>    
+            </table>
+    
+            <div class="main-container">   
+                <div class="timer-status">
+                    <div class="form-line">
+                        <input type="hidden" id="intervalCountInputO2" min="1">
+                    </div>          
+                    <div class="form-line">
+                        <input type="hidden" id="intervalDurationInputO2" min="1" readonly>
+                    </div>       
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInputO2">
+                    </div>
+                    <div class="form-line" id="breakDurationInputLineO2">
+                        <input type="hidden" id="breakDurationInputO2" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput2O2">
+                    </div>
+                    <div class="form-line" id="breakDurationInputLine2O2">
+                        <input type="hidden" id="breakDurationInput2O2" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput3O2">
+                    </div>
+                    <div class="form-line" id="breakDurationInputLine3O2">
+                        <input type="hidden" id="breakDurationInput3O2" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput4O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine4O2">
+                        <input type="hidden" id="breakDurationInput4O2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput5O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine5O2">
+                        <input type="hidden" id="breakDurationInput5O2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput6O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine6O2">
+                        <input type="hidden" id="breakDurationInput6O2" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput7O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine7O2">
+                        <input type="hidden" id="breakDurationInput7O2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput8O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine8O2">
+                        <input type="hidden" id="breakDurationInput8O2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput9O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine9O2">
+                        <input type="hidden" id="breakDurationInput9O2" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput10O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine10O2">
+                        <input type="hidden" id="breakDurationInput10O2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput11O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine11O2">
+                        <input type="hidden" id="breakDurationInput11O2" min="1" readonly>
+                    </div>             
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput12O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine12O2">
+                        <input type="hidden" id="breakDurationInput12O2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput13O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine13O2">
+                        <input type="hidden" id="breakDurationInput13O2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput14O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine14O2">
+                        <input type="hidden" id="breakDurationInput14O2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput15O2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine15O2">
+                        <input type="hidden" id="breakDurationInput15O2" min="1" readonly>
+                    </div>
+                </div>
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageO2">Normal Breathing</div>
+                    <div class="box" id="elapsedInIntervalBoxO2">
+                        <header>Breathe</header>
+                        <span id="elapsedInIntervalO2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBoxO2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakIntervalO2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox2O2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval2O2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox3O2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval3O2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox4O2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval4O2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox5O2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval5O2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox6O2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval6O2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox7O2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval7O2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox8O2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval8O2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox9O2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval9O2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox10O2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval10O2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox11O2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval11O2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox12O2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval12O2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox13O2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval13O2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox14O2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval14O2"></span>s
+                    </div>         
+                    <div class="box" id="elapsedInBreakIntervalBox15O2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval15O2"></span>s
+                    </div>
+                </div>
+            </div>
+            <div class="timer-controls">
+                <!--  Information about interval  -->
+                <button type="button" class="startBtn" id="startBtnO2">Start</button>
+                <button type="button" class="pauseBtn" id="pauseBtnO2">Pause</button>
+                <button type="button" class="stopBtn" id="stopBtnO2">Reset</button>
+                <form method="post" id="O2Form">
+                    <div>
+                        <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                    </div>
+                    <div>
+                        <input id="O2Date" type="text" type="hidden" asp-for="Result.O2ResultDate" />
+                    </div>
+                    <div class="saveBtn">
+                        <input type="submit" value="Save" id="O2Save" />
+                    </div>
+                    <div class="roundbox">
+                        <div><input id="intervalsDoneO2" asp-for="Result.O2Intervals" type="hidden" /></div>
+                        <div><input id="timerDisplayO2" asp-for="Result.O2TotalTime" type="hidden" value="|" /></div>
+                    </div>
+                    <div id="O2Results"></div>
+                </form>
+            </div>
+        </div>
+        <div id="CO2Table">
+            <p>This table helps the body to get used to high levels of CO2, by lowering the breathing time between breath holds. The time for the static breath hold should not exceed 50% of your personal best. Choose one of the tables, set the table to your level and follow the guided session. 
+                During the exercise, if you cannot hold your breath for the period of the breath hold, pause, save your results and try again another time. You do not need to complete all rounds. 
+            </p>
+            <p> DO NOT DO THESE EXERCISES MORE THAN ONCE ON THE SAME DAY AND DO NOT EXCEED 8 ROUNDS</p>
+            <div id="CO2ResultSaved" class="resultSaved"></div>
+            <div class="co2o2">
+                <button id="CO2Btn" type="button"><img src="/images/co2Btn.png"></button>
+            </div>
+            <h1>CO2</h1>
+            <div class="O2btns">
+                <button class="buttonminus" type="button" id="minusCO2">-</button>
+                Level <span id="levelCO2"></span>
+                <button class="buttonplus" type="button" id="plusCO2">+</button>
+            </div>
+            <table class="O2table">
+                <tr>
+                    <td class="gap1CO2">1. Breathe - 2:15</td>
+                    <td class="gap5CO2">5. Breathe - 1:15</td>
+                </tr>
+                <tr class="hold">
+                    <td class="gap1CO2">Hold - <span id="levelHold1CO2"></span></td>
+                    <td class="gap5CO2">Hold - <span id="levelHold5CO2"></span></td>
+                </tr>
+                <tr>
+                    <td class="gap2CO2">2. Breathe - 2:00</td>
+                    <td class="gap6CO2">6. Breathe - 1:00</td>
+                </tr>
+                <tr class="hold">
+                    <td class="gap2CO2">Hold - <span id="levelHold2CO2"></span></td>
+                    <td class="gap6CO2">Hold - <span id="levelHold6CO2"></span></td>
+                </tr>
+                <tr>
+                    <td class="gap3CO2">3. Breathe - 1:45</td>
+                    <td class="gap7CO2">7. Breathe - 0:45</td>
+                </tr>
+                <tr class="hold">
+                    <td class="gap3CO2">Hold - <span id="levelHold3CO2"></span></td>
+                    <td class="gap7CO2">Hold - <span id="levelHold7CO2"></span></td>
+                </tr>
+                <tr>    
+                    <td class="gap4CO2">4. Breathe - 1:30</td>
+                    <td class="gap8CO2">8. Breathe - 0:30</td>
+                </tr>
+                <tr class="hold">    
+                    <td class="gap4CO2">Hold - <span id="levelHold4CO2"></span></td>
+                    <td class="gap8CO2">Hold - <span id="levelHold8CO2"></span></td>
+                </tr>    
+            </table>
+    
+            <div class="main-container">   
+                <div class="timer-status">
+                    <div class="form-line">
+                        <input type="hidden" id="intervalCountInputCO2" min="1">
+                    </div>          
+                    <div class="form-line">
+                        <input type="hidden" id="intervalDurationInputCO2" min="1" readonly>
+                    </div>       
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInputCO2">
+                    </div>
+                    <div class="form-line" id="breakDurationInputLineCO2">
+                        <input type="hidden" id="breakDurationInputCO2" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput2CO2">
+                    </div>
+                    <div class="form-line" id="breakDurationInputLine2CO2">
+                        <input type="hidden" id="breakDurationInput2CO2" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput3CO2">
+                    </div>
+                    <div class="form-line" id="breakDurationInputLine3CO2">
+                        <input type="hidden" id="breakDurationInput3CO2" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput4CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine4CO2">
+                        <input type="hidden" id="breakDurationInput4CO2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput5CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine5CO2">
+                        <input type="hidden" id="breakDurationInput5CO2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput6CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine6CO2">
+                        <input type="hidden" id="breakDurationInput6CO2" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput7CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine7CO2">
+                        <input type="hidden" id="breakDurationInput7CO2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput8CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine8CO2">
+                        <input type="hidden" id="breakDurationInput8CO2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput9CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine9CO2">
+                        <input type="hidden" id="breakDurationInput9CO2" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput10CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine10CO2">
+                        <input type="hidden" id="breakDurationInput10CO2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput11CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine11CO2">
+                        <input type="hidden" id="breakDurationInput11CO2" min="1" readonly>
+                    </div>             
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput12CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine12CO2">
+                        <input type="hidden" id="breakDurationInput12CO2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput13CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine13CO2">
+                        <input type="hidden" id="breakDurationInput13CO2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput14CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine14CO2">
+                        <input type="hidden" id="breakDurationInput14CO2" min="1" readonly>
+                    </div>            
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInput15CO2">
+                    </div>            
+                    <div class="form-line" id="breakDurationInputLine15CO2">
+                        <input type="hidden" id="breakDurationInput15CO2" min="1" readonly>
+                    </div>
+                </div>
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageCO2">Normal Breathing</div>
+                    <div class="box" id="elapsedInIntervalBoxCO2">
+                        <header>Breathe</header>
+                        <span id="elapsedInIntervalCO2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBoxCO2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakIntervalCO2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox2CO2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval2CO2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox3CO2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval3CO2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox4CO2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval4CO2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox5CO2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval5CO2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox6CO2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval6CO2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox7CO2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval7CO2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox8CO2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval8CO2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox9CO2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval9CO2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox10CO2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval10CO2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox11CO2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval11CO2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox12CO2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval12CO2"></span>s
+                    </div>        
+                    <div class="box" id="elapsedInBreakIntervalBox13CO2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval13CO2"></span>s
+                    </div>
+                    <div class="box" id="elapsedInBreakIntervalBox14CO2">
+                        <header>Breathe</header>
+                        <span id="elapsedInBreakInterval14CO2"></span>s
+                    </div>         
+                    <div class="box" id="elapsedInBreakIntervalBox15CO2">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval15CO2"></span>s
+                    </div>
+                </div>
+            </div>
+            <div class="timer-controls">
+                <!--  Information about interval  -->
+                <button type="button" class="startBtn" id="startBtnCO2">Start</button>
+                <button type="button" class="pauseBtn" id="pauseBtnCO2">Pause</button>
+                <button type="button" class="stopBtn" id="stopBtnCO2">Reset</button>
+                <form method="post" id="CO2Form">
+                    <div>
+                        <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                    </div>
+                    <div>
+                        <input id="CO2Date" type="text" type="hidden" asp-for="Result.CO2ResultDate" />
+                    </div>
+                    <div class="saveBtn">
+                        <input type="submit" value="Save" id="CO2Save" />
+                    </div>
+                    <div class="roundbox">
+                        <div><input id="intervalsDoneCO2" asp-for="Result.CO2Intervals" type="hidden" /></div>
+                        <div><input id="timerDisplayCO2" asp-for="Result.CO2TotalTime" type="hidden" value="|" /></div>
+                    </div>
+                    <div id="CO2Results"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="WHSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backWHset">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Controlled Hyperventilation Settings</h1>
+        <div class="settings-form">
+            <h4 class="volumeSettings">Number of Breaths</h4>
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusWH">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputWH" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="intervalDurationInputWH" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputWH">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineWH">
+                <input type="hidden" id="breakDurationInputWH" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2WH">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2WH">
+                <input id="breakDurationInput2WH" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusWH">+</button>
+            </div>
+        </div>
+        <div class="settings-form">
+            <h4 class="volumeSettings">Speed of Breaths</h4>
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="SminusWH">-</button>
+            </div>
+            <div class="form-line">
+                <input id="breathSpeed" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="SplusWH">+</button>
+            </div>
+        </div>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioWH" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteWH" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceWH" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Breath Sound?</h4>
+            <div class="audioButtons">
+                <div id="BaudioWH" class="audio"><img src="/images/speaker.png"></div>
+                <div id="BmuteWH" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="BvolumeVoiceWH" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteWH" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songWH" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongWH" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectWH" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerWH"></audio>
+    </div>
+</div>
+<div id="WHPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backWH">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Controlled Hyperventilation</h1>
+        <video controls poster="/images/whb.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>This controlled hyperventilation breathing technique, followed by a breath hold is based on the principles of diaphragmatic and circular breathing, allowing you to fully oxygenate your body and hold your breath with no air in the lungs. Try to do it around 3 to 4 rounds a few times per week</p>
+        <p>Choose the number and speed of breaths to prepare for the breath hold in the settings, find a comfortable sitting position or lay down and follow our guided breathing session below</p>
+        <div id="WHResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="WHSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="saveBtn">
+                <button type="button" class="startBtn" id="startBtnWH">Start</button>
+                <button type="button" class="pauseBtn" id="pauseBtnWH">Pause</button>
+            </div>
+            <div id="circleWH"><canvas id="myCanvasWH" width="300" height="200"></canvas></div>
+
+            <div class="timer-overview">
+                <div id="timeOverviewMessageWH">Normal Breathing</div>
+
+                <div hidden class="box" id="elapsedInIntervalBoxWH">
+                    <header>Hold</header>
+                    <span id="elapsedInIntervalWH"></span>s
+                </div>
+
+                <div hidden class="box" id="elapsedInBreakIntervalBoxWH">
+                    <header>Hold</header>
+                    <span id="elapsedInBreakIntervalWH"></span>s
+                </div>
+
+                <div hidden class="box" id="elapsedInBreakIntervalBox2WH">
+                    <header>Breathe</header>
+                    <span id="elapsedInBreakInterval2WH"></span>s
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                     <form method="post" id="WHForm">
+                        <button type="button" id="stopBtnWH">Stop</button>
+                        <button type="button" id="resetBtnWH">Reset</button>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="WHSave" />
+                        </div>
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="WHDate" type="text" type="hidden" asp-for="Result.WHResultDate" />
+                        </div>
+                        <div class="roundbox">
+                            <div><input id="intervalsDoneWH" asp-for="Result.WHIntervals" type="hidden" /></div>
+                            <div><input id="timerDisplayWH" asp-for="Result.WHTotalTime" type="hidden" value="|" /></div>
+                        </div>
+                    </form>
+                    <div id="WHResults"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="CTSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backCTSet">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Apnea Settings</h1>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioCT" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteCT" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceCT" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteCT" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songCT" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongCT" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectCT" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerCT"></audio>
+    </div>
+</div>
+<div id="CTPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backCT">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>CO2 Tolerance Training</h1>
+        <video controls poster="/images/co2.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>The CO2 Tolerance Training is based on the principles of allowing your body to get used to low levels of oxygen and high levels of carbon dioxide.</p>
+        <p>Find a comfortable sitting position or lay down and follow our guided breathing session below. Press "Restart" when you can no longer cope with the technique, this will take you back to the begining. Do this technique for 5 to 10 minutes.</p>
+        <div id="CTResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="CTSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="timer-additional-info">
+            <b>INHALE | EXHALE | HOLD</b>
+        </div>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusCT">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputCT" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="number" id="intervalDurationInputCT" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputCT">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineCT">
+                <input type="number" id="breakDurationInputCT" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2CT">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2CT">
+                <input type="number" id="breakDurationInput2CT" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusCT">+</button>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageCT">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxCT">
+                        <header>Inhale</header>
+                        <span id="elapsedInIntervalCT"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBoxCT">
+                        <header>Exhale</header>
+                        <span id="elapsedInBreakIntervalCT"></span>s
+                    </div>
+
+                    <div class="box" id="elapsedInBreakIntervalBox2CT">
+                        <header>Hold</header>
+                        <span id="elapsedInBreakInterval2CT"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnCT">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnCT">Restart</button>
+                    <button type="button" class="stopBtn" id="stopBtnCT">Stop</button>
+                    <button type="button" class="resetBtn" id="resetBtnCT">Reset</button>
+                    <form method="post" id="CTForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="CTDate" type="text" type="hidden" asp-for="Result.CTResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="CTSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneCT" asp-for="Result.CTIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayCT" asp-for="Result.CTTotalTime" readonly value="00 : 00 : 00" /></div>
                         </div>
                     </form>
                 </div>

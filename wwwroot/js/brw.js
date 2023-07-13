@@ -435,17 +435,8 @@ function startTimerBRW() {
     setTimerControlsDisabledStateBRW(true, false, true);
     timerControlsButtonsBRW.stopBRW.style.color = "rgb(177, 177, 177)";
     if (timerBRW.isBreak0BRW) {
-        audioListBRW[2].muted = true;
-        audioListBRW[3].muted = true;
-        audioListBRW[2].play();
-        audioListBRW[3].play();
-        setTimeout(function () {
-            audioListBRW[2].pause();
-            audioListBRW[2].currentTime = 0
-            audioListBRW[3].pause();
-            audioListBRW[3].currentTime = 0
-        }, 1000);
         if (!ismuteBRW) {
+            audioListBRW[0].muted = false;
             audioListBRW[0].play();
         }
     }

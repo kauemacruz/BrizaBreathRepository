@@ -366,21 +366,8 @@ function startTimerAHAT() {
     }
     intAHAT = setInterval(displayTimerAHAT, 1000);
     if (timerAHAT.isBreak0AHAT) {
-        audioListAHAT[1].muted = true;
-        audioListAHAT[2].muted = true;
-        audioListAHAT[3].muted = true;
-        audioListAHAT[1].play();
-        audioListAHAT[2].play();
-        audioListAHAT[3].play();
-        setTimeout(function () {
-            audioListAHAT[1].pause();
-            audioListAHAT[1].currentTime = 0
-            audioListAHAT[2].pause();
-            audioListAHAT[2].currentTime = 0
-            audioListAHAT[3].pause();
-            audioListAHAT[3].currentTime = 0
-        }, 1000);
         if (!ismuteAHAT) {
+            audioListAHAT[0].muted = false;
             audioListAHAT[0].play();
         }
     }
@@ -465,9 +452,6 @@ function displayTimerAHAT() {
             hoursAHAT++;
         }
     }
-    let hAHAT = hoursAHAT < 10 ? "0" + hoursAHAT : hoursAHAT;
-    let mAHAT = minutesAHAT < 10 ? "0" + minutesAHAT : minutesAHAT;
-    let sAHAT = secondsAHAT < 10 ? "0" + secondsAHAT : secondsAHAT;
 }
 
 function startTimerTickAHAT() {
