@@ -2,6 +2,7 @@
 const songSelectCT = document.getElementById('song-selectCT');
 const audioPlayerCT = document.getElementById('audio-playerCT');
 var isCTON = false;
+document.getElementById('CTDate').value = date;
 // Variable to store the timeout ID
 let timeoutIdCT;
 
@@ -337,7 +338,6 @@ function initializeTimerControlsCT() {
 function initializeStatusPanelCT() {
     statusPanelCT = {
         timeOverviewMessageCT: document.getElementById('timeOverviewMessageCT'),
-
         elapsedInIntervalBoxCT: document.getElementById('elapsedInIntervalBoxCT'),
         elapsedInBreakIntervalBoxCT: document.getElementById('elapsedInBreakIntervalBoxCT'),
         elapsedInIntervalCT: document.getElementById('elapsedInIntervalCT'),
@@ -345,7 +345,6 @@ function initializeStatusPanelCT() {
         elapsedInBreakIntervalBox2CT: document.getElementById('elapsedInBreakIntervalBox2CT'),
         elapsedInBreakInterval2CT: document.getElementById('elapsedInBreakInterval2CT'),
         elapsedInBreakIntervalBox3CT: document.getElementById('elapsedInBreakIntervalBox3CT'),
-
         intervalsDoneCT: document.getElementById('intervalsDoneCT'),
     };
 }

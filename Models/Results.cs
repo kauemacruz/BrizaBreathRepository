@@ -64,6 +64,34 @@ namespace BrizaBreath.Models
         public string? CTIntervals { get; set; }
         [DataType(DataType.Date)]
         public DateTime? CTResultDate { get; set; }
+        public string? UBTotalTime { get; set; }
+        public string? UBIntervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? UBResultDate { get; set; }
+        public string? B4TotalTime { get; set; }
+        public string? B4Intervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? B4ResultDate { get; set; }
+        public string? NBTotalTime { get; set; }
+        public string? NBIntervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? NBResultDate { get; set; }
+        public string? CBTotalTime { get; set; }
+        public string? CBIntervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? CBResultDate { get; set; }
+        public string? SBTotalTime { get; set; }
+        public string? SBIntervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? SBResultDate { get; set; }
+        public string? RBTotalTime { get; set; }
+        public string? RBIntervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? RBResultDate { get; set; }
+        public string? SEXTotalTime { get; set; }
+        public string? SEXIntervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? SEXResultDate { get; set; }
     }
 
 }

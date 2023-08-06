@@ -20,11 +20,37 @@
             <div class="col"><a id="extrasLink"><img class="homepageimgs" src="/images/bonus.png" /></a></div>
         </div>
     </div>
-    <footer>
+    <footer id="homeFooter">
         <div class="navbar">
-            <a class="active" asp-page="/Index"><i class="fa fa-home active"></i>Home</a>
-            <a id="navResults" asp-page="/Results"><i class="fa fa-line-chart"></i>Results</a>
-            <a asp-page="/Profile"><i class="fa fa-user"></i>Profile</a>
+            <a class="active"><i class="fa fa-home active"></i>Home</a>
+            <a id="navResults"><i class="fa fa-line-chart"></i>Results</a>
+            <a id="navProfile"><i class="fa fa-user"></i>Profile</a>
+        </div>
+    </footer>
+</div>
+<div id="resultsPage" class="hidden">
+    <header>
+        <img id="homelogoimg" src="/images/B_DEGRAD.png" width="55" height="55" />
+    </header>
+    <div>Results</div>
+    <footer id="resultsFooter">
+        <div class="navbar">
+            <a id="navHome"><i class="fa fa-home"></i>Home</a>
+            <a class="active"><i class="fa fa-line-chart active"></i>Results</a>
+            <a id="navProfile2"><i class="fa fa-user"></i>Profile</a>
+        </div>
+    </footer>
+</div>
+<div id="profilePage" class="hidden">
+    <header>
+        <img id="homelogoimg" src="/images/B_DEGRAD.png" width="55" height="55" />
+    </header>
+    <div>Profile</div>
+    <footer id="profileFooter">
+        <div class="navbar">
+            <a id="navHome2"><i class="fa fa-home"></i>Home</a>
+            <a id="navResults2"><i class="fa fa-line-chart"></i>Results</a>
+            <a class="active"><i class="fa fa-user active"></i>Profile</a>
         </div>
     </footer>
 </div>
@@ -197,7 +223,6 @@
         <ul>Improves sleep: Nasal breathing during sleep can improve the quality of sleep, reduce snoring, and prevent sleep apnea</ul>
         <ul>Supports oral health: Nasal breathing helps to maintain healthy oral tissues and prevent dry mouth, which can lead to dental problems</ul>
     </div>
-
 </div>
 <div id="noseUnblockPage" class="hidden">
     <header>
@@ -421,26 +446,26 @@
         <div class="main-container">
             <div class="timer-status">
                 <div class="timer-overview">
-                    <div id="timeOverviewMessageYogic">Finish!</div>
+                    <div class="timeOverviewMessage" id="timeOverviewMessageYogic">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxYogic">
-                        <header>Inhale</header>
-                        <span id="elapsedInIntervalYogic"></span>s
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalYogic"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBoxYogic">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakIntervalYogic"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxYogic">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalYogic"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox2Yogic">
-                        <header>Exhale</header>
-                        <span id="elapsedInBreakInterval2Yogic"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2Yogic">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2Yogic"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox3Yogic">
-                        <header>Pause</header>
-                        <span id="elapsedInBreakInterval3Yogic"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3Yogic">
+                        <header class="boxFontSize">Pause</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval3Yogic"></span>s
                     </div>
                 </div>
                 <div class="timer-controls">
@@ -607,31 +632,31 @@
         <div class="main-container">
             <div class="timer-status">
                 <div class="timer-overview">
-                    <div id="timeOverviewMessageBRE">Finish!</div>
+                    <div class="timeOverviewMessage" id="timeOverviewMessageBRE">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxBRE">
-                        <header>Inhale</header>
-                        <span id="elapsedInIntervalBRE"></span>s
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalBRE"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBoxBRE">
-                        <header>Exhale</header>
-                        <span id="elapsedInBreakIntervalBRE"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxBRE">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalBRE"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox2BRE">
-                        <header>Inhale</header>
-                        <span id="elapsedInBreakInterval2BRE"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2BRE">
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2BRE"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox3BRE">
-                        <header>Exhale</header>
-                        <span id="elapsedInBreakInterval3BRE"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3BRE">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval3BRE"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox4BRE">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval4BRE"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox4BRE">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval4BRE"></span>s
                     </div>
                 </div>
                 <div class="timer-controls">
@@ -780,31 +805,31 @@
         <div class="main-container">
             <div class="timer-status">       
                 <div class="timer-overview">
-                    <div id="timeOverviewMessageBRW">Finish!</div>
+                    <div id="timeOverviewMessageBRW" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxBRW">
-                        <header>Inhale</header>
-                        <span id="elapsedInIntervalBRW"></span>s
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalBRW"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBoxBRW">
-                        <header>Exhale</header>
-                        <span id="elapsedInBreakIntervalBRW"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxBRW">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalBRW"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox2BRW">
-                        <header>Inhale</header>
-                        <span id="elapsedInBreakInterval2BRW"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2BRW">
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2BRW"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox3BRW">
-                        <header>Exhale</header>
-                        <span id="elapsedInBreakInterval3BRW"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3BRW">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval3BRW"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox4BRW">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval4BRW"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox4BRW">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval4BRW"></span>s
                     </div>
 
                 </div>
@@ -945,26 +970,26 @@
         <div class="main-container">
             <div class="timer-status">
                 <div class="timer-overview">
-                    <div id="timeOverviewMessageHUM">Finish!</div>
+                    <div id="timeOverviewMessageHUM" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxHUM">
-                        <header>Inhale</header>
-                        <span id="elapsedInIntervalHUM"></span>s
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalHUM"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBoxHUM">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakIntervalHUM"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxHUM">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalHUM"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox2HUM">
-                        <header>Hum</header>
-                        <span id="elapsedInBreakInterval2HUM"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2HUM">
+                        <header class="boxFontSize">Hum</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2HUM"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox3HUM">
-                        <header>Pause</header>
-                        <span id="elapsedInBreakInterval3HUM"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3HUM">
+                        <header class="boxFontSize">Pause</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval3HUM"></span>s
                     </div>
                 </div>
                 <div class="timer-controls">
@@ -1123,26 +1148,26 @@
                     </div>
                 </div>
                 <div class="timer-overview">
-                    <div id="timeOverviewMessageBB">Finish!</div>
+                    <div id="timeOverviewMessageBB" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxBB">
-                        <header>Inhale</header>
-                        <span id="elapsedInIntervalBB"></span>s
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalBB"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBoxBB">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakIntervalBB"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxBB">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalBB"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox2BB">
-                        <header>Exhale</header>
-                        <span id="elapsedInBreakInterval2BB"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2BB">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2BB"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox3BB">
-                        <header>Pause</header>
-                        <span id="elapsedInBreakInterval3BB"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3BB">
+                        <header class="boxFontSize">Pause</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval3BB"></span>s
                     </div>
                 </div>
                 <div class="timer-controls">
@@ -1288,18 +1313,18 @@
         </div>
     <div class="main-container">   
         <div class="timer-overview">
-            <div id="timeOverviewMessageHAT">Normal Breathing</div>
+            <div id="timeOverviewMessageHAT" class="timeOverviewMessage">Normal Breathing</div>
                 <div class="boxHAT" id="elapsedInIntervalBoxHAT">
-                <header>Exhale & Pinch Nose</header>
-                <span id="elapsedInIntervalHAT"></span>s
+                    <header class="boxFontSize">Exhale & Pinch Nose</header>
+                    <span class="spanFontSize" id="elapsedInIntervalHAT"></span>s
+                </div>
+            <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBoxHAT">
+                <header class="boxFontSize">Light Breathing</header>
+                <span class="spanFontSize" id="elapsedInBreakIntervalHAT"></span>s
             </div>
-            <div class="boxHAT" id="elapsedInBreakIntervalBoxHAT">
-                <header>Light Breathing</header>
-                <span id="elapsedInBreakIntervalHAT"></span>s
-            </div>
-            <div class="boxHAT" id="elapsedInBreakIntervalBox2HAT">
-                <header>Normal Breathing</header>
-                <span id="elapsedInBreakInterval2HAT"></span>s
+            <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBox2HAT">
+                <header class="boxFontSize">Normal Breathing</header>
+                <span class="spanFontSize" id="elapsedInBreakInterval2HAT"></span>s
             </div>
                 </div>
             <div class="timer-controls">
@@ -1443,18 +1468,18 @@
         </div>
         <div class="main-container">
             <div class="timer-overview">
-                <div id="timeOverviewMessageHATC">Normal Breathing</div>
+                <div id="timeOverviewMessageHATC" class="timeOverviewMessage">Normal Breathing</div>
                 <div class="boxHAT" id="elapsedInIntervalBoxHATC">
-                    <header>Exhale & Pinch Nose</header>
-                    <span id="elapsedInIntervalHATC"></span>s
+                    <header class="boxFontSize">Exhale & Pinch Nose</header>
+                    <span class="spanFontSize" id="elapsedInIntervalHATC"></span>s
                 </div>
-                <div class="boxHAT" id="elapsedInBreakIntervalBoxHATC">
-                    <header>Light Breathing</header>
-                    <span id="elapsedInBreakIntervalHATC"></span>s
+                <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBoxHATC">
+                    <header class="boxFontSize">Light Breathing</header>
+                    <span class="spanFontSize" id="elapsedInBreakIntervalHATC"></span>s
                 </div>
-                <div class="boxHAT" id="elapsedInBreakIntervalBox2HATC">
-                    <header>Normal Breathing</header>
-                    <span id="elapsedInBreakInterval2HATC"></span>s
+                <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBox2HATC">
+                    <header class="boxFontSize">Normal Breathing</header>
+                    <span class="spanFontSize" id="elapsedInBreakInterval2HATC"></span>s
                 </div>
             </div>
             <div class="timer-controls">
@@ -1579,18 +1604,18 @@
         </div>
         <div class="main-container">
             <div class="timer-overview">
-                <div id="timeOverviewMessageAHAT">Normal Breathing</div>
+                <div id="timeOverviewMessageAHAT" class="timeOverviewMessage">Normal Breathing</div>
                 <div class="boxHAT" id="elapsedInIntervalBoxAHAT">
-                    <header>Exhale & Pinch Nose</header>
-                    <span id="elapsedInIntervalAHAT"></span>s
+                    <header class="boxFontSize">Exhale & Pinch Nose</header>
+                    <span class="spanFontSize" id="elapsedInIntervalAHAT"></span>s
                 </div>
-                <div class="boxHAT" id="elapsedInBreakIntervalBoxAHAT">
-                    <header>Light Breathing</header>
-                    <span id="elapsedInBreakIntervalAHAT"></span>s
+                <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBoxAHAT">
+                    <header class="boxFontSize">Light Breathing</header>
+                    <span class="spanFontSize" id="elapsedInBreakIntervalAHAT"></span>s
                 </div>
-                <div class="boxHAT" id="elapsedInBreakIntervalBox2AHAT">
-                    <header>Normal Breathing</header>
-                    <span id="elapsedInBreakInterval2AHAT"></span>s
+                <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBox2AHAT">
+                    <header class="boxFontSize">Normal Breathing</header>
+                    <span class="spanFontSize" id="elapsedInBreakInterval2AHAT"></span>s
                 </div>
             </div>
             <div class="timer-controls">
@@ -1767,17 +1792,17 @@
     </div>
     <div class="BHGrid">
         <div class="row g-2">
-            <div class="col"><a asp-page="/Ujjayi"><img class="homepageimgs" src="/images/ujjayi.png"/></a></div>
-            <div class="col"><a asp-page="/Kapalabhati"><img class="homepageimgs" src="/images/kapalabhati.png"/></a></div>
+            <div class="col"><a id="UBLink"><img class="homepageimgs" src="/images/ujjayi.png"/></a></div>
+            <div class="col"><a id="KBLink"><img class="homepageimgs" src="/images/kapalabhati.png"/></a></div>
             <div class="w-100"></div>
-            <div class="col"><a asp-page="/BoxBreathing"><img class="homepageimgs" src="/images/boxbreathing.png"/></a></div>
-            <div class="col"><a asp-page="/NadiShodhana"><img class="homepageimgs" src="/images/nadishodhana.png"/></a></div>
+            <div class="col"><a id="B4Link"><img class="homepageimgs" src="/images/boxbreathing.png"/></a></div>
+            <div class="col"><a id="NBLink"><img class="homepageimgs" src="/images/nadishodhana.png"/></a></div>
             <div class="w-100"></div>
-            <div class="col"><a asp-page="/CoherentBreath"><img class="homepageimgs" src="/images/coherent.png"/></a></div>
-            <div class="col"><a asp-page="/Sitali"><img class="homepageimgs" src="/images/sitali.png"/></a></div>  
+            <div class="col"><a id="CBLink"><img class="homepageimgs" src="/images/coherent.png"/></a></div>
+            <div class="col"><a id="SBLink"><img class="homepageimgs" src="/images/sitali.png"/></a></div>  
             <div class="w-100"></div>
-            <div class="col"><a asp-page="/Nauli"><img class="homepageimgs" src="/images/nauli.png"/></a></div>
-            <div class="col"><a asp-page="/478"><img class="homepageimgs" src="/images/478.png"/></a></div>  
+            <div class="col"><a id="NKLink"><img class="homepageimgs" src="/images/nauli.png"/></a></div>
+            <div class="col"><a id="RBLink"><img class="homepageimgs" src="/images/478.png"/></a></div>  
         </div>
     </div>
 </div>
@@ -1791,17 +1816,17 @@
     </div>
     <div class="BHGrid">
         <div class="row g-2">
-            <div class="col"><a asp-page="/Meditation"><img class="homepageimgs" src="~/images/meditation.png" /></a></div>
-            <div class="col"><a asp-page="/Sleep"><img class="homepageimgs" src="~/images/sleep.png" /></a></div>
+            <div class="col"><a id="MEDLink"><img class="homepageimgs" src="~/images/meditation.png" /></a></div>
+            <div class="col"><a id="SLEEPLink"><img class="homepageimgs" src="~/images/sleep.png" /></a></div>
             <div class="w-100"></div>
-            <div class="col"><a asp-page="/Hydration"><img class="homepageimgs" src="~/images/hydration.png" /></a></div>
-            <div class="col"><a asp-page="/Shot"><img class="homepageimgs" src="~/images/shot.png" /></a></div>
+            <div class="col"><a id="HYDLink"><img class="homepageimgs" src="~/images/hydration.png" /></a></div>
+            <div class="col"><a id="SHOTLink"><img class="homepageimgs" src="~/images/shot.png" /></a></div>
             <div class="w-100"></div>
-            <div class="col"><a asp-page="/IronLevels"><img class="homepageimgs" src="~/images/iron.png" /></a></div>
-            <div class="col"><a asp-page="/Beetroot"><img class="homepageimgs" src="~/images/beet.png" /></a></div>
+            <div class="col"><a id="ILLink"><img class="homepageimgs" src="~/images/iron.png" /></a></div>
+            <div class="col"><a id="BEETLink"><img class="homepageimgs" src="~/images/beet.png" /></a></div>
             <div class="w-100"></div>
-            <div class="col"><a asp-page="/Diet"><img class="homepageimgs" src="~/images/diet.png" /></a></div>
-            <div class="col"><a asp-page="/Sex"><img class="homepageimgs" src="~/images/sex.png" /></a></div>
+            <div class="col"><a id="DIETLink"><img class="homepageimgs" src="~/images/diet.png" /></a></div>
+            <div class="col"><a id="SEXLink"><img class="homepageimgs" src="~/images/sex.png" /></a></div>
         </div>
     </div>
 </div>
@@ -1905,21 +1930,21 @@
         <div class="main-container">
             <div class="timer-status">
                 <div class="timer-overview">
-                    <div id="timeOverviewMessageAP">Finish!</div>
+                    <div id="timeOverviewMessageAP" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxAP">
-                        <header>Inhale</header>
-                        <span id="elapsedInIntervalAP"></span>s
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalAP"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBoxAP">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakIntervalAP"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxAP">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalAP"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox2AP">
-                        <header>Exhale</header>
-                        <span id="elapsedInBreakInterval2AP"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2AP">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2AP"></span>s
                     </div>
                 </div>
                 <div class="timer-controls">
@@ -2156,70 +2181,70 @@
                     </div>
                 </div>
                 <div class="timer-overview">
-                    <div id="timeOverviewMessageO2">Normal Breathing</div>
+                    <div id="timeOverviewMessageO2" class="timeOverviewMessage">Normal Breathing</div>
                     <div class="box" id="elapsedInIntervalBoxO2">
-                        <header>Breathe</header>
-                        <span id="elapsedInIntervalO2"></span>s
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInIntervalO2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBoxO2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakIntervalO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxO2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalO2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox2O2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval2O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2O2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2O2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox3O2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval3O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3O2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval3O2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox4O2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval4O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox4O2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval4O2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox5O2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval5O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox5O2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval5O2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox6O2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval6O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox6O2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval6O2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox7O2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval7O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox7O2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval7O2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox8O2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval8O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox8O2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval8O2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox9O2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval9O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox9O2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval9O2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox10O2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval10O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox10O2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval10O2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox11O2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval11O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox11O2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval11O2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox12O2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval12O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox12O2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval12O2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox13O2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval13O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox13O2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval13O2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox14O2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval14O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox14O2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval14O2"></span>s
                     </div>         
-                    <div class="box" id="elapsedInBreakIntervalBox15O2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval15O2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox15O2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval15O2"></span>s
                     </div>
                 </div>
             </div>
@@ -2396,70 +2421,70 @@
                     </div>
                 </div>
                 <div class="timer-overview">
-                    <div id="timeOverviewMessageCO2">Normal Breathing</div>
+                    <div id="timeOverviewMessageCO2" class="timeOverviewMessage">Normal Breathing</div>
                     <div class="box" id="elapsedInIntervalBoxCO2">
-                        <header>Breathe</header>
-                        <span id="elapsedInIntervalCO2"></span>s
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInIntervalCO2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBoxCO2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakIntervalCO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxCO2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalCO2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox2CO2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval2CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2CO2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2CO2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox3CO2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval3CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3CO2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval3CO2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox4CO2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval4CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox4CO2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval4CO2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox5CO2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval5CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox5CO2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval5CO2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox6CO2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval6CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox6CO2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval6CO2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox7CO2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval7CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox7CO2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval7CO2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox8CO2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval8CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox8CO2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval8CO2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox9CO2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval9CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox9CO2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval9CO2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox10CO2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval10CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox10CO2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval10CO2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox11CO2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval11CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox11CO2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval11CO2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox12CO2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval12CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox12CO2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval12CO2"></span>s
                     </div>        
-                    <div class="box" id="elapsedInBreakIntervalBox13CO2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval13CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox13CO2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval13CO2"></span>s
                     </div>
-                    <div class="box" id="elapsedInBreakIntervalBox14CO2">
-                        <header>Breathe</header>
-                        <span id="elapsedInBreakInterval14CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox14CO2">
+                        <header class="boxFontSize">Breathe</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval14CO2"></span>s
                     </div>         
-                    <div class="box" id="elapsedInBreakIntervalBox15CO2">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval15CO2"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox15CO2">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval15CO2"></span>s
                     </div>
                 </div>
             </div>
@@ -2611,21 +2636,21 @@
             <div id="circleWH"><canvas id="myCanvasWH" width="300" height="200"></canvas></div>
 
             <div class="timer-overview">
-                <div id="timeOverviewMessageWH">Normal Breathing</div>
+                <div id="timeOverviewMessageWH" class="timeOverviewMessage">Normal Breathing</div>
 
                 <div hidden class="box" id="elapsedInIntervalBoxWH">
-                    <header>Hold</header>
-                    <span id="elapsedInIntervalWH"></span>s
+                    <header class="boxFontSize">Hold</header>
+                    <span class="spanFontSize" id="elapsedInIntervalWH"></span>s
                 </div>
 
-                <div hidden class="box" id="elapsedInBreakIntervalBoxWH">
-                    <header>Hold</header>
-                    <span id="elapsedInBreakIntervalWH"></span>s
+                <div hidden class="box hideBreak" id="elapsedInBreakIntervalBoxWH">
+                    <header class="boxFontSize">Hold</header>
+                    <span class="spanFontSize" id="elapsedInBreakIntervalWH"></span>s
                 </div>
 
-                <div hidden class="box" id="elapsedInBreakIntervalBox2WH">
-                    <header>Breathe</header>
-                    <span id="elapsedInBreakInterval2WH"></span>s
+                <div hidden class="box hideBreak" id="elapsedInBreakIntervalBox2WH">
+                    <header class="boxFontSize">Breathe</header>
+                    <span class="spanFontSize" id="elapsedInBreakInterval2WH"></span>s
                 </div>
                 <div class="timer-controls">
                     <!--  Information about interval  -->
@@ -2716,7 +2741,7 @@
         <div class="timer-additional-info">
             <b>INHALE | EXHALE | HOLD</b>
         </div>
-        <div class="settings-form">
+        <div class="settings-form BB">
             <div class="form-line">
                 <button class="buttonminus" type="button" id="minusCT">-</button>
             </div>
@@ -2750,21 +2775,21 @@
         <div class="main-container">
             <div class="timer-status">
                 <div class="timer-overview">
-                    <div id="timeOverviewMessageCT">Finish!</div>
+                    <div id="timeOverviewMessageCT" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxCT">
-                        <header>Inhale</header>
-                        <span id="elapsedInIntervalCT"></span>s
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalCT"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBoxCT">
-                        <header>Exhale</header>
-                        <span id="elapsedInBreakIntervalCT"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxCT">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalCT"></span>s
                     </div>
 
-                    <div class="box" id="elapsedInBreakIntervalBox2CT">
-                        <header>Hold</header>
-                        <span id="elapsedInBreakInterval2CT"></span>s
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2CT">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2CT"></span>s
                     </div>
                 </div>
                 <div class="timer-controls">
@@ -2786,6 +2811,1229 @@
                         <div class="roundbox">
                             <div>Rounds:<input id="intervalsDoneCT" asp-for="Result.CTIntervals" readonly value="0" /></div>
                             <div>Total time:<input id="timerDisplayCT" asp-for="Result.CTTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="UBSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backUBSet">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Ujjayi Breathing Settings</h1>
+        <h4 class="volumeSettings">Length of Breath</h4>
+        <div class="timer-additional-info">
+            <b>INHALE | HOLD | EXHALE | HOLD</b>
+        </div>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusUB">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputUB" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="number" id="intervalDurationInputUB" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputUB">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineUB">
+                <input type="number" id="breakDurationInputUB" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2UB">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2UB">
+                <input type="number" id="breakDurationInput2UB" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput3UB">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine3UB">
+                <input type="number" id="breakDurationInput3UB" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusUB">+</button>
+            </div>
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioUB" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteUB" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceUB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteUB" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songUB" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongUB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectUB" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerUB"></audio>
+    </div>
+</div>
+<div id="UBPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backUB">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Ujjayi Breathing</h1>
+        <video controls poster="/images/ujjayi.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Ujjayi breathing is a yogic breathing technique that is also known as ocean breath. It involves breathing in and out through the nose while creating a soft, whispering sound in the back of the throat. Ujjayi breathing is often used in yoga practice to help calm the mind, deepen the breath, and build internal heat. It can also help regulate the nervous system and increase focus and concentration</p>
+        <p>Find a comfortable sitting position or lay down and follow our guided breathing session below</p>
+        <div id="UBResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="UBSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageUB" class="timeOverviewMessage">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxUB">
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalUB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxUB">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalUB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2UB">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2UB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3UB">
+                        <header class="boxFontSize">Pause</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval3UB"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnUB">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnUB">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnUB">Stop</button>
+                    <form method="post" id="UBForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="UBDate" type="text" type="hidden" asp-for="Result.UBResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="UBSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneUB" asp-for="Result.UBIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayUB" asp-for="Result.UBTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="KBPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backKB">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Kapalabhati</h1>
+        <video controls poster="/images/kapalabhati.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Kapalabhati is a yogic breathing technique that involves rapid and forceful exhalations followed by passive inhalations. It's important to note that kapalabhati should be practiced on an empty stomach and should be avoided by those with high blood pressure, heart disease, or any other medical conditions</p>
+        <p>Kapalabhati helps to strengthen the respiratory muscles and increase lung capacity, which can improve breathing and respiratory function. The rapid and forceful exhalations in Kapalabhati help to stimulate the sympathetic nervous system, which can increase energy and vitality.
+        It can also help to stimulate the digestive system, to calm the mind and reduce stress and anxiety, to purify the body by increasing circulation and eliminating toxins, and to improve concentration and focus.</p>
+        <p>To practice kapalabhati, follow these steps:</p>
+        <ul>Sit in a comfortable seated position with your spine straight and your eyes closed</ul>
+        <ul>Take a deep breath in through your nose</ul>
+        <ul>Exhale forcefully through your nose while simultaneously contracting your abdominal muscles to push the air out in short bursts</ul>
+        <ul>Relax your abdominal muscles and passively inhale through your nose</ul>
+        <ul>Repeat steps 3 and 4 for several rounds, gradually increasing the speed and force of your exhalations</ul>
+    </div>
+</div>
+<div id="B4SettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backB4Set">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Box Breathing Settings</h1>
+        <h4 class="volumeSettings">Length of Breath</h4>
+        <div class="timer-additional-info">
+            <b>INHALE | HOLD | EXHALE | HOLD</b>
+        </div>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusB4">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputB4" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="number" id="intervalDurationInputB4" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputB4">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineB4">
+                <input type="number" id="breakDurationInputB4" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2B4">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2B4">
+                <input type="number" id="breakDurationInput2B4" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput3B4">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine3B4">
+                <input type="number" id="breakDurationInput3B4" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusB4">+</button>
+            </div>
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioB4" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteB4" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceB4" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteB4" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songB4" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongB4" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectB4" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerB4"></audio>
+    </div>
+</div>
+<div id="B4Page" class="hidden">
+    <header>
+        <div class="goback"><a id="backB4">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Sama Vritti - Box Breathing</h1>
+        <video controls poster="/images/boxbreathing.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Choose an appropriated time for your session, find a comfortable sitting position or lay down and follow our guided breathing session below to ease your mind, body and spirit</p>
+        <div id="B4ResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="B4Settings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageB4" class="timeOverviewMessage">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxB4">
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalB4"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxB4">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalB4"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2B4">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2B4"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3B4">
+                        <header class="boxFontSize">Pause</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval3B4"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnB4">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnB4">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnB4">Stop</button>
+                    <form method="post" id="B4Form">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="B4Date" type="text" type="hidden" asp-for="Result.B4ResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="B4Save" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneB4" asp-for="Result.B4Intervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayB4" asp-for="Result.B4TotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="NBSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backNBSet">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Nadi Shodhana Settings</h1>
+        <h4 class="volumeSettings">Length of Breath</h4>
+        <div class="timer-additional-info">
+            <b>IN L | OUT R | IN R | OUT L</b>
+        </div>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusNB">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputNB" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="number" id="intervalDurationInputNB" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputNB">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineNB">
+                <input type="number" id="breakDurationInputNB" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2NB">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2NB">
+                <input type="number" id="breakDurationInput2NB" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput3NB">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine3NB">
+                <input type="number" id="breakDurationInput3NB" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusNB">+</button>
+            </div>
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioNB" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteNB" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceNB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteNB" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songNB" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongNB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectNB" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerNB"></audio>
+    </div>
+</div>
+<div id="NBPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backNB">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Nadi Shodhana</h1>
+        <video controls poster="/images/nadishodhana.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Choose an appropriated time for your session, find a comfortable sitting position and follow our guided breathing session below to ease your mind, body and spirit</p>
+        <div id="NBResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="NBSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageNB" class="timeOverviewMessage">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxNB">
+                        <header class="boxFontSize">In Left</header>
+                        <span class="spanFontSize" id="elapsedInIntervalNB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxNB">
+                        <header class="boxFontSize">Out Right</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalNB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2NB">
+                        <header class="boxFontSize">In Right</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2NB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3NB">
+                        <header class="boxFontSize">Out Left</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval3NB"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnNB">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnNB">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnNB">Stop</button>
+                    <form method="post" id="NBForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="NBDate" type="text" type="hidden" asp-for="Result.NBResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="NBSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneNB" asp-for="Result.NBIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayNB" asp-for="Result.NBTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="CBSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backCBSet">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Coherent Breathing Settings</h1>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioCB" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteCB" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceCB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteCB" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songCB" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongCB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectCB" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerCB"></audio>
+    </div>
+</div>
+<div id="CBPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backCB">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+   <div class="breathingpages">
+        <h1>Coherent Breathing</h1>
+        <video controls poster="/images/coherent.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Coherent breathing is a breathing technique that involves inhaling and exhaling for a count of 5.5 seconds each, resulting in a breathing rate of around 5.5 breaths per minute</p>
+        <p>Coherent breathing can help to balance the autonomic nervous system, which regulates the body's stress response. By slowing down the breath and reducing stress and anxiety, this technique may have several potential benefits, including: Lowered heart rate and blood pressure, 
+            reduced stress and anxiety, improved cognitive function and memory, increased relaxation and feelings of calm, improved sleep quality .It's important to note that coherent breathing should be practiced regularly to experience the benefits</p>
+        <p>Find a comfortable sitting position or lay down, follow our guided breathing session below and learn how to relax your mind and body in a few minutes</p>
+        <div id="CBResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="CBSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">            
+            <div class="timer-status">
+                <div class="timer-additional-info">
+                    <b>INHALE | EXHALE</b>
+                </div>
+                <div class="settings-form">
+                    <div class="form-line">
+                        <button class="buttonminus" type="button" id="minusCB">-</button>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="intervalCountInputCB" min="1">
+                    </div>
+                    <div class="form-line">
+                        <input type="number" id="intervalDurationInputCB" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <input type="hidden" id="enableBreakInputCB">
+                    </div>
+
+                    <div class="form-line" id="breakDurationInputLineCB">
+                        <input type="number" id="breakDurationInputCB" min="1" readonly>
+                    </div>
+                    <div class="form-line">
+                        <button class="buttonplus" type="button" id="plusCB">+</button>
+                    </div>
+                </div>
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageCB" class="timeOverviewMessage">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxCB">
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalCB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxCB">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalCB"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnCB">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnCB">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnCB">Stop</button>
+                    <form method="post" id="CBForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="CBDate" type="text" type="hidden" asp-for="Result.CBResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="CBSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneCB" asp-for="Result.CBIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayCB" asp-for="Result.CBTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="SBSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backSBSet">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Sitali Breathing Settings</h1>
+        <h4 class="volumeSettings">Length of Breath</h4>
+        <div class="timer-additional-info">
+            <b>INHALE | HOLD | EXHALE</b>
+        </div>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusSB">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputSB" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="number" id="intervalDurationInputSB" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputSB">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineSB">
+                <input type="number" id="breakDurationInputSB" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2SB">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2SB">
+                <input type="number" id="breakDurationInput2SB" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusSB">+</button>
+            </div>
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioSB" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteSB" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceSB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteSB" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songSB" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongSB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectSB" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerSB"></audio>
+    </div>
+</div>
+<div id="SBPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backSB">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Sitali Breathing</h1>
+        <video controls poster="/images/sitali.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Sitali breathing is a yogic breathing technique that involves inhaling cool air through the mouth making a "U" shape with your tongue and exhaling slowly through the nose. It is also known as the cooling breath. If you are unable to curl your tongue, you can still practice sitali breathing by gently parting your lips and inhaling through your teeth</p>
+        <p>Sitali breathing is often used in yoga practice to cool the body and calm the mind. It may have several potential benefits, including: reducing stress and anxiety,
+        regulating body temperature, soothing the nervous system, improving digestion and reducing acidity in the body, and reducing inflammation in the body. It's important to note that sitali breathing should be avoided if you have a respiratory condition that makes it difficult to breathe through your mouth, such as asthma or bronchitis. Additionally, if you live in a polluted environment or have allergies, it's important to practice sitali breathing in a clean and fresh air environment</p>
+        <p>Find a comfortable sitting position and follow our guided breathing session below</p>
+        <div id="SBResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="SBSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageSB" class="timeOverviewMessage">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxSB">
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalSB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxSB">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalSB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2SB">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2SB"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnSB">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnSB">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnSB">Stop</button>
+                    <form method="post" id="SBForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="SBDate" type="text" type="hidden" asp-for="Result.SBResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="SBSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneSB" asp-for="Result.SBIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplaySB" asp-for="Result.SBTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="NKPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backNK">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Nauli Kriya</h1>
+        <video controls poster="/images/nauli.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Nauli kriya is an advanced yogic practice that involves isolating and contracting the abdominal muscles in a specific way to massage and tone the digestive organs. It should be avoided by pregnant women, those with abdominal or digestive disorders, and those with high blood pressure or heart conditions. Here is an overview of the steps involved:</p>
+        <ul>Stand with your feet hip-width apart and your hands on your thighs</ul>
+        <ul>Take a deep breath in and exhale completely</ul>
+        <ul>Contract your lower abdominal muscles and pull them in towards your spine. This is known as the "Uddiyana Bandha"</ul>
+        <ul>Hold the contraction and then release it slightly, allowing the abdominal muscles to relax</ul>
+        <ul>Now, contract your right-side abdominal muscles and pull them towards the center of your body</ul>
+        <ul>Hold the contraction and then release it slightly, allowing the abdominal muscles to relax</ul>
+        <ul>Finally, contract your left-side abdominal muscles and pull them towards the center of your body</ul>
+        <ul>Hold the contraction and then release it slightly, allowing the abdominal muscles to relax</ul>
+        <ul>Release the Uddiyana Bandha and inhale deeply</ul>
+        <p>Nauli kriya is said to have several potential benefits, including:</p>
+        <ul>Massaging and toning the digestive organs, which can improve digestion and relieve constipation</ul>
+        <ul>Strengthening the abdominal muscles and improving core stability</ul>
+        <ul>Increasing circulation to the abdominal area</ul>
+        <ul>Stimulating the solar plexus, which is associated with personal power and self-esteem</ul>
+    </div>
+</div>
+<div id="RBSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backRBSet">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>4-7-8 Relaxation Settings</h1>
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioRB" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteRB" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceRB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteRB" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songRB" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongRB" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectRB" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerRB"></audio>
+    </div>
+</div>
+<div id="RBPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backRB">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>4-7-8 Relaxation Breathing</h1>
+        <video controls poster="/images/478.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>The 478 breathing technique is based on the principles of deep breathing and diaphragmatic breathing, which have been shown to reduce stress and anxiety by activating the body's relaxation response. 
+        By slowing down the breath and focusing on the pattern of inhalation and exhalation, the mind is able to become more calm and centered.
+        </p>
+        <p>Find a comfortable sitting position or lay down, follow our guided breathing session below and learn how to relax your mind and body in a few minutes</p>
+        <div id="RBResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="RBSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="timer-additional-info">
+            <b>INHALE | HOLD | EXHALE</b>
+        </div>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusRB">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputRB" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="number" id="intervalDurationInputRB" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputRB">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineRB">
+                <input type="number" id="breakDurationInputRB" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2RB">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2RB">
+                <input type="number" id="breakDurationInput2RB" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusRB">+</button>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageRB" class="timeOverviewMessage">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxRB">
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalRB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxRB">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalRB"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2RB">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2RB"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnRB">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnRB">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnRB">Stop</button>
+                    <form method="post" id="RBForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="RBDate" type="text" type="hidden" asp-for="Result.RBResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="RBSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneRB" asp-for="Result.RBIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayRB" asp-for="Result.RBTotalTime" readonly value="00 : 00 : 00" /></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="MEDPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backMED">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Meditation</h1>
+        <video controls poster="/images/meditation.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Meditation can have a positive impact on performance in various areas, including sports, work, and academics. Here are some potential benefits of meditation for performance:</p>
+        <ul>Improved focus and concentration: Meditation can help to improve focus and concentration, which can be beneficial for tasks that require sustained attention, such as studying, work projects, or sports training.</ul>
+        <ul>Reduced stress and anxiety: Meditation can help to reduce stress and anxiety, which can have a negative impact on performance. By promoting relaxation and calmness, meditation may help individuals to better manage stress and perform more effectively</ul>
+        <ul>Increased self-awareness: Meditation can help individuals to become more aware of their thoughts, emotions, and physical sensations, which can be beneficial for improving self-regulation and decision-making</ul>
+        <ul>Improved mental resilience: Meditation can help individuals to develop greater mental resilience, which can be beneficial for coping with challenges and setbacks and maintaining a positive mindset</ul>
+        <ul>Improved sleep: Meditation has been shown to improve sleep quality and duration, which can have a positive impact on overall well-being and performance</ul>
+        <p>Choose and follow one of our guided meditations below to ease your mind body and spirit:</p>
+        <div class="meditations">
+            <ul>Morning Meditation</ul>
+            <button type="button" class="startBtn" id="startBtnMED1">Start</button>
+            <button type="button" class="pauseBtn" id="pauseBtnMED1">Stop</button>
+        </div>
+        <input type="range" class="progress-bar" id="progressBarMED1" value="0" min="0" step="0.01">
+        <div class="medDiv"></div>
+        <hr/>
+        <div class="meditations">
+            <ul>Night Meditation</ul>
+            <button type="button" class="startBtn" id="startBtnMED2">Start</button>
+            <button type="button" class="pauseBtn" id="pauseBtnMED2">Stop</button>
+        </div>
+        <input type="range" class="progress-bar" id="progressBarMED2" value="0" min="0" step="0.01">
+        <div class="medDiv"></div>
+    </div> 
+</div>
+<div id="SLEEPPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backSLEEP">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Sleep Hygiene</h1>
+        <video controls poster="/images/sleep.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Sleep hygiene refers to a set of practices and habits that can help promote good sleep quality and quantity, helping you with your performance during the day. Here are some tips for improving sleep hygiene:</p>
+        <ul>Breathe through your nose: If your mouth is dry in the morning, or if you snore much, you most likely breathing through the mouth while asleep. Taping your mouth may be a good idea</ul>
+        <ul>If you struggle to nasal breathe while and maybe snore much, a nose dilator can help you</ul>
+        <ul>Stick to a regular sleep schedule: Try to go to bed and wake up at the same time every day, even on weekends</ul>
+        <ul>Create a relaxing bedtime routine: Develop a relaxing pre-sleep routine, such as taking a warm bath, reading a book, or practicing relaxation techniques like deep breathing or meditation</ul>
+        <ul>Keep the bedroom comfortable: Create a comfortable sleep environment by keeping the room cool, dark, and quiet. Use comfortable pillows and a supportive mattress</ul>
+        <ul>Limit exposure to screens: Avoid using electronic devices, such as phones, tablets, or laptops, for at least an hour before bedtime as the blue light from these devices can interfere with your body's natural sleep-wake cycle</ul>
+        <ul>Avoid caffeine and alcohol: Avoid consuming caffeine and alcohol in the hours leading up to bedtime, as they can disrupt sleep</ul>
+        <ul>Exercise regularly: Regular exercise can help to improve sleep quality, but it is best to avoid vigorous exercise in the hours immediately before bedtime</ul>
+        <ul>Limit naps: If you take naps, limit them to 20-30 minutes and avoid napping in the late afternoon or evening.</ul>
+     </div>  
+</div>
+<div id="HYDPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backHYD">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Hydration</h1>
+        <video controls poster="/images/hydration.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Hydration is essential for optimal performance and blood flow in the body. Here are some ways in which hydration can affect performance and blood flow:</p>
+        <ul>Dehydration can reduce blood volume: When the body is dehydrated, blood volume decreases, which can make it more difficult for blood to flow through the vessels. This can reduce oxygen delivery to the muscles and other organs, leading to decreased performance</ul>
+        <ul>Hydration can improve cardiovascular function: Adequate hydration can improve cardiovascular function by increasing blood volume, which in turn helps to improve blood flow and oxygen delivery to the muscles and other organs</ul>
+        <ul>Hydration can regulate body temperature: Hydration is essential for regulating body temperature during exercise, as it helps the body to sweat and cool down. When the body is overheated, blood vessels dilate, which can reduce blood flow to the muscles and organs, negatively impacting performance</ul>
+        <ul>Hydration can improve cognitive function: Dehydration can impair cognitive function, including attention, memory, and decision-making abilities, which can impact performance in sports or other activities.</ul>
+        <ul>To ensure adequate hydration, it is recommended to drink water regularly throughout the day, especially before, during, and after exercise</ul>
+        <ul>The amount of water needed depends on various factors, including body weight, activity level, and climate. As a general guideline, it is recommended to drink at least 8 cups of water per day plus the water you sweat out during exercise</ul>
+        <ul>It is also important to listen to your body and drink more water if you are feeling thirsty or if you are sweating excessively.</ul>
+        <ul>Avoid tap water: Drink filtered water or purified water to make sure the water you are drinking is not contaminated</ul>
+        <ul>Add electrolytes to your water specially when exercising</ul>
+    </div> 
+</div>
+<div id="SHOTPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backSHOT">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Morning Shot</h1>
+        <video controls poster="/images/shot.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>The morning shot is a popular healthy drink that has lemon, ginger, tumeric & black pepper in it. Here are some of the potential benefits of consuming a lemon and ginger shot in the morning:</p>
+        <ul>It is rich in antioxidants and vitamin C, which helps boost the immune system and protect against infections and diseases</ul>
+        <ul>It contains compounds that have anti-inflammatory properties, which can help reduce inflammation throughout the body</ul>
+        <ul>It has digestive properties that help reduce bloating, gas, and constipation. Lemon also aids digestion and helps to detoxify the liver</ul>
+        <ul>It can help boost metabolism, reduce appetite, and aid digestion, which can help with weight loss efforts</ul>
+        <ul>Vitamin C in lemon helps to produce collagen, which is essential for healthy skin. Ginger also helps to improve blood circulation, which helps to maintain skin health</ul>
+        <ul>Turmeric has been found to be effective in improving heart health by reducing cholesterol levels, inflammation, and oxidative stress</ul>
+        <ul>Turmeric has been found to improve brain function and reduce the risk of brain diseases like Alzheimer's and dementia</ul>
+        <ul>Turmeric's anti-inflammatory properties can also help reduce joint pain and stiffness</ul>
+        <ul>Black pepper contains piperine, which can enhance the absorption of curcumin, the active compound in turmeric, by up to 2,000%. This means that the combination of turmeric and black pepper can help to increase the bioavailability of curcumin, allowing for better absorption and utilization by the body</ul>
+    </div>
+</div>
+<div id="ILPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backIL">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Iron Levels</h1>
+        <video controls poster="/images/iron.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Iron is an essential mineral that plays a crucial role in the production of hemoglobin, a protein in red blood cells that carries oxygen from the lungs to the rest of the body. Iron deficiency can lead to reduced levels of hemoglobin, which can result in decreased oxygen delivery to the cells and tissues in the body. This can cause a range of symptoms, including fatigue, weakness, shortness of breath, dizziness, and pale skin</p>
+        <p>Iron is also important for the production of myoglobin, a protein found in muscle cells that helps to store oxygen and support muscle function. Low iron levels can also impair muscle function and lead to reduced athletic performance</p>
+        <p>To maintain adequate iron levels, it is important to consume a balanced and varied diet that includes iron-rich foods. It is also important to consume vitamin C-rich foods as vitamin C can enhance iron absorption</p>
+        <p>However, it is important to note that excessive iron intake can also be harmful and lead to iron overload, which can cause organ damage and other health problems. Therefore, it is recommended to speak with a healthcare professional before taking iron supplements or making significant changes to your diet to ensure that you are getting the appropriate amount of iron for your individual needs</p>
+    </div> 
+</div>
+<div id="BEETPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBEET">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Beetroot</h1>
+        <video controls poster="/images/beet.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Beetroot juice has been shown to have potential performance-enhancing effects due to its high nitrate content. Nitrate is converted to nitric oxide in the body, which can help to improve blood flow and oxygen delivery to the muscles, leading to improved endurance and performance. Here are some potential benefits of beetroot juice for performance:</p>
+        <ul>Improved endurance: Beetroot juice consumption has been shown to improve endurance performance in both trained and untrained individuals. This may be due to improved blood flow and oxygen delivery to the muscles</ul>
+        <ul>Reduced fatigue: Beetroot juice may also help to reduce fatigue during exercise, allowing individuals to exercise for longer periods of time before becoming exhausted</ul>
+        <ul>Enhanced muscle contraction: Beetroot juice may improve muscle contractility, leading to more efficient muscle contractions and potentially improving power output during exercise</ul>
+        <ul>Reduced oxygen consumption: Beetroot juice may also reduce oxygen consumption during exercise, which may be beneficial for endurance athletes.</ul>
+    </div> 
+</div>
+<div id="DIETPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backDIET">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Diet and Blood Flow</h1>
+        <video controls poster="/images/diet.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Diet can play a significant role in improving blood flow and circulation throughout the body. Here are some dietary factors that can help to promote healthy blood flow:</p>
+        <ul>Eating a diet rich in fruits and vegetables: Fruits and vegetables are rich in antioxidants, vitamins, and minerals that help to protect blood vessels from damage and improve circulation.</ul>
+        <ul>Consuming foods rich in omega-3 fatty acids: Omega-3 fatty acids, found in fatty fish like salmon, can help to improve blood flow by reducing inflammation and promoting the health of blood vessels.</ul>
+        <ul>Incorporating garlic into your diet: Garlic has been found to improve blood flow by increasing the production of nitric oxide, a compound that helps to dilate blood vessels.</ul>
+        <ul>Drinking green tea: Green tea contains compounds called catechins, which can help to improve blood flow by promoting the production of nitric oxide.</ul>
+        <ul>Reducing intake of saturated and trans fats: Diets high in saturated and trans fats can contribute to the buildup of plaque in the arteries, which can reduce blood flow and increase the risk of heart disease.</ul>
+        <ul>Avoiding excessive salt intake: Consuming too much salt can lead to high blood pressure, which can damage blood vessels and reduce blood flow.</ul>
+     </div>
+</div>
+<div id="SEXSettingsPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backSEXSet">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Apnea Settings</h1>
+        <h4 class="volumeSettings">Length of Breath</h4>
+        <div class="timer-additional-info">
+            <b>INHALE | HOLD | EXHALE</b>
+        </div>
+        <div class="settings-form">
+            <div class="form-line">
+                <button class="buttonminus" type="button" id="minusSEX">-</button>
+            </div>
+            <div class="form-line">
+                <input type="hidden" id="intervalCountInputSEX" min="1">
+            </div>
+
+            <div class="form-line">
+                <input type="number" id="intervalDurationInputSEX" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInputSEX">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLineSEX">
+                <input type="number" id="breakDurationInputSEX" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput2SEX">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine2SEX">
+                <input type="number" id="breakDurationInput2SEX" min="1" readonly>
+            </div>
+            <div class="form-line">
+                <button class="buttonplus" type="button" id="plusSEX">+</button>
+            </div>
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Voice?</h4>
+            <div class="audioButtons">
+                <div id="audioSEX" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteSEX" class="mute"><img src="/images/mute.png"></div>
+            </div>
+            <input type="range" id="volumeVoiceSEX" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <div class="volume-bar">
+            <h4 class="volumeSettings">Play Song?</h4>
+            <div class="audioButtons">
+                <div id="songMuteSEX" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songSEX" class="audioSong"><img src="/images/speaker.png"></div>
+            </div>
+            <input type="range" id="volumeSongSEX" min="0" max="1" step="1" value="1">
+        </div>
+        <hr />
+        <h4 class="volumeSettings">Choose a song</h4>
+        <div class="song-container">
+            <select id="song-selectSEX" class="song-select">
+                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+            </select>
+        </div>
+        <audio id="audio-playerSEX"></audio>
+    </div>
+</div>
+<div id="SEXPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backSEX">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Sex and Breath</h1>
+    <video controls poster="/images/sex.png" playsinline>
+        <source src="/videos/movie.mp4" type="video/mp4">
+    </video>
+    <p>Breathing can play an important role in sexual experiences, as it can help individuals to relax and connect with their bodies, leading to a more pleasurable and fulfilling sexual experience. Here are some ways in which breathing can impact sex:</p>
+    <ul>Relaxation: Deep breathing can help to promote relaxation and reduce anxiety or tension, which can be beneficial for enhancing sexual pleasure and reducing performance anxiety</ul>
+    <ul>Improved endurance: By regulating breathing during sex, individuals can increase their endurance and stay more focused on the experience</ul>
+    <ul>Mind-body connection: Breathing can help to increase awareness of the body and enhance the connection between physical sensations and emotions, which can lead to a more fulfilling sexual experience</ul>
+    <ul>Sensual breathing techniques: Certain breathing techniques, such as rhythmic breathing or synchronized breathing with a partner, can enhance intimacy and pleasure during sex</ul>
+    <p>This breathing technique is based on the principles of locking your pelvic floor muscle in order to strenghen it and be able to have full control of your orgasms. Start with small intervals until you are used to this technique.</p>
+    <p>Find a comfortable sitting position or lay down, follow our guided breathing session below and make sure to lock your pelvic floor muscle when holding your breath</p>
+        <div id="SEXResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+            <button id="SEXSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+        </div>
+        <div class="main-container">
+            <div class="timer-status">
+                <div class="timer-overview">
+                    <div id="timeOverviewMessageSEX" class="timeOverviewMessage">Finish!</div>
+
+                    <div class="box" id="elapsedInIntervalBoxSEX">
+                        <header class="boxFontSize">Inhale</header>
+                        <span class="spanFontSize" id="elapsedInIntervalSEX"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxSEX">
+                        <header class="boxFontSize">Hold</header>
+                        <span class="spanFontSize" id="elapsedInBreakIntervalSEX"></span>s
+                    </div>
+
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2SEX">
+                        <header class="boxFontSize">Exhale</header>
+                        <span class="spanFontSize" id="elapsedInBreakInterval2SEX"></span>s
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <!--  Information about interval  -->
+                    <button type="button" class="startBtn" id="startBtnSEX">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnSEX">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnSEX">Stop</button>
+                    <form method="post" id="SEXForm">
+                        <div>
+                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        </div>
+                        <div>
+                            <input id="SEXDate" type="text" type="hidden" asp-for="Result.SEXResultDate" />
+                        </div>
+                        <div class="saveBtn">
+                            <input type="submit" value="Save" id="SEXSave" />
+                        </div>
+                        <div class="roundbox">
+                            <div>Rounds:<input id="intervalsDoneSEX" asp-for="Result.SEXIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplaySEX" asp-for="Result.SEXTotalTime" readonly value="00 : 00 : 00" /></div>
                         </div>
                     </form>
                 </div>

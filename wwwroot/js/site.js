@@ -57,7 +57,13 @@ for (var i = 0; i < songSelects.length; i++) {
 }
 
 /*Links*/
-var breathHoldsLink = document.getElementById("breathHoldsLink"),
+var navResults = document.getElementById("navResults"),
+    navResults2 = document.getElementById("navResults2"),
+    navProfile = document.getElementById("navProfile"),
+    navProfile2 = document.getElementById("navProfile2"),
+    navHome = document.getElementById("navHome"),
+    navHome2 = document.getElementById("navHome2"),
+    breathHoldsLink = document.getElementById("breathHoldsLink"),
     lungsExpansionLink = document.getElementById("lungsExpansionLink"),
     pranayamaLink = document.getElementById("pranayamaLink"),
     mobilityLink = document.getElementById("mobilityLink"),
@@ -72,8 +78,6 @@ var breathHoldsLink = document.getElementById("breathHoldsLink"),
     backBRT = document.getElementById("backBRT"),
     diaphragmLink = document.getElementById("diaphragmLink"),
     backDiaphragm = document.getElementById("backDiaphragm"),
-    yogicLink = document.getElementById("yogicLink"),
-    backYogic = document.getElementById("backYogic"),
     BRT10Link = document.getElementById("BRT10Link"),
     backBRT10 = document.getElementById("backBRT10"),
     BRELink = document.getElementById("BRELink"),
@@ -90,6 +94,8 @@ var breathHoldsLink = document.getElementById("breathHoldsLink"),
     backBRT30 = document.getElementById("backBRT30"),
     brtSettings = document.getElementById("brtSettings"),
     backBRTset = document.getElementById("backBRTset"),
+    yogicLink = document.getElementById("yogicLink"),
+    backYogic = document.getElementById("backYogic"),
     yogicSettings = document.getElementById("yogicSettings"),
     backYogicSet = document.getElementById("backYogicSet"),
     breSettings = document.getElementById("breSettings"),
@@ -137,16 +143,65 @@ var breathHoldsLink = document.getElementById("breathHoldsLink"),
     CTLink = document.getElementById("CTLink"),
     backCT = document.getElementById("backCT"),
     CTSettings = document.getElementById("CTSettings"),
-    backCTSet = document.getElementById("backCTSet");
+    backCTSet = document.getElementById("backCTSet"),
+    UBLink = document.getElementById("UBLink"),
+    backUB = document.getElementById("backUB"),
+    UBSettings = document.getElementById("UBSettings"),
+    backUBSet = document.getElementById("backUBSet"),
+    KBLink = document.getElementById("KBLink"),
+    backKB = document.getElementById("backKB"),
+    B4Link = document.getElementById("B4Link"),
+    backB4 = document.getElementById("backB4"),
+    B4Settings = document.getElementById("B4Settings"),
+    backB4Set = document.getElementById("backB4Set"),
+    NBLink = document.getElementById("NBLink"),
+    backNB = document.getElementById("backNB"),
+    NBSettings = document.getElementById("NBSettings"),
+    backNBSet = document.getElementById("backNBSet"),
+    CBLink = document.getElementById("CBLink"),
+    backCB = document.getElementById("backCB"),
+    CBSettings = document.getElementById("CBSettings"),
+    backCBSet = document.getElementById("backCBSet"),
+    SBLink = document.getElementById("SBLink"),
+    backSB = document.getElementById("backSB"),
+    SBSettings = document.getElementById("SBSettings"),
+    backSBSet = document.getElementById("backSBSet"),
+    RBLink = document.getElementById("RBLink"),
+    backRB = document.getElementById("backRB"),
+    RBSettings = document.getElementById("RBSettings"),
+    backRBSet = document.getElementById("backRBSet"),
+    NKLink = document.getElementById("NKLink"),
+    backNK = document.getElementById("backNK"),
+    MEDLink = document.getElementById("MEDLink"),
+    backMED = document.getElementById("backMED"),
+    SLEEPLink = document.getElementById("SLEEPLink"),
+    backSLEEP = document.getElementById("backSLEEP"),
+    HYDLink = document.getElementById("HYDLink"),
+    backHYD = document.getElementById("backHYD"),
+    SHOTLink = document.getElementById("SHOTLink"),
+    backSHOT = document.getElementById("backSHOT"),
+    ILLink = document.getElementById("ILLink"),
+    backIL = document.getElementById("backIL"),
+    BEETLink = document.getElementById("BEETLink"),
+    backBEET = document.getElementById("backBEET"),
+    DIETLink = document.getElementById("DIETLink"),
+    backDIET = document.getElementById("backDIET"),
+    SEXLink = document.getElementById("SEXLink"),
+    backSEX = document.getElementById("backSEX"),
+    SEXSettings = document.getElementById("SEXSettings"),
+    backSEXSet = document.getElementById("backSEXSet");
 
 /*Pages*/
 var homePage = document.getElementById("homePage"),
+    resultsPage = document.getElementById("resultsPage"),
+    profilePage = document.getElementById("profilePage"),
     programPage = document.getElementById("programPage"),
     nasalBreathingPage = document.getElementById("nasalBreathingPage"),
     noseUnblockPage = document.getElementById("noseUnblockPage"),
     brtPage = document.getElementById("brtPage"),
     diaphragmPage = document.getElementById("diaphragmPage"),
     yogicPage = document.getElementById("yogicPage"),
+    yogicSettingsPage = document.getElementById("yogicSettingsPage"),
     BRT10Page = document.getElementById("BRT10Page"),
     BREPage = document.getElementById("BREPage"),
     BRWPage = document.getElementById("BRWPage"),
@@ -155,7 +210,6 @@ var homePage = document.getElementById("homePage"),
     BBPage = document.getElementById("BBPage"),
     BRT30Page = document.getElementById("BRT30Page"),
     brtSettingsPage = document.getElementById("brtSettingsPage"),
-    yogicSettingsPage = document.getElementById("yogicSettingsPage"),
     breSettingsPage = document.getElementById("breSettingsPage"),
     brwSettingsPage = document.getElementById("brwSettingsPage"),
     humSettingsPage = document.getElementById("humSettingsPage"),
@@ -180,8 +234,31 @@ var homePage = document.getElementById("homePage"),
     WHPage = document.getElementById("WHPage"),
     WHSettingsPage = document.getElementById("WHSettingsPage"),
     CTPage = document.getElementById("CTPage"),
-    CTSettingsPage = document.getElementById("CTSettingsPage");
-     
+    CTSettingsPage = document.getElementById("CTSettingsPage"),
+    UBPage = document.getElementById("UBPage"),
+    UBSettingsPage = document.getElementById("UBSettingsPage"),
+    KBPage = document.getElementById("KBPage"),
+    B4Page = document.getElementById("B4Page"),
+    B4SettingsPage = document.getElementById("B4SettingsPage"),
+    NBPage = document.getElementById("NBPage"),
+    NBSettingsPage = document.getElementById("NBSettingsPage"),
+    CBPage = document.getElementById("CBPage"),
+    CBSettingsPage = document.getElementById("CBSettingsPage"),
+    SBPage = document.getElementById("SBPage"),
+    SBSettingsPage = document.getElementById("SBSettingsPage"),
+    RBPage = document.getElementById("RBPage"),
+    RBSettingsPage = document.getElementById("RBSettingsPage"),
+    NKPage = document.getElementById("NKPage"),
+    MEDPage = document.getElementById("MEDPage"),
+    SLEEPPage = document.getElementById("SLEEPPage"),
+    HYDPage = document.getElementById("HYDPage"),
+    SHOTPage = document.getElementById("SHOTPage"),
+    ILPage = document.getElementById("ILPage"),
+    BEETPage = document.getElementById("BEETPage"),
+    DIETPage = document.getElementById("DIETPage"),
+    SEXPage = document.getElementById("SEXPage"),
+    SEXSettingsPage = document.getElementById("SEXSettingsPage");
+
 /*Transition functions*/
 const element = document.documentElement || document.body;
 function openPage(id1, id2, slideMotion) {
@@ -201,6 +278,54 @@ function openPage(id1, id2, slideMotion) {
     } else if (id1.classList.contains('slideDown')) {
         id1.classList.remove('slideDown');
     } else { }
+}
+navResults.onclick = function () {
+    document.getElementById("homeFooter").style.display = "none";
+    document.getElementById("resultsFooter").style.display = "block";
+    homePage.classList.remove('open');
+    homePage.classList.add('hidden');
+    resultsPage.classList.remove('hidden');
+    resultsPage.classList.add('open');
+}
+navResults2.onclick = function () {
+    document.getElementById("profileFooter").style.display = "none";
+    document.getElementById("resultsFooter").style.display = "block";
+    profilePage.classList.remove('open');
+    profilePage.classList.add('hidden');
+    resultsPage.classList.remove('hidden');
+    resultsPage.classList.add('open');
+}
+navProfile.onclick = function () {
+    document.getElementById("profileFooter").style.display = "block";
+    document.getElementById("homeFooter").style.display = "none";
+    homePage.classList.remove('open');
+    homePage.classList.add('hidden');
+    profilePage.classList.remove('hidden');
+    profilePage.classList.add('open');
+}
+navProfile2.onclick = function () {
+    document.getElementById("profileFooter").style.display = "block";
+    document.getElementById("resultsFooter").style.display = "none";
+    resultsPage.classList.remove('open');
+    resultsPage.classList.add('hidden');
+    profilePage.classList.remove('hidden');
+    profilePage.classList.add('open');
+}
+navHome.onclick = function () {
+    document.getElementById("homeFooter").style.display = "block";
+    document.getElementById("resultsFooter").style.display = "none";
+    resultsPage.classList.remove('open');
+    resultsPage.classList.add('hidden');
+    homePage.classList.remove('hidden');
+    homePage.classList.add('open');
+}
+navHome2.onclick = function () {
+    document.getElementById("profileFooter").style.display = "none";
+    document.getElementById("homeFooter").style.display = "block";
+    profilePage.classList.remove('open');
+    profilePage.classList.add('hidden');
+    homePage.classList.remove('hidden');
+    homePage.classList.add('open');
 }
 programLink.onclick = function () {
     openPage(homePage, programPage, 'slideLeft');
@@ -318,6 +443,18 @@ backYogic.onclick = function () {
     resetTimerYogic();
     isYogicON = false;
     document.getElementById('yogicResultSaved').innerHTML = "";
+}
+yogicSettings.onclick = function () {
+    openPage(yogicPage, yogicSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backYogicSet.onclick = function () {
+    if (isSongMuteYogic != true) {
+        audioPlayerYogic.pause();
+    }
+    audioPlayerYogic.currentTime = 0;
+    openPage(yogicSettingsPage, yogicPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 BRT10Link.onclick = function () {
     openPage(programPage, BRT10Page, 'slideUp');
@@ -536,18 +673,6 @@ backBRTset.onclick = function () {
     }
     audioPlayerBRT.currentTime = 0;
     openPage(brtSettingsPage, brtPage, 'slideDown');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-yogicSettings.onclick = function () {
-    openPage(yogicPage, yogicSettingsPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-backYogicSet.onclick = function () {
-    if (isSongMuteYogic != true) {
-        audioPlayerYogic.pause();
-    }
-    audioPlayerYogic.currentTime = 0;
-    openPage(yogicSettingsPage, yogicPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 breSettings.onclick = function () {
@@ -1222,5 +1347,499 @@ backCTSet.onclick = function () {
     }
     audioPlayerCT.currentTime = 0;
     openPage(CTSettingsPage, CTPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+UBLink.onclick = function () {
+    openPage(PRANAPage, UBPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongUB();
+    audioPlayerUB.muted = true;
+    audioListUB[0].muted = true;
+    audioListUB[2].muted = true;
+    audioListUB[3].muted = true;
+    audioListUB[0].play();
+    audioListUB[2].play();
+    audioListUB[3].play();
+    setTimeout(function () {
+        audioPlayerUB.pause();
+        audioPlayerUB.currentTime = 0;
+        audioListUB[0].pause();
+        audioListUB[0].currentTime = 0;
+        audioListUB[2].pause();
+        audioListUB[2].currentTime = 0;
+        audioListUB[3].pause();
+        audioListUB[3].currentTime = 0;
+    }, 1000);
+}
+backUB.onclick = function () {
+    openPage(UBPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(intUB);
+    [secondsUB, minutesUB, hoursUB] = [0, 0, 0];
+    timerRefUB.value = '00 : 00 : 00';
+    if (isSongMuteUB != true && isUBON != false) {
+        audioPlayerUB.pause();
+    }
+    audioPlayerUB.currentTime = 0;
+    timerControlsButtonsUB.pauseUB.style.display = 'none';
+    timerControlsButtonsUB.startUB.style.display = 'inline';
+    setFormDisabledStateUB(false);
+    setTimerControlsDisabledStateUB(false, true, true);
+    timerControlsButtonsUB.stopUB.style.color = "rgb(177, 177, 177)";
+    document.getElementById('UBSave').disabled = true;
+    document.getElementById('UBSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('UBSettings').disabled = false;
+    document.getElementById('UBSettings').style.color = '#49B79D';
+    stopTimerTickUB();
+    resetTimerUB();
+    isUBON = false;
+    document.getElementById('UBResultSaved').innerHTML = "";
+}
+UBSettings.onclick = function () {
+    openPage(UBPage, UBSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backUBSet.onclick = function () {
+    if (isSongMuteUB != true) {
+        audioPlayerUB.pause();
+    }
+    audioPlayerUB.currentTime = 0;
+    openPage(UBSettingsPage, UBPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+KBLink.onclick = function () {
+    openPage(PRANAPage, KBPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backKB.onclick = function () {
+    openPage(KBPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+B4Link.onclick = function () {
+    openPage(PRANAPage, B4Page, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongB4();
+    audioPlayerB4.muted = true;
+    audioListB4[0].muted = true;
+    audioListB4[2].muted = true;
+    audioListB4[3].muted = true;
+    audioListB4[0].play();
+    audioListB4[2].play();
+    audioListB4[3].play();
+    setTimeout(function () {
+        audioPlayerB4.pause();
+        audioPlayerB4.currentTime = 0;
+        audioListB4[0].pause();
+        audioListB4[0].currentTime = 0;
+        audioListB4[2].pause();
+        audioListB4[2].currentTime = 0;
+        audioListB4[3].pause();
+        audioListB4[3].currentTime = 0;
+    }, 1000);
+}
+backB4.onclick = function () {
+    openPage(B4Page, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(intB4);
+    [secondsB4, minutesB4, hoursB4] = [0, 0, 0];
+    timerRefB4.value = '00 : 00 : 00';
+    if (isSongMuteB4 != true && isB4ON != false) {
+        audioPlayerB4.pause();
+    }
+    audioPlayerB4.currentTime = 0;
+    timerControlsButtonsB4.pauseB4.style.display = 'none';
+    timerControlsButtonsB4.startB4.style.display = 'inline';
+    setFormDisabledStateB4(false);
+    setTimerControlsDisabledStateB4(false, true, true);
+    timerControlsButtonsB4.stopB4.style.color = "rgb(177, 177, 177)";
+    document.getElementById('B4Save').disabled = true;
+    document.getElementById('B4Save').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('B4Settings').disabled = false;
+    document.getElementById('B4Settings').style.color = '#49B79D';
+    stopTimerTickB4();
+    resetTimerB4();
+    isB4ON = false;
+    document.getElementById('B4ResultSaved').innerHTML = "";
+}
+B4Settings.onclick = function () {
+    openPage(B4Page, B4SettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backB4Set.onclick = function () {
+    if (isSongMuteB4 != true) {
+        audioPlayerB4.pause();
+    }
+    audioPlayerB4.currentTime = 0;
+    openPage(B4SettingsPage, B4Page, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+NBLink.onclick = function () {
+    openPage(PRANAPage, NBPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongNB();
+    audioPlayerNB.muted = true;
+    audioListNB[0].muted = true;
+    audioListNB[2].muted = true;
+    audioListNB[3].muted = true;
+    audioListNB[0].play();
+    audioListNB[2].play();
+    audioListNB[3].play();
+    setTimeout(function () {
+        audioPlayerNB.pause();
+        audioPlayerNB.currentTime = 0;
+        audioListNB[0].pause();
+        audioListNB[0].currentTime = 0;
+        audioListNB[2].pause();
+        audioListNB[2].currentTime = 0;
+        audioListNB[3].pause();
+        audioListNB[3].currentTime = 0;
+    }, 1000);
+}
+backNB.onclick = function () {
+    openPage(NBPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(intNB);
+    [secondsNB, minutesNB, hoursNB] = [0, 0, 0];
+    timerRefNB.value = '00 : 00 : 00';
+    if (isSongMuteNB != true && isNBON != false) {
+        audioPlayerNB.pause();
+    }
+    audioPlayerNB.currentTime = 0;
+    timerControlsButtonsNB.pauseNB.style.display = 'none';
+    timerControlsButtonsNB.startNB.style.display = 'inline';
+    setFormDisabledStateNB(false);
+    setTimerControlsDisabledStateNB(false, true, true);
+    timerControlsButtonsNB.stopNB.style.color = "rgb(177, 177, 177)";
+    document.getElementById('NBSave').disabled = true;
+    document.getElementById('NBSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('NBSettings').disabled = false;
+    document.getElementById('NBSettings').style.color = '#49B79D';
+    stopTimerTickNB();
+    resetTimerNB();
+    isNBON = false;
+    document.getElementById('NBResultSaved').innerHTML = "";
+}
+NBSettings.onclick = function () {
+    openPage(NBPage, NBSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backNBSet.onclick = function () {
+    if (isSongMuteNB != true) {
+        audioPlayerNB.pause();
+    }
+    audioPlayerNB.currentTime = 0;
+    openPage(NBSettingsPage, NBPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+CBLink.onclick = function () {
+    openPage(PRANAPage, CBPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongCB();
+    audioPlayerCB.muted = true;
+    audioListCB[0].muted = true;
+    audioListCB[2].muted = true;
+    audioListCB[3].muted = true;
+    audioListCB[0].play();
+    audioListCB[2].play();
+    audioListCB[3].play();
+    setTimeout(function () {
+        audioPlayerCB.pause();
+        audioPlayerCB.currentTime = 0;
+        audioListCB[0].pause();
+        audioListCB[0].currentTime = 0;
+        audioListCB[2].pause();
+        audioListCB[2].currentTime = 0;
+        audioListCB[3].pause();
+        audioListCB[3].currentTime = 0;
+    }, 1000);
+}
+backCB.onclick = function () {
+    openPage(CBPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(intCB);
+    [secondsCB, minutesCB, hoursCB] = [0, 0, 0];
+    timerRefCB.value = '00 : 00 : 00';
+    if (isSongMuteCB != true && isCBON != false) {
+        audioPlayerCB.pause();
+    }
+    audioPlayerCB.currentTime = 0;
+    timerControlsButtonsCB.pauseCB.style.display = 'none';
+    timerControlsButtonsCB.startCB.style.display = 'inline';
+    setFormDisabledStateCB(false);
+    setTimerControlsDisabledStateCB(false, true, true);
+    timerControlsButtonsCB.stopCB.style.color = "rgb(177, 177, 177)";
+    document.getElementById('CBSave').disabled = true;
+    document.getElementById('CBSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('CBSettings').disabled = false;
+    document.getElementById('CBSettings').style.color = '#49B79D';
+    stopTimerTickCB();
+    resetTimerCB();
+    isCBON = false;
+    document.getElementById('CBResultSaved').innerHTML = "";
+}
+CBSettings.onclick = function () {
+    openPage(CBPage, CBSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backCBSet.onclick = function () {
+    if (isSongMuteCB != true) {
+        audioPlayerCB.pause();
+    }
+    audioPlayerCB.currentTime = 0;
+    openPage(CBSettingsPage, CBPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+SBLink.onclick = function () {
+    openPage(PRANAPage, SBPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongSB();
+    audioPlayerSB.muted = true;
+    audioListSB[0].muted = true;
+    audioListSB[2].muted = true;
+    audioListSB[3].muted = true;
+    audioListSB[0].play();
+    audioListSB[2].play();
+    audioListSB[3].play();
+    setTimeout(function () {
+        audioPlayerSB.pause();
+        audioPlayerSB.currentTime = 0;
+        audioListSB[0].pause();
+        audioListSB[0].currentTime = 0;
+        audioListSB[2].pause();
+        audioListSB[2].currentTime = 0;
+        audioListSB[3].pause();
+        audioListSB[3].currentTime = 0;
+    }, 1000);
+}
+backSB.onclick = function () {
+    openPage(SBPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(intSB);
+    [secondsSB, minutesSB, hoursSB] = [0, 0, 0];
+    timerRefSB.value = '00 : 00 : 00';
+    if (isSongMuteSB != true && isSBON != false) {
+        audioPlayerSB.pause();
+    }
+    audioPlayerSB.currentTime = 0;
+    timerControlsButtonsSB.pauseSB.style.display = 'none';
+    timerControlsButtonsSB.startSB.style.display = 'inline';
+    setFormDisabledStateSB(false);
+    setTimerControlsDisabledStateSB(false, true, true);
+    timerControlsButtonsSB.stopSB.style.color = "rgb(177, 177, 177)";
+    document.getElementById('SBSave').disabled = true;
+    document.getElementById('SBSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('SBSettings').disabled = false;
+    document.getElementById('SBSettings').style.color = '#49B79D';
+    stopTimerTickSB();
+    resetTimerSB();
+    isSBON = false;
+    document.getElementById('SBResultSaved').innerHTML = "";
+}
+SBSettings.onclick = function () {
+    openPage(SBPage, SBSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backSBSet.onclick = function () {
+    if (isSongMuteSB != true) {
+        audioPlayerSB.pause();
+    }
+    audioPlayerSB.currentTime = 0;
+    openPage(SBSettingsPage, SBPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+NKLink.onclick = function () {
+    openPage(PRANAPage, NKPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backNK.onclick = function () {
+    openPage(NKPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+RBLink.onclick = function () {
+    openPage(PRANAPage, RBPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongRB();
+    audioPlayerRB.muted = true;
+    audioListRB[0].muted = true;
+    audioListRB[2].muted = true;
+    audioListRB[3].muted = true;
+    audioListRB[0].play();
+    audioListRB[2].play();
+    audioListRB[3].play();
+    setTimeout(function () {
+        audioPlayerRB.pause();
+        audioPlayerRB.currentTime = 0;
+        audioListRB[0].pause();
+        audioListRB[0].currentTime = 0;
+        audioListRB[2].pause();
+        audioListRB[2].currentTime = 0;
+        audioListRB[3].pause();
+        audioListRB[3].currentTime = 0;
+    }, 1000);
+}
+backRB.onclick = function () {
+    openPage(RBPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(intRB);
+    [secondsRB, minutesRB, hoursRB] = [0, 0, 0];
+    timerRefRB.value = '00 : 00 : 00';
+    if (isSongMuteRB != true && isRBON != false) {
+        audioPlayerRB.pause();
+    }
+    audioPlayerRB.currentTime = 0;
+    timerControlsButtonsRB.pauseRB.style.display = 'none';
+    timerControlsButtonsRB.startRB.style.display = 'inline';
+    setFormDisabledStateRB(false);
+    setTimerControlsDisabledStateRB(false, true, true);
+    timerControlsButtonsRB.stopRB.style.color = "rgb(177, 177, 177)";
+    document.getElementById('RBSave').disabled = true;
+    document.getElementById('RBSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('RBSettings').disabled = false;
+    document.getElementById('RBSettings').style.color = '#49B79D';
+    stopTimerTickRB();
+    resetTimerRB();
+    isRBON = false;
+    document.getElementById('RBResultSaved').innerHTML = "";
+}
+RBSettings.onclick = function () {
+    openPage(RBPage, RBSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backRBSet.onclick = function () {
+    if (isSongMuteRB != true) {
+        audioPlayerRB.pause();
+    }
+    audioPlayerRB.currentTime = 0;
+    openPage(RBSettingsPage, RBPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+MEDLink.onclick = function () {
+    openPage(EXTRAPage, MEDPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    meditationList[0].muted = true;
+    meditationList[1].muted = true;
+    meditationList[0].play();
+    meditationList[1].play();
+    setTimeout(function () {
+        meditationList[0].pause();
+        meditationList[0].currentTime = 0;
+        meditationList[1].pause();
+        meditationList[1].currentTime = 0;
+    }, 1000);
+}
+backMED.onclick = function () {
+    openPage(MEDPage, EXTRAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (MED1isON) {
+        resetMED1();
+    }
+    if (MED2isON) {
+        resetMED2();
+    }
+}
+SLEEPLink.onclick = function () {
+    openPage(EXTRAPage, SLEEPPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backSLEEP.onclick = function () {
+    openPage(SLEEPPage, EXTRAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+HYDLink.onclick = function () {
+    openPage(EXTRAPage, HYDPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backHYD.onclick = function () {
+    openPage(HYDPage, EXTRAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+SHOTLink.onclick = function () {
+    openPage(EXTRAPage, SHOTPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backSHOT.onclick = function () {
+    openPage(SHOTPage, EXTRAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+ILLink.onclick = function () {
+    openPage(EXTRAPage, ILPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backIL.onclick = function () {
+    openPage(ILPage, EXTRAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+BEETLink.onclick = function () {
+    openPage(EXTRAPage, BEETPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backBEET.onclick = function () {
+    openPage(BEETPage, EXTRAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+DIETLink.onclick = function () {
+    openPage(EXTRAPage, DIETPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backDIET.onclick = function () {
+    openPage(DIETPage, EXTRAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+SEXLink.onclick = function () {
+    openPage(EXTRAPage, SEXPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playSelectedSongSEX();
+    audioPlayerSEX.muted = true;
+    audioListSEX[0].muted = true;
+    audioListSEX[2].muted = true;
+    audioListSEX[3].muted = true;
+    audioListSEX[0].play();
+    audioListSEX[2].play();
+    audioListSEX[3].play();
+    setTimeout(function () {
+        audioPlayerSEX.pause();
+        audioPlayerSEX.currentTime = 0;
+        audioListSEX[0].pause();
+        audioListSEX[0].currentTime = 0;
+        audioListSEX[2].pause();
+        audioListSEX[2].currentTime = 0;
+        audioListSEX[3].pause();
+        audioListSEX[3].currentTime = 0;
+    }, 1000);
+}
+backSEX.onclick = function () {
+    openPage(SEXPage, EXTRAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearInterval(intSEX);
+    [secondsSEX, minutesSEX, hoursSEX] = [0, 0, 0];
+    timerRefSEX.value = '00 : 00 : 00';
+    if (isSongMuteSEX != true && isSEXON != false) {
+        audioPlayerSEX.pause();
+    }
+    audioPlayerSEX.currentTime = 0;
+    timerControlsButtonsSEX.pauseSEX.style.display = 'none';
+    timerControlsButtonsSEX.startSEX.style.display = 'inline';
+    setFormDisabledStateSEX(false);
+    setTimerControlsDisabledStateSEX(false, true, true);
+    timerControlsButtonsSEX.stopSEX.style.color = "rgb(177, 177, 177)";
+    document.getElementById('SEXSave').disabled = true;
+    document.getElementById('SEXSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('SEXSettings').disabled = false;
+    document.getElementById('SEXSettings').style.color = '#49B79D';
+    stopTimerTickSEX();
+    resetTimerSEX();
+    isSEXON = false;
+    document.getElementById('SEXResultSaved').innerHTML = "";
+}
+SEXSettings.onclick = function () {
+    openPage(SEXPage, SEXSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+backSEXSet.onclick = function () {
+    if (isSongMuteSEX != true) {
+        audioPlayerSEX.pause();
+    }
+    audioPlayerSEX.currentTime = 0;
+    openPage(SEXSettingsPage, SEXPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }

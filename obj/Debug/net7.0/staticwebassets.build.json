@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "upShaKLjPb0e+w+dyasKe6Mt8mYgyF+KBEZBMNb7pDs=",
+  "Hash": "3UR0/MLpLZIkKvlxKCG1veOeIkyCaQJT56AqerCdpfc=",
   "Source": "BrizaBreath",
   "BasePath": "_content/BrizaBreath",
   "Mode": "Default",
@@ -2108,6 +2108,23 @@
       "OriginalItemSpec": "wwwroot\\images\\yogic.png"
     },
     {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\4b.js",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "js/4b.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\4b.js"
+    },
+    {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\apnea.js",
       "SourceId": "BrizaBreath",
       "SourceType": "Discovered",
@@ -2193,6 +2210,23 @@
       "OriginalItemSpec": "wwwroot\\js\\ct.js"
     },
     {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\extra.js",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "js/extra.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\extra.js"
+    },
+    {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\hum.js",
       "SourceId": "BrizaBreath",
       "SourceType": "Discovered",
@@ -2244,6 +2278,40 @@
       "OriginalItemSpec": "wwwroot\\js\\o2.js"
     },
     {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\rb.js",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "js/rb.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\rb.js"
+    },
+    {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\sb.js",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "js/sb.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\sb.js"
+    },
+    {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\service-worker.js",
       "SourceId": "BrizaBreath",
       "SourceType": "Discovered",
@@ -2276,6 +2344,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\ub.js",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "js/ub.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ub.js"
     },
     {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\wh.js",

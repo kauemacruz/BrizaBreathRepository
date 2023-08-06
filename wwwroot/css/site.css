@@ -250,7 +250,7 @@ hr {
 .active {
     color: #49B79D !important;
 }
-footer {
+#homeFooter {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -258,6 +258,29 @@ footer {
     background-color: white;
     opacity: 0.7;
     box-shadow: 0 6px 10px 5px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+#resultsFooter {
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    opacity: 0.7;
+    box-shadow: 0 6px 10px 5px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+#profileFooter {
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    opacity: 0.7;
+    box-shadow: 0 6px 10px 5px rgba(0,0,0,0.3);
+    z-index: 1;
 }
 /*Pages transition style*/
 .open {
@@ -714,233 +737,19 @@ input#timerDisplayLungs {
     text-align: center;
 }
 
-#elapsedInIntervalBoxYogic header,
-#elapsedInBreakIntervalBoxYogic header,
-#elapsedInBreakIntervalBox2Yogic header,
-#elapsedInBreakIntervalBox3Yogic header,
-#elapsedInIntervalBoxBRE header,
-#elapsedInBreakIntervalBoxBRE header,
-#elapsedInBreakIntervalBox2BRE header,
-#elapsedInBreakIntervalBox3BRE header,
-#elapsedInBreakIntervalBox4BRE header,
-#elapsedInIntervalBoxBRW header,
-#elapsedInBreakIntervalBoxBRW header,
-#elapsedInBreakIntervalBox2BRW header,
-#elapsedInBreakIntervalBox3BRW header,
-#elapsedInBreakIntervalBox4BRW header,
-#elapsedInIntervalBoxHUM header,
-#elapsedInBreakIntervalBoxHUM header,
-#elapsedInBreakIntervalBox2HUM header,
-#elapsedInBreakIntervalBox3HUM header,
-#elapsedInIntervalBoxBB header,
-#elapsedInBreakIntervalBoxBB header,
-#elapsedInBreakIntervalBox2BB header,
-#elapsedInBreakIntervalBox3BB header,
-#elapsedInIntervalBoxHAT header,
-#elapsedInBreakIntervalBoxHAT header,
-#elapsedInBreakIntervalBox2HAT header,
-#elapsedInIntervalBoxHATC header,
-#elapsedInBreakIntervalBoxHATC header,
-#elapsedInBreakIntervalBox2HATC header,
-#elapsedInIntervalBoxAHAT header,
-#elapsedInBreakIntervalBoxAHAT header,
-#elapsedInBreakIntervalBox2AHAT header,
-#elapsedInIntervalBoxAP header,
-#elapsedInBreakIntervalBoxAP header,
-#elapsedInBreakIntervalBox2AP header,
-#elapsedInIntervalBoxO2 header,
-#elapsedInBreakIntervalBoxO2 header,
-#elapsedInBreakIntervalBox2O2 header,
-#elapsedInBreakIntervalBoxO2 header,
-#elapsedInBreakIntervalBox3O2 header,
-#elapsedInBreakIntervalBox4O2 header,
-#elapsedInBreakIntervalBox5O2 header,
-#elapsedInBreakIntervalBox6O2 header,
-#elapsedInBreakIntervalBox7O2 header,
-#elapsedInBreakIntervalBox8O2 header,
-#elapsedInBreakIntervalBox9O2 header,
-#elapsedInBreakIntervalBox10O2 header,
-#elapsedInBreakIntervalBox11O2 header,
-#elapsedInBreakIntervalBox12O2 header,
-#elapsedInBreakIntervalBox13O2 header,
-#elapsedInBreakIntervalBox14O2 header,
-#elapsedInBreakIntervalBox15O2 header,
-#elapsedInIntervalBoxCO2 header,
-#elapsedInBreakIntervalBoxCO2 header,
-#elapsedInBreakIntervalBox2CO2 header,
-#elapsedInBreakIntervalBoxCO2 header,
-#elapsedInBreakIntervalBox3CO2 header,
-#elapsedInBreakIntervalBox4CO2 header,
-#elapsedInBreakIntervalBox5CO2 header,
-#elapsedInBreakIntervalBox6CO2 header,
-#elapsedInBreakIntervalBox7CO2 header,
-#elapsedInBreakIntervalBox8CO2 header,
-#elapsedInBreakIntervalBox9CO2 header,
-#elapsedInBreakIntervalBox10CO2 header,
-#elapsedInBreakIntervalBox11CO2 header,
-#elapsedInBreakIntervalBox12CO2 header,
-#elapsedInBreakIntervalBox13CO2 header,
-#elapsedInBreakIntervalBox14CO2 header,
-#elapsedInBreakIntervalBox15CO2 header,
-#elapsedInIntervalBoxWH header,
-#elapsedInBreakIntervalBoxWH header,
-#elapsedInBreakIntervalBox2WH header,
-#elapsedInIntervalBoxCT header,
-#elapsedInBreakIntervalBoxCT header,
-#elapsedInBreakIntervalBox2CT header {
+.boxFontSize {
     font-size: 30px;
 }
 
-#elapsedInIntervalYogic,
-#elapsedInBreakIntervalYogic,
-#elapsedInBreakInterval2Yogic,
-#elapsedInBreakInterval3Yogic,
-#elapsedInIntervalBRE,
-#elapsedInBreakIntervalBRE,
-#elapsedInBreakInterval2BRE,
-#elapsedInBreakInterval3BRE,
-#elapsedInBreakInterval4BRE,
-#elapsedInIntervalBRW,
-#elapsedInBreakIntervalBRW,
-#elapsedInBreakInterval2BRW,
-#elapsedInBreakInterval3BRW,
-#elapsedInBreakInterval4BRW,
-#elapsedInIntervalHUM,
-#elapsedInBreakIntervalHUM,
-#elapsedInBreakInterval2HUM,
-#elapsedInBreakInterval3HUM,
-#elapsedInIntervalBB,
-#elapsedInBreakIntervalBB,
-#elapsedInBreakInterval2BB,
-#elapsedInBreakInterval3BB,
-#elapsedInIntervalHAT,
-#elapsedInBreakIntervalHAT,
-#elapsedInBreakInterval2HAT,
-#elapsedInIntervalHATC,
-#elapsedInBreakIntervalHATC,
-#elapsedInBreakInterval2HATC,
-#elapsedInIntervalAHAT,
-#elapsedInBreakIntervalAHAT,
-#elapsedInBreakInterval2AHAT,
-#elapsedInIntervalAP,
-#elapsedInBreakIntervalAP,
-#elapsedInBreakInterval2AP,
-#elapsedInIntervalO2,
-#elapsedInBreakIntervalO2,
-#elapsedInBreakInterval2O2,
-#elapsedInBreakInterval3O2,
-#elapsedInBreakInterval4O2,
-#elapsedInBreakInterval5O2,
-#elapsedInBreakInterval6O2,
-#elapsedInBreakInterval7O2,
-#elapsedInBreakInterval8O2,
-#elapsedInBreakInterval9O2,
-#elapsedInBreakInterval10O2,
-#elapsedInBreakInterval11O2,
-#elapsedInBreakInterval12O2,
-#elapsedInBreakInterval13O2,
-#elapsedInBreakInterval14O2,
-#elapsedInBreakInterval15O2,
-#elapsedInIntervalCO2,
-#elapsedInBreakIntervalCO2,
-#elapsedInBreakInterval2CO2,
-#elapsedInBreakInterval3CO2,
-#elapsedInBreakInterval4CO2,
-#elapsedInBreakInterval5CO2,
-#elapsedInBreakInterval6CO2,
-#elapsedInBreakInterval7CO2,
-#elapsedInBreakInterval8CO2,
-#elapsedInBreakInterval9CO2,
-#elapsedInBreakInterval10CO2,
-#elapsedInBreakInterval11CO2,
-#elapsedInBreakInterval12CO2,
-#elapsedInBreakInterval13CO2,
-#elapsedInBreakInterval14CO2,
-#elapsedInBreakInterval15CO2,
-#elapsedInIntervalWH,
-#elapsedInBreakIntervalWH,
-#elapsedInBreakInterval2WH,
-#elapsedInIntervalCT,
-#elapsedInBreakIntervalCT,
-#elapsedInBreakInterval2CT {
+.spanFontSize {
     font-size: 80px;
 }
 
-#elapsedInBreakIntervalBoxYogic,
-#elapsedInBreakIntervalBox2Yogic,
-#elapsedInBreakIntervalBox3Yogic,
-#elapsedInBreakIntervalBoxBRE,
-#elapsedInBreakIntervalBox2BRE,
-#elapsedInBreakIntervalBox3BRE,
-#elapsedInBreakIntervalBox4BRE,
-#elapsedInBreakIntervalBoxBRW,
-#elapsedInBreakIntervalBox2BRW,
-#elapsedInBreakIntervalBox3BRW,
-#elapsedInBreakIntervalBox4BRW,
-#elapsedInBreakIntervalBoxHUM,
-#elapsedInBreakIntervalBox2HUM,
-#elapsedInBreakIntervalBox3HUM,
-#elapsedInBreakIntervalBoxBB,
-#elapsedInBreakIntervalBox2BB,
-#elapsedInBreakIntervalBox3BB,
-#elapsedInBreakIntervalBoxHAT,
-#elapsedInBreakIntervalBox2HAT,
-#elapsedInBreakIntervalBoxHATC,
-#elapsedInBreakIntervalBox2HATC,
-#elapsedInBreakIntervalBoxAHAT,
-#elapsedInBreakIntervalBox2AHAT,
-#elapsedInBreakIntervalBoxAP,
-#elapsedInBreakIntervalBox2AP,
-#elapsedInBreakIntervalBoxO2,
-#elapsedInBreakIntervalBox2O2,
-#elapsedInBreakIntervalBox3O2,
-#elapsedInBreakIntervalBox4O2,
-#elapsedInBreakIntervalBox5O2,
-#elapsedInBreakIntervalBox6O2,
-#elapsedInBreakIntervalBox7O2,
-#elapsedInBreakIntervalBox8O2,
-#elapsedInBreakIntervalBox9O2,
-#elapsedInBreakIntervalBox10O2,
-#elapsedInBreakIntervalBox11O2,
-#elapsedInBreakIntervalBox12O2,
-#elapsedInBreakIntervalBox13O2,
-#elapsedInBreakIntervalBox14O2,
-#elapsedInBreakIntervalBox15O2,
-#elapsedInBreakIntervalBoxCO2,
-#elapsedInBreakIntervalBox2CO2,
-#elapsedInBreakIntervalBox3CO2,
-#elapsedInBreakIntervalBox4CO2,
-#elapsedInBreakIntervalBox5CO2,
-#elapsedInBreakIntervalBox6CO2,
-#elapsedInBreakIntervalBox7CO2,
-#elapsedInBreakIntervalBox8CO2,
-#elapsedInBreakIntervalBox9CO2,
-#elapsedInBreakIntervalBox10CO2,
-#elapsedInBreakIntervalBox11CO2,
-#elapsedInBreakIntervalBox12CO2,
-#elapsedInBreakIntervalBox13CO2,
-#elapsedInBreakIntervalBox14CO2,
-#elapsedInBreakIntervalBox15CO2,
-#elapsedInBreakIntervalBoxWH,
-#elapsedInBreakIntervalBox2WH,
-#elapsedInBreakIntervalBoxCT,
-#elapsedInBreakIntervalBox2CT {
+.hideBreak {
     display: none;
 }
 
-#timeOverviewMessageYogic,
-#timeOverviewMessageBRE,
-#timeOverviewMessageBRW,
-#timeOverviewMessageHUM,
-#timeOverviewMessageBB,
-#timeOverviewMessageAP,
-#timeOverviewMessageO2,
-#timeOverviewMessageCO2,
-#timeOverviewMessageHAT,
-#timeOverviewMessageHATC,
-#timeOverviewMessageAHAT,
-#timeOverviewMessageWH,
-#timeOverviewMessageCT {
+.timeOverviewMessage {
     text-align: center;
     flex: 1;
     margin-bottom: 1rem;
@@ -1045,7 +854,7 @@ input#timerDisplayLungs {
     margin-bottom: 40px;
 }
 
-input[type="range"] {
+.volume-bar input[type="range"] {
     -webkit-appearance: none;
     width: 30px;
     height: 6px;
@@ -1056,7 +865,7 @@ input[type="range"] {
     margin-top: 35px;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+.volume-bar input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 16px;
     height: 16px;
@@ -1208,4 +1017,26 @@ form#WHForm {
 }
 #WHResults{
     margin-bottom: 50px;
+}
+.meditations {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    width: 90%;
+    margin: auto;
+}
+.meditations ul {
+    margin-top: 20px;
+    font-size: 20px !important;
+}
+.meditations ul::before {
+    content: '';
+}
+.progress-bar {
+    width: 90%; 
+    margin: auto;
+}
+.medDiv{
+    margin-bottom: 20px;
 }

@@ -249,6 +249,10 @@
       "PackagePath": "staticwebassets\\images\\yogic.png"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\4b.js",
+      "PackagePath": "staticwebassets\\js\\4b.js"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\apnea.js",
       "PackagePath": "staticwebassets\\js\\apnea.js"
     },
@@ -269,6 +273,10 @@
       "PackagePath": "staticwebassets\\js\\ct.js"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\extra.js",
+      "PackagePath": "staticwebassets\\js\\extra.js"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\hum.js",
       "PackagePath": "staticwebassets\\js\\hum.js"
     },
@@ -281,12 +289,24 @@
       "PackagePath": "staticwebassets\\js\\o2.js"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\rb.js",
+      "PackagePath": "staticwebassets\\js\\rb.js"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\sb.js",
+      "PackagePath": "staticwebassets\\js\\sb.js"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\service-worker.js",
       "PackagePath": "staticwebassets\\js\\service-worker.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\ub.js",
+      "PackagePath": "staticwebassets\\js\\ub.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\wh.js",
