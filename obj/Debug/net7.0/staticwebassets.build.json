@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3UR0/MLpLZIkKvlxKCG1veOeIkyCaQJT56AqerCdpfc=",
+  "Hash": "gyYLjhuY0LJN5hFMl+VQwN2JgLnQ8uKzvsDySLESpro=",
   "Source": "BrizaBreath",
   "BasePath": "_content/BrizaBreath",
   "Mode": "Default",
@@ -2108,23 +2108,6 @@
       "OriginalItemSpec": "wwwroot\\images\\yogic.png"
     },
     {
-      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\4b.js",
-      "SourceId": "BrizaBreath",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
-      "BasePath": "_content/BrizaBreath",
-      "RelativePath": "js/4b.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\4b.js"
-    },
-    {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\apnea.js",
       "SourceId": "BrizaBreath",
       "SourceType": "Discovered",
@@ -3551,6 +3534,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\sounds\\humming.mp3"
+    },
+    {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\letGo.mp3",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "sounds/letGo.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\sounds\\letGo.mp3"
     },
     {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\letgoandhold.mp3",

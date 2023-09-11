@@ -249,10 +249,6 @@
       "PackagePath": "staticwebassets\\images\\yogic.png"
     },
     {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\4b.js",
-      "PackagePath": "staticwebassets\\js\\4b.js"
-    },
-    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\apnea.js",
       "PackagePath": "staticwebassets\\js\\apnea.js"
     },
@@ -587,6 +583,10 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\humming.mp3",
       "PackagePath": "staticwebassets\\sounds\\humming.mp3"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\letGo.mp3",
+      "PackagePath": "staticwebassets\\sounds\\letGo.mp3"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\letgoandhold.mp3",

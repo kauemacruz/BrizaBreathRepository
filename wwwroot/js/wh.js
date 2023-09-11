@@ -240,6 +240,8 @@ audioListWH.push(new Audio('../sounds/hold.mp3'));
 audioListWH.push(new Audio('../sounds/chill.mp3'));
 audioListWH.push(new Audio('../sounds/fullyin.mp3'));
 audioListWH.push(new Audio('../sounds/fullyout.mp3'));
+audioListWH.push(new Audio('../sounds/letGo.mp3'));
+
 
 var audioWH = document.getElementById("audioWH"),
     muteWH = document.getElementById("muteWH"),
@@ -546,8 +548,8 @@ function startTimerWH() {
     }
     if (timerWH.isBreak2WH) {
         if (!ismuteWH) {
-            audioListWH[0].muted = false;
-            audioListWH[0].play();
+            audioListWH[5].muted = false;
+            audioListWH[5].play();
         }
     }
     isWHON = true;
@@ -716,9 +718,24 @@ function onTimerTickWH() {
             clearInterval(intWH);
             [secondsWH, minutesWH] = [0, 0];
             stopTimerTickWH();
+            if (!ismuteWH) {
+                audioListWH[7].muted = false;
+                audioListWH[7].play();
+            }
             ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-            yWH = numberWH;
-            startTimerWH();
+            ctxWH.fillStyle = my_gradientWH;
+            ctxWH.beginPath();
+            ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
+            ctxWH.fill();
+            ctxWH.font = "bold 48px serif"
+            ctxWH.fillStyle = "white";
+            ctxWH.textAlign = "center";
+            ctxWH.fillText('Let Go', 150, 115);
+            setTimeout(function () {
+                ctxWH.clearRect(0, 0, cWH.width, cWH.height);
+                yWH = numberWH;
+                startTimerWH();
+            }, 3000);
         }
     } else if (timerWH.elapsedInIntervalWH <= currentIntervalDurationWH && timerWH.isBreak2WH) {
         timerWH.elapsedInIntervalWH++;

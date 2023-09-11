@@ -60,9 +60,11 @@ $(function () {
             processData: false,
             contentType: false,
             success: function (result) {
-                $('#brtResultSaved').html(result); // Update the result section with the server response
+                // Update the result section with the server response
+                $('#brtResultSaved').html(result);
             }
         });
+
         clearInterval(brtInt);
         [brtSeconds, brtMinutes] = [0, 0];
         brtTimerRef.value = '00 : 00';
@@ -73,6 +75,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0;
     });
 });
+
 
 let date = new Date().toLocaleDateString("en-IN");
 let [brtSeconds, brtMinutes] = [0, 0];

@@ -9,6 +9,9 @@
         <img id="homelogoimg" src="/images/B_DEGRAD.png" width="55" height="55" />
     </header>
     <div id="homepagegrid">
+        <div class="BRTtile">
+            <a id="brtLink"><img class="BRTtile__img" src="/images/BRT.png" /></a>
+        </div>
         <div class="row g-2">
             <div class="col"><a id="programLink"><img class="homepageimgs" src="/images/brizaprogram.png" /></a></div>
             <div class="col"><a id="breathHoldsLink"><img class="homepageimgs" src="/images/breathholds.png" /></a></div>
@@ -32,7 +35,294 @@
     <header>
         <img id="homelogoimg" src="/images/B_DEGRAD.png" width="55" height="55" />
     </header>
-    <div>Results</div>
+    <div class="accordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">Breath Retention Test</h2>
+            <div class="accordion-content">
+                <div class="chart-container" id="BRTContainer">
+                    <canvas id="BRTchart"></canvas>
+                </div>
+                <div class="BRTInfo">
+                    <h4><b>Overview</b></h4>
+                    <div class="BRTinfoOverview">
+                        <label>Latest Test</label>
+                        <input type="text" id="BRTlatestRound" readonly>     
+                    </div>
+                    <div class="BRTinfoOverview">
+                        <label>Longest Test</label>
+                        <input type="text" id="BRTlongestRound" readonly>     
+                    </div>
+                    <div class="BRTinfoOverview"> 
+                        <label>Total Tests</label>
+                        <input type="text" id="BRTnumberOfSessions" readonly>     
+                    </div>
+                    <div id="BRTinfoOverview"></div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">Briza Program</h2>
+            <div class="accordion-content">
+                <div class="accordion2">
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Yogic Breathing</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="YOGICContainer">
+                                <canvas id="YOGICchart"></canvas>
+                            </div>
+                            <div class="YOGICInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="YOGICinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="YOGIClatestRound" readonly>
+                                </div>
+                                <div class="YOGICinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="YOGIClongestRound" readonly>
+                                </div>
+                                <div class="YOGICinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="YOGICnumberOfSessions" readonly>
+                                </div>
+                                <div id="YOGICinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Breath Recovery Exercise</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="BREContainer">
+                                <canvas id="BREchart"></canvas>
+                            </div>
+                            <div class="BREInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="BREinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="BRElatestRound" readonly>
+                                </div>
+                                <div class="BREinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="BRElongestRound" readonly>
+                                </div>
+                                <div class="BREinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="BREnumberOfSessions" readonly>
+                                </div>
+                                <div id="BREinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Breath Recovery while Walking</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="BRWContainer">
+                                <canvas id="BRWchart"></canvas>
+                            </div>
+                            <div class="BRWInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="BRWinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="BRWlatestRound" readonly>
+                                </div>
+                                <div class="BRWinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="BRWlongestRound" readonly>
+                                </div>
+                                <div class="BRWinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="BRWnumberOfSessions" readonly>
+                                </div>
+                                <div id="BRWinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Humming Exercise</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="HUMContainer">
+                                <canvas id="HUMchart"></canvas>
+                            </div>
+                            <div class="HUMInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="HUMinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="HUMlatestRound" readonly>
+                                </div>
+                                <div class="HUMinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="HUMlongestRound" readonly>
+                                </div>
+                                <div class="HUMinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="HUMnumberOfSessions" readonly>
+                                </div>
+                                <div id="HUMinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Briza Breathing</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="BBContainer">
+                                <canvas id="BBchart"></canvas>
+                            </div>
+                            <div class="BBInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="BBinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="BBlatestRound" readonly>
+                                </div>
+                                <div class="BBinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="BBlongestRound" readonly>
+                                </div>
+                                <div class="BBinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="BBnumberOfSessions" readonly>
+                                </div>
+                                <div id="BBinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">Lungs Expansion Test</h2>
+            <div class="accordion-content">
+                <div class="chart-container" id="LUNGSContainer">
+                    <canvas id="LUNGSchart"></canvas>
+                </div>
+                <div class="LUNGSInfo">
+                    <h4><b>Overview</b></h4>
+                    <div class="LUNGSinfoOverview">
+                        <label>Latest Test</label>
+                        <input type="text" id="LUNGSlatestRound" readonly>     
+                    </div>
+                    <div class="LUNGSinfoOverview">
+                        <label>Longest Test</label>
+                        <input type="text" id="LUNGSlongestRound" readonly>     
+                    </div>
+                    <div class="LUNGSinfoOverview"> 
+                        <label>Total Tests</label>
+                        <input type="text" id="LUNGSnumberOfSessions" readonly>     
+                    </div>
+                    <div id="LUNGSinfoOverview"></div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">Breath Holds</h2>
+            <div class="accordion-content">
+                <div class="accordion2">
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Apnea Training</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="APContainer">
+                                <canvas id="APchart"></canvas>
+                            </div>
+                            <div class="APInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="APinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="APlatestRound" readonly>
+                                </div>
+                                <div class="APinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="APlongestRound" readonly>
+                                </div>
+                                <div class="APinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="APnumberOfSessions" readonly>
+                                </div>
+                                <div id="APinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">CO2 Tolerance Training</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="CTContainer">
+                                <canvas id="CTchart"></canvas>
+                            </div>
+                            <div class="CTInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="CTinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="CTlatestRound" readonly>
+                                </div>
+                                <div class="CTinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="CTlongestRound" readonly>
+                                </div>
+                                <div class="CTinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="CTnumberOfSessions" readonly>
+                                </div>
+                                <div id="CTinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">Pranayama</h2>
+            <div class="accordion-content">
+                <div class="accordion2">
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Ujjayi Breathing</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="UBContainer">
+                                <canvas id="UBchart"></canvas>
+                            </div>
+                            <div class="UBInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="UBinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="UBlatestRound" readonly>
+                                </div>
+                                <div class="UBinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="UBlongestRound" readonly>
+                                </div>
+                                <div class="UBinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="UBnumberOfSessions" readonly>
+                                </div>
+                                <div id="UBinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Box Breathing</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="BOXContainer">
+                                <canvas id="BOXchart"></canvas>
+                            </div>
+                            <div class="BOXInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="BOXinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="BOXlatestRound" readonly>
+                                </div>
+                                <div class="BOXinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="BOXlongestRound" readonly>
+                                </div>
+                                <div class="BOXinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="BOXnumberOfSessions" readonly>
+                                </div>
+                                <div id="BOXinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
     <footer id="resultsFooter">
         <div class="navbar">
             <a id="navHome"><i class="fa fa-home"></i>Home</a>
@@ -40,6 +330,94 @@
             <a id="navProfile2"><i class="fa fa-user"></i>Profile</a>
         </div>
     </footer>
+</div>
+<div id="BRTresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRTresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="BRTresultDateHeader"></div>
+    <div id="BRTresultSessions"></div>
+</div>
+<div id="LUNGSresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backLUNGSresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="LUNGSresultDateHeader"></div>
+    <div id="LUNGSresultSessions"></div>
+</div>
+<div id="YOGICresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backYOGICresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="YOGICresultDateHeader"></div>
+    <div id="YOGICresultSessions"></div>
+</div>
+<div id="BREresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBREresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="BREresultDateHeader"></div>
+    <div id="BREresultSessions"></div>
+</div>
+<div id="BRWresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBRWresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="BRWresultDateHeader"></div>
+    <div id="BRWresultSessions"></div>
+</div>
+<div id="HUMresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backHUMresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="HUMresultDateHeader"></div>
+    <div id="HUMresultSessions"></div>
+</div>
+<div id="BBresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBBresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="BBresultDateHeader"></div>
+    <div id="BBresultSessions"></div>
+</div>
+<div id="APresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backAPresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="APresultDateHeader"></div>
+    <div id="APresultSessions"></div>
+</div>
+<div id="CTresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backCTresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="CTresultDateHeader"></div>
+    <div id="CTresultSessions"></div>
+</div>
+<div id="BOXresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backBOXresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="BOXresultDateHeader"></div>
+    <div id="BOXresultSessions"></div>
+</div>
+<div id="UBresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backUBresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="UBresultDateHeader"></div>
+    <div id="UBresultSessions"></div>
 </div>
 <div id="profilePage" class="hidden">
     <header>
@@ -88,12 +466,6 @@
                 <div class="tile">
                     <div class="tile__media">
                         <a id="unblockLink"><img class="tile__img" src="/images/noseunblocking.png" /></a>
-                    </div>
-                    <div class="tile__details"></div>
-                </div>
-                <div class="tile">
-                    <div class="tile__media">
-                        <a id="brtLink"><img class="tile__img" src="/images/BRT.png" /></a>
                     </div>
                     <div class="tile__details"></div>
                 </div>
@@ -289,6 +661,7 @@
         <video controls poster="/images/brt.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
+        <p>A "BRT" score, which stands for Breath Retention Test, is a measure of breath-holding time and can provide insights into a person's breathing efficiency and tolerance to carbon dioxide (CO2).</p>
         <p>Learn this simple technique that will help you to measure your fitness level and your progress with the program. Follow the instructions below and save your score:</p>
         <ul>1 - Find a comfortable seat and take a couple of light breaths through the nose</ul>
         <ul>2 - EXHALE and pinch your nose, after the exhalation press 'Start' and hold your breath</ul>
@@ -1795,7 +2168,7 @@
             <div class="col"><a id="UBLink"><img class="homepageimgs" src="/images/ujjayi.png"/></a></div>
             <div class="col"><a id="KBLink"><img class="homepageimgs" src="/images/kapalabhati.png"/></a></div>
             <div class="w-100"></div>
-            <div class="col"><a id="B4Link"><img class="homepageimgs" src="/images/boxbreathing.png"/></a></div>
+            <div class="col"><a id="BOXLink"><img class="homepageimgs" src="/images/boxbreathing.png"/></a></div>
             <div class="col"><a id="NBLink"><img class="homepageimgs" src="/images/nadishodhana.png"/></a></div>
             <div class="w-100"></div>
             <div class="col"><a id="CBLink"><img class="homepageimgs" src="/images/coherent.png"/></a></div>
@@ -2994,78 +3367,78 @@
         <ul>Repeat steps 3 and 4 for several rounds, gradually increasing the speed and force of your exhalations</ul>
     </div>
 </div>
-<div id="B4SettingsPage" class="hidden">
+<div id="BOXSettingsPage" class="hidden">
     <header>
-        <div class="goback"><a id="backB4Set">&#8249;</a></div>
+        <div class="goback"><a id="backBOXSet">&#8249;</a></div>
         <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
     </header>
     <div class="breathingpages">
-        <h1>Box Breathing Settings</h1>
+        <h1>Ujjayi Breathing Settings</h1>
         <h4 class="volumeSettings">Length of Breath</h4>
         <div class="timer-additional-info">
             <b>INHALE | HOLD | EXHALE | HOLD</b>
         </div>
         <div class="settings-form">
             <div class="form-line">
-                <button class="buttonminus" type="button" id="minusB4">-</button>
+                <button class="buttonminus" type="button" id="minusBOX">-</button>
             </div>
             <div class="form-line">
-                <input type="hidden" id="intervalCountInputB4" min="1">
-            </div>
-
-            <div class="form-line">
-                <input type="number" id="intervalDurationInputB4" min="1" readonly>
+                <input type="hidden" id="intervalCountInputBOX" min="1">
             </div>
 
             <div class="form-line">
-                <input type="hidden" id="enableBreakInputB4">
-            </div>
-
-            <div class="form-line" id="breakDurationInputLineB4">
-                <input type="number" id="breakDurationInputB4" min="1" readonly>
+                <input type="number" id="intervalDurationInputBOX" min="1" readonly>
             </div>
 
             <div class="form-line">
-                <input type="hidden" id="enableBreakInput2B4">
+                <input type="hidden" id="enableBreakInputBOX">
             </div>
 
-            <div class="form-line" id="breakDurationInputLine2B4">
-                <input type="number" id="breakDurationInput2B4" min="1" readonly>
+            <div class="form-line" id="breakDurationInputLineBOX">
+                <input type="number" id="breakDurationInputBOX" min="1" readonly>
             </div>
 
             <div class="form-line">
-                <input type="hidden" id="enableBreakInput3B4">
+                <input type="hidden" id="enableBreakInput2BOX">
             </div>
 
-            <div class="form-line" id="breakDurationInputLine3B4">
-                <input type="number" id="breakDurationInput3B4" min="1" readonly>
+            <div class="form-line" id="breakDurationInputLine2BOX">
+                <input type="number" id="breakDurationInput2BOX" min="1" readonly>
+            </div>
+
+            <div class="form-line">
+                <input type="hidden" id="enableBreakInput3BOX">
+            </div>
+
+            <div class="form-line" id="breakDurationInputLine3BOX">
+                <input type="number" id="breakDurationInput3BOX" min="1" readonly>
             </div>
             <div class="form-line">
-                <button class="buttonplus" type="button" id="plusB4">+</button>
+                <button class="buttonplus" type="button" id="plusBOX">+</button>
             </div>
         </div>
         <hr />
         <div class="volume-bar">
             <h4 class="volumeSettings">Play Voice?</h4>
             <div class="audioButtons">
-                <div id="audioB4" class="audio"><img src="/images/speaker.png"></div>
-                <div id="muteB4" class="mute"><img src="/images/mute.png"></div>
+                <div id="audioBOX" class="audio"><img src="/images/speaker.png"></div>
+                <div id="muteBOX" class="mute"><img src="/images/mute.png"></div>
             </div>
-            <input type="range" id="volumeVoiceB4" min="0" max="1" step="1" value="1">
+            <input type="range" id="volumeVoiceBOX" min="0" max="1" step="1" value="1">
         </div>
         <hr />
         <div class="volume-bar">
             <h4 class="volumeSettings">Play Song?</h4>
             <div class="audioButtons">
-                <div id="songMuteB4" class="muteSong"><img src="/images/mute.png"></div>
-                <div id="songB4" class="audioSong"><img src="/images/speaker.png"></div>
+                <div id="songMuteBOX" class="muteSong"><img src="/images/mute.png"></div>
+                <div id="songBOX" class="audioSong"><img src="/images/speaker.png"></div>
             </div>
-            <input type="range" id="volumeSongB4" min="0" max="1" step="1" value="1">
+            <input type="range" id="volumeSongBOX" min="0" max="1" step="1" value="1">
         </div>
         <hr />
         <h4 class="volumeSettings">Choose a song</h4>
         <div class="song-container">
-            <select id="song-selectB4" class="song-select">
+            <select id="song-selectBOX" class="song-select">
                 <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
                 <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
                 <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
@@ -3080,12 +3453,12 @@
                 <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
             </select>
         </div>
-        <audio id="audio-playerB4"></audio>
+        <audio id="audio-playerBOX"></audio>
     </div>
 </div>
-<div id="B4Page" class="hidden">
+<div id="BOXPage" class="hidden">
     <header>
-        <div class="goback"><a id="backB4">&#8249;</a></div>
+        <div class="goback"><a id="backBOX">&#8249;</a></div>
         <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
     </header>
     <div class="breathingpages">
@@ -3094,53 +3467,53 @@
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
         <p>Choose an appropriated time for your session, find a comfortable sitting position or lay down and follow our guided breathing session below to ease your mind, body and spirit</p>
-        <div id="B4ResultSaved" class="resultSaved"></div>
+        <div id="BOXResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
-            <button id="B4Settings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
+            <button id="BOXSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
         </div>
         <div class="main-container">
             <div class="timer-status">
                 <div class="timer-overview">
-                    <div id="timeOverviewMessageB4" class="timeOverviewMessage">Finish!</div>
+                    <div id="timeOverviewMessageBOX" class="timeOverviewMessage">Finish!</div>
 
-                    <div class="box" id="elapsedInIntervalBoxB4">
+                    <div class="box" id="elapsedInIntervalBoxBOX">
                         <header class="boxFontSize">Inhale</header>
-                        <span class="spanFontSize" id="elapsedInIntervalB4"></span>s
+                        <span class="spanFontSize" id="elapsedInIntervalBOX"></span>s
                     </div>
 
-                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxB4">
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBoxBOX">
                         <header class="boxFontSize">Hold</header>
-                        <span class="spanFontSize" id="elapsedInBreakIntervalB4"></span>s
+                        <span class="spanFontSize" id="elapsedInBreakIntervalBOX"></span>s
                     </div>
 
-                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2B4">
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox2BOX">
                         <header class="boxFontSize">Exhale</header>
-                        <span class="spanFontSize" id="elapsedInBreakInterval2B4"></span>s
+                        <span class="spanFontSize" id="elapsedInBreakInterval2BOX"></span>s
                     </div>
 
-                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3B4">
+                    <div class="box hideBreak" id="elapsedInBreakIntervalBox3BOX">
                         <header class="boxFontSize">Pause</header>
-                        <span class="spanFontSize" id="elapsedInBreakInterval3B4"></span>s
+                        <span class="spanFontSize" id="elapsedInBreakInterval3BOX"></span>s
                     </div>
                 </div>
                 <div class="timer-controls">
                     <!--  Information about interval  -->
-                    <button type="button" class="startBtn" id="startBtnB4">Start</button>
-                    <button type="button" class="pauseBtn" id="pauseBtnB4">Pause</button>
-                    <button type="button" class="stopBtn" id="stopBtnB4">Stop</button>
-                    <form method="post" id="B4Form">
+                    <button type="button" class="startBtn" id="startBtnBOX">Start</button>
+                    <button type="button" class="pauseBtn" id="pauseBtnBOX">Pause</button>
+                    <button type="button" class="stopBtn" id="stopBtnBOX">Stop</button>
+                    <form method="post" id="BOXForm">
                         <div>
                             <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
-                            <input id="B4Date" type="text" type="hidden" asp-for="Result.B4ResultDate" />
+                            <input id="BOXDate" type="text" type="hidden" asp-for="Result.BOXResultDate" />
                         </div>
                         <div class="saveBtn">
-                            <input type="submit" value="Save" id="B4Save" />
+                            <input type="submit" value="Save" id="BOXSave" />
                         </div>
                         <div class="roundbox">
-                            <div>Rounds:<input id="intervalsDoneB4" asp-for="Result.B4Intervals" readonly value="0" /></div>
-                            <div>Total time:<input id="timerDisplayB4" asp-for="Result.B4TotalTime" readonly value="00 : 00 : 00" /></div>
+                            <div>Rounds:<input id="intervalsDoneBOX" asp-for="Result.BOXIntervals" readonly value="0" /></div>
+                            <div>Total time:<input id="timerDisplayBOX" asp-for="Result.BOXTotalTime" readonly value="00 : 00 : 00" /></div>
                         </div>
                     </form>
                 </div>
@@ -3887,7 +4260,7 @@
         </video>
         <p>Diet can play a significant role in improving blood flow and circulation throughout the body. Here are some dietary factors that can help to promote healthy blood flow:</p>
         <ul>Eating a diet rich in fruits and vegetables: Fruits and vegetables are rich in antioxidants, vitamins, and minerals that help to protect blood vessels from damage and improve circulation.</ul>
-        <ul>Consuming foods rich in omega-3 fatty acids: Omega-3 fatty acids, found in fatty fish like salmon, can help to improve blood flow by reducing inflammation and promoting the health of blood vessels.</ul>
+        <ul>Consuming foods rich in omega-3 fatty acids: Omega-3 fatty acids can help to improve blood flow by reducing inflammation and promoting the health of blood vessels.</ul>
         <ul>Incorporating garlic into your diet: Garlic has been found to improve blood flow by increasing the production of nitric oxide, a compound that helps to dilate blood vessels.</ul>
         <ul>Drinking green tea: Green tea contains compounds called catechins, which can help to improve blood flow by promoting the production of nitric oxide.</ul>
         <ul>Reducing intake of saturated and trans fats: Diets high in saturated and trans fats can contribute to the buildup of plaque in the arteries, which can reduce blood flow and increase the risk of heart disease.</ul>

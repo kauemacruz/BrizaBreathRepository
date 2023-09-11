@@ -1,5 +1,12 @@
 body {
     touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none; /* Disable long tap callout menu on iOS */
+    -webkit-user-drag: none; /* Disable dragging on iOS */
+    -webkit-tap-highlight-color: transparent; /* Disable tap highlight color on iOS */
 }
 /* CSS for the loading indicator */
 #loadingIndicator {
@@ -167,6 +174,7 @@ hr {
     #homepagegrid {
         width: 500px;
         margin: auto !important;
+        padding-top: 20px;
     }
     .BHGrid {
         width: 500px;
@@ -192,14 +200,54 @@ hr {
         margin: auto;
     }
 }
+@media only screen and (min-width: 500px){
+    .form-control {
+        width: 400px !important;
+    }
 
+    #loginForm {
+        text-align: center !important;
+    }
+
+    #login-submit,
+    #registerSubmit,
+    #forgotBtn,
+    #passwordBtn {
+        width: 400px !important;
+    }
+
+    .col-md-offset-2 {
+        margin-left: 0 !important;
+    }
+
+    .col-md-8 {
+        width: 100% !important;
+    }
+
+    .col-md-10 {
+        width: 100% !important;
+    }
+    #homepagegrid {
+        width: 450px;
+        margin: auto !important;
+    }
+    .contain {
+        width: 500px !important;
+        margin: auto;
+    }
+    .container, .container-md, .container-sm {
+        max-width: 100%;
+        width: 100%;
+    }
+}
 /*homepage*/
 .container {
     padding: 0;
 }
+
 #homepagegrid {
     margin-top: 20px;
-    margin-bottom: 80px !important;
+    margin-bottom: 160px !important;
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
@@ -207,11 +255,13 @@ hr {
     font-size: 14px;
     color: #0661AA;
 }
+
 .homepageimgs {
     width: 100%;
     height: auto;
     max-width: 400px;
 }
+
 .w-100 {
     margin-top: 0px;
 }
@@ -225,10 +275,12 @@ hr {
     margin-bottom: 0;
     height: 100px;
 }
+
 #navResults {
     margin-left: 20px;
     margin-right: 20px;
 }
+
 .navbar a {
     float: left;
     padding: 12px;
@@ -240,26 +292,30 @@ hr {
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
 .fa {
     font-size: 22px !important;
     color: #0661AA;
 }
+
 .a .active {
     color: #49B79D !important;
 }
+
 .active {
     color: #49B79D !important;
 }
+
 #homeFooter {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: white;
-    opacity: 0.7;
     box-shadow: 0 6px 10px 5px rgba(0,0,0,0.3);
     z-index: 1;
 }
+
 #resultsFooter {
     display: none;
     position: fixed;
@@ -267,10 +323,10 @@ hr {
     bottom: 0;
     width: 100%;
     background-color: white;
-    opacity: 0.7;
     box-shadow: 0 6px 10px 5px rgba(0,0,0,0.3);
     z-index: 1;
 }
+
 #profileFooter {
     display: none;
     position: fixed;
@@ -278,7 +334,6 @@ hr {
     bottom: 0;
     width: 100%;
     background-color: white;
-    opacity: 0.7;
     box-shadow: 0 6px 10px 5px rgba(0,0,0,0.3);
     z-index: 1;
 }
@@ -286,10 +341,13 @@ hr {
 .open {
     visibility: visible;
 }
+
 .hidden {
     opacity: 0;
     position: fixed;
+    visibility: hidden;
 }
+
 .slideRight {
     position: relative;
     top: 0;
@@ -298,6 +356,7 @@ hr {
     animation: slideToRight 0.2s;
     animation-fill-mode: forwards;
 }
+
 @keyframes slideToRight {
     from {
         opacity: 0.1;
@@ -309,6 +368,7 @@ hr {
         left: 0;
     }
 }
+
 .slideLeft {
     position: relative;
     right: -500px;
@@ -317,6 +377,7 @@ hr {
     animation: slideToLeft 0.2s;
     animation-fill-mode: forwards;
 }
+
 @keyframes slideToLeft {
     from {
         opacity: 0.1;
@@ -328,6 +389,7 @@ hr {
         right: 0;
     }
 }
+
 .slideUp {
     position: relative;
     top: 500px;
@@ -335,6 +397,7 @@ hr {
     animation: slideToTop 0.2s;
     animation-fill-mode: forwards;
 }
+
 @keyframes slideToTop {
     from {
         opacity: 0.1;
@@ -346,6 +409,7 @@ hr {
         top: 0;
     }
 }
+
 .slideDown {
     position: relative;
     top: -500px;
@@ -353,6 +417,7 @@ hr {
     animation: slideToBottom 0.2s;
     animation-fill-mode: forwards;
 }
+
 @keyframes slideToBottom {
     from {
         opacity: 0.1;
@@ -368,14 +433,15 @@ hr {
 .goback {
     text-align: left;
 }
-.goback a {
-    position: sticky;
-    text-decoration: none;
-    color: #49B79D !important;
-    font-size: 60px;
-    margin-left: 30px;
-    vertical-align: top;
-}
+
+    .goback a {
+        position: sticky;
+        text-decoration: none;
+        color: #49B79D !important;
+        font-size: 60px;
+        margin-left: 30px;
+        vertical-align: top;
+    }
 /*briza program page*/
 .brizaprogram {
     font-family: 'Playfair Display';
@@ -385,21 +451,25 @@ hr {
     color: #0661AA;
     margin-top: 25px;
 }
+
 #programPage h1 {
     text-align: center;
     margin-bottom: 0;
 }
+
 #programPage h2 {
     text-align: center;
     margin-bottom: 0;
     margin-top: 20px;
 }
+
 #programPage ul {
     padding-left: 20px;
     padding-right: 20px;
     list-style: none;
     margin-bottom: 4px;
 }
+
 #programPage ul::before {
     content: "\2022";
     color: #49B79D;
@@ -407,9 +477,11 @@ hr {
     width: 1em;
     font-weight: bold;
 }
+
 #programPage p {
     padding-top: 15px;
 }
+
 .atention {
     color: red !important;
     text-align: justify;
@@ -417,6 +489,7 @@ hr {
     padding-left: 15px;
     padding-right: 15px;
 }
+
 #programPage h4 {
     color: #0661AA;
     padding-left: 15px;
@@ -428,6 +501,7 @@ hr {
     overflow-y: hidden;
     padding-left: 15px;
 }
+
 .row__inner {
     transition: 450ms transform;
     font-size: 0;
@@ -435,6 +509,7 @@ hr {
     margin-top: 10px;
     padding-bottom: 10px;
 }
+
 .tile {
     position: relative;
     display: inline-block;
@@ -446,6 +521,11 @@ hr {
     transition: 450ms all;
     transform-origin: center left;
 }
+.BRTtile {
+    max-width: 500px;
+    margin: auto;
+}
+
 .tile__img {
     width: 250px;
     height: 140.625px;
@@ -453,13 +533,19 @@ hr {
     object-fit: cover;
     border-radius: 5px;
 }
+.BRTtile__img {
+    width: 98%;
+    border-radius: 5px;
+}
 /*Breathing pages*/
 .breathingpages {
     font-family: 'Playfair Display';
     margin-top: 25px;
+    margin-bottom: 80px;
     width: 100%;
     color: #0661AA;
 }
+
 .breathingpages ul {
     padding-left: 20px;
     padding-right: 20px;
@@ -467,6 +553,7 @@ hr {
     text-align: justify;
     padding-bottom: 10px;
 }
+
 .breathingpages ul::before {
     content: "\2022";
     color: #49B79D;
@@ -474,43 +561,53 @@ hr {
     width: 1em;
     font-weight: bold;
 }
+
 video {
     width: 100%;
     height: auto;
     margin-top: 20px;
     max-height: 300px;
 }
+
 video[poster] {
     object-fit: cover;
 }
+
 .breathingpages p {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 20px;
     text-align: justify;
 }
+
 .breathingpages h1 {
     text-align: center;
 }
+
 .breathingpages h2 {
     text-align: center;
     margin-bottom: 0;
 }
+
 .roundbox input {
     border: none;
     color: #0661AA;
     font-size: 15px;
     width: 95px;
 }
-.breathingpages header{
+
+.breathingpages header {
     box-shadow: none;
 }
+
 .settings-form.BRE {
     padding-left: 1rem !important;
 }
+
 .form-line.BRE input[type="number"] {
     margin-right: 4px !important;
 }
+
 .timer-additional-info.BRE {
     font-size: 10px !important;
 }
@@ -520,16 +617,19 @@ video[poster] {
     text-align: center;
     padding-bottom: 10px;
 }
+
 input#timerDisplayBRT {
     text-align: center;
     border: none;
     color: #0661AA;
 }
+
 input#timerDisplayLungs {
     text-align: center;
     border: none;
     color: #0661AA;
 }
+
 .BrtBtns {
     text-align: center;
 }
@@ -546,6 +646,7 @@ input#timerDisplayLungs {
     background-repeat: no-repeat;
     outline: none;
 }
+
 .pauseBtnBRT {
     display: none;
     color: #0661AA;
@@ -559,6 +660,7 @@ input#timerDisplayLungs {
     background-repeat: no-repeat;
     outline: none;
 }
+
 .stopBtnBRT {
     color: rgb(177, 177, 177);
     width: 8rem;
@@ -571,9 +673,11 @@ input#timerDisplayLungs {
     background-repeat: no-repeat;
     outline: none;
 }
+
 .saveBtnBRT {
     text-align: center;
 }
+                
 .saveBtnBRT input {
     color: #49B79D;
     width: 18rem;
@@ -587,6 +691,7 @@ input#timerDisplayLungs {
     background-repeat: no-repeat;
     outline: none;
 }
+
 .startBtn {
     color: #0661AA;
     width: 8rem;
@@ -628,6 +733,7 @@ input#timerDisplayLungs {
     background-repeat: no-repeat;
     outline: none;
 }
+
 .resetBtn {
     color: #990000;
     width: 8rem;
@@ -660,11 +766,13 @@ input#timerDisplayLungs {
     outline: none;
     height: 38px;
 }
+
 .resultSaved {
     text-align: center;
     color: #49B79D;
 }
-.audio, 
+
+.audio,
 .audioSong {
     display: block;
     border: none;
@@ -683,6 +791,7 @@ input#timerDisplayLungs {
     background-repeat: no-repeat;
     outline: none;
 }
+
 .audioSet {
     border: none;
     border-radius: 5px;
@@ -703,13 +812,14 @@ input#timerDisplayLungs {
     height: 20px;
     margin-right: 25px;
 }
+
 .settingButtons img {
     width: 30px;
     height: 30px;
 }
 /*
- * Timer status
- */
+* Timer status
+*/
 
 .timer-status header {
     color: #0661AA;
@@ -737,7 +847,7 @@ input#timerDisplayLungs {
     text-align: center;
 }
 
-.boxFontSize {
+header.boxFontSize {
     font-size: 30px;
 }
 
@@ -756,15 +866,18 @@ input#timerDisplayLungs {
     font-size: 40px;
     display: none;
 }
+
 .timer-additional-info {
     font-size: 12px;
     padding-bottom: 5px;
     margin-top: 20px;
     text-align: center;
 }
+
 .timer-additional-info.BRE {
     font-size: 10px !important;
 }
+
 .buttonplus {
     font-size: 35px;
     padding: 0px 10px 2px 10px;
@@ -777,6 +890,7 @@ input#timerDisplayLungs {
     color: #49B79D;
     font-weight: 900;
 }
+
 .buttonminus {
     font-size: 35px;
     padding: 0px 20px 2px 10px;
@@ -789,23 +903,28 @@ input#timerDisplayLungs {
     color: #49B79D;
     font-weight: 900;
 }
+
 .roundbox {
     display: flex;
     font-size: 12px;
     justify-content: center;
 }
+
 .form-line {
     display: inline;
     align-items: baseline;
     margin-bottom: 1rem;
 }
+
 .form-line:last-of-type {
     margin: 0;
 }
+
 .form-line label {
     flex-grow: 1;
     padding-right: .5rem;
 }
+
 .form-line input[type="number"] {
     width: 40px;
     margin-right: 5px;
@@ -823,9 +942,11 @@ input#timerDisplayLungs {
     grid-template-areas: "status" "controls" "settings";
     margin-bottom: 1rem;
 }
+
 .timer-status {
     grid-area: status;
 }
+
 .timer-controls {
     text-align: center;
 }
@@ -834,17 +955,21 @@ input#timerDisplayLungs {
     text-align: center;
     margin-bottom: 40px;
 }
-.settings-form.BB{
+
+.settings-form.BB {
     margin-bottom: 0 !important;
 }
+
 .audioButtons {
     display: flex;
     margin-left: 100px;
     margin-top: 30px;
 }
+
 .box header {
     height: 15px;
 }
+
 .volume-bar {
     display: flex;
     width: 250px;
@@ -874,10 +999,12 @@ input#timerDisplayLungs {
     border-radius: 50%;
     cursor: pointer;
 }
+
 h4.volumeSettings {
     text-align: center;
     margin-top: 40px;
 }
+
 .song-container {
     display: flex;
     justify-content: center;
@@ -894,15 +1021,18 @@ h4.volumeSettings {
     font-size: 18px;
     border-color: #e4e3d442;
 }
+
 .NOfSteps {
     display: flex;
     justify-content: space-between;
     width: 17rem;
     margin: auto;
 }
+
 input#intervalsDoneHAT {
     text-align: center;
 }
+
 .BHGrid {
     margin-top: 20px;
     margin-bottom: 80px !important;
@@ -910,21 +1040,25 @@ input#intervalsDoneHAT {
     margin-left: 10px;
     margin-right: 10px;
 }
+
 .co2o2 {
     text-align: center;
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
 #O2Btn {
     border: none;
     padding: 0;
     margin: auto;
 }
+
 #CO2Btn {
     border: none;
     padding: 0;
     margin: auto;
 }
+
 .O2table {
     text-align: center;
     margin: auto;
@@ -933,40 +1067,50 @@ input#intervalsDoneHAT {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 .O2table td {
     padding-left: 20px;
     padding-right: 20px;
     border-left: solid;
     border-right: solid;
 }
+
 .hold {
     border-bottom: solid;
 }
+
 .O2btns {
     text-align: center;
     font-size: 18px;
 }
+
 #O2Table {
     margin-bottom: 30px;
 }
-#CO2Table{
+
+#CO2Table {
     margin-bottom: 30px;
     display: none;
 }
+
 .gap1O2 {
     background-color: #49b79d49;
 }
+
 .gap1CO2 {
     background-color: #49b79d49;
 }
+
 button#startBtnWH {
     margin-right: 0 !important;
     width: 10rem;
 }
+
 input#WHSave {
     width: 10rem;
     margin: 0;
 }
+
 button#stopBtnWH {
     color: rgb(177, 177, 177);
     width: 10rem;
@@ -979,6 +1123,7 @@ button#stopBtnWH {
     outline: none;
     margin-right: 15px;
 }
+
 button#resetBtnWH {
     color: rgb(177, 177, 177);
     width: 10rem;
@@ -992,10 +1137,12 @@ button#resetBtnWH {
     display: none;
     margin-right: 15px;
 }
+
 #circleWH {
     width: 100%;
     text-align: center;
 }
+
 input#breakDurationInput2WH {
     border: none;
     text-align: center;
@@ -1003,6 +1150,7 @@ input#breakDurationInput2WH {
     width: 100px;
     color: #0661AA;
 }
+
 input#breathSpeed {
     border: none;
     text-align: center;
@@ -1010,14 +1158,17 @@ input#breathSpeed {
     width: 150px;
     color: #0661AA;
 }
+
 form#WHForm {
     display: inline-flex;
     align-items: center;
     margin-bottom: 20px;
 }
-#WHResults{
+
+#WHResults {
     margin-bottom: 50px;
 }
+
 .meditations {
     display: flex;
     align-items: center;
@@ -1026,17 +1177,949 @@ form#WHForm {
     width: 90%;
     margin: auto;
 }
+
 .meditations ul {
     margin-top: 20px;
     font-size: 20px !important;
 }
+
 .meditations ul::before {
     content: '';
 }
+
 .progress-bar {
-    width: 90%; 
+    width: 90%;
     margin: auto;
 }
-.medDiv{
+
+.medDiv {
     margin-bottom: 20px;
+}
+/* Styling for the accordion */
+.accordion-header {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    font-family: 'Playfair Display';
+    font-size: 28px;
+    color: #0661AA;
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px 10px 40px 10px;
+}
+.accordion {
+    margin-bottom: 150px;
+}
+.accordion-header2 {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    color: #0661AA;
+    border-top: solid 1px;
+}
+
+.accordion-content2 {
+    display: none;
+    padding: 10px 10px 40px 10px;
+}
+
+.accordion2 {
+    margin-bottom: 0;
+}
+.resultInput {
+    border: none;
+    text-align: left;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+    width: 130px;
+    vertical-align: top;
+}
+.chart-container {
+    width: 100%;
+    max-width: 600px;
+    max-height: 400px;
+    min-height: 200px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+}
+canvas#brtChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+.BRTInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.BRTInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+.BRTinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+.BRTinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+}
+#BRTinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+#BRTresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#BRTresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+form.BRTdelete-form {
+    display: inline-flex;
+    margin-bottom: 30px; 
+    line-height: 40px;
+    height: 40px;
+}
+canvas#YOGICChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+.YOGICInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.YOGICInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+.YOGICinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+.YOGICinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+#YOGICinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+#YOGICresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#YOGICresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+form.YOGICdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#BREChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+.BREInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.BREInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+.BREinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+.BREinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+#BREinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+#BREresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#BREresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+form.BREdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#BRWChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+.BRWInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.BRWInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+.BRWinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+.BRWinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+#BRWinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+#BRWresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#BRWresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+form.BRWdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#HUMChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+.HUMInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.HUMInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.HUMinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+    .HUMinfoOverview input {
+        border: none;
+        text-align: right;
+        color: #0661AA;
+        background-color: transparent;
+        width: 250px;
+    }
+
+#HUMinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#HUMresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#HUMresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.HUMdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#BBChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+.BBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.BBInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.BBinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.BBinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#BBinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#BBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#BBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.BBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#APChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+.APInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.APInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.APinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.APinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#APinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#APresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#APresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.APdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#APChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.APInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.APInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.APinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+    .APinfoOverview input {
+        border: none;
+        text-align: right;
+        color: #0661AA;
+        background-color: transparent;
+        width: 250px;
+    }
+
+#APinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#APresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#APresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+form.APdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#CTChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.CTInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.CTInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.CTinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.CTinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#CTinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#CTresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#CTresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.CTdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#LUNGSChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.LUNGSInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.LUNGSInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.LUNGSinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.LUNGSinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#LUNGSinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#LUNGSresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#LUNGSresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.LUNGSdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#BOXChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.BOXInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.BOXInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.BOXinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.BOXinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#BOXinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#BOXresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#BOXresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.BOXdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#UBChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.UBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.UBInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.UBinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.UBinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#UBinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#UBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#UBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.UBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }

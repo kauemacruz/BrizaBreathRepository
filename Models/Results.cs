@@ -68,10 +68,10 @@ namespace BrizaBreath.Models
         public string? UBIntervals { get; set; }
         [DataType(DataType.Date)]
         public DateTime? UBResultDate { get; set; }
-        public string? B4TotalTime { get; set; }
-        public string? B4Intervals { get; set; }
+        public string? BOXTotalTime { get; set; }
+        public string? BOXIntervals { get; set; }
         [DataType(DataType.Date)]
-        public DateTime? B4ResultDate { get; set; }
+        public DateTime? BOXResultDate { get; set; }
         public string? NBTotalTime { get; set; }
         public string? NBIntervals { get; set; }
         [DataType(DataType.Date)]

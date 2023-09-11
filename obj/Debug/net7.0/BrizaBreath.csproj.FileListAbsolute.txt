@@ -285,3 +285,5 @@ C:\Users\kaue_\source\repos\BrizaBreath\obj\Debug\net7.0\refint\BrizaBreath.dll
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Debug\net7.0\BrizaBreath.pdb
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Debug\net7.0\BrizaBreath.genruntimeconfig.cache
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Debug\net7.0\ref\BrizaBreath.dll
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\package-lock.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\package.json

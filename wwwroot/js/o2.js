@@ -73,7 +73,6 @@ $(function () {
         timerControlsButtonsO2.startO2.style.display = 'inline';
         setFormDisabledStateO2(false);
         setTimerControlsDisabledStateO2(false, true, true);
-        document.getElementById('resetBtnO2').style.display = 'none';
         document.getElementById('stopBtnO2').style.display = 'inline';
         timerControlsButtonsO2.stopO2.style.color = "rgb(177, 177, 177)";
         timerControlsButtonsO2.startO2.style.color = "#0661AA";
@@ -986,8 +985,13 @@ function initializeTimerSettingsFormO2() {
     timerControlsButtonsO2.pauseO2.style.display = 'none'; 
     timerControlsButtonsO2.startO2.style.display = 'inline';
     document.getElementById('O2Date').value = date;
-    document.getElementById('O2Save').disabled = false;
-    document.getElementById('O2Save').style.color = '#49B79D';
+    if (timerO2.intervalsDoneO2 == 0) {
+        document.getElementById('O2Save').disabled = true;
+    }
+    else {
+        document.getElementById('O2Save').disabled = false;
+        document.getElementById('O2Save').style.color = '#49B79D';
+    }
     if (!isSongMuteO2) {
         audioPlayerO2.pause();
     }
@@ -1088,7 +1092,7 @@ function initializeTimerSettingsFormO2() {
         timerO2.isBreak2O2 = true;
         timerO2.isBreakO2 = false; 
         timerO2.intervalsDoneO2++;
-        document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerO2.intervalsDoneO2 + 1) + "</div><div>" + timerO2.elapsedInIntervalO2 + " seconds</div></div>";
+        document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
         timerRefO2.value += timerO2.elapsedInIntervalO2 + "|";
         timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
         if (!timerO2.isFinishedO2) {
@@ -1141,8 +1145,8 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak4O2 = true;
           timerO2.isBreak3O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerO2.intervalsDoneO2 + 1) + "</div><div>" + timerO2.elapsedInIntervalO2 + " seconds</div></div>";
-          timerRefO2.value += timerO2.elapsedInIntervalO2 + "|";
+          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
             timerO2.elapsedInIntervalO2 = 1;
@@ -1194,8 +1198,8 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak6O2 = true;
           timerO2.isBreak5O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerO2.intervalsDoneO2 + 1) + "</div><div>" + timerO2.elapsedInIntervalO2 + " seconds</div></div>";
-          timerRefO2.value += timerO2.elapsedInIntervalO2 + "|";
+          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
             timerO2.elapsedInIntervalO2 = 1;
@@ -1247,8 +1251,8 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak8O2 = true;
           timerO2.isBreak7O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerO2.intervalsDoneO2 + 1) + "</div><div>" + timerO2.elapsedInIntervalO2 + " seconds</div></div>";
-          timerRefO2.value += timerO2.elapsedInIntervalO2 + "|";          
+          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 -1) + " seconds</div></div>";
+            timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";          
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
             timerO2.elapsedInIntervalO2 = 1;
@@ -1300,8 +1304,8 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak10O2 = true;
           timerO2.isBreak9O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerO2.intervalsDoneO2 + 1) + "</div><div>" + timerO2.elapsedInIntervalO2 + " seconds</div></div>";
-          timerRefO2.value += timerO2.elapsedInIntervalO2 + "|";
+          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 -1) + " seconds</div></div>";
+          timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
             timerO2.elapsedInIntervalO2 = 1;
@@ -1353,8 +1357,8 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak12O2 = true;
           timerO2.isBreak11O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerO2.intervalsDoneO2 + 1) + "</div><div>" + timerO2.elapsedInIntervalO2 + " seconds</div></div>";
-          timerRefO2.value += timerO2.elapsedInIntervalO2 + "|";
+          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
             timerO2.elapsedInIntervalO2 = 1;
@@ -1406,8 +1410,8 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak14O2 = true;
           timerO2.isBreak13O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerO2.intervalsDoneO2 + 1) + "</div><div>" + timerO2.elapsedInIntervalO2 + " seconds</div></div>";
-          timerRefO2.value += timerO2.elapsedInIntervalO2 + "|";
+            document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
             timerO2.elapsedInIntervalO2 = 1;
@@ -1455,8 +1459,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.isFinishedO2 = true;
         timerO2.isBreak15O2 = false;
         timerO2.intervalsDoneO2++;
-        document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerO2.intervalsDoneO2 + 1) + "</div><div>" + timerO2.elapsedInIntervalO2 + " seconds</div></div>";
-        timerRefO2.value += timerO2.elapsedInIntervalO2 + "|";
+          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+          timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
         timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
         timerO2.elapsedInIntervalO2 = 1;
         pauseTimerO2();

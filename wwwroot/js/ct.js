@@ -406,11 +406,15 @@ function pauseTimerCT() {
     timerCT.isBreak3CT = true;
     timerCT.isBreakCT = false;
     timerCT.isBreak2CT = false;
-    setTimeout(recoverCT, 3000);
+    setTimerControlsDisabledStateCT(true, true, true);
     timerSettingsCT.breakDurationCT = 3;
     formSettingsFieldsCT.breakDurationCT.value = 3;
     timerSettingsCT.breakDuration2CT = 4;
     formSettingsFieldsCT.breakDuration2CT.value = 4;
+    setTimeout(function () {
+        recoverCT();
+        setTimerControlsDisabledStateCT(false, false, false);
+    }, 3000);
 }
 function recoverCT() {
     startTimerTickCT();

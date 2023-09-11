@@ -25,7 +25,6 @@ $(function () {
         timerControlsButtonsCO2.startCO2.style.display = 'inline';
         setFormDisabledStateCO2(false);
         setTimerControlsDisabledStateCO2(false, true, true);
-        document.getElementById('resetBtnCO2').style.display = 'none';
         document.getElementById('stopBtnCO2').style.display = 'inline';
         timerControlsButtonsCO2.stopCO2.style.color = "rgb(177, 177, 177)";
         timerControlsButtonsCO2.startCO2.style.color = "#0661AA";
@@ -991,8 +990,13 @@ function initializeTimerSettingsFormCO2() {
     timerControlsButtonsCO2.pauseCO2.style.display = 'none'; 
     timerControlsButtonsCO2.startCO2.style.display = 'inline';
     document.getElementById('CO2Date').value = date;
-    document.getElementById('CO2Save').disabled = false;
-    document.getElementById('CO2Save').style.color = '#49B79D';
+    if (timerCO2.intervalsDoneCO2 == 0) {
+        document.getElementById('CO2Save').disabled = true;
+    }
+    else {
+        document.getElementById('CO2Save').disabled = false;
+        document.getElementById('CO2Save').style.color = '#49B79D';
+    }
     if (!isSongMuteCO2) {
         audioPlayerO2.pause();
     }
@@ -1093,8 +1097,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.isBreak2CO2 = true;
         timerCO2.isBreakCO2 = false; 
         timerCO2.intervalsDoneCO2++;
-        document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerCO2.intervalsDoneCO2 + 1) + "</div><div>" + timerCO2.elapsedInIntervalCO2 + " seconds</div></div>";
-        timerRefCO2.value += timerCO2.elapsedInIntervalCO2 + "|";
+        document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+          timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
         timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
         if (!timerCO2.isFinishedCO2) {
             timerCO2.elapsedInIntervalCO2 = 1;
@@ -1146,8 +1150,8 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak4CO2 = true;
           timerCO2.isBreak3CO2 = false;
           timerCO2.intervalsDoneCO2++;
-          document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerCO2.intervalsDoneCO2 + 1) + "</div><div>" + timerCO2.elapsedInIntervalCO2 + " seconds</div></div>";
-          timerRefCO2.value += timerCO2.elapsedInIntervalCO2 + "|";
+            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
             timerCO2.elapsedInIntervalCO2 = 1;
@@ -1199,8 +1203,8 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak6CO2 = true;
           timerCO2.isBreak5CO2 = false;
           timerCO2.intervalsDoneCO2++;
-          document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerCO2.intervalsDoneCO2 + 1) + "</div><div>" + timerCO2.elapsedInIntervalCO2 + " seconds</div></div>";
-          timerRefCO2.value += timerCO2.elapsedInIntervalCO2 + "|";
+            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
             timerCO2.elapsedInIntervalCO2 = 1;
@@ -1252,8 +1256,8 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak8CO2 = true;
           timerCO2.isBreak7CO2 = false;
           timerCO2.intervalsDoneCO2++;
-          document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerCO2.intervalsDoneCO2 + 1) + "</div><div>" + timerCO2.elapsedInIntervalCO2 + " seconds</div></div>";
-          timerRefCO2.value += timerCO2.elapsedInIntervalCO2 + "|";          
+            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";          
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
             timerCO2.elapsedInIntervalCO2 = 1;
@@ -1305,8 +1309,8 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak10CO2 = true;
           timerCO2.isBreak9CO2 = false;
           timerCO2.intervalsDoneCO2++;
-          document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerCO2.intervalsDoneCO2 + 1) + "</div><div>" + timerCO2.elapsedInIntervalCO2 + " seconds</div></div>";
-          timerRefCO2.value += timerCO2.elapsedInIntervalCO2 + "|";
+            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
             timerCO2.elapsedInIntervalCO2 = 1;
@@ -1358,8 +1362,8 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak12CO2 = true;
           timerCO2.isBreak11CO2 = false;
           timerCO2.intervalsDoneCO2++;
-          document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerCO2.intervalsDoneCO2 + 1) + "</div><div>" + timerCO2.elapsedInIntervalCO2 + " seconds</div></div>";
-          timerRefCO2.value += timerCO2.elapsedInIntervalCO2 + "|";
+            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
             timerCO2.elapsedInIntervalCO2 = 1;
@@ -1411,8 +1415,8 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak14CO2 = true;
           timerCO2.isBreak13CO2 = false;
           timerCO2.intervalsDoneCO2++;
-          document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerCO2.intervalsDoneCO2 + 1) + "</div><div>" + timerCO2.elapsedInIntervalCO2 + " seconds</div></div>";
-          timerRefCO2.value += timerCO2.elapsedInIntervalCO2 + "|";
+            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
             timerCO2.elapsedInIntervalCO2 = 1;
@@ -1460,8 +1464,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.isFinishedCO2 = true;
         timerCO2.isBreak15CO2 = false;
         timerCO2.intervalsDoneCO2++;
-        document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerCO2.intervalsDoneCO2 + 1) + "</div><div>" + timerCO2.elapsedInIntervalCO2 + " seconds</div></div>";
-        timerRefCO2.value += timerCO2.elapsedInIntervalCO2 + "|";
+          document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+          timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
         timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
         timerCO2.elapsedInIntervalCO2 = 1;
         pauseTimerCO2();

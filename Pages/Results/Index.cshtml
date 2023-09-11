@@ -148,13 +148,13 @@
                 @Html.DisplayNameFor(model => model.Result[0].UBIntervals)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Result[0].B4TotalTime)
+                @Html.DisplayNameFor(model => model.Result[0].BOXTotalTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Result[0].B4ResultDate)
+                @Html.DisplayNameFor(model => model.Result[0].BOXResultDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Result[0].B4Intervals)
+                @Html.DisplayNameFor(model => model.Result[0].BOXIntervals)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Result[0].NBTotalTime)
@@ -208,7 +208,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Result) {
+ @foreach (var item in Model.Result) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.brtResultScore)
@@ -349,13 +349,13 @@
                 @Html.DisplayFor(modelItem => item.UBIntervals)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.B4TotalTime)
+                @Html.DisplayFor(modelItem => item.BOXTotalTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.B4ResultDate)
+                @Html.DisplayFor(modelItem => item.BOXResultDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.B4Intervals)
+                @Html.DisplayFor(modelItem => item.BOXIntervals)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NBTotalTime)

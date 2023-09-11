@@ -38,6 +38,12 @@ namespace BrizaBreath.Pages.Results
                     .ToListAsync();
             }
 
+            // Check if the request includes the 'fetchData' query parameter
+            if (HttpContext.Request.Query.ContainsKey("fetchData"))
+            {
+                return new JsonResult(GetResult);
+            }
+
             return Page();
         }
 
@@ -59,5 +65,32 @@ namespace BrizaBreath.Pages.Results
 
             return Content("Result Saved");       
         }
+        public async Task<IActionResult> OnPostDeleteAsync(int resultId)
+        {
+            Console.WriteLine("Received delete request for result ID: " + resultId);
+
+            try
+            {
+                var result = await _context.Result.FindAsync(resultId);
+
+                if (result != null)
+                {
+                    _context.Result.Remove(result);
+                    await _context.SaveChangesAsync();
+                    return new JsonResult(new { success = true });
+                }
+                else
+                {
+                    return new JsonResult(new { success = false, message = "Result not found." });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                Console.WriteLine("Error deleting result: " + ex.Message);
+                return new JsonResult(new { success = false, message = "An error occurred while deleting the result." });
+            }
+        }
+
     }
 }
