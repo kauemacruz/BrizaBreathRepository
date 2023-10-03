@@ -71,7 +71,9 @@ header {
 #account,
 #forgotForm,
 #registerForm,
-#passwordForm {
+#passwordForm,
+#change-password-form,
+#delete-user {
     text-align: center;
     font-family: 'Playfair Display';
     color: #49B79D !important;
@@ -102,7 +104,8 @@ input -webkit-autofill {
 .loginText,
 #registerText,
 #forgotText,
-#passwordText {
+#passwordText,
+#changePassText {
     font-size: 25px;
     color: #49B79D;
     text-align: center;
@@ -119,13 +122,96 @@ p.loginText a {
 #login-submit,
 #registerSubmit,
 #forgotBtn,
-#passwordBtn {
+#passwordBtn,
+#changePassBtn {
     width: 80%;
     font-size: 25px;
     background-color: #0661AA;
     color: white;
     border: none;
     margin-bottom: 20px;
+}
+#deleteActBtn {
+    width: 80%;
+    font-size: 25px;
+    background-color: red;
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+}
+#logoutBtn {
+    font-size: 18px;
+    color: #49B79D;
+    border: none;
+    background-color: white;
+}
+#subscriptionBtn {
+    font-size: 18px;
+    color: #49B79D;
+    border: none;
+    background-color: white;
+    margin-top: 20px;
+}
+#subscribeNow{
+    text-align: center !important;
+}
+#deleteAccountBtn {
+    font-size: 18px;
+    color: red;
+    border: none;
+    background-color: white;
+    text-decoration: none;
+}
+#changeAccountBtn {
+    font-size: 18px;
+    color: #49B79D;
+    border: none;
+    background-color: white;
+    text-decoration: none;
+}
+.flexProfile {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.profile {
+    text-align: center;
+    margin-top: 20px;
+    display: grid;
+    margin-bottom: 20px;
+}
+.profile a{
+    font-size: 18px;
+}
+#profilePage{
+    margin-bottom: 120px;
+}
+.smallText{
+    font-size: 12px;
+}
+.contactProfile{
+    display: flex;
+}
+.contactProfile p {
+    padding: 0 !important;
+    font-size: 14px !important;
+    margin-right: 15px;
+    margin-top: 4px;
+}
+.profile h2 {
+    margin-bottom: 10px !important;
+}
+.contactProfile {
+    display: flex;
+    justify-content: center;
+}
+.deletingWarning{
+    text-align: center;
+    color: red;
+}
+.flags img {
+    max-width: 190px;
 }
 hr {
     width: 80%;
@@ -155,7 +241,8 @@ hr {
     #login-submit,
     #registerSubmit,
     #forgotBtn,
-    #passwordBtn {
+    #passwordBtn,
+    #changePassBtn {
         width: 450px !important;
     }
     .col-md-offset-2 {
@@ -174,7 +261,7 @@ hr {
     #homepagegrid {
         width: 500px;
         margin: auto !important;
-        padding-top: 20px;
+        padding-top: 5px;
     }
     .BHGrid {
         width: 500px;
@@ -240,14 +327,19 @@ hr {
         width: 100%;
     }
 }
+@media only screen and (max-width: 500px) {
+    .homepageimgs {
+        height: 160px !important;
+    }
+}
 /*homepage*/
 .container {
     padding: 0;
 }
 
 #homepagegrid {
-    margin-top: 20px;
-    margin-bottom: 160px !important;
+    margin-top: 5px;
+    margin-bottom: 100px !important;
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
@@ -260,6 +352,7 @@ hr {
     width: 100%;
     height: auto;
     max-width: 400px;
+    object-fit: cover;
 }
 
 .w-100 {
@@ -455,6 +548,7 @@ hr {
 #programPage h1 {
     text-align: center;
     margin-bottom: 0;
+    font-weight: bold;
 }
 
 #programPage h2 {
@@ -536,16 +630,19 @@ hr {
 .BRTtile__img {
     width: 98%;
     border-radius: 5px;
+    height: 110px;
+    object-fit: cover;
 }
 /*Breathing pages*/
 .breathingpages {
     font-family: 'Playfair Display';
     margin-top: 25px;
-    margin-bottom: 80px;
     width: 100%;
     color: #0661AA;
 }
-
+.breathingpages.BHbreathing{
+   margin-bottom: 10px !important;
+}
 .breathingpages ul {
     padding-left: 20px;
     padding-right: 20px;
@@ -582,6 +679,7 @@ video[poster] {
 
 .breathingpages h1 {
     text-align: center;
+    font-weight: bold;
 }
 
 .breathingpages h2 {
@@ -594,10 +692,6 @@ video[poster] {
     color: #0661AA;
     font-size: 15px;
     width: 95px;
-}
-
-.breathingpages header {
-    box-shadow: none;
 }
 
 .settings-form.BRE {
@@ -847,7 +941,7 @@ input#timerDisplayLungs {
     text-align: center;
 }
 
-header.boxFontSize {
+.boxFontSize {
     font-size: 30px;
 }
 
@@ -938,7 +1032,6 @@ header.boxFontSize {
 /*TIMER*/
 .main-container {
     display: grid;
-    grid-gap: 2rem;
     grid-template-areas: "status" "controls" "settings";
     margin-bottom: 1rem;
 }
@@ -966,7 +1059,7 @@ header.boxFontSize {
     margin-top: 30px;
 }
 
-.box header {
+.box.boxFontSize {
     height: 15px;
 }
 
@@ -1034,11 +1127,12 @@ input#intervalsDoneHAT {
 }
 
 .BHGrid {
-    margin-top: 20px;
-    margin-bottom: 80px !important;
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
+}
+.welnessGrid{
+    margin-bottom: 50px;
 }
 
 .co2o2 {
@@ -1158,6 +1252,9 @@ input#breathSpeed {
     width: 150px;
     color: #0661AA;
 }
+#WHtimer-controls{
+    height: 60px;
+}
 
 form#WHForm {
     display: inline-flex;
@@ -1203,14 +1300,27 @@ form#WHForm {
     font-family: 'Playfair Display';
     font-size: 28px;
     color: #0661AA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
+.accordion-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    min-height: 120px;
+    padding-top: 30px;
+}
 .accordion-content {
     display: none;
     padding: 10px 10px 40px 10px;
 }
 .accordion {
-    margin-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    margin-top:10px;
+    margin-bottom:120px;
+    height: fit-content;
 }
 .accordion-header2 {
     cursor: pointer;
@@ -2122,4 +2232,887 @@ form.UBdelete-form {
     height: 40px;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+canvas#NBChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.NBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.NBInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.NBinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.NBinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#NBinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#NBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#NBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.NBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#SBChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.SBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.SBInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.SBinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.SBinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#SBinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#SBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#SBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.SBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#RBChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.RBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.RBInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.RBinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.RBinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#RBinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#RBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#RBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.RBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#CBChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.CBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.CBInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.CBinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.CBinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#CBinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#CBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#CBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.CBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#SEXChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.SEXInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.SEXInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.SEXinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.SEXinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#SEXinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#SEXresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#SEXresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.SEXdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#WHChart {
+    height: 300px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.WHInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.WHInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.WHinfoOverview {
+    display: grid;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.WHinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#WHinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#WHresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#WHresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.WHdelete-form {
+    display: grid;
+}
+.WHresultInput {
+    border: none;
+    text-align: left;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.WHdelete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#HATChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.HATInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.HATInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.HATinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.HATinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#HATinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#HATresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#HATresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.HATdelete-form {
+    display: grid;
+}
+.HATresultInput {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.HATdelete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#HATCChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.HATCInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.HATCInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.HATCinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.HATCinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#HATCinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#HATCresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#HATCresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.HATCdelete-form {
+    display: grid;
+}
+.HATCresultInput {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.HATCdelete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#AHATChart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.AHATInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.AHATInfo h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.AHATinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.AHATinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#AHATinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#AHATresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#AHATresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.AHATdelete-form {
+    display: grid;
+}
+.AHATresultInput {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.AHATdelete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#O2Chart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.O2Info {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.O2Info h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.O2infoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.O2infoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#O2infoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#O2resultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#O2resultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.O2delete-form {
+    display: grid;
+}
+.O2resultInput {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.O2delete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#CO2Chart {
+    height: 250px !important;
+    font-family: 'Playfair Display';
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.CO2Info {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.CO2Info h4 {
+    font-family: 'Playfair Display';
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.CO2infoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.CO2infoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#CO2infoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 15px;
+}
+
+#CO2resultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#CO2resultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-family: 'Playfair Display';
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.CO2delete-form {
+    display: grid;
+}
+.CO2resultInput {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.CO2delete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }

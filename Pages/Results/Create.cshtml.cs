@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using BrizaBreath.Data;
 using BrizaBreath.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
@@ -17,6 +11,8 @@ namespace BrizaBreath.Pages.Results
     public class CreateModel : PageModel
     {
         public string? ResultUser { get; set; }
+        public string? UserEmail { get; set; }
+
 
         private readonly BrizaBreath.Data.ApplicationDbContext _context;
 
@@ -30,6 +26,10 @@ namespace BrizaBreath.Pages.Results
         public async Task<IActionResult> OnGetAsync()
         {
             ResultUser = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+
+            // Retrieve the user's email
+            var userEmailClaim = User.FindFirst(ClaimTypes.Email);
+            UserEmail = userEmailClaim?.Value;
 
             if (_context.Result != null)
             {

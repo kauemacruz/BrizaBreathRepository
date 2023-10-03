@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gyYLjhuY0LJN5hFMl+VQwN2JgLnQ8uKzvsDySLESpro=",
+  "Hash": "yVR2PaH7FbqvjBKHQJZ209j6tfdZSVJhKVMEK6Zc4sQ=",
   "Source": "BrizaBreath",
   "BasePath": "_content/BrizaBreath",
   "Mode": "Default",
@@ -1258,6 +1258,23 @@
       "OriginalItemSpec": "wwwroot\\images\\boxbreathing.png"
     },
     {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\br.png",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "images/br.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\br.png"
+    },
+    {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\breathholds.png",
       "SourceId": "BrizaBreath",
       "SourceType": "Discovered",
@@ -1528,6 +1545,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\diet.png"
+    },
+    {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\en.png",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "images/en.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\en.png"
     },
     {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\favicon.png",

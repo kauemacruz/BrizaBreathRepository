@@ -134,10 +134,18 @@ document.getElementById('hatSave').disabled = true;
 document.getElementById('hatSave').style.color = 'rgb(177, 177, 177)';
 
 var audioListHAT = []
-audioListHAT.push(new Audio('../sounds/pinchnose.mp3'));
-audioListHAT.push(new Audio('../sounds/lightbreath.mp3'));
-audioListHAT.push(new Audio('../sounds/normalbreath.mp3'));
-audioListHAT.push(new Audio('../sounds/hold.mp3'));
+if (isPortuguese) {
+    audioListHAT.push(new Audio('../sounds/pinchnose.mp3'));
+    audioListHAT.push(new Audio('../sounds/lightbreath.mp3'));
+    audioListHAT.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListHAT.push(new Audio('../sounds/hold.mp3'));
+} else {
+    audioListHAT.push(new Audio('../sounds/pinchnose.mp3'));
+    audioListHAT.push(new Audio('../sounds/lightbreath.mp3'));
+    audioListHAT.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListHAT.push(new Audio('../sounds/hold.mp3'));
+}
+
 
 var audioHAT = document.getElementById("audioHAT"),
     muteHAT = document.getElementById("muteHAT"),
@@ -395,7 +403,11 @@ function pauseTimerHAT() {
     document.getElementById('stopBtnHAT').style.color = '#990000';
     setTimerControlsDisabledStateHAT(true, true, false);
     nextroundHAT = true;
-    document.getElementById("HATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHAT.intervalsDoneHAT + 1) + "</div><div>" + timerHAT.elapsedInIntervalHAT + " seconds</div></div>";
+    if (isPortuguese) {
+        document.getElementById("HATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHAT.intervalsDoneHAT + 1) + "</div><div>" + timerHAT.elapsedInIntervalHAT + " segundos</div></div>";
+    } else {
+        document.getElementById("HATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHAT.intervalsDoneHAT + 1) + "</div><div>" + timerHAT.elapsedInIntervalHAT + " seconds</div></div>";
+    }
     timerRefHAT.value += timerHAT.elapsedInIntervalHAT + "|";
     timerHAT.elapsedInIntervalHAT = 0;
     timerHAT.intervalsDoneHAT++;
@@ -403,7 +415,11 @@ function pauseTimerHAT() {
 
 function stopTimerHAT() {
     if (elapsedInIntervalBoxHAT.style.display !== "none") {
-        document.getElementById("HATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHAT.intervalsDoneHAT + 1) + "</div><div>" + timerHAT.elapsedInIntervalHAT + " seconds</div></div>";
+        if (isPortuguese) {
+            document.getElementById("HATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHAT.intervalsDoneHAT + 1) + "</div><div>" + timerHAT.elapsedInIntervalHAT + " segundos</div></div>";
+        } else {
+            document.getElementById("HATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHAT.intervalsDoneHAT + 1) + "</div><div>" + timerHAT.elapsedInIntervalHAT + " seconds</div></div>";
+        }
         timerRefHAT.value += timerHAT.elapsedInIntervalHAT + "|";
     } else { }
     clearInterval(intHAT);

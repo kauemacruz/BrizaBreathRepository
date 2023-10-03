@@ -256,7 +256,18 @@ var navResults = document.getElementById("navResults"),
     backAPresults = document.getElementById("backAPresults"),
     backCTresults = document.getElementById("backCTresults"),
     backBOXresults = document.getElementById("backBOXresults"),
-    backUBresults = document.getElementById("backUBresults");
+    backUBresults = document.getElementById("backUBresults"),
+    backNBresults = document.getElementById("backNBresults"),
+    backSBresults = document.getElementById("backSBresults"),
+    backCBresults = document.getElementById("backCBresults"),
+    backRBresults = document.getElementById("backRBresults"),
+    backSEXresults = document.getElementById("backSEXresults"),
+    backWHresults = document.getElementById("backWHresults"),
+    backHATresults = document.getElementById("backHATresults"),
+    backHATCresults = document.getElementById("backHATCresults"),
+    backAHATresults = document.getElementById("backAHATresults"),
+    backO2results = document.getElementById("backO2results"),
+    backCO2results = document.getElementById("backCO2results");
 
 
 /*Pages*/
@@ -466,6 +477,116 @@ navResults.onclick = function () {
                 UBupdateChart(UBstartDate, UBendDate);
             }
             UBupdateOverview();
+            // Check if there is at least one non-empty and non-null NBtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (NBresultData) {
+                var NBtimeString = NBresultData.nbTotalTime;
+                return NBtimeString !== undefined && NBtimeString !== '' && NBtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                NBupdateChart(NBstartDate, NBendDate);
+            }
+            NBupdateOverview();
+            // Check if there is at least one non-empty and non-null SBtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SBresultData) {
+                var SBtimeString = SBresultData.sbTotalTime;
+                return SBtimeString !== undefined && SBtimeString !== '' && SBtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                SBupdateChart(SBstartDate, SBendDate);
+            }
+            SBupdateOverview();
+            // Check if there is at least one non-empty and non-null CBtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CBresultData) {
+                var CBtimeString = CBresultData.cbTotalTime;
+                return CBtimeString !== undefined && CBtimeString !== '' && CBtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                CBupdateChart(CBstartDate, CBendDate);
+            }
+            CBupdateOverview();
+            // Check if there is at least one non-empty and non-null RBtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (RBresultData) {
+                var RBtimeString = RBresultData.rbTotalTime;
+                return RBtimeString !== undefined && RBtimeString !== '' && RBtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                RBupdateChart(RBstartDate, RBendDate);
+            }
+            RBupdateOverview();
+            // Check if there is at least one non-empty and non-null SEXtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SEXresultData) {
+                var SEXtimeString = SEXresultData.sexTotalTime;
+                return SEXtimeString !== undefined && SEXtimeString !== '' && SEXtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                SEXupdateChart(SEXstartDate, SEXendDate);
+            }
+            SEXupdateOverview();
+            // Check if there is at least one non-empty and non-null WHtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (WHresultData) {
+                var WHtimeString = WHresultData.whTotalTime;
+                return WHtimeString !== undefined && WHtimeString !== '' && WHtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                WHupdateChart(WHstartDate, WHendDate);
+            }
+            WHupdateOverview();
+            // Check if there is at least one non-empty and non-null HATtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATresultData) {
+                var HATtimeString = HATresultData.hatTotalTime;
+                return HATtimeString !== undefined && HATtimeString !== '' && HATtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                HATupdateChart(HATstartDate, HATendDate);
+            }
+            HATupdateOverview();
+            // Check if there is at least one non-empty and non-null HATCtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATCresultData) {
+                var HATCtimeString = HATCresultData.hatcTotalTime;
+                return HATCtimeString !== undefined && HATCtimeString !== '' && HATCtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                HATCupdateChart(HATCstartDate, HATCendDate);
+            }
+            HATCupdateOverview();
+            // Check if there is at least one non-empty and non-null AHATtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (AHATresultData) {
+                var AHATtimeString = AHATresultData.ahatTotalTime;
+                return AHATtimeString !== undefined && AHATtimeString !== '' && AHATtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                AHATupdateChart(AHATstartDate, AHATendDate);
+            }
+            AHATupdateOverview();
+            // Check if there is at least one non-empty and non-null CO2timeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CO2resultData) {
+                var CO2timeString = CO2resultData.co2TotalTime;
+                return CO2timeString !== undefined && CO2timeString !== '' && CO2timeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                CO2updateChart(CO2startDate, CO2endDate);
+            }
+            CO2updateOverview();
+            // Check if there is at least one non-empty and non-null O2timeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (O2resultData) {
+                var O2timeString = O2resultData.o2TotalTime;
+                return O2timeString !== undefined && O2timeString !== '' && O2timeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                O2updateChart(O2startDate, O2endDate);
+            }
+            O2updateOverview();
         },
         error: function (error) {
             console.error("Error fetching data:", error);
@@ -595,6 +716,116 @@ navResults2.onclick = function () {
                 UBupdateChart(UBstartDate, UBendDate);
             }
             UBupdateOverview();
+            // Check if there is at least one non-empty and non-null NBtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (NBresultData) {
+                var NBtimeString = NBresultData.nbTotalTime;
+                return NBtimeString !== undefined && NBtimeString !== '' && NBtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                NBupdateChart(NBstartDate, NBendDate);
+            }
+            NBupdateOverview();
+            // Check if there is at least one non-empty and non-null SBtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SBresultData) {
+                var SBtimeString = SBresultData.sbTotalTime;
+                return SBtimeString !== undefined && SBtimeString !== '' && SBtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                SBupdateChart(SBstartDate, SBendDate);
+            }
+            SBupdateOverview();
+            // Check if there is at least one non-empty and non-null CBtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CBresultData) {
+                var CBtimeString = CBresultData.cbTotalTime;
+                return CBtimeString !== undefined && CBtimeString !== '' && CBtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                CBupdateChart(CBstartDate, CBendDate);
+            }
+            CBupdateOverview();
+            // Check if there is at least one non-empty and non-null RBtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (RBresultData) {
+                var RBtimeString = RBresultData.rbTotalTime;
+                return RBtimeString !== undefined && RBtimeString !== '' && RBtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                RBupdateChart(RBstartDate, RBendDate);
+            }
+            RBupdateOverview();
+            // Check if there is at least one non-empty and non-null SEXtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SEXresultData) {
+                var SEXtimeString = SEXresultData.sexTotalTime;
+                return SEXtimeString !== undefined && SEXtimeString !== '' && SEXtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                SEXupdateChart(SEXstartDate, SEXendDate);
+            }
+            SEXupdateOverview();
+            // Check if there is at least one non-empty and non-null WHtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (WHresultData) {
+                var WHtimeString = WHresultData.whTotalTime;
+                return WHtimeString !== undefined && WHtimeString !== '' && WHtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                WHupdateChart(WHstartDate, WHendDate);
+            }
+            WHupdateOverview();
+            // Check if there is at least one non-empty and non-null HATtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATresultData) {
+                var HATtimeString = HATresultData.hatTotalTime;
+                return HATtimeString !== undefined && HATtimeString !== '' && HATtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                HATupdateChart(HATstartDate, HATendDate);
+            }
+            HATupdateOverview();
+            // Check if there is at least one non-empty and non-null HATCtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATCresultData) {
+                var HATCtimeString = HATCresultData.hatcTotalTime;
+                return HATCtimeString !== undefined && HATCtimeString !== '' && HATCtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                HATCupdateChart(HATCstartDate, HATCendDate);
+            }
+            HATCupdateOverview();
+            // Check if there is at least one non-empty and non-null AHATtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (AHATresultData) {
+                var AHATtimeString = AHATresultData.ahatTotalTime;
+                return AHATtimeString !== undefined && AHATtimeString !== '' && AHATtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                AHATupdateChart(AHATstartDate, AHATendDate);
+            }
+            AHATupdateOverview();
+            // Check if there is at least one non-empty and non-null CO2timeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CO2resultData) {
+                var CO2timeString = CO2resultData.co2TotalTime;
+                return CO2timeString !== undefined && CO2timeString !== '' && CO2timeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                CO2updateChart(CO2startDate, CO2endDate);
+            }
+            CO2updateOverview();
+            // Check if there is at least one non-empty and non-null O2timeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (O2resultData) {
+                var O2timeString = O2resultData.o2TotalTime;
+                return O2timeString !== undefined && O2timeString !== '' && O2timeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                O2updateChart(O2startDate, O2endDate);
+            }
+            O2updateOverview();
         },
         error: function (error) {
             console.error("Error fetching data:", error);
@@ -1278,14 +1509,6 @@ backLungsset.onclick = function () {
 mobilityLink.onclick = function () {
     openPage(homePage, mobilityPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    for (var i = 0; i < audioElements.length; i++) {
-        audioElements[i].muted = true;
-        audioElements[i].play();
-        setTimeout(function () {
-            audioElements[i].pause();
-            audioElements[i].currentTime = 0;
-        }, 1000);
-    }
 }
 backMobility.onclick = function () {
     openPage(mobilityPage, homePage, 'slideRight');
@@ -1571,7 +1794,6 @@ backWH.onclick = function () {
     ctxWH.textAlign = "center";
     yWH = formSettingsFieldsWH.breakDuration2WH.value;
     ctxWH.fillText(yWH, 150, 115);
-    audioListWH[1].play();
     document.getElementById("WHResults").innerHTML = '';
     stopTimerTickWH();
     resetTimerWH();
@@ -2211,4 +2433,58 @@ backUBresults.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     UBresultDateHeader.innerHTML = '';
     UBresultSessions.innerHTML = '';
+}
+backNBresults.onclick = function () {
+    openPage(NBresultPage, resultsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    NBresultDateHeader.innerHTML = '';
+    NBresultSessions.innerHTML = '';
+}
+backSBresults.onclick = function () {
+    openPage(SBresultPage, resultsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    SBresultDateHeader.innerHTML = '';
+    SBresultSessions.innerHTML = '';
+}
+backSEXresults.onclick = function () {
+    openPage(SEXresultPage, resultsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    SEXresultDateHeader.innerHTML = '';
+    SEXresultSessions.innerHTML = '';
+}
+backWHresults.onclick = function () {
+    openPage(WHresultPage, resultsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    WHresultDateHeader.innerHTML = '';
+    WHresultSessions.innerHTML = '';
+}
+backHATresults.onclick = function () {
+    openPage(HATresultPage, resultsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    HATresultDateHeader.innerHTML = '';
+    HATresultSessions.innerHTML = '';
+}
+backHATCresults.onclick = function () {
+    openPage(HATCresultPage, resultsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    HATCresultDateHeader.innerHTML = '';
+    HATCresultSessions.innerHTML = '';
+}
+backAHATresults.onclick = function () {
+    openPage(AHATresultPage, resultsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    AHATresultDateHeader.innerHTML = '';
+    AHATresultSessions.innerHTML = '';
+}
+backO2results.onclick = function () {
+    openPage(O2resultPage, resultsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    O2resultDateHeader.innerHTML = '';
+    O2resultSessions.innerHTML = '';
+}
+backCO2results.onclick = function () {
+    openPage(CO2resultPage, resultsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    CO2resultDateHeader.innerHTML = '';
+    CO2resultSessions.innerHTML = '';
 }

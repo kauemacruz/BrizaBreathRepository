@@ -130,10 +130,18 @@ document.getElementById('NBSave').disabled = true;
 document.getElementById('NBSave').style.color = 'rgb(177, 177, 177)';
 
 var audioListNB = []
-audioListNB.push(new Audio('/sounds/breathein.mp3'))
-audioListNB.push(new Audio('/sounds/holdyourbreath.mp3'));
-audioListNB.push(new Audio('/sounds/exhale.mp3'));
-audioListNB.push(new Audio('/sounds/hold.mp3'));
+if (isPortuguese) {
+    audioListNB.push(new Audio('/sounds/breathein.mp3'))
+    audioListNB.push(new Audio('/sounds/holdyourbreath.mp3'));
+    audioListNB.push(new Audio('/sounds/exhale.mp3'));
+    audioListNB.push(new Audio('/sounds/hold.mp3'));
+} else {
+    audioListNB.push(new Audio('/sounds/breathein.mp3'))
+    audioListNB.push(new Audio('/sounds/holdyourbreath.mp3'));
+    audioListNB.push(new Audio('/sounds/exhale.mp3'));
+    audioListNB.push(new Audio('/sounds/hold.mp3'));
+}
+
 
 
 var audioNB = document.getElementById("audioNB"),
@@ -492,8 +500,8 @@ function onTimerTickNB() {
         timerNB.elapsedInIntervalNB++;
         if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak3NB) {
             if (!ismuteNB) {
-                audioListNB[3].muted = false;
-                audioListNB[3].play();
+                audioListNB[2].muted = false;
+                audioListNB[2].play();
             }
             timerNB.isBreakNB = true;
             timerNB.isBreak3NB = false;
@@ -515,8 +523,8 @@ function onTimerTickNB() {
         timerNB.elapsedInIntervalNB++;
         if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreakNB) {
             if (!ismuteNB) {
-                audioListNB[2].muted = false;
-                audioListNB[2].play();
+                audioListNB[0].muted = false;
+                audioListNB[0].play();
             }
             timerNB.isBreak2NB = true;
             timerNB.isBreakNB = false;
@@ -538,8 +546,8 @@ function onTimerTickNB() {
         timerNB.elapsedInIntervalNB++;
         if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak2NB) {
             if (!ismuteNB) {
-                audioListNB[3].muted = false;
-                audioListNB[3].play();
+                audioListNB[2].muted = false;
+                audioListNB[2].play();
             }
             timerNB.isBreak4NB = true;
             timerNB.isBreak2NB = false;

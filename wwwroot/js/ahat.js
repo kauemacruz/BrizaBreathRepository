@@ -134,10 +134,17 @@ document.getElementById('ahatSave').disabled = true;
 document.getElementById('ahatSave').style.color = 'rgb(177, 177, 177)';
 
 var audioListAHAT = []
-audioListAHAT.push(new Audio('../sounds/pinchnose.mp3'));
-audioListAHAT.push(new Audio('../sounds/lightbreath.mp3'));
-audioListAHAT.push(new Audio('../sounds/normalbreath.mp3'));
-audioListAHAT.push(new Audio('../sounds/hold.mp3'));
+if (isPortuguese) {
+    audioListAHAT.push(new Audio('../sounds/pinchnose.mp3'));
+    audioListAHAT.push(new Audio('../sounds/lightbreath.mp3'));
+    audioListAHAT.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListAHAT.push(new Audio('../sounds/hold.mp3'));
+} else {
+    audioListAHAT.push(new Audio('../sounds/pinchnose.mp3'));
+    audioListAHAT.push(new Audio('../sounds/lightbreath.mp3'));
+    audioListAHAT.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListAHAT.push(new Audio('../sounds/hold.mp3'));
+}
 
 var audioAHAT = document.getElementById("audioAHAT"),
     muteAHAT = document.getElementById("muteAHAT"),
@@ -395,7 +402,11 @@ function pauseTimerAHAT() {
     document.getElementById('stopBtnAHAT').style.color = '#990000';
     setTimerControlsDisabledStateAHAT(true, true, false);
     nextroundAHAT = true;
-    document.getElementById("AHATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerAHAT.intervalsDoneAHAT + 1) + "</div><div>" + timerAHAT.elapsedInIntervalAHAT + " seconds</div></div>";
+    if (isPortuguese) {
+        document.getElementById("AHATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerAHAT.intervalsDoneAHAT + 1) + "</div><div>" + timerAHAT.elapsedInIntervalAHAT + " segundos</div></div>";
+    } else {
+        document.getElementById("AHATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerAHAT.intervalsDoneAHAT + 1) + "</div><div>" + timerAHAT.elapsedInIntervalAHAT + " seconds</div></div>";
+    }
     timerRefAHAT.value += timerAHAT.elapsedInIntervalAHAT + "|";
     timerAHAT.elapsedInIntervalAHAT = 0;
     timerAHAT.intervalsDoneAHAT++;
@@ -403,7 +414,11 @@ function pauseTimerAHAT() {
 
 function stopTimerAHAT() {
     if (elapsedInIntervalBoxAHAT.style.display !== "none") {
-        document.getElementById("AHATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerAHAT.intervalsDoneAHAT + 1) + "</div><div>" + timerAHAT.elapsedInIntervalAHAT + " seconds</div></div>";
+        if (isPortuguese) {
+            document.getElementById("AHATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerAHAT.intervalsDoneAHAT + 1) + "</div><div>" + timerAHAT.elapsedInIntervalAHAT + " segundos</div></div>";
+        } else {
+            document.getElementById("AHATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerAHAT.intervalsDoneAHAT + 1) + "</div><div>" + timerAHAT.elapsedInIntervalAHAT + " seconds</div></div>";
+        }
         timerRefAHAT.value += timerAHAT.elapsedInIntervalAHAT + "|";
     } else { }
     clearInterval(intAHAT);

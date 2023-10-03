@@ -233,15 +233,25 @@ document.getElementById('WHSave').disabled = true;
 document.getElementById('WHSave').style.color = 'rgb(177, 177, 177)';
 
 var audioListWH = []
-audioListWH.push(new Audio('../sounds/breathein.mp3'));
-audioListWH.push(new Audio('../sounds/normalbreath.mp3'));
-audioListWH.push(new Audio('../sounds/letgoandhold.mp3'));
-audioListWH.push(new Audio('../sounds/hold.mp3'));
-audioListWH.push(new Audio('../sounds/chill.mp3'));
-audioListWH.push(new Audio('../sounds/fullyin.mp3'));
-audioListWH.push(new Audio('../sounds/fullyout.mp3'));
-audioListWH.push(new Audio('../sounds/letGo.mp3'));
-
+if (isPortuguese) {
+    audioListWH.push(new Audio('../sounds/breathein.mp3'));
+    audioListWH.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListWH.push(new Audio('../sounds/letgoandhold.mp3'));
+    audioListWH.push(new Audio('../sounds/hold.mp3'));
+    audioListWH.push(new Audio('../sounds/chill.mp3'));
+    audioListWH.push(new Audio('../sounds/fullyin.mp3'));
+    audioListWH.push(new Audio('../sounds/fullyout.mp3'));
+    audioListWH.push(new Audio('../sounds/letGo.mp3'));
+} else {
+    audioListWH.push(new Audio('../sounds/breathein.mp3'));
+    audioListWH.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListWH.push(new Audio('../sounds/letgoandhold.mp3'));
+    audioListWH.push(new Audio('../sounds/hold.mp3'));
+    audioListWH.push(new Audio('../sounds/chill.mp3'));
+    audioListWH.push(new Audio('../sounds/fullyin.mp3'));
+    audioListWH.push(new Audio('../sounds/fullyout.mp3'));
+    audioListWH.push(new Audio('../sounds/letGo.mp3'));
+}
 
 var audioWH = document.getElementById("audioWH"),
     muteWH = document.getElementById("muteWH"),
@@ -538,8 +548,9 @@ function setFormDisabledStateWH(disabled) {
     minusBtnWH.disabled = disabled;
     plusBtnWH.disabled = disabled;
 }
-
+var musicIsOnWH = false;
 function startTimerWH() {
+    timerRefAHAT.value = "";
     setFormDisabledStateWH(true);
     setTimerControlsDisabledStateWH(false, true, false);
     document.getElementById('stopBtnWH').style.color = '#990000';
@@ -553,8 +564,9 @@ function startTimerWH() {
         }
     }
     isWHON = true;
-    if (!isSongMuteWH) {
+    if (!isSongMuteWH && !musicIsOnWH) {
         playSelectedSongWH();
+        musicIsOnWH = true;
     }
     if (timerWH.isFinishedWH) {
         resetTimerWH();
@@ -574,7 +586,11 @@ var nextroundWH = false;
 function pauseTimerWH() {
     setTimerControlsDisabledStateWH(true, true, false);
     timerControlsButtonsWH.pauseWH.style.color = "rgb(177, 177, 177)";
-    document.getElementById("WHResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerWH.intervalsDoneWH) + "</div><div>" + timeWH + " seconds</div></div>";
+    if (isPortuguese) {
+        document.getElementById("WHResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerWH.intervalsDoneWH) + "</div><div>" + timeWH + " segundos</div></div>";
+    } else {
+        document.getElementById("WHResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerWH.intervalsDoneWH) + "</div><div>" + timeWH + " seconds</div></div>";
+    }
     timerRefWH.value += timeWH + "|";
     clearInterval(intWH);
     [secondsWH, minutesWH] = [0, 0];
@@ -588,14 +604,18 @@ function pauseTimerWH() {
     ctxWH.fillStyle = "white";
     ctxWH.textAlign = "center";
     yWH = formSettingsFieldsWH.breakDurationWH.value;
-    ctxWH.fillText(yWH, 150, 115);
     nextroundWH = true;
+    ctxWH.fillText(yWH, 150, 115);
     timerControlsButtonsWH.stopWH.style.color = '#990000';
 }
 
 function stopTimerWH() {
     if (timerWH.isBreak3WH) {
-        document.getElementById("WHResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerWH.intervalsDoneWH) + "</div><div>" + timeWH + " seconds</div></div>";
+        if (isPortuguese) {
+            document.getElementById("WHResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerWH.intervalsDoneWH) + "</div><div>" + timeWH + " segundos</div></div>";
+        } else {
+            document.getElementById("WHResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerWH.intervalsDoneWH) + "</div><div>" + timeWH + " seconds</div></div>";
+        }
         timerRefAHAT.value += timerAHAT.elapsedInIntervalAHAT + "|";
     }
     if (document.getElementById("WHResults").innerHTML !== "") {

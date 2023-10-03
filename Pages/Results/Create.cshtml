@@ -1,5 +1,7 @@
 ﻿@page
 @model BrizaBreath.Pages.Results.CreateModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
 
 <div id="loadingIndicator">
     <img src="/images/birzabreathandperformance.png" alt="Loading...">
@@ -37,7 +39,7 @@
     </header>
     <div class="accordion">
         <div class="accordion-item">
-            <h2 class="accordion-header">Breath Retention Test</h2>
+            <h2 class="accordion-header">Breath Retention Test &#8595;</h2>
             <div class="accordion-content">
                 <div class="chart-container" id="BRTContainer">
                     <canvas id="BRTchart"></canvas>
@@ -61,11 +63,11 @@
             </div>
         </div>
         <div class="accordion-item">
-            <h2 class="accordion-header">Briza Program</h2>
+            <h2 class="accordion-header">Briza Program &#8595;</h2>
             <div class="accordion-content">
                 <div class="accordion2">
                     <div class="accordion-item2">
-                        <h2 class="accordion-header2">Yogic Breathing</h2>
+                        <h2 class="accordion-header2">Yogic Breathing &#8595;</h2>
                         <div class="accordion-content2">
                             <div class="chart-container" id="YOGICContainer">
                                 <canvas id="YOGICchart"></canvas>
@@ -89,7 +91,7 @@
                         </div>
                     </div>
                     <div class="accordion-item2">
-                        <h2 class="accordion-header2">Breath Recovery Exercise</h2>
+                        <h2 class="accordion-header2">Breath Recovery Exercise &#8595;</h2>
                         <div class="accordion-content2">
                             <div class="chart-container" id="BREContainer">
                                 <canvas id="BREchart"></canvas>
@@ -113,7 +115,7 @@
                         </div>
                     </div>
                     <div class="accordion-item2">
-                        <h2 class="accordion-header2">Breath Recovery while Walking</h2>
+                        <h2 class="accordion-header2">Breath Recovery while Walking &#8595;</h2>
                         <div class="accordion-content2">
                             <div class="chart-container" id="BRWContainer">
                                 <canvas id="BRWchart"></canvas>
@@ -137,7 +139,7 @@
                         </div>
                     </div>
                     <div class="accordion-item2">
-                        <h2 class="accordion-header2">Humming Exercise</h2>
+                        <h2 class="accordion-header2">Humming Exercise &#8595;</h2>
                         <div class="accordion-content2">
                             <div class="chart-container" id="HUMContainer">
                                 <canvas id="HUMchart"></canvas>
@@ -161,7 +163,7 @@
                         </div>
                     </div>
                     <div class="accordion-item2">
-                        <h2 class="accordion-header2">Briza Breathing</h2>
+                        <h2 class="accordion-header2">Briza Breathing &#8595;</h2>
                         <div class="accordion-content2">
                             <div class="chart-container" id="BBContainer">
                                 <canvas id="BBchart"></canvas>
@@ -184,11 +186,83 @@
                             </div>
                         </div>
                     </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">High Altitude Training &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="HATContainer">
+                                <canvas id="HATchart"></canvas>
+                            </div>
+                            <div class="HATInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="HATinfoOverview">
+                                    <label>Longest Session Average</label>
+                                    <input type="text" id="HATlongestSession" readonly>
+                                </div>
+                                <div class="HATinfoOverview">
+                                    <label>Longest Round</label>
+                                    <input type="text" id="HATlongestRound" readonly>
+                                </div>
+                                <div class="HATinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="HATnumberOfSessions" readonly>
+                                </div>
+                                <div id="HATinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">High Altitude Training while Running/Cycling &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="HATCContainer">
+                                <canvas id="HATCchart"></canvas>
+                            </div>
+                            <div class="HATCInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="HATCinfoOverview">
+                                    <label>Longest Session Average</label>
+                                    <input type="text" id="HATClongestSession" readonly>
+                                </div>
+                                <div class="HATCinfoOverview">
+                                    <label>Longest Round</label>
+                                    <input type="text" id="HATClongestRound" readonly>
+                                </div>
+                                <div class="HATCinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="HATCnumberOfSessions" readonly>
+                                </div>
+                                <div id="HATCinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Advanced High Altitude Training &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="AHATContainer">
+                                <canvas id="AHATchart"></canvas>
+                            </div>
+                            <div class="AHATInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="AHATinfoOverview">
+                                    <label>Longest Session Average</label>
+                                    <input type="text" id="AHATlongestSession" readonly>
+                                </div>
+                                <div class="AHATinfoOverview">
+                                    <label>Longest Round</label>
+                                    <input type="text" id="AHATlongestRound" readonly>
+                                </div>
+                                <div class="AHATinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="AHATnumberOfSessions" readonly>
+                                </div>
+                                <div id="AHATinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="accordion-item">
-            <h2 class="accordion-header">Lungs Expansion Test</h2>
+            <h2 class="accordion-header">Lungs Expansion Test &#8595;</h2>
             <div class="accordion-content">
                 <div class="chart-container" id="LUNGSContainer">
                     <canvas id="LUNGSchart"></canvas>
@@ -212,11 +286,11 @@
             </div>
         </div>
         <div class="accordion-item">
-            <h2 class="accordion-header">Breath Holds</h2>
+            <h2 class="accordion-header">Breath Holds &#8595;</h2>
             <div class="accordion-content">
                 <div class="accordion2">
                     <div class="accordion-item2">
-                        <h2 class="accordion-header2">Apnea Training</h2>
+                        <h2 class="accordion-header2">Apnea Training &#8595;</h2>
                         <div class="accordion-content2">
                             <div class="chart-container" id="APContainer">
                                 <canvas id="APchart"></canvas>
@@ -240,7 +314,7 @@
                         </div>
                     </div>
                     <div class="accordion-item2">
-                        <h2 class="accordion-header2">CO2 Tolerance Training</h2>
+                        <h2 class="accordion-header2">CO2 Tolerance Training &#8595;</h2>
                         <div class="accordion-content2">
                             <div class="chart-container" id="CTContainer">
                                 <canvas id="CTchart"></canvas>
@@ -263,15 +337,87 @@
                             </div>
                         </div>
                     </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Controled Hyperventilation &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="WHContainer">
+                                <canvas id="WHchart"></canvas>
+                            </div>
+                            <div class="WHInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="WHinfoOverview">
+                                    <label>Longest Session Average</label>
+                                    <input type="text" id="WHlongestSession" readonly>
+                                </div>
+                                <div class="WHinfoOverview">
+                                    <label>Longest Round</label>
+                                    <input type="text" id="WHlongestRound" readonly>
+                                </div>
+                                <div class="WHinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="WHnumberOfSessions" readonly>
+                                </div>
+                                <div id="WHinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">O2 Table &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="O2Container">
+                                <canvas id="O2chart"></canvas>
+                            </div>
+                            <div class="O2Info">
+                                <h4><b>Overview</b></h4>
+                                <div class="O2infoOverview">
+                                    <label>Longest Session Average</label>
+                                    <input type="text" id="O2longestSession" readonly>
+                                </div>
+                                <div class="O2infoOverview">
+                                    <label>Longest Round</label>
+                                    <input type="text" id="O2longestRound" readonly>
+                                </div>
+                                <div class="O2infoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="O2numberOfSessions" readonly>
+                                </div>
+                                <div id="O2infoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="accordion-item2">
+                        <h2 class="accordion-header2">CO2 Table &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="CO2Container">
+                                <canvas id="CO2chart"></canvas>
+                            </div>
+                            <div class="CO2Info">
+                                <h4><b>Overview</b></h4>
+                                <div class="CO2infoOverview">
+                                    <label>Longest Session Average</label>
+                                    <input type="text" id="CO2longestSession" readonly>
+                                </div>
+                                <div class="CO2infoOverview">
+                                    <label>Longest Round</label>
+                                    <input type="text" id="CO2longestRound" readonly>
+                                </div>
+                                <div class="CO2infoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="CO2numberOfSessions" readonly>
+                                </div>
+                                <div id="CO2infoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="accordion-item">
-            <h2 class="accordion-header">Pranayama</h2>
+            <h2 class="accordion-header">Pranayama &#8595;</h2>
             <div class="accordion-content">
                 <div class="accordion2">
                     <div class="accordion-item2">
-                        <h2 class="accordion-header2">Ujjayi Breathing</h2>
+                        <h2 class="accordion-header2">Ujjayi Breathing &#8595;</h2>
                         <div class="accordion-content2">
                             <div class="chart-container" id="UBContainer">
                                 <canvas id="UBchart"></canvas>
@@ -295,7 +441,7 @@
                         </div>
                     </div>
                     <div class="accordion-item2">
-                        <h2 class="accordion-header2">Box Breathing</h2>
+                        <h2 class="accordion-header2">Box Breathing &#8595;</h2>
                         <div class="accordion-content2">
                             <div class="chart-container" id="BOXContainer">
                                 <canvas id="BOXchart"></canvas>
@@ -318,7 +464,126 @@
                             </div>
                         </div>
                     </div>
-                
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Nadi Shodhana &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="NBContainer">
+                                <canvas id="NBchart"></canvas>
+                            </div>
+                            <div class="NBInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="NBinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="NBlatestRound" readonly>
+                                </div>
+                                <div class="NBinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="NBlongestRound" readonly>
+                                </div>
+                                <div class="NBinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="NBnumberOfSessions" readonly>
+                                </div>
+                                <div id="NBinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Sitali Breathing &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="SBContainer">
+                                <canvas id="SBchart"></canvas>
+                            </div>
+                            <div class="SBInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="SBinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="SBlatestRound" readonly>
+                                </div>
+                                <div class="SBinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="SBlongestRound" readonly>
+                                </div>
+                                <div class="SBinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="SBnumberOfSessions" readonly>
+                                </div>
+                                <div id="SBinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Coherent Breathing &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="CBContainer">
+                                <canvas id="CBchart"></canvas>
+                            </div>
+                            <div class="CBInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="CBinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="CBlatestRound" readonly>
+                                </div>
+                                <div class="CBinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="CBlongestRound" readonly>
+                                </div>
+                                <div class="CBinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="CBnumberOfSessions" readonly>
+                                </div>
+                                <div id="CBinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">478 Breathing &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="RBContainer">
+                                <canvas id="RBchart"></canvas>
+                            </div>
+                            <div class="RBInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="RBinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="RBlatestRound" readonly>
+                                </div>
+                                <div class="RBinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="RBlongestRound" readonly>
+                                </div>
+                                <div class="RBinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="RBnumberOfSessions" readonly>
+                                </div>
+                                <div id="RBinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item2">
+                        <h2 class="accordion-header2">Breath & Sex &#8595;</h2>
+                        <div class="accordion-content2">
+                            <div class="chart-container" id="SEXContainer">
+                                <canvas id="SEXchart"></canvas>
+                            </div>
+                            <div class="SEXInfo">
+                                <h4><b>Overview</b></h4>
+                                <div class="SEXinfoOverview">
+                                    <label>Latest Session</label>
+                                    <input type="text" id="SEXlatestRound" readonly>
+                                </div>
+                                <div class="SEXinfoOverview">
+                                    <label>Longest Session</label>
+                                    <input type="text" id="SEXlongestRound" readonly>
+                                </div>
+                                <div class="SEXinfoOverview">
+                                    <label>Total Sessions</label>
+                                    <input type="text" id="SEXnumberOfSessions" readonly>
+                                </div>
+                                <div id="SEXinfoOverview"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -419,11 +684,155 @@
     <div id="UBresultDateHeader"></div>
     <div id="UBresultSessions"></div>
 </div>
+<div id="NBresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backNBresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="NBresultDateHeader"></div>
+    <div id="NBresultSessions"></div>
+</div>
+<div id="SBresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backSBresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="SBresultDateHeader"></div>
+    <div id="SBresultSessions"></div>
+</div>
+<div id="RBresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backRBresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="RBresultDateHeader"></div>
+    <div id="RBresultSessions"></div>
+</div>
+<div id="CBresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backCBresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="CBresultDateHeader"></div>
+    <div id="CBresultSessions"></div>
+</div>
+<div id="SEXresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backSEXresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="SEXresultDateHeader"></div>
+    <div id="SEXresultSessions"></div>
+</div>
+<div id="WHresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backWHresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="WHresultDateHeader"></div>
+    <div id="WHresultSessions"></div>
+</div>
+<div id="CO2resultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backCO2results">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="CO2resultDateHeader"></div>
+    <div id="CO2resultSessions"></div>
+</div>
+<div id="O2resultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backO2results">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="O2resultDateHeader"></div>
+    <div id="O2resultSessions"></div>
+</div>
+<div id="HATresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backHATresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="HATresultDateHeader"></div>
+    <div id="HATresultSessions"></div>
+</div>
+<div id="HATCresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backHATCresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="HATCresultDateHeader"></div>
+    <div id="HATCresultSessions"></div>
+</div>
+<div id="AHATresultPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backAHATresults">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div id="AHATresultDateHeader"></div>
+    <div id="AHATresultSessions"></div>
+</div>
 <div id="profilePage" class="hidden">
     <header>
         <img id="homelogoimg" src="/images/B_DEGRAD.png" width="55" height="55" />
     </header>
-    <div>Profile</div>
+    <div class="breathingpages">
+        <h1>Account</h1>
+        <div class="flexProfile">
+            @Model.UserEmail 
+            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
+                <input type="hidden" name="returnUrl" value="/Identity/Account/Login" />
+                <button type="submit" id="logoutBtn">LOG OUT</button>
+            </form>
+        </div>
+        <div class="profile">
+            <a id="changeAccountBtn" href="/Identity/Account/ChangePassword">CHANGE PASSWORD</a>
+        </div>
+        <hr />
+        <div class="profile">
+            <h2>Subscription</h2>
+            <button type="button" id="subscriptionBtn">GET SUBSCRIPTION</button>
+            <p id="subscribeNow">Subscribe now and get unlimited acces to all the content in the app</p>
+        </div>
+        <hr />
+        <div class="profile">
+            <h2>Language</h2>
+            <div class="flags">
+                 <a href="/Results/CreateBR"><img src="/images/br.png" /></a>
+                 <a><img src="/images/en.png" /></a>
+            </div>
+        </div>
+        <hr />
+        <div class="profile">
+            <h2>Contact</h2>
+            <div class="contactProfile">
+                <p>Email</p>
+                <a>brizabreath@gmail.com</a>
+            </div>
+            <div class="contactProfile">
+                <p>Website</p>
+                <a>brizabreath.com</a>
+            </div>
+            <div class="contactProfile">
+                <p>Instagram (english)</p>
+                <a>brizabreath</a>
+            </div>
+            <div class="contactProfile">
+                <p>Instagram (portugues)</p>
+                <a>brizabreath</a>
+            </div>
+        </div>
+        <hr />
+        <div class="profile">
+            <a id="deleteAccountBtn" href="/Identity/Account/DeletePersonalData" class="btn btn-danger">Delete Account</a>
+        </div>
+        <hr />
+        <div class="profile">
+            <a id="TermsBtn" href="https://brizabreath.com/terms-conditions/">Terms & Conditions</a>
+            <a id="PrivacyBtn" href="https://brizabreath.com/privacy-policy">Privacy Policy</a>
+            <div class="smallText">Briza Breath 1.0</div>
+        </div>
+    </div>
     <footer id="profileFooter">
         <div class="navbar">
             <a id="navHome2"><i class="fa fa-home"></i>Home</a>
@@ -439,19 +848,7 @@
     </header>
     <div class="brizaprogram">
         <h1>Briza Program</h1>
-        <p>Start the program from the foundations and progress on your own terms. Benefits of this program:</p>
-        <ul>More energy</ul>
-        <ul>Better awareness</ul>
-        <ul>Quicker and better recovery</ul>
-        <ul>Fast healing</ul>
-        <ul>Prevent diseases</ul>
-        <ul>Balance of mind and body</ul>
-        <ul>Stress free</ul>
-        <ul>Better sleep</ul>
-        <ul>Easier breathing</ul>
-        <ul>Increased performance and endurance</ul>
-        <ul>Oxygenation of organs and muscles</ul>
-        <ul>Reduction of lactic acid and fatigue</ul>
+        <p>Start the program from the foundations and progress on your own terms</p>
     </div>
     <h4><b>Foundations</b></h4>
     <div class="contain">
@@ -570,6 +967,21 @@
                 </div>
             </div>
         </div>
+        <div class="brizaprogram">
+            <p>Benefits of this program:</p>
+            <ul>More energy</ul>
+            <ul>Better awareness</ul>
+            <ul>Quicker and better recovery</ul>
+            <ul>Fast healing</ul>
+            <ul>Prevent diseases</ul>
+            <ul>Balance of mind and body</ul>
+            <ul>Stress free</ul>
+            <ul>Better sleep</ul>
+            <ul>Easier breathing</ul>
+            <ul>Increased performance and endurance</ul>
+            <ul>Oxygenation of organs and muscles</ul>
+            <ul>Reduction of lactic acid and fatigue</ul>
+        </div>
         <p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Program's exercises</p>
     </div>
 </div>
@@ -662,10 +1074,6 @@
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
         <p>A "BRT" score, which stands for Breath Retention Test, is a measure of breath-holding time and can provide insights into a person's breathing efficiency and tolerance to carbon dioxide (CO2).</p>
-        <p>Learn this simple technique that will help you to measure your fitness level and your progress with the program. Follow the instructions below and save your score:</p>
-        <ul>1 - Find a comfortable seat and take a couple of light breaths through the nose</ul>
-        <ul>2 - EXHALE and pinch your nose, after the exhalation press 'Start' and hold your breath</ul>
-        <ul>3 - Press 'Pause' as soon as you feel a first urge to breathe (inhalation should be calm and controlled, if not you held your breath for to long), breathe normally and save your score to keep track of your progress</ul>
         <form method="post" id="brtForm">
             <div class="settingButtons">
                 <button id="brtSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -683,12 +1091,16 @@
                 <button type="button" class="stopBtnBRT" id="brtStop">Reset</button>
             </div>
             <div>
-                <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                <input id="BRTuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
             </div>
             <div class="saveBtnBRT">
                 <input type="submit" value="Save" id="brtSave" />
             </div>
         </form>
+        <p>Learn this simple technique that will help you to measure your fitness level and your progress with the program. Follow the instructions below and save your score:</p>
+        <ul>1 - Find a comfortable seat and take a couple of light breaths through the nose</ul>
+        <ul>2 - EXHALE and pinch your nose, after the exhalation press 'Start' and hold your breath</ul>
+        <ul>3 - Press 'Pause' as soon as you feel a first urge to breathe (inhalation should be calm and controlled, if not you held your breath for to long), breathe normally and save your score to keep track of your progress</ul>
     </div>
 </div>
 <div id="diaphragmPage" class="hidden">
@@ -718,7 +1130,7 @@
     </header>
     <div class="breathingpages">
         <h1>Yogic Breathing Settings</h1>
-        <h4 class="volumeSettings">Length of Breath</h4>
+        <h4 class="volumeSettings">Ratio of Breath</h4>
         <div class="timer-additional-info">
             <b>INHALE | HOLD | EXHALE | HOLD</b>
         </div>
@@ -810,8 +1222,7 @@
         <video controls poster="/images/yogic.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
-        <p>Yogic breathing involves conscious control of the breath, through specific patterns of 3 parts: filling the belly, ribs and chest, and exhaling from the chest, ribs and belly last.</p>
-        <p>Find a comfortable sitting position or lay down and follow our guided breathing session below to ease your mind, body and spirit</p>
+        <p>Find a comfortable sitting position or lay down and follow our guided breathing session above to ease your mind, body and spirit</p>
         <div id="yogicResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
             <button id="yogicSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -822,22 +1233,22 @@
                     <div class="timeOverviewMessage" id="timeOverviewMessageYogic">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxYogic">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalYogic"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxYogic">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalYogic"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2Yogic">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2Yogic"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox3Yogic">
-                        <header class="boxFontSize">Pause</header>
+                        <div class="boxFontSize">Pause</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval3Yogic"></span>s
                     </div>
                 </div>
@@ -848,7 +1259,7 @@
                     <button type="button" class="stopBtn" id="stopBtnYogic">Stop</button>
                     <form method="post" id="yogicForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="yogicuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="yogicDate" type="text" type="hidden" asp-for="Result.yogicResultDate" />
@@ -864,6 +1275,7 @@
                 </div>
             </div>
         </div>
+        <p>Yogic breathing involves conscious control of the breath, through specific patterns of 3 parts: filling the belly, ribs and chest, and exhaling from the chest, ribs and belly last.</p>
     </div>
 </div>
 <div id="BRT10Page" class="hidden">
@@ -891,7 +1303,7 @@
     </header>
     <div class="breathingpages">
         <h1>Breath Recover Exercise Settings</h1>
-        <h4 class="volumeSettings">Length of Breath Hold</h4>
+        <h4 class="volumeSettings">Ratio of Breath Hold</h4>
         <div class="timer-additional-info BRE">
             <b>INHALE | EXHALE | INHALE | EXHALE | HOLD</b>
         </div>
@@ -992,12 +1404,6 @@
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
         <p>Simple exercise that can be used to recover your breath after a physical activity or simply used as a breathing exercise to improve your BRT</p>
-        <p>Follow the guided breathing session below:</p>
-        <ul>Find a comfortable sitting position or lay down</ul>
-        <ul>Choose the appropriated breath hold time  -2 to 5 seconds</ul>
-        <ul>Breathe light on the inhalation and exhalation - 4 seconds each</ul>
-        <ul>Hold your breath after the exhalation</ul>
-        <ul>Do this exercise for 4 to 5 minutes</ul>
         <div id="BREResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
             <button id="breSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -1008,27 +1414,27 @@
                     <div class="timeOverviewMessage" id="timeOverviewMessageBRE">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxBRE">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalBRE"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxBRE">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalBRE"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2BRE">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2BRE"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox3BRE">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval3BRE"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox4BRE">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval4BRE"></span>s
                     </div>
                 </div>
@@ -1039,7 +1445,7 @@
                     <button type="button" class="stopBtn" id="stopBtnBRE">Stop</button>
                     <form method="post" id="BREForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="BREuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="BREDate" type="text" type="hidden" asp-for="Result.BREResultDate" />
@@ -1055,6 +1461,12 @@
                 </div>
             </div>
         </div>
+        <p>Follow the guided breathing session above:</p>
+        <ul>Find a comfortable sitting position or lay down</ul>
+        <ul>Choose the appropriated breath hold time  -2 to 5 seconds</ul>
+        <ul>Breathe light on the inhalation and exhalation - 4 seconds each</ul>
+        <ul>Hold your breath after the exhalation</ul>
+        <ul>Do this exercise for 4 to 5 minutes</ul>
     </div>
 </div>
 <div id="brwSettingsPage" class="hidden">
@@ -1064,7 +1476,7 @@
     </header>
     <div class="breathingpages">
         <h1>Breath Recover Walking Settings</h1>
-        <h4 class="volumeSettings">Length of Breath Hold</h4>
+        <h4 class="volumeSettings">Ratio of Breath Hold</h4>
         <div class="timer-additional-info BRE">
             <b>INHALE | EXHALE | INHALE | EXHALE | HOLD</b>
         </div>
@@ -1165,12 +1577,6 @@
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
         <p>Simple exercise that can be used to recover your breath after a physical activity or simply used as a breathing exercise to improve your BRT</p>
-        <p>This exercise works just like the Breath Recovery exercise, but we do it while walking. Follow the guided breathing session below:</p>
-        <ul>Start walking, but remember to breathe light. If you can't, walk slower or go back to the sitting breath recovery exercise. If that is easy, start walking faster. Your breath will determine your pace</ul>
-        <ul>Choose the appropriated breath hold time - 2 to 5 seconds</ul>
-        <ul>Breathe light on the inhalation and exhalation - 4 seconds each</ul>
-        <ul>Hold your breath after the exhalation</ul>
-        <ul>Do this exercise for 4 to 5 minutes</ul>
         <div id="BRWResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
             <button id="brwSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -1181,27 +1587,27 @@
                     <div id="timeOverviewMessageBRW" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxBRW">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalBRW"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxBRW">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalBRW"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2BRW">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2BRW"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox3BRW">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval3BRW"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox4BRW">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval4BRW"></span>s
                     </div>
 
@@ -1213,7 +1619,7 @@
                     <button type="button" class="stopBtn" id="stopBtnBRW">Stop</button>
                     <form method="post" id="BRWForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="BRWuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="BRWDate" type="text" type="hidden" asp-for="Result.BRWResultDate" />
@@ -1229,6 +1635,12 @@
                 </div>
             </div>
         </div>
+        <p>This exercise works just like the Breath Recovery exercise, but we do it while walking. Follow the guided breathing session above:</p>
+        <ul>Start walking, but remember to breathe light. If you can't, walk slower or go back to the sitting breath recovery exercise. If that is easy, start walking faster. Your breath will determine your pace</ul>
+        <ul>Choose the appropriated breath hold time - 2 to 5 seconds</ul>
+        <ul>Breathe light on the inhalation and exhalation - 4 seconds each</ul>
+        <ul>Hold your breath after the exhalation</ul>
+        <ul>Do this exercise for 4 to 5 minutes</ul>
     </div>
 </div>
 <div id="humSettingsPage" class="hidden">
@@ -1238,7 +1650,7 @@
     </header>
     <div class="breathingpages">
         <h1>Humming Settings</h1>
-        <h4 class="volumeSettings">Length of Breath</h4>
+        <h4 class="volumeSettings">Ratio of Breath</h4>
         <div class="settings-form">
             <div class="timer-additional-info">
                 <b>INHALE | HOLD | HUM | HOLD</b>
@@ -1330,11 +1742,6 @@
         <video controls poster="~/images/humming.png" playsinline>
             <source src="~/videos/movie.mp4" type="video/mp4">
         </video>
-        <p>
-            Humming is a simple breathing exercise that has been shown to have various health benefits. One of these benefits is the potential to increase the production of nitric oxide in the body.
-            Nitric oxide is a molecule that plays an important role in various physiological processes, including vasodilation (widening of blood vessels), which can lead to improved blood flow and lower blood pressure.
-            Additionally, nitric oxide has also been shown to have anti-inflammatory and antimicrobial effects, which may provide additional health benefits.
-        </p>
         <p>Find a comfortable sitting position or lay down, follow our guided breathing session below and produce 15x more nitric oxide to improve your overall health</p>
         <div id="HUMResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
@@ -1346,22 +1753,22 @@
                     <div id="timeOverviewMessageHUM" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxHUM">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalHUM"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxHUM">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalHUM"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2HUM">
-                        <header class="boxFontSize">Hum</header>
+                        <div class="boxFontSize">Hum</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2HUM"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox3HUM">
-                        <header class="boxFontSize">Pause</header>
+                        <div class="boxFontSize">Pause</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval3HUM"></span>s
                     </div>
                 </div>
@@ -1372,7 +1779,7 @@
                     <button type="button" class="stopBtn" id="stopBtnHUM">Stop</button>
                     <form method="post" id="HUMForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="HUMuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="HUMDate" type="text" type="hidden" asp-for="Result.HUMResultDate" />
@@ -1388,6 +1795,11 @@
                 </div>
             </div>
         </div>
+        <p>
+            Humming is a simple breathing exercise that has been shown to have various health benefits. One of these benefits is the potential to increase the production of nitric oxide in the body.
+            Nitric oxide is a molecule that plays an important role in various physiological processes, including vasodilation (widening of blood vessels), which can lead to improved blood flow and lower blood pressure.
+            Additionally, nitric oxide has also been shown to have anti-inflammatory and antimicrobial effects, which may provide additional health benefits.
+        </p>
     </div>
 </div>
 <div id="BRT20Page" class="hidden">
@@ -1467,11 +1879,6 @@
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
         <p>Learn how to breathe so light that if you had a feather under your nose it would not move</p>
-        <p>Find a comfortable sitting position or lay down and follow our guided breathing session below to ease your breathing pattern</p>
-        <ul>Breathe light on the inhalation and exhalation reducing the volume of air that you are breathing, so light that you can barely feel your breath</ul>
-        <ul>Sustain an air hunger for the whole session</ul>
-        <ul>If the air hunger is way too much, keep following the guidance but breathing normally until you can reduce the volume air again</ul>
-        <ul>Do this exercise for 5 to 15 minutes on each session</ul>
         <div id="BBResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
             <button id="bbSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -1524,22 +1931,22 @@
                     <div id="timeOverviewMessageBB" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxBB">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalBB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxBB">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalBB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2BB">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2BB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox3BB">
-                        <header class="boxFontSize">Pause</header>
+                        <div class="boxFontSize">Pause</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval3BB"></span>s
                     </div>
                 </div>
@@ -1550,7 +1957,7 @@
                     <button type="button" class="stopBtn" id="stopBtnBB">Stop</button>
                     <form method="post" id="BBForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="BBuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="BBDate" type="text" type="hidden" asp-for="Result.BBResultDate" />
@@ -1566,6 +1973,11 @@
                 </div>
             </div>
         </div>
+        <p>Find a comfortable sitting position or lay down and follow our guided breathing session below to ease your breathing pattern</p>
+        <ul>Breathe light on the inhalation and exhalation reducing the volume of air that you are breathing, so light that you can barely feel your breath</ul>
+        <ul>Sustain an air hunger for the whole session</ul>
+        <ul>If the air hunger is way too much, keep following the guidance but breathing normally until you can reduce the volume air again</ul>
+        <ul>Do this exercise for 5 to 15 minutes on each session</ul>
     </div>
 </div>
 <div id="BRT30Page" class="hidden">
@@ -1666,40 +2078,31 @@
         <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
     </header>
     <div class="breathingpages">
-    <h1>High Altitude Training</h1>
-    <video controls poster="/images/hat.png" playsinline>
-        <source src="/videos/movie.mp4" type="video/mp4">
-    </video>
-    <p>High altitude environments can help to improve cardiovascular fitness, strengthen muscles, stimulate the production of red blood cells, and stimulate the production of certain immune cells</p>
-    <p>Simulate a high altitude environment with this exercise and get all benefits as if you lived on top of a mountain. Read the intructions below and follow our guided session.</p>
-    <ul>Breathe normally for about 1 minute while walking</ul>
-    <ul>Whenever you're ready, press "Start", exhale, pinch your nose, hold your breath and keep on walking</ul>
-    <ul>The timer will count how long you can hold your breath while walking (walk about 1 step per second)</ul>
-    <ul>Once you feel a strong air hunger and no longer can hold your breath, press "Next"</ul>
-    <ul>Inhale and try to breathe as light as possible for 15 seconds, if you cannot breathe light you held it for too long</ul>
-    <ul>Keep walking, and breathe normally for 30 seconds, after this a new round will start</ul>
-    <ul>Do this exercise for about 8 to 10 rounds</ul>
-    <ul>Press "Stop" once you finish and save your results</ul>
-    <div id="hatResultSaved" class="resultSaved"></div>
-    <div class="settingButtons">
-            <button id="hatSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
-        </div>
-    <div class="main-container">   
-        <div class="timer-overview">
-            <div id="timeOverviewMessageHAT" class="timeOverviewMessage">Normal Breathing</div>
-                <div class="boxHAT" id="elapsedInIntervalBoxHAT">
-                    <header class="boxFontSize">Exhale & Pinch Nose</header>
-                    <span class="spanFontSize" id="elapsedInIntervalHAT"></span>s
-                </div>
-            <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBoxHAT">
-                <header class="boxFontSize">Light Breathing</header>
-                <span class="spanFontSize" id="elapsedInBreakIntervalHAT"></span>s
+        <h1>High Altitude Training</h1>
+        <video controls poster="/images/hat.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>High altitude environments can help to improve cardiovascular fitness, strengthen muscles, stimulate the production of red blood cells, and stimulate the production of certain immune cells</p>
+        <div id="hatResultSaved" class="resultSaved"></div>
+        <div class="settingButtons">
+                <button id="hatSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
             </div>
-            <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBox2HAT">
-                <header class="boxFontSize">Normal Breathing</header>
-                <span class="spanFontSize" id="elapsedInBreakInterval2HAT"></span>s
-            </div>
+        <div class="main-container">   
+            <div class="timer-overview">
+                <div id="timeOverviewMessageHAT" class="timeOverviewMessage">Normal Breathing</div>
+                    <div class="boxHAT" id="elapsedInIntervalBoxHAT">
+                        <div class="boxFontSize">Exhale & Pinch Nose</div>
+                        <span class="spanFontSize" id="elapsedInIntervalHAT"></span>s
+                    </div>
+                <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBoxHAT">
+                    <div class="boxFontSize">Light Breathing</div>
+                    <span class="spanFontSize" id="elapsedInBreakIntervalHAT"></span>s
                 </div>
+                <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBox2HAT">
+                    <div class="boxFontSize">Normal Breathing</div>
+                    <span class="spanFontSize" id="elapsedInBreakInterval2HAT"></span>s
+                </div>
+            </div>
             <div class="timer-controls">
                 <!--  Information about interval  -->
                 <button type="button" class="startBtn" id="startBtnHAT">Start</button>
@@ -1708,7 +2111,7 @@
                 <button type="button" class="resetBtn" id="resetBtnHAT">Reset</button>
                 <form method="post" id="hatForm">
                     <div>
-                        <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        <input id="HATuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                     </div>
                     <div>
                         <input id="hatDate" type="text" type="hidden" asp-for="Result.HATResultDate" />
@@ -1724,6 +2127,15 @@
                 </form>
             </div>
         </div>
+        <p>Simulate a high altitude environment with this exercise and get all benefits as if you lived on top of a mountain. Read the intructions below and follow our guided session.</p>
+        <ul>Breathe normally for about 1 minute while walking</ul>
+        <ul>Whenever you're ready, press "Start", exhale, pinch your nose, hold your breath and keep on walking</ul>
+        <ul>The timer will count how long you can hold your breath while walking (walk about 1 step per second)</ul>
+        <ul>Once you feel a strong air hunger and no longer can hold your breath, press "Next"</ul>
+        <ul>Inhale and try to breathe as light as possible for 15 seconds, if you cannot breathe light you held it for too long</ul>
+        <ul>Keep walking, and breathe normally for 30 seconds, after this a new round will start</ul>
+        <ul>Do this exercise for about 8 to 10 rounds</ul>
+        <ul>Press "Stop" once you finish and save your results</ul>
     </div>
 </div> 
 <div id="BRT40Page" class="hidden">
@@ -1751,7 +2163,7 @@
         <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
     </header>
     <div class="breathingpages">
-        <h1>High Altitude Training Settings</h1>
+        <h1>High Altitude Training while Running Settings</h1>
         <div class="settings-form">
             <div class="form-line">
                 <button class="buttonminus" type="button" id="minusHATC">-</button>
@@ -1826,15 +2238,7 @@
         <video controls poster="/images/hatcycling.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
-        <p>Bring your high altitude training to another level. Read the intructions below and follow our guided session.</p>
-        <ul>Find a quiet place where you can walk</ul>
-        <ul>Breathe normally for a few minutes while running or cycling</ul>
-        <ul>Whenever you're ready, press "Start", exhale, hold your breath and keep on running</ul>
-        <ul>The timer will count how long you can hold your breath while running</ul>
-        <ul>Once you feel a strong air hunger and no longer can hold your breath, press "Next Round"</ul>
-        <ul>Keep running, and breathe normally for 1 minute, then a new round will start</ul>
-        <ul>Do this exercise for about 8 to 10 rounds</ul>
-        <ul>Press "Stop" once you finish and save your results</ul>
+        <p>Bring your high altitude training to another level</p>
         <div id="hatcResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
             <button id="hatcSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -1843,15 +2247,15 @@
             <div class="timer-overview">
                 <div id="timeOverviewMessageHATC" class="timeOverviewMessage">Normal Breathing</div>
                 <div class="boxHAT" id="elapsedInIntervalBoxHATC">
-                    <header class="boxFontSize">Exhale & Pinch Nose</header>
+                    <div class="boxFontSize">Exhale & Pinch Nose</div>
                     <span class="spanFontSize" id="elapsedInIntervalHATC"></span>s
                 </div>
                 <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBoxHATC">
-                    <header class="boxFontSize">Light Breathing</header>
+                    <div class="boxFontSize">Light Breathing</div>
                     <span class="spanFontSize" id="elapsedInBreakIntervalHATC"></span>s
                 </div>
                 <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBox2HATC">
-                    <header class="boxFontSize">Normal Breathing</header>
+                    <div class="boxFontSize">Normal Breathing</div>
                     <span class="spanFontSize" id="elapsedInBreakInterval2HATC"></span>s
                 </div>
             </div>
@@ -1863,7 +2267,7 @@
                 <button type="button" class="resetBtn" id="resetBtnHATC">Reset</button>
                 <form method="post" id="hatcForm">
                     <div>
-                        <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        <input id="HATCuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                     </div>
                     <div>
                         <input id="hatcDate" type="text" type="hidden" asp-for="Result.HATCResultDate" />
@@ -1879,6 +2283,15 @@
                 </form>
             </div>
         </div>
+        <p>Read the intructions below and follow our guided session.</p>
+        <ul>Find a quiet place where you can walk</ul>
+        <ul>Breathe normally for a few minutes while running or cycling</ul>
+        <ul>Whenever you're ready, press "Start", exhale, hold your breath and keep on running</ul>
+        <ul>The timer will count how long you can hold your breath while running</ul>
+        <ul>Once you feel a strong air hunger and no longer can hold your breath, press "Next Round"</ul>
+        <ul>Keep running, and breathe normally for 1 minute, then a new round will start</ul>
+        <ul>Do this exercise for about 8 to 10 rounds</ul>
+        <ul>Press "Stop" once you finish and save your results</ul>
     </div>
 </div>
 <div id="ahatSettingsPage" class="hidden">
@@ -1959,18 +2372,10 @@
     </header>
     <div class="breathingpages">
         <h1>Advanced High Altitude Training</h1>
-    <video controls poster="/images/advancedhat.png" playsinline>
-        <source src="/videos/movie.mp4" type="video/mp4">
-    </video>
-    <p>Bring your high altitude training to another level. Read the intructions below and follow our guided session.</p>
-    <ul>Breathe normally for about 1 minute while running</ul>
-    <ul>Whenever you're ready, press "Start", exhale, hold your breath and keep on running</ul>
-    <ul>The timer will count how long you can hold your breath while running</ul>
-    <ul>Once you feel a strong air hunger and no longer can hold your breath, press "Next Round"</ul>
-    <ul>Inhale and try to breathe as light as possible for 15 seconds, if you cannot breathe light you held it for too long</ul>
-    <ul>Keep running, and breathe normally for 30 seconds, after that a new round will start</ul>
-    <ul>Do this exercise for about 8 to 10 rounds</ul>
-    <ul>Press "Stop" once you finish and save your results</ul>
+        <video controls poster="/images/advancedhat.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Bring your high altitude training to another level</p>
         <div id="ahatResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
             <button id="ahatSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -1979,15 +2384,15 @@
             <div class="timer-overview">
                 <div id="timeOverviewMessageAHAT" class="timeOverviewMessage">Normal Breathing</div>
                 <div class="boxHAT" id="elapsedInIntervalBoxAHAT">
-                    <header class="boxFontSize">Exhale & Pinch Nose</header>
+                    <div class="boxFontSize">Exhale & Pinch Nose</div>
                     <span class="spanFontSize" id="elapsedInIntervalAHAT"></span>s
                 </div>
                 <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBoxAHAT">
-                    <header class="boxFontSize">Light Breathing</header>
+                    <div class="boxFontSize">Light Breathing</div>
                     <span class="spanFontSize" id="elapsedInBreakIntervalAHAT"></span>s
                 </div>
                 <div class="boxHAT hideBreak" id="elapsedInBreakIntervalBox2AHAT">
-                    <header class="boxFontSize">Normal Breathing</header>
+                    <div class="boxFontSize">Normal Breathing</div>
                     <span class="spanFontSize" id="elapsedInBreakInterval2AHAT"></span>s
                 </div>
             </div>
@@ -1999,7 +2404,7 @@
                 <button type="button" class="resetBtn" id="resetBtnAHAT">Reset</button>
                 <form method="post" id="ahatForm">
                     <div>
-                        <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        <input id="AHATuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                     </div>
                     <div>
                         <input id="ahatDate" type="text" type="hidden" asp-for="Result.AHATResultDate" />
@@ -2015,6 +2420,15 @@
                 </form>
             </div>
         </div>
+        <p>Read the intructions below and follow our guided session.</p>
+        <ul>Breathe normally for about 1 minute while running</ul>
+        <ul>Whenever you're ready, press "Start", exhale, hold your breath and keep on running</ul>
+        <ul>The timer will count how long you can hold your breath while running</ul>
+        <ul>Once you feel a strong air hunger and no longer can hold your breath, press "Next Round"</ul>
+        <ul>Inhale and try to breathe as light as possible for 15 seconds, if you cannot breathe light you held it for too long</ul>
+        <ul>Keep running, and breathe normally for 30 seconds, after that a new round will start</ul>
+        <ul>Do this exercise for about 8 to 10 rounds</ul>
+        <ul>Press "Stop" once you finish and save your results</ul>
     </div>
 </div>
 <div id="lungsSettingsPage" class="hidden">
@@ -2064,10 +2478,6 @@
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
         <p>Follow this 15 minutes video at least twice a week and learn how to expand your lungs creating more volume capacity and making full use of your breathing system</p>
-        <p>In order to track your progress of lungs expansion, follow the instructions below and save your score:</p>
-        <ul>1 - Inhale as much air as possible in one breath</ul>
-        <ul>2 - Press "Start" and exhale as slow and as long as possible until lungs are empty</ul>
-        <ul>3 - Press "Pause", get back to normal breathing and save your result</ul>
         <form method="post" id="lungsForm">
             <div class="settingButtons">
                 <button id="lungsSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -2085,12 +2495,16 @@
                 <button type="button" class="stopBtnBRT" id="lungsStop">Reset</button>
             </div>
             <div>
-                <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                <input id="LUNGSuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
             </div>
             <div class="saveBtnBRT">
                 <input type="submit" value="Save" id="lungsSave" />
             </div>
         </form>
+        <p>In order to track your progress of lungs expansion, follow the instructions above and save your score:</p>
+        <ul>1 - Inhale as much air as possible in one breath</ul>
+        <ul>2 - Press "Start" and exhale as slow and as long as possible until lungs are empty</ul>
+        <ul>3 - Press "Pause", get back to normal breathing and save your result</ul>
     </div>
 </div>
 <div id="mobilityPage" class="hidden">
@@ -2100,14 +2514,6 @@
     </header>
     <div class="breathingpages">
         <h1>Stretching & Mobility</h1>
-        <p>Stretching and mobility exercises have many benefits for the body and mind. Some of the key benefits include:</p>
-        <ul>Increased flexibility and range of motion can help to improve athletic performance by allowing you to move more efficiently and effectively</ul>
-        <ul>improvement of blood flow to the muscles, which can increase nutrient delivery and waste removal from the body</ul>
-        <ul>Lengthening and loosening of muscles, which can improve your ability to move your joints through a full range of motion</ul>
-        <ul>improvement of your body's flexibility and strength, which can reduce your risk of muscle strains, sprains, and other injuries</ul>
-        <ul>Tight muscles can contribute to poor posture, which can lead to back pain and other musculoskeletal problems. Stretching can help to improve your posture and reduce these issues</ul>
-        <ul>After exercising, stretching can help to reduce muscle soreness and stiffness by increasing blood flow to the muscles and promoting their recovery</ul>
-        <ul>Reduction of tension in the muscles and promote relaxation, which can reduce stress levels and improve overall wellbeing</ul>
         <h2>Lower back, hips & thighs </h2>
         <video controls poster="/images/lowerback.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
@@ -2123,6 +2529,14 @@
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
         <p>Follow this 30 minutes session to gain mobility of ankles, and relieve knees and ankles. This session helps with flat feet, shin splints, knee discomfort, ligament or tendon damage and more  </p>
+        <p>Stretching and mobility exercises have many benefits for the body and mind. Some of the key benefits include:</p>
+        <ul>Increased flexibility and range of motion can help to improve athletic performance by allowing you to move more efficiently and effectively</ul>
+        <ul>improvement of blood flow to the muscles, which can increase nutrient delivery and waste removal from the body</ul>
+        <ul>Lengthening and loosening of muscles, which can improve your ability to move your joints through a full range of motion</ul>
+        <ul>improvement of your body's flexibility and strength, which can reduce your risk of muscle strains, sprains, and other injuries</ul>
+        <ul>Tight muscles can contribute to poor posture, which can lead to back pain and other musculoskeletal problems. Stretching can help to improve your posture and reduce these issues</ul>
+        <ul>After exercising, stretching can help to reduce muscle soreness and stiffness by increasing blood flow to the muscles and promoting their recovery</ul>
+        <ul>Reduction of tension in the muscles and promote relaxation, which can reduce stress levels and improve overall wellbeing</ul>
     </div>
 </div>
 <div id="BHPage" class="hidden">
@@ -2130,14 +2544,8 @@
         <div class="goback"><a id="backBH">&#8249;</a></div>
         <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
     </header>
-    <div class="breathingpages">
+    <div class="breathingpages BHbreathing">
         <h1>Breath Holds</h1>
-        <p>Explore our breath-holding exercises and get many potential benefits out of it. Breath holds can:</p>
-        <ul>Increase the strength and capacity of your lungs by forcing them to work harder to deliver oxygen to your body</ul>
-        <ul>Help calm your mind and reduce stress and anxiety by slowing down your heart rate and promoting relaxation</ul>
-        <ul>Improve your cardiovascular health by increasing the amount of oxygen your body can transport to your cells and tissues</ul>
-        <ul>Help you focus and clear your mind by increasing blood flow and oxygenation to the brain</ul>
-        <ul>Improve your endurance and performance in sports by increasing your ability to use oxygen efficiently and delaying the onset of fatigue</ul>
     </div>
     <div class="BHGrid">
         <div class="row g-2">
@@ -2148,6 +2556,14 @@
             <div class="col"><a id="CTLink"><img class="homepageimgs" src="/images/co2.png" /></a></div>
         </div>
     </div>
+    <div class="breathingpages">
+        <p>Explore our breath-holding exercises and get many potential benefits out of it. Breath holds can:</p>
+        <ul>Increase the strength and capacity of your lungs by forcing them to work harder to deliver oxygen to your body</ul>
+        <ul>Help calm your mind and reduce stress and anxiety by slowing down your heart rate and promoting relaxation</ul>
+        <ul>Improve your cardiovascular health by increasing the amount of oxygen your body can transport to your cells and tissues</ul>
+        <ul>Help you focus and clear your mind by increasing blood flow and oxygenation to the brain</ul>
+        <ul>Improve your endurance and performance in sports by increasing your ability to use oxygen efficiently and delaying the onset of fatigue</ul>
+    </div>
 </div>
 <div id="PRANAPage" class="hidden">
     <header>
@@ -2156,12 +2572,6 @@
     </header>
     <div class="breathingpages">
         <h1>Pranayama</h1>
-        <p>Explore our pranayama exercises and get many potential benefits out of it. Pranayama exercises can:</p>
-        <ul>Increase the strength and capacity of your lungs by forcing them to work harder to deliver oxygen to your body</ul>
-        <ul>Help calm your mind and reduce stress and anxiety by slowing down your heart rate and promoting relaxation</ul>
-        <ul>Improve your cardiovascular health by increasing the amount of oxygen your body can transport to your cells and tissues</ul>
-        <ul>Help you focus and clear your mind by increasing blood flow and oxygenation to the brain</ul>
-        <ul>Improve your endurance and performance in sports by increasing your ability to use oxygen efficiently and delaying the onset of fatigue</ul>
     </div>
     <div class="BHGrid">
         <div class="row g-2">
@@ -2178,6 +2588,14 @@
             <div class="col"><a id="RBLink"><img class="homepageimgs" src="/images/478.png"/></a></div>  
         </div>
     </div>
+    <div class="breathingpages">
+        <p>Explore our pranayama exercises and get many potential benefits out of it. Pranayama exercises can:</p>
+        <ul>Increase the strength and capacity of your lungs by forcing them to work harder to deliver oxygen to your body</ul>
+        <ul>Help calm your mind and reduce stress and anxiety by slowing down your heart rate and promoting relaxation</ul>
+        <ul>Improve your cardiovascular health by increasing the amount of oxygen your body can transport to your cells and tissues</ul>
+        <ul>Help you focus and clear your mind by increasing blood flow and oxygenation to the brain</ul>
+        <ul>Improve your endurance and performance in sports by increasing your ability to use oxygen efficiently and delaying the onset of fatigue</ul>
+    </div>
 </div>
 <div id="EXTRAPage" class="hidden">
     <header>
@@ -2185,9 +2603,9 @@
         <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
     </header>
     <div class="breathingpages">
-        <h1>Life changing tips for better health and performance</h1>
+        <h1>Wellness - Life changing tips for better performance & health</h1>
     </div>
-    <div class="BHGrid">
+    <div class="BHGrid welnessGrid">
         <div class="row g-2">
             <div class="col"><a id="MEDLink"><img class="homepageimgs" src="~/images/meditation.png" /></a></div>
             <div class="col"><a id="SLEEPLink"><img class="homepageimgs" src="~/images/sleep.png" /></a></div>
@@ -2210,7 +2628,7 @@
     </header>
     <div class="breathingpages">
         <h1>Apnea Settings</h1>
-        <h4 class="volumeSettings">Length of Breath</h4>
+        <h4 class="volumeSettings">Ratio of Breath</h4>
         <div class="timer-additional-info">
             <b>INHALE | HOLD | EXHALE</b>
         </div>
@@ -2293,8 +2711,7 @@
         <h1>Apnea Training</h1>
         <video controls poster="/images/apnea.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
-        </video>
-        <p>This apnea breathing technique is based on the principles of deep breathing and diaphragmatic breathing, allowing you to use the full capacity of your lungs. Start with small intervals until you are used to this technique.</p>
+        </video> 
         <p>Find a comfortable sitting position or lay down and follow our guided breathing session below</p>
         <div id="APResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
@@ -2306,17 +2723,17 @@
                     <div id="timeOverviewMessageAP" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxAP">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalAP"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxAP">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalAP"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2AP">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2AP"></span>s
                     </div>
                 </div>
@@ -2327,7 +2744,7 @@
                     <button type="button" class="stopBtn" id="stopBtnAP">Stop</button>
                     <form method="post" id="APForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="APuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="APDate" type="text" type="hidden" asp-for="Result.APResultDate" />
@@ -2343,6 +2760,7 @@
                 </div>
             </div>
         </div>
+        <p>This apnea breathing technique is based on the principles of deep breathing and diaphragmatic breathing, allowing you to use the full capacity of your lungs. Start with small intervals until you are used to this technique.</p>
     </div>
 </div>
 <div id="O2SettingsPage" class="hidden">
@@ -2403,11 +2821,7 @@
         <div class="settingButtons">
             <button id="O2Settings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
         </div>
-        <div id="O2Table">
-            <p>This table helps the body to get used to low levels of oxygen, by increasing the breath hold times. The time for the last breath hold should not exceed 80% of your personal best. Choose the CO2 or the O2 table, set the table to your own level and follow the guided session. 
-                During the exercise, if you cannot hold your breath for the period of the breath hold, pause, save your results and try again another time. You do not need to complete all 8 rounds. 
-            </p>
-            <p> DO NOT DO THESE EXERCISES MORE THAN ONCE ON THE SAME DAY AND DO NOT EXCEED 8 ROUNDS</p>
+        <div id="O2Table">            
             <div id="O2ResultSaved" class="resultSaved"></div>
             <div id="CO2ResultSaved" class="resultSaved"></div>
             <div class="co2o2">
@@ -2556,67 +2970,67 @@
                 <div class="timer-overview">
                     <div id="timeOverviewMessageO2" class="timeOverviewMessage">Normal Breathing</div>
                     <div class="box" id="elapsedInIntervalBoxO2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInIntervalO2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxO2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalO2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2O2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2O2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox3O2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval3O2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox4O2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval4O2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox5O2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval5O2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox6O2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval6O2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox7O2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval7O2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox8O2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval8O2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox9O2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval9O2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox10O2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval10O2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox11O2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval11O2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox12O2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval12O2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox13O2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval13O2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox14O2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval14O2"></span>s
                     </div>         
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox15O2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval15O2"></span>s
                     </div>
                 </div>
@@ -2628,7 +3042,7 @@
                 <button type="button" class="stopBtn" id="stopBtnO2">Reset</button>
                 <form method="post" id="O2Form">
                     <div>
-                        <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        <input id="O2userInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                     </div>
                     <div>
                         <input id="O2Date" type="text" type="hidden" asp-for="Result.O2ResultDate" />
@@ -2643,12 +3057,12 @@
                     <div id="O2Results"></div>
                 </form>
             </div>
-        </div>
-        <div id="CO2Table">
-            <p>This table helps the body to get used to high levels of CO2, by lowering the breathing time between breath holds. The time for the static breath hold should not exceed 50% of your personal best. Choose one of the tables, set the table to your level and follow the guided session. 
-                During the exercise, if you cannot hold your breath for the period of the breath hold, pause, save your results and try again another time. You do not need to complete all rounds. 
+            <p>This table helps the body to get used to low levels of oxygen, by increasing the breath hold times. The time for the last breath hold should not exceed 80% of your personal best. Choose the CO2 or the O2 table, set the table to your own level and follow the guided session. 
+            During the exercise, if you cannot hold your breath for the period of the breath hold, pause, save your results and try again another time. You do not need to complete all 8 rounds. 
             </p>
             <p> DO NOT DO THESE EXERCISES MORE THAN ONCE ON THE SAME DAY AND DO NOT EXCEED 8 ROUNDS</p>
+        </div>
+        <div id="CO2Table">            
             <div id="CO2ResultSaved" class="resultSaved"></div>
             <div class="co2o2">
                 <button id="CO2Btn" type="button"><img src="/images/co2Btn.png"></button>
@@ -2796,67 +3210,67 @@
                 <div class="timer-overview">
                     <div id="timeOverviewMessageCO2" class="timeOverviewMessage">Normal Breathing</div>
                     <div class="box" id="elapsedInIntervalBoxCO2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInIntervalCO2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxCO2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalCO2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2CO2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2CO2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox3CO2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval3CO2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox4CO2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval4CO2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox5CO2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval5CO2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox6CO2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval6CO2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox7CO2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval7CO2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox8CO2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval8CO2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox9CO2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval9CO2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox10CO2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval10CO2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox11CO2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval11CO2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox12CO2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval12CO2"></span>s
                     </div>        
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox13CO2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval13CO2"></span>s
                     </div>
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox14CO2">
-                        <header class="boxFontSize">Breathe</header>
+                        <div class="boxFontSize">Breathe</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval14CO2"></span>s
                     </div>         
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox15CO2">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval15CO2"></span>s
                     </div>
                 </div>
@@ -2868,7 +3282,7 @@
                 <button type="button" class="stopBtn" id="stopBtnCO2">Reset</button>
                 <form method="post" id="CO2Form">
                     <div>
-                        <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                        <input id="CO2userInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                     </div>
                     <div>
                         <input id="CO2Date" type="text" type="hidden" asp-for="Result.CO2ResultDate" />
@@ -2883,6 +3297,10 @@
                     <div id="CO2Results"></div>
                 </form>
             </div>
+            <p>This table helps the body to get used to high levels of CO2, by lowering the breathing time between breath holds. The time for the static breath hold should not exceed 50% of your personal best. Choose one of the tables, set the table to your level and follow the guided session. 
+                During the exercise, if you cannot hold your breath for the period of the breath hold, pause, save your results and try again another time. You do not need to complete all rounds. 
+            </p>
+            <p> DO NOT DO THESE EXERCISES MORE THAN ONCE ON THE SAME DAY AND DO NOT EXCEED 8 ROUNDS</p>
         </div>
     </div>
 </div>
@@ -2994,8 +3412,7 @@
         <h1>Controlled Hyperventilation</h1>
         <video controls poster="/images/whb.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
-        </video>
-        <p>This controlled hyperventilation breathing technique, followed by a breath hold is based on the principles of diaphragmatic and circular breathing, allowing you to fully oxygenate your body and hold your breath with no air in the lungs. Try to do it around 3 to 4 rounds a few times per week</p>
+        </video>  
         <p>Choose the number and speed of breaths to prepare for the breath hold in the settings, find a comfortable sitting position or lay down and follow our guided breathing session below</p>
         <div id="WHResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
@@ -3012,20 +3429,20 @@
                 <div id="timeOverviewMessageWH" class="timeOverviewMessage">Normal Breathing</div>
 
                 <div hidden class="box" id="elapsedInIntervalBoxWH">
-                    <header class="boxFontSize">Hold</header>
+                    <div class="boxFontSize">Hold</div>
                     <span class="spanFontSize" id="elapsedInIntervalWH"></span>s
                 </div>
 
                 <div hidden class="box hideBreak" id="elapsedInBreakIntervalBoxWH">
-                    <header class="boxFontSize">Hold</header>
+                    <div class="boxFontSize">Hold</div>
                     <span class="spanFontSize" id="elapsedInBreakIntervalWH"></span>s
                 </div>
 
                 <div hidden class="box hideBreak" id="elapsedInBreakIntervalBox2WH">
-                    <header class="boxFontSize">Breathe</header>
+                    <div class="boxFontSize">Breathe</div>
                     <span class="spanFontSize" id="elapsedInBreakInterval2WH"></span>s
                 </div>
-                <div class="timer-controls">
+                <div class="timer-controls" id="WHtimer-controls">
                     <!--  Information about interval  -->
                      <form method="post" id="WHForm">
                         <button type="button" id="stopBtnWH">Stop</button>
@@ -3034,7 +3451,7 @@
                             <input type="submit" value="Save" id="WHSave" />
                         </div>
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="WHuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="WHDate" type="text" type="hidden" asp-for="Result.WHResultDate" />
@@ -3048,6 +3465,7 @@
                 </div>
             </div>
         </div>
+        <p>This controlled hyperventilation breathing technique, followed by a breath hold is based on the principles of diaphragmatic and circular breathing, allowing you to fully oxygenate your body and hold your breath with no air in the lungs. Try to do it around 3 to 4 rounds a few times per week</p>
     </div>
 </div>
 <div id="CTSettingsPage" class="hidden">
@@ -3104,8 +3522,7 @@
         <h1>CO2 Tolerance Training</h1>
         <video controls poster="/images/co2.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
-        </video>
-        <p>The CO2 Tolerance Training is based on the principles of allowing your body to get used to low levels of oxygen and high levels of carbon dioxide.</p>
+        </video>        
         <p>Find a comfortable sitting position or lay down and follow our guided breathing session below. Press "Restart" when you can no longer cope with the technique, this will take you back to the begining. Do this technique for 5 to 10 minutes.</p>
         <div id="CTResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
@@ -3151,17 +3568,17 @@
                     <div id="timeOverviewMessageCT" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxCT">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalCT"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxCT">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalCT"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2CT">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2CT"></span>s
                     </div>
                 </div>
@@ -3173,7 +3590,7 @@
                     <button type="button" class="resetBtn" id="resetBtnCT">Reset</button>
                     <form method="post" id="CTForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="CTuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="CTDate" type="text" type="hidden" asp-for="Result.CTResultDate" />
@@ -3189,6 +3606,7 @@
                 </div>
             </div>
         </div>
+        <p>The CO2 Tolerance Training is based on the principles of allowing your body to get used to low levels of oxygen and high levels of carbon dioxide.</p>
     </div>
 </div>
 <div id="UBSettingsPage" class="hidden">
@@ -3198,7 +3616,7 @@
     </header>
     <div class="breathingpages">
         <h1>Ujjayi Breathing Settings</h1>
-        <h4 class="volumeSettings">Length of Breath</h4>
+        <h4 class="volumeSettings">Ratio of Breath</h4>
         <div class="timer-additional-info">
             <b>INHALE | HOLD | EXHALE | HOLD</b>
         </div>
@@ -3289,8 +3707,7 @@
         <h1>Ujjayi Breathing</h1>
         <video controls poster="/images/ujjayi.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
-        </video>
-        <p>Ujjayi breathing is a yogic breathing technique that is also known as ocean breath. It involves breathing in and out through the nose while creating a soft, whispering sound in the back of the throat. Ujjayi breathing is often used in yoga practice to help calm the mind, deepen the breath, and build internal heat. It can also help regulate the nervous system and increase focus and concentration</p>
+        </video>        
         <p>Find a comfortable sitting position or lay down and follow our guided breathing session below</p>
         <div id="UBResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
@@ -3302,22 +3719,22 @@
                     <div id="timeOverviewMessageUB" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxUB">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalUB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxUB">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalUB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2UB">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2UB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox3UB">
-                        <header class="boxFontSize">Pause</header>
+                        <div class="boxFontSize">Pause</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval3UB"></span>s
                     </div>
                 </div>
@@ -3328,7 +3745,7 @@
                     <button type="button" class="stopBtn" id="stopBtnUB">Stop</button>
                     <form method="post" id="UBForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="UBuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="UBDate" type="text" type="hidden" asp-for="Result.UBResultDate" />
@@ -3344,6 +3761,7 @@
                 </div>
             </div>
         </div>
+        <p>Ujjayi breathing is a yogic breathing technique that is also known as ocean breath. It involves breathing in and out through the nose while creating a soft, whispering sound in the back of the throat. Ujjayi breathing is often used in yoga practice to help calm the mind, deepen the breath, and build internal heat. It can also help regulate the nervous system and increase focus and concentration</p>
     </div>
 </div>
 <div id="KBPage" class="hidden">
@@ -3374,7 +3792,7 @@
     </header>
     <div class="breathingpages">
         <h1>Ujjayi Breathing Settings</h1>
-        <h4 class="volumeSettings">Length of Breath</h4>
+        <h4 class="volumeSettings">Ratio of Breath</h4>
         <div class="timer-additional-info">
             <b>INHALE | HOLD | EXHALE | HOLD</b>
         </div>
@@ -3466,7 +3884,7 @@
         <video controls poster="/images/boxbreathing.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
-        <p>Choose an appropriated time for your session, find a comfortable sitting position or lay down and follow our guided breathing session below to ease your mind, body and spirit</p>
+        <p>Choose an appropriated time for your session, find a comfortable sitting position or lay down and follow our guided breathing session above to ease your mind, body and spirit</p>
         <div id="BOXResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
             <button id="BOXSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -3477,22 +3895,22 @@
                     <div id="timeOverviewMessageBOX" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxBOX">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalBOX"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxBOX">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalBOX"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2BOX">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2BOX"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox3BOX">
-                        <header class="boxFontSize">Pause</header>
+                        <div class="boxFontSize">Pause</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval3BOX"></span>s
                     </div>
                 </div>
@@ -3503,7 +3921,7 @@
                     <button type="button" class="stopBtn" id="stopBtnBOX">Stop</button>
                     <form method="post" id="BOXForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="BOXuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="BOXDate" type="text" type="hidden" asp-for="Result.BOXResultDate" />
@@ -3528,7 +3946,7 @@
     </header>
     <div class="breathingpages">
         <h1>Nadi Shodhana Settings</h1>
-        <h4 class="volumeSettings">Length of Breath</h4>
+        <h4 class="volumeSettings">Ratio of Breath</h4>
         <div class="timer-additional-info">
             <b>IN L | OUT R | IN R | OUT L</b>
         </div>
@@ -3620,7 +4038,7 @@
         <video controls poster="/images/nadishodhana.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
-        <p>Choose an appropriated time for your session, find a comfortable sitting position and follow our guided breathing session below to ease your mind, body and spirit</p>
+        <p>Choose an appropriated time for your session, find a comfortable sitting position and follow our guided breathing session below to balance your mind, body and spirit</p>
         <div id="NBResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
             <button id="NBSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -3631,22 +4049,22 @@
                     <div id="timeOverviewMessageNB" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxNB">
-                        <header class="boxFontSize">In Left</header>
+                        <div class="boxFontSize">In Left</div>
                         <span class="spanFontSize" id="elapsedInIntervalNB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxNB">
-                        <header class="boxFontSize">Out Right</header>
+                        <div class="boxFontSize">Out Right</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalNB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2NB">
-                        <header class="boxFontSize">In Right</header>
+                        <div class="boxFontSize">In Right</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2NB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox3NB">
-                        <header class="boxFontSize">Out Left</header>
+                        <div class="boxFontSize">Out Left</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval3NB"></span>s
                     </div>
                 </div>
@@ -3657,7 +4075,7 @@
                     <button type="button" class="stopBtn" id="stopBtnNB">Stop</button>
                     <form method="post" id="NBForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="NBuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="NBDate" type="text" type="hidden" asp-for="Result.NBResultDate" />
@@ -3730,9 +4148,6 @@
         <video controls poster="/images/coherent.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
-        <p>Coherent breathing is a breathing technique that involves inhaling and exhaling for a count of 5.5 seconds each, resulting in a breathing rate of around 5.5 breaths per minute</p>
-        <p>Coherent breathing can help to balance the autonomic nervous system, which regulates the body's stress response. By slowing down the breath and reducing stress and anxiety, this technique may have several potential benefits, including: Lowered heart rate and blood pressure, 
-            reduced stress and anxiety, improved cognitive function and memory, increased relaxation and feelings of calm, improved sleep quality .It's important to note that coherent breathing should be practiced regularly to experience the benefits</p>
         <p>Find a comfortable sitting position or lay down, follow our guided breathing session below and learn how to relax your mind and body in a few minutes</p>
         <div id="CBResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
@@ -3768,12 +4183,12 @@
                     <div id="timeOverviewMessageCB" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxCB">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalCB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxCB">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalCB"></span>s
                     </div>
                 </div>
@@ -3784,7 +4199,7 @@
                     <button type="button" class="stopBtn" id="stopBtnCB">Stop</button>
                     <form method="post" id="CBForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="CBuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="CBDate" type="text" type="hidden" asp-for="Result.CBResultDate" />
@@ -3800,6 +4215,9 @@
                 </div>
             </div>
         </div>
+        <p>Coherent breathing is a breathing technique that involves inhaling and exhaling for a count of 5.5 seconds each, resulting in a breathing rate of around 5.5 breaths per minute</p>
+        <p>Coherent breathing can help to balance the autonomic nervous system, which regulates the body's stress response. By slowing down the breath and reducing stress and anxiety, this technique may have several potential benefits, including: Lowered heart rate and blood pressure, 
+            reduced stress and anxiety, improved cognitive function and memory, increased relaxation and feelings of calm, improved sleep quality .It's important to note that coherent breathing should be practiced regularly to experience the benefits</p>
     </div>
 </div>
 <div id="SBSettingsPage" class="hidden">
@@ -3809,7 +4227,7 @@
     </header>
     <div class="breathingpages">
         <h1>Sitali Breathing Settings</h1>
-        <h4 class="volumeSettings">Length of Breath</h4>
+        <h4 class="volumeSettings">Ratio of Breath</h4>
         <div class="timer-additional-info">
             <b>INHALE | HOLD | EXHALE</b>
         </div>
@@ -3892,10 +4310,7 @@
         <h1>Sitali Breathing</h1>
         <video controls poster="/images/sitali.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
-        </video>
-        <p>Sitali breathing is a yogic breathing technique that involves inhaling cool air through the mouth making a "U" shape with your tongue and exhaling slowly through the nose. It is also known as the cooling breath. If you are unable to curl your tongue, you can still practice sitali breathing by gently parting your lips and inhaling through your teeth</p>
-        <p>Sitali breathing is often used in yoga practice to cool the body and calm the mind. It may have several potential benefits, including: reducing stress and anxiety,
-        regulating body temperature, soothing the nervous system, improving digestion and reducing acidity in the body, and reducing inflammation in the body. It's important to note that sitali breathing should be avoided if you have a respiratory condition that makes it difficult to breathe through your mouth, such as asthma or bronchitis. Additionally, if you live in a polluted environment or have allergies, it's important to practice sitali breathing in a clean and fresh air environment</p>
+        </video> 
         <p>Find a comfortable sitting position and follow our guided breathing session below</p>
         <div id="SBResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
@@ -3907,17 +4322,17 @@
                     <div id="timeOverviewMessageSB" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxSB">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalSB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxSB">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalSB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2SB">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2SB"></span>s
                     </div>
                 </div>
@@ -3928,7 +4343,7 @@
                     <button type="button" class="stopBtn" id="stopBtnSB">Stop</button>
                     <form method="post" id="SBForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="SBuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="SBDate" type="text" type="hidden" asp-for="Result.SBResultDate" />
@@ -3944,6 +4359,9 @@
                 </div>
             </div>
         </div>
+        <p>Sitali breathing is a yogic breathing technique that involves inhaling cool air through the mouth making a "U" shape with your tongue and exhaling slowly through the nose. It is also known as the cooling breath. If you are unable to curl your tongue, you can still practice sitali breathing by gently parting your lips and inhaling through your teeth</p>
+        <p>Sitali breathing is often used in yoga practice to cool the body and calm the mind. It may have several potential benefits, including: reducing stress and anxiety,
+        regulating body temperature, soothing the nervous system, improving digestion and reducing acidity in the body, and reducing inflammation in the body. It's important to note that sitali breathing should be avoided if you have a respiratory condition that makes it difficult to breathe through your mouth, such as asthma or bronchitis. Additionally, if you live in a polluted environment or have allergies, it's important to practice sitali breathing in a clean and fresh air environment</p>
     </div>
 </div>
 <div id="NKPage" class="hidden">
@@ -4027,11 +4445,8 @@
         <h1>4-7-8 Relaxation Breathing</h1>
         <video controls poster="/images/478.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
-        </video>
-        <p>The 478 breathing technique is based on the principles of deep breathing and diaphragmatic breathing, which have been shown to reduce stress and anxiety by activating the body's relaxation response. 
-        By slowing down the breath and focusing on the pattern of inhalation and exhalation, the mind is able to become more calm and centered.
-        </p>
-        <p>Find a comfortable sitting position or lay down, follow our guided breathing session below and learn how to relax your mind and body in a few minutes</p>
+        </video>   
+        <p>Find a comfortable sitting position or lay down, follow our guided breathing session above and learn how to relax your mind and body in a few minutes</p>
         <div id="RBResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
             <button id="RBSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -4076,17 +4491,17 @@
                     <div id="timeOverviewMessageRB" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxRB">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalRB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxRB">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalRB"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2RB">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2RB"></span>s
                     </div>
                 </div>
@@ -4097,7 +4512,7 @@
                     <button type="button" class="stopBtn" id="stopBtnRB">Stop</button>
                     <form method="post" id="RBForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="RBuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="RBDate" type="text" type="hidden" asp-for="Result.RBResultDate" />
@@ -4113,6 +4528,9 @@
                 </div>
             </div>
         </div>
+        <p>The 478 breathing technique is based on the principles of deep breathing and diaphragmatic breathing, which have been shown to reduce stress and anxiety by activating the body's relaxation response. 
+        By slowing down the breath and focusing on the pattern of inhalation and exhalation, the mind is able to become more calm and centered.
+        </p>
     </div>
 </div>
 <div id="MEDPage" class="hidden">
@@ -4124,14 +4542,7 @@
         <h1>Meditation</h1>
         <video controls poster="/images/meditation.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
-        </video>
-        <p>Meditation can have a positive impact on performance in various areas, including sports, work, and academics. Here are some potential benefits of meditation for performance:</p>
-        <ul>Improved focus and concentration: Meditation can help to improve focus and concentration, which can be beneficial for tasks that require sustained attention, such as studying, work projects, or sports training.</ul>
-        <ul>Reduced stress and anxiety: Meditation can help to reduce stress and anxiety, which can have a negative impact on performance. By promoting relaxation and calmness, meditation may help individuals to better manage stress and perform more effectively</ul>
-        <ul>Increased self-awareness: Meditation can help individuals to become more aware of their thoughts, emotions, and physical sensations, which can be beneficial for improving self-regulation and decision-making</ul>
-        <ul>Improved mental resilience: Meditation can help individuals to develop greater mental resilience, which can be beneficial for coping with challenges and setbacks and maintaining a positive mindset</ul>
-        <ul>Improved sleep: Meditation has been shown to improve sleep quality and duration, which can have a positive impact on overall well-being and performance</ul>
-        <p>Choose and follow one of our guided meditations below to ease your mind body and spirit:</p>
+        </video>        
         <div class="meditations">
             <ul>Morning Meditation</ul>
             <button type="button" class="startBtn" id="startBtnMED1">Start</button>
@@ -4147,6 +4558,13 @@
         </div>
         <input type="range" class="progress-bar" id="progressBarMED2" value="0" min="0" step="0.01">
         <div class="medDiv"></div>
+        <p>Meditation can have a positive impact on performance in various areas, including sports, work, and academics. Here are some potential benefits of meditation for performance:</p>
+        <ul>Improved focus and concentration: Meditation can help to improve focus and concentration, which can be beneficial for tasks that require sustained attention, such as studying, work projects, or sports training.</ul>
+        <ul>Reduced stress and anxiety: Meditation can help to reduce stress and anxiety, which can have a negative impact on performance. By promoting relaxation and calmness, meditation may help individuals to better manage stress and perform more effectively</ul>
+        <ul>Increased self-awareness: Meditation can help individuals to become more aware of their thoughts, emotions, and physical sensations, which can be beneficial for improving self-regulation and decision-making</ul>
+        <ul>Improved mental resilience: Meditation can help individuals to develop greater mental resilience, which can be beneficial for coping with challenges and setbacks and maintaining a positive mindset</ul>
+        <ul>Improved sleep: Meditation has been shown to improve sleep quality and duration, which can have a positive impact on overall well-being and performance</ul>
+        <p>Choose and follow one of our guided meditations above to ease your mind body and spirit</p>
     </div> 
 </div>
 <div id="SLEEPPage" class="hidden">
@@ -4274,7 +4692,7 @@
     </header>
     <div class="breathingpages">
         <h1>Apnea Settings</h1>
-        <h4 class="volumeSettings">Length of Breath</h4>
+        <h4 class="volumeSettings">Ratio of Breath</h4>
         <div class="timer-additional-info">
             <b>INHALE | HOLD | EXHALE</b>
         </div>
@@ -4355,16 +4773,10 @@
     </header>
     <div class="breathingpages">
         <h1>Sex and Breath</h1>
-    <video controls poster="/images/sex.png" playsinline>
-        <source src="/videos/movie.mp4" type="video/mp4">
-    </video>
-    <p>Breathing can play an important role in sexual experiences, as it can help individuals to relax and connect with their bodies, leading to a more pleasurable and fulfilling sexual experience. Here are some ways in which breathing can impact sex:</p>
-    <ul>Relaxation: Deep breathing can help to promote relaxation and reduce anxiety or tension, which can be beneficial for enhancing sexual pleasure and reducing performance anxiety</ul>
-    <ul>Improved endurance: By regulating breathing during sex, individuals can increase their endurance and stay more focused on the experience</ul>
-    <ul>Mind-body connection: Breathing can help to increase awareness of the body and enhance the connection between physical sensations and emotions, which can lead to a more fulfilling sexual experience</ul>
-    <ul>Sensual breathing techniques: Certain breathing techniques, such as rhythmic breathing or synchronized breathing with a partner, can enhance intimacy and pleasure during sex</ul>
-    <p>This breathing technique is based on the principles of locking your pelvic floor muscle in order to strenghen it and be able to have full control of your orgasms. Start with small intervals until you are used to this technique.</p>
-    <p>Find a comfortable sitting position or lay down, follow our guided breathing session below and make sure to lock your pelvic floor muscle when holding your breath</p>
+        <video controls poster="/images/sex.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>   
+        <p>This breathing technique is based on the principles of locking your pelvic floor muscle in order to strengthen it and be able to have full control of your sex performance. Start with small intervals until you are used to this technique.</p>
         <div id="SEXResultSaved" class="resultSaved"></div>
         <div class="settingButtons">
             <button id="SEXSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -4375,17 +4787,17 @@
                     <div id="timeOverviewMessageSEX" class="timeOverviewMessage">Finish!</div>
 
                     <div class="box" id="elapsedInIntervalBoxSEX">
-                        <header class="boxFontSize">Inhale</header>
+                        <div class="boxFontSize">Inhale</div>
                         <span class="spanFontSize" id="elapsedInIntervalSEX"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBoxSEX">
-                        <header class="boxFontSize">Hold</header>
+                        <div class="boxFontSize">Hold</div>
                         <span class="spanFontSize" id="elapsedInBreakIntervalSEX"></span>s
                     </div>
 
                     <div class="box hideBreak" id="elapsedInBreakIntervalBox2SEX">
-                        <header class="boxFontSize">Exhale</header>
+                        <div class="boxFontSize">Exhale</div>
                         <span class="spanFontSize" id="elapsedInBreakInterval2SEX"></span>s
                     </div>
                 </div>
@@ -4396,7 +4808,7 @@
                     <button type="button" class="stopBtn" id="stopBtnSEX">Stop</button>
                     <form method="post" id="SEXForm">
                         <div>
-                            <input type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
+                            <input id="SEXuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
                         </div>
                         <div>
                             <input id="SEXDate" type="text" type="hidden" asp-for="Result.SEXResultDate" />
@@ -4412,6 +4824,12 @@
                 </div>
             </div>
         </div>
+        <p>Find a comfortable sitting position or lay down, follow our guided breathing session above and make sure to lock your pelvic floor muscle when holding your breath</p>
+        <p>Breathing can play an important role in sexual experiences, as it can help individuals to relax and connect with their bodies, leading to a more pleasurable and fulfilling sexual experience. Here are some ways in which breathing can impact sex:</p>
+        <ul>Relaxation: Deep breathing can help to promote relaxation and reduce anxiety or tension, which can be beneficial for enhancing sexual pleasure and reducing performance anxiety</ul>
+        <ul>Improved endurance: By regulating breathing during sex, individuals can increase their endurance and stay more focused on the experience</ul>
+        <ul>Mind-body connection: Breathing can help to increase awareness of the body and enhance the connection between physical sensations and emotions, which can lead to a more fulfilling sexual experience</ul>
+        <ul>Sensual breathing techniques: Certain breathing techniques, such as rhythmic breathing or synchronized breathing with a partner, can enhance intimacy and pleasure during sex</ul>
     </div>
 </div>
 

@@ -15,6 +15,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax; // or SameSiteMode.Strict
+    options.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.Always; // Enforce HTTPS
+    // Other cookie settings...
+});
+
+
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
@@ -42,7 +50,7 @@ app.UseStaticFiles();
 // Add redirection middleware
 app.Use(async (context, next) =>
 {
-    var allowedPaths = new[] { "/", "/Results", "/Identity/Account/Login", "/Identity/Account/Register", "/Identity/Account/ForgotPassword", "/Identity/Account/ForgotPasswordConfirmation", "/Identity/Account/ResetPassword", "/Identity/Account/ResetPasswordConfirmation" };
+    var allowedPaths = new[] { "/", "/Results", "/Results/CreateBR", "/Identity/Account/Login", "/Identity/Account/Register", "/Identity/Account/ForgotPassword", "/Identity/Account/ForgotPasswordConfirmation", "/Identity/Account/ResetPassword", "/Identity/Account/ResetPasswordConfirmation", "/Identity/Account/Logout", "/Identity/Account/DeletePersonalData", "/Identity/Account/ChangePassword" };
 
     if (!allowedPaths.Contains(context.Request.Path.Value, StringComparer.OrdinalIgnoreCase))
     {

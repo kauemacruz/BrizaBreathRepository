@@ -149,10 +149,18 @@ document.getElementById('CO2Save').disabled = true;
 document.getElementById('CO2Save').style.color = 'rgb(177, 177, 177)';
 
 var audioListCO2 = []
-audioListCO2.push(new Audio('../sounds/deepbreaths.mp3'));
-audioListCO2.push(new Audio('../sounds/deepbreaths2.mp3'));
-audioListCO2.push(new Audio('../sounds/normalbreath.mp3'));
-audioListCO2.push(new Audio('../sounds/holdyourbreath.mp3'));
+if (isPortuguese) {
+    audioListCO2.push(new Audio('../sounds/deepbreaths.mp3'));
+    audioListCO2.push(new Audio('../sounds/deepbreaths2.mp3'));
+    audioListCO2.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListCO2.push(new Audio('../sounds/holdyourbreath.mp3'));
+} else {
+    audioListCO2.push(new Audio('../sounds/deepbreaths.mp3'));
+    audioListCO2.push(new Audio('../sounds/deepbreaths2.mp3'));
+    audioListCO2.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListCO2.push(new Audio('../sounds/holdyourbreath.mp3'));
+}
+
 
 var ismuteCO2 = false;
 
@@ -1096,8 +1104,12 @@ function initializeTimerSettingsFormCO2() {
         document.getElementsByClassName('gap2CO2')[1].style.backgroundColor = '#49B79D';
         timerCO2.isBreak2CO2 = true;
         timerCO2.isBreakCO2 = false; 
-        timerCO2.intervalsDoneCO2++;
-        document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+          timerCO2.intervalsDoneCO2++;
+          if (isPortuguese) {
+              document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " segundos</div></div>";
+          } else {
+              document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+          }
           timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
         timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
         if (!timerCO2.isFinishedCO2) {
@@ -1150,7 +1162,11 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak4CO2 = true;
           timerCO2.isBreak3CO2 = false;
           timerCO2.intervalsDoneCO2++;
-            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            }
             timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
@@ -1203,7 +1219,11 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak6CO2 = true;
           timerCO2.isBreak5CO2 = false;
           timerCO2.intervalsDoneCO2++;
-            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            }
             timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
@@ -1256,7 +1276,11 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak8CO2 = true;
           timerCO2.isBreak7CO2 = false;
           timerCO2.intervalsDoneCO2++;
-            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            }
             timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";          
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
@@ -1309,7 +1333,11 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak10CO2 = true;
           timerCO2.isBreak9CO2 = false;
           timerCO2.intervalsDoneCO2++;
-            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            }
             timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
@@ -1362,7 +1390,11 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak12CO2 = true;
           timerCO2.isBreak11CO2 = false;
           timerCO2.intervalsDoneCO2++;
-            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            }
             timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
@@ -1415,7 +1447,11 @@ function initializeTimerSettingsFormCO2() {
           timerCO2.isBreak14CO2 = true;
           timerCO2.isBreak13CO2 = false;
           timerCO2.intervalsDoneCO2++;
-            document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+            }
             timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
           timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
           if (!timerCO2.isFinishedCO2) {
@@ -1464,7 +1500,11 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.isFinishedCO2 = true;
         timerCO2.isBreak15CO2 = false;
         timerCO2.intervalsDoneCO2++;
-          document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+          if (isPortuguese) {
+              document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " segundos</div></div>";
+          } else {
+              document.getElementById("CO2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerCO2.intervalsDoneCO2 + "</div><div>" + (timerCO2.elapsedInIntervalCO2 - 1) + " seconds</div></div>";
+          }
           timerRefCO2.value += (timerCO2.elapsedInIntervalCO2 - 1) + "|";
         timerCO2.isFinishedCO2 = timerCO2.intervalsDoneCO2 === timerSettingsCO2.intervalCountCO2;
         timerCO2.elapsedInIntervalCO2 = 1;

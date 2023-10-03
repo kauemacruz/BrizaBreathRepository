@@ -134,10 +134,18 @@ document.getElementById('hatcSave').disabled = true;
 document.getElementById('hatcSave').style.color = 'rgb(177, 177, 177)';
 
 var audioListHATC = []
-audioListHATC.push(new Audio('../sounds/pinchnose.mp3'));
-audioListHATC.push(new Audio('../sounds/lightbreath.mp3'));
-audioListHATC.push(new Audio('../sounds/normalbreath.mp3'));
-audioListHATC.push(new Audio('../sounds/hold.mp3'));
+if (isPortuguese) {
+    audioListHATC.push(new Audio('../sounds/pinchnose.mp3'));
+    audioListHATC.push(new Audio('../sounds/lightbreath.mp3'));
+    audioListHATC.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListHATC.push(new Audio('../sounds/hold.mp3'));
+} else {
+    audioListHATC.push(new Audio('../sounds/pinchnose.mp3'));
+    audioListHATC.push(new Audio('../sounds/lightbreath.mp3'));
+    audioListHATC.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListHATC.push(new Audio('../sounds/hold.mp3'));
+}
+
 
 var audioHATC = document.getElementById("audioHATC"),
     muteHATC = document.getElementById("muteHATC"),
@@ -395,7 +403,11 @@ function pauseTimerHATC() {
     document.getElementById('stopBtnHATC').style.color = '#990000';
     setTimerControlsDisabledStateHATC(true, true, false);
     nextroundHATC = true;
-    document.getElementById("HATCResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHATC.intervalsDoneHATC + 1) + "</div><div>" + timerHATC.elapsedInIntervalHATC + " seconds</div></div>";
+    if (isPortuguese) {
+        document.getElementById("HATCResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHATC.intervalsDoneHATC + 1) + "</div><div>" + timerHATC.elapsedInIntervalHATC + " segundos</div></div>";
+    } else {
+        document.getElementById("HATCResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHATC.intervalsDoneHATC + 1) + "</div><div>" + timerHATC.elapsedInIntervalHATC + " seconds</div></div>";
+    }
     timerRefHATC.value += timerHATC.elapsedInIntervalHATC + "|";
     timerHATC.elapsedInIntervalHATC = 0;
     timerHATC.intervalsDoneHATC++;
@@ -403,7 +415,11 @@ function pauseTimerHATC() {
 
 function stopTimerHATC() {
     if (elapsedInIntervalBoxHATC.style.display !== "none") {
-        document.getElementById("HATCResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHATC.intervalsDoneHATC + 1) + "</div><div>" + timerHATC.elapsedInIntervalHATC + " seconds</div></div>";
+        if (isPortuguese) {
+            document.getElementById("HATCResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHATC.intervalsDoneHATC + 1) + "</div><div>" + timerHATC.elapsedInIntervalHATC + " segundos</div></div>";
+        } else {
+            document.getElementById("HATCResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHATC.intervalsDoneHATC + 1) + "</div><div>" + timerHATC.elapsedInIntervalHATC + " seconds</div></div>";
+        }
         timerRefHATC.value += timerHATC.elapsedInIntervalHATC + "|";
     } else { }
     clearInterval(intHATC);

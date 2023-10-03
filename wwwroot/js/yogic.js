@@ -130,11 +130,17 @@ document.getElementById('yogicSave').disabled = true;
 document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
 
 var audioListYogic = []
-audioListYogic.push(new Audio('/sounds/breathein.mp3'))
-audioListYogic.push(new Audio('/sounds/holdyourbreath.mp3'));
-audioListYogic.push(new Audio('/sounds/exhale.mp3'));
-audioListYogic.push(new Audio('/sounds/hold.mp3'));
-
+if (isPortuguese) {
+    audioListYogic.push(new Audio('/sounds/breathein.mp3'))
+    audioListYogic.push(new Audio('/sounds/holdyourbreath.mp3'));
+    audioListYogic.push(new Audio('/sounds/exhale.mp3'));
+    audioListYogic.push(new Audio('/sounds/hold.mp3'));
+} else {
+    audioListYogic.push(new Audio('/sounds/breathein.mp3'))
+    audioListYogic.push(new Audio('/sounds/holdyourbreath.mp3'));
+    audioListYogic.push(new Audio('/sounds/exhale.mp3'));
+    audioListYogic.push(new Audio('/sounds/hold.mp3'));
+}
 
 var audioYogic = document.getElementById("audioYogic"),
     muteYogic = document.getElementById("muteYogic"),

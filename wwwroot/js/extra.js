@@ -1,6 +1,12 @@
 var meditationList = [];
-meditationList.push(new Audio('/sounds/songs/autumn-sky-meditation-7618.mp3'));
-meditationList.push(new Audio('/sounds/songs/meditation-sounds-122698.mp3'));
+if (isPortuguese) {
+    meditationList.push(new Audio('/sounds/songs/autumn-sky-meditation-7618.mp3'));
+    meditationList.push(new Audio('/sounds/songs/meditation-sounds-122698.mp3'));
+} else {
+    meditationList.push(new Audio('/sounds/songs/autumn-sky-meditation-7618.mp3'));
+    meditationList.push(new Audio('/sounds/songs/meditation-sounds-122698.mp3'));
+}
+
 
 //MEDITATATION 1
 document.getElementById("startBtnMED1").addEventListener('click', startMED1);
@@ -255,10 +261,18 @@ document.getElementById('SEXSave').disabled = true;
 document.getElementById('SEXSave').style.color = 'rgb(177, 177, 177)';
 
 var audioListSEX = []
-audioListSEX.push(new Audio('/sounds/breathein.mp3'))
-audioListSEX.push(new Audio('/sounds/holdyourbreath.mp3'));
-audioListSEX.push(new Audio('/sounds/exhale.mp3'));
-audioListSEX.push(new Audio('/sounds/hold.mp3'));
+if (isPortuguese) {
+    audioListSEX.push(new Audio('/sounds/breathein.mp3'))
+    audioListSEX.push(new Audio('/sounds/holdyourbreath.mp3'));
+    audioListSEX.push(new Audio('/sounds/exhale.mp3'));
+    audioListSEX.push(new Audio('/sounds/hold.mp3'));
+} else {
+    audioListSEX.push(new Audio('/sounds/breathein.mp3'))
+    audioListSEX.push(new Audio('/sounds/holdyourbreath.mp3'));
+    audioListSEX.push(new Audio('/sounds/exhale.mp3'));
+    audioListSEX.push(new Audio('/sounds/hold.mp3'));
+}
+
 
 
 var audioSEX = document.getElementById("audioSEX"),

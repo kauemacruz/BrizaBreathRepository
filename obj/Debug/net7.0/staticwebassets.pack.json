@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\images\\boxbreathing.png"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\br.png",
+      "PackagePath": "staticwebassets\\images\\br.png"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\breathholds.png",
       "PackagePath": "staticwebassets\\images\\breathholds.png"
     },
@@ -111,6 +115,10 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\diet.png",
       "PackagePath": "staticwebassets\\images\\diet.png"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\en.png",
+      "PackagePath": "staticwebassets\\images\\en.png"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\favicon.png",

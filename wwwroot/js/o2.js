@@ -197,10 +197,18 @@ document.getElementById('O2Save').disabled = true;
 document.getElementById('O2Save').style.color = 'rgb(177, 177, 177)';
 
 var audioListO2 = []
-audioListO2.push(new Audio('../sounds/deepbreaths.mp3'));
-audioListO2.push(new Audio('../sounds/deepbreaths2.mp3'));
-audioListO2.push(new Audio('../sounds/normalbreath.mp3'));
-audioListO2.push(new Audio('../sounds/holdyourbreath.mp3'));
+if (isPortuguese) {
+    audioListO2.push(new Audio('../sounds/deepbreaths.mp3'));
+    audioListO2.push(new Audio('../sounds/deepbreaths2.mp3'));
+    audioListO2.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListO2.push(new Audio('../sounds/holdyourbreath.mp3'));
+} else {
+    audioListO2.push(new Audio('../sounds/deepbreaths.mp3'));
+    audioListO2.push(new Audio('../sounds/deepbreaths2.mp3'));
+    audioListO2.push(new Audio('../sounds/normalbreath.mp3'));
+    audioListO2.push(new Audio('../sounds/holdyourbreath.mp3'));
+}
+
 
 var audioO2 = document.getElementById("audioO2"),
     muteO2 = document.getElementById("muteO2"),
@@ -1091,8 +1099,12 @@ function initializeTimerSettingsFormO2() {
         document.getElementsByClassName('gap2O2')[1].style.backgroundColor = '#49B79D';
         timerO2.isBreak2O2 = true;
         timerO2.isBreakO2 = false; 
-        timerO2.intervalsDoneO2++;
-        document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+          timerO2.intervalsDoneO2++;
+          if (isPortuguese) {
+              document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " segundos</div></div>";
+          } else {
+              document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+          }
         timerRefO2.value += timerO2.elapsedInIntervalO2 + "|";
         timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
         if (!timerO2.isFinishedO2) {
@@ -1145,7 +1157,11 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak4O2 = true;
           timerO2.isBreak3O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            }
             timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
@@ -1198,7 +1214,11 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak6O2 = true;
           timerO2.isBreak5O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            }
             timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
@@ -1251,7 +1271,11 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak8O2 = true;
           timerO2.isBreak7O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 -1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            }
             timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";          
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
@@ -1304,8 +1328,12 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak10O2 = true;
           timerO2.isBreak9O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 -1) + " seconds</div></div>";
-          timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
+            if (isPortuguese) {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            }
+            timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
             timerO2.elapsedInIntervalO2 = 1;
@@ -1357,7 +1385,11 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak12O2 = true;
           timerO2.isBreak11O2 = false;
           timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            }
             timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
@@ -1410,7 +1442,11 @@ function initializeTimerSettingsFormO2() {
           timerO2.isBreak14O2 = true;
           timerO2.isBreak13O2 = false;
           timerO2.intervalsDoneO2++;
-            document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            if (isPortuguese) {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " segundos</div></div>";
+            } else {
+                document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+            }
             timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
           timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
           if (!timerO2.isFinishedO2) {
@@ -1459,7 +1495,11 @@ function initializeTimerSettingsFormO2() {
         timerO2.isFinishedO2 = true;
         timerO2.isBreak15O2 = false;
         timerO2.intervalsDoneO2++;
-          document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+          if (isPortuguese) {
+              document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " segundos</div></div>";
+          } else {
+              document.getElementById("O2Results").innerHTML += "<div class='NOfSteps'> <div>Round " + timerO2.intervalsDoneO2 + "</div><div>" + (timerO2.elapsedInIntervalO2 - 1) + " seconds</div></div>";
+          }
           timerRefO2.value += (timerO2.elapsedInIntervalO2 - 1) + "|";
         timerO2.isFinishedO2 = timerO2.intervalsDoneO2 === timerSettingsO2.intervalCountO2;
         timerO2.elapsedInIntervalO2 = 1;

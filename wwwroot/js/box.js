@@ -130,10 +130,17 @@ document.getElementById('BOXSave').disabled = true;
 document.getElementById('BOXSave').style.color = 'rgb(177, 177, 177)';
 
 var audioListBOX = []
-audioListBOX.push(new Audio('/sounds/breathein.mp3'))
-audioListBOX.push(new Audio('/sounds/holdyourbreath.mp3'));
-audioListBOX.push(new Audio('/sounds/exhale.mp3'));
-audioListBOX.push(new Audio('/sounds/hold.mp3'));
+if (isPortuguese) {
+    audioListBOX.push(new Audio('/sounds/breathein.mp3'))
+    audioListBOX.push(new Audio('/sounds/holdyourbreath.mp3'));
+    audioListBOX.push(new Audio('/sounds/exhale.mp3'));
+    audioListBOX.push(new Audio('/sounds/hold.mp3'));
+} else {
+    audioListBOX.push(new Audio('/sounds/breathein.mp3'))
+    audioListBOX.push(new Audio('/sounds/holdyourbreath.mp3'));
+    audioListBOX.push(new Audio('/sounds/exhale.mp3'));
+    audioListBOX.push(new Audio('/sounds/hold.mp3'));
+}
 
 
 var audioBOX = document.getElementById("audioBOX"),

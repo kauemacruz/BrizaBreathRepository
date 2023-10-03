@@ -127,10 +127,18 @@ let intHUM = null;
 document.getElementById('HUMSave').disabled = true;
 document.getElementById('HUMSave').style.color = 'rgb(177, 177, 177)';
 var audioListHUM = []
-audioListHUM.push(new Audio('/sounds/breathein.mp3'));
-audioListHUM.push(new Audio('/sounds/holdyourbreath.mp3'));
-audioListHUM.push(new Audio('/sounds/humming.mp3'));
-audioListHUM.push(new Audio('/sounds/hold.mp3'));
+if (isPortuguese) {
+    audioListHUM.push(new Audio('/sounds/breathein.mp3'));
+    audioListHUM.push(new Audio('/sounds/holdyourbreath.mp3'));
+    audioListHUM.push(new Audio('/sounds/humming.mp3'));
+    audioListHUM.push(new Audio('/sounds/hold.mp3'));
+} else {
+    audioListHUM.push(new Audio('/sounds/breathein.mp3'));
+    audioListHUM.push(new Audio('/sounds/holdyourbreath.mp3'));
+    audioListHUM.push(new Audio('/sounds/humming.mp3'));
+    audioListHUM.push(new Audio('/sounds/hold.mp3'));
+}
+
 
 var audioHUM = document.getElementById("audioHUM"),
     muteHUM = document.getElementById("muteHUM"),
