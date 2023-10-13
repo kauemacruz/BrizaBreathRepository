@@ -1,50 +1,4 @@
 /*478 JS*/
-const songSelectRB = document.getElementById('song-selectRB');
-const audioPlayerRB = document.getElementById('audio-playerRB');
-var isRBON = false;
-// Variable to store the timeout ID
-let timeoutIdRB;
-
-
-// Function to play the selected song
-const playSelectedSongRB = () => {
-    const selectedSongRB = songSelectRB.value;
-    audioPlayerRB.src = selectedSongRB;
-    if (isRBON !== true) {
-        audioPlayerRB.muted = false;
-        audioPlayerRB.play();
-        localStorage.setItem('selectedSongRB', songSelectRB.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdRB);
-        timeoutIdRB = setTimeout(function () {
-            audioPlayerRB.pause();
-            audioPlayerRB.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerRB.muted = false;
-        audioPlayerRB.loop = true;
-        audioPlayerRB.play();
-        clearTimeout(timeoutIdRB);
-    }
-};
-
-
-const storedSongRB = localStorage.getItem('selectedSongRB');
-if (storedSongRB) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectRB.value = storedSongRB;
-}
-
-// Add an event listener to the songSelectRB dropdown
-songSelectRB.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerRB.pause();
-    audioPlayerRB.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongRB();
-});
-
 $(function () {
     $('#RBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -64,7 +18,7 @@ $(function () {
         clearInterval(intRB);
         [secondsRB, minutesRB, hoursRB] = [0, 0, 0];
         timerRefRB.value = '00 : 00 : 00';
-        audioPlayerRB.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsRB.pauseRB.style.display = 'none';
         timerControlsButtonsRB.startRB.style.display = 'inline';
         setFormDisabledStateRB(false);
@@ -74,7 +28,6 @@ $(function () {
         document.getElementById('RBSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickRB();
         resetTimerRB();
-        isRBON = false;
     });
 });
 
@@ -142,12 +95,10 @@ var audioRB = document.getElementById("audioRB"),
     muteRB = document.getElementById("muteRB"),
     ismuteRB = false;
 
-audioPlayerRB.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongRB = document.getElementById("songRB"),
-    muteSongRB = document.getElementById("songMuteRB"),
-    isSongMuteRB = false;
-
+    muteSongRB = document.getElementById("songMuteRB");
 // Get the volumeVRB bar element
 const volumeVoiceRB = document.getElementById('volumeVoiceRB');
 
@@ -185,15 +136,13 @@ volumeSongRB.addEventListener('input', function () {
 
     // Check if volumeSRB is 0 and mute the media if necessary
     if (volumeSRB === 0) {
-        audioPlayerRB.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongRB.style.display = "none";
         muteSongRB.style.display = "block";
-        isSongMuteRB = true;
     } else {
-        audioPlayerRB.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongRB.style.display = "none";
         audioSongRB.style.display = "block";
-        isSongMuteRB = false;
     }
 });
 
@@ -385,9 +334,8 @@ function startTimerRB() {
             audioListRB[0].play();
         }
     }
-    isRBON = true;
-    if (!isSongMuteRB) {
-        playSelectedSongRB();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerRB.isFinishedRB) {
         resetTimerRB();
@@ -409,11 +357,10 @@ function pauseTimerRB() {
     timerControlsButtonsRB.startRB.style.display = 'inline';
     document.getElementById('RBSettings').disabled = false;
     document.getElementById('RBSettings').style.color = '#49B79D';
-    if (!isSongMuteRB) {
-        audioPlayerRB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickRB();
-    isRBON = false;
     document.getElementById('RBDate').value = date;
     document.getElementById('RBSave').disabled = false;
     document.getElementById('RBSave').style.color = '#49B79D';
@@ -423,7 +370,7 @@ function stopTimerRB() {
     clearInterval(intRB);
     [secondsRB, minutesRB, hoursRB] = [0, 0, 0];
     timerRefRB.value = '00 : 00 : 00';
-    audioPlayerRB.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsRB.pauseRB.style.display = 'none';
     timerControlsButtonsRB.startRB.style.display = 'inline';
     setFormDisabledStateRB(false);
@@ -433,7 +380,6 @@ function stopTimerRB() {
     document.getElementById('RBSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickRB();
     resetTimerRB();
-    isRBON = false;
 }
 
 function displayTimerRB() {

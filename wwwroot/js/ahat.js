@@ -1,50 +1,4 @@
 /*AHAT JS*/
-const songSelectAHAT = document.getElementById('song-selectAHAT');
-const audioPlayerAHAT = document.getElementById('audio-playerAHAT');
-var isAHATON = false;
-// Variable to store the timeout ID
-let timeoutIdAHAT;
-
-
-// Function to play the selected song
-const playSelectedSongAHAT = () => {
-    const selectedSongAHAT = songSelectAHAT.value;
-    audioPlayerAHAT.src = selectedSongAHAT;
-    if (isAHATON !== true) {
-        audioPlayerAHAT.muted = false;
-        audioPlayerAHAT.play();
-        localStorage.setItem('selectedSongAHAT', songSelectAHAT.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdAHAT);
-        timeoutIdAHAT = setTimeout(function () {
-            audioPlayerAHAT.pause();
-            audioPlayerAHAT.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerAHAT.muted = false;
-        audioPlayerAHAT.loop = true;
-        audioPlayerAHAT.play();
-        clearTimeout(timeoutIdAHAT);
-    }
-};
-
-
-const storedSongAHAT = localStorage.getItem('selectedSongAHAT');
-if (storedSongAHAT) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectAHAT.value = storedSongAHAT;
-}
-
-// Add an event listener to the songSelectAHAT dropdown
-songSelectAHAT.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerAHAT.pause();
-    audioPlayerAHAT.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongAHAT();
-});
-
 $(function () {
     $('#ahatForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -66,8 +20,8 @@ $(function () {
         clearInterval(intAHAT);
         document.getElementById('ahatSettings').disabled = false;
         document.getElementById('ahatSettings').style.color = '#49B79D';
-        if (!isSongMuteAHAT) {
-            audioPlayerAHAT.pause();
+        if (!audioPlayerBRT.muted) {
+            audioPlayerBRT.pause();
         }
         timerControlsButtonsAHAT.pauseAHAT.style.display = 'none';
         timerControlsButtonsAHAT.startAHAT.style.display = 'inline';
@@ -150,11 +104,10 @@ var audioAHAT = document.getElementById("audioAHAT"),
     muteAHAT = document.getElementById("muteAHAT"),
     ismuteAHAT = false;
 
-audioPlayerAHAT.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongAHAT = document.getElementById("songAHAT"),
-    muteSongAHAT = document.getElementById("songMuteAHAT"),
-    isSongMuteAHAT = false;
+    muteSongAHAT = document.getElementById("songMuteAHAT");
 
 // Get the volumeVahat bar element
 const volumeVoiceAHAT = document.getElementById('volumeVoiceAHAT');
@@ -193,15 +146,13 @@ volumeSongAHAT.addEventListener('input', function () {
 
     // Check if volumeSahat is 0 and mute the media if necessary
     if (volumeSahat === 0) {
-        audioPlayerAHAT.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongAHAT.style.display = "none";
         muteSongAHAT.style.display = "block";
-        isSongMuteAHAT = true;
     } else {
-        audioPlayerAHAT.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongAHAT.style.display = "none";
         audioSongAHAT.style.display = "block";
-        isSongMuteAHAT = false;
     }
 });
 
@@ -378,9 +329,8 @@ function startTimerAHAT() {
             audioListAHAT[0].play();
         }
     }
-    isAHATON = true;
-    if (!isSongMuteAHAT) {
-        playSelectedSongAHAT();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerAHAT.isFinishedAHAT) {
         resetTimerAHAT();
@@ -425,8 +375,8 @@ function stopTimerAHAT() {
     [secondsAHAT, minutesAHAT, hoursAHAT] = [0, 0, 0];
     document.getElementById('ahatSettings').disabled = false;
     document.getElementById('ahatSettings').style.color = '#49B79D';
-    if (!isSongMuteAHAT) {
-        audioPlayerAHAT.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     timerControlsButtonsAHAT.pauseAHAT.style.display = 'none';
     timerControlsButtonsAHAT.startAHAT.style.display = 'inline';
@@ -480,7 +430,7 @@ function stopTimerTickAHAT() {
 function onTimerTickAHAT() {
     const currentIntervalDurationAHAT = timerAHAT.isBreakAHAT ? timerSettingsAHAT.breakDurationAHAT : timerAHAT.isBreak2AHAT ? timerSettingsAHAT.breakDuration2AHAT : timerAHAT.isBreak4 ? timerSettingsAHAT.breakDuration3 : timerSettingsAHAT.intervalDurationAHAT;
     if (timerAHAT.elapsedInIntervalAHAT <= currentIntervalDurationAHAT && timerAHAT.isBreak0AHAT) {
-        timerAHAT.elapsedInIntervalAHAT++;
+        timerAHAT.elapsedInIntervalAHAT++; 
         if (timerAHAT.elapsedInIntervalAHAT > 10) {
             setTimerControlsDisabledStateAHAT(false, false, false);
         }
@@ -557,6 +507,7 @@ function onTimerTickAHAT() {
 }
 
 function updateInfoAHAT() {
+    requestWakeLock();
     statusPanelAHAT.timeOverviewMessageAHAT.style.display = timerAHAT.isFinishedAHAT ? 'block' : null;
     statusPanelAHAT.elapsedInIntervalBoxAHAT.style.display = timerAHAT.isFinishedAHAT || timerAHAT.isBreakAHAT || timerAHAT.isBreak2AHAT || timerAHAT.isBreak4 ? 'none' : null;
     statusPanelAHAT.elapsedInBreakIntervalBoxAHAT.style.display = !timerAHAT.isFinishedAHAT && timerAHAT.isBreakAHAT ? 'block' : null;

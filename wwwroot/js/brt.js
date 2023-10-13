@@ -2,16 +2,15 @@
 const songSelectBRT = document.getElementById('song-selectBRT');
 const audioPlayerBRT = document.getElementById('audio-playerBRT');
 const startBtnBRT = document.getElementById('brtStart');
-
 // Variable to store the timeout ID
 let timeoutIdBRT;
 
 
 // Function to play the selected song
-const playSelectedSongBRT = () => {
+function playSelectedSongBRT (isSongOn){
     const selectedSongBRT = songSelectBRT.value;
     audioPlayerBRT.src = selectedSongBRT;
-    if (brtIsOn != true) {
+    if (!isSongOn) {
         audioPlayerBRT.muted = false;
         audioPlayerBRT.play();
         localStorage.setItem('selectedSongBRT', songSelectBRT.value);
@@ -28,7 +27,7 @@ const playSelectedSongBRT = () => {
         audioPlayerBRT.play();
         clearTimeout(timeoutIdBRT);
     }
-};
+}
 
 const storedSongBRT = localStorage.getItem('selectedSongBRT');
 if (storedSongBRT) {
@@ -43,9 +42,8 @@ songSelectBRT.addEventListener('change', function () {
     audioPlayerBRT.currentTime = 0;
 
     // Play the selected song
-    playSelectedSongBRT();
+    playSelectedSongBRT(false);
 });
-
 
 $(function () {
     $('#brtForm').on('submit', function (e) {
@@ -85,7 +83,6 @@ document.getElementById('brtStop').disabled = true;
 document.getElementById('brtStop').style.color = 'rgb(177, 177, 177)';
 document.getElementById('brtSave').disabled = true;
 document.getElementById('brtSave').style.color = 'rgb(177, 177, 177)';
-var brtIsOn = false;
 startBtnBRT.addEventListener('click', () => {
     if (brtInt !== null) {
         clearInterval(brtInt);
@@ -99,9 +96,8 @@ startBtnBRT.addEventListener('click', () => {
     document.getElementById('brtSave').style.color = 'rgb(177, 177, 177)';
     document.getElementById('brtSettings').disabled = true;
     document.getElementById('brtSettings').style.color = 'rgb(177, 177, 177)';
-    brtIsOn = true;
-    if (brtismute != true) {
-        playSelectedSongBRT();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
 });
 document.getElementById('brtPause').addEventListener('click', () => {
@@ -114,10 +110,9 @@ document.getElementById('brtPause').addEventListener('click', () => {
     document.getElementById('brtSave').style.color = '#49B79D';
     document.getElementById('brtSettings').disabled = false;
     document.getElementById('brtSettings').style.color = '#49B79D';
-    if (brtismute != true) {
+    if (!audioPlayerBRT.muted) {
         audioPlayerBRT.pause();
     }
-    brtIsOn = false;
     document.getElementById('brtDate').value = date;
 });
 document.getElementById('brtStop').addEventListener('click', () => {
@@ -128,11 +123,10 @@ document.getElementById('brtStop').addEventListener('click', () => {
     document.getElementById('brtStop').style.color = 'rgb(177, 177, 177)';
     document.getElementById('brtSave').disabled = true;
     document.getElementById('brtSave').style.color = 'rgb(177, 177, 177)';
-    if (brtismute != true) {
+    if (!audioPlayerBRT.muted) {
         audioPlayerBRT.pause();
     }
     audioPlayerBRT.currentTime = 0;
-    brtIsOn = false;
 });
 function brtDisplayTimer() {
     brtSeconds++;
@@ -145,9 +139,7 @@ function brtDisplayTimer() {
     brtTimerRef.value = `${brtM} : ${brtS}`;
 }
 var brtaudio = document.getElementById("brtaudio"),
-    brtmute = document.getElementById("brtmute"),
-    brtismute = false;
-
+    brtmute = document.getElementById("brtmute");
 
 // Get the volumeBRT bar element
 const volumeBarBRT = document.getElementById('volumeBarBRT');
@@ -162,11 +154,9 @@ volumeBarBRT.addEventListener('input', function () {
         audioPlayerBRT.muted = true;
         brtaudio.style.display = "none";
         brtmute.style.display = "block";
-        brtismute = true;
     } else {
         audioPlayerBRT.muted = false;
         brtmute.style.display = "none";
         brtaudio.style.display = "block";
-        brtismute = false;
     }
 });

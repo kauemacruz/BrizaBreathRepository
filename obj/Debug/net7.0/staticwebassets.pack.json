@@ -17,10 +17,6 @@
       "PackagePath": "staticwebassets\\images\\478.png"
     },
     {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\BRT.png",
-      "PackagePath": "staticwebassets\\images\\BRT.png"
-    },
-    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\BRT30.png",
       "PackagePath": "staticwebassets\\images\\BRT30.png"
     },
@@ -79,6 +75,14 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brizaprogram.png",
       "PackagePath": "staticwebassets\\images\\brizaprogram.png"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brt-pt.png",
+      "PackagePath": "staticwebassets\\images\\brt-pt.png"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brt.png",
+      "PackagePath": "staticwebassets\\images\\brt.png"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brt20.png",

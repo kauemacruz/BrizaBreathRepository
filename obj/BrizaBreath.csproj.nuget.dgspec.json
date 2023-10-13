@@ -51,7 +51,7 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[7.0.11, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
@@ -76,6 +76,10 @@
             "SendGrid": {
               "target": "Package",
               "version": "[9.28.1, )"
+            },
+            "Stripe.Net": {
+              "target": "Package",
+              "version": "[42.8.0, )"
             },
             "jQuery": {
               "target": "Package",

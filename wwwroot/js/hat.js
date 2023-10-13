@@ -1,50 +1,4 @@
 /*HAT JS*/
-const songSelectHAT = document.getElementById('song-selectHAT');
-const audioPlayerHAT = document.getElementById('audio-playerHAT');
-var isHATON = false;
-// Variable to store the timeout ID
-let timeoutIdHAT;
-
-
-// Function to play the selected song
-const playSelectedSongHAT = () => {
-    const selectedSongHAT = songSelectHAT.value;
-    audioPlayerHAT.src = selectedSongHAT;
-    if (isHATON !== true) {
-        audioPlayerHAT.muted = false;
-        audioPlayerHAT.play();
-        localStorage.setItem('selectedSongHAT', songSelectHAT.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdHAT);
-        timeoutIdHAT = setTimeout(function () {
-            audioPlayerHAT.pause();
-            audioPlayerHAT.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerHAT.muted = false;
-        audioPlayerHAT.loop = true;
-        audioPlayerHAT.play();
-        clearTimeout(timeoutIdHAT);
-    }
-};
-
-
-const storedSongHAT = localStorage.getItem('selectedSongHAT');
-if (storedSongHAT) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectHAT.value = storedSongHAT;
-}
-
-// Add an event listener to the songSelectHAT dropdown
-songSelectHAT.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerHAT.pause();
-    audioPlayerHAT.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongHAT();
-});
-
 $(function () {
     $('#hatForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -66,8 +20,8 @@ $(function () {
         clearInterval(intHAT);
         document.getElementById('hatSettings').disabled = false;
         document.getElementById('hatSettings').style.color = '#49B79D';
-        if (!isSongMuteHAT) {
-            audioPlayerHAT.pause();
+        if (!audioPlayerBRT.muted) {
+            audioPlayerBRT.pause();
         }
         timerControlsButtonsHAT.pauseHAT.style.display = 'none';
         timerControlsButtonsHAT.startHAT.style.display = 'inline';
@@ -151,12 +105,10 @@ var audioHAT = document.getElementById("audioHAT"),
     muteHAT = document.getElementById("muteHAT"),
     ismuteHAT = false;
 
-audioPlayerHAT.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongHAT = document.getElementById("songHAT"),
-    muteSongHAT = document.getElementById("songMuteHAT"),
-    isSongMuteHAT = false;
-
+    muteSongHAT = document.getElementById("songMuteHAT");
 // Get the volumeVhat bar element
 const volumeVoiceHAT = document.getElementById('volumeVoiceHAT');
 
@@ -194,15 +146,13 @@ volumeSongHAT.addEventListener('input', function () {
 
     // Check if volumeShat is 0 and mute the media if necessary
     if (volumeShat === 0) {
-        audioPlayerHAT.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongHAT.style.display = "none";
         muteSongHAT.style.display = "block";
-        isSongMuteHAT = true;
     } else {
-        audioPlayerHAT.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongHAT.style.display = "none";
         audioSongHAT.style.display = "block";
-        isSongMuteHAT = false;
     }
 });
 
@@ -379,9 +329,8 @@ function startTimerHAT() {
             audioListHAT[0].play();
         }
     }
-    isHATON = true;
-    if (!isSongMuteHAT) {
-        playSelectedSongHAT();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerHAT.isFinishedHAT) {
         resetTimerHAT();
@@ -426,8 +375,8 @@ function stopTimerHAT() {
     [secondsHAT, minutesHAT, hoursHAT] = [0, 0, 0];
     document.getElementById('hatSettings').disabled = false;
     document.getElementById('hatSettings').style.color = '#49B79D';
-    if (!isSongMuteHAT) {
-        audioPlayerHAT.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     timerControlsButtonsHAT.pauseHAT.style.display = 'none';
     timerControlsButtonsHAT.startHAT.style.display = 'inline';

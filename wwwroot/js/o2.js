@@ -1,50 +1,4 @@
 /*O2 JS*/
-const songSelectO2 = document.getElementById('song-selectO2');
-const audioPlayerO2 = document.getElementById('audio-playerO2');
-var isO2ON = false;
-// Variable to store the timeout ID
-let timeoutIdO2;
-
-
-// Function to play the selected song
-const playSelectedSongO2 = () => {
-    const selectedSongO2 = songSelectO2.value;
-    audioPlayerO2.src = selectedSongO2;
-    if (isO2ON !== true) {
-        audioPlayerO2.muted = false;
-        audioPlayerO2.play();
-        localStorage.setItem('selectedSongO2', songSelectO2.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdO2);
-        timeoutIdO2 = setTimeout(function () {
-            audioPlayerO2.pause();
-            audioPlayerO2.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerO2.muted = false;
-        audioPlayerO2.loop = true;
-        audioPlayerO2.play();
-        clearTimeout(timeoutIdO2);
-    }
-};
-
-
-const storedSongO2 = localStorage.getItem('selectedSongO2');
-if (storedSongO2) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectO2.value = storedSongO2;
-}
-
-// Add an event listener to the songSelectO2 dropdown
-songSelectO2.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerO2.pause();
-    audioPlayerO2.currentTime = 0;
-    var isO2ON = false;
-    // Play the selected song
-    playSelectedSongO2();
-});
-
 $(function () {
     $('#O2Form').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -66,8 +20,8 @@ $(function () {
         clearInterval(intO2);
         document.getElementById('O2Settings').disabled = false;
         document.getElementById('O2Settings').style.color = '#49B79D';
-        if (!isSongMuteO2) {
-            audioPlayerO2.pause();
+        if (!audioPlayerBRT.muted) {
+            audioPlayerBRT.pause();
         }
         timerControlsButtonsO2.pauseO2.style.display = 'none';
         timerControlsButtonsO2.startO2.style.display = 'inline';
@@ -214,12 +168,10 @@ var audioO2 = document.getElementById("audioO2"),
     muteO2 = document.getElementById("muteO2"),
     ismuteO2 = false;
 
-audioPlayerO2.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongO2 = document.getElementById("songO2"),
-    muteSongO2 = document.getElementById("songMuteO2"),
-    isSongMuteO2 = false;
-
+    muteSongO2 = document.getElementById("songMuteO2");
 
 var breatheO2 = 120;
 var holdO2 = 30;
@@ -972,9 +924,8 @@ function initializeTimerSettingsFormO2() {
             audioListO2[0].play();
         }
     }
-      isO2ON = true;
-      if (!isSongMuteO2) {
-          playSelectedSongO2();
+      if (!audioPlayerBRT.muted) {
+          playSelectedSongBRT(true);
       }
     if (timerO2.isFinishedO2) {
       resetTimerO2();
@@ -1000,8 +951,8 @@ function initializeTimerSettingsFormO2() {
         document.getElementById('O2Save').disabled = false;
         document.getElementById('O2Save').style.color = '#49B79D';
     }
-    if (!isSongMuteO2) {
-        audioPlayerO2.pause();
+    if (!audioPlayerBRT.muted) {
+       audioPlayerBRT.pause();
     }
     stopTimerTickO2();
   }
@@ -1009,10 +960,10 @@ function initializeTimerSettingsFormO2() {
   function stopTimerO2() {
     clearInterval(intO2);
     timerRefO2.value = '|';
-    if (!isSongMuteO2) {
-        audioPlayerO2.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerO2.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsO2.pauseO2.style.display = 'none'; 
     timerControlsButtonsO2.startO2.style.display = 'inline';
     setFormDisabledStateO2(false);

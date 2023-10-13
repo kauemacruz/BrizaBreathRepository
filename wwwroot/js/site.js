@@ -1,4 +1,5 @@
-﻿window.addEventListener('load', function () {
+﻿var audioList = [];
+window.addEventListener('load', function () {
     // Hide the loading indicator
     var loadingIndicator = document.getElementById('loadingIndicator');
     loadingIndicator.style.display = 'none';
@@ -6,37 +7,52 @@
     // Display the content
     homePage.classList.remove('hidden');
     homePage.classList.add('open');
+    if (isUserActiveSubscriber) {
+        document.getElementById("manageMembership").style.display = "block";
+        document.getElementById("noActiveMembership").style.display = "none";
+    }
+    else {
+        document.getElementById("manageMembership").style.display = "none";
+        document.getElementById("noActiveMembership").style.display = "block";
+    }
+    if (isPortuguese) {
+        audioList.push(new Audio('../sounds/pinchRun.mp3'));
+        
+    } else {
+        audioList.push(new Audio('../sounds/pinchRunPT.mp3'));
+    }
 });
-
-// Check if the Wake Lock API is available
 if ('wakeLock' in navigator) {
     let wakeLock = null;
-
-    // Request a wake lock
     const requestWakeLock = async () => {
         try {
             wakeLock = await navigator.wakeLock.request('screen');
             console.log('Screen wake lock engaged.');
-            // Remove the click event listener after requesting the wake lock
-            document.removeEventListener('click', requestWakeLock);
         } catch (error) {
             console.error(`Failed to request wake lock: ${error}`);
         }
     };
+    // Engage wake lock upon user interaction
+    document.addEventListener('click', () => {
+        if (document.visibilityState === 'visible') {
+            requestWakeLock();
+        }
+    });
 
-    // Add a click event listener to request the wake lock
-    document.addEventListener('click', requestWakeLock);
+    // Engage or re-engage wake lock upon visibility change
+    document.addEventListener('visibilitychange', () => {
+        requestWakeLock();
+    });
 
-    // Add an event listener to release the wake lock when the page is unloaded
+    // Release wake lock upon page unload
     window.addEventListener('unload', () => {
         if (wakeLock !== null) {
             wakeLock.release();
-            wakeLock = null;
             console.log('Screen wake lock released.');
+            wakeLock = null;
         }
     });
 }
-
 // Get the elements with the class "song-select"
 var songSelects = document.getElementsByClassName('song-select');
 // Create an array to store the audio elements
@@ -111,6 +127,261 @@ for (let i = 0; i < allVideos.length; i++) {
         playVideo(this);
     });
 }
+let startX;
+
+document.addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+}, false);
+
+document.addEventListener('touchmove', function (e) {
+    // Prevent default will stop user from scrolling horizontally but allows vertical scroll.
+    // You might want to limit this prevention only for certain areas of your app.
+    if (Math.abs(e.touches[0].clientX - startX) > 5) {  // Threshold of 5px
+        e.preventDefault();
+    }
+}, false);
+
+//logout add waiting screen
+$(function () {
+    $('#logoutForm').on('submit', function (e) {
+        //loading indicator
+        var loadingIndicator = document.getElementById('loadingIndicator');
+        loadingIndicator.style.display = 'flex';
+        // Display the content
+        profilePage.classList.remove('open');
+        profilePage.classList.add('hidden');
+    });
+});
+//membership modal
+
+const modal = document.getElementById("myModal");
+const closeModalButton = document.getElementById("closeModal");
+const modal2 = document.getElementById("myModal2");
+const closeModalButton2 = document.getElementById("closeModal2");
+const modal3 = document.getElementById("myModal3");
+const closeModalButton3 = document.getElementById("closeModal3");
+
+// Function to open the modal
+function openModal() {
+    modal.style.display = "block";
+}
+
+// Function to close the modal
+function closeModal() {
+    modal.style.display = "none";
+}
+
+// Event listener for closing the modal
+closeModalButton.addEventListener("click", closeModal);
+
+// Close the modal if the user clicks outside the modal content
+window.addEventListener("click", function (event) {
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+function openModal2() {
+    modal2.style.display = "block";
+}
+
+// Function to close the modal
+function closeModal2() {
+    modal2.style.display = "none";
+}
+
+// Event listener for closing the modal
+closeModalButton2.addEventListener("click", closeModal2);
+
+// Close the modal if the user clicks outside the modal content
+window.addEventListener("click", function (event) {
+    if (event.target === modal2) {
+        closeModal2();
+    }
+});
+// Get references to the radio buttons
+const radioOption1 = document.getElementById("option1");
+const radioOption2 = document.getElementById("option2");
+const radioOption3 = document.getElementById("option3");
+const radioOption4 = document.getElementById("option4");
+const priceChoice = document.getElementById("priceChoice");
+const monthlyBox = document.getElementById("monthlyBox");
+const yearlyBox = document.getElementById("yearlyBox");
+
+
+
+// Function to be triggered when a radio button is checked
+function radioButtonChangeHandler() {
+    if (this.checked) {
+        // A radio button has been checked
+        const selectedValue = this.id;
+        if (selectedValue == "option1") {
+            if (isPortuguese) {
+                priceChoice.value = 5;
+            } else {
+                priceChoice.value = 3;
+            }
+            monthlyBox.style.backgroundColor = "aliceblue";
+            yearlyBox.style.backgroundColor = "white";
+        } else {
+            if (isPortuguese) {
+                priceChoice.value = 6;
+            } else {
+                priceChoice.value = 4;
+            }
+            yearlyBox.style.backgroundColor = "aliceblue";
+            monthlyBox.style.backgroundColor = "white";
+        }
+    }
+}
+// Add event listeners to the radio buttons to listen for changes
+radioOption1.addEventListener("change", radioButtonChangeHandler);
+radioOption2.addEventListener("change", radioButtonChangeHandler);
+monthlyBox.onclick = function () {
+    if (!radioOption1.checked) {
+        radioOption2.checked = false;
+        radioOption1.checked = true;
+        if (isPortuguese) {
+            priceChoice.value = 5;
+        } else {
+            priceChoice.value = 3;
+        }
+        monthlyBox.style.backgroundColor = "aliceblue";
+        yearlyBox.style.backgroundColor = "white";
+    }
+}
+yearlyBox.onclick = function () {
+    if (!radioOption2.checked) {
+        radioOption2.checked = true;
+        radioOption1.checked = false;
+        if (isPortuguese) {
+            priceChoice.value = 6;
+        } else {
+            priceChoice.value = 4;
+        }
+        yearlyBox.style.backgroundColor = "aliceblue";
+        monthlyBox.style.backgroundColor = "white";
+    }
+}
+subscriptionBtn = document.getElementById("subscriptionBtn");
+subscriptionBtn2 = document.getElementById("subscriptionBtn2");
+getSubscriptionBtn = document.getElementById("getSubscriptionBtn");
+SUBDate = document.getElementById("SUBDate");
+SUBDate2 = document.getElementById("SUBDate2");
+let currentDate;
+
+subscriptionBtn.onclick = function () {
+    openModal2();
+}
+getSubscriptionBtn.onclick = function () {
+    openModal();
+}
+function openModal3() {
+    modal3.style.display = "block";
+}
+
+// Function to close the modal
+function closeModal3() {
+    modal3.style.display = "none";
+}
+
+// Event listener for closing the modal
+closeModalButton3.addEventListener("click", closeModal3);
+
+// Close the modal if the user clicks outside the modal content
+window.addEventListener("click", function (event) {
+    if (event.target === modal3) {
+        closeModal3();
+    }
+});
+subscriptionBtn2.onclick = function () {
+    SUBDate.value = date;
+    currentDate = new Date();
+    if (priceChoice.value == 3 || priceChoice.value == 5) {
+        currentDate.setDate(currentDate.getDate() + 30);
+        SUBDate2.value = currentDate.toLocaleDateString("en-IN");
+    }
+    else if (priceChoice.value == 4 || priceChoice.value == 6) {
+        currentDate.setDate(currentDate.getDate() + 365);
+        SUBDate2.value = currentDate.toLocaleDateString("en-IN");
+    }
+    else { console.log("Membership does no exist") }
+    openModal3();
+}
+$(function () {
+    $('#subscriptionForm').on('submit', function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        //loading indicator
+        var loadingIndicator = document.getElementById('loadingIndicator');
+        loadingIndicator.style.display = 'flex';
+
+        // Display the content
+        closeModal2();
+        profilePage.classList.remove('open');
+        profilePage.classList.add('hidden');
+
+        var formData = new FormData(this);
+        $.ajax({
+            url: "/?handler=SignMembership",
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                console.log(response);
+                if (priceChoice.value == 3) {
+                    window.location.href = "https://buy.stripe.com/test_3csaG2awY1I04i4144?prefilled_email=" + response;
+                } else if (priceChoice.value == 4) {
+                    window.location.href = "https://buy.stripe.com/test_9AQ9BYgVmcmEdSEbIJ?prefilled_email=" + response;
+                } else if (priceChoice.value == 5) {
+                    window.location.href = "https://buy.stripe.com/test_9AQcOadJa1I015S003?prefilled_email=" + response + "&locale=pt-BR";
+                } else if (priceChoice.value == 6) {
+                    window.location.href = "https://buy.stripe.com/test_28o8xU34waewbKw28a?prefilled_email=" + response + "&locale=pt-BR";
+                } else {
+                    console.log("No Memberships with this id");
+                }
+            },
+            error: function (error) {
+                console.error("Error adding membership:", error);
+            }
+        })
+    });
+});
+$(function () {
+    $('#manageSubscriptionForm').on('submit', function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        //loading indicator
+        var loadingIndicator = document.getElementById('loadingIndicator');
+        loadingIndicator.style.display = 'flex';
+
+        // Display the content
+        closeModal2();
+        profilePage.classList.remove('open');
+        profilePage.classList.add('hidden');
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: "/?handler=RedirectToStripePortal",
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    window.location.href = response.url; // Redirect the browser to the Stripe portal
+                } else {
+                    console.error("Failed to get Stripe URL:", response);
+                }
+            },
+            error: function (error) {
+                console.error("Error adding membership:", error);
+            }
+        })
+    });
+});
+
 
 /*Links*/
 var navResults = document.getElementById("navResults"),
@@ -269,7 +540,6 @@ var navResults = document.getElementById("navResults"),
     backO2results = document.getElementById("backO2results"),
     backCO2results = document.getElementById("backCO2results");
 
-
 /*Pages*/
 var homePage = document.getElementById("homePage"),
     profilePage = document.getElementById("profilePage"),
@@ -335,7 +605,8 @@ var homePage = document.getElementById("homePage"),
     BEETPage = document.getElementById("BEETPage"),
     DIETPage = document.getElementById("DIETPage"),
     SEXPage = document.getElementById("SEXPage"),
-    SEXSettingsPage = document.getElementById("SEXSettingsPage");
+    SEXSettingsPage = document.getElementById("SEXSettingsPage"),
+    selectSongsList = document.getElementById("selectSongsList");
 
 /*Transition functions*/
 const element = document.documentElement || document.body;
@@ -358,479 +629,487 @@ function openPage(id1, id2, slideMotion) {
     } else { }
 }
 navResults.onclick = function () {
-    document.getElementById("homeFooter").style.display = "none";
-    document.getElementById("resultsFooter").style.display = "block";
-    openPage(homePage, resultsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    $.ajax({
-        url: "/?fetchData=true",
-        type: 'GET',
-        success: function (data) {
-            fetchedDataArray = data;
-            // Check if there is at least one non-empty and non-null BRTtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRTresultData) {
-                var BRTtimeString = BRTresultData.brtResultScore;
-                return BRTtimeString !== undefined && BRTtimeString !== '' && BRTtimeString !== null;
-            });
+    if (isUserActiveSubscriber) {
+        document.getElementById("homeFooter").style.display = "none";
+        document.getElementById("resultsFooter").style.display = "block";
+        openPage(homePage, resultsPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        $.ajax({
+            url: "/?fetchData=true",
+            type: 'GET',
+            success: function (data) {
+                fetchedDataArray = data;
+                // Check if there is at least one non-empty and non-null BRTtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRTresultData) {
+                    var BRTtimeString = BRTresultData.brtResultScore;
+                    return BRTtimeString !== undefined && BRTtimeString !== '' && BRTtimeString !== null;
+                });
 
-            if (hasNonEmptyTimeStrings) {
-                BRTupdateChart(BRTstartDate, BRTendDate);
+                if (hasNonEmptyTimeStrings) {
+                    BRTupdateChart(BRTstartDate, BRTendDate);
+                }
+                BRTupdateOverview();
+                // Check if there is at least one non-empty and non-null BRTtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (LUNGSresultData) {
+                    var LUNGStimeString = LUNGSresultData.lungsResultScore;
+                    return LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
+                }
+                LUNGSupdateOverview();
+                // Check if there is at least one non-empty and non-null YOGICtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YOGICresultData) {
+                    var YOGICtimeString = YOGICresultData.yogicTotalTime;
+                    return YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    YOGICupdateChart(YOGICstartDate, YOGICendDate);
+                }
+                YOGICupdateOverview();
+                // Check if there is at least one non-empty and non-null BREtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BREresultData) {
+                    var BREtimeString = BREresultData.breTotalTime;
+                    return BREtimeString !== undefined && BREtimeString !== '' && BREtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    BREupdateChart(BREstartDate, BREendDate);
+                }
+                BREupdateOverview();
+                // Check if there is at least one non-empty and non-null BRWtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRWresultData) {
+                    var BRWtimeString = BRWresultData.brwTotalTime;
+                    return BRWtimeString !== undefined && BRWtimeString !== '' && BRWtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    BRWupdateChart(BRWstartDate, BRWendDate);
+                }
+                BRWupdateOverview();
+                // Check if there is at least one non-empty and non-null HUMtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HUMresultData) {
+                    var HUMtimeString = HUMresultData.humTotalTime;
+                    return HUMtimeString !== undefined && HUMtimeString !== '' && HUMtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    HUMupdateChart(HUMstartDate, HUMendDate);
+                }
+                HUMupdateOverview();
+                // Check if there is at least one non-empty and non-null BBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BBresultData) {
+                    var BBtimeString = BBresultData.bbTotalTime;
+                    return BBtimeString !== undefined && BBtimeString !== '' && BBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    BBupdateChart(BBstartDate, BBendDate);
+                }
+                BBupdateOverview();
+                // Check if there is at least one non-empty and non-null APtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (APresultData) {
+                    var APtimeString = APresultData.apTotalTime;
+                    return APtimeString !== undefined && APtimeString !== '' && APtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    APupdateChart(APstartDate, APendDate);
+                }
+                APupdateOverview();
+                // Check if there is at least one non-empty and non-null CTtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CTresultData) {
+                    var CTtimeString = CTresultData.ctTotalTime;
+                    return CTtimeString !== undefined && CTtimeString !== '' && CTtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    CTupdateChart(CTstartDate, CTendDate);
+                }
+                CTupdateOverview();
+                // Check if there is at least one non-empty and non-null BOXtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BOXresultData) {
+                    var BOXtimeString = BOXresultData.boxTotalTime;
+                    return BOXtimeString !== undefined && BOXtimeString !== '' && BOXtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    BOXupdateChart(BOXstartDate, BOXendDate);
+                }
+                BOXupdateOverview();
+                // Check if there is at least one non-empty and non-null UBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (UBresultData) {
+                    var UBtimeString = UBresultData.ubTotalTime;
+                    return UBtimeString !== undefined && UBtimeString !== '' && UBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    UBupdateChart(UBstartDate, UBendDate);
+                }
+                UBupdateOverview();
+                // Check if there is at least one non-empty and non-null NBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (NBresultData) {
+                    var NBtimeString = NBresultData.nbTotalTime;
+                    return NBtimeString !== undefined && NBtimeString !== '' && NBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    NBupdateChart(NBstartDate, NBendDate);
+                }
+                NBupdateOverview();
+                // Check if there is at least one non-empty and non-null SBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SBresultData) {
+                    var SBtimeString = SBresultData.sbTotalTime;
+                    return SBtimeString !== undefined && SBtimeString !== '' && SBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    SBupdateChart(SBstartDate, SBendDate);
+                }
+                SBupdateOverview();
+                // Check if there is at least one non-empty and non-null CBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CBresultData) {
+                    var CBtimeString = CBresultData.cbTotalTime;
+                    return CBtimeString !== undefined && CBtimeString !== '' && CBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    CBupdateChart(CBstartDate, CBendDate);
+                }
+                CBupdateOverview();
+                // Check if there is at least one non-empty and non-null RBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (RBresultData) {
+                    var RBtimeString = RBresultData.rbTotalTime;
+                    return RBtimeString !== undefined && RBtimeString !== '' && RBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    RBupdateChart(RBstartDate, RBendDate);
+                }
+                RBupdateOverview();
+                // Check if there is at least one non-empty and non-null SEXtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SEXresultData) {
+                    var SEXtimeString = SEXresultData.sexTotalTime;
+                    return SEXtimeString !== undefined && SEXtimeString !== '' && SEXtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    SEXupdateChart(SEXstartDate, SEXendDate);
+                }
+                SEXupdateOverview();
+                // Check if there is at least one non-empty and non-null WHtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (WHresultData) {
+                    var WHtimeString = WHresultData.whTotalTime;
+                    return WHtimeString !== undefined && WHtimeString !== '' && WHtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    WHupdateChart(WHstartDate, WHendDate);
+                }
+                WHupdateOverview();
+                // Check if there is at least one non-empty and non-null HATtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATresultData) {
+                    var HATtimeString = HATresultData.hatTotalTime;
+                    return HATtimeString !== undefined && HATtimeString !== '' && HATtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    HATupdateChart(HATstartDate, HATendDate);
+                }
+                HATupdateOverview();
+                // Check if there is at least one non-empty and non-null HATCtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATCresultData) {
+                    var HATCtimeString = HATCresultData.hatcTotalTime;
+                    return HATCtimeString !== undefined && HATCtimeString !== '' && HATCtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    HATCupdateChart(HATCstartDate, HATCendDate);
+                }
+                HATCupdateOverview();
+                // Check if there is at least one non-empty and non-null AHATtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (AHATresultData) {
+                    var AHATtimeString = AHATresultData.ahatTotalTime;
+                    return AHATtimeString !== undefined && AHATtimeString !== '' && AHATtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    AHATupdateChart(AHATstartDate, AHATendDate);
+                }
+                AHATupdateOverview();
+                // Check if there is at least one non-empty and non-null CO2timeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CO2resultData) {
+                    var CO2timeString = CO2resultData.co2TotalTime;
+                    return CO2timeString !== undefined && CO2timeString !== '' && CO2timeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    CO2updateChart(CO2startDate, CO2endDate);
+                }
+                CO2updateOverview();
+                // Check if there is at least one non-empty and non-null O2timeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (O2resultData) {
+                    var O2timeString = O2resultData.o2TotalTime;
+                    return O2timeString !== undefined && O2timeString !== '' && O2timeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    O2updateChart(O2startDate, O2endDate);
+                }
+                O2updateOverview();
+            },
+            error: function (error) {
+                console.error("Error fetching data:", error);
             }
-            BRTupdateOverview();
-            // Check if there is at least one non-empty and non-null BRTtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (LUNGSresultData) {
-                var LUNGStimeString = LUNGSresultData.lungsResultScore;
-                return LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null;
-            });
+        });
 
-            if (hasNonEmptyTimeStrings) {
-                LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
-            }
-            LUNGSupdateOverview();
-            // Check if there is at least one non-empty and non-null YOGICtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YOGICresultData) {
-                var YOGICtimeString = YOGICresultData.yogicTotalTime;
-                return YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                YOGICupdateChart(YOGICstartDate, YOGICendDate);
-            }
-            YOGICupdateOverview();
-            // Check if there is at least one non-empty and non-null BREtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BREresultData) {
-                var BREtimeString = BREresultData.breTotalTime;
-                return BREtimeString !== undefined && BREtimeString !== '' && BREtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                BREupdateChart(BREstartDate, BREendDate);
-            }
-            BREupdateOverview();
-            // Check if there is at least one non-empty and non-null BRWtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRWresultData) {
-                var BRWtimeString = BRWresultData.brwTotalTime;
-                return BRWtimeString !== undefined && BRWtimeString !== '' && BRWtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                BRWupdateChart(BRWstartDate, BRWendDate);
-            }
-            BRWupdateOverview();
-            // Check if there is at least one non-empty and non-null HUMtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HUMresultData) {
-                var HUMtimeString = HUMresultData.humTotalTime;
-                return HUMtimeString !== undefined && HUMtimeString !== '' && HUMtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                HUMupdateChart(HUMstartDate, HUMendDate);
-            }
-            HUMupdateOverview();
-            // Check if there is at least one non-empty and non-null BBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BBresultData) {
-                var BBtimeString = BBresultData.bbTotalTime;
-                return BBtimeString !== undefined && BBtimeString !== '' && BBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                BBupdateChart(BBstartDate, BBendDate);
-            }
-            BBupdateOverview();
-            // Check if there is at least one non-empty and non-null APtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (APresultData) {
-                var APtimeString = APresultData.apTotalTime;
-                return APtimeString !== undefined && APtimeString !== '' && APtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                APupdateChart(APstartDate, APendDate);
-            }
-            APupdateOverview();
-            // Check if there is at least one non-empty and non-null CTtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CTresultData) {
-                var CTtimeString = CTresultData.ctTotalTime;
-                return CTtimeString !== undefined && CTtimeString !== '' && CTtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                CTupdateChart(CTstartDate, CTendDate);
-            }
-            CTupdateOverview();
-            // Check if there is at least one non-empty and non-null BOXtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BOXresultData) {
-                var BOXtimeString = BOXresultData.boxTotalTime;
-                return BOXtimeString !== undefined && BOXtimeString !== '' && BOXtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                BOXupdateChart(BOXstartDate, BOXendDate);
-            }
-            BOXupdateOverview();
-            // Check if there is at least one non-empty and non-null UBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (UBresultData) {
-                var UBtimeString = UBresultData.ubTotalTime;
-                return UBtimeString !== undefined && UBtimeString !== '' && UBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                UBupdateChart(UBstartDate, UBendDate);
-            }
-            UBupdateOverview();
-            // Check if there is at least one non-empty and non-null NBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (NBresultData) {
-                var NBtimeString = NBresultData.nbTotalTime;
-                return NBtimeString !== undefined && NBtimeString !== '' && NBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                NBupdateChart(NBstartDate, NBendDate);
-            }
-            NBupdateOverview();
-            // Check if there is at least one non-empty and non-null SBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SBresultData) {
-                var SBtimeString = SBresultData.sbTotalTime;
-                return SBtimeString !== undefined && SBtimeString !== '' && SBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                SBupdateChart(SBstartDate, SBendDate);
-            }
-            SBupdateOverview();
-            // Check if there is at least one non-empty and non-null CBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CBresultData) {
-                var CBtimeString = CBresultData.cbTotalTime;
-                return CBtimeString !== undefined && CBtimeString !== '' && CBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                CBupdateChart(CBstartDate, CBendDate);
-            }
-            CBupdateOverview();
-            // Check if there is at least one non-empty and non-null RBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (RBresultData) {
-                var RBtimeString = RBresultData.rbTotalTime;
-                return RBtimeString !== undefined && RBtimeString !== '' && RBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                RBupdateChart(RBstartDate, RBendDate);
-            }
-            RBupdateOverview();
-            // Check if there is at least one non-empty and non-null SEXtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SEXresultData) {
-                var SEXtimeString = SEXresultData.sexTotalTime;
-                return SEXtimeString !== undefined && SEXtimeString !== '' && SEXtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                SEXupdateChart(SEXstartDate, SEXendDate);
-            }
-            SEXupdateOverview();
-            // Check if there is at least one non-empty and non-null WHtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (WHresultData) {
-                var WHtimeString = WHresultData.whTotalTime;
-                return WHtimeString !== undefined && WHtimeString !== '' && WHtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                WHupdateChart(WHstartDate, WHendDate);
-            }
-            WHupdateOverview();
-            // Check if there is at least one non-empty and non-null HATtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATresultData) {
-                var HATtimeString = HATresultData.hatTotalTime;
-                return HATtimeString !== undefined && HATtimeString !== '' && HATtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                HATupdateChart(HATstartDate, HATendDate);
-            }
-            HATupdateOverview();
-            // Check if there is at least one non-empty and non-null HATCtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATCresultData) {
-                var HATCtimeString = HATCresultData.hatcTotalTime;
-                return HATCtimeString !== undefined && HATCtimeString !== '' && HATCtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                HATCupdateChart(HATCstartDate, HATCendDate);
-            }
-            HATCupdateOverview();
-            // Check if there is at least one non-empty and non-null AHATtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (AHATresultData) {
-                var AHATtimeString = AHATresultData.ahatTotalTime;
-                return AHATtimeString !== undefined && AHATtimeString !== '' && AHATtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                AHATupdateChart(AHATstartDate, AHATendDate);
-            }
-            AHATupdateOverview();
-            // Check if there is at least one non-empty and non-null CO2timeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CO2resultData) {
-                var CO2timeString = CO2resultData.co2TotalTime;
-                return CO2timeString !== undefined && CO2timeString !== '' && CO2timeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                CO2updateChart(CO2startDate, CO2endDate);
-            }
-            CO2updateOverview();
-            // Check if there is at least one non-empty and non-null O2timeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (O2resultData) {
-                var O2timeString = O2resultData.o2TotalTime;
-                return O2timeString !== undefined && O2timeString !== '' && O2timeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                O2updateChart(O2startDate, O2endDate);
-            }
-            O2updateOverview();
-        },
-        error: function (error) {
-            console.error("Error fetching data:", error);
-        }
-    });
-
+    } else {
+        openModal();
+    }
 }
 navResults2.onclick = function () {
-    document.getElementById("profileFooter").style.display = "none";
-    document.getElementById("resultsFooter").style.display = "block";
-    openPage(profilePage, resultsPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    $.ajax({
-        url: "/?fetchData=true",
-        type: 'GET',
-        success: function (data) {
-            fetchedDataArray = data;
+    if (isUserActiveSubscriber) {
+        document.getElementById("profileFooter").style.display = "none";
+        document.getElementById("resultsFooter").style.display = "block";
+        openPage(profilePage, resultsPage, 'slideRight');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        $.ajax({
+            url: "/?fetchData=true",
+            type: 'GET',
+            success: function (data) {
+                fetchedDataArray = data;
 
-            // Check if there is at least one non-empty and non-null BRTtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRTresultData) {
-                var BRTtimeString = BRTresultData.brtResultScore;
-                return BRTtimeString !== undefined && BRTtimeString !== '' && BRTtimeString !== null;
-            });
+                // Check if there is at least one non-empty and non-null BRTtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRTresultData) {
+                    var BRTtimeString = BRTresultData.brtResultScore;
+                    return BRTtimeString !== undefined && BRTtimeString !== '' && BRTtimeString !== null;
+                });
 
-            if (hasNonEmptyTimeStrings) {
-                BRTupdateChart(BRTstartDate, BRTendDate);
+                if (hasNonEmptyTimeStrings) {
+                    BRTupdateChart(BRTstartDate, BRTendDate);
+                }
+
+                BRTupdateOverview();
+                // Check if there is at least one non-empty and non-null BRTtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (LUNGSresultData) {
+                    var LUNGStimeString = LUNGSresultData.lungsResultScore;
+                    return LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
+                }
+                LUNGSupdateOverview();
+                // Check if there is at least one non-empty and non-null YOGICtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YOGICresultData) {
+                    var YOGICtimeString = YOGICresultData.yogicTotalTime;
+                    return YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    YOGICupdateChart(YOGICstartDate, YOGICendDate);
+                }
+                YOGICupdateOverview();
+                // Check if there is at least one non-empty and non-null BREtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BREresultData) {
+                    var BREtimeString = BREresultData.breTotalTime;
+                    return BREtimeString !== undefined && BREtimeString !== '' && BREtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    BREupdateChart(BREstartDate, BREendDate);
+                }
+                BREupdateOverview();
+                // Check if there is at least one non-empty and non-null BRWtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRWresultData) {
+                    var BRWtimeString = BRWresultData.brwTotalTime;
+                    return BRWtimeString !== undefined && BRWtimeString !== '' && BRWtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    BRWupdateChart(BRWstartDate, BRWendDate);
+                }
+                BRWupdateOverview();
+                // Check if there is at least one non-empty and non-null HUMtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HUMresultData) {
+                    var HUMtimeString = HUMresultData.humTotalTime;
+                    return HUMtimeString !== undefined && HUMtimeString !== '' && HUMtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    HUMupdateChart(HUMstartDate, HUMendDate);
+                }
+                HUMupdateOverview();
+                // Check if there is at least one non-empty and non-null BBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BBresultData) {
+                    var BBtimeString = BBresultData.bbTotalTime;
+                    return BBtimeString !== undefined && BBtimeString !== '' && BBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    BBupdateChart(BBstartDate, BBendDate);
+                }
+                BBupdateOverview();
+                // Check if there is at least one non-empty and non-null APtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (APresultData) {
+                    var APtimeString = APresultData.apTotalTime;
+                    return APtimeString !== undefined && APtimeString !== '' && APtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    APupdateChart(APstartDate, APendDate);
+                }
+                APupdateOverview();
+                // Check if there is at least one non-empty and non-null CTtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CTresultData) {
+                    var CTtimeString = CTresultData.ctTotalTime;
+                    return CTtimeString !== undefined && CTtimeString !== '' && CTtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    CTupdateChart(CTstartDate, CTendDate);
+                }
+                CTupdateOverview();
+                // Check if there is at least one non-empty and non-null BOXtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BOXresultData) {
+                    var BOXtimeString = BOXresultData.boxTotalTime;
+                    return BOXtimeString !== undefined && BOXtimeString !== '' && BOXtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    BOXupdateChart(BOXstartDate, BOXendDate);
+                }
+                BOXupdateOverview();
+                // Check if there is at least one non-empty and non-null UBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (UBresultData) {
+                    var UBtimeString = UBresultData.ubTotalTime;
+                    return UBtimeString !== undefined && UBtimeString !== '' && UBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    UBupdateChart(UBstartDate, UBendDate);
+                }
+                UBupdateOverview();
+                // Check if there is at least one non-empty and non-null NBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (NBresultData) {
+                    var NBtimeString = NBresultData.nbTotalTime;
+                    return NBtimeString !== undefined && NBtimeString !== '' && NBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    NBupdateChart(NBstartDate, NBendDate);
+                }
+                NBupdateOverview();
+                // Check if there is at least one non-empty and non-null SBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SBresultData) {
+                    var SBtimeString = SBresultData.sbTotalTime;
+                    return SBtimeString !== undefined && SBtimeString !== '' && SBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    SBupdateChart(SBstartDate, SBendDate);
+                }
+                SBupdateOverview();
+                // Check if there is at least one non-empty and non-null CBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CBresultData) {
+                    var CBtimeString = CBresultData.cbTotalTime;
+                    return CBtimeString !== undefined && CBtimeString !== '' && CBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    CBupdateChart(CBstartDate, CBendDate);
+                }
+                CBupdateOverview();
+                // Check if there is at least one non-empty and non-null RBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (RBresultData) {
+                    var RBtimeString = RBresultData.rbTotalTime;
+                    return RBtimeString !== undefined && RBtimeString !== '' && RBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    RBupdateChart(RBstartDate, RBendDate);
+                }
+                RBupdateOverview();
+                // Check if there is at least one non-empty and non-null SEXtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SEXresultData) {
+                    var SEXtimeString = SEXresultData.sexTotalTime;
+                    return SEXtimeString !== undefined && SEXtimeString !== '' && SEXtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    SEXupdateChart(SEXstartDate, SEXendDate);
+                }
+                SEXupdateOverview();
+                // Check if there is at least one non-empty and non-null WHtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (WHresultData) {
+                    var WHtimeString = WHresultData.whTotalTime;
+                    return WHtimeString !== undefined && WHtimeString !== '' && WHtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    WHupdateChart(WHstartDate, WHendDate);
+                }
+                WHupdateOverview();
+                // Check if there is at least one non-empty and non-null HATtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATresultData) {
+                    var HATtimeString = HATresultData.hatTotalTime;
+                    return HATtimeString !== undefined && HATtimeString !== '' && HATtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    HATupdateChart(HATstartDate, HATendDate);
+                }
+                HATupdateOverview();
+                // Check if there is at least one non-empty and non-null HATCtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATCresultData) {
+                    var HATCtimeString = HATCresultData.hatcTotalTime;
+                    return HATCtimeString !== undefined && HATCtimeString !== '' && HATCtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    HATCupdateChart(HATCstartDate, HATCendDate);
+                }
+                HATCupdateOverview();
+                // Check if there is at least one non-empty and non-null AHATtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (AHATresultData) {
+                    var AHATtimeString = AHATresultData.ahatTotalTime;
+                    return AHATtimeString !== undefined && AHATtimeString !== '' && AHATtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    AHATupdateChart(AHATstartDate, AHATendDate);
+                }
+                AHATupdateOverview();
+                // Check if there is at least one non-empty and non-null CO2timeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CO2resultData) {
+                    var CO2timeString = CO2resultData.co2TotalTime;
+                    return CO2timeString !== undefined && CO2timeString !== '' && CO2timeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    CO2updateChart(CO2startDate, CO2endDate);
+                }
+                CO2updateOverview();
+                // Check if there is at least one non-empty and non-null O2timeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (O2resultData) {
+                    var O2timeString = O2resultData.o2TotalTime;
+                    return O2timeString !== undefined && O2timeString !== '' && O2timeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    O2updateChart(O2startDate, O2endDate);
+                }
+                O2updateOverview();
+            },
+            error: function (error) {
+                console.error("Error fetching data:", error);
             }
-
-            BRTupdateOverview();
-            // Check if there is at least one non-empty and non-null BRTtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (LUNGSresultData) {
-                var LUNGStimeString = LUNGSresultData.lungsResultScore;
-                return LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
-            }
-            LUNGSupdateOverview();
-            // Check if there is at least one non-empty and non-null YOGICtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YOGICresultData) {
-                var YOGICtimeString = YOGICresultData.yogicTotalTime;
-                return YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                YOGICupdateChart(YOGICstartDate, YOGICendDate);
-            }
-            YOGICupdateOverview();
-            // Check if there is at least one non-empty and non-null BREtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BREresultData) {
-                var BREtimeString = BREresultData.breTotalTime;
-                return BREtimeString !== undefined && BREtimeString !== '' && BREtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                BREupdateChart(BREstartDate, BREendDate);
-            }
-            BREupdateOverview();
-            // Check if there is at least one non-empty and non-null BRWtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRWresultData) {
-                var BRWtimeString = BRWresultData.brwTotalTime;
-                return BRWtimeString !== undefined && BRWtimeString !== '' && BRWtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                BRWupdateChart(BRWstartDate, BRWendDate);
-            }
-            BRWupdateOverview();
-            // Check if there is at least one non-empty and non-null HUMtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HUMresultData) {
-                var HUMtimeString = HUMresultData.humTotalTime;
-                return HUMtimeString !== undefined && HUMtimeString !== '' && HUMtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                HUMupdateChart(HUMstartDate, HUMendDate);
-            }
-            HUMupdateOverview();
-            // Check if there is at least one non-empty and non-null BBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BBresultData) {
-                var BBtimeString = BBresultData.bbTotalTime;
-                return BBtimeString !== undefined && BBtimeString !== '' && BBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                BBupdateChart(BBstartDate, BBendDate);
-            }
-            BBupdateOverview();
-            // Check if there is at least one non-empty and non-null APtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (APresultData) {
-                var APtimeString = APresultData.apTotalTime;
-                return APtimeString !== undefined && APtimeString !== '' && APtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                APupdateChart(APstartDate, APendDate);
-            }
-            APupdateOverview();
-            // Check if there is at least one non-empty and non-null CTtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CTresultData) {
-                var CTtimeString = CTresultData.ctTotalTime;
-                return CTtimeString !== undefined && CTtimeString !== '' && CTtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                CTupdateChart(CTstartDate, CTendDate);
-            }
-            CTupdateOverview();
-            // Check if there is at least one non-empty and non-null BOXtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BOXresultData) {
-                var BOXtimeString = BOXresultData.boxTotalTime;
-                return BOXtimeString !== undefined && BOXtimeString !== '' && BOXtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                BOXupdateChart(BOXstartDate, BOXendDate);
-            }
-            BOXupdateOverview();
-            // Check if there is at least one non-empty and non-null UBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (UBresultData) {
-                var UBtimeString = UBresultData.ubTotalTime;
-                return UBtimeString !== undefined && UBtimeString !== '' && UBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                UBupdateChart(UBstartDate, UBendDate);
-            }
-            UBupdateOverview();
-            // Check if there is at least one non-empty and non-null NBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (NBresultData) {
-                var NBtimeString = NBresultData.nbTotalTime;
-                return NBtimeString !== undefined && NBtimeString !== '' && NBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                NBupdateChart(NBstartDate, NBendDate);
-            }
-            NBupdateOverview();
-            // Check if there is at least one non-empty and non-null SBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SBresultData) {
-                var SBtimeString = SBresultData.sbTotalTime;
-                return SBtimeString !== undefined && SBtimeString !== '' && SBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                SBupdateChart(SBstartDate, SBendDate);
-            }
-            SBupdateOverview();
-            // Check if there is at least one non-empty and non-null CBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CBresultData) {
-                var CBtimeString = CBresultData.cbTotalTime;
-                return CBtimeString !== undefined && CBtimeString !== '' && CBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                CBupdateChart(CBstartDate, CBendDate);
-            }
-            CBupdateOverview();
-            // Check if there is at least one non-empty and non-null RBtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (RBresultData) {
-                var RBtimeString = RBresultData.rbTotalTime;
-                return RBtimeString !== undefined && RBtimeString !== '' && RBtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                RBupdateChart(RBstartDate, RBendDate);
-            }
-            RBupdateOverview();
-            // Check if there is at least one non-empty and non-null SEXtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SEXresultData) {
-                var SEXtimeString = SEXresultData.sexTotalTime;
-                return SEXtimeString !== undefined && SEXtimeString !== '' && SEXtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                SEXupdateChart(SEXstartDate, SEXendDate);
-            }
-            SEXupdateOverview();
-            // Check if there is at least one non-empty and non-null WHtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (WHresultData) {
-                var WHtimeString = WHresultData.whTotalTime;
-                return WHtimeString !== undefined && WHtimeString !== '' && WHtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                WHupdateChart(WHstartDate, WHendDate);
-            }
-            WHupdateOverview();
-            // Check if there is at least one non-empty and non-null HATtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATresultData) {
-                var HATtimeString = HATresultData.hatTotalTime;
-                return HATtimeString !== undefined && HATtimeString !== '' && HATtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                HATupdateChart(HATstartDate, HATendDate);
-            }
-            HATupdateOverview();
-            // Check if there is at least one non-empty and non-null HATCtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATCresultData) {
-                var HATCtimeString = HATCresultData.hatcTotalTime;
-                return HATCtimeString !== undefined && HATCtimeString !== '' && HATCtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                HATCupdateChart(HATCstartDate, HATCendDate);
-            }
-            HATCupdateOverview();
-            // Check if there is at least one non-empty and non-null AHATtimeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (AHATresultData) {
-                var AHATtimeString = AHATresultData.ahatTotalTime;
-                return AHATtimeString !== undefined && AHATtimeString !== '' && AHATtimeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                AHATupdateChart(AHATstartDate, AHATendDate);
-            }
-            AHATupdateOverview();
-            // Check if there is at least one non-empty and non-null CO2timeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (CO2resultData) {
-                var CO2timeString = CO2resultData.co2TotalTime;
-                return CO2timeString !== undefined && CO2timeString !== '' && CO2timeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                CO2updateChart(CO2startDate, CO2endDate);
-            }
-            CO2updateOverview();
-            // Check if there is at least one non-empty and non-null O2timeString
-            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (O2resultData) {
-                var O2timeString = O2resultData.o2TotalTime;
-                return O2timeString !== undefined && O2timeString !== '' && O2timeString !== null;
-            });
-
-            if (hasNonEmptyTimeStrings) {
-                O2updateChart(O2startDate, O2endDate);
-            }
-            O2updateOverview();
-        },
-        error: function (error) {
-            console.error("Error fetching data:", error);
-        }
-    });
+        });
+    }else{
+        openModal();
+    }
 }
 navProfile.onclick = function () {
     document.getElementById("profileFooter").style.display = "block";
@@ -867,6 +1146,13 @@ programLink.onclick = function () {
             audioElements[i].currentTime = 0;
         }, 1000);
     }
+    playSelectedSongBRT(true);
+    audioPlayerBRT.muted = true;
+    setTimeout(function () {
+        audioPlayerBRT.pause();
+        audioPlayerBRT.currentTime = 0;
+        audioPlayerBRT.muted = false;
+    }, 1000);
 }
 backProgram.onclick = function () {
     openPage(programPage, homePage, 'slideRight');
@@ -881,8 +1167,12 @@ backNasal.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 unblockLink.onclick = function () {
-    openPage(programPage, noseUnblockPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(programPage, noseUnblockPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backUnblock.onclick = function () {
     openPage(noseUnblockPage, programPage, 'slideRight');
@@ -891,11 +1181,12 @@ backUnblock.onclick = function () {
 brtLink.onclick = function () {
     openPage(homePage, brtPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongBRT();
+    playSelectedSongBRT(true);
     audioPlayerBRT.muted = true;
     setTimeout(function () {
         audioPlayerBRT.pause();
         audioPlayerBRT.currentTime = 0;
+        audioPlayerBRT.muted = false;
     }, 1000);
 }
 backBRT.onclick = function () {
@@ -912,42 +1203,45 @@ backBRT.onclick = function () {
     document.getElementById('brtResultSaved').innerHTML = "";
     document.getElementById('brtSettings').disabled = false;
     document.getElementById('brtSettings').style.color = '#49B79D';
-    if (brtismute != true && brtIsOn != false) {
+    if (!audioPlayerBRT.muted) {
         audioPlayerBRT.pause();
     }
     audioPlayerBRT.currentTime = 0;
-    brtIsOn = false;
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 diaphragmLink.onclick = function () {
-    openPage(programPage, diaphragmPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(programPage, diaphragmPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backDiaphragm.onclick = function () {
     openPage(diaphragmPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 yogicLink.onclick = function () {
-    openPage(programPage, yogicPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongYogic();
-    audioPlayerYogic.muted = true;
-    audioListYogic[0].muted = true;
-    audioListYogic[2].muted = true;
-    audioListYogic[3].muted = true;
-    audioListYogic[0].play();
-    audioListYogic[2].play();
-    audioListYogic[3].play();
-    setTimeout(function () {
-        audioPlayerYogic.pause();
-        audioPlayerYogic.currentTime = 0;
-        audioListYogic[0].pause();
-        audioListYogic[0].currentTime = 0;
-        audioListYogic[2].pause();
-        audioListYogic[2].currentTime = 0;
-        audioListYogic[3].pause();
-        audioListYogic[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(programPage, yogicPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListYogic[0].muted = true;
+        audioListYogic[2].muted = true;
+        audioListYogic[3].muted = true;
+        audioListYogic[0].play();
+        audioListYogic[2].play();
+        audioListYogic[3].play();
+        setTimeout(function () {
+            audioListYogic[0].pause();
+            audioListYogic[0].currentTime = 0;
+            audioListYogic[2].pause();
+            audioListYogic[2].currentTime = 0;
+            audioListYogic[3].pause();
+            audioListYogic[3].currentTime = 0;
+        }, 1000);
+    } else {
+        opneModal();
+    }
 }
 backYogic.onclick = function () {
     openPage(yogicPage, programPage, 'slideRight');
@@ -955,10 +1249,10 @@ backYogic.onclick = function () {
     clearInterval(intYogic);
     [secondsYogic, minutesYogic, hoursYogic] = [0, 0, 0];
     timerRefYogic.value = '00 : 00 : 00';
-    if (isSongMuteYogic != true && isYogicON != false) {
-        audioPlayerYogic.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerYogic.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsYogic.pauseYogic.style.display = 'none';
     timerControlsButtonsYogic.startYogic.style.display = 'inline';
     setFormDisabledStateYogic(false);
@@ -970,50 +1264,55 @@ backYogic.onclick = function () {
     document.getElementById('yogicSettings').style.color = '#49B79D';
     stopTimerTickYogic();
     resetTimerYogic();
-    isYogicON = false;
     document.getElementById('yogicResultSaved').innerHTML = "";
 }
 yogicSettings.onclick = function () {
     openPage(yogicPage, yogicSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backYogicSet.onclick = function () {
-    if (isSongMuteYogic != true) {
-        audioPlayerYogic.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerYogic.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(yogicSettingsPage, yogicPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 BRT10Link.onclick = function () {
-    openPage(programPage, BRT10Page, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(programPage, BRT10Page, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backBRT10.onclick = function () {
     openPage(BRT10Page, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 BRELink.onclick = function () {
-    openPage(programPage, BREPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongBRE();
-    audioPlayerBRE.muted = true;
-    audioListBRE[0].muted = true;
-    audioListBRE[2].muted = true;
-    audioListBRE[3].muted = true;
-    audioListBRE[0].play();
-    audioListBRE[2].play();
-    audioListBRE[3].play();
-    setTimeout(function () {
-        audioPlayerBRE.pause();
-        audioPlayerBRE.currentTime = 0;
-        audioListBRE[0].pause();
-        audioListBRE[0].currentTime = 0;
-        audioListBRE[2].pause();
-        audioListBRE[2].currentTime = 0;
-        audioListBRE[3].pause();
-        audioListBRE[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(programPage, BREPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListBRE[0].muted = true;
+        audioListBRE[2].muted = true;
+        audioListBRE[3].muted = true;
+        audioListBRE[0].play();
+        audioListBRE[2].play();
+        audioListBRE[3].play();
+        setTimeout(function () {
+            audioListBRE[0].pause();
+            audioListBRE[0].currentTime = 0;
+            audioListBRE[2].pause();
+            audioListBRE[2].currentTime = 0;
+            audioListBRE[3].pause();
+            audioListBRE[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backBRE.onclick = function () {
     openPage(BREPage, programPage, 'slideRight');
@@ -1021,10 +1320,10 @@ backBRE.onclick = function () {
     clearInterval(intBRE);
     [secondsBRE, minutesBRE, hoursBRE] = [0, 0, 0];
     timerRefBRE.value = '00 : 00 : 00';
-    if (isSongMuteBRE != true && isBREON != false) {
-        audioPlayerBRE.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerBRE.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsBRE.pauseBRE.style.display = 'none';
     timerControlsButtonsBRE.startBRE.style.display = 'inline';
     setFormDisabledStateBRE(false);
@@ -1040,26 +1339,26 @@ backBRE.onclick = function () {
     document.getElementById('BREResultSaved').innerHTML = "";
 }
 BRWLink.onclick = function () {
-    openPage(programPage, BRWPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongBRW();
-    audioPlayerBRW.muted = true;
-    audioListBRW[0].muted = true;
-    audioListBRW[2].muted = true;
-    audioListBRW[3].muted = true;
-    audioListBRW[0].play();
-    audioListBRW[2].play();
-    audioListBRW[3].play();
-    setTimeout(function () {
-        audioPlayerBRW.pause();
-        audioPlayerBRW.currentTime = 0;
-        audioListBRW[0].pause();
-        audioListBRW[0].currentTime = 0;
-        audioListBRW[2].pause();
-        audioListBRW[2].currentTime = 0;
-        audioListBRW[3].pause();
-        audioListBRW[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(programPage, BRWPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListBRW[0].muted = true;
+        audioListBRW[2].muted = true;
+        audioListBRW[3].muted = true;
+        audioListBRW[0].play();
+        audioListBRW[2].play();
+        audioListBRW[3].play();
+        setTimeout(function () {
+            audioListBRW[0].pause();
+            audioListBRW[0].currentTime = 0;
+            audioListBRW[2].pause();
+            audioListBRW[2].currentTime = 0;
+            audioListBRW[3].pause();
+            audioListBRW[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backBRW.onclick = function () {
     openPage(BRWPage, programPage, 'slideRight');
@@ -1067,10 +1366,10 @@ backBRW.onclick = function () {
     clearInterval(intBRW);
     [secondsBRW, minutesBRW, hoursBRW] = [0, 0, 0];
     timerRefBRW.value = '00 : 00 : 00';
-    if (isSongMuteBRW != true && isBRWON != false) {
-        audioPlayerBRW.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerBRW.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsBRW.pauseBRW.style.display = 'none';
     timerControlsButtonsBRW.startBRW.style.display = 'inline';
     setFormDisabledStateBRW(false);
@@ -1086,26 +1385,26 @@ backBRW.onclick = function () {
     document.getElementById('BRWResultSaved').innerHTML = "";
 }
 HUMLink.onclick = function () {
-    openPage(programPage, HUMPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongHUM();
-    audioPlayerHUM.muted = true;
-    audioListHUM[0].muted = true;
-    audioListHUM[2].muted = true;
-    audioListHUM[3].muted = true;
-    audioListHUM[0].play();
-    audioListHUM[2].play();
-    audioListHUM[3].play();
-    setTimeout(function () {
-        audioPlayerHUM.pause();
-        audioPlayerHUM.currentTime = 0;
-        audioListHUM[0].pause();
-        audioListHUM[0].currentTime = 0;
-        audioListHUM[2].pause();
-        audioListHUM[2].currentTime = 0;
-        audioListHUM[3].pause();
-        audioListHUM[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(programPage, HUMPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListHUM[0].muted = true;
+        audioListHUM[2].muted = true;
+        audioListHUM[3].muted = true;
+        audioListHUM[0].play();
+        audioListHUM[2].play();
+        audioListHUM[3].play();
+        setTimeout(function () {
+            audioListHUM[0].pause();
+            audioListHUM[0].currentTime = 0;
+            audioListHUM[2].pause();
+            audioListHUM[2].currentTime = 0;
+            audioListHUM[3].pause();
+            audioListHUM[3].currentTime = 0;
+        }, 1000);
+    } else {
+        opneModal();
+    }
 }
 backHUM.onclick = function () {
     openPage(HUMPage, programPage, 'slideRight');
@@ -1113,10 +1412,10 @@ backHUM.onclick = function () {
     clearInterval(intHUM);
     [secondsHUM, minutesHUM, hoursHUM] = [0, 0, 0];
     timerRefHUM.value = '00 : 00 : 00';
-    if (isSongMuteHUM != true && isHUMON != false) {
-        audioPlayerHUM.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerHUM.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsHUM.pauseHUM.style.display = 'none';
     timerControlsButtonsHUM.startHUM.style.display = 'inline';
     setFormDisabledStateHUM(false);
@@ -1132,34 +1431,40 @@ backHUM.onclick = function () {
     document.getElementById('HUMResultSaved').innerHTML = "";
 }
 BRT20Link.onclick = function () {
-    openPage(programPage, BRT20Page, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(programPage, BRT20Page, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    else {
+        openModal();
+    }
 }
 backBRT20.onclick = function () {
     openPage(BRT20Page, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 BBLink.onclick = function () {
-    openPage(programPage, BBPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongBB();
-    audioPlayerBB.muted = true;
-    audioListBB[0].muted = true;
-    audioListBB[2].muted = true;
-    audioListBB[3].muted = true;
-    audioListBB[0].play();
-    audioListBB[2].play();
-    audioListBB[3].play();
-    setTimeout(function () {
-        audioPlayerBB.pause();
-        audioPlayerBB.currentTime = 0;
-        audioListBB[0].pause();
-        audioListBB[0].currentTime = 0;
-        audioListBB[2].pause();
-        audioListBB[2].currentTime = 0;
-        audioListBB[3].pause();
-        audioListBB[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(programPage, BBPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListBB[0].muted = true;
+        audioListBB[2].muted = true;
+        audioListBB[3].muted = true;
+        audioListBB[0].play();
+        audioListBB[2].play();
+        audioListBB[3].play();
+        setTimeout(function () {
+            audioListBB[0].pause();
+            audioListBB[0].currentTime = 0;
+            audioListBB[2].pause();
+            audioListBB[2].currentTime = 0;
+            audioListBB[3].pause();
+            audioListBB[3].currentTime = 0;
+        }, 1000);
+    }
+    else {
+        openModal();
+    }
 }
 backBB.onclick = function () {
     openPage(BBPage, programPage, 'slideRight');
@@ -1167,10 +1472,10 @@ backBB.onclick = function () {
     clearInterval(intBB);
     [secondsBB, minutesBB, hoursBB] = [0, 0, 0];
     timerRefBB.value = '00 : 00 : 00';
-    if (isSongMuteBB != true && isBBON != false) {
-        audioPlayerBB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerBB.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsBB.pauseBB.style.display = 'none';
     timerControlsButtonsBB.startBB.style.display = 'inline';
     setFormDisabledStateBB(false);
@@ -1185,8 +1490,12 @@ backBB.onclick = function () {
     document.getElementById('BBResultSaved').innerHTML = "";
 }
 BRT30Link.onclick = function () {
-    openPage(programPage, BRT30Page, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(programPage, BRT30Page, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backBRT30.onclick = function () {
     openPage(BRT30Page, programPage, 'slideRight');
@@ -1195,6 +1504,7 @@ backBRT30.onclick = function () {
 brtSettings.onclick = function () {
     openPage(brtPage, brtSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backBRTset.onclick = function () {
     if (brtismute != true) {
@@ -1203,80 +1513,91 @@ backBRTset.onclick = function () {
     audioPlayerBRT.currentTime = 0;
     openPage(brtSettingsPage, brtPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 breSettings.onclick = function () {
     openPage(BREPage, breSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backBREset.onclick = function () {
-    if (isSongMuteBRE != true) {
-        audioPlayerBRE.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerBRE.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(breSettingsPage, BREPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 brwSettings.onclick = function () {
     openPage(BRWPage, brwSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backBRWset.onclick = function () {
-    if (isSongMuteBRW != true) {
-        audioPlayerBRW.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerBRW.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(brwSettingsPage, BRWPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 humSettings.onclick = function () {
     openPage(HUMPage, humSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backHUMset.onclick = function () {
-    if (isSongMuteHUM != true) {
-        audioPlayerHUM.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerHUM.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(humSettingsPage, HUMPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 bbSettings.onclick = function () {
     openPage(BBPage, bbSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backBBset.onclick = function () {
-    if (isSongMuteBB != true) {
-        audioPlayerBB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerBB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(bbSettingsPage, BBPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 HATLink.onclick = function () {
-    openPage(programPage, HATPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongHAT();
-    audioPlayerHAT.muted = true;
-    audioListHAT[0].muted = true;
-    audioListHAT[1].muted = true;
-    audioListHAT[2].muted = true;
-    audioListHAT[3].muted = true;
-    audioListHAT[0].play();
-    audioListHAT[1].play();
-    audioListHAT[2].play();
-    audioListHAT[3].play();
-    setTimeout(function () {
-        audioPlayerHAT.pause();
-        audioPlayerHAT.currentTime = 0;
-        audioListHAT[0].pause();
-        audioListHAT[0].currentTime = 0;
-        audioListHAT[1].pause();
-        audioListHAT[1].currentTime = 0;
-        audioListHAT[2].pause();
-        audioListHAT[2].currentTime = 0;
-        audioListHAT[3].pause();
-        audioListHAT[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(programPage, HATPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListHAT[0].muted = true;
+        audioListHAT[1].muted = true;
+        audioListHAT[2].muted = true;
+        audioListHAT[3].muted = true;
+        audioListHAT[0].play();
+        audioListHAT[1].play();
+        audioListHAT[2].play();
+        audioListHAT[3].play();
+        setTimeout(function () {
+            audioPlayerBRT.pause();
+            audioPlayerBRT.currentTime = 0;
+            audioListHAT[0].pause();
+            audioListHAT[0].currentTime = 0;
+            audioListHAT[1].pause();
+            audioListHAT[1].currentTime = 0;
+            audioListHAT[2].pause();
+            audioListHAT[2].currentTime = 0;
+            audioListHAT[3].pause();
+            audioListHAT[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backHAT.onclick = function () {
     openPage(HATPage, programPage, 'slideRight');
@@ -1286,8 +1607,8 @@ backHAT.onclick = function () {
     clearInterval(intHAT);
     document.getElementById('hatSettings').disabled = false;
     document.getElementById('hatSettings').style.color = '#49B79D';
-    if (!isSongMuteHAT) {
-        audioPlayerHAT.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     timerControlsButtonsHAT.pauseHAT.style.display = 'none';
     timerControlsButtonsHAT.startHAT.style.display = 'inline';
@@ -1308,48 +1629,54 @@ backHAT.onclick = function () {
 hatSettings.onclick = function () {
     openPage(HATPage, hatSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backHATset.onclick = function () {
-    if (isSongMuteHAT != true) {
-        audioPlayerHAT.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerHAT.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(hatSettingsPage, HATPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 BRT40Link.onclick = function () {
-    openPage(programPage, BRT40Page, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(programPage, BRT40Page, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backBRT40.onclick = function () {
     openPage(BRT40Page, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 HATCLink.onclick = function () {
-    openPage(programPage, HATCPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongHATC();
-    audioPlayerHATC.muted = true;
-    audioListHATC[0].muted = true;
-    audioListHATC[1].muted = true;
-    audioListHATC[2].muted = true;
-    audioListHATC[3].muted = true;
-    audioListHATC[0].play();
-    audioListHATC[1].play();
-    audioListHATC[2].play();
-    audioListHATC[3].play();
-    setTimeout(function () {
-        audioPlayerHATC.pause();
-        audioPlayerHATC.currentTime = 0;
-        audioListHATC[0].pause();
-        audioListHATC[0].currentTime = 0;
-        audioListHATC[1].pause();
-        audioListHATC[1].currentTime = 0;
-        audioListHATC[2].pause();
-        audioListHATC[2].currentTime = 0;
-        audioListHATC[3].pause();
-        audioListHATC[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(programPage, HATCPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListHATC[0].muted = true;
+        audioListHATC[1].muted = true;
+        audioListHATC[2].muted = true;
+        audioListHATC[3].muted = true;
+        audioListHATC[0].play();
+        audioListHATC[1].play();
+        audioListHATC[2].play();
+        audioListHATC[3].play();
+        setTimeout(function () {
+            audioListHATC[0].pause();
+            audioListHATC[0].currentTime = 0;
+            audioListHATC[1].pause();
+            audioListHATC[1].currentTime = 0;
+            audioListHATC[2].pause();
+            audioListHATC[2].currentTime = 0;
+            audioListHATC[3].pause();
+            audioListHATC[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backHATC.onclick = function () {
     openPage(HATCPage, programPage, 'slideRight');
@@ -1359,8 +1686,8 @@ backHATC.onclick = function () {
     clearInterval(intHATC);
     document.getElementById('hatcSettings').disabled = false;
     document.getElementById('hatcSettings').style.color = '#49B79D';
-    if (!isSongMuteHATC) {
-        audioPlayerHATC.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     timerControlsButtonsHATC.pauseHATC.style.display = 'none';
     timerControlsButtonsHATC.startHATC.style.display = 'inline';
@@ -1381,40 +1708,42 @@ backHATC.onclick = function () {
 hatcSettings.onclick = function () {
     openPage(HATCPage, hatcSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backHATCset.onclick = function () {
-    if (isSongMuteHATC != true) {
-        audioPlayerHATC.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerHATC.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(hatcSettingsPage, HATCPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 AHATLink.onclick = function () {
-    openPage(programPage, AHATPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongAHAT();
-    audioPlayerAHAT.muted = true;
-    audioListAHAT[0].muted = true;
-    audioListAHAT[1].muted = true;
-    audioListAHAT[2].muted = true;
-    audioListAHAT[3].muted = true;
-    audioListAHAT[0].play();
-    audioListAHAT[1].play();
-    audioListAHAT[2].play();
-    audioListAHAT[3].play();
-    setTimeout(function () {
-        audioPlayerAHAT.pause();
-        audioPlayerAHAT.currentTime = 0;
-        audioListAHAT[0].pause();
-        audioListAHAT[0].currentTime = 0;
-        audioListAHAT[1].pause();
-        audioListAHAT[1].currentTime = 0;
-        audioListAHAT[2].pause();
-        audioListAHAT[2].currentTime = 0;
-        audioListAHAT[3].pause();
-        audioListAHAT[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(programPage, AHATPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListAHAT[0].muted = true;
+        audioListAHAT[1].muted = true;
+        audioListAHAT[2].muted = true;
+        audioListAHAT[3].muted = true;
+        audioListAHAT[0].play();
+        audioListAHAT[1].play();
+        audioListAHAT[2].play();
+        audioListAHAT[3].play();
+        setTimeout(function () {
+            audioListAHAT[0].pause();
+            audioListAHAT[0].currentTime = 0;
+            audioListAHAT[1].pause();
+            audioListAHAT[1].currentTime = 0;
+            audioListAHAT[2].pause();
+            audioListAHAT[2].currentTime = 0;
+            audioListAHAT[3].pause();
+            audioListAHAT[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backAHAT.onclick = function () {
     openPage(AHATPage, programPage, 'slideRight');
@@ -1424,8 +1753,8 @@ backAHAT.onclick = function () {
     clearInterval(intAHAT);
     document.getElementById('ahatSettings').disabled = false;
     document.getElementById('ahatSettings').style.color = '#49B79D';
-    if (!isSongMuteAHAT) {
-        audioPlayerAHAT.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     timerControlsButtonsAHAT.pauseAHAT.style.display = 'none';
     timerControlsButtonsAHAT.startAHAT.style.display = 'inline';
@@ -1446,32 +1775,39 @@ backAHAT.onclick = function () {
 ahatSettings.onclick = function () {
     openPage(AHATPage, hatSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backAHATset.onclick = function () {
-    if (isSongMuteAHAT != true) {
-        audioPlayerAHAT.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerAHAT.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(ahatSettingsPage, AHATPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 lungsLink.onclick = function () {
-    openPage(homePage, lungsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    for (var i = 0; i < audioElements.length; i++) {
-        audioElements[i].muted = true;
-        audioElements[i].play();
+    if (isUserActiveSubscriber) {
+        openPage(homePage, lungsPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        for (var i = 0; i < audioElements.length; i++) {
+            audioElements[i].muted = true;
+            audioElements[i].play();
+            setTimeout(function () {
+                audioElements[i].pause();
+                audioElements[i].currentTime = 0;
+            }, 1000);
+        }
+        playSelectedSongBRT(true);
+        audioPlayerBRT.muted = true;
         setTimeout(function () {
-            audioElements[i].pause();
-            audioElements[i].currentTime = 0;
+            audioPlayerBRT.pause();
+            audioPlayerBRT.currentTime = 0;
+            audioPlayerBRT.muted = false;
         }, 1000);
+    } else {
+        openModal();
     }
-    playSelectedSongLungs();
-    audioPlayerLungs.muted = true;
-    setTimeout(function () {
-        audioPlayerLungs.pause();
-        audioPlayerLungs.currentTime = 0;
-    }, 1000);
 }
 backLungs.onclick = function () {
     openPage(lungsPage, homePage, 'slideRight');
@@ -1488,23 +1824,25 @@ backLungs.onclick = function () {
     document.getElementById('lungsResultSaved').innerHTML = "";
     document.getElementById('lungsSettings').disabled = false;
     document.getElementById('lungsSettings').style.color = '#49B79D';
-    if (lungsismute != true && lungsIsOn != false) {
-        audioPlayerLungs.pause();
+    if (!audioPlayerBRT.muted){
+        audioPlayerBRT.pause();
     }
-    audioPlayerLungs.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     lungsIsOn = false;
 }
 lungsSettings.onclick = function () {
     openPage(lungsPage, lungsSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backLungsset.onclick = function () {
-    if (lungsismute != true) {
-        audioPlayerLungs.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerLungs.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(lungsSettingsPage, lungsPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 mobilityLink.onclick = function () {
     openPage(homePage, mobilityPage, 'slideLeft');
@@ -1525,6 +1863,13 @@ breathHoldsLink.onclick = function () {
             audioElements[i].currentTime = 0;
         }, 1000);
     }
+    playSelectedSongBRT(true);
+    audioPlayerBRT.muted = true;
+    setTimeout(function () {
+        audioPlayerBRT.pause();
+        audioPlayerBRT.currentTime = 0;
+        audioPlayerBRT.muted = false;
+    }, 1000);
 }
 backBH.onclick = function () {
     openPage(BHPage, homePage, 'slideRight');
@@ -1541,6 +1886,13 @@ pranayamaLink.onclick = function () {
             audioElements[i].currentTime = 0;
         }, 1000);
     }
+    playSelectedSongBRT(true);
+    audioPlayerBRT.muted = true;
+    setTimeout(function () {
+        audioPlayerBRT.pause();
+        audioPlayerBRT.currentTime = 0;
+        audioPlayerBRT.muted = false;
+    }, 1000);
 }
 backPRANA.onclick = function () {
     openPage(PRANAPage, homePage, 'slideRight');
@@ -1557,6 +1909,13 @@ extrasLink.onclick = function () {
             audioElements[i].currentTime = 0;
         }, 1000);
     }
+    playSelectedSongBRT(true);
+    audioPlayerBRT.muted = true;
+    setTimeout(function () {
+        audioPlayerBRT.pause();
+        audioPlayerBRT.currentTime = 0;
+        audioPlayerBRT.muted = false;
+    }, 1000);
 }
 backEXTRA.onclick = function () {
     openPage(EXTRAPage, homePage, 'slideRight');
@@ -1565,8 +1924,6 @@ backEXTRA.onclick = function () {
 APLink.onclick = function () {
     openPage(BHPage, APPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongAP();
-    audioPlayerAP.muted = true;
     audioListAP[0].muted = true;
     audioListAP[2].muted = true;
     audioListAP[3].muted = true;
@@ -1574,8 +1931,6 @@ APLink.onclick = function () {
     audioListAP[2].play();
     audioListAP[3].play();
     setTimeout(function () {
-        audioPlayerAP.pause();
-        audioPlayerAP.currentTime = 0;
         audioListAP[0].pause();
         audioListAP[0].currentTime = 0;
         audioListAP[2].pause();
@@ -1590,10 +1945,10 @@ backAP.onclick = function () {
     clearInterval(intAP);
     [secondsAP, minutesAP, hoursAP] = [0, 0, 0];
     timerRefAP.value = '00 : 00 : 00';
-    if (isSongMuteAP != true && isAPON != false) {
-        audioPlayerAP.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerAP.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsAP.pauseAP.style.display = 'none';
     timerControlsButtonsAP.startAP.style.display = 'inline';
     setFormDisabledStateAP(false);
@@ -1605,62 +1960,63 @@ backAP.onclick = function () {
     document.getElementById('APSettings').style.color = '#49B79D';
     stopTimerTickAP();
     resetTimerAP();
-    isAPON = false;
     document.getElementById('APResultSaved').innerHTML = "";
 }
 APSettings.onclick = function () {
     openPage(APPage, APSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backAPSet.onclick = function () {
-    if (isSongMuteAP != true) {
-        audioPlayerAP.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerAP.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(APSettingsPage, APPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 co2o2Link.onclick = function () {
-    openPage(BHPage, O2Page, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongO2();
-    audioPlayerO2.muted = true;
-    audioListCO2[0].muted = true;
-    audioListCO2[1].muted = true;
-    audioListCO2[2].muted = true;
-    audioListCO2[3].muted = true;
-    audioListCO2[0].play();
-    audioListCO2[1].play();
-    audioListCO2[2].play();
-    audioListCO2[3].play();
-    audioListO2[0].muted = true;
-    audioListO2[1].muted = true;
-    audioListO2[2].muted = true;
-    audioListO2[3].muted = true;
-    audioListO2[0].play();
-    audioListO2[1].play();
-    audioListO2[2].play();
-    audioListO2[3].play();
-    setTimeout(function () {
-        audioPlayerO2.pause();
-        audioPlayerO2.currentTime = 0;
-        audioListCO2[0].pause();
-        audioListCO2[0].currentTime = 0;
-        audioListCO2[1].pause();
-        audioListCO2[1].currentTime = 0;
-        audioListCO2[2].pause();
-        audioListCO2[2].currentTime = 0;
-        audioListCO2[3].pause();
-        audioListCO2[3].currentTime = 0;
-        audioListO2[0].pause();
-        audioListO2[0].currentTime = 0;
-        audioListO2[1].pause();
-        audioListO2[1].currentTime = 0;
-        audioListO2[2].pause();
-        audioListO2[2].currentTime = 0;
-        audioListO2[3].pause();
-        audioListO2[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(BHPage, O2Page, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListCO2[0].muted = true;
+        audioListCO2[1].muted = true;
+        audioListCO2[2].muted = true;
+        audioListCO2[3].muted = true;
+        audioListCO2[0].play();
+        audioListCO2[1].play();
+        audioListCO2[2].play();
+        audioListCO2[3].play();
+        audioListO2[0].muted = true;
+        audioListO2[1].muted = true;
+        audioListO2[2].muted = true;
+        audioListO2[3].muted = true;
+        audioListO2[0].play();
+        audioListO2[1].play();
+        audioListO2[2].play();
+        audioListO2[3].play();
+        setTimeout(function () {
+            audioListCO2[0].pause();
+            audioListCO2[0].currentTime = 0;
+            audioListCO2[1].pause();
+            audioListCO2[1].currentTime = 0;
+            audioListCO2[2].pause();
+            audioListCO2[2].currentTime = 0;
+            audioListCO2[3].pause();
+            audioListCO2[3].currentTime = 0;
+            audioListO2[0].pause();
+            audioListO2[0].currentTime = 0;
+            audioListO2[1].pause();
+            audioListO2[1].currentTime = 0;
+            audioListO2[2].pause();
+            audioListO2[2].currentTime = 0;
+            audioListO2[3].pause();
+            audioListO2[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backO2.onclick = function () {
     openPage(O2Page, BHPage, 'slideRight');
@@ -1670,8 +2026,8 @@ backO2.onclick = function () {
     clearInterval(intO2);
     document.getElementById('O2Settings').disabled = false;
     document.getElementById('O2Settings').style.color = '#49B79D';
-    if (!isSongMuteO2) {
-        audioPlayerO2.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     timerControlsButtonsO2.pauseO2.style.display = 'none';
     timerControlsButtonsO2.startO2.style.display = 'inline';
@@ -1708,14 +2064,16 @@ backO2.onclick = function () {
 O2Settings.onclick = function () {
     openPage(O2Page, O2SettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backO2Set.onclick = function () {
-    if (isSongMuteO2 != true) {
-        audioPlayerO2.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerO2.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(O2SettingsPage, O2Page, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 CO2Btn.onclick = function () {
     document.getElementById("O2Table").style.display = 'block';
@@ -1726,47 +2084,47 @@ O2Btn.onclick = function () {
     document.getElementById("O2Table").style.display = 'none';
 }
 WHLink.onclick = function () {
-    openPage(BHPage, WHPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongWH();
-    audioPlayerWH.muted = true;
-    audioListWH[0].muted = true;
-    audioListWH[1].muted = true;
-    audioListWH[2].muted = true;
-    audioListWH[3].muted = true;
-    audioListWH[4].muted = true;
-    audioListWH[5].muted = true;
-    audioListWH[6].muted = true;
-    audioListWH[7].muted = true;
-    audioListWH[0].play();
-    audioListWH[1].play();
-    audioListWH[2].play();
-    audioListWH[3].play();
-    audioListWH[4].play();
-    audioListWH[5].play();
-    audioListWH[6].play();
-    audioListWH[7].play();
+    if (isUserActiveSubscriber) {
+        openPage(BHPage, WHPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListWH[0].muted = true;
+        audioListWH[1].muted = true;
+        audioListWH[2].muted = true;
+        audioListWH[3].muted = true;
+        audioListWH[4].muted = true;
+        audioListWH[5].muted = true;
+        audioListWH[6].muted = true;
+        audioListWH[7].muted = true;
+        audioListWH[0].play();
+        audioListWH[1].play();
+        audioListWH[2].play();
+        audioListWH[3].play();
+        audioListWH[4].play();
+        audioListWH[5].play();
+        audioListWH[6].play();
+        audioListWH[7].play();
 
-    setTimeout(function () {
-        audioPlayerWH.pause();
-        audioPlayerWH.currentTime = 0;
-        audioListWH[0].pause();
-        audioListWH[0].currentTime = 0
-        audioListWH[1].pause();
-        audioListWH[1].currentTime = 0
-        audioListWH[2].pause();
-        audioListWH[2].currentTime = 0
-        audioListWH[3].pause();
-        audioListWH[3].currentTime = 0
-        audioListWH[4].pause();
-        audioListWH[4].currentTime = 0
-        audioListWH[5].pause();
-        audioListWH[5].currentTime = 0
-        audioListWH[6].pause();
-        audioListWH[6].currentTime = 0
-        audioListWH[7].pause();
-        audioListWH[7].currentTime = 0
-    }, 1000);
+        setTimeout(function () {
+            audioListWH[0].pause();
+            audioListWH[0].currentTime = 0
+            audioListWH[1].pause();
+            audioListWH[1].currentTime = 0
+            audioListWH[2].pause();
+            audioListWH[2].currentTime = 0
+            audioListWH[3].pause();
+            audioListWH[3].currentTime = 0
+            audioListWH[4].pause();
+            audioListWH[4].currentTime = 0
+            audioListWH[5].pause();
+            audioListWH[5].currentTime = 0
+            audioListWH[6].pause();
+            audioListWH[6].currentTime = 0
+            audioListWH[7].pause();
+            audioListWH[7].currentTime = 0
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backWH.onclick = function () {
     openPage(WHPage, BHPage, 'slideRight');
@@ -1775,10 +2133,10 @@ backWH.onclick = function () {
     [secondsWH, minutesWH] = [0, 0];
     document.getElementById('WHSettings').disabled = false;
     document.getElementById('WHSettings').style.color = '#49B79D';
-    if (!isSongMuteWH) {
-        audioPlayerWH.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerWH.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsWH.pauseWH.style.display = 'none';
     timerControlsButtonsWH.startWH.style.display = 'inline';
     setFormDisabledStateWH(false);
@@ -1803,40 +2161,42 @@ backWH.onclick = function () {
 WHSettings.onclick = function () {
     openPage(WHPage, WHSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backWHSet.onclick = function () {
-    if (isSongMuteWH != true) {
-        audioPlayerWH.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerWH.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(WHSettingsPage, WHPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 CTLink.onclick = function () {
-    openPage(BHPage, CTPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongCT();
-    audioPlayerCT.muted = true;
-    audioListCT[0].muted = true;
-    audioListCT[1].muted = true;
-    audioListCT[2].muted = true;
-    audioListCT[3].muted = true;
-    audioListCT[0].play();
-    audioListCT[1].play();
-    audioListCT[2].play();
-    audioListCT[3].play();
-    setTimeout(function () {
-        audioPlayerCT.pause();
-        audioPlayerCT.currentTime = 0;
-        audioListCT[0].pause();
-        audioListCT[0].currentTime = 0;
-        audioListCT[1].pause();
-        audioListCT[1].currentTime = 0;
-        audioListCT[2].pause();
-        audioListCT[2].currentTime = 0;
-        audioListCT[3].pause();
-        audioListCT[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(BHPage, CTPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListCT[0].muted = true;
+        audioListCT[1].muted = true;
+        audioListCT[2].muted = true;
+        audioListCT[3].muted = true;
+        audioListCT[0].play();
+        audioListCT[1].play();
+        audioListCT[2].play();
+        audioListCT[3].play();
+        setTimeout(function () {
+            audioListCT[0].pause();
+            audioListCT[0].currentTime = 0;
+            audioListCT[1].pause();
+            audioListCT[1].currentTime = 0;
+            audioListCT[2].pause();
+            audioListCT[2].currentTime = 0;
+            audioListCT[3].pause();
+            audioListCT[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backCT.onclick = function () {
     openPage(CTPage, BHPage, 'slideRight');
@@ -1844,10 +2204,10 @@ backCT.onclick = function () {
     clearInterval(intCT);
     [secondsCT, minutesCT, hoursCT] = [0, 0, 0];
     timerRefCT.value = '00 : 00 : 00';
-    if (isSongMuteCT != true && isCTON != false) {
-        audioPlayerCT.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerCT.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsCT.pauseCT.style.display = 'none';
     timerControlsButtonsCT.startCT.style.display = 'inline';
     setFormDisabledStateCT(false);
@@ -1859,26 +2219,25 @@ backCT.onclick = function () {
     document.getElementById('CTSettings').style.color = '#49B79D';
     stopTimerTickCT();
     resetTimerCT();
-    isCTON = false;
     document.getElementById('CTResultSaved').innerHTML = "";
 }
 CTSettings.onclick = function () {
     openPage(CTPage, CTSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backCTSet.onclick = function () {
-    if (isSongMuteCT != true) {
-        audioPlayerCT.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerCT.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(CTSettingsPage, CTPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 UBLink.onclick = function () {
     openPage(PRANAPage, UBPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongUB();
-    audioPlayerUB.muted = true;
     audioListUB[0].muted = true;
     audioListUB[2].muted = true;
     audioListUB[3].muted = true;
@@ -1886,8 +2245,6 @@ UBLink.onclick = function () {
     audioListUB[2].play();
     audioListUB[3].play();
     setTimeout(function () {
-        audioPlayerUB.pause();
-        audioPlayerUB.currentTime = 0;
         audioListUB[0].pause();
         audioListUB[0].currentTime = 0;
         audioListUB[2].pause();
@@ -1902,10 +2259,10 @@ backUB.onclick = function () {
     clearInterval(intUB);
     [secondsUB, minutesUB, hoursUB] = [0, 0, 0];
     timerRefUB.value = '00 : 00 : 00';
-    if (isSongMuteUB != true && isUBON != false) {
-        audioPlayerUB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerUB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsUB.pauseUB.style.display = 'none';
     timerControlsButtonsUB.startUB.style.display = 'inline';
     setFormDisabledStateUB(false);
@@ -1923,14 +2280,16 @@ backUB.onclick = function () {
 UBSettings.onclick = function () {
     openPage(UBPage, UBSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backUBSet.onclick = function () {
-    if (isSongMuteUB != true) {
-        audioPlayerUB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerUB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(UBSettingsPage, UBPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 KBLink.onclick = function () {
     openPage(PRANAPage, KBPage, 'slideUp');
@@ -1941,26 +2300,26 @@ backKB.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 BOXLink.onclick = function () {
-    openPage(PRANAPage, BOXPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongBOX();
-    audioPlayerBOX.muted = true;
-    audioListBOX[0].muted = true;
-    audioListBOX[2].muted = true;
-    audioListBOX[3].muted = true;
-    audioListBOX[0].play();
-    audioListBOX[2].play();
-    audioListBOX[3].play();
-    setTimeout(function () {
-        audioPlayerBOX.pause();
-        audioPlayerBOX.currentTime = 0;
-        audioListBOX[0].pause();
-        audioListBOX[0].currentTime = 0;
-        audioListBOX[2].pause();
-        audioListBOX[2].currentTime = 0;
-        audioListBOX[3].pause();
-        audioListBOX[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, BOXPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListBOX[0].muted = true;
+        audioListBOX[2].muted = true;
+        audioListBOX[3].muted = true;
+        audioListBOX[0].play();
+        audioListBOX[2].play();
+        audioListBOX[3].play();
+        setTimeout(function () {
+            audioListBOX[0].pause();
+            audioListBOX[0].currentTime = 0;
+            audioListBOX[2].pause();
+            audioListBOX[2].currentTime = 0;
+            audioListBOX[3].pause();
+            audioListBOX[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backBOX.onclick = function () {
     openPage(BOXPage, PRANAPage, 'slideRight');
@@ -1968,10 +2327,10 @@ backBOX.onclick = function () {
     clearInterval(intBOX);
     [secondsBOX, minutesBOX, hoursBOX] = [0, 0, 0];
     timerRefBOX.value = '00 : 00 : 00';
-    if (isSongMuteBOX != true && isBOXON != false) {
-        audioPlayerBOX.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerBOX.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsBOX.pauseBOX.style.display = 'none';
     timerControlsButtonsBOX.startBOX.style.display = 'inline';
     setFormDisabledStateBOX(false);
@@ -1989,36 +2348,38 @@ backBOX.onclick = function () {
 BOXSettings.onclick = function () {
     openPage(BOXPage, BOXSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backBOXSet.onclick = function () {
-    if (isSongMuteBOX != true) {
-        audioPlayerBOX.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerBOX.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(BOXSettingsPage, BOXPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 NBLink.onclick = function () {
-    openPage(PRANAPage, NBPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongNB();
-    audioPlayerNB.muted = true;
-    audioListNB[0].muted = true;
-    audioListNB[2].muted = true;
-    audioListNB[3].muted = true;
-    audioListNB[0].play();
-    audioListNB[2].play();
-    audioListNB[3].play();
-    setTimeout(function () {
-        audioPlayerNB.pause();
-        audioPlayerNB.currentTime = 0;
-        audioListNB[0].pause();
-        audioListNB[0].currentTime = 0;
-        audioListNB[2].pause();
-        audioListNB[2].currentTime = 0;
-        audioListNB[3].pause();
-        audioListNB[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, NBPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListNB[0].muted = true;
+        audioListNB[2].muted = true;
+        audioListNB[3].muted = true;
+        audioListNB[0].play();
+        audioListNB[2].play();
+        audioListNB[3].play();
+        setTimeout(function () {
+            audioListNB[0].pause();
+            audioListNB[0].currentTime = 0;
+            audioListNB[2].pause();
+            audioListNB[2].currentTime = 0;
+            audioListNB[3].pause();
+            audioListNB[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backNB.onclick = function () {
     openPage(NBPage, PRANAPage, 'slideRight');
@@ -2026,10 +2387,10 @@ backNB.onclick = function () {
     clearInterval(intNB);
     [secondsNB, minutesNB, hoursNB] = [0, 0, 0];
     timerRefNB.value = '00 : 00 : 00';
-    if (isSongMuteNB != true && isNBON != false) {
-        audioPlayerNB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerNB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsNB.pauseNB.style.display = 'none';
     timerControlsButtonsNB.startNB.style.display = 'inline';
     setFormDisabledStateNB(false);
@@ -2047,36 +2408,38 @@ backNB.onclick = function () {
 NBSettings.onclick = function () {
     openPage(NBPage, NBSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backNBSet.onclick = function () {
-    if (isSongMuteNB != true) {
-        audioPlayerNB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerNB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(NBSettingsPage, NBPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 CBLink.onclick = function () {
-    openPage(PRANAPage, CBPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongCB();
-    audioPlayerCB.muted = true;
-    audioListCB[0].muted = true;
-    audioListCB[2].muted = true;
-    audioListCB[3].muted = true;
-    audioListCB[0].play();
-    audioListCB[2].play();
-    audioListCB[3].play();
-    setTimeout(function () {
-        audioPlayerCB.pause();
-        audioPlayerCB.currentTime = 0;
-        audioListCB[0].pause();
-        audioListCB[0].currentTime = 0;
-        audioListCB[2].pause();
-        audioListCB[2].currentTime = 0;
-        audioListCB[3].pause();
-        audioListCB[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, CBPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListCB[0].muted = true;
+        audioListCB[2].muted = true;
+        audioListCB[3].muted = true;
+        audioListCB[0].play();
+        audioListCB[2].play();
+        audioListCB[3].play();
+        setTimeout(function () {
+            audioListCB[0].pause();
+            audioListCB[0].currentTime = 0;
+            audioListCB[2].pause();
+            audioListCB[2].currentTime = 0;
+            audioListCB[3].pause();
+            audioListCB[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backCB.onclick = function () {
     openPage(CBPage, PRANAPage, 'slideRight');
@@ -2084,10 +2447,10 @@ backCB.onclick = function () {
     clearInterval(intCB);
     [secondsCB, minutesCB, hoursCB] = [0, 0, 0];
     timerRefCB.value = '00 : 00 : 00';
-    if (isSongMuteCB != true && isCBON != false) {
-        audioPlayerCB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerCB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsCB.pauseCB.style.display = 'none';
     timerControlsButtonsCB.startCB.style.display = 'inline';
     setFormDisabledStateCB(false);
@@ -2105,36 +2468,38 @@ backCB.onclick = function () {
 CBSettings.onclick = function () {
     openPage(CBPage, CBSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backCBSet.onclick = function () {
-    if (isSongMuteCB != true) {
-        audioPlayerCB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerCB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(CBSettingsPage, CBPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 SBLink.onclick = function () {
-    openPage(PRANAPage, SBPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongSB();
-    audioPlayerSB.muted = true;
-    audioListSB[0].muted = true;
-    audioListSB[2].muted = true;
-    audioListSB[3].muted = true;
-    audioListSB[0].play();
-    audioListSB[2].play();
-    audioListSB[3].play();
-    setTimeout(function () {
-        audioPlayerSB.pause();
-        audioPlayerSB.currentTime = 0;
-        audioListSB[0].pause();
-        audioListSB[0].currentTime = 0;
-        audioListSB[2].pause();
-        audioListSB[2].currentTime = 0;
-        audioListSB[3].pause();
-        audioListSB[3].currentTime = 0;
-    }, 1000);
+        if (isUserActiveSubscriber) {
+        openPage(PRANAPage, SBPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListSB[0].muted = true;
+        audioListSB[2].muted = true;
+        audioListSB[3].muted = true;
+        audioListSB[0].play();
+        audioListSB[2].play();
+        audioListSB[3].play();
+        setTimeout(function () {
+            audioListSB[0].pause();
+            audioListSB[0].currentTime = 0;
+            audioListSB[2].pause();
+            audioListSB[2].currentTime = 0;
+            audioListSB[3].pause();
+            audioListSB[3].currentTime = 0;
+        }, 1000);
+        } else {
+            openModal();
+        }
 }
 backSB.onclick = function () {
     openPage(SBPage, PRANAPage, 'slideRight');
@@ -2142,10 +2507,10 @@ backSB.onclick = function () {
     clearInterval(intSB);
     [secondsSB, minutesSB, hoursSB] = [0, 0, 0];
     timerRefSB.value = '00 : 00 : 00';
-    if (isSongMuteSB != true && isSBON != false) {
-        audioPlayerSB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerSB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsSB.pauseSB.style.display = 'none';
     timerControlsButtonsSB.startSB.style.display = 'inline';
     setFormDisabledStateSB(false);
@@ -2163,44 +2528,50 @@ backSB.onclick = function () {
 SBSettings.onclick = function () {
     openPage(SBPage, SBSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backSBSet.onclick = function () {
-    if (isSongMuteSB != true) {
-        audioPlayerSB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerSB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(SBSettingsPage, SBPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 NKLink.onclick = function () {
-    openPage(PRANAPage, NKPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, NKPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backNK.onclick = function () {
     openPage(NKPage, PRANAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 RBLink.onclick = function () {
-    openPage(PRANAPage, RBPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongRB();
-    audioPlayerRB.muted = true;
-    audioListRB[0].muted = true;
-    audioListRB[2].muted = true;
-    audioListRB[3].muted = true;
-    audioListRB[0].play();
-    audioListRB[2].play();
-    audioListRB[3].play();
-    setTimeout(function () {
-        audioPlayerRB.pause();
-        audioPlayerRB.currentTime = 0;
-        audioListRB[0].pause();
-        audioListRB[0].currentTime = 0;
-        audioListRB[2].pause();
-        audioListRB[2].currentTime = 0;
-        audioListRB[3].pause();
-        audioListRB[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, RBPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListRB[0].muted = true;
+        audioListRB[2].muted = true;
+        audioListRB[3].muted = true;
+        audioListRB[0].play();
+        audioListRB[2].play();
+        audioListRB[3].play();
+        setTimeout(function () {
+            audioListRB[0].pause();
+            audioListRB[0].currentTime = 0;
+            audioListRB[2].pause();
+            audioListRB[2].currentTime = 0;
+            audioListRB[3].pause();
+            audioListRB[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backRB.onclick = function () {
     openPage(RBPage, PRANAPage, 'slideRight');
@@ -2208,10 +2579,10 @@ backRB.onclick = function () {
     clearInterval(intRB);
     [secondsRB, minutesRB, hoursRB] = [0, 0, 0];
     timerRefRB.value = '00 : 00 : 00';
-    if (isSongMuteRB != true && isRBON != false) {
-        audioPlayerRB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerRB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsRB.pauseRB.style.display = 'none';
     timerControlsButtonsRB.startRB.style.display = 'inline';
     setFormDisabledStateRB(false);
@@ -2229,28 +2600,34 @@ backRB.onclick = function () {
 RBSettings.onclick = function () {
     openPage(RBPage, RBSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backRBSet.onclick = function () {
-    if (isSongMuteRB != true) {
-        audioPlayerRB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerRB.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(RBSettingsPage, RBPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 MEDLink.onclick = function () {
-    openPage(EXTRAPage, MEDPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    meditationList[0].muted = true;
-    meditationList[1].muted = true;
-    meditationList[0].play();
-    meditationList[1].play();
-    setTimeout(function () {
-        meditationList[0].pause();
-        meditationList[0].currentTime = 0;
-        meditationList[1].pause();
-        meditationList[1].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(EXTRAPage, MEDPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        meditationList[0].muted = true;
+        meditationList[1].muted = true;
+        meditationList[0].play();
+        meditationList[1].play();
+        setTimeout(function () {
+            meditationList[0].pause();
+            meditationList[0].currentTime = 0;
+            meditationList[1].pause();
+            meditationList[1].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backMED.onclick = function () {
     openPage(MEDPage, EXTRAPage, 'slideRight');
@@ -2263,74 +2640,98 @@ backMED.onclick = function () {
     }
 }
 SLEEPLink.onclick = function () {
-    openPage(EXTRAPage, SLEEPPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(EXTRAPage, SLEEPPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backSLEEP.onclick = function () {
     openPage(SLEEPPage, EXTRAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 HYDLink.onclick = function () {
-    openPage(EXTRAPage, HYDPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(EXTRAPage, HYDPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backHYD.onclick = function () {
     openPage(HYDPage, EXTRAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 SHOTLink.onclick = function () {
-    openPage(EXTRAPage, SHOTPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(EXTRAPage, SHOTPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backSHOT.onclick = function () {
     openPage(SHOTPage, EXTRAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 ILLink.onclick = function () {
-    openPage(EXTRAPage, ILPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(EXTRAPage, ILPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backIL.onclick = function () {
     openPage(ILPage, EXTRAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 BEETLink.onclick = function () {
-    openPage(EXTRAPage, BEETPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(EXTRAPage, BEETPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backBEET.onclick = function () {
     openPage(BEETPage, EXTRAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 DIETLink.onclick = function () {
-    openPage(EXTRAPage, DIETPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(EXTRAPage, DIETPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backDIET.onclick = function () {
     openPage(DIETPage, EXTRAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 SEXLink.onclick = function () {
-    openPage(EXTRAPage, SEXPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongSEX();
-    audioPlayerSEX.muted = true;
-    audioListSEX[0].muted = true;
-    audioListSEX[2].muted = true;
-    audioListSEX[3].muted = true;
-    audioListSEX[0].play();
-    audioListSEX[2].play();
-    audioListSEX[3].play();
-    setTimeout(function () {
-        audioPlayerSEX.pause();
-        audioPlayerSEX.currentTime = 0;
-        audioListSEX[0].pause();
-        audioListSEX[0].currentTime = 0;
-        audioListSEX[2].pause();
-        audioListSEX[2].currentTime = 0;
-        audioListSEX[3].pause();
-        audioListSEX[3].currentTime = 0;
-    }, 1000);
+    if (isUserActiveSubscriber) {
+        openPage(EXTRAPage, SEXPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioListSEX[0].muted = true;
+        audioListSEX[2].muted = true;
+        audioListSEX[3].muted = true;
+        audioListSEX[0].play();
+        audioListSEX[2].play();
+        audioListSEX[3].play();
+        setTimeout(function () {
+            audioListSEX[0].pause();
+            audioListSEX[0].currentTime = 0;
+            audioListSEX[2].pause();
+            audioListSEX[2].currentTime = 0;
+            audioListSEX[3].pause();
+            audioListSEX[3].currentTime = 0;
+        }, 1000);
+    } else {
+        openModal();
+    }
 }
 backSEX.onclick = function () {
     openPage(SEXPage, EXTRAPage, 'slideRight');
@@ -2338,10 +2739,10 @@ backSEX.onclick = function () {
     clearInterval(intSEX);
     [secondsSEX, minutesSEX, hoursSEX] = [0, 0, 0];
     timerRefSEX.value = '00 : 00 : 00';
-    if (isSongMuteSEX != true && isSEXON != false) {
-        audioPlayerSEX.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerSEX.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsSEX.pauseSEX.style.display = 'none';
     timerControlsButtonsSEX.startSEX.style.display = 'inline';
     setFormDisabledStateSEX(false);
@@ -2359,14 +2760,16 @@ backSEX.onclick = function () {
 SEXSettings.onclick = function () {
     openPage(SEXPage, SEXSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
 }
 backSEXSet.onclick = function () {
-    if (isSongMuteSEX != true) {
-        audioPlayerSEX.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerSEX.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     openPage(SEXSettingsPage, SEXPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
 }
 backBRTresults.onclick = function () {
     openPage(BRTresultPage, resultsPage, 'slideDown');

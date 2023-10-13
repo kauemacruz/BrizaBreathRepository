@@ -1,50 +1,4 @@
 /*HATC JS*/
-const songSelectHATC = document.getElementById('song-selectHATC');
-const audioPlayerHATC = document.getElementById('audio-playerHATC');
-var isHATCON = false;
-// Variable to store the timeout ID
-let timeoutIdHATC;
-
-
-// Function to play the selected song
-const playSelectedSongHATC = () => {
-    const selectedSongHATC = songSelectHATC.value;
-    audioPlayerHATC.src = selectedSongHATC;
-    if (isHATCON !== true) {
-        audioPlayerHATC.muted = false;
-        audioPlayerHATC.play();
-        localStorage.setItem('selectedSongHATC', songSelectHATC.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdHATC);
-        timeoutIdHATC = setTimeout(function () {
-            audioPlayerHATC.pause();
-            audioPlayerHATC.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerHATC.muted = false;
-        audioPlayerHATC.loop = true;
-        audioPlayerHATC.play();
-        clearTimeout(timeoutIdHATC);
-    }
-};
-
-
-const storedSongHATC = localStorage.getItem('selectedSongHATC');
-if (storedSongHATC) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectHATC.value = storedSongHATC;
-}
-
-// Add an event listener to the songSelectHATC dropdown
-songSelectHATC.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerHATC.pause();
-    audioPlayerHATC.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongHATC();
-});
-
 $(function () {
     $('#hatcForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -66,8 +20,8 @@ $(function () {
         clearInterval(intHATC);
         document.getElementById('hatcSettings').disabled = false;
         document.getElementById('hatcSettings').style.color = '#49B79D';
-        if (!isSongMuteHATC) {
-            audioPlayerHATC.pause();
+        if (!audioPlayerBRT.muted) {
+            audioPlayerBRT.pause();
         }
         timerControlsButtonsHATC.pauseHATC.style.display = 'none';
         timerControlsButtonsHATC.startHATC.style.display = 'inline';
@@ -151,12 +105,10 @@ var audioHATC = document.getElementById("audioHATC"),
     muteHATC = document.getElementById("muteHATC"),
     ismuteHATC = false;
 
-audioPlayerHATC.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongHATC = document.getElementById("songHATC"),
-    muteSongHATC = document.getElementById("songMuteHATC"),
-    isSongMuteHATC = false;
-
+    muteSongHATC = document.getElementById("songMuteHATC");
 // Get the volumeVhatc bar element
 const volumeVoiceHATC = document.getElementById('volumeVoiceHATC');
 
@@ -194,15 +146,13 @@ volumeSongHATC.addEventListener('input', function () {
 
     // Check if volumeShatc is 0 and mute the media if necessary
     if (volumeShatc === 0) {
-        audioPlayerHATC.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongHATC.style.display = "none";
         muteSongHATC.style.display = "block";
-        isSongMuteHATC = true;
     } else {
-        audioPlayerHATC.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongHATC.style.display = "none";
         audioSongHATC.style.display = "block";
-        isSongMuteHATC = false;
     }
 });
 
@@ -379,9 +329,8 @@ function startTimerHATC() {
             audioListHATC[0].play();
         }
     }
-    isHATCON = true;
-    if (!isSongMuteHATC) {
-        playSelectedSongHATC();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerHATC.isFinishedHATC) {
         resetTimerHATC();
@@ -426,8 +375,8 @@ function stopTimerHATC() {
     [secondsHATC, minutesHATC, hoursHATC] = [0, 0, 0];
     document.getElementById('hatcSettings').disabled = false;
     document.getElementById('hatcSettings').style.color = '#49B79D';
-    if (!isSongMuteHATC) {
-        audioPlayerHATC.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     timerControlsButtonsHATC.pauseHATC.style.display = 'none';
     timerControlsButtonsHATC.startHATC.style.display = 'inline';

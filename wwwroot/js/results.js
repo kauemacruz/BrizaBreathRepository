@@ -1,5 +1,4 @@
 var currentUrl = window.location.href;
-
 // Define a function to check if the URL contains a specific keyword
 function checkUrl() {
     if (currentUrl.includes("CreateBR")) {
@@ -12,6 +11,28 @@ function checkUrl() {
 }
 // Set a variable based on the result of the check
 var isPortuguese = checkUrl();
+// Check local storage on page load and redirect if necessary
+var storedValue = localStorage.getItem('isPortuguese');
+if (storedValue === 'true' && !isPortuguese) {
+    // Check if the user is already on the Portuguese page. If not, redirect them.
+    window.location.href = "https://38a8-111-220-129-56.ngrok-free.app/Results/CreateBR";
+} else if (storedValue == 'false' && isPortuguese) {
+    window.location.href = "https://38a8-111-220-129-56.ngrok-free.app";
+} else {
+    //do nothing
+}
+if (isPortuguese) {
+    // Save the value to local storage
+    localStorage.setItem('isPortuguese', 'true');
+}
+// Attach event listeners to all elements with the class "backToEnglish"
+var backToEnglish = document.getElementsByClassName("backToEnglish");
+for (let i = 0; i < backToEnglish.length; i++) {
+    backToEnglish[i].addEventListener("click", function () {
+        localStorage.setItem('isPortuguese', 'false');
+    });
+}
+
 var fetchedDataArray = [];
 $.ajax({
     url: "/?fetchData=true",
@@ -196,7 +217,7 @@ function BRTinitializeChart() {
                 legend: { display: false }, // Display the legend
                 title: {
                     display: true,
-                    text: "Seus resultados de TRR em segundos " + "(" + getYear(BRTendDate) + ")",
+                    text: "Seus resultados de TRB em segundos " + "(" + getYear(BRTendDate) + ")",
                     font: {
                         family: 'Playfair Display', // Change to your desired font family
                         size: 14 // Change to your desired font size
@@ -332,7 +353,7 @@ function BRTinitializeChart() {
                         BRTendDate.setDate(BRTendDate.getDate() - 1);
                         BRTstartDate.setDate(BRTstartDate.getDate() - 1);
                         if (isPortuguese) {
-                            BRTchart.options.title.text = "Seus resultados de TRR em segundos " + "(" + getYear(BRTendDate) + ")";
+                            BRTchart.options.title.text = "Seus resultados de TRB em segundos " + "(" + getYear(BRTendDate) + ")";
                         } else {
                             BRTchart.options.title.text = "Your BRT results in seconds " + "(" + getYear(BRTendDate) + ")";
                         }
@@ -344,7 +365,7 @@ function BRTinitializeChart() {
                             BRTendDate.setDate(BRTendDate.getDate() + 1);
                             BRTstartDate.setDate(BRTstartDate.getDate() + 1);
                             if (isPortuguese) {
-                                BRTchart.options.title.text = "Seus resultados de TRR em segundos " + "(" + getYear(BRTendDate) + ")";
+                                BRTchart.options.title.text = "Seus resultados de TRB em segundos " + "(" + getYear(BRTendDate) + ")";
                             } else {
                                 BRTchart.options.title.text = "Your BRT results in seconds " + "(" + getYear(BRTendDate) + ")";
                             }                        }
@@ -369,7 +390,7 @@ function BRTinitializeChart() {
             BRTendDate.setDate(BRTendDate.getDate() - 1);
             BRTstartDate.setDate(BRTstartDate.getDate() - 1);
             if (isPortuguese) {
-                BRTchart.options.title.text = "Seus resultados de TRR em segundos " + "(" + getYear(BRTendDate) + ")";
+                BRTchart.options.title.text = "Seus resultados de TRB em segundos " + "(" + getYear(BRTendDate) + ")";
             } else {
                 BRTchart.options.title.text = "Your BRT results in seconds " + "(" + getYear(BRTendDate) + ")";
             }
@@ -380,7 +401,7 @@ function BRTinitializeChart() {
                 BRTendDate.setDate(BRTendDate.getDate() + 1);
                 BRTstartDate.setDate(BRTstartDate.getDate() + 1);
                 if (isPortuguese) {
-                    BRTchart.options.title.text = "Seus resultados de TRR em segundos " + "(" + getYear(BRTendDate) + ")";
+                    BRTchart.options.title.text = "Seus resultados de TRB em segundos " + "(" + getYear(BRTendDate) + ")";
                 } else {
                     BRTchart.options.title.text = "Your BRT results in seconds " + "(" + getYear(BRTendDate) + ")";
                 }
@@ -2008,7 +2029,7 @@ function BREinitializeChart() {
                 legend: { display: false }, // Display the legend
                 title: {
                     display: true,
-                    text: "Your Breath Recovery Exercise results " + "(" + getYear(BREendDate) + ")",
+                    text: "Your Briza Recovery Exercise results " + "(" + getYear(BREendDate) + ")",
                     font: {
                         family: 'Playfair Display', // Change to your desired font family
                         size: 14 // Change to your desired font size

@@ -1,50 +1,4 @@
 //HUM JS//
-const songSelectHUM = document.getElementById('song-selectHUM');
-const audioPlayerHUM = document.getElementById('audio-playerHUM');
-var isHUMON = false;
-// Variable to store the timeout ID
-let timeoutIdHUM;
-
-
-// Function to play the selected song
-const playSelectedSongHUM = () => {
-    const selectedSongHUM = songSelectHUM.value;
-    audioPlayerHUM.src = selectedSongHUM;
-    if (isHUMON != true) {
-        audioPlayerHUM.muted = false;
-        audioPlayerHUM.play();
-        localStorage.setItem('selectedSongHUM', songSelectHUM.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdHUM);
-        timeoutIdHUM = setTimeout(function () {
-            audioPlayerHUM.pause();
-            audioPlayerHUM.currentTime = 0;
-        }, 15000);
-    }
-    else {
-        audioPlayerHUM.muted = false;
-        audioPlayerHUM.loop = true;
-        audioPlayerHUM.play();
-        clearTimeout(timeoutIdHUM);
-    }
-};
-
-const storedSongHUM = localStorage.getItem('selectedSongHUM');
-if (storedSongHUM) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectHUM.value = storedSongHUM;
-}
-
-// Add an event listener to the songSelectHUM dropdown
-songSelectHUM.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerHUM.pause();
-    audioPlayerHUM.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongHUM();
-});
-
 $(function () {
     $('#HUMForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -64,7 +18,7 @@ $(function () {
         clearInterval(intHUM);
         [secondsHUM, minutesHUM, hoursHUM] = [0, 0, 0];
         timerRefHUM.value = '00 : 00 : 00';
-        audioPlayerHUM.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsHUM.pauseHUM.style.display = 'none';
         timerControlsButtonsHUM.startHUM.style.display = 'inline';
         setFormDisabledStateHUM(false);
@@ -144,12 +98,10 @@ var audioHUM = document.getElementById("audioHUM"),
     muteHUM = document.getElementById("muteHUM"),
     ismuteHUM = false;
 
-audioPlayerHUM.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongHUM = document.getElementById("songHUM"),
-    muteSongHUM = document.getElementById("songMuteHUM"),
-    isSongMuteHUM = false;
-
+    muteSongHUM = document.getElementById("songMuteHUM");
 // Get the volumeVbre bar element
 const volumeVoiceHUM = document.getElementById('volumeVoiceHUM');
 
@@ -187,15 +139,13 @@ volumeSongHUM.addEventListener('input', function () {
 
     // Check if volumeSbre is 0 and mute the media if necessary
     if (volumeShum === 0) {
-        audioPlayerHUM.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongHUM.style.display = "none";
         muteSongHUM.style.display = "block";
-        isSongMuteHUM = true;
     } else {
-        audioPlayerHUM.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongHUM.style.display = "none";
         audioSongHUM.style.display = "block";
-        isSongMuteHUM = false;
     }
 });
 
@@ -414,9 +364,8 @@ function startTimerHUM() {
             audioListHUM[0].play();
         }
     }
-    isHUMON = true;
-    if (isSongMuteHUM != true) {
-        playSelectedSongHUM();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerHUM.isFinishedHUM) {
         resetTimerHUM();
@@ -437,8 +386,8 @@ function pauseTimerHUM() {
     document.getElementById('stopBtnHUM').style.color = '#990000';
     timerControlsButtonsHUM.pauseHUM.style.display = 'none';
     timerControlsButtonsHUM.startHUM.style.display = 'inline';
-    if (isSongMuteHUM != true) {
-        audioPlayerHUM.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickHUM();
     isHUMON = false;
@@ -453,10 +402,10 @@ function stopTimerHUM() {
     clearInterval(intHUM);
     [secondsHUM, minutesHUM, hoursHUM] = [0, 0, 0];
     timerRefHUM.value = '00 : 00 : 00';
-    if (isSongMuteHUM != true) {
-        audioPlayerHUM.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerHUM.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsHUM.pauseHUM.style.display = 'none';
     timerControlsButtonsHUM.startHUM.style.display = 'inline';
     setFormDisabledStateHUM(false);

@@ -1,50 +1,4 @@
 /*BOX JS*/
-const songSelectBOX = document.getElementById('song-selectBOX');
-const audioPlayerBOX = document.getElementById('audio-playerBOX');
-var isBOXON = false;
-// Variable to store the timeout ID
-let timeoutIdBOX;
-
-
-// Function to play the selected song
-const playSelectedSongBOX = () => {
-    const selectedSongBOX = songSelectBOX.value;
-    audioPlayerBOX.src = selectedSongBOX;
-    if (isBOXON !== true) {
-        audioPlayerBOX.muted = false;
-        audioPlayerBOX.play();
-        localStorage.setItem('selectedSongBOX', songSelectBOX.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdBOX);
-        timeoutIdBOX = setTimeout(function () {
-            audioPlayerBOX.pause();
-            audioPlayerBOX.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerBOX.muted = false;
-        audioPlayerBOX.loop = true;
-        audioPlayerBOX.play();
-        clearTimeout(timeoutIdBOX);
-    }
-};
-
-
-const storedSongBOX = localStorage.getItem('selectedSongBOX');
-if (storedSongBOX) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectBOX.value = storedSongBOX;
-}
-
-// Add an event listener to the songSelectBOX dropdown
-songSelectBOX.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerBOX.pause();
-    audioPlayerBOX.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongBOX();
-});
-
 $(function () {
     $('#BOXForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -64,7 +18,7 @@ $(function () {
         clearInterval(intBOX);
         [secondsBOX, minutesBOX, hoursBOX] = [0, 0, 0];
         timerRefBOX.value = '00 : 00 : 00';
-        audioPlayerBOX.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsBOX.pauseBOX.style.display = 'none';
         timerControlsButtonsBOX.startBOX.style.display = 'inline';
         setFormDisabledStateBOX(false);
@@ -147,12 +101,10 @@ var audioBOX = document.getElementById("audioBOX"),
     muteBOX = document.getElementById("muteBOX"),
     ismuteBOX = false;
 
-audioPlayerBOX.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongBOX = document.getElementById("songBOX"),
-    muteSongBOX = document.getElementById("songMuteBOX"),
-    isSongMuteBOX = false;
-
+    muteSongBOX = document.getElementById("songMuteBOX");
 // Get the volumeVBOX bar element
 const volumeVoiceBOX = document.getElementById('volumeVoiceBOX');
 
@@ -190,15 +142,13 @@ volumeSongBOX.addEventListener('input', function () {
 
     // Check if volumeSBOX is 0 and mute the media if necessary
     if (volumeSBOX === 0) {
-        audioPlayerBOX.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongBOX.style.display = "none";
         muteSongBOX.style.display = "block";
-        isSongMuteBOX = true;
     } else {
-        audioPlayerBOX.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongBOX.style.display = "none";
         audioSongBOX.style.display = "block";
-        isSongMuteBOX = false;
     }
 });
 
@@ -419,8 +369,8 @@ function startTimerBOX() {
         }
     }
     isBOXON = true;
-    if (!isSongMuteBOX) {
-        playSelectedSongBOX();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerBOX.isFinishedBOX) {
         resetTimerBOX();
@@ -442,8 +392,8 @@ function pauseTimerBOX() {
     timerControlsButtonsBOX.startBOX.style.display = 'inline';
     document.getElementById('BOXSettings').disabled = false;
     document.getElementById('BOXSettings').style.color = '#49B79D';
-    if (!isSongMuteBOX) {
-        audioPlayerBOX.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickBOX();
     isBOXON = false;
@@ -456,7 +406,7 @@ function stopTimerBOX() {
     clearInterval(intBOX);
     [secondsBOX, minutesBOX, hoursBOX] = [0, 0, 0];
     timerRefBOX.value = '00 : 00 : 00';
-    audioPlayerBOX.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsBOX.pauseBOX.style.display = 'none';
     timerControlsButtonsBOX.startBOX.style.display = 'inline';
     setFormDisabledStateBOX(false);

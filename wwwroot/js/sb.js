@@ -1,50 +1,4 @@
 /*SB JS*/
-const songSelectSB = document.getElementById('song-selectSB');
-const audioPlayerSB = document.getElementById('audio-playerSB');
-var isSBON = false;
-// Variable to store the timeout ID
-let timeoutIdSB;
-
-
-// Function to play the selected song
-const playSelectedSongSB = () => {
-    const selectedSongSB = songSelectSB.value;
-    audioPlayerSB.src = selectedSongSB;
-    if (isSBON !== true) {
-        audioPlayerSB.muted = false;
-        audioPlayerSB.play();
-        localStorage.setItem('selectedSongSB', songSelectSB.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdSB);
-        timeoutIdSB = setTimeout(function () {
-            audioPlayerSB.pause();
-            audioPlayerSB.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerSB.muted = false;
-        audioPlayerSB.loop = true;
-        audioPlayerSB.play();
-        clearTimeout(timeoutIdSB);
-    }
-};
-
-
-const storedSongSB = localStorage.getItem('selectedSongSB');
-if (storedSongSB) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectSB.value = storedSongSB;
-}
-
-// Add an event listener to the songSelectSB dropdown
-songSelectSB.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerSB.pause();
-    audioPlayerSB.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongSB();
-});
-
 $(function () {
     $('#SBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -64,7 +18,7 @@ $(function () {
         clearInterval(intSB);
         [secondsSB, minutesSB, hoursSB] = [0, 0, 0];
         timerRefSB.value = '00 : 00 : 00';
-        audioPlayerSB.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsSB.pauseSB.style.display = 'none';
         timerControlsButtonsSB.startSB.style.display = 'inline';
         setFormDisabledStateSB(false);
@@ -74,7 +28,6 @@ $(function () {
         document.getElementById('SBSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickSB();
         resetTimerSB();
-        isSBON = false;
     });
 });
 
@@ -141,12 +94,10 @@ var audioSB = document.getElementById("audioSB"),
     muteSB = document.getElementById("muteSB"),
     ismuteSB = false;
 
-audioPlayerSB.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongSB = document.getElementById("songSB"),
-    muteSongSB = document.getElementById("songMuteSB"),
-    isSongMuteSB = false;
-
+    muteSongSB = document.getElementById("songMuteSB");
 // Get the volumeVSB bar element
 const volumeVoiceSB = document.getElementById('volumeVoiceSB');
 
@@ -184,15 +135,13 @@ volumeSongSB.addEventListener('input', function () {
 
     // Check if volumeSSB is 0 and mute the media if necessary
     if (volumeSSB === 0) {
-        audioPlayerSB.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongSB.style.display = "none";
         muteSongSB.style.display = "block";
-        isSongMuteSB = true;
     } else {
-        audioPlayerSB.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongSB.style.display = "none";
         audioSongSB.style.display = "block";
-        isSongMuteSB = false;
     }
 });
 
@@ -384,9 +333,8 @@ function startTimerSB() {
             audioListSB[0].play();
         }
     }
-    isSBON = true;
-    if (!isSongMuteSB) {
-        playSelectedSongSB();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerSB.isFinishedSB) {
         resetTimerSB();
@@ -408,11 +356,10 @@ function pauseTimerSB() {
     timerControlsButtonsSB.startSB.style.display = 'inline';
     document.getElementById('SBSettings').disabled = false;
     document.getElementById('SBSettings').style.color = '#49B79D';
-    if (!isSongMuteSB) {
-        audioPlayerSB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickSB();
-    isSBON = false;
     document.getElementById('SBDate').value = date;
     document.getElementById('SBSave').disabled = false;
     document.getElementById('SBSave').style.color = '#49B79D';
@@ -422,7 +369,7 @@ function stopTimerSB() {
     clearInterval(intSB);
     [secondsSB, minutesSB, hoursSB] = [0, 0, 0];
     timerRefSB.value = '00 : 00 : 00';
-    audioPlayerSB.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsSB.pauseSB.style.display = 'none';
     timerControlsButtonsSB.startSB.style.display = 'inline';
     setFormDisabledStateSB(false);
@@ -432,7 +379,6 @@ function stopTimerSB() {
     document.getElementById('SBSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickSB();
     resetTimerSB();
-    isSBON = false;
 }
 
 function displayTimerSB() {

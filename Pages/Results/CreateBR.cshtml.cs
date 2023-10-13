@@ -4,6 +4,8 @@ using BrizaBreath.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Stripe.Checkout;
+using Stripe;
 
 namespace BrizaBreath.Pages.Results
 {
@@ -12,7 +14,6 @@ namespace BrizaBreath.Pages.Results
     {
         public string? ResultUser { get; set; }
         public string? UserEmail { get; set; }
-
 
         private readonly BrizaBreath.Data.ApplicationDbContext _context;
 
@@ -23,6 +24,8 @@ namespace BrizaBreath.Pages.Results
 
         public IList<Result> GetResult { get; set; } = default!;
 
+        public IList<BrizaSubscription> GetSubscription { get; set; } = default!;
+
         public async Task<IActionResult> OnGetAsync()
         {
             ResultUser = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
@@ -30,45 +33,88 @@ namespace BrizaBreath.Pages.Results
             // Retrieve the user's email
             var userEmailClaim = User.FindFirst(ClaimTypes.Email);
             UserEmail = userEmailClaim?.Value;
-
             if (_context.Result != null)
             {
                 GetResult = await _context.Result
                     .Where(a => a.UserId == HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value)
                     .ToListAsync();
             }
+            if (HttpContext.Request.Query.ContainsKey("session_id"))
+            {
+                var sessionId = HttpContext.Request.Query["session_id"].ToString();
 
+                if (!string.IsNullOrEmpty(sessionId))
+                {
+                    StripeConfiguration.ApiKey = "sk_test_51NxKRKH1ADGiKAIzATlX1lO3n3gP2FqJbwtyWggvkSPPBRzwN3vTw6XniH7BYE8q2skZpSrdX46uno3cXqVLWTdi006iAEcoW6";
+                    var service = new SessionService();
+                    var session = await service.GetAsync(sessionId);
+
+                    if (session != null)
+                    {
+                        var noSubscriptionYet = _context.BrizaSubscription
+                            .Where(s => s.UserId == ResultUser && s.StripeCustID == null)
+                            .FirstOrDefault();
+                        if (noSubscriptionYet != null)
+                        {
+                            noSubscriptionYet.IsActive = true;
+                            noSubscriptionYet.StripeCustID = sessionId;
+                            _context.Update(noSubscriptionYet);
+                            await _context.SaveChangesAsync();
+                        }
+                    }
+                    else
+                    {
+                        // Invalid session, handle this case
+                        ViewData["ErrorMessage"] = "Invalid session!";
+                    }
+                }
+            }
             // Check if the request includes the 'fetchData' query parameter
             if (HttpContext.Request.Query.ContainsKey("fetchData"))
             {
                 return new JsonResult(GetResult);
             }
-
+            bool isActiveSubscriber = IsUserActiveSubscriber(ResultUser);
+            // Pass the isActiveSubscriber flag to your Razor Page
+            ViewData["IsActiveSubscriber"] = isActiveSubscriber;
+            ViewData["UserEmail"] = UserEmail;
             return Page();
         }
 
 
         [BindProperty]
         public Result Result { get; set; } = default!;
-        
+
+        [BindProperty]
+        public BrizaSubscription BrizaSubscription { get; set; } = default!;
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Result == null || Result == null)
+            try
             {
-                return Page();
+                if (Result == null)
+                {
+                    return new JsonResult(new { success = false, message = "Result not added." });
+                }
+                else
+                {
+                    _context.Result.Add(Result);
+                    await _context.SaveChangesAsync();
+
+                    return Content("Resultado Salvo");
+                }
+
             }
-
-            _context.Result.Add(Result);
-            await _context.SaveChangesAsync();
-
-            return Content("Resultado Salvo");       
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                Console.WriteLine("Error adding subscription: " + ex.Message);
+                return new JsonResult(new { success = false, message = "An error occurred while adding the result" });
+            }
         }
         public async Task<IActionResult> OnPostDeleteAsync(int resultId)
         {
-            Console.WriteLine("Received delete request for result ID: " + resultId);
-
             try
             {
                 var result = await _context.Result.FindAsync(resultId);
@@ -91,6 +137,191 @@ namespace BrizaBreath.Pages.Results
                 return new JsonResult(new { success = false, message = "An error occurred while deleting the result." });
             }
         }
+        public bool IsUserActiveSubscriber(string userId)
+        {
+            StripeConfiguration.ApiKey = "sk_test_51NxKRKH1ADGiKAIzATlX1lO3n3gP2FqJbwtyWggvkSPPBRzwN3vTw6XniH7BYE8q2skZpSrdX46uno3cXqVLWTdi006iAEcoW6";
+            var isStripeActive = _context.BrizaSubscription
+                .Where(s => s.UserId == userId && s.StripeCustID != null && s.IsActive == true)
+                .FirstOrDefault();
+            if (isStripeActive != null)
+            {
+                var CheckService = new SessionService();
+                var CheckSession = CheckService.Get(isStripeActive.StripeCustID);
+                if (CheckSession != null)
+                {
+                    var subscriptionId = CheckSession.SubscriptionId;
+                    var subscriptionService = new SubscriptionService();
+                    Subscription subscription = subscriptionService.Get(subscriptionId);
+                    string status = subscription.Status;
+                    if (status == "past_due" || status == "unpaid" || status == "canceled")
+                    {
+                        var userSubscription = _context.BrizaSubscription.FirstOrDefault(sub => sub.StripeCustID == CheckSession.Id);
 
+                        if (userSubscription != null)
+                        {
+                            userSubscription.IsActive = false;
+                            _context.Update(userSubscription);
+                            _context.SaveChanges();
+                            return false;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        var userSubscription = _context.BrizaSubscription.FirstOrDefault(sub => sub.StripeCustID == CheckSession.Id);
+
+                        if (userSubscription != null)
+                        {
+                            var customerId = CheckSession.CustomerId;
+
+                            var customerService = new CustomerService();
+                            var stripeCustomer = customerService.Get(customerId);
+                            var stripeEmail = stripeCustomer.Email;
+
+                            ResultUser = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+
+                            var userEmailClaim = User.FindFirst(ClaimTypes.Email);
+
+                            if (ResultUser == null || userEmailClaim == null)
+                            {
+                                return false;
+                            }
+                            else
+                            {
+                                var userInDb = _context.Users.FirstOrDefault(u => u.Id == ResultUser); // Assuming you have a Users DbSet named `ApplicationUsers`
+
+                                if (userInDb != null && userInDb.Email != stripeEmail)
+                                {
+                                    var emailExists = _context.Users.Any(u => u.Email == stripeEmail);
+
+                                    if (!emailExists)
+                                    {
+                                        userInDb.Email = stripeEmail;
+                                        userInDb.NormalizedEmail = stripeEmail.ToUpper();
+                                        userInDb.UserName = stripeEmail;
+                                        userInDb.NormalizedUserName = stripeEmail.ToUpper();
+                                        _context.Update(userInDb);
+                                        _context.SaveChanges();
+                                    }
+                                }
+
+                                ViewData["UserEmail"] = userInDb?.Email;
+                                userSubscription.IsActive = true;
+                                _context.Update(userSubscription);
+                                _context.SaveChanges();
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<IActionResult> OnPostSignMembershipAsync()
+        {
+            try
+            {
+                ResultUser = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+
+                var userEmailClaim = User.FindFirst(ClaimTypes.Email);
+
+                if (ResultUser == null)
+                {
+                    return new JsonResult(new { success = false, message = "User not added." });
+                }
+                else
+                {
+                    if (userEmailClaim != null)
+                    {
+                        _context.BrizaSubscription.Add(BrizaSubscription);
+                        await _context.SaveChangesAsync();
+                        UserEmail = userEmailClaim.Value;
+                        return Content(UserEmail);
+                    }
+                    else
+                    {
+                        return BadRequest();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                Console.WriteLine("Error adding subscription: " + ex.Message);
+                return new JsonResult(new { success = false, message = "An error occurred while adding the membership" });
+            }
+        }
+        public async Task<IActionResult> OnPostRedirectToStripePortalAsync()
+        {
+            try
+            {
+                ResultUser = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+
+                if (ResultUser == null)
+                {
+                    return new JsonResult(new { success = false, message = "User not added." });
+                }
+                else
+                {
+                    StripeConfiguration.ApiKey = "sk_test_51NxKRKH1ADGiKAIzATlX1lO3n3gP2FqJbwtyWggvkSPPBRzwN3vTw6XniH7BYE8q2skZpSrdX46uno3cXqVLWTdi006iAEcoW6";
+                    var latestSubscription = _context.BrizaSubscription
+                        .Where(s => s.UserId == ResultUser && s.StripeCustID != null)
+                        .OrderByDescending(s => s.StartDate)
+                        .FirstOrDefault();
+                    if (latestSubscription != null)
+                    {
+                        var sessionId = latestSubscription.StripeCustID;
+                        var service = new SessionService();
+                        var session = await service.GetAsync(sessionId);
+                        if (session != null)
+                        {
+                            var customerId = session.CustomerId;
+                            var options = new Stripe.BillingPortal.SessionCreateOptions
+                            {
+                                Customer = customerId,
+                                ReturnUrl = "https://38a8-111-220-129-56.ngrok-free.app/Results/CreateBR",  // The URL to which the user will be redirected when they're done
+                            };
+
+                            var billingPortalService = new Stripe.BillingPortal.SessionService();
+                            var portalSession = billingPortalService.Create(options);
+
+
+                            return new JsonResult(new { success = true, url = portalSession.Url });
+                        }
+                        else
+                        {
+                            return new JsonResult(new { success = false, message = "User not added." });
+                        }
+                    }
+                    else
+                    {
+                        return new JsonResult(new { success = false, message = "User not added." });
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                Console.WriteLine("Error adding subscription: " + ex.Message);
+                return new JsonResult(new { success = false, message = "An error occurred while adding the membership" });
+            }
+        }
     }
 }

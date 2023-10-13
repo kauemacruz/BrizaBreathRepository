@@ -34,6 +34,16 @@
             });
         }
     </script>
+    <script>
+        @if (ViewData["IsActiveSubscriber"] is bool isActive)
+        {
+            <text>var isUserActiveSubscriber = @isActive.ToString().ToLower(); </text>
+        }
+        else
+        {
+            <text>var isUserActiveSubscriber = false; </text>
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -45,7 +55,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="~/js/results.js" asp-append-version="true"></script>
-    <script src="~/js/profile.js" asp-append-version="true"></script>
     <script src="~/js/brt.js" asp-append-version="true"></script>
     <script src="~/js/yogic.js" asp-append-version="true"></script>
     <script src="~/js/bre.js" asp-append-version="true"></script>

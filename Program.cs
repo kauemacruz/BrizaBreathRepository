@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BrizaBreath.Services;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using System.Linq; 
+using Stripe;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +21,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     // Other cookie settings...
 });
 
+StripeConfiguration.ApiKey = builder.Configuration["sk_test_51NxKRKH1ADGiKAIzATlX1lO3n3gP2FqJbwtyWggvkSPPBRzwN3vTw6XniH7BYE8q2skZpSrdX46uno3cXqVLWTdi006iAEcoW6"];
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -30,7 +30,6 @@ builder.Services.AddMvc().AddRazorPagesOptions(options => options.Conventions.Ad
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,6 +45,7 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 
 // Add redirection middleware
 app.Use(async (context, next) =>

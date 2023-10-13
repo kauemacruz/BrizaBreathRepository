@@ -3,6 +3,62 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h1>Subscribe for full access and get 3 days trial</h1>
+        <div class="flexModal">
+            <div class="modalPrices" id="monthlyBox">
+                <h2>Monthly</h2>
+                <h3>AUD 17.99</h3>
+                <p>1 month</p>
+                <input type="radio" id="option1" name="myRadioGroup" checked>
+            </div>
+            <div class="modalPrices" id="yearlyBox">
+                <h2>Yearly</h2>
+                <h3>AUD 10.99 / month</h3>
+                <p>Billed annualy (AUD 131.88)</p>
+                <input type="radio" id="option2" name="myRadioGroup">
+            </div>
+        </div>
+        <p>Choose a subscription and gain full access to app`s content:</p>
+        <ul>Customizable breathing techniques</ul>
+        <ul>Results to track your progress</ul>
+        <ul>Lungs expansion training</ul>
+        <ul>Briza Program</ul>
+        <ul>Welness tips</ul>
+        <ul>Mobility & Stretching</ul>
+        <ul>Paranayama Techniques</ul>
+        <ul>And more...</ul>
+        <button type="button" id="subscriptionBtn2">Learn More</button>
+        <form method="post" id="subscriptionForm">
+            <input id="SUBuserInput" type="hidden" asp-for="BrizaSubscription.UserId" class="form-control" value="@Model.ResultUser" readonly/>
+            <input id="SUBDate" type="text" type="hidden" asp-for="BrizaSubscription.StartDate" readonly/>
+            <input id="SUBDate2" type="text" type="hidden" asp-for="BrizaSubscription.EndDate" readonly/>                                            
+            <input id="priceChoice" value="3" type="hidden" asp-for="BrizaSubscription.PlanId" readonly/>
+            <input id="SUBActive" value="0" type="hidden" asp-for="BrizaSubscription.IsActive" readonly/>
+            <input type="submit" value="Subscribe Now" id="subscriptionBtn3" class="subscriptionBtn2" readonly/>
+        </form>
+        <div id="myModal3" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal3">&times;</span>
+                <p>Your membership starts as soon as you set up payment. Your monthly/yearly auto-renew charge will occur on the last day of the current billing period. We will renew your membership for you (unless you have canceled your subscription in the profile page 24 hours before end of billing cycle). Once you become a member you can manage your subscription. </p>
+                <p>
+                    By clicking on "Subscribe Now", you are agreeing to the <a href="https://brizabreath.com/terms-conditions/" target="_blank">Terms & Conditions</a> and <a href="https://brizabreath.com/privacy-policy" target="_blank">Privacy Policy</a> of this app
+                </p>          
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal2" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal2">&times;</span>
+        <p>Your membership starts as soon as you set up payment. Your monthly/yearly auto-renew charge will occur on the last day of the current billing period. We will renew your membership for you (unless you have canceled your subscription in the profile page 24 hours before end of billing cycle). Once you become a member you can manage your subscription. </p>
+        <form method="post" id="manageSubscriptionForm">
+            <input type="submit" value="Manage Membership" id="subscriptionBtn4" class="subscriptionBtn2" readonly/>
+        </form>
+    </div>
+</div>
 <div id="loadingIndicator">
     <img src="/images/birzabreathandperformance.png" alt="Loading...">
 </div>
@@ -39,7 +95,7 @@
     </header>
     <div class="accordion">
         <div class="accordion-item">
-            <h2 class="accordion-header">Breath Retention Test &#8595;</h2>
+            <h2 class="accordion-header">Briza Retention Test &#8595;</h2>
             <div class="accordion-content">
                 <div class="chart-container" id="BRTContainer">
                     <canvas id="BRTchart"></canvas>
@@ -778,21 +834,27 @@
     </header>
     <div class="breathingpages">
         <h1>Account</h1>
+        <div class="profile">
+            @ViewData["UserEmail"]
+        </div>
         <div class="flexProfile">
-            @Model.UserEmail 
+            <a id="changeAccountBtn" href="/Identity/Account/ChangePassword">CHANGE PASSWORD</a>
             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
                 <input type="hidden" name="returnUrl" value="/Identity/Account/Login" />
                 <button type="submit" id="logoutBtn">LOG OUT</button>
             </form>
         </div>
-        <div class="profile">
-            <a id="changeAccountBtn" href="/Identity/Account/ChangePassword">CHANGE PASSWORD</a>
-        </div>
-        <hr />
+        <hr />        
         <div class="profile">
             <h2>Subscription</h2>
-            <button type="button" id="subscriptionBtn">GET SUBSCRIPTION</button>
-            <p id="subscribeNow">Subscribe now and get unlimited acces to all the content in the app</p>
+            <div id="manageMembership">
+                <button type="button" id="subscriptionBtn" class="subscriptionBtn">MANAGE SUBSCRIPTION</button>
+                <p id="subscribeNow2">Manage your subscription. Update payment details, update your plan or cancel anytime</p>
+            </div>
+            <div id="noActiveMembership">
+                <button type="button" id="getSubscriptionBtn" class="subscriptionBtn">GET SUBSCRIPTION</button>
+                <p id="subscribeNow">Get a subscription and gain access to all app's content'</p>
+            </div>
         </div>
         <hr />
         <div class="profile">
@@ -827,9 +889,9 @@
             <a id="deleteAccountBtn" href="/Identity/Account/DeletePersonalData" class="btn btn-danger">Delete Account</a>
         </div>
         <hr />
-        <div class="profile">
-            <a id="TermsBtn" href="https://brizabreath.com/terms-conditions/">Terms & Conditions</a>
-            <a id="PrivacyBtn" href="https://brizabreath.com/privacy-policy">Privacy Policy</a>
+        <div class="profile termsPrivacyBtn">
+            <a id="TermsBtn" href="https://brizabreath.com/terms-conditions/" target="_blank">Terms & Conditions</a>
+            <a id="PrivacyBtn" href="https://brizabreath.com/privacy-policy" target="_blank">Privacy Policy</a>
             <div class="smallText">Briza Breath 1.0</div>
         </div>
     </div>
@@ -1033,7 +1095,7 @@
         <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
     </header>
     <div class="breathingpages">
-        <h1>Breath Retention Test Settings</h1>
+        <h1>Briza Retention Test Settings</h1>
         <div class="volume-bar">
             <h4 class="volumeSettings">Play Song?</h4>
             <div class="audioButtons">
@@ -1043,24 +1105,6 @@
             <input type="range" id="volumeBarBRT" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectBRT" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerBRT"></audio>
     </div>
 </div>
 <div id="brtPage" class="hidden">
@@ -1069,11 +1113,11 @@
         <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
     </header>
     <div class="breathingpages">
-        <h1>Breath Retention Test</h1>
+        <h1>Briza Retention Test</h1>
         <video controls poster="/images/brt.png" playsinline>
             <source src="/videos/movie.mp4" type="video/mp4">
         </video>
-        <p>A "BRT" score, which stands for Breath Retention Test, is a measure of breath-holding time and can provide insights into a person's breathing efficiency and tolerance to carbon dioxide (CO2).</p>
+        <p>A "BRT" score, which stands for Briza Retention Test, is a measure of breath-holding time and can provide insights into a person's breathing efficiency and tolerance to carbon dioxide (CO2).</p>
         <form method="post" id="brtForm">
             <div class="settingButtons">
                 <button id="brtSettings" class="audioSet" type="button">Settings<img src="/images/settings.png"></button>
@@ -1192,24 +1236,6 @@
             <input type="range" id="volumeSongYogic" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectYogic" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerYogic"></audio>
     </div>
 </div>
 <div id="yogicPage" class="hidden">
@@ -1373,24 +1399,6 @@
             <input type="range" id="volumeSongBRE" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectBRE" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerBRE"></audio>
     </div>
 </div>
 <div id="BREPage" class="hidden">
@@ -1546,24 +1554,6 @@
             <input type="range" id="volumeSongBRW" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectBRW" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerBRW"></audio>
     </div>
 </div>
 <div id="BRWPage" class="hidden">
@@ -1712,24 +1702,6 @@
             <input type="range" id="volumeSongHUM" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectHUM" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerHUM"></audio>
     </div>
 </div>
 <div id="HUMPage" class="hidden">
@@ -1848,24 +1820,6 @@
             <input type="range" id="volumeSongBB" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectBB" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerBB"></audio>
     </div>
 </div>
 <div id="BBPage" class="hidden">
@@ -2052,24 +2006,6 @@
             <input type="range" id="volumeSongHAT" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectHAT" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerHAT"></audio>
     </div>
 </div>
 <div id="HATPage" class="hidden">
@@ -2208,24 +2144,6 @@
             <input type="range" id="volumeSongHATC" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectHATC" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerHATC"></audio>
     </div>
 </div>
 <div id="HATCPage" class="hidden">
@@ -2344,25 +2262,7 @@
             </div>
             <input type="range" id="volumeSongAHAT" min="0" max="1" step="1" value="1">
         </div>
-        <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectAHAT" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerAHAT"></audio>
+        <hr />        
     </div>
 </div>
 <div id="AHATPage" class="hidden">
@@ -2447,24 +2347,6 @@
             <input type="range" id="volumeBarLungs" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectLungs" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerLungs"></audio>
     </div>
 </div>
 <div id="lungsPage" class="hidden">
@@ -2682,24 +2564,6 @@
             <input type="range" id="volumeSongAP" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectAP" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerAP"></audio>
     </div>
 </div>
 <div id="APPage" class="hidden">
@@ -2787,25 +2651,7 @@
             </div>
             <input type="range" id="volumeSongO2" min="0" max="1" step="1" value="1">
         </div>
-        <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectO2" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerO2"></audio>
+        <hr />        
     </div>
 </div>
 <div id="O2Page" class="hidden">
@@ -3382,25 +3228,7 @@
             </div>
             <input type="range" id="volumeSongWH" min="0" max="1" step="1" value="1">
         </div>
-        <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectWH" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerWH"></audio>
+        <hr />       
     </div>
 </div>
 <div id="WHPage" class="hidden">
@@ -3493,24 +3321,6 @@
             <input type="range" id="volumeSongCT" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectCT" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerCT"></audio>
     </div>
 </div>
 <div id="CTPage" class="hidden">
@@ -3678,24 +3488,6 @@
             <input type="range" id="volumeSongUB" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectUB" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerUB"></audio>
     </div>
 </div>
 <div id="UBPage" class="hidden">
@@ -3853,25 +3645,7 @@
             </div>
             <input type="range" id="volumeSongBOX" min="0" max="1" step="1" value="1">
         </div>
-        <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectBOX" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerBOX"></audio>
+        <hr />        
     </div>
 </div>
 <div id="BOXPage" class="hidden">
@@ -4007,25 +3781,7 @@
             </div>
             <input type="range" id="volumeSongNB" min="0" max="1" step="1" value="1">
         </div>
-        <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectNB" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerNB"></audio>
+        <hr />      
     </div>
 </div>
 <div id="NBPage" class="hidden">
@@ -4117,25 +3873,7 @@
             </div>
             <input type="range" id="volumeSongCB" min="0" max="1" step="1" value="1">
         </div>
-        <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectCB" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerCB"></audio>
+        <hr />        
     </div>
 </div>
 <div id="CBPage" class="hidden">
@@ -4280,25 +4018,7 @@
             </div>
             <input type="range" id="volumeSongSB" min="0" max="1" step="1" value="1">
         </div>
-        <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectSB" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerSB"></audio>
+        <hr />        
     </div>
 </div>
 <div id="SBPage" class="hidden">
@@ -4415,25 +4135,7 @@
             </div>
             <input type="range" id="volumeSongRB" min="0" max="1" step="1" value="1">
         </div>
-        <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectRB" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerRB"></audio>
+        <hr />        
     </div>
 </div>
 <div id="RBPage" class="hidden">
@@ -4745,25 +4447,7 @@
             </div>
             <input type="range" id="volumeSongSEX" min="0" max="1" step="1" value="1">
         </div>
-        <hr />
-        <h4 class="volumeSettings">Choose a song</h4>
-        <div class="song-container">
-            <select id="song-selectSEX" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
-                <option value="/sounds/songs/moment-14023.mp3">Moment</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
-            </select>
-        </div>
-        <audio id="audio-playerSEX"></audio>
+        <hr />        
     </div>
 </div>
 <div id="SEXPage" class="hidden">
@@ -4831,6 +4515,26 @@
         <ul>Mind-body connection: Breathing can help to increase awareness of the body and enhance the connection between physical sensations and emotions, which can lead to a more fulfilling sexual experience</ul>
         <ul>Sensual breathing techniques: Certain breathing techniques, such as rhythmic breathing or synchronized breathing with a partner, can enhance intimacy and pleasure during sex</ul>
     </div>
+</div>
+<div id="selectSongsList" class="breathingpages">
+    <h4 class="volumeSettings">Choose a song</h4>
+    <div class="song-container">
+        <select id="song-selectBRT" class="song-select">
+            <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Autumn Sky Meditation</option>
+            <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Sleep Frequency</option>
+            <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Endless</option>
+            <option value="/sounds/songs/just-relax-11157.mp3">Just Relax</option>
+            <option value="/sounds/songs/lofi-study-112191.mp3">Lofi Study</option>
+            <option value="/sounds/songs/meditation-sounds-122698.mp3">Meditation Sounds</option>
+            <option value="/sounds/songs/moment-14023.mp3">Moment</option>
+            <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Peaceful Garden</option>
+            <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Calm My Mind</option>
+            <option value="/sounds/songs/reflected-light-147979.mp3">Reflected Light</option>
+            <option value="/sounds/songs/relaxing-145038.mp3">Relaxing</option>
+            <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Cradle Of Your Soul</option>
+        </select>
+    </div>
+    <audio id="audio-playerBRT"></audio>
 </div>
 
 @section Scripts {

@@ -22,6 +22,30 @@ namespace BrizaBreath.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("BrizaBreath.Models.MembershipPlan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MembershipPlan", "dbo");
+                });
+
             modelBuilder.Entity("BrizaBreath.Models.Result", b =>
                 {
                     b.Property<int>("ResultId")
@@ -30,14 +54,200 @@ namespace BrizaBreath.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ResultId"));
 
+                    b.Property<string>("AHATIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("AHATResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("AHATTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("APIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("APResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("APTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BBIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("BBResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("BBTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BOXIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("BOXResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("BOXTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BREIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("BREResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("BRETotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BRWIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("BRWResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("BRWTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CBIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CBResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CBTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CO2Intervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CO2ResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CO2TotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CTIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CTResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CTTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HATCIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("HATCResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HATCTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HATIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("HATResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HATTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HUMIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("HUMResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HUMTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NBIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("NBResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NBTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("O2Intervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("O2ResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("O2TotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RBIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RBResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RBTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SBIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("SBResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SBTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SEXIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("SEXResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SEXTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UBIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UBResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UBTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("brtResultDate")
+                    b.Property<string>("WHIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("WHResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("WHTotalTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("brtResultDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("brtResultScore")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("lungsResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("lungsResultScore")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("yogicIntervals")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("yogicResultDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("yogicTotalTime")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ResultId");

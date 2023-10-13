@@ -100,52 +100,6 @@ function animate2WH() {
     myTimeout2WH = setTimeout(animate2WH, 1000);
 }
 
-const songSelectWH = document.getElementById('song-selectWH');
-const audioPlayerWH = document.getElementById('audio-playerWH');
-var isWHON = false;
-// Variable to store the timeout ID
-let timeoutIdWH;
-
-
-// Function to play the selected song
-const playSelectedSongWH = () => {
-    const selectedSongWH = songSelectWH.value;
-    audioPlayerWH.src = selectedSongWH;
-    if (isWHON !== true) {
-        audioPlayerWH.muted = false;
-        audioPlayerWH.play();
-        localStorage.setItem('selectedSongWH', songSelectWH.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdWH);
-        timeoutIdWH = setTimeout(function () {
-            audioPlayerWH.pause();
-            audioPlayerWH.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerWH.muted = false;
-        audioPlayerWH.loop = true;
-        audioPlayerWH.play();
-        clearTimeout(timeoutIdWH);
-    }
-};
-
-
-const storedSongWH = localStorage.getItem('selectedSongWH');
-if (storedSongWH) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectWH.value = storedSongWH;
-}
-
-// Add an event listener to the songSelectWH dropdown
-songSelectWH.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerWH.pause();
-    audioPlayerWH.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongWH();
-});
-
 $(function () {
     $('#WHForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -167,8 +121,8 @@ $(function () {
         clearInterval(intWH);
         document.getElementById('WHSettings').disabled = false;
         document.getElementById('WHSettings').style.color = '#49B79D';
-        if (!isSongMuteWH) {
-            audioPlayerWH.pause();
+        if (!audioPlayerBRT.muted) {
+            audioPlayerBRT.pause();
         }
         timerControlsButtonsWH.pauseWH.style.display = 'none';
         timerControlsButtonsWH.startWH.style.display = 'inline';
@@ -261,12 +215,10 @@ var BaudioWH = document.getElementById("BaudioWH"),
     BmuteWH = document.getElementById("BmuteWH"),
     BismuteWH = false;
 
-audioPlayerWH.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongWH = document.getElementById("songWH"),
-    muteSongWH = document.getElementById("songMuteWH"),
-    isSongMuteWH = false;
-
+    muteSongWH = document.getElementById("songMuteWH");
 // Get the volumeVWH bar element
 const volumeVoiceWH = document.getElementById('volumeVoiceWH');
 
@@ -330,15 +282,13 @@ volumeSongWH.addEventListener('input', function () {
 
     // Check if volumeSWH is 0 and mute the media if necessary
     if (volumeSWH === 0) {
-        audioPlayerWH.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongWH.style.display = "none";
         muteSongWH.style.display = "block";
-        isSongMuteWH = true;
     } else {
-        audioPlayerWH.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongWH.style.display = "none";
         audioSongWH.style.display = "block";
-        isSongMuteWH = false;
     }
 });
 
@@ -563,10 +513,8 @@ function startTimerWH() {
             audioListWH[5].play();
         }
     }
-    isWHON = true;
-    if (!isSongMuteWH && !musicIsOnWH) {
-        playSelectedSongWH();
-        musicIsOnWH = true;
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerWH.isFinishedWH) {
         resetTimerWH();
@@ -634,10 +582,10 @@ function stopTimerWH() {
     [secondsWH, minutesWH] = [0, 0];
     document.getElementById('WHSettings').disabled = false;
     document.getElementById('WHSettings').style.color = '#49B79D';
-    if (!isSongMuteWH) {
-        audioPlayerWH.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerWH.currentTime = 0;
+    audioPlayerBRT.currentTime = 0;
     timerControlsButtonsWH.pauseWH.style.display = 'none';
     timerControlsButtonsWH.startWH.style.display = 'inline';
     setFormDisabledStateWH(false);

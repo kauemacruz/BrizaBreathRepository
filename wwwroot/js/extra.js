@@ -135,52 +135,6 @@ function resetMED2() {
 }
 
 //SEX BREATHING
-const songSelectSEX = document.getElementById('song-selectSEX');
-const audioPlayerSEX = document.getElementById('audio-playerSEX');
-var isSEXON = false;
-// Variable to store the timeout ID
-let timeoutIdSEX;
-
-
-// Function to play the selected song
-const playSelectedSongSEX = () => {
-    const selectedSongSEX = songSelectSEX.value;
-    audioPlayerSEX.src = selectedSongSEX;
-    if (isSEXON !== true) {
-        audioPlayerSEX.muted = false;
-        audioPlayerSEX.play();
-        localStorage.setItem('selectedSongSEX', songSelectSEX.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdSEX);
-        timeoutIdSEX = setTimeout(function () {
-            audioPlayerSEX.pause();
-            audioPlayerSEX.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerSEX.muted = false;
-        audioPlayerSEX.loop = true;
-        audioPlayerSEX.play();
-        clearTimeout(timeoutIdSEX);
-    }
-};
-
-
-const storedSongSEX = localStorage.getItem('selectedSongSEX');
-if (storedSongSEX) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectSEX.value = storedSongSEX;
-}
-
-// Add an event listener to the songSelectSEX dropdown
-songSelectSEX.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerSEX.pause();
-    audioPlayerSEX.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongSEX();
-});
-
 $(function () {
     $('#SEXForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -200,7 +154,7 @@ $(function () {
         clearInterval(intSEX);
         [secondsSEX, minutesSEX, hoursSEX] = [0, 0, 0];
         timerRefSEX.value = '00 : 00 : 00';
-        audioPlayerSEX.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsSEX.pauseSEX.style.display = 'none';
         timerControlsButtonsSEX.startSEX.style.display = 'inline';
         setFormDisabledStateSEX(false);
@@ -210,7 +164,6 @@ $(function () {
         document.getElementById('SEXSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickSEX();
         resetTimerSEX();
-        isSEXON = false;
     });
 });
 
@@ -279,12 +232,10 @@ var audioSEX = document.getElementById("audioSEX"),
     muteSEX = document.getElementById("muteSEX"),
     ismuteSEX = false;
 
-audioPlayerSEX.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongSEX = document.getElementById("songSEX"),
-    muteSongSEX = document.getElementById("songMuteSEX"),
-    isSongMuteSEX = false;
-
+    muteSongSEX = document.getElementById("songMuteSEX");
 // Get the volumeVSEX bar element
 const volumeVoiceSEX = document.getElementById('volumeVoiceSEX');
 
@@ -322,15 +273,13 @@ volumeSongSEX.addEventListener('input', function () {
 
     // Check if volumeSSEX is 0 and mute the media if necessary
     if (volumeSSEX === 0) {
-        audioPlayerSEX.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongSEX.style.display = "none";
         muteSongSEX.style.display = "block";
-        isSongMuteSEX = true;
     } else {
-        audioPlayerSEX.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongSEX.style.display = "none";
         audioSongSEX.style.display = "block";
-        isSongMuteSEX = false;
     }
 });
 
@@ -522,9 +471,8 @@ function startTimerSEX() {
             audioListSEX[0].play();
         }
     }
-    isSEXON = true;
-    if (!isSongMuteSEX) {
-        playSelectedSongSEX();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerSEX.isFinishedSEX) {
         resetTimerSEX();
@@ -546,11 +494,10 @@ function pauseTimerSEX() {
     timerControlsButtonsSEX.startSEX.style.display = 'inline';
     document.getElementById('SEXSettings').disabled = false;
     document.getElementById('SEXSettings').style.color = '#49B79D';
-    if (!isSongMuteSEX) {
-        audioPlayerSEX.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickSEX();
-    isSEXON = false;
     document.getElementById('SEXDate').value = date;
     document.getElementById('SEXSave').disabled = false;
     document.getElementById('SEXSave').style.color = '#49B79D';
@@ -560,7 +507,7 @@ function stopTimerSEX() {
     clearInterval(intSEX);
     [secondsSEX, minutesSEX, hoursSEX] = [0, 0, 0];
     timerRefSEX.value = '00 : 00 : 00';
-    audioPlayerSEX.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsSEX.pauseSEX.style.display = 'none';
     timerControlsButtonsSEX.startSEX.style.display = 'inline';
     setFormDisabledStateSEX(false);
@@ -570,7 +517,6 @@ function stopTimerSEX() {
     document.getElementById('SEXSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickSEX();
     resetTimerSEX();
-    isSEXON = false;
 }
 
 function displayTimerSEX() {

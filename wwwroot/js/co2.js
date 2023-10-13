@@ -18,8 +18,8 @@ $(function () {
         document.getElementById("CO2Results").innerHTML = "";
         timerRefCO2.value = "|";
         clearInterval(intCO2);
-        if (!isSongMuteCO2) {
-            audioPlayerO2.pause();
+        if (!audioPlayerBRT.muted) {
+            audioPlayerBRT.pause();
         }
         timerControlsButtonsCO2.pauseCO2.style.display = 'none';
         timerControlsButtonsCO2.startCO2.style.display = 'inline';
@@ -164,8 +164,6 @@ if (isPortuguese) {
 
 var ismuteCO2 = false;
 
-var isSongMuteCO2 = false;
-
 // Get the volumeVO2 bar element
 const volumeVoiceO2 = document.getElementById('volumeVoiceO2');
 
@@ -214,17 +212,13 @@ volumeSongO2.addEventListener('input', function () {
 
     // Check if volumeSO2 is 0 and mute the media if necessary
     if (volumeSO2 === 0) {
-        audioPlayerO2.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongO2.style.display = "none";
         muteSongO2.style.display = "block";
-        isSongMuteO2 = true;
-        isSongMuteCO2 = true;
     } else {
-        audioPlayerO2.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongO2.style.display = "none";
         audioSongO2.style.display = "block";
-        isSongMuteO2 = false;
-        isSongMuteCO2 = false;
     }
 });
 
@@ -979,9 +973,8 @@ function initializeTimerSettingsFormCO2() {
             audioListCO2[0].play();
         }
     }
-      isO2ON = true;
-      if (!isSongMuteCO2) {
-          playSelectedSongO2();
+      if (!audioPlayerBRT.muted) {
+          playSelectedSongBRT(true);
       }
     if (timerCO2.isFinishedCO2) {
       resetTimerCO2();
@@ -1005,8 +998,8 @@ function initializeTimerSettingsFormCO2() {
         document.getElementById('CO2Save').disabled = false;
         document.getElementById('CO2Save').style.color = '#49B79D';
     }
-    if (!isSongMuteCO2) {
-        audioPlayerO2.pause();
+      if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickCO2();
   }
@@ -1014,10 +1007,10 @@ function initializeTimerSettingsFormCO2() {
   function stopTimerCO2() {
     clearInterval(intCO2);
     timerRefCO2.value = '|';
-    if (!isSongMuteCO2) {
-        audioPlayerO2.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerO2.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsCO2.pauseCO2.style.display = 'none'; 
     timerControlsButtonsCO2.startCO2.style.display = 'inline';
     setFormDisabledStateCO2(false);

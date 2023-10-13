@@ -1,51 +1,4 @@
 //BRW JS//
-const songSelectBRW = document.getElementById('song-selectBRW');
-const audioPlayerBRW = document.getElementById('audio-playerBRW');
-var isBRWON = false;
-// Variable to store the timeout ID
-let timeoutIdBRW;
-
-
-// Function to play the selected song
-const playSelectedSongBRW = () => {
-    const selectedSongBRW = songSelectBRW.value;
-    audioPlayerBRW.src = selectedSongBRW;
-    if (isBRWON != true) {
-        audioPlayerBRW.muted = false;
-        audioPlayerBRW.play();
-        localStorage.setItem('selectedSongBRW', songSelectBRW.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdBRW);
-        timeoutIdBRW = setTimeout(function () {
-            audioPlayerBRW.pause();
-            audioPlayerBRW.currentTime = 0;
-        }, 15000);
-    }
-    else {
-        audioPlayerBRW.muted = false;
-        audioPlayerBRW.loop = true;
-        audioPlayerBRW.play();
-        clearTimeout(timeoutIdBRW);
-    }
-};
-
-const storedSongBRW = localStorage.getItem('selectedSongBRW');
-if (storedSongBRW) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectBRW.value = storedSongBRW;
-}
-
-// Add an event listener to the songSelectBRW dropdown
-songSelectBRW.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerBRW.pause();
-    audioPlayerBRW.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongBRW();
-});
-
-
 $(function () {
     $('#BRWForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -65,7 +18,7 @@ $(function () {
         clearInterval(intBRW);
         [secondsBRW, minutesBRW, hoursBRW] = [0, 0, 0];
         timerRefBRW.value = '00 : 00 : 00';
-        audioPlayerBRW.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsBRW.pauseBRW.style.display = 'none';
         timerControlsButtonsBRW.startBRW.style.display = 'inline';
         setFormDisabledStateBRW(false);
@@ -75,7 +28,6 @@ $(function () {
         document.getElementById('BRWSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickBRW();
         resetTimerBRW();
-        isBRWON = false;
     });
 });
 
@@ -150,12 +102,10 @@ var audioBRW = document.getElementById("audioBRW"),
     muteBRW = document.getElementById("muteBRW"),
     ismuteBRW = false;
 
-audioPlayerBRW.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongBRW = document.getElementById("songBRW"),
-    muteSongBRW = document.getElementById("songMuteBRW"),
-    isSongMuteBRW = false;
-
+    muteSongBRW = document.getElementById("songMuteBRW");
 // Get the volumeVbre bar element
 const volumeVoiceBRW = document.getElementById('volumeVoiceBRW');
 
@@ -193,15 +143,13 @@ volumeSongBRW.addEventListener('input', function () {
 
     // Check if volumeSbre is 0 and mute the media if necessary
     if (volumeSbrw === 0) {
-        audioPlayerBRW.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongBRW.style.display = "none";
         muteSongBRW.style.display = "block";
-        isSongMuteBRW = true;
     } else {
-        audioPlayerBRW.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongBRW.style.display = "none";
         audioSongBRW.style.display = "block";
-        isSongMuteBRW = false;
     }
 });
 
@@ -448,9 +396,8 @@ function startTimerBRW() {
             audioListBRW[0].play();
         }
     }
-    isBRWON = true;
-    if (isSongMuteBRW != true) {
-        playSelectedSongBRW();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerBRW.isFinishedBRW) {
         resetTimerBRW();
@@ -470,11 +417,10 @@ function pauseTimerBRW() {
     document.getElementById('stopBtnBRW').style.color = '#990000';
     timerControlsButtonsBRW.pauseBRW.style.display = 'none';
     timerControlsButtonsBRW.startBRW.style.display = 'inline';
-    if (isSongMuteBRW != true) {
-        audioPlayerBRW.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickBRW();
-    isBRWON = false;
     document.getElementById('BRWDate').value = date;
     document.getElementById('BRWSave').disabled = false;
     document.getElementById('BRWSave').style.color = '#49B79D';
@@ -486,10 +432,10 @@ function stopTimerBRW() {
     clearInterval(intBRW);
     [secondsBRW, minutesBRW, hoursBRW] = [0, 0, 0];
     timerRefBRW.value = '00 : 00 : 00';
-    if (isSongMuteBRW != true) {
-        audioPlayerBRW.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerBRW.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsBRW.pauseBRW.style.display = 'none';
     timerControlsButtonsBRW.startBRW.style.display = 'inline';
     setFormDisabledStateBRW(false);
@@ -499,7 +445,6 @@ function stopTimerBRW() {
     document.getElementById('BRWSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickBRW();
     resetTimerBRW();
-    isBRWON = false;
 }
 
 function displayTimerBRW() {

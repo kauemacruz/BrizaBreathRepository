@@ -287,3 +287,4 @@ C:\Users\kaue_\source\repos\BrizaBreath\obj\Debug\net7.0\BrizaBreath.genruntimec
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Debug\net7.0\ref\BrizaBreath.dll
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\package-lock.json
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\package.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\Stripe.net.dll

@@ -1,50 +1,4 @@
 /*YOGIC JS*/
-const songSelectYogic = document.getElementById('song-selectYogic');
-const audioPlayerYogic = document.getElementById('audio-playerYogic');
-var isYogicON = false;
-// Variable to store the timeout ID
-let timeoutIdYogic;
-
-
-// Function to play the selected song
-const playSelectedSongYogic = () => {
-    const selectedSongYogic = songSelectYogic.value;
-    audioPlayerYogic.src = selectedSongYogic;
-    if (isYogicON !== true) {
-        audioPlayerYogic.muted = false;
-        audioPlayerYogic.play();
-        localStorage.setItem('selectedSongYogic', songSelectYogic.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdYogic);
-        timeoutIdYogic = setTimeout(function () {
-            audioPlayerYogic.pause();
-            audioPlayerYogic.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerYogic.muted = false;
-        audioPlayerYogic.loop = true;
-        audioPlayerYogic.play();
-        clearTimeout(timeoutIdYogic);
-    }
-};
-
-
-const storedSongYogic = localStorage.getItem('selectedSongYogic');
-if (storedSongYogic) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectYogic.value = storedSongYogic;
-}
-
-// Add an event listener to the songSelectYogic dropdown
-songSelectYogic.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerYogic.pause();
-    audioPlayerYogic.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongYogic();
-});
-
 $(function () {
     $('#yogicForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -64,7 +18,7 @@ $(function () {
         clearInterval(intYogic);
         [secondsYogic, minutesYogic, hoursYogic] = [0, 0, 0];
         timerRefYogic.value = '00 : 00 : 00';
-        audioPlayerYogic.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsYogic.pauseYogic.style.display = 'none';
         timerControlsButtonsYogic.startYogic.style.display = 'inline';
         setFormDisabledStateYogic(false);
@@ -74,7 +28,6 @@ $(function () {
         document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickYogic();
         resetTimerYogic();
-        isYogicON = false;
     });
 });
 
@@ -146,12 +99,10 @@ var audioYogic = document.getElementById("audioYogic"),
     muteYogic = document.getElementById("muteYogic"),
     ismuteYogic = false;
 
-audioPlayerYogic.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongYogic = document.getElementById("songYogic"),
-    muteSongYogic = document.getElementById("songMuteYogic"),
-    isSongMuteYogic = false;
-
+    muteSongYogic = document.getElementById("songMuteYogic");
 // Get the volumeVyogic bar element
 const volumeVoiceYogic = document.getElementById('volumeVoiceYogic');
 
@@ -189,15 +140,13 @@ volumeSongYogic.addEventListener('input', function () {
 
     // Check if volumeSyogic is 0 and mute the media if necessary
     if (volumeSyogic === 0) {
-        audioPlayerYogic.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongYogic.style.display = "none";
         muteSongYogic.style.display = "block";
-        isSongMuteYogic = true;
     } else {
-        audioPlayerYogic.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongYogic.style.display = "none";
         audioSongYogic.style.display = "block";
-        isSongMuteYogic = false;
     }
 });
 
@@ -417,9 +366,8 @@ function startTimerYogic() {
             audioListYogic[0].play();
         }
     }
-    isYogicON = true;
-    if (!isSongMuteYogic) {
-        playSelectedSongYogic();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerYogic.isFinishedYogic) {
         resetTimerYogic();
@@ -441,11 +389,10 @@ function pauseTimerYogic() {
     timerControlsButtonsYogic.startYogic.style.display = 'inline';
     document.getElementById('yogicSettings').disabled = false;
     document.getElementById('yogicSettings').style.color = '#49B79D';
-    if (!isSongMuteYogic) {
-        audioPlayerYogic.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickYogic();
-    isYogicON = false;
     document.getElementById('yogicDate').value = date;
     document.getElementById('yogicSave').disabled = false;
     document.getElementById('yogicSave').style.color = '#49B79D';
@@ -455,7 +402,7 @@ function stopTimerYogic() {
     clearInterval(intYogic);
     [secondsYogic, minutesYogic, hoursYogic] = [0, 0, 0];
     timerRefYogic.value = '00 : 00 : 00';
-    audioPlayerYogic.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsYogic.pauseYogic.style.display = 'none';
     timerControlsButtonsYogic.startYogic.style.display = 'inline';
     setFormDisabledStateYogic(false);
@@ -465,7 +412,6 @@ function stopTimerYogic() {
     document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickYogic();
     resetTimerYogic();
-    isYogicON = false;
 }
 
 function displayTimerYogic() {

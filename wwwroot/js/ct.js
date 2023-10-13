@@ -1,51 +1,5 @@
 /*CT JS*/
-const songSelectCT = document.getElementById('song-selectCT');
-const audioPlayerCT = document.getElementById('audio-playerCT');
-var isCTON = false;
 document.getElementById('CTDate').value = date;
-// Variable to store the timeout ID
-let timeoutIdCT;
-
-
-// Function to play the selected song
-const playSelectedSongCT = () => {
-    const selectedSongCT = songSelectCT.value;
-    audioPlayerCT.src = selectedSongCT;
-    if (isCTON !== true) {
-        audioPlayerCT.muted = false;
-        audioPlayerCT.play();
-        localStorage.setItem('selectedSongCT', songSelectCT.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdCT);
-        timeoutIdCT = setTimeout(function () {
-            audioPlayerCT.pause();
-            audioPlayerCT.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerCT.muted = false;
-        audioPlayerCT.loop = true;
-        audioPlayerCT.play();
-        clearTimeout(timeoutIdCT);
-    }
-};
-
-
-const storedSongCT = localStorage.getItem('selectedSongCT');
-if (storedSongCT) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectCT.value = storedSongCT;
-}
-
-// Add an event listener to the songSelectCT dropdown
-songSelectCT.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerCT.pause();
-    audioPlayerCT.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongCT();
-});
-
 $(function () {
     $('#CTForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -65,7 +19,7 @@ $(function () {
         clearInterval(intCT);
         [secondsCT, minutesCT, hoursCT] = [0, 0, 0];
         timerRefCT.value = '00 : 00 : 00';
-        audioPlayerCT.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsCT.pauseCT.style.display = 'none';
         timerControlsButtonsCT.startCT.style.display = 'inline';
         timerControlsButtonsCT.startCT.style.color = '#49B79D';
@@ -75,7 +29,6 @@ $(function () {
         document.getElementById('CTSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickCT();
         resetTimerCT();
-        isCTON = false;
         document.getElementById('resetBtnCT').style.display = 'none';
         timerControlsButtonsCT.stopCT.style.display = "inline";
         timerControlsButtonsCT.stopCT.style.color = "rgb(177, 177, 177)";
@@ -147,11 +100,10 @@ var audioCT = document.getElementById("audioCT"),
     muteCT = document.getElementById("muteCT"),
     ismuteCT = false;
 
-audioPlayerCT.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongCT = document.getElementById("songCT"),
-    muteSongCT = document.getElementById("songMuteCT"),
-    isSongMuteCT = false;
+    muteSongCT = document.getElementById("songMuteCT");
 
 // Get the volumeVCT bar element
 const volumeVoiceCT = document.getElementById('volumeVoiceCT');
@@ -190,15 +142,13 @@ volumeSongCT.addEventListener('input', function () {
 
     // Check if volumeSCT is 0 and mute the media if necessary
     if (volumeSCT === 0) {
-        audioPlayerCT.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongCT.style.display = "none";
         muteSongCT.style.display = "block";
-        isSongMuteCT = true;
     } else {
-        audioPlayerCT.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongCT.style.display = "none";
         audioSongCT.style.display = "block";
-        isSongMuteCT = false;
     }
 });
 
@@ -388,9 +338,8 @@ function startTimerCT() {
             audioListCT[0].play();
         }
     }
-    isCTON = true;
-    if (!isSongMuteCT) {
-        playSelectedSongCT();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerCT.isFinishedCT) {
         resetTimerCT();
@@ -434,10 +383,10 @@ function recoverCT() {
 function stopTimerCT() {
     clearInterval(intCT);
     [secondsCT, minutesCT, hoursCT] = [0, 0, 0];
-    if (!isSongMuteCT) {
-        audioPlayerCT.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
-    audioPlayerCT.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsCT.pauseCT.style.display = 'none';
     timerControlsButtonsCT.startCT.style.display = 'inline';
     setFormDisabledStateCT(false);

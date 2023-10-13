@@ -1,50 +1,4 @@
 /*CB JS*/
-const songSelectCB = document.getElementById('song-selectCB');
-const audioPlayerCB = document.getElementById('audio-playerCB');
-var isCBON = false;
-// Variable to store the timeout ID
-let timeoutIdCB;
-
-
-// Function to play the selected song
-const playSelectedSongCB = () => {
-    const selectedSongCB = songSelectCB.value;
-    audioPlayerCB.src = selectedSongCB;
-    if (isCBON !== true) {
-        audioPlayerCB.muted = false;
-        audioPlayerCB.play();
-        localStorage.setItem('selectedSongCB', songSelectCB.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdCB);
-        timeoutIdCB = setTimeout(function () {
-            audioPlayerCB.pause();
-            audioPlayerCB.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerCB.muted = false;
-        audioPlayerCB.loop = true;
-        audioPlayerCB.play();
-        clearTimeout(timeoutIdCB);
-    }
-};
-
-
-const storedSongCB = localStorage.getItem('selectedSongCB');
-if (storedSongCB) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectCB.value = storedSongCB;
-}
-
-// Add an event listener to the songSelectCB dropdown
-songSelectCB.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerCB.pause();
-    audioPlayerCB.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongCB();
-});
-
 $(function () {
     $('#CBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -64,7 +18,7 @@ $(function () {
         clearInterval(intCB);
         [secondsCB, minutesCB, hoursCB] = [0, 0, 0];
         timerRefCB.value = '00 : 00 : 00';
-        audioPlayerCB.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsCB.pauseCB.style.display = 'none';
         timerControlsButtonsCB.startCB.style.display = 'inline';
         setFormDisabledStateCB(false);
@@ -74,7 +28,6 @@ $(function () {
         document.getElementById('CBSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickCB();
         resetTimerCB();
-        isCBON = false;
     });
 });
 
@@ -137,11 +90,10 @@ var audioCB = document.getElementById("audioCB"),
     muteCB = document.getElementById("muteCB"),
     ismuteCB = false;
 
-audioPlayerCB.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongCB = document.getElementById("songCB"),
-    muteSongCB = document.getElementById("songMuteCB"),
-    isSongMuteCB = false;
+    muteSongCB = document.getElementById("songMuteCB");
 
 // Get the volumeVCB bar element
 const volumeVoiceCB = document.getElementById('volumeVoiceCB');
@@ -180,15 +132,13 @@ volumeSongCB.addEventListener('input', function () {
 
     // Check if volumeSCB is 0 and mute the media if necessary
     if (volumeSCB === 0) {
-        audioPlayerCB.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongCB.style.display = "none";
         muteSongCB.style.display = "block";
-        isSongMuteCB = true;
     } else {
-        audioPlayerCB.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongCB.style.display = "none";
         audioSongCB.style.display = "block";
-        isSongMuteCB = false;
     }
 });
 
@@ -354,9 +304,8 @@ function startTimerCB() {
             audioListCB[0].play();
         }
     }
-    isCBON = true;
-    if (!isSongMuteCB) {
-        playSelectedSongCB();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerCB.isFinishedCB) {
         resetTimerCB();
@@ -378,11 +327,10 @@ function pauseTimerCB() {
     timerControlsButtonsCB.startCB.style.display = 'inline';
     document.getElementById('CBSettings').disabled = false;
     document.getElementById('CBSettings').style.color = '#49B79D';
-    if (!isSongMuteCB) {
-        audioPlayerCB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickCB();
-    isCBON = false;
     document.getElementById('CBDate').value = date;
     document.getElementById('CBSave').disabled = false;
     document.getElementById('CBSave').style.color = '#49B79D';
@@ -392,7 +340,7 @@ function stopTimerCB() {
     clearInterval(intCB);
     [secondsCB, minutesCB, hoursCB] = [0, 0, 0];
     timerRefCB.value = '00 : 00 : 00';
-    audioPlayerCB.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsCB.pauseCB.style.display = 'none';
     timerControlsButtonsCB.startCB.style.display = 'inline';
     setFormDisabledStateCB(false);
@@ -402,7 +350,6 @@ function stopTimerCB() {
     document.getElementById('CBSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickCB();
     resetTimerCB();
-    isCBON = false;
 }
 
 function displayTimerCB() {

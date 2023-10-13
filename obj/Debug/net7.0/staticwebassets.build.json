@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yVR2PaH7FbqvjBKHQJZ209j6tfdZSVJhKVMEK6Zc4sQ=",
+  "Hash": "R9CJ735orMq+kw13KQP8y1WvDRzr0vuqbQtbmkVnnUE=",
   "Source": "BrizaBreath",
   "BasePath": "_content/BrizaBreath",
   "Mode": "Default",
@@ -1360,12 +1360,12 @@
       "OriginalItemSpec": "wwwroot\\images\\brizaprogram.png"
     },
     {
-      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\BRT.png",
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brt.png",
       "SourceId": "BrizaBreath",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
       "BasePath": "_content/BrizaBreath",
-      "RelativePath": "images/BRT.png",
+      "RelativePath": "images/brt.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1374,7 +1374,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\BRT.png"
+      "OriginalItemSpec": "wwwroot\\images\\brt.png"
     },
     {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brt20.png",
@@ -1426,6 +1426,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\brt40.png"
+    },
+    {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brt-pt.png",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "images/brt-pt.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\brt-pt.png"
     },
     {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brtUnder10.png",

@@ -1,50 +1,4 @@
 /*UB JS*/
-const songSelectUB = document.getElementById('song-selectUB');
-const audioPlayerUB = document.getElementById('audio-playerUB');
-var isUBON = false;
-// Variable to store the timeout ID
-let timeoutIdUB;
-
-
-// Function to play the selected song
-const playSelectedSongUB = () => {
-    const selectedSongUB = songSelectUB.value;
-    audioPlayerUB.src = selectedSongUB;
-    if (isUBON !== true) {
-        audioPlayerUB.muted = false;
-        audioPlayerUB.play();
-        localStorage.setItem('selectedSongUB', songSelectUB.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdUB);
-        timeoutIdUB = setTimeout(function () {
-            audioPlayerUB.pause();
-            audioPlayerUB.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerUB.muted = false;
-        audioPlayerUB.loop = true;
-        audioPlayerUB.play();
-        clearTimeout(timeoutIdUB);
-    }
-};
-
-
-const storedSongUB = localStorage.getItem('selectedSongUB');
-if (storedSongUB) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectUB.value = storedSongUB;
-}
-
-// Add an event listener to the songSelectUB dropdown
-songSelectUB.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerUB.pause();
-    audioPlayerUB.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongUB();
-});
-
 $(function () {
     $('#UBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -64,7 +18,7 @@ $(function () {
         clearInterval(intUB);
         [secondsUB, minutesUB, hoursUB] = [0, 0, 0];
         timerRefUB.value = '00 : 00 : 00';
-        audioPlayerUB.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsUB.pauseUB.style.display = 'none';
         timerControlsButtonsUB.startUB.style.display = 'inline';
         setFormDisabledStateUB(false);
@@ -74,7 +28,6 @@ $(function () {
         document.getElementById('UBSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickUB();
         resetTimerUB();
-        isUBON = false;
     });
 });
 
@@ -146,12 +99,10 @@ var audioUB = document.getElementById("audioUB"),
     muteUB = document.getElementById("muteUB"),
     ismuteUB = false;
 
-audioPlayerUB.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongUB = document.getElementById("songUB"),
-    muteSongUB = document.getElementById("songMuteUB"),
-    isSongMuteUB = false;
-
+    muteSongUB = document.getElementById("songMuteUB");
 // Get the volumeVUB bar element
 const volumeVoiceUB = document.getElementById('volumeVoiceUB');
 
@@ -189,15 +140,13 @@ volumeSongUB.addEventListener('input', function () {
 
     // Check if volumeSUB is 0 and mute the media if necessary
     if (volumeSUB === 0) {
-        audioPlayerUB.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongUB.style.display = "none";
         muteSongUB.style.display = "block";
-        isSongMuteUB = true;
     } else {
-        audioPlayerUB.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongUB.style.display = "none";
         audioSongUB.style.display = "block";
-        isSongMuteUB = false;
     }
 });
 
@@ -417,9 +366,8 @@ function startTimerUB() {
             audioListUB[0].play();
         }
     }
-    isUBON = true;
-    if (!isSongMuteUB) {
-        playSelectedSongUB();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerUB.isFinishedUB) {
         resetTimerUB();
@@ -441,11 +389,10 @@ function pauseTimerUB() {
     timerControlsButtonsUB.startUB.style.display = 'inline';
     document.getElementById('UBSettings').disabled = false;
     document.getElementById('UBSettings').style.color = '#49B79D';
-    if (!isSongMuteUB) {
-        audioPlayerUB.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickUB();
-    isUBON = false;
     document.getElementById('UBDate').value = date;
     document.getElementById('UBSave').disabled = false;
     document.getElementById('UBSave').style.color = '#49B79D';
@@ -455,7 +402,7 @@ function stopTimerUB() {
     clearInterval(intUB);
     [secondsUB, minutesUB, hoursUB] = [0, 0, 0];
     timerRefUB.value = '00 : 00 : 00';
-    audioPlayerUB.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsUB.pauseUB.style.display = 'none';
     timerControlsButtonsUB.startUB.style.display = 'inline';
     setFormDisabledStateUB(false);
@@ -465,7 +412,6 @@ function stopTimerUB() {
     document.getElementById('UBSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickUB();
     resetTimerUB();
-    isUBON = false;
 }
 
 function displayTimerUB() {

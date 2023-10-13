@@ -1,50 +1,4 @@
 /*APNEA JS*/
-const songSelectAP = document.getElementById('song-selectAP');
-const audioPlayerAP = document.getElementById('audio-playerAP');
-var isAPON = false;
-// Variable to store the timeout ID
-let timeoutIdAP;
-
-
-// Function to play the selected song
-const playSelectedSongAP = () => {
-    const selectedSongAP = songSelectAP.value;
-    audioPlayerAP.src = selectedSongAP;
-    if (isAPON !== true) {
-        audioPlayerAP.muted = false;
-        audioPlayerAP.play();
-        localStorage.setItem('selectedSongAP', songSelectAP.value);
-        // Clear any existing timeout
-        clearTimeout(timeoutIdAP);
-        timeoutIdAP = setTimeout(function () {
-            audioPlayerAP.pause();
-            audioPlayerAP.currentTime = 0;
-        }, 15000);
-    } else {
-        audioPlayerAP.muted = false;
-        audioPlayerAP.loop = true;
-        audioPlayerAP.play();
-        clearTimeout(timeoutIdAP);
-    }
-};
-
-
-const storedSongAP = localStorage.getItem('selectedSongAP');
-if (storedSongAP) {
-    // Set the value of the songSelect dropdown to the stored song
-    songSelectAP.value = storedSongAP;
-}
-
-// Add an event listener to the songSelectAP dropdown
-songSelectAP.addEventListener('change', function () {
-    // Stop the currently playing song
-    audioPlayerAP.pause();
-    audioPlayerAP.currentTime = 0;
-
-    // Play the selected song
-    playSelectedSongAP();
-});
-
 $(function () {
     $('#APForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -64,7 +18,7 @@ $(function () {
         clearInterval(intAP);
         [secondsAP, minutesAP, hoursAP] = [0, 0, 0];
         timerRefAP.value = '00 : 00 : 00';
-        audioPlayerAP.currentTime = 0
+        audioPlayerBRT.currentTime = 0
         timerControlsButtonsAP.pauseAP.style.display = 'none';
         timerControlsButtonsAP.startAP.style.display = 'inline';
         setFormDisabledStateAP(false);
@@ -74,7 +28,6 @@ $(function () {
         document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickAP();
         resetTimerAP();
-        isAPON = false;
     });
 });
 
@@ -142,11 +95,10 @@ var audioAP = document.getElementById("audioAP"),
     muteAP = document.getElementById("muteAP"),
     ismuteAP = false;
 
-audioPlayerAP.loop = true;
+audioPlayerBRT.loop = true;
 
 var audioSongAP = document.getElementById("songAP"),
-    muteSongAP = document.getElementById("songMuteAP"),
-    isSongMuteAP = false;
+    muteSongAP = document.getElementById("songMuteAP");
 
 // Get the volumeVAP bar element
 const volumeVoiceAP = document.getElementById('volumeVoiceAP');
@@ -185,15 +137,13 @@ volumeSongAP.addEventListener('input', function () {
 
     // Check if volumeSAP is 0 and mute the media if necessary
     if (volumeSAP === 0) {
-        audioPlayerAP.muted = true;
+        audioPlayerBRT.muted = true;
         audioSongAP.style.display = "none";
         muteSongAP.style.display = "block";
-        isSongMuteAP = true;
     } else {
-        audioPlayerAP.muted = false;
+        audioPlayerBRT.muted = false;
         muteSongAP.style.display = "none";
         audioSongAP.style.display = "block";
-        isSongMuteAP = false;
     }
 });
 
@@ -385,9 +335,8 @@ function startTimerAP() {
             audioListAP[0].play();
         }
     }
-    isAPON = true;
-    if (!isSongMuteAP) {
-        playSelectedSongAP();
+    if (!audioPlayerBRT.muted) {
+        playSelectedSongBRT(true);
     }
     if (timerAP.isFinishedAP) {
         resetTimerAP();
@@ -409,11 +358,10 @@ function pauseTimerAP() {
     timerControlsButtonsAP.startAP.style.display = 'inline';
     document.getElementById('APSettings').disabled = false;
     document.getElementById('APSettings').style.color = '#49B79D';
-    if (!isSongMuteAP) {
-        audioPlayerAP.pause();
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
     }
     stopTimerTickAP();
-    isAPON = false;
     document.getElementById('APDate').value = date;
     document.getElementById('APSave').disabled = false;
     document.getElementById('APSave').style.color = '#49B79D';
@@ -423,7 +371,7 @@ function stopTimerAP() {
     clearInterval(intAP);
     [secondsAP, minutesAP, hoursAP] = [0, 0, 0];
     timerRefAP.value = '00 : 00 : 00';
-    audioPlayerAP.currentTime = 0
+    audioPlayerBRT.currentTime = 0
     timerControlsButtonsAP.pauseAP.style.display = 'none';
     timerControlsButtonsAP.startAP.style.display = 'inline';
     setFormDisabledStateAP(false);
@@ -433,7 +381,6 @@ function stopTimerAP() {
     document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickAP();
     resetTimerAP();
-    isAPON = false;
 }
 
 function displayTimerAP() {
