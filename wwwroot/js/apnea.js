@@ -77,19 +77,6 @@ document.getElementById('stopBtnAP').style.color = 'rgb(177, 177, 177)';
 document.getElementById('APSave').disabled = true;
 document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListAP = []
-if (isPortuguese) {
-    audioListAP.push(new Audio('/sounds/breathein.mp3'))
-    audioListAP.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListAP.push(new Audio('/sounds/exhale.mp3'));
-    audioListAP.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListAP.push(new Audio('/sounds/breathein.mp3'))
-    audioListAP.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListAP.push(new Audio('/sounds/exhale.mp3'));
-    audioListAP.push(new Audio('/sounds/hold.mp3'));
-}
-
 
 var audioAP = document.getElementById("audioAP"),
     muteAP = document.getElementById("muteAP"),
@@ -110,18 +97,16 @@ volumeVoiceAP.addEventListener('input', function () {
 
     // Check if volumeVAP is 0 and mute the media if necessary
     if (volumeVAP === 0) {
-        audioListAP[0].muted = true;
-        audioListAP[1].muted = true;
-        audioListAP[2].muted = true;
-        audioListAP[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.exhale.muted = true;
+        audioObjects.hold.muted = true;
         audioAP.style.display = "none";
         muteAP.style.display = "block";
         ismuteAP = true;
     } else {
-        audioListAP[0].muted = false;
-        audioListAP[1].muted = false;
-        audioListAP[2].muted = false;
-        audioListAP[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.exhale.muted = false;
+        audioObjects.hold.muted = false;
         muteAP.style.display = "none";
         audioAP.style.display = "block";
         ismuteAP = false;
@@ -331,8 +316,8 @@ function startTimerAP() {
     timerControlsButtonsAP.stopAP.style.color = "rgb(177, 177, 177)";
     if (timerAP.isBreak3AP) {
         if (!ismuteAP) {
-            audioListAP[0].muted = false;
-            audioListAP[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -413,8 +398,8 @@ function onTimerTickAP() {
         timerAP.elapsedInIntervalAP++;
         if (timerAP.elapsedInIntervalAP > currentIntervalDurationAP && timerAP.isBreak3AP) {
             if (!ismuteAP) {
-                audioListAP[3].muted = false;
-                audioListAP[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerAP.isBreakAP = true;
             timerAP.isBreak3AP = false;
@@ -436,8 +421,8 @@ function onTimerTickAP() {
         timerAP.elapsedInIntervalAP++;
         if (timerAP.elapsedInIntervalAP > currentIntervalDurationAP && timerAP.isBreakAP) {
             if (!ismuteAP) {
-                audioListAP[2].muted = false;
-                audioListAP[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerAP.isBreak2AP = true;
             timerAP.isBreakAP = false;
@@ -459,8 +444,8 @@ function onTimerTickAP() {
         timerAP.elapsedInIntervalAP++;
         if (timerAP.elapsedInIntervalAP > currentIntervalDurationAP && timerAP.isBreak2AP) {
             if (!ismuteAP) {
-                audioListAP[0].muted = false;
-                audioListAP[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerAP.isBreak3AP = true;
             timerAP.isBreak2AP = false;

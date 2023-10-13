@@ -32,7 +32,6 @@ for (let i = 0; i < backToEnglish.length; i++) {
         localStorage.setItem('isPortuguese', 'false');
     });
 }
-
 var fetchedDataArray = [];
 $.ajax({
     url: "/?fetchData=true",

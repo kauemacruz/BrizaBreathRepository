@@ -1,5 +1,4 @@
-﻿var audioList = [];
-window.addEventListener('load', function () {
+﻿window.addEventListener('load', function () {
     // Hide the loading indicator
     var loadingIndicator = document.getElementById('loadingIndicator');
     loadingIndicator.style.display = 'none';
@@ -15,44 +14,7 @@ window.addEventListener('load', function () {
         document.getElementById("manageMembership").style.display = "none";
         document.getElementById("noActiveMembership").style.display = "block";
     }
-    if (isPortuguese) {
-        audioList.push(new Audio('../sounds/pinchRun.mp3'));
-        
-    } else {
-        audioList.push(new Audio('../sounds/pinchRunPT.mp3'));
-    }
 });
-if ('wakeLock' in navigator) {
-    let wakeLock = null;
-    const requestWakeLock = async () => {
-        try {
-            wakeLock = await navigator.wakeLock.request('screen');
-            console.log('Screen wake lock engaged.');
-        } catch (error) {
-            console.error(`Failed to request wake lock: ${error}`);
-        }
-    };
-    // Engage wake lock upon user interaction
-    document.addEventListener('click', () => {
-        if (document.visibilityState === 'visible') {
-            requestWakeLock();
-        }
-    });
-
-    // Engage or re-engage wake lock upon visibility change
-    document.addEventListener('visibilitychange', () => {
-        requestWakeLock();
-    });
-
-    // Release wake lock upon page unload
-    window.addEventListener('unload', () => {
-        if (wakeLock !== null) {
-            wakeLock.release();
-            console.log('Screen wake lock released.');
-            wakeLock = null;
-        }
-    });
-}
 // Get the elements with the class "song-select"
 var songSelects = document.getElementsByClassName('song-select');
 // Create an array to store the audio elements
@@ -381,8 +343,35 @@ $(function () {
         })
     });
 });
+let audioObjects = {};
+function startAudios() {
+    const soundNames = ['inhale', 'hold', 'exhale', 'pinchRun', 'ligthNasal', 'normalbreath'];
+    soundNames.forEach((name) => {
+        audioObjects[name] = new Audio(`../sounds/${name}${isPortuguese ? 'PT' : ''}.mp3`);
+    });
 
+    function playAndReset(audio) {
+        audio.muted = true;
+        audio.play();
+        setTimeout(() => {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.muted = false;
+        }, 1000);
+    }
 
+    Object.values(audioObjects).forEach((audio) => {
+        playAndReset(audio);
+    });
+
+    playSelectedSongBRT(true);
+    audioPlayerBRT.muted = true;
+    playAndReset(audioPlayerBRT);
+
+    audioElements.forEach((audio) => {
+        playAndReset(audio);
+    });
+}
 /*Links*/
 var navResults = document.getElementById("navResults"),
     navResults2 = document.getElementById("navResults2"),
@@ -1138,21 +1127,7 @@ navHome2.onclick = function () {
 programLink.onclick = function () {
     openPage(homePage, programPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    for (var i = 0; i < audioElements.length; i++) {
-        audioElements[i].muted = true;
-        audioElements[i].play();
-        setTimeout(function () {
-            audioElements[i].pause();
-            audioElements[i].currentTime = 0;
-        }, 1000);
-    }
-    playSelectedSongBRT(true);
-    audioPlayerBRT.muted = true;
-    setTimeout(function () {
-        audioPlayerBRT.pause();
-        audioPlayerBRT.currentTime = 0;
-        audioPlayerBRT.muted = false;
-    }, 1000);
+    startAudios();
 }
 backProgram.onclick = function () {
     openPage(programPage, homePage, 'slideRight');
@@ -1181,13 +1156,7 @@ backUnblock.onclick = function () {
 brtLink.onclick = function () {
     openPage(homePage, brtPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playSelectedSongBRT(true);
-    audioPlayerBRT.muted = true;
-    setTimeout(function () {
-        audioPlayerBRT.pause();
-        audioPlayerBRT.currentTime = 0;
-        audioPlayerBRT.muted = false;
-    }, 1000);
+    startAudios();
 }
 backBRT.onclick = function () {
     openPage(brtPage, homePage, 'slideRight');
@@ -1225,20 +1194,6 @@ yogicLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, yogicPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListYogic[0].muted = true;
-        audioListYogic[2].muted = true;
-        audioListYogic[3].muted = true;
-        audioListYogic[0].play();
-        audioListYogic[2].play();
-        audioListYogic[3].play();
-        setTimeout(function () {
-            audioListYogic[0].pause();
-            audioListYogic[0].currentTime = 0;
-            audioListYogic[2].pause();
-            audioListYogic[2].currentTime = 0;
-            audioListYogic[3].pause();
-            audioListYogic[3].currentTime = 0;
-        }, 1000);
     } else {
         opneModal();
     }
@@ -1296,20 +1251,6 @@ BRELink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, BREPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListBRE[0].muted = true;
-        audioListBRE[2].muted = true;
-        audioListBRE[3].muted = true;
-        audioListBRE[0].play();
-        audioListBRE[2].play();
-        audioListBRE[3].play();
-        setTimeout(function () {
-            audioListBRE[0].pause();
-            audioListBRE[0].currentTime = 0;
-            audioListBRE[2].pause();
-            audioListBRE[2].currentTime = 0;
-            audioListBRE[3].pause();
-            audioListBRE[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -1342,20 +1283,6 @@ BRWLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, BRWPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListBRW[0].muted = true;
-        audioListBRW[2].muted = true;
-        audioListBRW[3].muted = true;
-        audioListBRW[0].play();
-        audioListBRW[2].play();
-        audioListBRW[3].play();
-        setTimeout(function () {
-            audioListBRW[0].pause();
-            audioListBRW[0].currentTime = 0;
-            audioListBRW[2].pause();
-            audioListBRW[2].currentTime = 0;
-            audioListBRW[3].pause();
-            audioListBRW[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -1388,20 +1315,6 @@ HUMLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, HUMPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListHUM[0].muted = true;
-        audioListHUM[2].muted = true;
-        audioListHUM[3].muted = true;
-        audioListHUM[0].play();
-        audioListHUM[2].play();
-        audioListHUM[3].play();
-        setTimeout(function () {
-            audioListHUM[0].pause();
-            audioListHUM[0].currentTime = 0;
-            audioListHUM[2].pause();
-            audioListHUM[2].currentTime = 0;
-            audioListHUM[3].pause();
-            audioListHUM[3].currentTime = 0;
-        }, 1000);
     } else {
         opneModal();
     }
@@ -1447,20 +1360,7 @@ BBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, BBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListBB[0].muted = true;
-        audioListBB[2].muted = true;
-        audioListBB[3].muted = true;
-        audioListBB[0].play();
-        audioListBB[2].play();
-        audioListBB[3].play();
-        setTimeout(function () {
-            audioListBB[0].pause();
-            audioListBB[0].currentTime = 0;
-            audioListBB[2].pause();
-            audioListBB[2].currentTime = 0;
-            audioListBB[3].pause();
-            audioListBB[3].currentTime = 0;
-        }, 1000);
+        startAudios();
     }
     else {
         openModal();
@@ -1507,7 +1407,7 @@ brtSettings.onclick = function () {
     selectSongsList.style.display = "block";
 }
 backBRTset.onclick = function () {
-    if (brtismute != true) {
+    if (!audioPlayerBRT.muted) {
         audioPlayerBRT.pause();
     }
     audioPlayerBRT.currentTime = 0;
@@ -1575,26 +1475,6 @@ HATLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, HATPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListHAT[0].muted = true;
-        audioListHAT[1].muted = true;
-        audioListHAT[2].muted = true;
-        audioListHAT[3].muted = true;
-        audioListHAT[0].play();
-        audioListHAT[1].play();
-        audioListHAT[2].play();
-        audioListHAT[3].play();
-        setTimeout(function () {
-            audioPlayerBRT.pause();
-            audioPlayerBRT.currentTime = 0;
-            audioListHAT[0].pause();
-            audioListHAT[0].currentTime = 0;
-            audioListHAT[1].pause();
-            audioListHAT[1].currentTime = 0;
-            audioListHAT[2].pause();
-            audioListHAT[2].currentTime = 0;
-            audioListHAT[3].pause();
-            audioListHAT[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -1656,24 +1536,6 @@ HATCLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, HATCPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListHATC[0].muted = true;
-        audioListHATC[1].muted = true;
-        audioListHATC[2].muted = true;
-        audioListHATC[3].muted = true;
-        audioListHATC[0].play();
-        audioListHATC[1].play();
-        audioListHATC[2].play();
-        audioListHATC[3].play();
-        setTimeout(function () {
-            audioListHATC[0].pause();
-            audioListHATC[0].currentTime = 0;
-            audioListHATC[1].pause();
-            audioListHATC[1].currentTime = 0;
-            audioListHATC[2].pause();
-            audioListHATC[2].currentTime = 0;
-            audioListHATC[3].pause();
-            audioListHATC[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -1723,24 +1585,6 @@ AHATLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, AHATPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListAHAT[0].muted = true;
-        audioListAHAT[1].muted = true;
-        audioListAHAT[2].muted = true;
-        audioListAHAT[3].muted = true;
-        audioListAHAT[0].play();
-        audioListAHAT[1].play();
-        audioListAHAT[2].play();
-        audioListAHAT[3].play();
-        setTimeout(function () {
-            audioListAHAT[0].pause();
-            audioListAHAT[0].currentTime = 0;
-            audioListAHAT[1].pause();
-            audioListAHAT[1].currentTime = 0;
-            audioListAHAT[2].pause();
-            audioListAHAT[2].currentTime = 0;
-            audioListAHAT[3].pause();
-            audioListAHAT[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -1790,21 +1634,7 @@ lungsLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(homePage, lungsPage, 'slideLeft');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        for (var i = 0; i < audioElements.length; i++) {
-            audioElements[i].muted = true;
-            audioElements[i].play();
-            setTimeout(function () {
-                audioElements[i].pause();
-                audioElements[i].currentTime = 0;
-            }, 1000);
-        }
-        playSelectedSongBRT(true);
-        audioPlayerBRT.muted = true;
-        setTimeout(function () {
-            audioPlayerBRT.pause();
-            audioPlayerBRT.currentTime = 0;
-            audioPlayerBRT.muted = false;
-        }, 1000);
+        startAudios();
     } else {
         openModal();
     }
@@ -1855,21 +1685,7 @@ backMobility.onclick = function () {
 breathHoldsLink.onclick = function () {
     openPage(homePage, BHPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    for (var i = 0; i < audioElements.length; i++) {
-        audioElements[i].muted = true;
-        audioElements[i].play();
-        setTimeout(function () {
-            audioElements[i].pause();
-            audioElements[i].currentTime = 0;
-        }, 1000);
-    }
-    playSelectedSongBRT(true);
-    audioPlayerBRT.muted = true;
-    setTimeout(function () {
-        audioPlayerBRT.pause();
-        audioPlayerBRT.currentTime = 0;
-        audioPlayerBRT.muted = false;
-    }, 1000);
+    startAudios();
 }
 backBH.onclick = function () {
     openPage(BHPage, homePage, 'slideRight');
@@ -1878,21 +1694,7 @@ backBH.onclick = function () {
 pranayamaLink.onclick = function () {
     openPage(homePage, PRANAPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    for (var i = 0; i < audioElements.length; i++) {
-        audioElements[i].muted = true;
-        audioElements[i].play();
-        setTimeout(function () {
-            audioElements[i].pause();
-            audioElements[i].currentTime = 0;
-        }, 1000);
-    }
-    playSelectedSongBRT(true);
-    audioPlayerBRT.muted = true;
-    setTimeout(function () {
-        audioPlayerBRT.pause();
-        audioPlayerBRT.currentTime = 0;
-        audioPlayerBRT.muted = false;
-    }, 1000);
+    startAudios();
 }
 backPRANA.onclick = function () {
     openPage(PRANAPage, homePage, 'slideRight');
@@ -1901,21 +1703,7 @@ backPRANA.onclick = function () {
 extrasLink.onclick = function () {
     openPage(homePage, EXTRAPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    for (var i = 0; i < audioElements.length; i++) {
-        audioElements[i].muted = true;
-        audioElements[i].play();
-        setTimeout(function () {
-            audioElements[i].pause();
-            audioElements[i].currentTime = 0;
-        }, 1000);
-    }
-    playSelectedSongBRT(true);
-    audioPlayerBRT.muted = true;
-    setTimeout(function () {
-        audioPlayerBRT.pause();
-        audioPlayerBRT.currentTime = 0;
-        audioPlayerBRT.muted = false;
-    }, 1000);
+    startAudios();
 }
 backEXTRA.onclick = function () {
     openPage(EXTRAPage, homePage, 'slideRight');
@@ -1924,20 +1712,6 @@ backEXTRA.onclick = function () {
 APLink.onclick = function () {
     openPage(BHPage, APPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    audioListAP[0].muted = true;
-    audioListAP[2].muted = true;
-    audioListAP[3].muted = true;
-    audioListAP[0].play();
-    audioListAP[2].play();
-    audioListAP[3].play();
-    setTimeout(function () {
-        audioListAP[0].pause();
-        audioListAP[0].currentTime = 0;
-        audioListAP[2].pause();
-        audioListAP[2].currentTime = 0;
-        audioListAP[3].pause();
-        audioListAP[3].currentTime = 0;
-    }, 1000);
 }
 backAP.onclick = function () {
     openPage(APPage, BHPage, 'slideRight');
@@ -1980,40 +1754,6 @@ co2o2Link.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(BHPage, O2Page, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListCO2[0].muted = true;
-        audioListCO2[1].muted = true;
-        audioListCO2[2].muted = true;
-        audioListCO2[3].muted = true;
-        audioListCO2[0].play();
-        audioListCO2[1].play();
-        audioListCO2[2].play();
-        audioListCO2[3].play();
-        audioListO2[0].muted = true;
-        audioListO2[1].muted = true;
-        audioListO2[2].muted = true;
-        audioListO2[3].muted = true;
-        audioListO2[0].play();
-        audioListO2[1].play();
-        audioListO2[2].play();
-        audioListO2[3].play();
-        setTimeout(function () {
-            audioListCO2[0].pause();
-            audioListCO2[0].currentTime = 0;
-            audioListCO2[1].pause();
-            audioListCO2[1].currentTime = 0;
-            audioListCO2[2].pause();
-            audioListCO2[2].currentTime = 0;
-            audioListCO2[3].pause();
-            audioListCO2[3].currentTime = 0;
-            audioListO2[0].pause();
-            audioListO2[0].currentTime = 0;
-            audioListO2[1].pause();
-            audioListO2[1].currentTime = 0;
-            audioListO2[2].pause();
-            audioListO2[2].currentTime = 0;
-            audioListO2[3].pause();
-            audioListO2[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -2087,41 +1827,6 @@ WHLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(BHPage, WHPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListWH[0].muted = true;
-        audioListWH[1].muted = true;
-        audioListWH[2].muted = true;
-        audioListWH[3].muted = true;
-        audioListWH[4].muted = true;
-        audioListWH[5].muted = true;
-        audioListWH[6].muted = true;
-        audioListWH[7].muted = true;
-        audioListWH[0].play();
-        audioListWH[1].play();
-        audioListWH[2].play();
-        audioListWH[3].play();
-        audioListWH[4].play();
-        audioListWH[5].play();
-        audioListWH[6].play();
-        audioListWH[7].play();
-
-        setTimeout(function () {
-            audioListWH[0].pause();
-            audioListWH[0].currentTime = 0
-            audioListWH[1].pause();
-            audioListWH[1].currentTime = 0
-            audioListWH[2].pause();
-            audioListWH[2].currentTime = 0
-            audioListWH[3].pause();
-            audioListWH[3].currentTime = 0
-            audioListWH[4].pause();
-            audioListWH[4].currentTime = 0
-            audioListWH[5].pause();
-            audioListWH[5].currentTime = 0
-            audioListWH[6].pause();
-            audioListWH[6].currentTime = 0
-            audioListWH[7].pause();
-            audioListWH[7].currentTime = 0
-        }, 1000);
     } else {
         openModal();
     }
@@ -2176,24 +1881,6 @@ CTLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(BHPage, CTPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListCT[0].muted = true;
-        audioListCT[1].muted = true;
-        audioListCT[2].muted = true;
-        audioListCT[3].muted = true;
-        audioListCT[0].play();
-        audioListCT[1].play();
-        audioListCT[2].play();
-        audioListCT[3].play();
-        setTimeout(function () {
-            audioListCT[0].pause();
-            audioListCT[0].currentTime = 0;
-            audioListCT[1].pause();
-            audioListCT[1].currentTime = 0;
-            audioListCT[2].pause();
-            audioListCT[2].currentTime = 0;
-            audioListCT[3].pause();
-            audioListCT[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -2238,20 +1925,6 @@ backCTSet.onclick = function () {
 UBLink.onclick = function () {
     openPage(PRANAPage, UBPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    audioListUB[0].muted = true;
-    audioListUB[2].muted = true;
-    audioListUB[3].muted = true;
-    audioListUB[0].play();
-    audioListUB[2].play();
-    audioListUB[3].play();
-    setTimeout(function () {
-        audioListUB[0].pause();
-        audioListUB[0].currentTime = 0;
-        audioListUB[2].pause();
-        audioListUB[2].currentTime = 0;
-        audioListUB[3].pause();
-        audioListUB[3].currentTime = 0;
-    }, 1000);
 }
 backUB.onclick = function () {
     openPage(UBPage, PRANAPage, 'slideRight');
@@ -2303,20 +1976,6 @@ BOXLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, BOXPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListBOX[0].muted = true;
-        audioListBOX[2].muted = true;
-        audioListBOX[3].muted = true;
-        audioListBOX[0].play();
-        audioListBOX[2].play();
-        audioListBOX[3].play();
-        setTimeout(function () {
-            audioListBOX[0].pause();
-            audioListBOX[0].currentTime = 0;
-            audioListBOX[2].pause();
-            audioListBOX[2].currentTime = 0;
-            audioListBOX[3].pause();
-            audioListBOX[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -2363,20 +2022,6 @@ NBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, NBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListNB[0].muted = true;
-        audioListNB[2].muted = true;
-        audioListNB[3].muted = true;
-        audioListNB[0].play();
-        audioListNB[2].play();
-        audioListNB[3].play();
-        setTimeout(function () {
-            audioListNB[0].pause();
-            audioListNB[0].currentTime = 0;
-            audioListNB[2].pause();
-            audioListNB[2].currentTime = 0;
-            audioListNB[3].pause();
-            audioListNB[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -2423,20 +2068,6 @@ CBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, CBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListCB[0].muted = true;
-        audioListCB[2].muted = true;
-        audioListCB[3].muted = true;
-        audioListCB[0].play();
-        audioListCB[2].play();
-        audioListCB[3].play();
-        setTimeout(function () {
-            audioListCB[0].pause();
-            audioListCB[0].currentTime = 0;
-            audioListCB[2].pause();
-            audioListCB[2].currentTime = 0;
-            audioListCB[3].pause();
-            audioListCB[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -2483,21 +2114,8 @@ SBLink.onclick = function () {
         if (isUserActiveSubscriber) {
         openPage(PRANAPage, SBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListSB[0].muted = true;
-        audioListSB[2].muted = true;
-        audioListSB[3].muted = true;
-        audioListSB[0].play();
-        audioListSB[2].play();
-        audioListSB[3].play();
-        setTimeout(function () {
-            audioListSB[0].pause();
-            audioListSB[0].currentTime = 0;
-            audioListSB[2].pause();
-            audioListSB[2].currentTime = 0;
-            audioListSB[3].pause();
-            audioListSB[3].currentTime = 0;
-        }, 1000);
-        } else {
+        }
+        else {
             openModal();
         }
 }
@@ -2555,20 +2173,6 @@ RBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, RBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListRB[0].muted = true;
-        audioListRB[2].muted = true;
-        audioListRB[3].muted = true;
-        audioListRB[0].play();
-        audioListRB[2].play();
-        audioListRB[3].play();
-        setTimeout(function () {
-            audioListRB[0].pause();
-            audioListRB[0].currentTime = 0;
-            audioListRB[2].pause();
-            audioListRB[2].currentTime = 0;
-            audioListRB[3].pause();
-            audioListRB[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }
@@ -2715,20 +2319,6 @@ SEXLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(EXTRAPage, SEXPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioListSEX[0].muted = true;
-        audioListSEX[2].muted = true;
-        audioListSEX[3].muted = true;
-        audioListSEX[0].play();
-        audioListSEX[2].play();
-        audioListSEX[3].play();
-        setTimeout(function () {
-            audioListSEX[0].pause();
-            audioListSEX[0].currentTime = 0;
-            audioListSEX[2].pause();
-            audioListSEX[2].currentTime = 0;
-            audioListSEX[3].pause();
-            audioListSEX[3].currentTime = 0;
-        }, 1000);
     } else {
         openModal();
     }

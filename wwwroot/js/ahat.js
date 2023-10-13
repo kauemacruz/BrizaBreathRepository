@@ -87,19 +87,6 @@ document.getElementById('stopBtnAHAT').style.color = 'rgb(177, 177, 177)';
 document.getElementById('ahatSave').disabled = true;
 document.getElementById('ahatSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListAHAT = []
-if (isPortuguese) {
-    audioListAHAT.push(new Audio('../sounds/pinchnose.mp3'));
-    audioListAHAT.push(new Audio('../sounds/lightbreath.mp3'));
-    audioListAHAT.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListAHAT.push(new Audio('../sounds/hold.mp3'));
-} else {
-    audioListAHAT.push(new Audio('../sounds/pinchnose.mp3'));
-    audioListAHAT.push(new Audio('../sounds/lightbreath.mp3'));
-    audioListAHAT.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListAHAT.push(new Audio('../sounds/hold.mp3'));
-}
-
 var audioAHAT = document.getElementById("audioAHAT"),
     muteAHAT = document.getElementById("muteAHAT"),
     ismuteAHAT = false;
@@ -119,18 +106,16 @@ volumeVoiceAHAT.addEventListener('input', function () {
 
     // Check if volumeVahat is 0 and mute the media if necessary
     if (volumeVahat === 0) {
-        audioListAHAT[0].muted = true;
-        audioListAHAT[1].muted = true;
-        audioListAHAT[2].muted = true;
-        audioListAHAT[3].muted = true;
+        audioObjects.pinchRun.muted = true;
+        audioObjects.ligthNasal.muted = true;
+        audioObjects.normalbreath.muted = true;
         audioAHAT.style.display = "none";
         muteAHAT.style.display = "block";
         ismuteAHAT = true;
     } else {
-        audioListAHAT[0].muted = false;
-        audioListAHAT[1].muted = false;
-        audioListAHAT[2].muted = false;
-        audioListAHAT[3].muted = false;
+        audioObjects.pinchRun.muted = false;
+        audioObjects.ligthNasal.muted = false;
+        audioObjects.normalbreath.muted = false;
         muteAHAT.style.display = "none";
         audioAHAT.style.display = "block";
         ismuteAHAT = false;
@@ -325,8 +310,8 @@ function startTimerAHAT() {
     intAHAT = setInterval(displayTimerAHAT, 1000);
     if (timerAHAT.isBreak0AHAT) {
         if (!ismuteAHAT) {
-            audioListAHAT[0].muted = false;
-            audioListAHAT[0].play();
+            audioObjects.pinchRun.muted = false;
+            audioObjects.pinchRun.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -436,8 +421,8 @@ function onTimerTickAHAT() {
         }
         if (nextroundAHAT) {
             if (!ismuteAHAT) {
-                audioListAHAT[1].muted = false;
-                audioListAHAT[1].play();
+                audioObjects.ligthNasal.muted = false;
+                audioObjects.ligthNasal.play();
             }
             timerControlsButtonsAHAT.pauseAHAT.disabled = true;
             timerAHAT.isBreakAHAT = true;
@@ -461,8 +446,8 @@ function onTimerTickAHAT() {
         timerAHAT.elapsedInIntervalAHAT++;
         if (timerAHAT.elapsedInIntervalAHAT > currentIntervalDurationAHAT && timerAHAT.isBreakAHAT) {
             if (!ismuteAHAT) {
-                audioListAHAT[2].muted = false;
-                audioListAHAT[2].play();
+                audioObjects.normalbreath.muted = false;
+                audioObjects.normalbreath.play();
             }
             timerAHAT.isBreak2AHAT = true;
             timerAHAT.isBreakAHAT = false;
@@ -484,8 +469,8 @@ function onTimerTickAHAT() {
         timerAHAT.elapsedInIntervalAHAT++;
         if (timerAHAT.elapsedInIntervalAHAT > currentIntervalDurationAHAT && timerAHAT.isBreak2AHAT) {
             if (!ismuteAHAT) {
-                audioListAHAT[0].muted = false;
-                audioListAHAT[0].play();
+                audioObjects.pinchRun.muted = false;
+                audioObjects.pinchRun.play();
             }
             timerAHAT.isBreak0AHAT = true;
             timerAHAT.isBreak2AHAT = false;
@@ -507,7 +492,6 @@ function onTimerTickAHAT() {
 }
 
 function updateInfoAHAT() {
-    requestWakeLock();
     statusPanelAHAT.timeOverviewMessageAHAT.style.display = timerAHAT.isFinishedAHAT ? 'block' : null;
     statusPanelAHAT.elapsedInIntervalBoxAHAT.style.display = timerAHAT.isFinishedAHAT || timerAHAT.isBreakAHAT || timerAHAT.isBreak2AHAT || timerAHAT.isBreak4 ? 'none' : null;
     statusPanelAHAT.elapsedInBreakIntervalBoxAHAT.style.display = !timerAHAT.isFinishedAHAT && timerAHAT.isBreakAHAT ? 'block' : null;

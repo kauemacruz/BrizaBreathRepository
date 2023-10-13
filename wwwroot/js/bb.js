@@ -59,7 +59,6 @@ function setTimerSettingsBB(
     breakDuration3BB
   };
 }
-
 function resetTimerBB() {
   timerBB = {
     totalTimeElapsedBB: 0,
@@ -73,7 +72,6 @@ function resetTimerBB() {
   };
   updateInfoBB();
 }
-
 var inhaleBB = 4;
 var holdBB = inhaleBB/2;
 var exhaleBB = inhaleBB*1.5;
@@ -83,37 +81,17 @@ initializeTimerControlsBB();
 initializeStatusPanelBB();
 initializeTimerSettingsFormBB();
 resetTimerBB();
-
 let [secondsBB, minutesBB, hoursBB] = [0, 0, 0];
 let timerRefBB = document.getElementById('timerDisplayBB');
 let intBB = null;
 document.getElementById('BBSave').disabled = true;
 document.getElementById('BBSave').style.color = 'rgb(177, 177, 177)';  
-var audioListBB = []
-
-if (isPortuguese) {
-    audioListBB.push(new Audio('/sounds/breathein.mp3'));
-    audioListBB.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListBB.push(new Audio('/sounds/exhale.mp3'));
-    audioListBB.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListBB.push(new Audio('/sounds/breathein.mp3'));
-    audioListBB.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListBB.push(new Audio('/sounds/exhale.mp3'));
-    audioListBB.push(new Audio('/sounds/hold.mp3'));
-}
-
-
 var audioBB = document.getElementById("audioBB"),
     muteBB = document.getElementById("muteBB"),
     ismuteBB = false;
-
 audioPlayerBRT.loop = true;
-
 var audioSongBB = document.getElementById("songBB"),
     muteSongBB = document.getElementById("songMuteBB");
-
-
 // Get the volumeVbre bar element
 const volumeVoiceBB = document.getElementById('volumeVoiceBB');
 
@@ -124,18 +102,16 @@ volumeVoiceBB.addEventListener('input', function () {
 
     // Check if volumeVbre is 0 and mute the media if necessary
     if (volumeVbb === 0) {
-        audioListBB[0].muted = true;
-        audioListBB[1].muted = true;
-        audioListBB[2].muted = true;
-        audioListBB[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.exhale.muted = true;
+        audioObjects.hold.muted = true;
         audioBB.style.display = "none";
         muteBB.style.display = "block";
         ismuteBB = true;
     } else {
-        audioListBB[0].muted = false;
-        audioListBB[1].muted = false;
-        audioListBB[2].muted = false;
-        audioListBB[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.exhale.muted = false;
+        audioObjects.hold.muted = false;
         muteBB.style.display = "none";
         audioBB.style.display = "block";
         ismuteBB = false;
@@ -362,8 +338,8 @@ function startTimerBB() {
     timerControlsButtonsBB.stopBB.style.color = "rgb(177, 177, 177)";
     if(timerBB.isBreak3BB){
         if (!ismuteBB) {
-            audioListBB[0].muted = false;
-            audioListBB[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
       }
     }
     if (!audioPlayerBRT.muted) {
@@ -448,8 +424,8 @@ function onTimerTickBB() {
       timerBB.elapsedInIntervalBB++;
       if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreak3BB){
           if (!ismuteBB) {
-            audioListBB[3].muted = false;
-            audioListBB[3].play();
+            audioObjects.hold.muted = false;
+            audioObjects.hold.play();
         }
         timerBB.isBreakBB = true;  
         timerBB.isBreak3BB = false;
@@ -471,8 +447,8 @@ function onTimerTickBB() {
       timerBB.elapsedInIntervalBB++;
       if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreakBB){
         if(!ismuteBB){
-            audioListBB[2].muted = false;
-            audioListBB[2].play();
+            audioObjects.exhale.muted = false;
+            audioObjects.exhale.play();
         }
         timerBB.isBreak2BB = true;
         timerBB.isBreakBB = false; 
@@ -494,8 +470,8 @@ function onTimerTickBB() {
       timerBB.elapsedInIntervalBB++;
       if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreak2BB){
           if (!ismuteBB) {
-              audioListBB[3].muted = false;
-              audioListBB[3].play();
+              audioObjects.hold.muted = false;
+              audioObjects.hold.play();
         }
         timerBB.isBreak4BB = true;
         timerBB.isBreak2BB = false;
@@ -517,8 +493,8 @@ function onTimerTickBB() {
       timerBB.elapsedInIntervalBB++;
       if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreak4BB){
           if (!ismuteBB) {
-              audioListBB[0].muted = false;
-              audioListBB[0].play();
+              audioObjects.inhale.muted = false;
+              audioObjects.inhale.play();
         }
         timerBB.isBreak3BB = true;
         timerBB.isBreak4BB = false;

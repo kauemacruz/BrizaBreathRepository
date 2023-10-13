@@ -82,21 +82,6 @@ document.getElementById('stopBtnBOX').disabled = true;
 document.getElementById('stopBtnBOX').style.color = 'rgb(177, 177, 177)';
 document.getElementById('BOXSave').disabled = true;
 document.getElementById('BOXSave').style.color = 'rgb(177, 177, 177)';
-
-var audioListBOX = []
-if (isPortuguese) {
-    audioListBOX.push(new Audio('/sounds/breathein.mp3'))
-    audioListBOX.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListBOX.push(new Audio('/sounds/exhale.mp3'));
-    audioListBOX.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListBOX.push(new Audio('/sounds/breathein.mp3'))
-    audioListBOX.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListBOX.push(new Audio('/sounds/exhale.mp3'));
-    audioListBOX.push(new Audio('/sounds/hold.mp3'));
-}
-
-
 var audioBOX = document.getElementById("audioBOX"),
     muteBOX = document.getElementById("muteBOX"),
     ismuteBOX = false;
@@ -115,18 +100,16 @@ volumeVoiceBOX.addEventListener('input', function () {
 
     // Check if volumeVBOX is 0 and mute the media if necessary
     if (volumeVBOX === 0) {
-        audioListBOX[0].muted = true;
-        audioListBOX[1].muted = true;
-        audioListBOX[2].muted = true;
-        audioListBOX[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.exhale.muted = true;
+        audioObjects.hold.muted = true;
         audioBOX.style.display = "none";
         muteBOX.style.display = "block";
         ismuteBOX = true;
     } else {
-        audioListBOX[0].muted = false;
-        audioListBOX[1].muted = false;
-        audioListBOX[2].muted = false;
-        audioListBOX[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.exhale.muted = false;
+        audioObjects.hold.muted = false;
         muteBOX.style.display = "none";
         audioBOX.style.display = "block";
         ismuteBOX = false;
@@ -364,8 +347,8 @@ function startTimerBOX() {
     timerControlsButtonsBOX.stopBOX.style.color = "rgb(177, 177, 177)";
     if (timerBOX.isBreak3BOX) {
         if (!ismuteBOX) {
-            audioListBOX[0].muted = false;
-            audioListBOX[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
         }
     }
     isBOXON = true;
@@ -449,8 +432,8 @@ function onTimerTickBOX() {
         timerBOX.elapsedInIntervalBOX++;
         if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreak3BOX) {
             if (!ismuteBOX) {
-                audioListBOX[3].muted = false;
-                audioListBOX[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerBOX.isBreakBOX = true;
             timerBOX.isBreak3BOX = false;
@@ -472,8 +455,8 @@ function onTimerTickBOX() {
         timerBOX.elapsedInIntervalBOX++;
         if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreakBOX) {
             if (!ismuteBOX) {
-                audioListBOX[2].muted = false;
-                audioListBOX[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerBOX.isBreak2BOX = true;
             timerBOX.isBreakBOX = false;
@@ -495,8 +478,8 @@ function onTimerTickBOX() {
         timerBOX.elapsedInIntervalBOX++;
         if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreak2BOX) {
             if (!ismuteBOX) {
-                audioListBOX[3].muted = false;
-                audioListBOX[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerBOX.isBreak4BOX = true;
             timerBOX.isBreak2BOX = false;
@@ -518,8 +501,8 @@ function onTimerTickBOX() {
         timerBOX.elapsedInIntervalBOX++;
         if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreak4BOX) {
             if (!ismuteBOX) {
-                audioListBOX[0].muted = false;
-                audioListBOX[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerBOX.isBreak3BOX = true;
             timerBOX.isBreak4BOX = false;

@@ -609,8 +609,28 @@
       "PackagePath": "staticwebassets\\sounds\\lightbreath.mp3"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\ligthNasal.mp3",
+      "PackagePath": "staticwebassets\\sounds\\ligthNasal.mp3"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\ligthNasalPT.mp3",
+      "PackagePath": "staticwebassets\\sounds\\ligthNasalPT.mp3"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\normalbreath.mp3",
       "PackagePath": "staticwebassets\\sounds\\normalbreath.mp3"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\normalbreathPT.mp3",
+      "PackagePath": "staticwebassets\\sounds\\normalbreathPT.mp3"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\pinchRun.mp3",
+      "PackagePath": "staticwebassets\\sounds\\pinchRun.mp3"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\pinchRunPT.mp3",
+      "PackagePath": "staticwebassets\\sounds\\pinchRunPT.mp3"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\pinchnose.mp3",

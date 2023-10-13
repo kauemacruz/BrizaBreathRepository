@@ -22,10 +22,10 @@ function playSelectedSongBRT (isSongOn){
         }, 15000);
     }
     else {
+        clearTimeout(timeoutIdBRT);
         audioPlayerBRT.muted = false;
         audioPlayerBRT.loop = true;
         audioPlayerBRT.play();
-        clearTimeout(timeoutIdBRT);
     }
 }
 
