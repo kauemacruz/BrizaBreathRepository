@@ -84,18 +84,6 @@ let timerRefBRE = document.getElementById('timerDisplayBRE');
 let intBRE = null;
 document.getElementById('BRESave').disabled = true;
 document.getElementById('BRESave').style.color = 'rgb(177, 177, 177)';
-var audioListBRE = []
-if (isPortuguese) {
-    audioListBRE.push(new Audio('/sounds/breathein.mp3'));
-    audioListBRE.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListBRE.push(new Audio('/sounds/exhale.mp3'));
-    audioListBRE.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListBRE.push(new Audio('/sounds/breathein.mp3'));
-    audioListBRE.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListBRE.push(new Audio('/sounds/exhale.mp3'));
-    audioListBRE.push(new Audio('/sounds/hold.mp3'));
-}
 
 
 var audioBRE = document.getElementById("audioBRE"),
@@ -116,18 +104,16 @@ volumeVoiceBRE.addEventListener('input', function () {
 
     // Check if volumeVbre is 0 and mute the media if necessary
     if (volumeVbre === 0) {
-        audioListBRE[0].muted = true;
-        audioListBRE[1].muted = true;
-        audioListBRE[2].muted = true;
-        audioListBRE[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.exhale.muted = true;
+        audioObjects.hold.muted = true;
         audioBRE.style.display = "none";
         muteBRE.style.display = "block";
         ismuteBRE = true;
     } else {
-        audioListBRE[0].muted = false;
-        audioListBRE[1].muted = false;
-        audioListBRE[2].muted = false;
-        audioListBRE[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.exhale.muted = false;
+        audioObjects.hold.muted = false;
         muteBRE.style.display = "none";
         audioBRE.style.display = "block";
         ismuteBRE = false;
@@ -392,8 +378,8 @@ function startTimerBRE() {
     timerControlsButtonsBRE.stopBRE.style.color = "rgb(177, 177, 177)";
     if (timerBRE.isBreak0BRE) {
         if (!ismuteBRE) {
-            audioListBRE[0].muted = false;
-            audioListBRE[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -477,8 +463,8 @@ function onTimerTickBRE() {
         timerBRE.elapsedInIntervalBRE++;
         if (timerBRE.elapsedInIntervalBRE > currentIntervalDurationBRE && timerBRE.isBreak0BRE) {
             if (!ismuteBRE) {
-                audioListBRE[2].muted = false;
-                audioListBRE[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerBRE.isBreakBRE = true;
             timerBRE.isBreak0BRE = false;
@@ -500,8 +486,8 @@ function onTimerTickBRE() {
         timerBRE.elapsedInIntervalBRE++;
         if (timerBRE.elapsedInIntervalBRE > currentIntervalDurationBRE && timerBRE.isBreakBRE) {
             if (!ismuteBRE) {
-                audioListBRE[0].muted = false;
-                audioListBRE[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerBRE.isBreak2BRE = true;
             timerBRE.isBreakBRE = false;
@@ -523,8 +509,8 @@ function onTimerTickBRE() {
         timerBRE.elapsedInIntervalBRE++;
         if (timerBRE.elapsedInIntervalBRE > currentIntervalDurationBRE && timerBRE.isBreak2BRE) {
             if (!ismuteBRE) {
-                audioListBRE[2].muted = false;
-                audioListBRE[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerBRE.isBreak3BRE = true;
             timerBRE.isBreak2BRE = false;
@@ -546,8 +532,8 @@ function onTimerTickBRE() {
         timerBRE.elapsedInIntervalBRE++;
         if (timerBRE.elapsedInIntervalBRE > currentIntervalDurationBRE && timerBRE.isBreak3BRE) {
             if (!ismuteBRE) {
-                audioListBRE[3].muted = false;
-                audioListBRE[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerBRE.isBreak4BRE = true;
             timerBRE.isBreak3BRE = false;
@@ -570,8 +556,8 @@ function onTimerTickBRE() {
         timerBRE.elapsedInIntervalBRE++;
         if (timerBRE.elapsedInIntervalBRE > currentIntervalDurationBRE && timerBRE.isBreak4BRE) {
             if (!ismuteBRE) {
-                audioListBRE[0].muted = false;
-                audioListBRE[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerBRE.isBreak0BRE = true;
             timerBRE.isBreak4BRE = false;

@@ -148,20 +148,6 @@ document.getElementById('stopBtnCO2').style.color = 'rgb(177, 177, 177)';
 document.getElementById('CO2Save').disabled = true;
 document.getElementById('CO2Save').style.color = 'rgb(177, 177, 177)';
 
-var audioListCO2 = []
-if (isPortuguese) {
-    audioListCO2.push(new Audio('../sounds/deepbreaths.mp3'));
-    audioListCO2.push(new Audio('../sounds/deepbreaths2.mp3'));
-    audioListCO2.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListCO2.push(new Audio('../sounds/holdyourbreath.mp3'));
-} else {
-    audioListCO2.push(new Audio('../sounds/deepbreaths.mp3'));
-    audioListCO2.push(new Audio('../sounds/deepbreaths2.mp3'));
-    audioListCO2.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListCO2.push(new Audio('../sounds/holdyourbreath.mp3'));
-}
-
-
 var ismuteCO2 = false;
 
 // Get the volumeVO2 bar element
@@ -174,27 +160,17 @@ volumeVoiceO2.addEventListener('input', function () {
 
     // Check if volumeVO2 is 0 and mute the media if necessary
     if (volumeVO2 === 0) {
-        audioListO2[0].muted = true;
-        audioListO2[1].muted = true;
-        audioListO2[2].muted = true;
-        audioListO2[3].muted = true;
-        audioListCO2[0].muted = true;
-        audioListCO2[1].muted = true;
-        audioListCO2[2].muted = true;
-        audioListCO2[3].muted = true;
+        audioObjects.breathedeeply.muted = true;
+        audioObjects.normalbreath.muted = true;
+        audioObjects.hold.muted = true;
         audioO2.style.display = "none";
         muteO2.style.display = "block";
         ismuteO2 = true;
         ismuteCO2 = true;
     } else {
-        audioListO2[0].muted = false;
-        audioListO2[1].muted = false;
-        audioListO2[2].muted = false;
-        audioListO2[3].muted = false;
-        audioListCO2[0].muted = false;
-        audioListCO2[1].muted = false;
-        audioListCO2[2].muted = false;
-        audioListCO2[3].muted = false;
+        audioObjects.breathedeeply.muted = false;
+        audioObjects.normalbreath.muted = false;
+        audioObjects.hold.muted = false;
         muteO2.style.display = "none";
         audioO2.style.display = "block";
         ismuteO2 = false;
@@ -969,8 +945,8 @@ function initializeTimerSettingsFormCO2() {
     timerControlsButtonsCO2.stopCO2.style.color = "rgb(177, 177, 177)";
       if (timerCO2.isBreak0CO2) {
         if (!ismuteCO2) {
-            audioListCO2[0].muted = false;
-            audioListCO2[0].play();
+            audioObjects.breathedeeply.muted = false;
+            audioObjects.breathedeeply.play();
         }
     }
       if (!audioPlayerBRT.muted) {
@@ -1065,8 +1041,8 @@ function initializeTimerSettingsFormCO2() {
       timerCO2.elapsedInIntervalCO2++;
       if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak0CO2){
           if (!ismuteCO2) {
-            audioListCO2[3].muted = false;
-            audioListCO2[3].play();
+            audioObjects.hold.muted = false;
+            audioObjects.hold.play();
         }
         timerCO2.isBreakCO2 = true;  
         timerCO2.isBreak0CO2 = false;
@@ -1088,8 +1064,8 @@ function initializeTimerSettingsFormCO2() {
       timerCO2.elapsedInIntervalCO2++;
       if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreakCO2){
           if (!ismuteCO2) {
-            audioListCO2[0].muted = false;
-            audioListCO2[0].play();
+            audioObjects.breathedeeply.muted = false;
+            audioObjects.breathedeeply.play();
         }
         document.getElementsByClassName('gap1CO2')[0].style.backgroundColor = '#ffffff';
         document.getElementsByClassName('gap1CO2')[1].style.backgroundColor = '#ffffff';
@@ -1122,8 +1098,8 @@ function initializeTimerSettingsFormCO2() {
       timerCO2.elapsedInIntervalCO2++;
       if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak2CO2){
           if (!ismuteCO2) {
-            audioListCO2[3].muted = false;
-            audioListCO2[3].play();
+            audioObjects.hold.muted = false;
+            audioObjects.hold.play();
         }
         timerCO2.isBreak3CO2 = true;
         timerCO2.isBreak2CO2 = false;
@@ -1145,8 +1121,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak3CO2){
             if (!ismuteCO2) {
-                audioListCO2[0].muted = false;
-                audioListCO2[0].play();
+                audioObjects.breathedeeply.muted = false;
+                audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap2CO2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap2CO2')[1].style.backgroundColor = '#ffffff';
@@ -1179,8 +1155,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak4CO2){
             if (!ismuteCO2) {
-                audioListCO2[3].muted = false;
-                audioListCO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerCO2.isBreak5CO2 = true;
           timerCO2.isBreak4CO2 = false;
@@ -1202,8 +1178,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak5CO2){
           if(!ismuteCO2){
-              audioListCO2[0].muted = false;
-              audioListCO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap3CO2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap3CO2')[1].style.backgroundColor = '#ffffff';
@@ -1236,8 +1212,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak6CO2){
             if (!ismuteCO2) {
-                audioListCO2[3].muted = false;
-                audioListCO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerCO2.isBreak7CO2 = true;
           timerCO2.isBreak6CO2 = false;
@@ -1259,8 +1235,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak7CO2){
           if(!ismuteCO2){
-              audioListCO2[0].muted = false;
-              audioListCO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap4CO2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap4CO2')[1].style.backgroundColor = '#ffffff';
@@ -1293,8 +1269,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak8CO2){
             if (!ismuteCO2) {
-                audioListCO2[3].muted = false;
-                audioListCO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerCO2.isBreak9CO2 = true;
           timerCO2.isBreak8CO2 = false;
@@ -1316,8 +1292,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak9CO2){
           if(!ismuteCO2){
-              audioListCO2[0].muted = false;
-              audioListCO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap5CO2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap5CO2')[1].style.backgroundColor = '#ffffff';
@@ -1350,8 +1326,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak10CO2){
             if (!ismuteCO2) {
-                audioListCO2[3].muted = false;
-                audioListCO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerCO2.isBreak11CO2 = true;
           timerCO2.isBreak10CO2 = false;
@@ -1373,8 +1349,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak11CO2){
           if(!ismuteCO2){
-              audioListCO2[0].muted = false;
-              audioListCO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap6CO2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap6CO2')[1].style.backgroundColor = '#ffffff';
@@ -1407,8 +1383,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak12CO2){
             if (!ismuteCO2) {
-                audioListCO2[3].muted = false;
-                audioListCO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerCO2.isBreak13CO2 = true;
           timerCO2.isBreak12CO2 = false;
@@ -1430,8 +1406,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak13CO2){
           if(!ismuteCO2){
-              audioListCO2[0].muted = false;
-              audioListCO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap7CO2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap7CO2')[1].style.backgroundColor = '#ffffff';
@@ -1464,8 +1440,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak14CO2){
             if (!ismuteCO2) {
-                audioListCO2[3].muted = false;
-                audioListCO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerCO2.isBreak15CO2 = true;
           timerCO2.isBreak14CO2 = false;
@@ -1503,8 +1479,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2 = 1;
         pauseTimerCO2();
           if (!ismuteCO2) {
-              audioListCO2[2].muted = false;
-              audioListCO2[2].play();
+              audioObjects.normalbreath.muted = false;
+              audioObjects.normalbreath.play();
         }
         setTimerControlsDisabledStateCO2(true, false, false);
         timerControlsButtonsCO2.start.style.color = "rgb(177, 177, 177)";

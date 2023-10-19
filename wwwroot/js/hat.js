@@ -87,19 +87,6 @@ document.getElementById('stopBtnHAT').style.color = 'rgb(177, 177, 177)';
 document.getElementById('hatSave').disabled = true;
 document.getElementById('hatSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListHAT = []
-if (isPortuguese) {
-    audioListHAT.push(new Audio('../sounds/pinchnose.mp3'));
-    audioListHAT.push(new Audio('../sounds/lightbreath.mp3'));
-    audioListHAT.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListHAT.push(new Audio('../sounds/hold.mp3'));
-} else {
-    audioListHAT.push(new Audio('../sounds/pinchnose.mp3'));
-    audioListHAT.push(new Audio('../sounds/lightbreath.mp3'));
-    audioListHAT.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListHAT.push(new Audio('../sounds/hold.mp3'));
-}
-
 
 var audioHAT = document.getElementById("audioHAT"),
     muteHAT = document.getElementById("muteHAT"),
@@ -119,18 +106,16 @@ volumeVoiceHAT.addEventListener('input', function () {
 
     // Check if volumeVhat is 0 and mute the media if necessary
     if (volumeVhat === 0) {
-        audioListHAT[0].muted = true;
-        audioListHAT[1].muted = true;
-        audioListHAT[2].muted = true;
-        audioListHAT[3].muted = true;
+        audioObjects.pinchWalk.muted = true;
+        audioObjects.ligthNasal.muted = true;
+        audioObjects.normalbreath.muted = true;
         audioHAT.style.display = "none";
         muteHAT.style.display = "block";
         ismuteHAT = true;
     } else {
-        audioListHAT[0].muted = false;
-        audioListHAT[1].muted = false;
-        audioListHAT[2].muted = false;
-        audioListHAT[3].muted = false;
+        audioObjects.pinchWalk.muted = false;
+        audioObjects.ligthNasal.muted = false;
+        audioObjects.normalbreath.muted = false;
         muteHAT.style.display = "none";
         audioHAT.style.display = "block";
         ismuteHAT = false;
@@ -325,8 +310,8 @@ function startTimerHAT() {
     intHAT = setInterval(displayTimerHAT, 1000);
     if (timerHAT.isBreak0HAT) {
         if (!ismuteHAT) {
-            audioListHAT[0].muted = false;
-            audioListHAT[0].play();
+            audioObjects.pinchWalk.muted = false;
+            audioObjects.pinchWalk.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -439,8 +424,8 @@ function onTimerTickHAT() {
         }
         if (nextroundHAT) {
             if (!ismuteHAT) {
-                audioListHAT[1].muted = false;
-                audioListHAT[1].play();
+                audioObjects.ligthNasal.muted = false;
+                audioObjects.ligthNasal.play();
             }
             timerControlsButtonsHAT.pauseHAT.disabled = true;
             timerHAT.isBreakHAT = true;
@@ -464,8 +449,8 @@ function onTimerTickHAT() {
         timerHAT.elapsedInIntervalHAT++;
         if (timerHAT.elapsedInIntervalHAT > currentIntervalDurationHAT && timerHAT.isBreakHAT) {
             if (!ismuteHAT) {
-                audioListHAT[2].muted = false;
-                audioListHAT[2].play();
+                audioObjects.normalbreath.muted = false;
+                audioObjects.normalbreath.play();
             }
             timerHAT.isBreak2HAT = true;
             timerHAT.isBreakHAT = false;
@@ -487,8 +472,8 @@ function onTimerTickHAT() {
         timerHAT.elapsedInIntervalHAT++;
         if (timerHAT.elapsedInIntervalHAT > currentIntervalDurationHAT && timerHAT.isBreak2HAT) {
             if (!ismuteHAT) {
-                audioListHAT[0].muted = false;
-                audioListHAT[0].play();
+                audioObjects.pinchWalk.muted = false;
+                audioObjects.pinchWalk.play();
             }
             timerHAT.isBreak0HAT = true;
             timerHAT.isBreak2HAT = false;

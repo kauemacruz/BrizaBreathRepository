@@ -82,21 +82,6 @@ document.getElementById('stopBtnNB').style.color = 'rgb(177, 177, 177)';
 document.getElementById('NBSave').disabled = true;
 document.getElementById('NBSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListNB = []
-if (isPortuguese) {
-    audioListNB.push(new Audio('/sounds/breathein.mp3'))
-    audioListNB.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListNB.push(new Audio('/sounds/exhale.mp3'));
-    audioListNB.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListNB.push(new Audio('/sounds/breathein.mp3'))
-    audioListNB.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListNB.push(new Audio('/sounds/exhale.mp3'));
-    audioListNB.push(new Audio('/sounds/hold.mp3'));
-}
-
-
-
 var audioNB = document.getElementById("audioNB"),
     muteNB = document.getElementById("muteNB"),
     ismuteNB = false;
@@ -115,17 +100,17 @@ volumeVoiceNB.addEventListener('input', function () {
 
     // Check if volumeVNB is 0 and mute the media if necessary
     if (volumeVNB === 0) {
-        audioListNB[0].muted = true;
+        audioObjects.inhaleLeft.muted = true;
         audioListNB[1].muted = true;
-        audioListNB[2].muted = true;
+        audioObjects.inhaleRight.muted = true;
         audioListNB[3].muted = true;
         audioNB.style.display = "none";
         muteNB.style.display = "block";
         ismuteNB = true;
     } else {
-        audioListNB[0].muted = false;
+        audioObjects.inhaleLeft.muted = false;
         audioListNB[1].muted = false;
-        audioListNB[2].muted = false;
+        audioObjects.inhaleRight.muted = false;
         audioListNB[3].muted = false;
         muteNB.style.display = "none";
         audioNB.style.display = "block";
@@ -364,8 +349,8 @@ function startTimerNB() {
     timerControlsButtonsNB.stopNB.style.color = "rgb(177, 177, 177)";
     if (timerNB.isBreak3NB) {
         if (!ismuteNB) {
-            audioListNB[0].muted = false;
-            audioListNB[0].play();
+            audioObjects.inhaleLeft.muted = false;
+            audioObjects.inhaleLeft.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -446,8 +431,8 @@ function onTimerTickNB() {
         timerNB.elapsedInIntervalNB++;
         if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak3NB) {
             if (!ismuteNB) {
-                audioListNB[2].muted = false;
-                audioListNB[2].play();
+                audioObjects.exhaleRight.muted = false;
+                audioObjects.exhaleRight.play();
             }
             timerNB.isBreakNB = true;
             timerNB.isBreak3NB = false;
@@ -469,8 +454,8 @@ function onTimerTickNB() {
         timerNB.elapsedInIntervalNB++;
         if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreakNB) {
             if (!ismuteNB) {
-                audioListNB[0].muted = false;
-                audioListNB[0].play();
+                audioObjects.inhaleRight.muted = false;
+                audioObjects.inhaleRight.play();
             }
             timerNB.isBreak2NB = true;
             timerNB.isBreakNB = false;
@@ -492,8 +477,8 @@ function onTimerTickNB() {
         timerNB.elapsedInIntervalNB++;
         if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak2NB) {
             if (!ismuteNB) {
-                audioListNB[2].muted = false;
-                audioListNB[2].play();
+                audioObjects.exhaleLeft.muted = false;
+                audioObjects.exhaleLeft.play();
             }
             timerNB.isBreak4NB = true;
             timerNB.isBreak2NB = false;
@@ -515,8 +500,8 @@ function onTimerTickNB() {
         timerNB.elapsedInIntervalNB++;
         if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak4NB) {
             if (!ismuteNB) {
-                audioListNB[0].muted = false;
-                audioListNB[0].play();
+                audioObjects.inhaleLeft.muted = false;
+                audioObjects.inhaleLeft.play();
             }
             timerNB.isBreak3NB = true;
             timerNB.isBreak4NB = false;

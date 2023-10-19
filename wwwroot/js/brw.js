@@ -84,19 +84,6 @@ let timerRefBRW = document.getElementById('timerDisplayBRW');
 let intBRW = null;
 document.getElementById('BRWSave').disabled = true;
 document.getElementById('BRWSave').style.color = 'rgb(177, 177, 177)';
-var audioListBRW = []
-if (isPortuguese) {
-    audioListBRW.push(new Audio('/sounds/breathein.mp3'));
-    audioListBRW.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListBRW.push(new Audio('/sounds/exhale.mp3'));
-    audioListBRW.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListBRW.push(new Audio('/sounds/breathein.mp3'));
-    audioListBRW.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListBRW.push(new Audio('/sounds/exhale.mp3'));
-    audioListBRW.push(new Audio('/sounds/hold.mp3'));
-}
-
 
 var audioBRW = document.getElementById("audioBRW"),
     muteBRW = document.getElementById("muteBRW"),
@@ -116,18 +103,16 @@ volumeVoiceBRW.addEventListener('input', function () {
 
     // Check if volumeVbre is 0 and mute the media if necessary
     if (volumeVbrw === 0) {
-        audioListBRW[0].muted = true;
-        audioListBRW[1].muted = true;
-        audioListBRW[2].muted = true;
-        audioListBRW[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.exhale.muted = true;
+        audioObjects.hold.muted = true;
         audioBRW.style.display = "none";
         muteBRW.style.display = "block";
         ismuteBRW = true;
     } else {
-        audioListBRW[0].muted = false;
-        audioListBRW[1].muted = false;
-        audioListBRW[2].muted = false;
-        audioListBRW[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.exhale.muted = false;
+        audioObjects.hold.muted = false;
         muteBRW.style.display = "none";
         audioBRW.style.display = "block";
         ismuteBRW = false;
@@ -392,8 +377,8 @@ function startTimerBRW() {
     timerControlsButtonsBRW.stopBRW.style.color = "rgb(177, 177, 177)";
     if (timerBRW.isBreak0BRW) {
         if (!ismuteBRW) {
-            audioListBRW[0].muted = false;
-            audioListBRW[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -477,8 +462,8 @@ function onTimerTickBRW() {
         timerBRW.elapsedInIntervalBRW++;
         if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak0BRW) {
             if (!ismuteBRW) {
-                audioListBRW[2].muted = false;
-                audioListBRW[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerBRW.isBreakBRW = true;
             timerBRW.isBreak0BRW = false;
@@ -500,8 +485,8 @@ function onTimerTickBRW() {
         timerBRW.elapsedInIntervalBRW++;
         if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreakBRW) {
             if (!ismuteBRW) {
-                audioListBRW[0].muted = false;
-                audioListBRW[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerBRW.isBreak2BRW = true;
             timerBRW.isBreakBRW = false;
@@ -523,8 +508,8 @@ function onTimerTickBRW() {
         timerBRW.elapsedInIntervalBRW++;
         if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak2BRW) {
             if (!ismuteBRW) {
-                audioListBRW[2].muted = false;
-                audioListBRW[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerBRW.isBreak3BRW = true;
             timerBRW.isBreak2BRW = false;
@@ -546,8 +531,8 @@ function onTimerTickBRW() {
         timerBRW.elapsedInIntervalBRW++;
         if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak3BRW) {
             if (!ismuteBRW) {
-                audioListBRW[3].muted = false;
-                audioListBRW[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerBRW.isBreak4BRW = true;
             timerBRW.isBreak3BRW = false;
@@ -570,8 +555,8 @@ function onTimerTickBRW() {
         timerBRW.elapsedInIntervalBRW++;
         if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak4BRW) {
             if (!ismuteBRW) {
-                audioListBRW[0].muted = false;
-                audioListBRW[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerBRW.isBreak0BRW = true;
             timerBRW.isBreak4BRW = false;

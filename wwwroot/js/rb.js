@@ -77,20 +77,6 @@ document.getElementById('stopBtnRB').style.color = 'rgb(177, 177, 177)';
 document.getElementById('RBSave').disabled = true;
 document.getElementById('RBSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListRB = []
-if (isPortuguese) {
-    audioListRB.push(new Audio('/sounds/breathein.mp3'))
-    audioListRB.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListRB.push(new Audio('/sounds/exhale.mp3'));
-    audioListRB.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListRB.push(new Audio('/sounds/breathein.mp3'))
-    audioListRB.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListRB.push(new Audio('/sounds/exhale.mp3'));
-    audioListRB.push(new Audio('/sounds/hold.mp3'));
-}
-
-
 var audioRB = document.getElementById("audioRB"),
     muteRB = document.getElementById("muteRB"),
     ismuteRB = false;
@@ -109,18 +95,16 @@ volumeVoiceRB.addEventListener('input', function () {
 
     // Check if volumeVRB is 0 and mute the media if necessary
     if (volumeVRB === 0) {
-        audioListRB[0].muted = true;
-        audioListRB[1].muted = true;
-        audioListRB[2].muted = true;
-        audioListRB[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.exhale.muted = true;
+        audioObjects.hold.muted = true;
         audioRB.style.display = "none";
         muteRB.style.display = "block";
         ismuteRB = true;
     } else {
-        audioListRB[0].muted = false;
-        audioListRB[1].muted = false;
-        audioListRB[2].muted = false;
-        audioListRB[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.exhale.muted = false;
+        audioObjects.hold.muted = false;
         muteRB.style.display = "none";
         audioRB.style.display = "block";
         ismuteRB = false;
@@ -330,8 +314,8 @@ function startTimerRB() {
     timerControlsButtonsRB.stopRB.style.color = "rgb(177, 177, 177)";
     if (timerRB.isBreak3RB) {
         if (!ismuteRB) {
-            audioListRB[0].muted = false;
-            audioListRB[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -412,8 +396,8 @@ function onTimerTickRB() {
         timerRB.elapsedInIntervalRB++;
         if (timerRB.elapsedInIntervalRB > currentIntervalDurationRB && timerRB.isBreak3RB) {
             if (!ismuteRB) {
-                audioListRB[3].muted = false;
-                audioListRB[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerRB.isBreakRB = true;
             timerRB.isBreak3RB = false;
@@ -435,8 +419,8 @@ function onTimerTickRB() {
         timerRB.elapsedInIntervalRB++;
         if (timerRB.elapsedInIntervalRB > currentIntervalDurationRB && timerRB.isBreakRB) {
             if (!ismuteRB) {
-                audioListRB[2].muted = false;
-                audioListRB[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerRB.isBreak2RB = true;
             timerRB.isBreakRB = false;
@@ -458,8 +442,8 @@ function onTimerTickRB() {
         timerRB.elapsedInIntervalRB++;
         if (timerRB.elapsedInIntervalRB > currentIntervalDurationRB && timerRB.isBreak2RB) {
             if (!ismuteRB) {
-                audioListRB[0].muted = false;
-                audioListRB[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerRB.isBreak3RB = true;
             timerRB.isBreak2RB = false;

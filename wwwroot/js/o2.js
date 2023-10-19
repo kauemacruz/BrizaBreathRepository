@@ -150,20 +150,6 @@ document.getElementById('stopBtnO2').style.color = 'rgb(177, 177, 177)';
 document.getElementById('O2Save').disabled = true;
 document.getElementById('O2Save').style.color = 'rgb(177, 177, 177)';
 
-var audioListO2 = []
-if (isPortuguese) {
-    audioListO2.push(new Audio('../sounds/deepbreaths.mp3'));
-    audioListO2.push(new Audio('../sounds/deepbreaths2.mp3'));
-    audioListO2.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListO2.push(new Audio('../sounds/holdyourbreath.mp3'));
-} else {
-    audioListO2.push(new Audio('../sounds/deepbreaths.mp3'));
-    audioListO2.push(new Audio('../sounds/deepbreaths2.mp3'));
-    audioListO2.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListO2.push(new Audio('../sounds/holdyourbreath.mp3'));
-}
-
-
 var audioO2 = document.getElementById("audioO2"),
     muteO2 = document.getElementById("muteO2"),
     ismuteO2 = false;
@@ -920,8 +906,8 @@ function initializeTimerSettingsFormO2() {
     timerControlsButtonsO2.stopO2.style.color = "rgb(177, 177, 177)";
     if(timerO2.isBreak0O2){
         if (!ismuteO2) {
-            audioListO2[0].muted = false;
-            audioListO2[0].play();
+            audioObjects.breathedeeply.muted = false;
+            audioObjects.breathedeeply.play();
         }
     }
       if (!audioPlayerBRT.muted) {
@@ -1018,8 +1004,8 @@ function initializeTimerSettingsFormO2() {
       timerO2.elapsedInIntervalO2++;
       if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak0O2){
           if (!ismuteO2) {
-            audioListO2[3].muted = false;
-            audioListO2[3].play();
+            audioObjects.hold.muted = false;
+            audioObjects.hold.play();
         }
         timerO2.isBreakO2 = true;  
         timerO2.isBreak0O2 = false;
@@ -1041,8 +1027,8 @@ function initializeTimerSettingsFormO2() {
       timerO2.elapsedInIntervalO2++;
       if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreakO2){
           if (!ismuteO2) {
-              audioListO2[0].muted = false;
-              audioListO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
         }
         document.getElementsByClassName('gap1O2')[0].style.backgroundColor = '#ffffff';
         document.getElementsByClassName('gap1O2')[1].style.backgroundColor = '#ffffff';
@@ -1075,8 +1061,8 @@ function initializeTimerSettingsFormO2() {
       timerO2.elapsedInIntervalO2++;
       if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak2O2){
           if (!ismuteO2) {
-            audioListO2[3].muted = false;
-            audioListO2[3].play();
+            audioObjects.hold.muted = false;
+            audioObjects.hold.play();
         }
         timerO2.isBreak3O2 = true;
         timerO2.isBreak2O2 = false;
@@ -1098,8 +1084,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak3O2){
           if(!ismuteO2){
-              audioListO2[0].muted = false;
-              audioListO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap2O2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap2O2')[1].style.backgroundColor = '#ffffff';
@@ -1132,8 +1118,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak4O2){
             if (!ismuteO2) {
-                audioListO2[3].muted = false;
-                audioListO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerO2.isBreak5O2 = true;
           timerO2.isBreak4O2 = false;
@@ -1155,8 +1141,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak5O2){
           if(!ismuteO2){
-              audioListO2[0].muted = false;
-              audioListO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap3O2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap3O2')[1].style.backgroundColor = '#ffffff';
@@ -1189,8 +1175,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak6O2){
             if (!ismuteO2) {
-                audioListO2[3].muted = false;
-                audioListO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerO2.isBreak7O2 = true;
           timerO2.isBreak6O2 = false;
@@ -1212,8 +1198,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak7O2){
           if(!ismuteO2){
-              audioListO2[0].muted = false;
-              audioListO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap4O2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap4O2')[1].style.backgroundColor = '#ffffff';
@@ -1246,8 +1232,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak8O2){
             if (!ismuteO2) {
-                audioListO2[3].muted = false;
-                audioListO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerO2.isBreak9O2 = true;
           timerO2.isBreak8O2 = false;
@@ -1269,8 +1255,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak9O2){
           if(!ismuteO2){
-              audioListO2[0].muted = false;
-              audioListO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap5O2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap5O2')[1].style.backgroundColor = '#ffffff';
@@ -1303,8 +1289,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak10O2){
             if (!ismuteO2) {
-                audioListO2[3].muted = false;
-                audioListO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerO2.isBreak11O2 = true;
           timerO2.isBreak10O2 = false;
@@ -1326,8 +1312,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak11O2){
           if(!ismuteO2){
-              audioListO2[0].muted = false;
-              audioListO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap6O2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap6O2')[1].style.backgroundColor = '#ffffff';
@@ -1360,8 +1346,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak12O2){
             if (!ismuteO2) {
-                audioListO2[3].muted = false;
-                audioListO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerO2.isBreak13O2 = true;
           timerO2.isBreak12O2 = false;
@@ -1383,8 +1369,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak13O2){
           if(!ismuteO2){
-              audioListO2[0].muted = false;
-              audioListO2[0].play();
+              audioObjects.breathedeeply.muted = false;
+              audioObjects.breathedeeply.play();
           }
           document.getElementsByClassName('gap7O2')[0].style.backgroundColor = '#ffffff';
           document.getElementsByClassName('gap7O2')[1].style.backgroundColor = '#ffffff';
@@ -1417,8 +1403,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak14O2){
             if (!ismuteO2) {
-                audioListO2[3].muted = false;
-                audioListO2[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
           }
           timerO2.isBreak15O2 = true;
           timerO2.isBreak14O2 = false;
@@ -1456,8 +1442,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2 = 1;
         pauseTimerO2();
           if (!ismuteO2) {
-              audioListO2[2].muted = false;
-              audioListO2[2].play();
+              audioObjects.normalbreath.muted = false;
+              audioObjects.normalbreath.play();
         }
         setTimerControlsDisabledStateO2(true, false, false);
         timerControlsButtonsO2.start.style.color = "rgb(177, 177, 177)";

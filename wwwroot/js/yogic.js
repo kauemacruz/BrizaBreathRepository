@@ -82,19 +82,6 @@ document.getElementById('stopBtnYogic').style.color = 'rgb(177, 177, 177)';
 document.getElementById('yogicSave').disabled = true;
 document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListYogic = []
-if (isPortuguese) {
-    audioListYogic.push(new Audio('/sounds/breathein.mp3'))
-    audioListYogic.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListYogic.push(new Audio('/sounds/exhale.mp3'));
-    audioListYogic.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListYogic.push(new Audio('/sounds/breathein.mp3'))
-    audioListYogic.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListYogic.push(new Audio('/sounds/exhale.mp3'));
-    audioListYogic.push(new Audio('/sounds/hold.mp3'));
-}
-
 var audioYogic = document.getElementById("audioYogic"),
     muteYogic = document.getElementById("muteYogic"),
     ismuteYogic = false;
@@ -113,18 +100,16 @@ volumeVoiceYogic.addEventListener('input', function () {
 
     // Check if volumeVyogic is 0 and mute the media if necessary
     if (volumeVyogic === 0) {
-        audioListYogic[0].muted = true;
-        audioListYogic[1].muted = true;
-        audioListYogic[2].muted = true;
-        audioListYogic[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.exhale.muted = true;
+        audioObjects.hold.muted = true;
         audioYogic.style.display = "none";
         muteYogic.style.display = "block";
         ismuteYogic = true;
     } else {
-        audioListYogic[0].muted = false;
-        audioListYogic[1].muted = false;
-        audioListYogic[2].muted = false;
-        audioListYogic[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.exhale.muted = false;
+        audioObjects.hold.muted = false;
         muteYogic.style.display = "none";
         audioYogic.style.display = "block";
         ismuteYogic = false;
@@ -362,8 +347,8 @@ function startTimerYogic() {
     timerControlsButtonsYogic.stopYogic.style.color = "rgb(177, 177, 177)";
     if (timerYogic.isBreak3Yogic) {
         if (!ismuteYogic) {
-            audioListYogic[0].muted = false;
-            audioListYogic[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -444,8 +429,8 @@ function onTimerTickYogic() {
         timerYogic.elapsedInIntervalYogic++;
         if (timerYogic.elapsedInIntervalYogic > currentIntervalDurationYogic && timerYogic.isBreak3Yogic) {
             if (!ismuteYogic) {
-                audioListYogic[3].muted = false;
-                audioListYogic[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerYogic.isBreakYogic = true;
             timerYogic.isBreak3Yogic = false;
@@ -467,8 +452,8 @@ function onTimerTickYogic() {
         timerYogic.elapsedInIntervalYogic++;
         if (timerYogic.elapsedInIntervalYogic > currentIntervalDurationYogic && timerYogic.isBreakYogic) {
             if (!ismuteYogic) {
-                audioListYogic[2].muted = false;
-                audioListYogic[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerYogic.isBreak2Yogic = true;
             timerYogic.isBreakYogic = false;
@@ -490,8 +475,8 @@ function onTimerTickYogic() {
         timerYogic.elapsedInIntervalYogic++;
         if (timerYogic.elapsedInIntervalYogic > currentIntervalDurationYogic && timerYogic.isBreak2Yogic) {
             if (!ismuteYogic) {
-                audioListYogic[3].muted = false;
-                audioListYogic[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerYogic.isBreak4Yogic = true;
             timerYogic.isBreak2Yogic = false;
@@ -513,8 +498,8 @@ function onTimerTickYogic() {
         timerYogic.elapsedInIntervalYogic++;
         if (timerYogic.elapsedInIntervalYogic > currentIntervalDurationYogic && timerYogic.isBreak4Yogic) {
             if (!ismuteYogic) {
-                audioListYogic[0].muted = false;
-                audioListYogic[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerYogic.isBreak3Yogic = true;
             timerYogic.isBreak4Yogic = false;

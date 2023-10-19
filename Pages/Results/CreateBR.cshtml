@@ -68,7 +68,7 @@
     </header>
     <div id="homepagegrid">
         <div class="BRTtile">
-            <a id="brtLink"><img class="BRTtile__img" src="/images/BRT.png" /></a>
+            <a id="brtLink"><img class="BRTtile__img" src="/images/brt-pt.png" /></a>
         </div>
         <div class="row g-2">
             <div class="col"><a id="programLink"><img class="homepageimgs" src="/images/brizaprogram.png" /></a></div>
@@ -869,19 +869,15 @@
             <h2>Contato</h2>
             <div class="contactProfile">
                 <p>Email</p>
-                <a>brizabreath@gmail.com</a>
+                <a href="mailto:brizabreath@gmail.com">brizabreath@gmail.com</a>
             </div>
             <div class="contactProfile">
                 <p>Website</p>
-                <a>brizabreath.com</a>
+                <a href="https://www.brizabreath.com/" target="_blank">brizabreath.com</a>
             </div>
             <div class="contactProfile">
-                <p>Instagram (english)</p>
-                <a>brizabreath</a>
-            </div>
-            <div class="contactProfile">
-                <p>Instagram (portugues)</p>
-                <a>brizabreath</a>
+                <p>Instagram</p>
+                <a href="https://www.instagram.com/brizabreath.br/" target="_blank">brizabreath.br</a>
             </div>
         </div>
         <hr />
@@ -1105,25 +1101,7 @@
             <input type="range" id="volumeBarBRT" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Escolher uma música</h4>
-        <div class="song-container">
-            <select id="song-selectBRT" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Meditação Céu de Outono</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Frequência do Sono</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Infinito</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Apenas Relaxe</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Estudo Lofi</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Sons da Meditação</option>
-                <option value="/sounds/songs/moment-14023.mp3">Momento</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Jardim Pacífico</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Acalme Minha Mente</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Luz Refletida</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxante</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">Berce do Sua Alma</option>
-            </select>
     </div>
-    <audio id="audio-playerBRT"></audio>
-</div>
 </div>
 <div id="brtPage" class="hidden">
     <header>
@@ -1418,24 +1396,6 @@
             <input type="range" id="volumeSongBRE" min="0" max="1" step="1" value="1">
         </div>
         <hr />
-        <h4 class="volumeSettings">Escolher uma música</h4>
-        <div class="song-container">
-            <select id="song-selectBRE" class="song-select">
-                <option value="/sounds/songs/autumn-sky-meditation-7618.mp3" selected>Céu de Outono para Meditação</option>
-                <option value="/sounds/songs/frequency-of-sleep-meditation-113050.mp3">Frequência do Sono</option>
-                <option value="/sounds/songs/endless-by-prabajithk-118998.mp3">Infinito</option>
-                <option value="/sounds/songs/just-relax-11157.mp3">Apenas Relaxar</option>
-                <option value="/sounds/songs/lofi-study-112191.mp3">Estudo Lofi</option>
-                <option value="/sounds/songs/meditation-sounds-122698.mp3">Sons de Meditação</option>
-                <option value="/sounds/songs/moment-14023.mp3">Momento</option>
-                <option value="/sounds/songs/peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3">Jardim Pacífico</option>
-                <option value="/sounds/songs/please-calm-my-mind-125566.mp3">Por Favor, Acalme Minha Mente</option>
-                <option value="/sounds/songs/reflected-light-147979.mp3">Luz Refletida</option>
-                <option value="/sounds/songs/relaxing-145038.mp3">Relaxante</option>
-                <option value="/sounds/songs/the-cradle-of-your-soul-15700.mp3">O Berço da Sua Alma</option>
-            </select>
-        </div>
-        <audio id="audio-playerBRE"></audio>
     </div>
 </div>
 <div id="BREPage" class="hidden">
@@ -2534,6 +2494,9 @@
         <div class="row g-2">
             <div class="col"><a id="MEDLink"><img class="homepageimgs" src="~/images/meditation.png" /></a></div>
             <div class="col"><a id="SLEEPLink"><img class="homepageimgs" src="~/images/sleep.png" /></a></div>
+            <div class="w-100"></div>
+            <div class="col"><a id="ICELink"><img class="homepageimgs" src="~/images/diet.png" /></a></div>
+            <div class="col"><a id="EXERCISINGLink"><img class="homepageimgs" src="~/images/sex.png" /></a></div>
             <div class="w-100"></div>
             <div class="col"><a id="HYDLink"><img class="homepageimgs" src="~/images/hydration.png" /></a></div>
             <div class="col"><a id="SHOTLink"><img class="homepageimgs" src="~/images/shot.png" /></a></div>
@@ -4426,8 +4389,47 @@
         <ul>Incorporar alho em sua dieta: O alho mostrou melhorar o fluxo sanguíneo ao aumentar a produção de óxido nítrico, um composto que ajuda a dilatar os vasos sanguíneos.</ul>
         <ul>Beber chá verde: O chá verde contém compostos chamados catequinas, que podem ajudar a melhorar o fluxo sanguíneo ao promover a produção de óxido nítrico.</ul>
         <ul>Reduzir o consumo de gorduras saturadas e gorduras trans: Dietas ricas em gorduras saturadas e gorduras trans podem contribuir para o acúmulo de placas nas artérias, o que pode reduzir o fluxo sanguíneo e aumentar o risco de doenças cardíacas.</ul>
-        <ul>Avoid excesso de ingestão de sal: Consumir muito sal pode levar à hipertensão, o que pode danificar os vasos sanguíneos e reduzir o fluxo sanguíneo.</ul>
+        <ul>Evite excesso de ingestão de sal: Consumir muito sal pode levar à hipertensão, o que pode danificar os vasos sanguíneos e reduzir o fluxo sanguíneo.</ul>
     </div>
+</div>
+<div id="ICEPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backICE">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Banheira de Gelo/Duchas Frias</h1>
+        <video controls poster="/images/diet.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Banheira de gelo e duchas frias ganharam popularidade entre atletas e entusiastas do bem-estar por seus potenciais benefícios na melhoria do desempenho e saúde geral. Veja como eles podem ajudar na oxigenação do sangue e aprimorar o desempenho:</p>
+        <ul>Aumento da Circulação: A imersão em água fria pode fazer com que os vasos sanguíneos se contraiam e depois dilatem ao sair, potencialmente aprimorando a circulação e distribuição de oxigênio para órgãos vitais e músculos.</ul>
+        <ul>Redução da Inflamação: A exposição ao frio pode reduzir a inflamação e a dor muscular após o exercício, permitindo uma recuperação mais eficiente aos atletas.</ul>
+        <ul>Fortalecimento Mental: Expor-se regularmente ao desconforto da água fria pode aprimorar a resiliência mental, ajudando no desempenho em situações estressantes ou desafiadoras.</ul>
+        <ul>Melhora do Movimento Linfático: Duchas frias podem estimular o sistema linfático, ajudando na remoção de resíduos das células e potencialmente impulsionando o sistema imunológico.</ul>
+        <ul>Utilização de Oxigênio: O corpo pode se adaptar ao longo do tempo para usar oxigênio de maneira mais eficiente durante a exposição ao frio, beneficiando potencialmente o desempenho aeróbico.</ul>
+        <ul>Liberar de Endorfinas: A exposição ao frio pode desencadear a liberação de endorfinas, os analgésicos naturais do corpo, promovendo uma sensação de bem-estar e potencialmente auxiliando na recuperação.</ul>
+        <ul>Ativação Termogênica: Duchas frias e banhos gelados podem ativar o tecido adiposo marrom (BAT), o que pode aumentar a queima de calorias e potencialmente auxiliar no controle de peso.</ul>
+     </div>
+</div>
+<div id="EXERCISINGPage" class="hidden">
+    <header>
+        <div class="goback"><a id="backEXERCISING">&#8249;</a></div>
+        <img class="logoimg" src="/images/B_DEGRAD.png" width="50" height="50" />
+    </header>
+    <div class="breathingpages">
+        <h1>Respirando corretamente durante exercícios</h1>
+        <video controls poster="/images/diet.png" playsinline>
+            <source src="/videos/movie.mp4" type="video/mp4">
+        </video>
+        <p>Respirar corretamente durante exercícios desempenha um papel fundamental no desempenho atlético e na saúde geral. Veja por que isso é tão essencial:</p>
+        <ul>Fornecimento Aprimorado de Oxigênio: Respirar corretamente garante que seus músculos recebam a quantidade ideal de oxigênio, necessária para atividade prolongada e resistência.</ul>
+        <ul>Metabolismo mais Eficiente: Padrões respiratórios eficientes podem aprimorar reações metabólicas, auxiliando na produção de energia e remoção de resíduos.</ul>
+        <ul>Concentração Aumentada: Coordenar a respiração com os movimentos pode aprimorar a concentração e intensificar a conexão mente-corpo.</ul>
+        <ul>Estabilização do Core: A respiração envolve os músculos centrais, apoiando uma melhor postura e alinhamento durante os treinos.</ul>
+        <ul>Prevenção da Fadiga: Uma respiração ineficiente pode levar à fadiga muscular prematura e ao acúmulo de ácido lático.</ul>
+        <ul>Função Cardiovascular Ótima: Uma respiração adequada apoia a função cardíaca, ajudando a distribuir o sangue rico em oxigênio pelo corpo de forma mais eficiente.</ul>
+     </div>
 </div>
 <div id="SEXSettingsPage" class="hidden">
     <header>

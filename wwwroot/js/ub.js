@@ -82,19 +82,6 @@ document.getElementById('stopBtnUB').style.color = 'rgb(177, 177, 177)';
 document.getElementById('UBSave').disabled = true;
 document.getElementById('UBSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListUB = []
-if (isPortuguese) {
-    audioListUB.push(new Audio('/sounds/breathein.mp3'))
-    audioListUB.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListUB.push(new Audio('/sounds/exhale.mp3'));
-    audioListUB.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListUB.push(new Audio('/sounds/breathein.mp3'))
-    audioListUB.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListUB.push(new Audio('/sounds/exhale.mp3'));
-    audioListUB.push(new Audio('/sounds/hold.mp3'));
-}
-
 var audioUB = document.getElementById("audioUB"),
     muteUB = document.getElementById("muteUB"),
     ismuteUB = false;
@@ -113,18 +100,16 @@ volumeVoiceUB.addEventListener('input', function () {
 
     // Check if volumeVUB is 0 and mute the media if necessary
     if (volumeVUB === 0) {
-        audioListUB[0].muted = true;
-        audioListUB[1].muted = true;
-        audioListUB[2].muted = true;
-        audioListUB[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.exhale.muted = true;
+        audioObjects.hold.muted = true;
         audioUB.style.display = "none";
         muteUB.style.display = "block";
         ismuteUB = true;
     } else {
-        audioListUB[0].muted = false;
-        audioListUB[1].muted = false;
-        audioListUB[2].muted = false;
-        audioListUB[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.exhale.muted = false;
+        audioObjects.hold.muted = false;
         muteUB.style.display = "none";
         audioUB.style.display = "block";
         ismuteUB = false;
@@ -362,8 +347,8 @@ function startTimerUB() {
     timerControlsButtonsUB.stopUB.style.color = "rgb(177, 177, 177)";
     if (timerUB.isBreak3UB) {
         if (!ismuteUB) {
-            audioListUB[0].muted = false;
-            audioListUB[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -444,8 +429,8 @@ function onTimerTickUB() {
         timerUB.elapsedInIntervalUB++;
         if (timerUB.elapsedInIntervalUB > currentIntervalDurationUB && timerUB.isBreak3UB) {
             if (!ismuteUB) {
-                audioListUB[3].muted = false;
-                audioListUB[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerUB.isBreakUB = true;
             timerUB.isBreak3UB = false;
@@ -467,8 +452,8 @@ function onTimerTickUB() {
         timerUB.elapsedInIntervalUB++;
         if (timerUB.elapsedInIntervalUB > currentIntervalDurationUB && timerUB.isBreakUB) {
             if (!ismuteUB) {
-                audioListUB[2].muted = false;
-                audioListUB[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerUB.isBreak2UB = true;
             timerUB.isBreakUB = false;
@@ -490,8 +475,8 @@ function onTimerTickUB() {
         timerUB.elapsedInIntervalUB++;
         if (timerUB.elapsedInIntervalUB > currentIntervalDurationUB && timerUB.isBreak2UB) {
             if (!ismuteUB) {
-                audioListUB[3].muted = false;
-                audioListUB[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerUB.isBreak4UB = true;
             timerUB.isBreak2UB = false;
@@ -513,8 +498,8 @@ function onTimerTickUB() {
         timerUB.elapsedInIntervalUB++;
         if (timerUB.elapsedInIntervalUB > currentIntervalDurationUB && timerUB.isBreak4UB) {
             if (!ismuteUB) {
-                audioListUB[0].muted = false;
-                audioListUB[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerUB.isBreak3UB = true;
             timerUB.isBreak4UB = false;

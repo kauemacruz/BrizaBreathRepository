@@ -80,19 +80,6 @@ let timerRefHUM = document.getElementById('timerDisplayHUM');
 let intHUM = null;
 document.getElementById('HUMSave').disabled = true;
 document.getElementById('HUMSave').style.color = 'rgb(177, 177, 177)';
-var audioListHUM = []
-if (isPortuguese) {
-    audioListHUM.push(new Audio('/sounds/breathein.mp3'));
-    audioListHUM.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListHUM.push(new Audio('/sounds/humming.mp3'));
-    audioListHUM.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListHUM.push(new Audio('/sounds/breathein.mp3'));
-    audioListHUM.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListHUM.push(new Audio('/sounds/humming.mp3'));
-    audioListHUM.push(new Audio('/sounds/hold.mp3'));
-}
-
 
 var audioHUM = document.getElementById("audioHUM"),
     muteHUM = document.getElementById("muteHUM"),
@@ -112,18 +99,16 @@ volumeVoiceHUM.addEventListener('input', function () {
 
     // Check if volumeVbre is 0 and mute the media if necessary
     if (volumeVhum === 0) {
-        audioListHUM[0].muted = true;
-        audioListHUM[1].muted = true;
-        audioListHUM[2].muted = true;
-        audioListHUM[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.hum.muted = true;
+        audioObjects.hold.muted = true;
         audioHUM.style.display = "none";
         muteHUM.style.display = "block";
         ismuteHUM = true;
     } else {
-        audioListHUM[0].muted = false;
-        audioListHUM[1].muted = false;
-        audioListHUM[2].muted = false;
-        audioListHUM[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.hum.muted = false;
+        audioObjects.hold.muted = false;
         muteHUM.style.display = "none";
         audioHUM.style.display = "block";
         ismuteHUM = false;
@@ -360,8 +345,8 @@ function startTimerHUM() {
     timerControlsButtonsHUM.stopHUM.style.color = "rgb(177, 177, 177)";
     if (timerHUM.isBreak3HUM) {
         if (!ismuteHUM) {
-            audioListHUM[0].muted = false;
-            audioListHUM[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -448,8 +433,8 @@ function onTimerTickHUM() {
         timerHUM.elapsedInIntervalHUM++;
         if (timerHUM.elapsedInIntervalHUM > currentIntervalDurationHUM && timerHUM.isBreak3HUM) {
             if (!ismuteHUM) {
-                audioListHUM[3].muted = false;
-                audioListHUM[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerHUM.isBreakHUM = true;
             timerHUM.isBreak3HUM = false;
@@ -471,8 +456,8 @@ function onTimerTickHUM() {
         timerHUM.elapsedInIntervalHUM++;
         if (timerHUM.elapsedInIntervalHUM > currentIntervalDurationHUM && timerHUM.isBreakHUM) {
             if (!ismuteHUM) {
-                audioListHUM[2].muted = false;
-                audioListHUM[2].play();
+                audioObjects.hum.muted = false;
+                audioObjects.hum.play();
             }
             timerHUM.isBreak2HUM = true;
             timerHUM.isBreakHUM = false;
@@ -494,8 +479,8 @@ function onTimerTickHUM() {
         timerHUM.elapsedInIntervalHUM++;
         if (timerHUM.elapsedInIntervalHUM > currentIntervalDurationHUM && timerHUM.isBreak2HUM) {
             if (!ismuteHUM) {
-                audioListHUM[3].muted = false;
-                audioListHUM[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerHUM.isBreak4HUM = true;
             timerHUM.isBreak2HUM = false;
@@ -517,8 +502,8 @@ function onTimerTickHUM() {
         timerHUM.elapsedInIntervalHUM++;
         if (timerHUM.elapsedInIntervalHUM > currentIntervalDurationHUM && timerHUM.isBreak4HUM) {
             if (!ismuteHUM) {
-                audioListHUM[0].muted = false;
-                audioListHUM[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerHUM.isBreak3HUM = true;
             timerHUM.isBreak4HUM = false;

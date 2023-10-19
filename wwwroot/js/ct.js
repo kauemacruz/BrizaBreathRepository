@@ -81,21 +81,6 @@ document.getElementById('stopBtnCT').style.color = 'rgb(177, 177, 177)';
 document.getElementById('CTSave').disabled = true;
 document.getElementById('CTSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListCT = []
-if (isPortuguese) {
-    audioListCT.push(new Audio('/sounds/breathein.mp3'))
-    audioListCT.push(new Audio('/sounds/recover.mp3'));
-    audioListCT.push(new Audio('/sounds/exhale.mp3'));
-    audioListCT.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListCT.push(new Audio('/sounds/breathein.mp3'))
-    audioListCT.push(new Audio('/sounds/recover.mp3'));
-    audioListCT.push(new Audio('/sounds/exhale.mp3'));
-    audioListCT.push(new Audio('/sounds/hold.mp3'));
-}
-
-
-
 var audioCT = document.getElementById("audioCT"),
     muteCT = document.getElementById("muteCT"),
     ismuteCT = false;
@@ -115,18 +100,18 @@ volumeVoiceCT.addEventListener('input', function () {
 
     // Check if volumeVCT is 0 and mute the media if necessary
     if (volumeVCT === 0) {
-        audioListCT[0].muted = true;
-        audioListCT[1].muted = true;
-        audioListCT[2].muted = true;
-        audioListCT[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.recover.muted = true;
+        audioObjects.exhale.muted = true;
+        audioObjects.hold.muted = true;
         audioCT.style.display = "none";
         muteCT.style.display = "block";
         ismuteCT = true;
     } else {
-        audioListCT[0].muted = false;
-        audioListCT[1].muted = false;
-        audioListCT[2].muted = false;
-        audioListCT[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.recover.muted = false;
+        audioObjects.exhale.muted = false;
+        audioObjects.hold.muted = false;
         muteCT.style.display = "none";
         audioCT.style.display = "block";
         ismuteCT = false;
@@ -334,8 +319,8 @@ function startTimerCT() {
     timerControlsButtonsCT.stopCT.style.color = '#990000';
     if (timerCT.isBreak3CT) {
         if (!ismuteCT) {
-            audioListCT[0].muted = false;
-            audioListCT[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -356,8 +341,8 @@ function startTimerCT() {
 function pauseTimerCT() {
     stopTimerTickCT();
     if (!ismuteCT) {
-        audioListCT[1].muted = false;
-        audioListCT[1].play();
+        audioObjects.recover.muted = false;
+        audioObjects.recover.play();
     }
     timerCT.elapsedInIntervalCT = 0;
     timerCT.isBreak3CT = true;
@@ -376,8 +361,8 @@ function pauseTimerCT() {
 function recoverCT() {
     startTimerTickCT();
     if (!ismuteCT) {
-        audioListCT[0].muted = false;
-        audioListCT[0].play();
+        audioObjects.inhale.muted = false;
+        audioObjects.inhale.play();
     }
 }
 function stopTimerCT() {
@@ -444,8 +429,8 @@ function onTimerTickCT() {
         timerCT.elapsedInIntervalCT++;
         if (timerCT.elapsedInIntervalCT > currentIntervalDurationCT && timerCT.isBreak3CT) {
             if (!ismuteCT) {
-                audioListCT[2].muted = false;
-                audioListCT[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerCT.isBreakCT = true;
             timerCT.isBreak3CT = false;
@@ -467,8 +452,8 @@ function onTimerTickCT() {
         timerCT.elapsedInIntervalCT++;
         if (timerCT.elapsedInIntervalCT > currentIntervalDurationCT && timerCT.isBreakCT) {
             if (!ismuteCT) {
-                audioListCT[3].muted = false;
-                audioListCT[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerCT.isBreak2CT = true;
             timerCT.isBreakCT = false;
@@ -490,8 +475,8 @@ function onTimerTickCT() {
         timerCT.elapsedInIntervalCT++;
         if (timerCT.elapsedInIntervalCT > currentIntervalDurationCT && timerCT.isBreak2CT) {
             if (!ismuteCT) {
-                audioListCT[0].muted = false;
-                audioListCT[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerCT.isBreak3CT = true;
             timerCT.isBreak2CT = false;

@@ -87,20 +87,6 @@ document.getElementById('stopBtnHATC').style.color = 'rgb(177, 177, 177)';
 document.getElementById('hatcSave').disabled = true;
 document.getElementById('hatcSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListHATC = []
-if (isPortuguese) {
-    audioListHATC.push(new Audio('../sounds/pinchnose.mp3'));
-    audioListHATC.push(new Audio('../sounds/lightbreath.mp3'));
-    audioListHATC.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListHATC.push(new Audio('../sounds/hold.mp3'));
-} else {
-    audioListHATC.push(new Audio('../sounds/pinchnose.mp3'));
-    audioListHATC.push(new Audio('../sounds/lightbreath.mp3'));
-    audioListHATC.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListHATC.push(new Audio('../sounds/hold.mp3'));
-}
-
-
 var audioHATC = document.getElementById("audioHATC"),
     muteHATC = document.getElementById("muteHATC"),
     ismuteHATC = false;
@@ -119,18 +105,14 @@ volumeVoiceHATC.addEventListener('input', function () {
 
     // Check if volumeVhatc is 0 and mute the media if necessary
     if (volumeVhatc === 0) {
-        audioListHATC[0].muted = true;
-        audioListHATC[1].muted = true;
-        audioListHATC[2].muted = true;
-        audioListHATC[3].muted = true;
+        audioObjects.pinchRun.muted = true;
+        audioObjects.normalbreath.muted = true;
         audioHATC.style.display = "none";
         muteHATC.style.display = "block";
         ismuteHATC = true;
     } else {
-        audioListHATC[0].muted = false;
-        audioListHATC[1].muted = false;
-        audioListHATC[2].muted = false;
-        audioListHATC[3].muted = false;
+        audioObjects.pinchRun.muted = false;
+        audioObjects.normalbreath.muted = false;
         muteHATC.style.display = "none";
         audioHATC.style.display = "block";
         ismuteHATC = false;
@@ -325,8 +307,8 @@ function startTimerHATC() {
     intHATC = setInterval(displayTimerHATC, 1000);
     if (timerHATC.isBreak0HATC) {
         if (!ismuteHATC) {
-            audioListHATC[0].muted = false;
-            audioListHATC[0].play();
+            audioObjects.pinchRun.muted = false;
+            audioObjects.pinchRun.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -439,8 +421,8 @@ function onTimerTickHATC() {
         }
         if (nextroundHATC) {
             if (!ismuteHATC) {
-                audioListHATC[2].muted = false;
-                audioListHATC[2].play();
+                audioObjects.normalbreath.muted = false;
+                audioObjects.normalbreath.play();
             }
             timerControlsButtonsHATC.pauseHATC.disabled = true;
             timerHATC.isBreak2HATC = true;
@@ -464,8 +446,8 @@ function onTimerTickHATC() {
         timerHATC.elapsedInIntervalHATC++;
         if (timerHATC.elapsedInIntervalHATC > currentIntervalDurationHATC && timerHATC.isBreak2HATC) {
             if (!ismuteHATC) {
-                audioListHATC[0].muted = false;
-                audioListHATC[0].play();
+                audioObjects.pinchRun.muted = false;
+                audioObjects.pinchRun.play();
             }
             timerHATC.isBreak0HATC = true;
             timerHATC.isBreak2HATC = false;

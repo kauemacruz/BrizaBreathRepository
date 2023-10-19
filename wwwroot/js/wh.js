@@ -18,9 +18,9 @@ function animateWH() {
         iWH = 80;
         if (yWH > 1) {
             if (!BismuteWH) {
-                audioListWH[6].muted = false;
-                audioListWH[6].loop = false;
-                audioListWH[6].play();
+                audioObjects.fullyout.muted = false;
+                audioObjects.fullyout.loop = false;
+                audioObjects.fullyout.play();
             }
         }
     }
@@ -57,14 +57,14 @@ function animateWH() {
         ctxWH.fillText(yWH, 150, 165);
         if (yWH > 1) {
             if (!BismuteWH) {
-                audioListWH[5].muted = false;
-                audioListWH[5].loop = false;
-                audioListWH[5].play();
+                audioObjects.fullyin.muted = false;
+                audioObjects.fullyin.loop = false;
+                audioObjects.fullyin.play();
             }
         } else {
             if (!ismuteWH) {
-                audioListWH[2].muted = false;
-                audioListWH[2].play();
+                audioObjects.letgoandhold.muted = false;
+                audioObjects.letgoandhold.play();
             }
         }
     }
@@ -186,27 +186,6 @@ document.getElementById('stopBtnWH').style.color = 'rgb(177, 177, 177)';
 document.getElementById('WHSave').disabled = true;
 document.getElementById('WHSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListWH = []
-if (isPortuguese) {
-    audioListWH.push(new Audio('../sounds/breathein.mp3'));
-    audioListWH.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListWH.push(new Audio('../sounds/letgoandhold.mp3'));
-    audioListWH.push(new Audio('../sounds/hold.mp3'));
-    audioListWH.push(new Audio('../sounds/chill.mp3'));
-    audioListWH.push(new Audio('../sounds/fullyin.mp3'));
-    audioListWH.push(new Audio('../sounds/fullyout.mp3'));
-    audioListWH.push(new Audio('../sounds/letGo.mp3'));
-} else {
-    audioListWH.push(new Audio('../sounds/breathein.mp3'));
-    audioListWH.push(new Audio('../sounds/normalbreath.mp3'));
-    audioListWH.push(new Audio('../sounds/letgoandhold.mp3'));
-    audioListWH.push(new Audio('../sounds/hold.mp3'));
-    audioListWH.push(new Audio('../sounds/chill.mp3'));
-    audioListWH.push(new Audio('../sounds/fullyin.mp3'));
-    audioListWH.push(new Audio('../sounds/fullyout.mp3'));
-    audioListWH.push(new Audio('../sounds/letGo.mp3'));
-}
-
 var audioWH = document.getElementById("audioWH"),
     muteWH = document.getElementById("muteWH"),
     ismuteWH = false;
@@ -229,20 +208,16 @@ volumeVoiceWH.addEventListener('input', function () {
 
     // Check if volumeVWH is 0 and mute the media if necessary
     if (volumeVWH === 0) {
-        audioListWH[0].muted = true;
-        audioListWH[1].muted = true;
-        audioListWH[2].muted = true;
-        audioListWH[3].muted = true;
-        audioListWH[4].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.normalbreath.muted = true;
+        audioObjects.letgoandhold.muted = true;
         audioWH.style.display = "none";
         muteWH.style.display = "block";
         ismuteWH = true;
     } else {
-        audioListWH[0].muted = false;
-        audioListWH[1].muted = false;
-        audioListWH[2].muted = false;
-        audioListWH[3].muted = false;
-        audioListWH[4].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.normalbreath.muted = false;
+        audioObjects.letgoandhold.muted = false;
         muteWH.style.display = "none";
         audioWH.style.display = "block";
         ismuteWH = false;
@@ -258,14 +233,14 @@ BvolumeVoiceWH.addEventListener('input', function () {
 
     // Check if volumeVWH is 0 and mute the media if necessary
     if (BvolumeVWH === 0) {
-        audioListWH[5].muted = true;
-        audioListWH[6].muted = true;
+        audioObjects.fullyin.muted = true;
+        audioObjects.fullyout.muted = true;
         BaudioWH.style.display = "none";
         BmuteWH.style.display = "block";
         BismuteWH = true;
     } else {
-        audioListWH[5].muted = false;
-        audioListWH[6].muted = false;
+        audioObjects.fullyin.muted = false;
+        audioObjects.fullyout.muted = false;
         BmuteWH.style.display = "none";
         BaudioWH.style.display = "block";
         BismuteWH = false;
@@ -509,8 +484,8 @@ function startTimerWH() {
     }
     if (timerWH.isBreak2WH) {
         if (!ismuteWH) {
-            audioListWH[5].muted = false;
-            audioListWH[5].play();
+            audioObjects.fullyin.muted = false;
+            audioObjects.fullyin.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -601,8 +576,8 @@ function stopTimerWH() {
     yWH = formSettingsFieldsWH.breakDuration2WH.value;
     ctxWH.fillText(yWH, 150, 115);
     if (!ismuteWH) {
-        audioListWH[1].muted = false;
-        audioListWH[1].play();
+        audioObjects.normalbreath.muted = false;
+        audioObjects.normalbreath.play();
     }
     stopTimerTickWH();
     clearTimeout(myTimeoutWH);
@@ -655,8 +630,8 @@ function onTimerTickWH() {
         timerWH.elapsedInIntervalWH++;
         if (nextroundWH && yWH == 15) {
             if (!ismuteWH) {
-                audioListWH[0].muted = false;
-                audioListWH[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             animate2WH();
             timerWH.isBreakWH = true;
@@ -687,8 +662,8 @@ function onTimerTickWH() {
             [secondsWH, minutesWH] = [0, 0];
             stopTimerTickWH();
             if (!ismuteWH) {
-                audioListWH[7].muted = false;
-                audioListWH[7].play();
+                audioObjects.letGo.muted = false;
+                audioObjects.letGo.play();
             }
             ctxWH.clearRect(0, 0, cWH.width, cWH.height);
             ctxWH.fillStyle = my_gradientWH;

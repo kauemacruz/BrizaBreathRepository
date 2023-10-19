@@ -7,7 +7,6 @@ if (isPortuguese) {
     meditationList.push(new Audio('/sounds/songs/meditation-sounds-122698.mp3'));
 }
 
-
 //MEDITATATION 1
 document.getElementById("startBtnMED1").addEventListener('click', startMED1);
 document.getElementById("pauseBtnMED1").addEventListener('click', pauseMED1);
@@ -213,21 +212,6 @@ document.getElementById('stopBtnSEX').style.color = 'rgb(177, 177, 177)';
 document.getElementById('SEXSave').disabled = true;
 document.getElementById('SEXSave').style.color = 'rgb(177, 177, 177)';
 
-var audioListSEX = []
-if (isPortuguese) {
-    audioListSEX.push(new Audio('/sounds/breathein.mp3'))
-    audioListSEX.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListSEX.push(new Audio('/sounds/exhale.mp3'));
-    audioListSEX.push(new Audio('/sounds/hold.mp3'));
-} else {
-    audioListSEX.push(new Audio('/sounds/breathein.mp3'))
-    audioListSEX.push(new Audio('/sounds/holdyourbreath.mp3'));
-    audioListSEX.push(new Audio('/sounds/exhale.mp3'));
-    audioListSEX.push(new Audio('/sounds/hold.mp3'));
-}
-
-
-
 var audioSEX = document.getElementById("audioSEX"),
     muteSEX = document.getElementById("muteSEX"),
     ismuteSEX = false;
@@ -246,18 +230,16 @@ volumeVoiceSEX.addEventListener('input', function () {
 
     // Check if volumeVSEX is 0 and mute the media if necessary
     if (volumeVSEX === 0) {
-        audioListSEX[0].muted = true;
-        audioListSEX[1].muted = true;
-        audioListSEX[2].muted = true;
-        audioListSEX[3].muted = true;
+        audioObjects.inhale.muted = true;
+        audioObjects.exhale.muted = true;
+        audioObjects.hold.muted = true;
         audioSEX.style.display = "none";
         muteSEX.style.display = "block";
         ismuteSEX = true;
     } else {
-        audioListSEX[0].muted = false;
-        audioListSEX[1].muted = false;
-        audioListSEX[2].muted = false;
-        audioListSEX[3].muted = false;
+        audioObjects.inhale.muted = false;
+        audioObjects.exhale.muted = false;
+        audioObjects.hold.muted = false;
         muteSEX.style.display = "none";
         audioSEX.style.display = "block";
         ismuteSEX = false;
@@ -467,8 +449,8 @@ function startTimerSEX() {
     timerControlsButtonsSEX.stopSEX.style.color = "rgb(177, 177, 177)";
     if (timerSEX.isBreak3SEX) {
         if (!ismuteSEX) {
-            audioListSEX[0].muted = false;
-            audioListSEX[0].play();
+            audioObjects.inhale.muted = false;
+            audioObjects.inhale.play();
         }
     }
     if (!audioPlayerBRT.muted) {
@@ -549,8 +531,8 @@ function onTimerTickSEX() {
         timerSEX.elapsedInIntervalSEX++;
         if (timerSEX.elapsedInIntervalSEX > currentIntervalDurationSEX && timerSEX.isBreak3SEX) {
             if (!ismuteSEX) {
-                audioListSEX[3].muted = false;
-                audioListSEX[3].play();
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
             }
             timerSEX.isBreakSEX = true;
             timerSEX.isBreak3SEX = false;
@@ -572,8 +554,8 @@ function onTimerTickSEX() {
         timerSEX.elapsedInIntervalSEX++;
         if (timerSEX.elapsedInIntervalSEX > currentIntervalDurationSEX && timerSEX.isBreakSEX) {
             if (!ismuteSEX) {
-                audioListSEX[2].muted = false;
-                audioListSEX[2].play();
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
             }
             timerSEX.isBreak2SEX = true;
             timerSEX.isBreakSEX = false;
@@ -595,8 +577,8 @@ function onTimerTickSEX() {
         timerSEX.elapsedInIntervalSEX++;
         if (timerSEX.elapsedInIntervalSEX > currentIntervalDurationSEX && timerSEX.isBreak2SEX) {
             if (!ismuteSEX) {
-                audioListSEX[0].muted = false;
-                audioListSEX[0].play();
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
             }
             timerSEX.isBreak3SEX = true;
             timerSEX.isBreak2SEX = false;

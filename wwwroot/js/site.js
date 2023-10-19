@@ -344,22 +344,20 @@ $(function () {
     });
 });
 let audioObjects = {};
+const soundNames = ['inhale', 'hold', 'exhale', 'pinchRun', 'ligthNasal', 'normalbreath', 'breathedeeply', 'recover', 'pinchWalk', 'hum', 'inhaleRight', 'inhaleLeft', 'exhaleRight', 'exhaleLeft', 'fullyin', 'fullyout', 'letGo', 'letgoandhold'];
+soundNames.forEach((name) => {
+    audioObjects[name] = new Audio(`../sounds/${name}${isPortuguese ? 'PT' : ''}.mp3`);
+});
+function playAndReset(audio) {
+    audio.muted = true;
+    audio.play();
+    setTimeout(() => {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.muted = false;
+    }, 500);
+}
 function startAudios() {
-    const soundNames = ['inhale', 'hold', 'exhale', 'pinchRun', 'ligthNasal', 'normalbreath'];
-    soundNames.forEach((name) => {
-        audioObjects[name] = new Audio(`../sounds/${name}${isPortuguese ? 'PT' : ''}.mp3`);
-    });
-
-    function playAndReset(audio) {
-        audio.muted = true;
-        audio.play();
-        setTimeout(() => {
-            audio.pause();
-            audio.currentTime = 0;
-            audio.muted = false;
-        }, 1000);
-    }
-
     Object.values(audioObjects).forEach((audio) => {
         playAndReset(audio);
     });
@@ -502,6 +500,10 @@ var navResults = document.getElementById("navResults"),
     backBEET = document.getElementById("backBEET"),
     DIETLink = document.getElementById("DIETLink"),
     backDIET = document.getElementById("backDIET"),
+    ICELink = document.getElementById("ICELink"),
+    backICE = document.getElementById("backICE"),
+    EXERCISINGLink = document.getElementById("EXERCISINGLink"),
+    backEXERCISING = document.getElementById("backEXERCISING"),
     SEXLink = document.getElementById("SEXLink"),
     backSEX = document.getElementById("backSEX"),
     SEXSettings = document.getElementById("SEXSettings"),
@@ -593,6 +595,8 @@ var homePage = document.getElementById("homePage"),
     ILPage = document.getElementById("ILPage"),
     BEETPage = document.getElementById("BEETPage"),
     DIETPage = document.getElementById("DIETPage"),
+    ICEPage = document.getElementById("ICEPage"),
+    EXERCISINGPage = document.getElementById("EXERCISINGPage"),
     SEXPage = document.getElementById("SEXPage"),
     SEXSettingsPage = document.getElementById("SEXSettingsPage"),
     selectSongsList = document.getElementById("selectSongsList");
@@ -1194,6 +1198,9 @@ yogicLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, yogicPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.inhale);  
+        playAndReset(audioObjects.exhale);  
+        playAndReset(audioObjects.hold);  
     } else {
         opneModal();
     }
@@ -1283,6 +1290,9 @@ BRWLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, BRWPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.inhale);
+        playAndReset(audioObjects.exhale);
+        playAndReset(audioObjects.hold);  
     } else {
         openModal();
     }
@@ -1315,6 +1325,9 @@ HUMLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, HUMPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.inhale);
+        playAndReset(audioObjects.hum);
+        playAndReset(audioObjects.hold);  
     } else {
         opneModal();
     }
@@ -1360,7 +1373,9 @@ BBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, BBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        startAudios();
+        playAndReset(audioObjects.inhale);
+        playAndReset(audioObjects.exhale);
+        playAndReset(audioObjects.hold);  
     }
     else {
         openModal();
@@ -1475,6 +1490,9 @@ HATLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, HATPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.pinchWalk);
+        playAndReset(audioObjects.ligthNasal);
+        playAndReset(audioObjects.normalbreath);  
     } else {
         openModal();
     }
@@ -1536,6 +1554,8 @@ HATCLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, HATCPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.pinchRun);
+        playAndReset(audioObjects.normalbreath);  
     } else {
         openModal();
     }
@@ -1585,6 +1605,9 @@ AHATLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(programPage, AHATPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.pinchRun);
+        playAndReset(audioObjects.ligthNasal);
+        playAndReset(audioObjects.normalbreath);  
     } else {
         openModal();
     }
@@ -1704,6 +1727,7 @@ extrasLink.onclick = function () {
     openPage(homePage, EXTRAPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     startAudios();
+    playAndReset(meditationList[0]);//add meditations as needed
 }
 backEXTRA.onclick = function () {
     openPage(EXTRAPage, homePage, 'slideRight');
@@ -1712,6 +1736,9 @@ backEXTRA.onclick = function () {
 APLink.onclick = function () {
     openPage(BHPage, APPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playAndReset(audioObjects.inhale);
+    playAndReset(audioObjects.exhale);
+    playAndReset(audioObjects.hold);
 }
 backAP.onclick = function () {
     openPage(APPage, BHPage, 'slideRight');
@@ -1754,6 +1781,9 @@ co2o2Link.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(BHPage, O2Page, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.breathedeeply);
+        playAndReset(audioObjects.normalbreath);
+        playAndReset(audioObjects.hold);
     } else {
         openModal();
     }
@@ -1827,6 +1857,11 @@ WHLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(BHPage, WHPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.fullyin);
+        playAndReset(audioObjects.fullyout);
+        playAndReset(audioObjects.letgoandhold);
+        playAndReset(audioObjects.inhale);
+        playAndReset(audioObjects.normalbreath);
     } else {
         openModal();
     }
@@ -1881,6 +1916,8 @@ CTLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(BHPage, CTPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.exhale);
+        playAndReset(audioObjects.inhale);
     } else {
         openModal();
     }
@@ -1925,6 +1962,9 @@ backCTSet.onclick = function () {
 UBLink.onclick = function () {
     openPage(PRANAPage, UBPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    playAndReset(audioObjects.exhale);
+    playAndReset(audioObjects.inhale);
+    playAndReset(audioObjects.hold);
 }
 backUB.onclick = function () {
     openPage(UBPage, PRANAPage, 'slideRight');
@@ -1976,6 +2016,9 @@ BOXLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, BOXPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.exhale);
+        playAndReset(audioObjects.inhale);
+        playAndReset(audioObjects.hold);
     } else {
         openModal();
     }
@@ -2022,6 +2065,10 @@ NBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, NBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.exhaleLeft);
+        playAndReset(audioObjects.inhaleLeft);
+        playAndReset(audioObjects.exhaleRight);
+        playAndReset(audioObjects.inhaleRight);
     } else {
         openModal();
     }
@@ -2068,6 +2115,9 @@ CBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, CBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.exhale);
+        playAndReset(audioObjects.inhale);
+        playAndReset(audioObjects.hold);
     } else {
         openModal();
     }
@@ -2114,6 +2164,9 @@ SBLink.onclick = function () {
         if (isUserActiveSubscriber) {
         openPage(PRANAPage, SBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.exhale);
+        playAndReset(audioObjects.inhale);
+        playAndReset(audioObjects.hold);
         }
         else {
             openModal();
@@ -2173,6 +2226,9 @@ RBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, RBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.exhale);
+        playAndReset(audioObjects.inhale);
+        playAndReset(audioObjects.hold);
     } else {
         openModal();
     }
@@ -2315,10 +2371,37 @@ backDIET.onclick = function () {
     openPage(DIETPage, EXTRAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+ICELink.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(EXTRAPage, ICEPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
+}
+backICE.onclick = function () {
+    openPage(ICEPage, EXTRAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+EXERCISINGLink.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(EXTRAPage, EXERCISINGPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
+}
+backEXERCISING.onclick = function () {
+    openPage(EXERCISINGPage, EXTRAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 SEXLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(EXTRAPage, SEXPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playAndReset(audioObjects.exhale);
+        playAndReset(audioObjects.inhale);
+        playAndReset(audioObjects.hold);
     } else {
         openModal();
     }

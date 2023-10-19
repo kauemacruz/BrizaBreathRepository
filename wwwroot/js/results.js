@@ -13,7 +13,12 @@ function checkUrl() {
 var isPortuguese = checkUrl();
 // Check local storage on page load and redirect if necessary
 var storedValue = localStorage.getItem('isPortuguese');
-if (storedValue === 'true' && !isPortuguese) {
+if (storedValue === null) {
+    localStorage.setItem('isPortuguese', isPortuguese.toString());
+    storedValue = isPortuguese.toString();
+}
+
+if (storedValue == 'true' && !isPortuguese) {
     // Check if the user is already on the Portuguese page. If not, redirect them.
     window.location.href = "https://38a8-111-220-129-56.ngrok-free.app/Results/CreateBR";
 } else if (storedValue == 'false' && isPortuguese) {
