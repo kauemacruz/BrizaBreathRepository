@@ -1,0 +1,3175 @@
+body {
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none; /* Disable long tap callout menu on iOS */
+    -webkit-user-drag: none; /* Disable dragging on iOS */
+    -webkit-tap-highlight-color: transparent; /* Disable tap highlight color on iOS */
+}
+/* CSS for the loading indicator */
+#loadingIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+#loadingIndicator img {
+    width: 250px;
+    height: 100px;
+    animation: blink 1s infinite;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px 2px 20px 2px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #0661AA;
+    overflow-y: auto;
+    height: 95%;
+}
+.modal-content ul {
+    list-style: none;
+    margin-bottom: 4px !important;
+    padding: 0 !important;
+}
+.modal-content ul::before {
+    content: "\2022";
+    color: #49B79D;
+    display: inline-block;
+    width: 1em;
+    font-weight: bold;
+}
+.modal-content p {
+    margin-top: 20px;
+    font-size: 20px;
+}
+.modal-content h1 {
+    margin-top: 30px;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 22px;
+}
+.flexModal {
+    display: inline-flex;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 40px;
+}
+.modalPrices {
+    border: 2px solid;
+    width: 170px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 7px 0px #8080803b;
+}
+.modalPrices h2{
+    font-size: 18px;
+}
+.modalPrices h3{
+    font-size: 16px;
+}
+.modalPrices p{
+    font-size: 12px;
+}
+#monthlyBox {
+    background-color: aliceblue;
+}
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0661AA;
+    border-radius: 50%;
+    outline: none;
+    margin-right: 5px;
+    background-color: white;
+}
+input[type="radio"]:checked {
+    background-color: #0661AA;
+    box-shadow: 1px 1px 5px 0px grey;
+
+}
+.subscriptionBtn2 {
+    font-size: 22px;
+    color: #49B79D;
+    border-color: #49B79D;
+    border: 1px solid;
+    border-radius: 5px;
+    width: 300px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0px 3px 7px 0px #8080803b;
+    background-color: white;
+}
+#subscriptionBtn2 {
+    font-size: 18px;
+    color: #49B79D;
+    border-color: #49B79D;
+    border: none;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+/* CSS animation for the blinking image */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+iframe {
+    border: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+/*layout*/
+.logoimg {
+    position: sticky;
+    transform: translateY(-145%);
+}
+#homelogoimg {
+    margin-top: 10px;
+}
+.logo {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 25px;
+}
+header {
+    background-color: white;
+    height: 70px;
+    z-index: 1;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 6px -6px rgba(0,0,0,0.2);
+}
+/*login & register*/
+#account,
+#forgotForm,
+#registerForm,
+#passwordForm,
+#change-password-form,
+#delete-user {
+    text-align: center;
+    color: #49B79D !important;
+    font-size: 18px;
+}
+input -webkit-autofill {
+    -webkit-text-fill-color: #49B79D !important;
+}
+.form-control {
+    margin: auto;
+    width: 80%;
+    height: 50px;
+    color: #49B79D !important;
+    font-size: 18px;
+    border-color: #e4e3d442;
+}
+::-webkit-input-placeholder {
+    color: #49B79D !important;
+}
+.form-group {
+    margin-top: 15px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.form-group input {
+    background-color: #e4e3d442;
+}
+.loginText,
+#registerText,
+#forgotText,
+#passwordText,
+#changePassText {
+    font-size: 25px;
+    color: #49B79D;
+    text-align: center;
+}
+#confirmText,
+#confirmText2,
+#confirmText3,
+p.loginText a {
+    font-size: 25px;
+    color: #0661AA;
+    text-align: center;
+    text-decoration: none;
+}
+#login-submit,
+#registerSubmit,
+#forgotBtn,
+#passwordBtn,
+#changePassBtn {
+    width: 80%;
+    font-size: 25px;
+    background-color: #0661AA;
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+}
+#deleteActBtn {
+    width: 80%;
+    font-size: 25px;
+    background-color: red;
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+}
+#logoutBtn {
+    font-size: 18px;
+    color: #49B79D;
+    border: none;
+    background-color: white;
+}
+.subscriptionBtn {
+    font-size: 18px;
+    color: #49B79D;
+    border: none;
+    background-color: white;
+    margin-top: 20px;
+}
+.unsubscriptionBtn {
+    font-size: 12px;
+    color: darkred;
+    border: none;
+    background-color: white;
+    margin-top: 20px;
+}
+#subscribeNow {
+    text-align: center !important;
+}
+#subscribeNow2 {
+    text-align: center !important;
+}
+#deleteAccountBtn {
+    font-size: 18px;
+    color: darkred;
+    border: none;
+    background-color: white;
+    text-decoration: none;
+}
+#changeAccountBtn {
+    font-size: 18px;
+    color: #49B79D;
+    border: none;
+    background-color: white;
+    text-decoration: none;
+}
+.flexProfile {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.profile {
+    text-align: center;
+    margin-top: 20px;
+    display: grid;
+    margin-bottom: 20px;
+}
+.profile a{
+    font-size: 18px;
+    text-decoration: none;
+    color: #0661AA !important;
+}
+#profilePage {
+    margin-bottom: 120px;
+}
+.smallText{
+    font-size: 12px;
+}
+.contactProfile{
+    display: flex;
+}
+.contactProfile p {
+    padding: 0 !important;
+    font-size: 14px !important;
+    margin-right: 15px;
+    margin-top: 4px;
+}
+.profile h2 {
+    margin-bottom: 10px !important;
+}
+.contactProfile {
+    display: flex;
+    justify-content: center;
+}
+.deletingWarning{
+    text-align: center;
+    color: darkred;
+}
+.flags img {
+    max-width: 190px;
+}
+hr {
+    width: 80%;
+    margin: auto;
+}
+.row {
+    margin: 0 !important;
+}
+#forgot-password {
+    font-size: 14px !important;
+}
+.mb-3 {
+    margin-top: 1rem;
+    font-size: 14px !important;
+    color: #0661AA;
+}
+.text-danger {
+    font-size: 14px;
+}
+@media only screen and (min-width: 700px) {
+    .form-control {
+        width: 450px !important;
+    }
+    #loginForm {
+        text-align: center !important;
+    }
+    #login-submit,
+    #registerSubmit,
+    #forgotBtn,
+    #passwordBtn,
+    #changePassBtn {
+        width: 450px !important;
+    }
+    .col-md-offset-2 {
+        margin-left: 0 !important;
+    }
+    .col-md-8 {
+        width: 100% !important;
+    }
+    .col-md-10 {
+        width: 100% !important;
+    }
+    .container, .container-md, .container-sm {
+        max-width: 100%;
+        width: 100%;
+    }
+    #homepagegrid {
+        width: 500px;
+        margin: auto !important;
+        padding-top: 5px;
+    }
+    .BHGrid {
+        width: 500px;
+        margin: auto !important;
+    }
+    .breathingpages {
+        width: 600px !important;
+        margin: auto;
+    }
+    .brizaprogram {
+        width: 600px !important;
+        margin: auto;
+    }
+    #programPage h4 {
+        text-align: center;
+    }
+    .contain {
+        width: 700px !important;
+        margin: auto;
+    }
+    .navbar {
+        width: 700px !important;
+        margin: auto;
+    }
+}
+@media only screen and (min-width: 500px){
+    .form-control {
+        width: 400px !important;
+    }
+
+    #loginForm {
+        text-align: center !important;
+    }
+
+    #login-submit,
+    #registerSubmit,
+    #forgotBtn,
+    #passwordBtn {
+        width: 400px !important;
+    }
+
+    .col-md-offset-2 {
+        margin-left: 0 !important;
+    }
+
+    .col-md-8 {
+        width: 100% !important;
+    }
+
+    .col-md-10 {
+        width: 100% !important;
+    }
+    #homepagegrid {
+        width: 450px;
+        margin: auto !important;
+    }
+    .contain {
+        width: 500px !important;
+        margin: auto;
+    }
+    .container, .container-md, .container-sm {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+@media only screen and (min-height: 850px) {
+    .homepageimgs {
+        height: 190px !important;
+    }
+}
+/*homepage*/
+.container {
+    padding: 0;
+}
+
+#homepagegrid {
+    margin-top: 5px;
+    margin-bottom: 100px !important;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #0661AA;
+}
+
+.homepageimgs {
+    width: 99%;
+    height: auto;
+    max-width: 400px;
+    object-fit: cover;
+    box-shadow: 0px 3px 7px 0px #80808021;
+    margin-bottom: 1px;
+    border-radius: 5px;
+}
+
+.w-100 {
+    margin-top: 0px;
+}
+/*navbar*/
+.navbar {
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 12px;
+    margin-bottom: 0;
+    height: 100px;
+}
+
+#navResults {
+    color: #0661AA;
+}
+#navResults2 {
+    color: #0661AA;
+}
+#navProfile {
+    color: #0661AA;
+}
+#navHome {
+    color: #0661AA;
+}
+#navHome2 {
+    color: #0661AA;
+}
+#navProfile2 {
+    color: #0661AA;
+}
+.navbar a {
+    float: left;
+    padding: 12px;
+    text-decoration: none;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.fa {
+    font-size: 22px !important;
+    color: #0661AA;
+}
+
+.a .active {
+    color: #49B79D !important;
+}
+
+.active {
+    color: #49B79D !important;
+}
+
+#homeFooter {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 6px 10px 5px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+#resultsFooter {
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 6px 10px 5px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+#profileFooter {
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 6px 10px 5px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+/*Pages transition style*/
+.open {
+    visibility: visible;
+}
+
+.hidden {
+    opacity: 0;
+    position: fixed;
+    visibility: hidden;
+}
+
+.slideRight {
+    position: relative;
+    top: 0;
+    left: -500px;
+    opacity: 0.1;
+    animation: slideToRight 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideToRight {
+    from {
+        opacity: 0.1;
+        left: -500px;
+    }
+
+    to {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+.slideLeft {
+    position: relative;
+    right: -500px;
+    top: 0;
+    opacity: 0.1;
+    animation: slideToLeft 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideToLeft {
+    from {
+        opacity: 0.1;
+        right: -500px;
+    }
+
+    to {
+        opacity: 1;
+        right: 0;
+    }
+}
+
+.slideUp {
+    position: relative;
+    top: 500px;
+    opacity: 0.1;
+    animation: slideToTop 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideToTop {
+    from {
+        opacity: 0.1;
+        top: 1000px;
+    }
+
+    to {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+.slideDown {
+    position: relative;
+    top: -500px;
+    opacity: 0.1;
+    animation: slideToBottom 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideToBottom {
+    from {
+        opacity: 0.1;
+        top: -500px;
+    }
+
+    to {
+        opacity: 1;
+        top: 0;
+    }
+}
+/*go back button*/
+.goback {
+    text-align: left;
+}
+
+    .goback a {
+        position: sticky;
+        text-decoration: none;
+        color: #49B79D !important;
+        font-size: 60px;
+        margin-left: 30px;
+        vertical-align: top;
+    }
+/*briza program page*/
+.brizaprogram {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    color: #0661AA;
+    margin-top: 25px;
+}
+
+#programPage h1 {
+    text-align: center;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+#programPage h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#programPage ul {
+    padding-left: 20px;
+    padding-right: 20px;
+    list-style: none;
+    margin-bottom: 4px;
+}
+
+#programPage ul::before {
+    content: "\2022";
+    color: #49B79D;
+    display: inline-block;
+    width: 1em;
+    font-weight: bold;
+}
+
+#programPage p {
+    padding-top: 15px;
+}
+
+.atention {
+    color: darkred !important;
+    text-align: justify;
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 40px;
+}
+
+#programPage h4 {
+    color: #0661AA;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+/*sliders*/
+.rowSlider {
+    overflow: scroll;
+    overflow-y: hidden;
+    padding-left: 15px;
+}
+
+.row__inner {
+    transition: 450ms transform;
+    font-size: 0;
+    white-space: nowrap;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tile {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 140.625px;
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 450ms all;
+    transform-origin: center left;
+}
+.BRTtile {
+    max-width: 500px;
+    margin: auto;
+}
+
+.tile__img {
+    width: 250px;
+    height: 140.625px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.BRTtile__img {
+    width: 98%;
+    border-radius: 5px;
+    height: 110px;
+    object-fit: cover;
+}
+/*Breathing pages*/
+.breathingpages {
+    margin-top: 25px;
+    width: 100%;
+    color: #0661AA;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.breathingpages.BHbreathing{
+   margin-bottom: 10px !important;
+}
+.breathingpages ul {
+    padding-left: 20px;
+    padding-right: 20px;
+    list-style: none;
+    text-align: justify;
+    padding-bottom: 10px;
+}
+
+.breathingpages ul::before {
+    content: "\2022";
+    color: #49B79D;
+    display: inline-block;
+    width: 1em;
+    font-weight: bold;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    max-height: 300px;
+}
+
+video[poster] {
+    object-fit: cover;
+}
+
+.breathingpages p {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    text-align: justify;
+}
+
+.breathingpages h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.breathingpages h2 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.roundbox input {
+    border: none;
+    color: #0661AA;
+    font-size: 15px;
+    width: 95px;
+}
+
+.timer-additional-info.BRE {
+    font-size: 10px !important;
+}
+/*BRT Page*/
+.timerDisplayBRT {
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+input#timerDisplayBRT {
+    text-align: center;
+    border: none;
+    color: #0661AA;
+}
+
+input#timerDisplayLungs {
+    text-align: center;
+    border: none;
+    color: #0661AA;
+}
+
+.BrtBtns {
+    text-align: center;
+}
+/*Buttons*/
+.startBtnBRT {
+    color: #0661AA;
+    width: 8rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    margin-right: 1rem;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.pauseBtnBRT {
+    display: none;
+    color: #0661AA;
+    width: 8rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    margin-right: 1rem;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.stopBtnBRT {
+    color: rgb(177, 177, 177);
+    width: 8rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    margin-left: 1rem;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.saveBtnBRT {
+    text-align: center;
+}
+                
+.saveBtnBRT input {
+    color: #49B79D;
+    width: 18rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.startBtn {
+    color: #0661AA;
+    width: 8rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    height: 38px;
+    margin-right: 1rem;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.pauseBtn {
+    display: none;
+    color: #0661AA;
+    width: 8rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    margin-right: 1rem;
+    font-size: 24px;
+    height: 38px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.stopBtn {
+    color: rgb(177, 177, 177);
+    width: 8rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    height: 38px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.resetBtn {
+    color: #990000;
+    width: 8rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    height: 38px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    display: none;
+}
+
+.saveBtn {
+    text-align: center;
+}
+
+.saveBtn input {
+    color: #49B79D;
+    width: 18rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    height: 38px;
+}
+
+.resultSaved {
+    text-align: center;
+    color: #49B79D;
+}
+#selectSongsList{
+    display: none;
+}
+.audio,
+.audioSong {
+    display: block;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.mute,
+.muteSong {
+    display: none;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.audioSet {
+    border: none;
+    border-radius: 5px;
+    font-size: 8px;
+    display: block;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    font-weight: 900;
+    color: #49B79D;
+    width: 70px;
+}
+
+.audioButtons img {
+    width: 20px;
+    height: 20px;
+    margin-right: 25px;
+}
+
+.settingButtons img {
+    width: 30px;
+    height: 30px;
+}
+/*
+* Timer status
+*/
+
+.timer-status header {
+    color: #0661AA;
+    margin-bottom: .5rem;
+    font-size: 1rem;
+}
+
+.timer-status .box.left-align {
+    text-align: left;
+}
+
+.timer-overview .box {
+    flex: 0 0 50%;
+}
+
+.timer-overview .boxHAT {
+    flex: 0 0 50%;
+    padding-top: 0px;
+}
+
+.timer-overview {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.boxFontSize {
+    font-size: 30px;
+}
+
+.spanFontSize {
+    font-size: 80px;
+}
+
+.hideBreak {
+    display: none;
+}
+
+.timeOverviewMessage {
+    text-align: center;
+    flex: 1;
+    margin-bottom: 1rem;
+    font-size: 40px;
+    display: none;
+}
+
+.timer-additional-info {
+    font-size: 12px;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.timer-additional-info.BRE {
+    font-size: 10px !important;
+}
+
+.buttonplus {
+    font-size: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    color: #49B79D;
+    font-weight: 900;
+}
+
+.buttonminus {
+    font-size: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    color: #49B79D;
+    font-weight: 900;
+}
+
+.roundbox {
+    display: flex;
+    font-size: 12px;
+    justify-content: center;
+}
+
+.form-line {
+    display: inline;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+.form-line:last-of-type {
+    margin: 0;
+}
+
+.form-line label {
+    flex-grow: 1;
+    padding-right: .5rem;
+}
+
+.form-line input[type="number"] {
+    width: 40px;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    background-color: white;
+    color: #0661AA;
+    font-size: 18px;
+}
+/*TIMER*/
+.main-container {
+    display: grid;
+    grid-template-areas: "status" "controls" "settings";
+    margin-bottom: 1rem;
+}
+
+.timer-status {
+    grid-area: status;
+}
+
+.timer-controls {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.settings-form {
+    text-align: center;
+}
+
+.settings-form.BB {
+    margin-bottom: 0 !important;
+}
+
+.audioButtons {
+    display: flex;
+    margin-left: 100px;
+    margin-top: 30px;
+}
+
+.box.boxFontSize {
+    height: 15px;
+}
+
+.volume-bar {
+    display: flex;
+    width: 250px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.volume-bar input[type="range"] {
+    -webkit-appearance: none;
+    width: 30px;
+    height: 6px;
+    background: #49B79D;
+    border-radius: 3px;
+    outline: none;
+    margin: 0;
+    margin-top: 35px;
+}
+
+.volume-bar input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #0661AA;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+h4.volumeSettings {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.song-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.song-select {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    height: 50px;
+    color: #49B79D !important;
+    font-size: 18px;
+    border-color: #e4e3d442;
+}
+
+.NOfSteps {
+    display: flex;
+    justify-content: space-between;
+    width: 17rem;
+    margin: auto;
+}
+
+input#intervalsDoneHAT {
+    text-align: center;
+}
+
+.BHGrid {
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.welnessGrid{
+    margin-bottom: 50px;
+}
+
+.co2o2 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#O2Btn {
+    border: none;
+    padding: 0;
+    margin: auto;
+    width: 80%;
+    background-color: white;
+}
+
+#CO2Btn {
+    border: none;
+    padding: 0;
+    margin: auto;
+    width: 80%;
+    background-color: white;
+}
+
+.O2table {
+    text-align: center;
+    margin: auto;
+    font-size: 18px;
+    border-top: solid;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.O2table td {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-left: solid;
+    border-right: solid;
+}
+
+.hold {
+    border-bottom: solid;
+}
+
+.O2btns {
+    text-align: center;
+    font-size: 18px;
+}
+
+#O2Table {
+    margin-bottom: 30px;
+}
+
+#CO2Table {
+    margin-bottom: 30px;
+    display: none;
+}
+
+.gap1O2 {
+    background-color: #49b79d49;
+}
+
+.gap1CO2 {
+    background-color: #49b79d49;
+}
+
+button#startBtnWH {
+    margin-right: 0 !important;
+    width: 10rem;
+}
+
+input#WHSave {
+    width: 10rem;
+    margin: 0;
+}
+
+button#stopBtnWH {
+    color: rgb(177, 177, 177);
+    width: 10rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    margin-right: 15px;
+}
+
+button#resetBtnWH {
+    color: rgb(177, 177, 177);
+    width: 10rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    display: none;
+    margin-right: 15px;
+}
+
+#circleWH {
+    width: 100%;
+    text-align: center;
+}
+
+input#breakDurationInput2WH {
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    width: 100px;
+    color: #0661AA;
+}
+
+input#breathSpeedWH {
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    width: 150px;
+    color: #0661AA;
+}
+#WHtimer-controls{
+    height: 60px;
+}
+
+form#WHForm {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#WHResults {
+    margin-bottom: 50px;
+}
+button#startBtnKB {
+    margin-right: 0 !important;
+    width: 10rem;
+}
+
+input#KBSave {
+    width: 10rem;
+    margin: 0;
+}
+
+button#stopBtnKB {
+    color: rgb(177, 177, 177);
+    width: 10rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    margin-right: 15px;
+}
+
+button#resetBtnKB {
+    color: rgb(177, 177, 177);
+    width: 10rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    display: none;
+    margin-right: 15px;
+}
+
+#circleKB {
+    width: 100%;
+    text-align: center;
+}
+
+input#breakDurationInput2KB {
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    width: 100px;
+    color: #0661AA;
+}
+
+input#breathSpeedKB {
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    width: 150px;
+    color: #0661AA;
+}
+
+#KBtimer-controls {
+    height: 60px;
+}
+
+form#KBForm {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#KBResults {
+    margin-bottom: 50px;
+}
+
+.meditations {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    width: 90%;
+    margin: auto;
+}
+
+.meditations ul {
+    margin-top: 20px;
+    font-size: 20px !important;
+    text-align: center;
+}
+
+.meditations ul::before {
+    content: '';
+}
+
+.progress-bar {
+    width: 90%;
+    margin: auto;
+}
+
+.medDiv {
+    margin-bottom: 20px;
+}
+/* Styling for the accordion */
+.accordion-header {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    font-size: 28px;
+    color: #0661AA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.accordion-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    min-height: 120px;
+    padding-top: 30px;
+}
+.accordion-content {
+    display: none;
+    padding: 10px 10px 40px 10px;
+}
+.accordion {
+    display: flex;
+    flex-direction: column;
+    margin-top:10px;
+    margin-bottom:120px;
+    height: fit-content;
+}
+.accordion-header2 {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    color: #0661AA;
+    border-top: solid 1px;
+}
+
+.accordion-content2 {
+    display: none;
+    padding: 10px 10px 40px 10px;
+}
+
+.accordion2 {
+    margin-bottom: 0;
+}
+.resultInput {
+    border: none;
+    text-align: left;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+    width: 130px;
+    vertical-align: top;
+}
+.chart-container {
+    width: 100%;
+    max-width: 600px;
+    max-height: 400px;
+    min-height: 200px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+}
+canvas#brtChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+.BRTInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.BRTInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+.BRTinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+.BRTinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+}
+#BRTinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+#BRTresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#BRTresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+form.BRTdelete-form {
+    display: inline-flex;
+    margin-bottom: 30px; 
+    line-height: 40px;
+    height: 40px;
+}
+canvas#YOGICChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+.YOGICInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.YOGICInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+.YOGICinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+.YOGICinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+#YOGICinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+#YOGICresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#YOGICresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+form.YOGICdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#BREChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+.BREInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.BREInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+.BREinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+.BREinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+#BREinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+#BREresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#BREresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+form.BREdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#BRWChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+.BRWInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.BRWInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+.BRWinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+.BRWinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+#BRWinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+#BRWresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#BRWresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+form.BRWdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#HUMChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+.HUMInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.HUMInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.HUMinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.HUMinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#HUMinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#HUMresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#HUMresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.HUMdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#BBChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+.BBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.BBInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.BBinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.BBinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#BBinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#BBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#BBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.BBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#APChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+.APInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.APInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.APinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.APinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#APinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#APresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#APresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.APdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+canvas#CTChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.CTInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.CTInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.CTinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.CTinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#CTinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#CTresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#CTresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.CTdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#LUNGSChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.LUNGSInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.LUNGSInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.LUNGSinfoOverview {
+    display: inline-flex;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    justify-content: space-between;
+}
+
+.LUNGSinfoOverview input {
+    border: none;
+    text-align: right;
+    color: #0661AA;
+    background-color: transparent;
+    width: 250px;
+}
+
+#LUNGSinfoOverview {
+    padding: 10px;
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#LUNGSresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#LUNGSresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.LUNGSdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#BOXChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.BOXInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.BOXInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.BOXinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.BOXinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#BOXinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#BOXresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#BOXresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.BOXdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#UBChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.UBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.UBInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.UBinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.UBinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#UBinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#UBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#UBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.UBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#NBChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.NBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.NBInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.NBinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.NBinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#NBinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#NBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#NBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.NBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#SBChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.SBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.SBInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.SBinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.SBinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#SBinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#SBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#SBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.SBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#RBChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.RBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.RBInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.RBinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.RBinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#RBinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#RBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#RBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.RBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#CBChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.CBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.CBInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.CBinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.CBinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#CBinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#CBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#CBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.CBdelete-form {
+    display: inline-flex;
+    margin-bottom: 70px;
+    line-height: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+canvas#WHChart {
+    height: 300px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.WHInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.WHInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.WHinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.WHinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#WHinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#WHresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#WHresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.WHdelete-form {
+    display: grid;
+}
+.WHresultInput {
+    border: none;
+    text-align: left;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.WHdelete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#KBChart {
+    height: 300px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.KBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+    .KBInfo h4 {
+        font-size: 20px;
+        color: #0661AA;
+        text-align: center;
+    }
+
+.KBinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+    .KBinfoOverview input {
+        border: none;
+        text-align: center;
+        color: #0661AA;
+        background-color: transparent;
+        margin-bottom: 10px;
+    }
+
+#KBinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#KBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#KBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.KBdelete-form {
+    display: grid;
+}
+
+.KBresultInput {
+    border: none;
+    text-align: left;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+
+input.btn.btn-danger.KBdelete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#HATChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.HATInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.HATInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.HATinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.HATinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#HATinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#HATresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#HATresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.HATdelete-form {
+    display: grid;
+}
+.HATresultInput {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.HATdelete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#HATCChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.HATCInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.HATCInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.HATCinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.HATCinfoOverview input {
+   border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#HATCinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#HATCresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#HATCresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.HATCdelete-form {
+    display: grid;
+}
+.HATCresultInput {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.HATCdelete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#AHATChart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.AHATInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.AHATInfo h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.AHATinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.AHATinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#AHATinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#AHATresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#AHATresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.AHATdelete-form {
+    display: grid;
+}
+.AHATresultInput {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.AHATdelete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#O2Chart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.O2Info {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.O2Info h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.O2infoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.O2infoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#O2infoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#O2resultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#O2resultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.O2delete-form {
+    display: grid;
+}
+.O2resultInput {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.O2delete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+canvas#CO2Chart {
+    height: 250px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.CO2Info {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.CO2Info h4 {
+    font-size: 20px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.CO2infoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+.CO2infoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+#CO2infoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#CO2resultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#CO2resultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.CO2delete-form {
+    display: grid;
+}
+.CO2resultInput {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+input.btn.btn-danger.CO2delete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.guidedBTN {
+    width: 80%;
+    font-size: 25px;
+    background-color: #0661AA;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.co2o2 img {
+    width: 100%;
+}
+#WHmodal h4.volumeSettings {
+    margin-bottom: 30px;
+}
+#KBmodal h4.volumeSettings {
+    margin-bottom: 30px;
+}
+#CBmodal .form-line input[type="number"] {
+    width: 50px;
+}
+.spreadExercises{
+    margin-top: 20px !important;
+}
+.countdownDisplay {
+    border: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 25px;
+    color: #0661AA;
+    background-color: white;
+}
+
+.CountdownHidden {
+    display: none;
+}
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 40px;
+}
+.ball {
+    position: relative;
+    width: 150px; /* Set the initial size of the ball */
+    height: 150px; /* Set the initial size of the ball */
+    transition: transform 0.5s ease;
+}
+.ball img {
+    width: 100%;
+    height: 100%;
+}
+
+.ball span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #0661AA;
+}
+.timer-overviewHidden{
+    display: none;
+}

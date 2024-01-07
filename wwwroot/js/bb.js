@@ -1,4 +1,72 @@
-//BB JS//
+﻿//BB JS//
+const BBball = document.getElementById('BBball');
+const BBballText = document.getElementById('BBballText');
+
+function BBchangeBall(scale, duration) {
+    BBball.style.transition = `transform ${duration}s ease`;
+    BBball.style.transform = `scale(${scale})`;
+}
+
+const BBtimeInput = document.getElementById('BBtimeInput');
+const BBcountdownDisplay = document.getElementById('BBcountdownDisplay');
+let BBcountdown;
+let BBtimeRemaining = Infinity;
+let BBisPaused = false;
+// Populate the dropdown with options
+for (let BBi = 2; BBi <= 60; BBi++) { // assuming 1 to 60 minutes
+    let BBoption = document.createElement('option');
+    BBoption.value = BBi * 60;
+    if (isPortuguese) {
+        BBoption.textContent = BBi + ' minutos';
+    } else {
+        BBoption.textContent = BBi + ' minutes';
+    }
+    BBtimeInput.appendChild(BBoption);
+}
+
+const BBmodal = document.getElementById("BBmodal");
+const BBcloseModal = document.getElementById("BBcloseModal");
+const BBBTN = document.getElementById("BBBTN");
+
+function BBopenmodal() {
+    BBmodal.style.display = "block";
+    audioObjects.inhale.load();
+    audioObjects.exhale.load();
+    audioObjects.hold.load();
+}
+// Function to close the modal
+function BBclose() {
+    BBmodal.style.display = "none";
+    clearInterval(intBB);
+    [secondsBB, minutesBB, hoursBB] = [0, 0, 0];
+    timerRefBB.value = '00 : 00 : 00';
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0
+    timerControlsButtonsBB.pauseBB.style.display = 'none';
+    timerControlsButtonsBB.startBB.style.display = 'inline';
+    setFormDisabledStateBB(false);
+    setTimerControlsDisabledStateBB(false, true, true);
+    timerControlsButtonsBB.stopBB.style.color = "rgb(177, 177, 177)";
+    document.getElementById('BBSettings').disabled = false;
+    document.getElementById('BBSettings').style.color = '#49B79D';
+    stopTimerTickBB();
+    resetTimerBB();
+    timerControlsButtonsBB.stopBB.disabled = true;
+    isBBON = false;
+    document.getElementById('BBResultSaved').innerHTML = "";
+    clearInterval(BBcountdown);
+    BBisPaused = false;
+    BBtimeInput.classList.remove('CountdownHidden');
+    BBcountdownDisplay.classList.add('CountdownHidden');
+    BBchangeBall(1, 1);
+}
+// Event listener for closing the modal
+BBcloseModal.addEventListener("click", BBclose);
+BBBTN.onclick = function () {
+    BBopenmodal();
+}
 $(function () {
     $('#BBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -28,6 +96,8 @@ $(function () {
         document.getElementById('BBSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickBB();
         resetTimerBB();
+        BBtimeInput.classList.remove('CountdownHidden');
+        BBcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
@@ -136,39 +206,6 @@ volumeSongBB.addEventListener('input', function () {
         audioSongBB.style.display = "block";
     }
 });
-
-
-var minusBtnBB = document.getElementById("minusBB").style.display = "none";
-    plusBtnBB = document.getElementById("plusBB").style.display = "none";
-    numberBB = 4, /// numberBB value
-    minBB = 4, /// minBB numberBB
-    maxBB = 30;
-
-minusBtnBB.onclick = function(){
-  if (numberBB>minBB){
-    numberBB = numberBB-2; /// Minus 1 of the numberBB
-    formSettingsFieldsBB.intervalDurationBB.value = numberBB ; /// Display the value in place of the numberBB
-    //fix here to change pranayama type
-    formSettingsFieldsBB.breakDurationBB.value = formSettingsFieldsBB.intervalDurationBB.value/2;
-    formSettingsFieldsBB.breakDuration2BB.value = formSettingsFieldsBB.intervalDurationBB.value;
-    formSettingsFieldsBB.breakDuration3BB.value = formSettingsFieldsBB.intervalDurationBB.value/2;
-    setTimerSettingsBB(9999, formSettingsFieldsBB.intervalDurationBB.value, true, formSettingsFieldsBB.breakDurationBB.value, true, formSettingsFieldsBB.breakDuration2BB.value, true, formSettingsFieldsBB.breakDuration3BB.value);
-  }
-}
-
-plusBtnBB.onclick = function(){
-  if(numberBB<maxBB){
-    numberBB = numberBB+2;
-    formSettingsFieldsBB.intervalDurationBB.value = numberBB ; /// Display the value in place of the numberBB
-    //fix here to change pranayama type
-    formSettingsFieldsBB.breakDurationBB.value = formSettingsFieldsBB.intervalDurationBB.value/2;
-    formSettingsFieldsBB.breakDuration2BB.value = formSettingsFieldsBB.intervalDurationBB.value;
-    formSettingsFieldsBB.breakDuration3BB.value = formSettingsFieldsBB.intervalDurationBB.value/2;
-    setTimerSettingsBB(9999, formSettingsFieldsBB.intervalDurationBB.value, true, formSettingsFieldsBB.breakDurationBB.value, true, formSettingsFieldsBB.breakDuration2BB.value, true, formSettingsFieldsBB.breakDuration3BB.value);
-
-  }    
-}
-
 function initializeTimerSettingsFormBB() {
     const oneDayInSecondsBB = 60 * 60 * 24;
       let lastUserSetEnableBreakBB = timerSettingsBB.enableBreakBB;
@@ -324,23 +361,30 @@ function setFormDisabledStateBB(disabled) {
     formSettingsFieldsBB.breakDuration2BB.disabled = disabled;
     formSettingsFieldsBB.enableBreak3BB.disabled = disabled
     formSettingsFieldsBB.breakDuration3BB.disabled = disabled;
-    minusBtnBB.disabled = disabled;
-    plusBtnBB.disabled = disabled;
 }
 
 function startTimerBB() {
     if(intBB!==null){
       clearInterval(intBB);
     }
-    intBB = setInterval(displayTimerBB,1000);
     setFormDisabledStateBB(true);
-    setTimerControlsDisabledStateBB(true, false, true);
+    setTimerControlsDisabledStateBB(true, true, true);
+    setTimeout(() => {
+        setTimerControlsDisabledStateBB(true, false, true);
+    }, 2000);
     timerControlsButtonsBB.stopBB.style.color = "rgb(177, 177, 177)";
     if(timerBB.isBreak3BB){
         if (!ismuteBB) {
-            audioObjects.inhale.muted = false;
-            audioObjects.inhale.play();
-      }
+            audioObjects.bell.muted = false;
+            audioObjects.bell.play();
+            setTimeout(() => {
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
+            }, 1500);    
+        }
+        setTimeout(() => {
+            BBchangeBall(1.5, timerSettingsBB.intervalDurationBB);
+        }, 1500); 
     }
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
@@ -348,15 +392,47 @@ function startTimerBB() {
     if (timerBB.isFinishedBB) {
       resetTimerBB();
     }
-    startTimerTickBB();     
+    setTimeout(() => {
+        setTimeout(() => {
+            intBB = setInterval(displayTimerBB, 1000);
+        }, 1000);
+        startTimerTickBB();
+        if (BBisPaused) {
+            // Resume from paused state
+            BBstartTimer(BBtimeRemaining);
+            BBisPaused = false;
+        } else {
+            // Start a new timer
+            clearInterval(BBcountdown);
+            BBtimeRemaining = BBtimeInput.value === '∞' ? Infinity : parseInt(BBtimeInput.value);
+            BBcountdownDisplay.textContent = '';
+            BBstartTimer(BBtimeRemaining);
+        }
+    }, 1700);  
     timerControlsButtonsBB.startBB.style.display = 'none';
     timerControlsButtonsBB.pauseBB.style.display = 'inline';
     document.getElementById('BBSave').disabled = true;
     document.getElementById('BBSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('bbSettings').disabled = true;
-    document.getElementById('bbSettings').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('BBSettings').disabled = true;
+    document.getElementById('BBSettings').style.color = 'rgb(177, 177, 177)';
 }
-
+function BBstartTimer(BBduration) {
+    BBcountdown = setInterval(function () {
+        if (BBduration > 0 && BBduration !== Infinity) {
+            BBduration--;
+            BBtimeRemaining = BBduration;
+            let BBContdownminutes = Math.floor(BBduration / 60);
+            let BBContdownseconds = BBduration % 60;
+            BBcountdownDisplay.textContent = `${BBContdownminutes}:${BBContdownseconds.toString().padStart(2, '0')}`;
+            BBtimeInput.classList.add('CountdownHidden');
+            BBcountdownDisplay.classList.remove('CountdownHidden');
+        } else if (BBduration == Infinity) {
+            BBcountdownDisplay.textContent = '∞';
+            BBtimeInput.classList.add('CountdownHidden');
+            BBcountdownDisplay.classList.remove('CountdownHidden');
+        }
+    }, 1000);
+}
 function pauseTimerBB() {
     clearInterval(intBB);
     setTimerControlsDisabledStateBB(false, true, false);
@@ -370,8 +446,11 @@ function pauseTimerBB() {
     document.getElementById('BBDate').value = date;
     document.getElementById('BBSave').disabled = false;
     document.getElementById('BBSave').style.color = '#49B79D';
-    document.getElementById('bbSettings').disabled = false;
-    document.getElementById('bbSettings').style.color = '#49B79D';
+    document.getElementById('BBSettings').disabled = false;
+    document.getElementById('BBSettings').style.color = '#49B79D';
+    clearInterval(BBcountdown);
+    BBisPaused = true;
+    BBchangeBall(1, 1);
 }
 
 function stopTimerBB() {
@@ -392,6 +471,13 @@ function stopTimerBB() {
     timerControlsButtonsBB.stopBB.disabled = true;
     document.getElementById('BBSave').disabled = true;
     document.getElementById('BBSave').style.color = 'rgb(177, 177, 177)';
+    timerControlsButtonsBB.startBB.style.color = '#49B79D';
+    clearInterval(BBcountdown);
+    BBisPaused = false;
+    BBtimeInput.classList.remove('CountdownHidden');
+    BBcountdownDisplay.classList.add('CountdownHidden');
+    BBchangeBall(1, 1);
+
 }
 
 function displayTimerBB(){
@@ -421,12 +507,15 @@ function stopTimerTickBB() {
 function onTimerTickBB() {
     const currentIntervalDurationBB = timerBB.isBreakBB ? timerSettingsBB.breakDurationBB : timerBB.isBreak2BB ? timerSettingsBB.breakDuration2BB : timerBB.isBreak4BB ? timerSettingsBB.breakDuration3BB : timerSettingsBB.intervalDurationBB;
     if (timerBB.elapsedInIntervalBB <= currentIntervalDurationBB && timerBB.isBreak3BB) {
-      timerBB.elapsedInIntervalBB++;
-      if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreak3BB){
-          if (!ismuteBB) {
-            audioObjects.hold.muted = false;
-            audioObjects.hold.play();
+        timerBB.elapsedInIntervalBB++;
+        if (timerBB.elapsedInIntervalBB == currentIntervalDurationBB && timerBB.isBreak3BB) {
+            if (!ismuteBB) {
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
+            }
+            BBchangeBall(1.3, timerSettingsBB.breakDurationBB);
         }
+      if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreak3BB){
         timerBB.isBreakBB = true;  
         timerBB.isBreak3BB = false;
         timerBB.isFinishedBB = timerBB.intervalsDoneBB === timerSettingsBB.intervalCountBB;
@@ -444,12 +533,15 @@ function onTimerTickBB() {
       } 
       updateInfoBB();
     }else if(timerBB.elapsedInIntervalBB <= currentIntervalDurationBB && timerBB.isBreakBB){
-      timerBB.elapsedInIntervalBB++;
-      if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreakBB){
-        if(!ismuteBB){
-            audioObjects.exhale.muted = false;
-            audioObjects.exhale.play();
+        timerBB.elapsedInIntervalBB++;
+        if (timerBB.elapsedInIntervalBB == currentIntervalDurationBB && timerBB.isBreakBB) {
+            if (!ismuteBB) {
+                audioObjects.exhale.muted = false;
+                audioObjects.exhale.play();
+            }
+            BBchangeBall(0.5, timerSettingsBB.breakDuration2BB);
         }
+      if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreakBB){
         timerBB.isBreak2BB = true;
         timerBB.isBreakBB = false; 
         timerBB.isFinishedBB = timerBB.intervalsDoneBB === timerSettingsBB.intervalCountBB;
@@ -467,12 +559,15 @@ function onTimerTickBB() {
       } 
       updateInfoBB();
     }else if(timerBB.elapsedInIntervalBB <= currentIntervalDurationBB && timerBB.isBreak2BB){
-      timerBB.elapsedInIntervalBB++;
-      if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreak2BB){
-          if (!ismuteBB) {
-              audioObjects.hold.muted = false;
-              audioObjects.hold.play();
+        timerBB.elapsedInIntervalBB++;
+        if (timerBB.elapsedInIntervalBB == currentIntervalDurationBB && timerBB.isBreak2BB) {
+            if (!ismuteBB) {
+                audioObjects.hold.muted = false;
+                audioObjects.hold.play();
+            }
+            BBchangeBall(0.5, timerSettingsBB.breakDuration3BB);
         }
+      if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreak2BB){
         timerBB.isBreak4BB = true;
         timerBB.isBreak2BB = false;
         timerBB.isFinishedBB = timerBB.intervalsDoneBB === timerSettingsBB.intervalCountBB;
@@ -490,12 +585,50 @@ function onTimerTickBB() {
       } 
       updateInfoBB();
     }else if(timerBB.elapsedInIntervalBB <= currentIntervalDurationBB && timerBB.isBreak4BB){
-      timerBB.elapsedInIntervalBB++;
-      if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreak4BB){
-          if (!ismuteBB) {
-              audioObjects.inhale.muted = false;
-              audioObjects.inhale.play();
+        timerBB.elapsedInIntervalBB++;
+        if (timerBB.elapsedInIntervalBB == currentIntervalDurationBB && timerBB.isBreak4BB) {
+            if (!ismuteBB) {
+                if(BBcountdownDisplay.textContent == '0:00') {
+                    audioObjects.inhale.muted = true;
+                    clearInterval(BBcountdown);
+                    if (!ismuteBB) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intBB);
+                    setTimerControlsDisabledStateBB(true, true, false);
+                    document.getElementById('stopBtnBB').style.color = '#990000';
+                    timerControlsButtonsBB.pauseBB.style.display = 'none';
+                    timerControlsButtonsBB.startBB.style.display = 'inline';
+                    timerControlsButtonsBB.startBB.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('BBSettings').disabled = false;
+                    document.getElementById('BBSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickBB();
+                    document.getElementById('BBDate').value = date;
+                    document.getElementById('BBSave').disabled = false;
+                    document.getElementById('BBSave').style.color = '#49B79D';
+                    clearInterval(BBcountdown);
+                    BBisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            BBballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            BBballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
+                } else {
+                    audioObjects.inhale.muted = false;
+                    audioObjects.inhale.play();
+                }
+            }
+            BBchangeBall(1.5, timerSettingsBB.intervalDurationBB);
         }
+      if(timerBB.elapsedInIntervalBB > currentIntervalDurationBB && timerBB.isBreak4BB){
         timerBB.isBreak3BB = true;
         timerBB.isBreak4BB = false;
         timerBB.intervalsDoneBB++;
@@ -522,15 +655,26 @@ function updateInfoBB() {
     statusPanelBB.elapsedInBreakIntervalBoxBB.style.display = !timerBB.isFinishedBB && timerBB.isBreakBB ? 'block' : null;
     statusPanelBB.elapsedInBreakIntervalBox2BB.style.display = !timerBB.isFinishedBB && timerBB.isBreak2BB ? 'block' : null;
     statusPanelBB.elapsedInBreakIntervalBox3BB.style.display = !timerBB.isFinishedBB && timerBB.isBreak4BB ? 'block' : null;
-    
-    if (timerBB.isBreakBB) {
-      statusPanelBB.elapsedInBreakIntervalBB.textContent = timerBB.elapsedInIntervalBB;
-    } else if (timerBB.isBreak2BB){
-      statusPanelBB.elapsedInBreakInterval2BB.textContent = timerBB.elapsedInIntervalBB;
-    }else if (timerBB.isBreak4BB){
-      statusPanelBB.elapsedInBreakInterval3BB.textContent = timerBB.elapsedInIntervalBB;
-    }else {
-      statusPanelBB.elapsedInIntervalBB.textContent = timerBB.elapsedInIntervalBB;
+    if (isPortuguese) {
+        if (timerBB.isBreakBB) {
+            BBballText.textContent = 'SEGURE';
+        } else if (timerBB.isBreak2BB) {
+            BBballText.textContent = 'EXPIRA';
+        } else if (timerBB.isBreak4BB) {
+            BBballText.textContent = 'SEGURE';
+        } else {
+            BBballText.textContent = 'INSPIRA';
+        }
+    } else {
+        if (timerBB.isBreakBB) {
+            BBballText.textContent = 'HOLD';
+        } else if (timerBB.isBreak2BB) {
+            BBballText.textContent = 'EXHALE';
+        } else if (timerBB.isBreak4BB) {
+            BBballText.textContent = 'HOLD';
+        } else {
+            BBballText.textContent = 'INHALE';
+        }
     }
     statusPanelBB.intervalsDoneBB.value = timerBB.intervalsDoneBB;
 

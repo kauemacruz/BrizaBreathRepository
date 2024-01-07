@@ -1,4 +1,73 @@
-/*APNEA JS*/
+﻿/*APNEA JS*/
+const APball = document.getElementById('APball');
+const APballText = document.getElementById('APballText');
+
+function APchangeBall(scale, duration) {
+    APball.style.transition = `transform ${duration}s ease`;
+    APball.style.transform = `scale(${scale})`;
+}
+
+const APtimeInput = document.getElementById('APtimeInput');
+const APcountdownDisplay = document.getElementById('APcountdownDisplay');
+let APcountdown;
+let APtimeRemaining = Infinity;
+let APisPaused = false;
+// Populate the dropdown with options
+for (let APi = 2; APi <= 60; APi++) { // assuming 1 to 60 minutes
+    let APoption = document.createElement('option');
+    APoption.value = APi * 60;
+    if (isPortuguese) {
+        APoption.textContent = APi + ' minutos';
+    } else {
+        APoption.textContent = APi + ' minutes';
+    }
+    APtimeInput.appendChild(APoption);
+}
+
+const APmodal = document.getElementById("APmodal");
+const APcloseModal = document.getElementById("APcloseModal");
+const APBTN = document.getElementById("APBTN");
+
+function APopenmodal() {
+    APmodal.style.display = "block";
+    audioObjects.inhale.load();
+    audioObjects.exhale.load();
+    audioObjects.hold.load();
+    audioObjects.normalbreath.load();
+}
+// Function to close the modal
+function APclose() {
+    APmodal.style.display = "none";
+    clearInterval(intAP);
+    [secondsAP, minutesAP, hoursAP] = [0, 0, 0];
+    timerRefAP.value = '00 : 00 : 00';
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    timerControlsButtonsAP.pauseAP.style.display = 'none';
+    timerControlsButtonsAP.startAP.style.display = 'inline';
+    setFormDisabledStateAP(false);
+    setTimerControlsDisabledStateAP(false, true, true);
+    timerControlsButtonsAP.stopAP.style.color = "rgb(177, 177, 177)";
+    document.getElementById('APSave').disabled = true;
+    document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('APSettings').disabled = false;
+    document.getElementById('APSettings').style.color = '#49B79D';
+    stopTimerTickAP();
+    resetTimerAP();
+    document.getElementById('APResultSaved').innerHTML = "";
+    clearInterval(APcountdown);
+    APisPaused = false;
+    APtimeInput.classList.remove('CountdownHidden');
+    APcountdownDisplay.classList.add('CountdownHidden');
+    APchangeBall(1, 1);
+}
+// Event listener for closing the modal
+APcloseModal.addEventListener("click", APclose);
+APBTN.onclick = function () {
+    APopenmodal();
+}
 $(function () {
     $('#APForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -28,6 +97,8 @@ $(function () {
         document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickAP();
         resetTimerAP();
+        CBtimeInput.classList.remove('CountdownHidden');
+        CBcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
@@ -55,7 +126,6 @@ function setTimerSettingsAP(
         breakDuration2AP
     };
 }
-
 function resetTimerAP() {
     timerAP = {
         totalTimeElapsedAP: 0,
@@ -133,9 +203,9 @@ volumeSongAP.addEventListener('input', function () {
 });
 
 
-var inhaleAP = 2;
-var holdAP = 8;
-var exhaleAP = 4;
+var inhaleAP = 3;
+var holdAP = 12;
+var exhaleAP = 6;
 setTimerSettingsAP(9999, inhaleAP, true, holdAP, true, exhaleAP);
 initializeTimerControlsAP();
 initializeStatusPanelAP();
@@ -310,15 +380,24 @@ function startTimerAP() {
     if (intAP !== null) {
         clearInterval(intAP);
     }
-    intAP = setInterval(displayTimerAP, 1000);
     setFormDisabledStateAP(true);
-    setTimerControlsDisabledStateAP(true, false, true);
+    setTimerControlsDisabledStateAP(true, true, true);
+    setTimeout(() => {
+        setTimerControlsDisabledStateAP(true, false, true);
+    }, 2000);  
     timerControlsButtonsAP.stopAP.style.color = "rgb(177, 177, 177)";
     if (timerAP.isBreak3AP) {
         if (!ismuteAP) {
-            audioObjects.inhale.muted = false;
-            audioObjects.inhale.play();
+            audioObjects.bell.muted = false;
+            audioObjects.bell.play();
+            setTimeout(() => {
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
+            }, 1500);    
         }
+        setTimeout(() => {
+            APchangeBall(1.5, timerSettingsAP.intervalDurationAP);
+        }, 1500);  
     }
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
@@ -326,7 +405,23 @@ function startTimerAP() {
     if (timerAP.isFinishedAP) {
         resetTimerAP();
     }
-    startTimerTickAP();
+    setTimeout(() => {
+        setTimeout(() => {
+            intAP = setInterval(displayTimerAP, 1000);
+        }, 1000);
+        startTimerTickAP();
+        if (APisPaused) {
+            // Resume from paused state
+            APstartTimer(APtimeRemaining);
+            APisPaused = false;
+        } else {
+            // Start a new timer
+            clearInterval(APcountdown);
+            APtimeRemaining = APtimeInput.value === '∞' ? Infinity : parseInt(APtimeInput.value);
+            APcountdownDisplay.textContent = '';
+            APstartTimer(APtimeRemaining);
+        }
+    }, 1700);
     timerControlsButtonsAP.startAP.style.display = 'none';
     timerControlsButtonsAP.pauseAP.style.display = 'inline';
     document.getElementById('APSettings').disabled = true;
@@ -334,7 +429,23 @@ function startTimerAP() {
     document.getElementById('APSave').disabled = true;
     document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
 }
-
+function APstartTimer(APduration) {    
+    APcountdown = setInterval(function () {
+        if (APduration > 0 && APduration !== Infinity) {
+            APduration--;
+            APtimeRemaining = APduration;
+            let APContdownminutes = Math.floor(APduration / 60);
+            let APContdownseconds = APduration % 60;
+            APcountdownDisplay.textContent = `${APContdownminutes}:${APContdownseconds.toString().padStart(2, '0')}`;
+            APtimeInput.classList.add('CountdownHidden');
+            APcountdownDisplay.classList.remove('CountdownHidden');
+        } else if (APduration == Infinity) {
+            APcountdownDisplay.textContent = '∞';
+            APtimeInput.classList.add('CountdownHidden');
+            APcountdownDisplay.classList.remove('CountdownHidden');
+        }
+    }, 1000);
+}
 function pauseTimerAP() {
     clearInterval(intAP);
     setTimerControlsDisabledStateAP(false, true, false);
@@ -350,6 +461,9 @@ function pauseTimerAP() {
     document.getElementById('APDate').value = date;
     document.getElementById('APSave').disabled = false;
     document.getElementById('APSave').style.color = '#49B79D';
+    clearInterval(APcountdown);
+    APisPaused = true;
+    APchangeBall(1, 1);
 }
 
 function stopTimerAP() {
@@ -364,8 +478,14 @@ function stopTimerAP() {
     timerControlsButtonsAP.stopAP.style.color = "rgb(177, 177, 177)";
     document.getElementById('APSave').disabled = true;
     document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
+    timerControlsButtonsAP.startAP.style.color = '#49B79D';
     stopTimerTickAP();
     resetTimerAP();
+    clearInterval(APcountdown);
+    APisPaused = false;
+    APtimeInput.classList.remove('CountdownHidden');
+    APcountdownDisplay.classList.add('CountdownHidden');
+    APchangeBall(1, 1);
 }
 
 function displayTimerAP() {
@@ -396,11 +516,14 @@ function onTimerTickAP() {
     const currentIntervalDurationAP = timerAP.isBreakAP ? timerSettingsAP.breakDurationAP : timerAP.isBreak2AP ? timerSettingsAP.breakDuration2AP : timerSettingsAP.intervalDurationAP;
     if (timerAP.elapsedInIntervalAP <= currentIntervalDurationAP && timerAP.isBreak3AP) {
         timerAP.elapsedInIntervalAP++;
-        if (timerAP.elapsedInIntervalAP > currentIntervalDurationAP && timerAP.isBreak3AP) {
+        if (timerAP.elapsedInIntervalAP == currentIntervalDurationAP && timerAP.isBreak3AP) {
             if (!ismuteAP) {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
+            APchangeBall(1.0, timerSettingsAP.breakDurationAP);
+        }
+        if (timerAP.elapsedInIntervalAP > currentIntervalDurationAP && timerAP.isBreak3AP) {
             timerAP.isBreakAP = true;
             timerAP.isBreak3AP = false;
             timerAP.isFinishedAP = timerAP.intervalsDoneAP === timerSettingsAP.intervalCountAP;
@@ -419,11 +542,14 @@ function onTimerTickAP() {
         updateInfoAP();
     } else if (timerAP.elapsedInIntervalAP <= currentIntervalDurationAP && timerAP.isBreakAP) {
         timerAP.elapsedInIntervalAP++;
-        if (timerAP.elapsedInIntervalAP > currentIntervalDurationAP && timerAP.isBreakAP) {
+        if (timerAP.elapsedInIntervalAP == currentIntervalDurationAP && timerAP.isBreakAP) {
             if (!ismuteAP) {
                 audioObjects.exhale.muted = false;
                 audioObjects.exhale.play();
             }
+            APchangeBall(0.5, timerSettingsAP.breakDuration2AP);
+        }
+        if (timerAP.elapsedInIntervalAP > currentIntervalDurationAP && timerAP.isBreakAP) {
             timerAP.isBreak2AP = true;
             timerAP.isBreakAP = false;
             timerAP.isFinishedAP = timerAP.intervalsDoneAP === timerSettingsAP.intervalCountAP;
@@ -442,11 +568,49 @@ function onTimerTickAP() {
         updateInfoAP();
     } else if (timerAP.elapsedInIntervalAP <= currentIntervalDurationAP && timerAP.isBreak2AP) {
         timerAP.elapsedInIntervalAP++;
-        if (timerAP.elapsedInIntervalAP > currentIntervalDurationAP && timerAP.isBreak2AP) {
+        if (timerAP.elapsedInIntervalAP == currentIntervalDurationAP && timerAP.isBreak2AP) {
             if (!ismuteAP) {
-                audioObjects.inhale.muted = false;
-                audioObjects.inhale.play();
+                if (APcountdownDisplay.textContent == '0:00') {
+                    audioObjects.inhale.muted = true;
+                    clearInterval(APcountdown);
+                    if (!ismuteAP) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intAP);
+                    setTimerControlsDisabledStateAP(true, true, false);
+                    document.getElementById('stopBtnAP').style.color = '#990000';
+                    timerControlsButtonsAP.pauseAP.style.display = 'none';
+                    timerControlsButtonsAP.startAP.style.display = 'inline';
+                    timerControlsButtonsAP.startAP.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('APSettings').disabled = false;
+                    document.getElementById('APSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickAP();
+                    document.getElementById('APDate').value = date;
+                    document.getElementById('APSave').disabled = false;
+                    document.getElementById('APSave').style.color = '#49B79D';
+                    clearInterval(APcountdown);
+                    APisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            APballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            APballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
+                } else {
+                    audioObjects.inhale.muted = false;
+                    audioObjects.inhale.play();
+                }
             }
+            APchangeBall(1.5, timerSettingsAP.intervalDurationAP);
+        }
+        if (timerAP.elapsedInIntervalAP > currentIntervalDurationAP && timerAP.isBreak2AP) {
             timerAP.isBreak3AP = true;
             timerAP.isBreak2AP = false;
             timerAP.intervalsDoneAP++;
@@ -472,12 +636,22 @@ function updateInfoAP() {
     statusPanelAP.elapsedInIntervalBoxAP.style.display = timerAP.isFinishedAP || timerAP.isBreakAP || timerAP.isBreak2AP || timerAP.isBreak4AP ? 'none' : null;
     statusPanelAP.elapsedInBreakIntervalBoxAP.style.display = !timerAP.isFinishedAP && timerAP.isBreakAP ? 'block' : null;
     statusPanelAP.elapsedInBreakIntervalBox2AP.style.display = !timerAP.isFinishedAP && timerAP.isBreak2AP ? 'block' : null;
-    if (timerAP.isBreakAP) {
-        statusPanelAP.elapsedInBreakIntervalAP.textContent = timerAP.elapsedInIntervalAP;
-    } else if (timerAP.isBreak2AP) {
-        statusPanelAP.elapsedInBreakInterval2AP.textContent = timerAP.elapsedInIntervalAP;
+    if (isPortuguese) {
+        if (timerAP.isBreakAP) {
+            APballText.textContent = 'SEGURE';
+        } else if (timerAP.isBreak2AP) {
+            APballText.textContent = 'EXPIRA';
+        } else {
+            APballText.textContent = 'INSPIRA';
+        }
     } else {
-        statusPanelAP.elapsedInIntervalAP.textContent = timerAP.elapsedInIntervalAP;
+        if (timerAP.isBreakAP) {
+            APballText.textContent = 'HOLD';
+        } else if (timerAP.isBreak2AP) {
+            APballText.textContent = 'EXHALE';
+        } else {
+            APballText.textContent = 'INHALE';
+        }
     }
     statusPanelAP.intervalsDoneAP.value = timerAP.intervalsDoneAP;
 }

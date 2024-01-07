@@ -13,264 +13,40 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\478.png",
-      "PackagePath": "staticwebassets\\images\\478.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\BRT30.png",
-      "PackagePath": "staticwebassets\\images\\BRT30.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\B_DEGRAD.png",
-      "PackagePath": "staticwebassets\\images\\B_DEGRAD.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\advancedhat.png",
-      "PackagePath": "staticwebassets\\images\\advancedhat.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\ankles.png",
-      "PackagePath": "staticwebassets\\images\\ankles.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\apnea.png",
-      "PackagePath": "staticwebassets\\images\\apnea.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\beet.png",
-      "PackagePath": "staticwebassets\\images\\beet.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\birzabreathandperformance.png",
-      "PackagePath": "staticwebassets\\images\\birzabreathandperformance.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\bonus.png",
-      "PackagePath": "staticwebassets\\images\\bonus.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\boxbreathing.png",
-      "PackagePath": "staticwebassets\\images\\boxbreathing.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\br.png",
-      "PackagePath": "staticwebassets\\images\\br.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\breathholds.png",
-      "PackagePath": "staticwebassets\\images\\breathholds.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\breathrecoverysit.png",
-      "PackagePath": "staticwebassets\\images\\breathrecoverysit.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\breathrecoverywalking.png",
-      "PackagePath": "staticwebassets\\images\\breathrecoverywalking.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brizabreathing.png",
-      "PackagePath": "staticwebassets\\images\\brizabreathing.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brizaprogram.png",
-      "PackagePath": "staticwebassets\\images\\brizaprogram.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brt-pt.png",
-      "PackagePath": "staticwebassets\\images\\brt-pt.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brt.png",
-      "PackagePath": "staticwebassets\\images\\brt.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brt20.png",
-      "PackagePath": "staticwebassets\\images\\brt20.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brt40.png",
-      "PackagePath": "staticwebassets\\images\\brt40.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\brtUnder10.png",
-      "PackagePath": "staticwebassets\\images\\brtUnder10.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\co2.png",
-      "PackagePath": "staticwebassets\\images\\co2.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\co2Btn.png",
-      "PackagePath": "staticwebassets\\images\\co2Btn.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\co2o2.png",
-      "PackagePath": "staticwebassets\\images\\co2o2.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\coherent.png",
-      "PackagePath": "staticwebassets\\images\\coherent.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\diaphragm.png",
-      "PackagePath": "staticwebassets\\images\\diaphragm.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\diet.png",
-      "PackagePath": "staticwebassets\\images\\diet.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\en.png",
-      "PackagePath": "staticwebassets\\images\\en.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\favicon.png",
-      "PackagePath": "staticwebassets\\images\\favicon.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\flexibility.png",
-      "PackagePath": "staticwebassets\\images\\flexibility.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\hat.png",
-      "PackagePath": "staticwebassets\\images\\hat.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\hatcycling.png",
-      "PackagePath": "staticwebassets\\images\\hatcycling.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\humming.png",
-      "PackagePath": "staticwebassets\\images\\humming.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\hydration.png",
-      "PackagePath": "staticwebassets\\images\\hydration.png"
-    },
-    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\icon.png",
       "PackagePath": "staticwebassets\\images\\icon.png"
     },
     {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\iron.png",
-      "PackagePath": "staticwebassets\\images\\iron.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\kapalabhati.png",
-      "PackagePath": "staticwebassets\\images\\kapalabhati.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\logoRound.png",
-      "PackagePath": "staticwebassets\\images\\logoRound.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\lowerback.png",
-      "PackagePath": "staticwebassets\\images\\lowerback.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\lungs.png",
-      "PackagePath": "staticwebassets\\images\\lungs.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\lungscapacity.png",
-      "PackagePath": "staticwebassets\\images\\lungscapacity.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\meditation.png",
-      "PackagePath": "staticwebassets\\images\\meditation.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\mute.png",
-      "PackagePath": "staticwebassets\\images\\mute.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\nadishodhana.png",
-      "PackagePath": "staticwebassets\\images\\nadishodhana.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\nasalbreathing.png",
-      "PackagePath": "staticwebassets\\images\\nasalbreathing.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\nauli.png",
-      "PackagePath": "staticwebassets\\images\\nauli.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\noseunblocking.png",
-      "PackagePath": "staticwebassets\\images\\noseunblocking.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\o2Btn.png",
-      "PackagePath": "staticwebassets\\images\\o2Btn.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\pranayama2.png",
-      "PackagePath": "staticwebassets\\images\\pranayama2.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\pranayamas.png",
-      "PackagePath": "staticwebassets\\images\\pranayamas.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\pushup.png",
-      "PackagePath": "staticwebassets\\images\\pushup.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\settings.png",
-      "PackagePath": "staticwebassets\\images\\settings.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\sex.png",
-      "PackagePath": "staticwebassets\\images\\sex.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\shot.png",
-      "PackagePath": "staticwebassets\\images\\shot.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\shoulders.png",
-      "PackagePath": "staticwebassets\\images\\shoulders.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\sitali.png",
-      "PackagePath": "staticwebassets\\images\\sitali.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\sleep.png",
-      "PackagePath": "staticwebassets\\images\\sleep.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\speaker.png",
-      "PackagePath": "staticwebassets\\images\\speaker.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\ujjayi.png",
-      "PackagePath": "staticwebassets\\images\\ujjayi.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\whb.png",
-      "PackagePath": "staticwebassets\\images\\whb.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\wimhof.png",
-      "PackagePath": "staticwebassets\\images\\wimhof.png"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\yogic.png",
-      "PackagePath": "staticwebassets\\images\\yogic.png"
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\ahat.js",
+      "PackagePath": "staticwebassets\\js\\ahat.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\apnea.js",
       "PackagePath": "staticwebassets\\js\\apnea.js"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\bb.js",
+      "PackagePath": "staticwebassets\\js\\bb.js"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\box.js",
+      "PackagePath": "staticwebassets\\js\\box.js"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\bre.js",
       "PackagePath": "staticwebassets\\js\\bre.js"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\brt.js",
+      "PackagePath": "staticwebassets\\js\\brt.js"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\brw.js",
       "PackagePath": "staticwebassets\\js\\brw.js"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\cb.js",
+      "PackagePath": "staticwebassets\\js\\cb.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\co2.js",
@@ -285,12 +61,28 @@
       "PackagePath": "staticwebassets\\js\\extra.js"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\hat.js",
+      "PackagePath": "staticwebassets\\js\\hat.js"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\hatc.js",
+      "PackagePath": "staticwebassets\\js\\hatc.js"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\hum.js",
       "PackagePath": "staticwebassets\\js\\hum.js"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\kb.js",
+      "PackagePath": "staticwebassets\\js\\kb.js"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\lungs.js",
       "PackagePath": "staticwebassets\\js\\lungs.js"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\nb.js",
+      "PackagePath": "staticwebassets\\js\\nb.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\o2.js",
@@ -299,6 +91,10 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\rb.js",
       "PackagePath": "staticwebassets\\js\\rb.js"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\results.js",
+      "PackagePath": "staticwebassets\\js\\results.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\sb.js",
@@ -555,198 +351,6 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\manifest.json",
       "PackagePath": "staticwebassets\\manifest.json"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\breathedeeply.mp3",
-      "PackagePath": "staticwebassets\\sounds\\breathedeeply.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\breathedeeplyPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\breathedeeplyPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\exhale.mp3",
-      "PackagePath": "staticwebassets\\sounds\\exhale.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\exhaleLeft.mp3",
-      "PackagePath": "staticwebassets\\sounds\\exhaleLeft.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\exhaleLeftPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\exhaleLeftPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\exhalePT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\exhalePT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\exhaleRight.mp3",
-      "PackagePath": "staticwebassets\\sounds\\exhaleRight.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\exhaleRightPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\exhaleRightPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\fullyin.mp3",
-      "PackagePath": "staticwebassets\\sounds\\fullyin.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\fullyinPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\fullyinPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\fullyout.mp3",
-      "PackagePath": "staticwebassets\\sounds\\fullyout.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\fullyoutPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\fullyoutPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\hold.mp3",
-      "PackagePath": "staticwebassets\\sounds\\hold.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\holdPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\holdPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\hum.mp3",
-      "PackagePath": "staticwebassets\\sounds\\hum.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\humPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\humPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\inhale.mp3",
-      "PackagePath": "staticwebassets\\sounds\\inhale.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\inhaleLeft.mp3",
-      "PackagePath": "staticwebassets\\sounds\\inhaleLeft.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\inhaleLeftPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\inhaleLeftPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\inhalePT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\inhalePT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\inhaleRight.mp3",
-      "PackagePath": "staticwebassets\\sounds\\inhaleRight.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\inhaleRightPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\inhaleRightPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\letGo.mp3",
-      "PackagePath": "staticwebassets\\sounds\\letGo.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\letGoPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\letGoPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\letgoandhold.mp3",
-      "PackagePath": "staticwebassets\\sounds\\letgoandhold.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\letgoandholdPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\letgoandholdPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\ligthNasal.mp3",
-      "PackagePath": "staticwebassets\\sounds\\ligthNasal.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\ligthNasalPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\ligthNasalPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\normalbreath.mp3",
-      "PackagePath": "staticwebassets\\sounds\\normalbreath.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\normalbreathPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\normalbreathPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\pinchRun.mp3",
-      "PackagePath": "staticwebassets\\sounds\\pinchRun.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\pinchRunPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\pinchRunPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\pinchWalk.mp3",
-      "PackagePath": "staticwebassets\\sounds\\pinchWalk.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\pinchWalkPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\pinchWalkPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\recover.mp3",
-      "PackagePath": "staticwebassets\\sounds\\recover.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\recoverPT.mp3",
-      "PackagePath": "staticwebassets\\sounds\\recoverPT.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\autumn-sky-meditation-7618.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\autumn-sky-meditation-7618.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\endless-by-prabajithk-118998.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\endless-by-prabajithk-118998.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\frequency-of-sleep-meditation-113050.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\frequency-of-sleep-meditation-113050.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\just-relax-11157.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\just-relax-11157.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\lofi-study-112191.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\lofi-study-112191.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\meditation-sounds-122698.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\meditation-sounds-122698.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\moment-14023.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\moment-14023.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\peaceful-garden-healing-light-piano-for-meditation-zen-landscapes-112199.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\please-calm-my-mind-125566.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\please-calm-my-mind-125566.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\reflected-light-147979.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\reflected-light-147979.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\relaxing-145038.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\relaxing-145038.mp3"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\sounds\\songs\\the-cradle-of-your-soul-15700.mp3",
-      "PackagePath": "staticwebassets\\sounds\\songs\\the-cradle-of-your-soul-15700.mp3"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\videos\\movie.mp4",

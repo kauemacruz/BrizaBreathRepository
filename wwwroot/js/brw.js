@@ -1,9 +1,78 @@
-//BRW JS//
+﻿//BRW JS//
+const BRWball = document.getElementById('BRWball');
+const BRWballText = document.getElementById('BRWballText');
+
+function BRWchangeBall(scale, duration) {
+    BRWball.style.transition = `transform ${duration}s ease`;
+    BRWball.style.transform = `scale(${scale})`;
+}
+
+const BRWtimeInput = document.getElementById('BRWtimeInput');
+const BRWcountdownDisplay = document.getElementById('BRWcountdownDisplay');
+let BRWcountdown;
+let BRWtimeRemaining = Infinity;
+let BRWisPaused = false;
+// Populate the dropdown with options
+for (let BRWi = 2; BRWi <= 60; BRWi++) { // assuming 1 to 60 minutes
+    let BRWoption = document.createElement('option');
+    BRWoption.value = BRWi * 60;
+    if (isPortuguese) {
+        BRWoption.textContent = BRWi + ' minutos';
+    } else {
+        BRWoption.textContent = BRWi + ' minutes';
+    }
+    BRWtimeInput.appendChild(BRWoption);
+}
+
+const BRWmodal = document.getElementById("BRWmodal");
+const BRWcloseModal = document.getElementById("BRWcloseModal");
+const BRWBTN = document.getElementById("BRWBTN");
+
+function BRWopenmodal() {
+    BRWmodal.style.display = "block";
+    audioObjects.inhale.load();
+    audioObjects.exhale.load();
+    audioObjects.hold.load();
+}
+// Function to close the modal
+function BRWclose() {
+    BRWmodal.style.display = "none";
+    clearInterval(intBRW);
+    [secondsBRW, minutesBRW, hoursBRW] = [0, 0, 0];
+    timerRefBRW.value = '00 : 00 : 00';
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0
+    timerControlsButtonsBRW.pauseBRW.style.display = 'none';
+    timerControlsButtonsBRW.startBRW.style.display = 'inline';
+    setFormDisabledStateBRW(false);
+    setTimerControlsDisabledStateBRW(false, true, true);
+    timerControlsButtonsBRW.stopBRW.style.color = "rgb(177, 177, 177)";
+    document.getElementById('BRWSave').disabled = true;
+    document.getElementById('BRWSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('brwSettings').disabled = false;
+    document.getElementById('brwSettings').style.color = '#49B79D';
+    stopTimerTickBRW();
+    resetTimerBRW();
+    isBRWON = false;
+    document.getElementById('BRWResultSaved').innerHTML = "";
+    clearInterval(BRWcountdown);
+    BRWisPaused = false;
+    BRWtimeInput.classList.remove('CountdownHidden');
+    BRWcountdownDisplay.classList.add('CountdownHidden');
+    BRWchangeBall(1, 1);
+}
+// Event listener for closing the modal
+BRWcloseModal.addEventListener("click", BRWclose);
+BRWBTN.onclick = function () {
+    BRWopenmodal();
+}
 $(function () {
     $('#BRWForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
 
-        var formData = new FormData(this); // Get the form
+        var formData = new FormData(this); // Get the form data
 
         $.ajax({
             url: "/",
@@ -28,6 +97,8 @@ $(function () {
         document.getElementById('BRWSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickBRW();
         resetTimerBRW();
+        BRWtimeInput.classList.remove('CountdownHidden');
+        BRWcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
@@ -85,6 +156,7 @@ let intBRW = null;
 document.getElementById('BRWSave').disabled = true;
 document.getElementById('BRWSave').style.color = 'rgb(177, 177, 177)';
 
+
 var audioBRW = document.getElementById("audioBRW"),
     muteBRW = document.getElementById("muteBRW"),
     ismuteBRW = false;
@@ -99,10 +171,10 @@ const volumeVoiceBRW = document.getElementById('volumeVoiceBRW');
 // Add an event listener for the volumeVbre change event
 volumeVoiceBRW.addEventListener('input', function () {
     // Get the current volumeVbre value
-    const volumeVbrw = parseFloat(volumeVoiceBRW.value);
+    const volumeVbre = parseFloat(volumeVoiceBRW.value);
 
     // Check if volumeVbre is 0 and mute the media if necessary
-    if (volumeVbrw === 0) {
+    if (volumeVbre === 0) {
         audioObjects.inhale.muted = true;
         audioObjects.exhale.muted = true;
         audioObjects.hold.muted = true;
@@ -124,10 +196,10 @@ const volumeSongBRW = document.getElementById('volumeSongBRW');
 // Add an event listener for the volumeSbre change event
 volumeSongBRW.addEventListener('input', function () {
     // Get the current volumeSbre value
-    const volumeSbrw = parseFloat(volumeSongBRW.value);
+    const volumeSbre = parseFloat(volumeSongBRW.value);
 
     // Check if volumeSbre is 0 and mute the media if necessary
-    if (volumeSbrw === 0) {
+    if (volumeSbre === 0) {
         audioPlayerBRT.muted = true;
         audioSongBRW.style.display = "none";
         muteSongBRW.style.display = "block";
@@ -137,6 +209,7 @@ volumeSongBRW.addEventListener('input', function () {
         audioSongBRW.style.display = "block";
     }
 });
+
 
 var inhaleBRW = 4;
 var holdBRW = inhaleBRW;
@@ -366,20 +439,28 @@ function setFormDisabledStateBRW(disabled) {
     minusBtnBRW.disabled = disabled;
     plusBtnBRW.disabled = disabled;
 }
-
 function startTimerBRW() {
     if (intBRW !== null) {
         clearInterval(intBRW);
     }
-    intBRW = setInterval(displayTimerBRW, 1000);
     setFormDisabledStateBRW(true);
-    setTimerControlsDisabledStateBRW(true, false, true);
+    setTimerControlsDisabledStateBRW(true, true, true);
+    setTimeout(() => {
+        setTimerControlsDisabledStateBRW(true, false, true);
+    }, 2000);
     timerControlsButtonsBRW.stopBRW.style.color = "rgb(177, 177, 177)";
     if (timerBRW.isBreak0BRW) {
         if (!ismuteBRW) {
-            audioObjects.inhale.muted = false;
-            audioObjects.inhale.play();
+            audioObjects.bell.muted = false;
+            audioObjects.bell.play();
+            setTimeout(() => {
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
+            }, 1500);    
         }
+        setTimeout(() => {
+            BRWchangeBall(1.5, timerSettingsBRW.intervalDurationBRW);
+        }, 1500); 
     }
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
@@ -387,7 +468,23 @@ function startTimerBRW() {
     if (timerBRW.isFinishedBRW) {
         resetTimerBRW();
     }
-    startTimerTickBRW();
+    setTimeout(() => {
+        setTimeout(() => {
+            intBRW = setInterval(displayTimerBRW, 1000);
+        }, 1000);
+        startTimerTickBRW();
+        if (BRWisPaused) {
+            // Resume from paused state
+            BRWstartTimer(BRWtimeRemaining);
+            BRWisPaused = false;
+        } else {
+            // Start a new timer
+            clearInterval(BRWcountdown);
+            BRWtimeRemaining = BRWtimeInput.value === '∞' ? Infinity : parseInt(BRWtimeInput.value);
+            BRWcountdownDisplay.textContent = '';
+            BRWstartTimer(BRWtimeRemaining);
+        }
+    }, 1700);  
     timerControlsButtonsBRW.startBRW.style.display = 'none';
     timerControlsButtonsBRW.pauseBRW.style.display = 'inline';
     document.getElementById('BRWSave').disabled = true;
@@ -395,7 +492,23 @@ function startTimerBRW() {
     document.getElementById('brwSettings').disabled = true;
     document.getElementById('brwSettings').style.color = 'rgb(177, 177, 177)';
 }
-
+function BRWstartTimer(BRWduration) {
+    BRWcountdown = setInterval(function () {
+        if (BRWduration > 0 && BRWduration !== Infinity) {
+            BRWduration--;
+            BRWtimeRemaining = BRWduration;
+            let BRWContdownminutes = Math.floor(BRWduration / 60);
+            let BRWContdownseconds = BRWduration % 60;
+            BRWcountdownDisplay.textContent = `${BRWContdownminutes}:${BRWContdownseconds.toString().padStart(2, '0')}`;
+            BRWtimeInput.classList.add('CountdownHidden');
+            BRWcountdownDisplay.classList.remove('CountdownHidden');    
+        } else if (BRWduration == Infinity) {
+            BRWcountdownDisplay.textContent = '∞';
+            BRWtimeInput.classList.add('CountdownHidden');
+            BRWcountdownDisplay.classList.remove('CountdownHidden');
+        }
+    }, 1000);
+}
 function pauseTimerBRW() {
     clearInterval(intBRW);
     setTimerControlsDisabledStateBRW(false, true, false);
@@ -411,6 +524,9 @@ function pauseTimerBRW() {
     document.getElementById('BRWSave').style.color = '#49B79D';
     document.getElementById('brwSettings').disabled = false;
     document.getElementById('brwSettings').style.color = '#49B79D';
+    clearInterval(BRWcountdown);
+    BRWisPaused = true;
+    BRWchangeBall(1, 1);
 }
 
 function stopTimerBRW() {
@@ -430,6 +546,12 @@ function stopTimerBRW() {
     document.getElementById('BRWSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickBRW();
     resetTimerBRW();
+    timerControlsButtonsBRW.startBRW.style.color = '#49B79D';
+    clearInterval(BRWcountdown);
+    BRWisPaused = false;
+    BRWtimeInput.classList.remove('CountdownHidden');
+    BRWcountdownDisplay.classList.add('CountdownHidden');
+    BRWchangeBall(1, 1);
 }
 
 function displayTimerBRW() {
@@ -460,11 +582,14 @@ function onTimerTickBRW() {
     const currentIntervalDurationBRW = timerBRW.isBreakBRW ? timerSettingsBRW.breakDurationBRW : timerBRW.isBreak2BRW ? timerSettingsBRW.breakDuration2BRW : timerBRW.isBreak3BRW ? timerSettingsBRW.breakDuration3BRW : timerBRW.isBreak4BRW ? timerSettingsBRW.breakDuration4BRW : timerSettingsBRW.intervalDurationBRW;
     if (timerBRW.elapsedInIntervalBRW <= currentIntervalDurationBRW && timerBRW.isBreak0BRW) {
         timerBRW.elapsedInIntervalBRW++;
-        if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak0BRW) {
+        if (timerBRW.elapsedInIntervalBRW == currentIntervalDurationBRW && timerBRW.isBreak0BRW) {
             if (!ismuteBRW) {
                 audioObjects.exhale.muted = false;
                 audioObjects.exhale.play();
             }
+            BRWchangeBall(0.5, timerSettingsBRW.breakDurationBRW);
+        }
+        if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak0BRW) {
             timerBRW.isBreakBRW = true;
             timerBRW.isBreak0BRW = false;
             timerBRW.isFinishedBRW = timerBRW.intervalsDoneBRW === timerSettingsBRW.intervalCountBRW;
@@ -483,11 +608,14 @@ function onTimerTickBRW() {
         updateInfoBRW();
     } else if (timerBRW.elapsedInIntervalBRW <= currentIntervalDurationBRW && timerBRW.isBreakBRW) {
         timerBRW.elapsedInIntervalBRW++;
-        if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreakBRW) {
+        if (timerBRW.elapsedInIntervalBRW == currentIntervalDurationBRW && timerBRW.isBreakBRW) {
             if (!ismuteBRW) {
                 audioObjects.inhale.muted = false;
                 audioObjects.inhale.play();
             }
+            BRWchangeBall(1.5, timerSettingsBRW.breakDuration2BRW);
+        }
+        if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreakBRW) {
             timerBRW.isBreak2BRW = true;
             timerBRW.isBreakBRW = false;
             timerBRW.isFinishedBRW = timerBRW.intervalsDoneBRW === timerSettingsBRW.intervalCountBRW;
@@ -506,11 +634,14 @@ function onTimerTickBRW() {
         updateInfoBRW();
     } else if (timerBRW.elapsedInIntervalBRW <= currentIntervalDurationBRW && timerBRW.isBreak2BRW) {
         timerBRW.elapsedInIntervalBRW++;
-        if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak2BRW) {
+        if (timerBRW.elapsedInIntervalBRW == currentIntervalDurationBRW && timerBRW.isBreak2BRW) {
             if (!ismuteBRW) {
                 audioObjects.exhale.muted = false;
                 audioObjects.exhale.play();
             }
+            BRWchangeBall(0.5, timerSettingsBRW.breakDuration3BRW);
+        }
+        if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak2BRW) {
             timerBRW.isBreak3BRW = true;
             timerBRW.isBreak2BRW = false;
             timerBRW.isFinishedBRW = timerBRW.intervalsDoneBRW === timerSettingsBRW.intervalCountBRW;
@@ -529,11 +660,12 @@ function onTimerTickBRW() {
         updateInfoBRW();
     } else if (timerBRW.elapsedInIntervalBRW <= currentIntervalDurationBRW && timerBRW.isBreak3BRW) {
         timerBRW.elapsedInIntervalBRW++;
-        if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak3BRW) {
+        if (timerBRW.elapsedInIntervalBRW == currentIntervalDurationBRW && timerBRW.isBreak3BRW) {
             if (!ismuteBRW) {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
+            BRWchangeBall(0.5, timerSettingsBRW.breakDuration4BRW);
             timerBRW.isBreak4BRW = true;
             timerBRW.isBreak3BRW = false;
             timerBRW.isFinishedBRW = timerBRW.intervalsDoneBRW === timerSettingsBRW.intervalCountBRW;
@@ -553,11 +685,49 @@ function onTimerTickBRW() {
     }
     else if (timerBRW.elapsedInIntervalBRW <= currentIntervalDurationBRW && timerBRW.isBreak4BRW) {
         timerBRW.elapsedInIntervalBRW++;
-        if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak4BRW) {
+        if (timerBRW.elapsedInIntervalBRW == currentIntervalDurationBRW && timerBRW.isBreak4BRW) {
             if (!ismuteBRW) {
-                audioObjects.inhale.muted = false;
-                audioObjects.inhale.play();
+                if (BRWcountdownDisplay.textContent == '0:00') {
+                    audioObjects.inhale.muted = true;
+                    clearInterval(BRWcountdown);                  
+                    if (!ismuteBRW) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intBRW);
+                    setTimerControlsDisabledStateBRW(true, true, false);
+                    document.getElementById('stopBtnBRW').style.color = '#990000';
+                    timerControlsButtonsBRW.pauseBRW.style.display = 'none';
+                    timerControlsButtonsBRW.startBRW.style.display = 'inline';
+                    timerControlsButtonsBRW.startBRW.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('brwSettings').disabled = false;
+                    document.getElementById('brwSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickBRW();
+                    document.getElementById('BRWDate').value = date;
+                    document.getElementById('BRWSave').disabled = false;
+                    document.getElementById('BRWSave').style.color = '#49B79D';
+                    clearInterval(BRWcountdown);
+                    BRWisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            BRWballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            BRWballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
+                } else {
+                    audioObjects.inhale.muted = false;
+                    audioObjects.inhale.play();
+                }
             }
+            BRWchangeBall(1.5, timerSettingsBRW.intervalDurationBRW);
+        }
+        if (timerBRW.elapsedInIntervalBRW > currentIntervalDurationBRW && timerBRW.isBreak4BRW) {
             timerBRW.isBreak0BRW = true;
             timerBRW.isBreak4BRW = false;
             timerBRW.intervalsDoneBRW++;
@@ -584,18 +754,31 @@ function updateInfoBRW() {
     statusPanelBRW.elapsedInBreakIntervalBoxBRW.style.display = !timerBRW.isFinishedBRW && timerBRW.isBreakBRW ? 'block' : null;
     statusPanelBRW.elapsedInBreakIntervalBox2BRW.style.display = !timerBRW.isFinishedBRW && timerBRW.isBreak2BRW ? 'block' : null;
     statusPanelBRW.elapsedInBreakIntervalBox3BRW.style.display = !timerBRW.isFinishedBRW && timerBRW.isBreak3BRW ? 'block' : null;
-    statusPanelBRW.elapsedInBreakIntervalBox4BRW.style.display = !timerBRW.isFinishedBRW && timerBRW.isBreak4BRW ? 'block' : null;
-
-    if (timerBRW.isBreakBRW) {
-        statusPanelBRW.elapsedInBreakIntervalBRW.textContent = timerBRW.elapsedInIntervalBRW;
-    } else if (timerBRW.isBreak2BRW) {
-        statusPanelBRW.elapsedInBreakInterval2BRW.textContent = timerBRW.elapsedInIntervalBRW;
-    } else if (timerBRW.isBreak3BRW) {
-        statusPanelBRW.elapsedInBreakInterval3BRW.textContent = timerBRW.elapsedInIntervalBRW;
-    } else if (timerBRW.isBreak4BRW) {
-        statusPanelBRW.elapsedInBreakInterval4BRW.textContent = timerBRW.elapsedInIntervalBRW;
+    statusPanelBRW.elapsedInBreakIntervalBox4BRW.style.display = !timerBRW.isFinishedBRW && timerBRW.isBreak4BRW ? 'block' : null;  
+    if (isPortuguese) {
+        if(timerBRW.isBreakBRW) {
+            BRWballText.textContent = 'EXPIRA';
+        } else if (timerBRW.isBreak2BRW) {
+            BRWballText.textContent = 'INSPIRA';
+        } else if (timerBRW.isBreak3BRW) {
+            BRWballText.textContent = 'EXPIRA';
+        } else if (timerBRW.isBreak4BRW) {
+            BRWballText.textContent = 'SEGURE';
+        } else {
+            BRWballText.textContent = 'INSPIRA';
+        }
     } else {
-        statusPanelBRW.elapsedInIntervalBRW.textContent = timerBRW.elapsedInIntervalBRW;
+        if (timerBRW.isBreakBRW) {
+            BRWballText.textContent = 'EXHALE';
+        } else if (timerBRW.isBreak2BRW) {
+            BRWballText.textContent = 'INHALE';
+        } else if (timerBRW.isBreak3BRW) {
+            BRWballText.textContent = 'EXHALE';
+        } else if (timerBRW.isBreak4BRW) {
+            BRWballText.textContent = 'HOLD';
+        } else {
+            BRWballText.textContent = 'INHALE';
+        }
     }
     statusPanelBRW.intervalsDoneBRW.value = timerBRW.intervalsDoneBRW;
 }

@@ -1,4 +1,73 @@
-/*BOX JS*/
+﻿/*BOX JS*/
+const BOXball = document.getElementById('BOXball');
+const BOXballText = document.getElementById('BOXballText');
+
+function BOXchangeBall(scale, duration) {
+    BOXball.style.transition = `transform ${duration}s ease`;
+    BOXball.style.transform = `scale(${scale})`;
+}
+
+const BOXtimeInput = document.getElementById('BOXtimeInput');
+const BOXcountdownDisplay = document.getElementById('BOXcountdownDisplay');
+let BOXcountdown;
+let BOXtimeRemaining = Infinity;
+let BOXisPaused = false;
+
+// Populate the dropdown with options
+for (let BOXi = 2; BOXi <= 60; BOXi++) { // assuming 1 to 60 minutes
+    let BOXoption = document.createElement('option');
+    BOXoption.value = BOXi * 60;
+    if (isPortuguese) {
+        BOXoption.textContent = BOXi + ' minutos';
+    } else {
+        BOXoption.textContent = BOXi + ' minutes';
+    }
+    BOXtimeInput.appendChild(BOXoption);
+}
+
+const BOXmodal = document.getElementById("BOXmodal");
+const BOXcloseModal = document.getElementById("BOXcloseModal");
+const BOXBTN = document.getElementById("BOXBTN");
+
+function BOXopenmodal() {
+    BOXmodal.style.display = "block";
+    audioObjects.exhale.load();
+    audioObjects.inhale.load();
+    audioObjects.hold.load();
+}
+// Function to close the modal
+function BOXclose() {
+    BOXmodal.style.display = "none";
+    clearInterval(intBOX);
+    [secondsBOX, minutesBOX, hoursBOX] = [0, 0, 0];
+    timerRefBOX.value = '00 : 00 : 00';
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    timerControlsButtonsBOX.pauseBOX.style.display = 'none';
+    timerControlsButtonsBOX.startBOX.style.display = 'inline';
+    setFormDisabledStateBOX(false);
+    setTimerControlsDisabledStateBOX(false, true, true);
+    timerControlsButtonsBOX.stopBOX.style.color = "rgb(177, 177, 177)";
+    document.getElementById('BOXSave').disabled = true;
+    document.getElementById('BOXSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('BOXSettings').disabled = false;
+    document.getElementById('BOXSettings').style.color = '#49B79D';
+    stopTimerTickBOX();
+    resetTimerBOX();
+    document.getElementById('BOXResultSaved').innerHTML = "";
+    clearInterval(BOXcountdown);
+    BOXisPaused = false;
+    BOXtimeInput.classList.remove('CountdownHidden');
+    BOXcountdownDisplay.classList.add('CountdownHidden');
+    BOXchangeBall(1, 1);
+}
+// Event listener for closing the modal
+BOXcloseModal.addEventListener("click", BOXclose);
+BOXBTN.onclick = function () {
+    BOXopenmodal();
+}
 $(function () {
     $('#BOXForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -28,7 +97,8 @@ $(function () {
         document.getElementById('BOXSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickBOX();
         resetTimerBOX();
-        isBOXON = false;
+        BOXtimeInput.classList.remove('CountdownHidden');
+        BOXcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
@@ -341,24 +411,48 @@ function startTimerBOX() {
     if (intBOX !== null) {
         clearInterval(intBOX);
     }
-    intBOX = setInterval(displayTimerBOX, 1000);
     setFormDisabledStateBOX(true);
-    setTimerControlsDisabledStateBOX(true, false, true);
+    setTimerControlsDisabledStateBOX(true, true, true);
+    setTimeout(() => {
+        setTimerControlsDisabledStateBOX(true, false, true);
+    }, 2000);
     timerControlsButtonsBOX.stopBOX.style.color = "rgb(177, 177, 177)";
     if (timerBOX.isBreak3BOX) {
         if (!ismuteBOX) {
-            audioObjects.inhale.muted = false;
-            audioObjects.inhale.play();
+            audioObjects.bell.muted = false;
+            audioObjects.bell.play();
+            setTimeout(() => {
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
+            }, 1500);    
         }
+        setTimeout(() => {
+            BOXchangeBall(1.5, timerSettingsBOX.intervalDurationBOX);
+        }, 1500); 
     }
-    isBOXON = true;
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
     }
     if (timerBOX.isFinishedBOX) {
         resetTimerBOX();
     }
-    startTimerTickBOX();
+    setTimeout(() => {
+        setTimeout(() => {
+            intBOX = setInterval(displayTimerBOX, 1000);
+        }, 1000);
+        startTimerTickBOX();
+        if (BOXisPaused) {
+            // Resume from paused state
+            BOXstartTimer(BOXtimeRemaining);
+            BOXisPaused = false;
+        } else {
+            // Start a new timer
+            clearInterval(BOXcountdown);
+            BOXtimeRemaining = BOXtimeInput.value === '∞' ? Infinity : parseInt(BOXtimeInput.value);
+            BOXcountdownDisplay.textContent = '';
+            BOXstartTimer(BOXtimeRemaining);
+        }
+    }, 1700);  
     timerControlsButtonsBOX.startBOX.style.display = 'none';
     timerControlsButtonsBOX.pauseBOX.style.display = 'inline';
     document.getElementById('BOXSettings').disabled = true;
@@ -366,7 +460,23 @@ function startTimerBOX() {
     document.getElementById('BOXSave').disabled = true;
     document.getElementById('BOXSave').style.color = 'rgb(177, 177, 177)';
 }
-
+function BOXstartTimer(BOXduration) {
+    BOXcountdown = setInterval(function () {
+        if (BOXduration > 0 && BOXduration !== Infinity) {
+            BOXduration--;
+            BOXtimeRemaining = BOXduration;
+            let BOXContdownminutes = Math.floor(BOXduration / 60);
+            let BOXContdownseconds = BOXduration % 60;
+            BOXcountdownDisplay.textContent = `${BOXContdownminutes}:${BOXContdownseconds.toString().padStart(2, '0')}`;
+            BOXtimeInput.classList.add('CountdownHidden');
+            BOXcountdownDisplay.classList.remove('CountdownHidden');
+        } else if (BOXduration == Infinity) {
+            BOXcountdownDisplay.textContent = '∞';
+            BOXtimeInput.classList.add('CountdownHidden');
+            BOXcountdownDisplay.classList.remove('CountdownHidden');
+        }
+    }, 1000);
+}
 function pauseTimerBOX() {
     clearInterval(intBOX);
     setTimerControlsDisabledStateBOX(false, true, false);
@@ -379,10 +489,12 @@ function pauseTimerBOX() {
         audioPlayerBRT.pause();
     }
     stopTimerTickBOX();
-    isBOXON = false;
     document.getElementById('BOXDate').value = date;
     document.getElementById('BOXSave').disabled = false;
     document.getElementById('BOXSave').style.color = '#49B79D';
+    clearInterval(BOXcountdown);
+    BOXisPaused = true;
+    BOXchangeBall(1, 1);
 }
 
 function stopTimerBOX() {
@@ -399,7 +511,12 @@ function stopTimerBOX() {
     document.getElementById('BOXSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickBOX();
     resetTimerBOX();
-    isBOXON = false;
+    timerControlsButtonsBOX.startBOX.style.color = '#49B79D';
+    clearInterval(BOXcountdown);
+    BOXisPaused = false;
+    BOXtimeInput.classList.remove('CountdownHidden');
+    BOXcountdownDisplay.classList.add('CountdownHidden');
+    BOXchangeBall(1, 1);
 }
 
 function displayTimerBOX() {
@@ -430,11 +547,14 @@ function onTimerTickBOX() {
     const currentIntervalDurationBOX = timerBOX.isBreakBOX ? timerSettingsBOX.breakDurationBOX : timerBOX.isBreak2BOX ? timerSettingsBOX.breakDuration2BOX : timerBOX.isBreak4BOX ? timerSettingsBOX.breakDuration3BOX : timerSettingsBOX.intervalDurationBOX;
     if (timerBOX.elapsedInIntervalBOX <= currentIntervalDurationBOX && timerBOX.isBreak3BOX) {
         timerBOX.elapsedInIntervalBOX++;
-        if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreak3BOX) {
+        if (timerBOX.elapsedInIntervalBOX == currentIntervalDurationBOX && timerBOX.isBreak3BOX) {
             if (!ismuteBOX) {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
+            BOXchangeBall(1.3, timerSettingsBOX.breakDurationBOX);
+        }
+        if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreak3BOX) {
             timerBOX.isBreakBOX = true;
             timerBOX.isBreak3BOX = false;
             timerBOX.isFinishedBOX = timerBOX.intervalsDoneBOX === timerSettingsBOX.intervalCountBOX;
@@ -453,11 +573,14 @@ function onTimerTickBOX() {
         updateInfoBOX();
     } else if (timerBOX.elapsedInIntervalBOX <= currentIntervalDurationBOX && timerBOX.isBreakBOX) {
         timerBOX.elapsedInIntervalBOX++;
-        if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreakBOX) {
+        if (timerBOX.elapsedInIntervalBOX == currentIntervalDurationBOX && timerBOX.isBreakBOX) {
             if (!ismuteBOX) {
                 audioObjects.exhale.muted = false;
                 audioObjects.exhale.play();
             }
+            BOXchangeBall(0.5, timerSettingsBOX.breakDuration2BOX);
+        }
+        if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreakBOX) {
             timerBOX.isBreak2BOX = true;
             timerBOX.isBreakBOX = false;
             timerBOX.isFinishedBOX = timerBOX.intervalsDoneBOX === timerSettingsBOX.intervalCountBOX;
@@ -476,11 +599,14 @@ function onTimerTickBOX() {
         updateInfoBOX();
     } else if (timerBOX.elapsedInIntervalBOX <= currentIntervalDurationBOX && timerBOX.isBreak2BOX) {
         timerBOX.elapsedInIntervalBOX++;
-        if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreak2BOX) {
+        if (timerBOX.elapsedInIntervalBOX == currentIntervalDurationBOX && timerBOX.isBreak2BOX) {
             if (!ismuteBOX) {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
+            BOXchangeBall(0.5, timerSettingsBOX.breakDuration3BOX);
+        }
+        if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreak2BOX) {
             timerBOX.isBreak4BOX = true;
             timerBOX.isBreak2BOX = false;
             timerBOX.isFinishedBOX = timerBOX.intervalsDoneBOX === timerSettingsBOX.intervalCountBOX;
@@ -499,11 +625,49 @@ function onTimerTickBOX() {
         updateInfoBOX();
     } else if (timerBOX.elapsedInIntervalBOX <= currentIntervalDurationBOX && timerBOX.isBreak4BOX) {
         timerBOX.elapsedInIntervalBOX++;
-        if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreak4BOX) {
+        if (timerBOX.elapsedInIntervalBOX == currentIntervalDurationBOX && timerBOX.isBreak4BOX) {
             if (!ismuteBOX) {
-                audioObjects.inhale.muted = false;
-                audioObjects.inhale.play();
+                if(BOXcountdownDisplay.textContent == '0:00') {
+                    audioObjects.inhale.muted = true;
+                    clearInterval(BOXcountdown);
+                    if (!ismuteBOX) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intBOX);
+                    setTimerControlsDisabledStateBOX(true, true, false);
+                    document.getElementById('stopBtnBOX').style.color = '#990000';
+                    timerControlsButtonsBOX.pauseBOX.style.display = 'none';
+                    timerControlsButtonsBOX.startBOX.style.display = 'inline';
+                    timerControlsButtonsBOX.startBOX.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('BOXSettings').disabled = false;
+                    document.getElementById('BOXSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickBOX();
+                    document.getElementById('BOXDate').value = date;
+                    document.getElementById('BOXSave').disabled = false;
+                    document.getElementById('BOXSave').style.color = '#49B79D';
+                    clearInterval(BOXcountdown);
+                    BOXisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            BOXballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            BOXballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
+                } else {
+                    audioObjects.inhale.muted = false;
+                    audioObjects.inhale.play();
+                }
             }
+            BOXchangeBall(1.5, timerSettingsBOX.intervalDurationBOX);
+        }
+        if (timerBOX.elapsedInIntervalBOX > currentIntervalDurationBOX && timerBOX.isBreak4BOX) {
             timerBOX.isBreak3BOX = true;
             timerBOX.isBreak4BOX = false;
             timerBOX.intervalsDoneBOX++;
@@ -530,16 +694,29 @@ function updateInfoBOX() {
     statusPanelBOX.elapsedInBreakIntervalBoxBOX.style.display = !timerBOX.isFinishedBOX && timerBOX.isBreakBOX ? 'block' : null;
     statusPanelBOX.elapsedInBreakIntervalBox2BOX.style.display = !timerBOX.isFinishedBOX && timerBOX.isBreak2BOX ? 'block' : null;
     statusPanelBOX.elapsedInBreakIntervalBox3BOX.style.display = !timerBOX.isFinishedBOX && timerBOX.isBreak4BOX ? 'block' : null;
-
-    if (timerBOX.isBreakBOX) {
-        statusPanelBOX.elapsedInBreakIntervalBOX.textContent = timerBOX.elapsedInIntervalBOX;
-    } else if (timerBOX.isBreak2BOX) {
-        statusPanelBOX.elapsedInBreakInterval2BOX.textContent = timerBOX.elapsedInIntervalBOX;
-    } else if (timerBOX.isBreak4BOX) {
-        statusPanelBOX.elapsedInBreakInterval3BOX.textContent = timerBOX.elapsedInIntervalBOX;
+    if (isPortuguese) {
+        if (timerBOX.isBreakBOX) {
+            BOXballText.textContent = 'SEGURE';
+        } else if (timerBOX.isBreak2BOX) {
+            BOXballText.textContent = 'EXPIRA';
+        } else if (timerBOX.isBreak4BOX) {
+            BOXballText.textContent = 'SEGURE';
+        } else {
+            BOXballText.textContent = 'INSPIRA';
+        }
     } else {
-        statusPanelBOX.elapsedInIntervalBOX.textContent = timerBOX.elapsedInIntervalBOX;
+        if (timerBOX.isBreakBOX) {
+            BOXballText.textContent = 'HOLD';
+        } else if (timerBOX.isBreak2BOX) {
+            BOXballText.textContent = 'EXHALE';
+        } else if (timerBOX.isBreak4BOX) {
+            BOXballText.textContent = 'HOLD';
+        } else {
+            BOXballText.textContent = 'INHALE';
+        }
     }
     statusPanelBOX.intervalsDoneBOX.value = timerBOX.intervalsDoneBOX;
+
 }
+
 //---------------------------------------------------//

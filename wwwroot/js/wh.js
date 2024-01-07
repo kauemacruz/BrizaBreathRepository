@@ -1,105 +1,134 @@
-var iWH = 0;
-var xWH = 0;
-var yWH = 30;
-var myTimeoutWH;
-var myTimeout2WH;
-var speed = 25;
-var cWH = document.getElementById("myCanvasWH");
-var ctxWH = cWH.getContext("2d");
-var my_gradientWH = ctxWH.createLinearGradient(70, 0, 0, 170);
-my_gradientWH.addColorStop(0, "#49B79D");
-my_gradientWH.addColorStop(1, "#0661AA");
-ctxWH.fillStyle = my_gradientWH;
-ctxWH.beginPath();
-ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
-ctxWH.fill();
-function animateWH() {
-    if (iWH > 79) {
-        iWH = 80;
-        if (yWH > 1) {
-            if (!BismuteWH) {
-                audioObjects.fullyout.muted = false;
-                audioObjects.fullyout.loop = false;
+//WH js//
+const WHball = document.getElementById('WHball');
+const WHballText = document.getElementById('WHballText');
+
+function WHchangeBall(scale, duration) {
+    WHball.style.transition = `transform ${duration}s ease`;
+    WHball.style.transform = `scale(${scale})`;
+}
+
+const WHmodal = document.getElementById("WHmodal");
+const WHcloseModal = document.getElementById("WHcloseModal");
+const WHBTN = document.getElementById("WHBTN");
+
+function WHopenmodal() {
+    WHmodal.style.display = "block";
+    audioObjects.fullyin.load();
+    audioObjects.fullyout.load();
+    audioObjects.letgoandhold.load();
+    audioObjects.fullyinHold.load();
+    audioObjects.normalbreath.load();
+    audioObjects.nextRound.load();
+}
+// Function to close the modal
+function WHclose() {
+    WHmodal.style.display = "none";
+    clearTimeout(intWH);
+    intWH = null;
+    [secondsWH, minutesWH] = [0, 0];
+    document.getElementById('WHSettings').disabled = false;
+    document.getElementById('WHSettings').style.color = '#49B79D';
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    timerControlsButtonsWH.pauseWH.style.display = 'none';
+    timerControlsButtonsWH.startWH.style.display = 'inline';
+    setFormDisabledStateWH(false);
+    setTimerControlsDisabledStateWH(false, true, true);
+    timerControlsButtonsWH.stopWH.style.color = "rgb(177, 177, 177)";
+    WHbreaths = formSettingsFieldsWH.breakDuration2WH.value;
+    clearTimeout(WHmyTimeout);
+    WHmyTimeout = null;
+    clearTimeout(WHmyTimeout2);
+    WHmyTimeout2 = null;
+}
+// Event listener for closing the modal
+WHcloseModal.addEventListener("click", WHclose);
+WHBTN.onclick = function () {
+    WHopenmodal();
+}
+
+var WHbreaths = 30;
+var WHbreathsSpeed = 2000;
+var WHbreathSpeed2 = 1;
+let WHmyTimeout;
+let WHmyTimeout2;
+WHballText.textContent = WHbreaths;
+
+
+function WHanimate() {
+    if (WHbreaths < 1) {
+        clearTimeout(WHmyTimeout);         
+        WHholdFunction();
+        return;
+    } else {
+        WHballText.textContent = WHbreaths;
+        WHchangeBall(1.5, WHbreathSpeed2);
+        if (!ismuteWH) {
+            audioObjects.fullyin.play();
+        }
+        setTimeout(function () {
+            WHchangeBall(0.5, WHbreathSpeed2);
+            if (!ismuteWH) {
                 audioObjects.fullyout.play();
             }
-        }
+        }, WHbreathsSpeed/2);
     }
-    if (iWH > 25) {
-        ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-        ctxWH.fillStyle = my_gradientWH;
-        ctxWH.beginPath();
-        ctxWH.arc(150, 100, iWH, 0, 2 * Math.PI, true);
-        ctxWH.fill();
-        ctxWH.font = "bold 48px serif"
-        ctxWH.fillStyle = "white";
-        ctxWH.textAlign = "center";
-        ctxWH.fillText(yWH, 150, 115);
-    }
-    if (iWH == 80) {
-        xWH++;
-        ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-        ctxWH.fillStyle = my_gradientWH;
-        ctxWH.beginPath();
-        ctxWH.arc(150, 100, 80 - xWH, 0, 2 * Math.PI, true);
-        ctxWH.fill();
-        ctxWH.font = "bold 48px serif"
-        ctxWH.fillStyle = "white";
-        ctxWH.textAlign = "center";
-        ctxWH.fillText(yWH, 150, 115);
-    }
-    if (xWH > 50) {
-        yWH--;
-        xWH = 0;
-        iWH = 25;
-        ctxWH.font = "bold 48px serif"
-        ctxWH.fillStyle = "white";
-        ctxWH.textAlign = "center";
-        ctxWH.fillText(yWH, 150, 165);
-        if (yWH > 1) {
-            if (!BismuteWH) {
-                audioObjects.fullyin.muted = false;
-                audioObjects.fullyin.loop = false;
-                audioObjects.fullyin.play();
-            }
-        } else {
-            if (!ismuteWH) {
-                audioObjects.letgoandhold.muted = false;
-                audioObjects.letgoandhold.play();
-            }
-        }
-    }
-    if (yWH == 0) {
-        ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-        ctxWH.fillStyle = my_gradientWH;
-        ctxWH.beginPath();
-        ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
-        ctxWH.fill();
-        ctxWH.font = "bold 48px serif"
-        ctxWH.fillStyle = "white";
-        ctxWH.textAlign = "center";
-        ctxWH.fillText('Hold', 150, 115);
-    }
-    iWH++;
-    myTimeoutWH = setTimeout(animateWH, speed);
+    WHbreaths--;
+    WHmyTimeout = setTimeout(WHanimate, WHbreathsSpeed);
 }
-
-function animate2WH() {
-    if (iWH > 0) {
-        ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-        ctxWH.fillStyle = my_gradientWH;
-        ctxWH.beginPath();
-        ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
-        ctxWH.fill();
-        ctxWH.font = "bold 48px serif"
-        ctxWH.fillStyle = "white";
-        ctxWH.textAlign = "center";
-        ctxWH.fillText(yWH, 150, 115);
-        yWH--;
+function WHholdFunction() {
+    WHmyTimeout = null;
+    setTimerControlsDisabledStateWH(true, false, false);
+    timerControlsButtonsWH.pauseWH.style.color = '#0661AA';
+    if (!ismuteWH) {
+        audioObjects.letgoandhold.muted = false;
+        audioObjects.letgoandhold.play();
     }
-    iWH++;
-    myTimeout2WH = setTimeout(animate2WH, 1000);
+    if (isPortuguese) {
+        WHballText.textContent = 'SOLTA E SEGURA';
+    } else {
+        WHballText.textContent = 'LET GO & HOLD';
+    }
+    WHchangeBall(1.5, 1);
+    setTimeout(function () {
+        displayTimerWH();
+    }, 3000);
 }
-
+var WHcountdown = 15;
+function WHanimate2() {
+    if (WHcountdown < 1) {
+        clearTimeout(WHmyTimeout2);    
+        WHnextRound();
+        return;
+    }
+    WHballText.textContent = WHcountdown;
+    WHcountdown--;
+    WHmyTimeout2 = setTimeout(WHanimate2, 1000);
+}
+function WHnextRound() {
+    WHmyTimeout2 = null;
+    if (!ismuteWH) {
+        audioObjects.nextRound.muted = false;
+        audioObjects.nextRound.play();
+    }
+    if (isPortuguese) {
+        WHballText.textContent = 'PROXIMO ROUND';
+    } else {
+        WHballText.textContent = 'NEXT ROUND';
+    }
+    WHbreaths = formSettingsFieldsWH.breakDuration2WH.value;
+    setTimeout(() => {
+        if (!ismuteWH) {
+            audioObjects.fullyout.play();
+        }
+        WHchangeBall(0.5, 1);
+    }, 2000); 
+    setTimeout(() => {
+        WHanimate();
+    }, 3000); 
+}
 $(function () {
     $('#WHForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -118,7 +147,8 @@ $(function () {
         });
         document.getElementById("WHResults").innerHTML = "";
         timerRefWH.value = "|";
-        clearInterval(intWH);
+        clearTimeout(intWH);
+        intWH = null;
         document.getElementById('WHSettings').disabled = false;
         document.getElementById('WHSettings').style.color = '#49B79D';
         if (!audioPlayerBRT.muted) {
@@ -134,10 +164,8 @@ $(function () {
         timerControlsButtonsWH.startWH.style.color = "#0661AA";
         document.getElementById('WHSave').disabled = true;
         document.getElementById('WHSave').style.color = 'rgb(177, 177, 177)';
-        stopTimerTickWH();
         resetTimerWH();
         timerWH.isFinishedWH = true;
-        stopTimerTickWH();
     });
 });
 
@@ -211,6 +239,7 @@ volumeVoiceWH.addEventListener('input', function () {
         audioObjects.inhale.muted = true;
         audioObjects.normalbreath.muted = true;
         audioObjects.letgoandhold.muted = true;
+        audioObjects.fullyinHold.muted = true;
         audioWH.style.display = "none";
         muteWH.style.display = "block";
         ismuteWH = true;
@@ -218,6 +247,7 @@ volumeVoiceWH.addEventListener('input', function () {
         audioObjects.inhale.muted = false;
         audioObjects.normalbreath.muted = false;
         audioObjects.letgoandhold.muted = false;
+        audioObjects.fullyinHold.muted = false;
         muteWH.style.display = "none";
         audioWH.style.display = "block";
         ismuteWH = false;
@@ -280,23 +310,15 @@ resetTimerWH();
 var minusBtnWH = document.getElementById("minusWH"),
     plusBtnWH = document.getElementById("plusWH"),
     numberWH = 30, /// numberWH value
-    minWH = 20, /// minWH numberWH
+    minWH = 10, /// minWH numberWH
     maxWH = 70;
 minusBtnWH.onclick = function () {
     if (numberWH > minWH) {
         numberWH = numberWH - 10;
         formSettingsFieldsWH.breakDuration2WH.value = numberWH;
-        ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-        ctxWH.fillStyle = my_gradientWH;
-        ctxWH.beginPath();
-        ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
-        ctxWH.fill();
-        ctxWH.font = "bold 48px serif"
-        ctxWH.fillStyle = "white";
-        ctxWH.textAlign = "center";
-        ctxWH.fillText(numberWH, 150, 115);
-        yWH = numberWH;
-        setTimerSettingsWH(9999, yWH, true, formSettingsFieldsWH.breakDurationWH.value, true, 9999);
+        WHbreaths = numberWH;
+        WHballText.textContent = WHbreaths;
+        setTimerSettingsWH(9999, WHbreaths, true, formSettingsFieldsWH.breakDurationWH.value, true, 9999);
     }
 }
 
@@ -304,46 +326,42 @@ plusBtnWH.onclick = function () {
     if (numberWH < maxWH) {
         numberWH = numberWH + 10;
         formSettingsFieldsWH.breakDuration2WH.value = numberWH;
-        ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-        ctxWH.fillStyle = my_gradientWH;
-        ctxWH.beginPath();
-        ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
-        ctxWH.fill();
-        ctxWH.font = "bold 48px serif"
-        ctxWH.fillStyle = "white";
-        ctxWH.textAlign = "center";
-        ctxWH.fillText(numberWH, 150, 115);
-        yWH = numberWH;
-        setTimerSettingsWH(9999, yWH, true, formSettingsFieldsWH.breakDurationWH.value, true, 9999);
+        WHbreaths = numberWH;
+        WHballText.textContent = WHbreaths;
+        setTimerSettingsWH(9999, WHbreaths, true, formSettingsFieldsWH.breakDurationWH.value, true, 9999);
     }
 }
 var SminusBtnWH = document.getElementById("SminusWH"),
     SplusBtnWH = document.getElementById("SplusWH"),
-    breathSpeed = document.getElementById("breathSpeed");
-breathSpeed.value = "Medium";
+    breathSpeedWH = document.getElementById("breathSpeedWH");
+breathSpeedWH.value = "Medium";
 SminusBtnWH.onclick = function () {
-    if (breathSpeed.value == "Medium") {
+    if (breathSpeedWH.value == "Medium") {
         SminusBtnWH.style.color = "rgb(177,177,177)";
-        breathSpeed.value = "Slow";
-        speed = 30;
+        breathSpeedWH.value = "Slow";
+        WHbreathsSpeed = 3000;
+        WHbreathsSpeed2 = 1.5;
     }
-    else if (breathSpeed.value == "Fast") {
-        breathSpeed.value = "Medium";
-        speed = 25;
+    else if (breathSpeedWH.value == "Fast") {
+        breathSpeedWH.value = "Medium";
+        WHbreathsSpeed = 2000;
+        WHbreathsSpeed2 = 1;
         SplusBtnWH.style.color = "#49B79D";
     }
 }
 
 SplusBtnWH.onclick = function () {
-    if (breathSpeed.value == "Slow") {
+    if (breathSpeedWH.value == "Slow") {
         SminusBtnWH.style.color = "#49B79D";
-        breathSpeed.value = "Medium";
-        speed = 25;
+        breathSpeedWH.value = "Medium";
+        WHbreathsSpeed = 2000;
+        WHbreathsSpeed2 = 1;
     }
-    else if (breathSpeed.value == "Medium") {
-        breathSpeed.value = "Fast";
+    else if (breathSpeedWH.value == "Medium") {
+        breathSpeedWH.value = "Fast";
         SplusBtnWH.style.color = "rgb(177,177,177)";
-        speed = 20;
+        WHbreathsSpeed = 1500;
+        WHbreathsSpeed2 = 0.75;
     }
 }
 
@@ -365,70 +383,6 @@ function initializeTimerSettingsFormWH() {
     formSettingsFieldsWH.breakDurationWH.value = timerSettingsWH.breakDurationWH;
     formSettingsFieldsWH.enableBreak2WH.checked = timerSettingsWH.enableBreak2WH;
     formSettingsFieldsWH.breakDuration2WH.value = 30;
-    ctxWH.font = "bold 48px serif"
-    ctxWH.fillStyle = "white";
-    ctxWH.textAlign = "center";
-    ctxWH.fillText(30, 150, 115);
-
-    function getNumberInBoundsOrDefaultWH(value, minWH, maxWH, def = 1) {
-        const valueAsNumberWH = parseInt(value);
-        return isNaN(valueAsNumberWH) ? def : Math.max(minWH, Math.min(valueAsNumberWH, maxWH));
-    }
-
-    function setBreakDurationLineDisplayWH(displayed) {
-        const breakDurationInputLineEltWH = document.getElementById('breakDurationInputLineWH');
-        breakDurationInputLineEltWH.style.display = displayed ? null : 'none';
-        const breakDurationInputLineElt2WH = document.getElementById('breakDurationInputLine2WH');
-        breakDurationInputLineElt2WH.style.display = displayed ? null : 'none';
-    }
-
-    formSettingsFieldsWH.intervalCountWH.addEventListener('input', () => {
-        const intervalCountWH = getNumberInBoundsOrDefaultWH(formSettingsFieldsWH.intervalCountWH.value, 1, 9999),
-            hasOneIntervalWH = intervalCountWH === 1,
-            hasBreakWH = hasOneIntervalWH ? false : lastUserSetEnableBreakWH;
-        formSettingsFieldsWH.enableBreakWH.disabled = hasOneIntervalWH === true;
-        formSettingsFieldsWH.enableBreakWH.checked = hasBreakWH;
-        setBreakDurationLineDisplayWH(hasBreakWH);
-        setTimerSettingsWH(intervalCountWH, undefined, hasBreakWH);
-        updateInfoWH();
-    });
-
-    formSettingsFieldsWH.intervalDurationWH.addEventListener('input', () => {
-        setTimerSettingsWH(undefined, getNumberInBoundsOrDefaultWH(formSettingsFieldsWH.intervalDurationWH.value, 1, oneDayInSecondsWH));
-        updateInfoWH();
-    });
-
-    formSettingsFieldsWH.enableBreakWH.addEventListener('change', () => {
-        const enableBreakWH = formSettingsFieldsWH.enableBreakWH.checked;
-        lastUserSetEnableBreakWH = enableBreakWH;
-        setBreakDurationLineDisplayWH(enableBreakWH);
-        setTimerSettingsWH(undefined, undefined, enableBreakWH);
-        updateInfoWH();
-    });
-
-    formSettingsFieldsWH.breakDurationWH.addEventListener('input', () => {
-        setTimerSettingsWH(
-            undefined, undefined, undefined,
-            getNumberInBoundsOrDefaultWH(formSettingsFieldsWH.breakDurationWH.value, 1, oneDayInSecondsWH)
-        );
-        updateInfoWH();
-    });
-
-    formSettingsFieldsWH.enableBreak2WH.addEventListener('change', () => {
-        const enableBreak2WH = formSettingsFieldsWH.enableBreak2WH.checked;
-        lastUserSetEnableBreak2 = enableBreak2WH;
-        setBreakDurationLineDisplayWH(enableBreak2WH);
-        setTimerSettingsWH(undefined, undefined, undefined, undefined, enableBreak2WH);
-        updateInfoWH();
-    });
-
-    formSettingsFieldsWH.breakDuration2WH.addEventListener('input', () => {
-        setTimerSettingsWH(
-            undefined, undefined, undefined, undefined, undefined,
-            getNumberInBoundsOrDefaultWH(formSettingsFieldsWH.breakDuration2WH.value, 1, oneDayInSecondsWH)
-        );
-        updateInfoWH();
-    });
 }
 
 function initializeTimerControlsWH() {
@@ -475,38 +429,35 @@ function setFormDisabledStateWH(disabled) {
 }
 var musicIsOnWH = false;
 function startTimerWH() {
-    timerRefAHAT.value = "";
     setFormDisabledStateWH(true);
-    setTimerControlsDisabledStateWH(false, true, false);
+    setTimerControlsDisabledStateWH(true, true, false);
+    timerControlsButtonsWH.pauseWH.style.color = 'rgb(177, 177, 177)';
     document.getElementById('stopBtnWH').style.color = '#990000';
-    if (intWH !== null) {
-        clearInterval(intWH);
-    }
-    if (timerWH.isBreak2WH) {
-        if (!ismuteWH) {
-            audioObjects.fullyin.muted = false;
-            audioObjects.fullyin.play();
-        }
+    clearTimeout(intWH);
+    intWH = null;
+    if (timerWH.isFinishedWH) {
+        resetTimerWH();
     }
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
     }
-    if (timerWH.isFinishedWH) {
-        resetTimerWH();
+    if (!BismuteWH) {
+        audioObjects.fullyin.muted = false;
+        audioObjects.fullyin.loop = false;
+        audioObjects.fullyin.play();
     }
-    startTimerTickWH();
-    document.getElementById("circleWH").style.display = "block";
-    animateWH();
+    WHanimate(); 
     timerControlsButtonsWH.startWH.style.display = 'none';
     timerControlsButtonsWH.pauseWH.style.display = 'inline';
-    timerControlsButtonsWH.pauseWH.style.color = "rgb(177, 177, 177)";
     document.getElementById('WHDate').value = date;
     document.getElementById('WHSettings').disabled = true;
     document.getElementById('WHSettings').style.color = 'rgb(177, 177, 177)';
 }
 
-var nextroundWH = false;
 function pauseTimerWH() {
+    timerWH.intervalsDoneWH++;
+    intervalsDoneWH.value = timerWH.intervalsDoneWH;
+    timerRefWH.value += timeWH + "|";
     setTimerControlsDisabledStateWH(true, true, false);
     timerControlsButtonsWH.pauseWH.style.color = "rgb(177, 177, 177)";
     if (isPortuguese) {
@@ -514,32 +465,30 @@ function pauseTimerWH() {
     } else {
         document.getElementById("WHResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerWH.intervalsDoneWH) + "</div><div>" + timeWH + " seconds</div></div>";
     }
-    timerRefWH.value += timeWH + "|";
-    clearInterval(intWH);
+    clearTimeout(intWH);
+    intWH = null;
     [secondsWH, minutesWH] = [0, 0];
-    clearTimeout(myTimeoutWH);
-    ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-    ctxWH.fillStyle = my_gradientWH;
-    ctxWH.beginPath();
-    ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
-    ctxWH.fill();
-    ctxWH.font = "bold 48px serif"
-    ctxWH.fillStyle = "white";
-    ctxWH.textAlign = "center";
-    yWH = formSettingsFieldsWH.breakDurationWH.value;
-    nextroundWH = true;
-    ctxWH.fillText(yWH, 150, 115);
     timerControlsButtonsWH.stopWH.style.color = '#990000';
+    if (!ismuteWH) {
+        audioObjects.fullyinHold.muted = false;
+        audioObjects.fullyinHold.play();
+    }
+    WHchangeBall(1.5, 1);
+    WHanimate2();
+    timerWH.isBreak2WH = true;
+    timerWH.isBreak3WH = false;
 }
 
 function stopTimerWH() {
     if (timerWH.isBreak3WH) {
+        timerWH.intervalsDoneWH++;
+        intervalsDoneWH.value = timerWH.intervalsDoneWH;
+        timerRefWH.value += timeWH + "|";
         if (isPortuguese) {
             document.getElementById("WHResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerWH.intervalsDoneWH) + "</div><div>" + timeWH + " segundos</div></div>";
         } else {
             document.getElementById("WHResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerWH.intervalsDoneWH) + "</div><div>" + timeWH + " seconds</div></div>";
         }
-        timerRefAHAT.value += timerAHAT.elapsedInIntervalAHAT + "|";
     }
     if (document.getElementById("WHResults").innerHTML !== "") {
         document.getElementById('WHSave').disabled = false;
@@ -553,7 +502,8 @@ function stopTimerWH() {
         setTimerControlsDisabledStateWH(false, true, true);
         timerControlsButtonsWH.startWH.style.color = '#49B79D';
     }
-    clearInterval(intWH);
+    clearTimeout(intWH);
+    intWH = null;
     [secondsWH, minutesWH] = [0, 0];
     document.getElementById('WHSettings').disabled = false;
     document.getElementById('WHSettings').style.color = '#49B79D';
@@ -565,23 +515,17 @@ function stopTimerWH() {
     timerControlsButtonsWH.startWH.style.display = 'inline';
     setFormDisabledStateWH(false);
     timerControlsButtonsWH.stopWH.style.color = "rgb(177, 177, 177)";
-    ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-    ctxWH.fillStyle = my_gradientWH;
-    ctxWH.beginPath();
-    ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
-    ctxWH.fill();
-    ctxWH.font = "bold 48px serif"
-    ctxWH.fillStyle = "white";
-    ctxWH.textAlign = "center";
-    yWH = formSettingsFieldsWH.breakDuration2WH.value;
-    ctxWH.fillText(yWH, 150, 115);
+    WHbreaths = formSettingsFieldsWH.breakDuration2WH.value;
+    WHballText.textContent = WHbreaths;
     if (!ismuteWH) {
         audioObjects.normalbreath.muted = false;
         audioObjects.normalbreath.play();
     }
-    stopTimerTickWH();
-    clearTimeout(myTimeoutWH);
-    clearTimeout(myTimeout2WH);
+    clearTimeout(WHmyTimeout);
+    WHmyTimeout = null;
+    clearTimeout(WHmyTimeout2);
+    WHmyTimeout2 = null;
+    WHchangeBall(1.5, 1);
 }
 document.getElementById('resetBtnWH').addEventListener('click', function () {
     resetTimerWH();
@@ -604,120 +548,11 @@ function displayTimerWH() {
     }
     let mWH = minutesWH < 10 ? "0" + minutesWH : minutesWH;
     let sWH = secondsWH < 10 ? "0" + secondsWH : secondsWH;
-    ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-    ctxWH.fillStyle = my_gradientWH;
-    ctxWH.beginPath();
-    ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
-    ctxWH.fill();
-    ctxWH.font = "bold 48px serif"
-    ctxWH.fillStyle = "white";
-    ctxWH.textAlign = "center";
     timeWH = `${mWH} : ${sWH}`;
-    ctxWH.fillText(timeWH, 150, 115);
-}
-
-function startTimerTickWH() {
-    timerWH.intervalId = setInterval(onTimerTickWH, 1000);
-}
-
-function stopTimerTickWH() {
-    clearInterval(timerWH.intervalId);
-}
-
-function onTimerTickWH() {
-    const currentIntervalDurationWH = timerWH.isBreakWH ? timerSettingsWH.breakDurationWH : timerWH.isBreak2WH ? timerSettingsWH.breakDuration2WH : timerSettingsWH.intervalDurationWH;
-    if (timerWH.elapsedInIntervalWH <= currentIntervalDurationWH && timerWH.isBreak3WH) {
-        timerWH.elapsedInIntervalWH++;
-        if (nextroundWH && yWH == 15) {
-            if (!ismuteWH) {
-                audioObjects.inhale.muted = false;
-                audioObjects.inhale.play();
-            }
-            animate2WH();
-            timerWH.isBreakWH = true;
-            timerWH.isBreak3WH = false;
-            timerWH.isFinishedWH = timerWH.intervalsDoneWH === timerSettingsWH.intervalCountWH;
-            if (!timerWH.isFinishedWH) {
-                timerWH.elapsedInIntervalWH = 1;
-            }
-            if (timerWH.isFinishedWH) {
-                setTimerControlsDisabledStateWH(false, true, false);
-                setFormDisabledStateWH(false);
-                stopTimerTickWH();
-            } else {
-                timerWH.totalTimeElapsedWH++;
-            }
-
-            updateInfoWH();
-            nextroundWH = false;
-        }
-        updateInfoWH();
-    } else if (timerWH.elapsedInIntervalWH <= currentIntervalDurationWH && timerWH.isBreakWH) {
-        timerWH.elapsedInIntervalWH++;
-        if (timerWH.elapsedInIntervalWH > currentIntervalDurationWH && yWH == 0 && timerWH.isBreakWH) {           
-            clearTimeout(myTimeout2WH);
-            timerWH.isBreak2WH = true;
-            timerWH.isBreakWH = false;
-            clearInterval(intWH);
-            [secondsWH, minutesWH] = [0, 0];
-            stopTimerTickWH();
-            if (!ismuteWH) {
-                audioObjects.letGo.muted = false;
-                audioObjects.letGo.play();
-            }
-            ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-            ctxWH.fillStyle = my_gradientWH;
-            ctxWH.beginPath();
-            ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
-            ctxWH.fill();
-            ctxWH.font = "bold 48px serif"
-            ctxWH.fillStyle = "white";
-            ctxWH.textAlign = "center";
-            ctxWH.fillText('Let Go', 150, 115);
-            setTimeout(function () {
-                ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-                yWH = numberWH;
-                startTimerWH();
-            }, 3000);
-        }
-    } else if (timerWH.elapsedInIntervalWH <= currentIntervalDurationWH && timerWH.isBreak2WH) {
-        timerWH.elapsedInIntervalWH++;
-        if (yWH == 0 && timerWH.isBreak2WH) {
-            intWH = setInterval(displayTimerWH, 1000);
-            clearTimeout(myTimeoutWH);
-            timerWH.isBreak3WH = true;
-            timerWH.isBreak2WH = false;
-            timerWH.intervalsDoneWH++;
-            timerWH.isFinishedWH = timerWH.intervalsDoneWH === timerSettingsWH.intervalCountWH;
-            if (!timerWH.isFinishedWH) {
-                timerWH.elapsedInIntervalWH = 1;
-            }
-            if (timerWH.isFinishedWH) {
-                setTimerControlsDisabledStateWH(false, false, false);
-                setFormDisabledStateWH(false);
-                stopTimerTickWH();
-            } else {
-                timerWH.totalTimeElapsedWH++;
-            }
-            updateInfoWH();
-            timerControlsButtonsWH.pauseWH.style.color = '#0661AA';
-            setTimerControlsDisabledStateWH(false, false, false);
-        }
-        updateInfoWH();
-    }
+    WHballText.textContent = timeWH;
+    intWH = setTimeout(displayTimerWH, 1000);
 }
 
 function updateInfoWH() {
-    statusPanelWH.timeOverviewMessageWH.style.display = timerWH.isFinishedWH ? 'block' : null;
-    statusPanelWH.elapsedInIntervalBoxWH.style.display = timerWH.isFinishedWH || timerWH.isBreakWH || timerWH.isBreak2WH || timerWH.isBreak4 ? 'none' : null;
-    statusPanelWH.elapsedInBreakIntervalBoxWH.style.display = !timerWH.isFinishedWH && timerWH.isBreakWH ? 'block' : null;
-    statusPanelWH.elapsedInBreakIntervalBox2WH.style.display = !timerWH.isFinishedWH && timerWH.isBreak2WH ? 'block' : null;
-    if (timerWH.isBreakWH) {
-        statusPanelWH.elapsedInBreakIntervalWH.textContent = timerWH.elapsedInIntervalWH;
-    } else if (timerWH.isBreak2WH) {
-        statusPanelWH.elapsedInBreakInterval2WH.textContent = timerWH.elapsedInIntervalWH;
-    } else {
-        statusPanelWH.elapsedInIntervalWH.textContent = timerWH.elapsedInIntervalWH;
-    }
     statusPanelWH.intervalsDoneWH.value = timerWH.intervalsDoneWH;
 }

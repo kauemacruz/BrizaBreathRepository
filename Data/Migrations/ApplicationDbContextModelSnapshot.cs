@@ -241,13 +241,13 @@ namespace BrizaBreath.Data.Migrations
                     b.Property<string>("lungsResultScore")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("yogicIntervals")
+                    b.Property<string>("YBIntervals")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("yogicResultDate")
+                    b.Property<DateTime?>("YBResultDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("yogicTotalTime")
+                    b.Property<string>("YBTotalTime")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ResultId");

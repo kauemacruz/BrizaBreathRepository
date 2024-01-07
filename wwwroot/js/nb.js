@@ -1,4 +1,74 @@
-/*NB JS*/
+﻿/*NB JS*/
+const NBball = document.getElementById('NBball');
+const NBballText = document.getElementById('NBballText');
+
+function NBchangeBall(scale, duration) {
+    NBball.style.transition = `transform ${duration}s ease`;
+    NBball.style.transform = `scale(${scale})`;
+}
+
+const NBtimeInput = document.getElementById('NBtimeInput');
+const NBcountdownDisplay = document.getElementById('NBcountdownDisplay');
+let NBcountdown;
+let NBtimeRemaining = Infinity;
+let NBisPaused = false;
+
+// Populate the dropdown with options
+for (let NBi = 2; NBi <= 60; NBi++) { // assuming 1 to 60 minutes
+    let NBoption = document.createElement('option');
+    NBoption.value = NBi * 60;
+    if (isPortuguese) {
+        NBoption.textContent = NBi + ' minutos';
+    } else {
+        NBoption.textContent = NBi + ' minutes';
+    }
+    NBtimeInput.appendChild(NBoption);
+}
+const NBmodal = document.getElementById("NBmodal");
+const NBcloseModal = document.getElementById("NBcloseModal");
+const NBBTN = document.getElementById("NBBTN");
+
+function NBopenmodal() {
+    NBmodal.style.display = "block";
+    audioObjects.exhaleLeft.load();
+    audioObjects.inhaleLeft.load();
+    audioObjects.exhaleRight.load();
+    audioObjects.inhaleRight.load();
+}
+// Function to close the modal
+function NBclose() {
+    NBmodal.style.display = "none";
+    clearInterval(intNB);
+    [secondsNB, minutesNB, hoursNB] = [0, 0, 0];
+    timerRefNB.value = '00 : 00 : 00';
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    timerControlsButtonsNB.pauseNB.style.display = 'none';
+    timerControlsButtonsNB.startNB.style.display = 'inline';
+    setFormDisabledStateNB(false);
+    setTimerControlsDisabledStateNB(false, true, true);
+    timerControlsButtonsNB.stopNB.style.color = "rgb(177, 177, 177)";
+    document.getElementById('NBSave').disabled = true;
+    document.getElementById('NBSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('NBSettings').disabled = false;
+    document.getElementById('NBSettings').style.color = '#49B79D';
+    stopTimerTickNB();
+    resetTimerNB();
+    isNBON = false;
+    document.getElementById('NBResultSaved').innerHTML = "";
+    clearInterval(NBcountdown);
+    NBisPaused = false;
+    NBtimeInput.classList.remove('CountdownHidden');
+    NBcountdownDisplay.classList.add('CountdownHidden');
+    NBchangeBall(1, 1);
+}
+// Event listener for closing the modal
+NBcloseModal.addEventListener("click", NBclose);
+NBBTN.onclick = function () {
+    NBopenmodal();
+}
 $(function () {
     $('#NBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -28,6 +98,8 @@ $(function () {
         document.getElementById('NBSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickNB();
         resetTimerNB();
+        NBtimeInput.classList.remove('CountdownHidden');
+        NBcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
@@ -343,15 +415,24 @@ function startTimerNB() {
     if (intNB !== null) {
         clearInterval(intNB);
     }
-    intNB = setInterval(displayTimerNB, 1000);
     setFormDisabledStateNB(true);
-    setTimerControlsDisabledStateNB(true, false, true);
+    setTimerControlsDisabledStateNB(true, true, true);
+    setTimeout(() => {
+        setTimerControlsDisabledStateNB(true, false, true);
+    }, 2000);
     timerControlsButtonsNB.stopNB.style.color = "rgb(177, 177, 177)";
     if (timerNB.isBreak3NB) {
         if (!ismuteNB) {
-            audioObjects.inhaleLeft.muted = false;
-            audioObjects.inhaleLeft.play();
+            audioObjects.bell.muted = false;
+            audioObjects.bell.play();
+            setTimeout(() => {
+                audioObjects.inhaleLeft.muted = false;
+                audioObjects.inhaleLeft.play();
+            }, 1500);       
         }
+        setTimeout(() => {
+            NBchangeBall(1.5, timerSettingsNB.intervalDurationNB);
+        }, 1500); 
     }
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
@@ -359,7 +440,23 @@ function startTimerNB() {
     if (timerNB.isFinishedNB) {
         resetTimerNB();
     }
-    startTimerTickNB();
+    setTimeout(() => {
+        setTimeout(() => {
+            intNB = setInterval(displayTimerNB, 1000);
+        }, 1000);
+        startTimerTickNB();
+        if (NBisPaused) {
+            // Resume from paused state
+            NBstartTimer(NBtimeRemaining);
+            NBisPaused = false;
+        } else {
+            // Start a new timer
+            clearInterval(NBcountdown);
+            NBtimeRemaining = NBtimeInput.value === '∞' ? Infinity : parseInt(NBtimeInput.value);
+            NBcountdownDisplay.textContent = '';
+            NBstartTimer(NBtimeRemaining);
+        }
+    }, 1700);   
     timerControlsButtonsNB.startNB.style.display = 'none';
     timerControlsButtonsNB.pauseNB.style.display = 'inline';
     document.getElementById('NBSettings').disabled = true;
@@ -367,7 +464,23 @@ function startTimerNB() {
     document.getElementById('NBSave').disabled = true;
     document.getElementById('NBSave').style.color = 'rgb(177, 177, 177)';
 }
-
+function NBstartTimer(NBduration) {
+    NBcountdown = setInterval(function () {
+        if (NBduration > 0 && NBduration !== Infinity) {
+            NBduration--;
+            NBtimeRemaining = NBduration;
+            let NBContdownminutes = Math.floor(NBduration / 60);
+            let NBContdownseconds = NBduration % 60;
+            NBcountdownDisplay.textContent = `${NBContdownminutes}:${NBContdownseconds.toString().padStart(2, '0')}`;
+            NBtimeInput.classList.add('CountdownHidden');
+            NBcountdownDisplay.classList.remove('CountdownHidden');
+        } else if (NBduration == Infinity) {
+            NBcountdownDisplay.textContent = '∞';
+            NBtimeInput.classList.add('CountdownHidden');
+            NBcountdownDisplay.classList.remove('CountdownHidden');
+        }
+    }, 1000);
+}
 function pauseTimerNB() {
     clearInterval(intNB);
     setTimerControlsDisabledStateNB(false, true, false);
@@ -383,6 +496,9 @@ function pauseTimerNB() {
     document.getElementById('NBDate').value = date;
     document.getElementById('NBSave').disabled = false;
     document.getElementById('NBSave').style.color = '#49B79D';
+    clearInterval(NBcountdown);
+    NBisPaused = true;
+    NBchangeBall(1, 1);
 }
 
 function stopTimerNB() {
@@ -399,6 +515,12 @@ function stopTimerNB() {
     document.getElementById('NBSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickNB();
     resetTimerNB();
+    timerControlsButtonsNB.startNB.style.color = '#49B79D';
+    clearInterval(NBcountdown);
+    NBisPaused = false;
+    NBtimeInput.classList.remove('CountdownHidden');
+    NBcountdownDisplay.classList.add('CountdownHidden');
+    NBchangeBall(1, 1);
 }
 
 function displayTimerNB() {
@@ -429,11 +551,14 @@ function onTimerTickNB() {
     const currentIntervalDurationNB = timerNB.isBreakNB ? timerSettingsNB.breakDurationNB : timerNB.isBreak2NB ? timerSettingsNB.breakDuration2NB : timerNB.isBreak4NB ? timerSettingsNB.breakDuration3NB : timerSettingsNB.intervalDurationNB;
     if (timerNB.elapsedInIntervalNB <= currentIntervalDurationNB && timerNB.isBreak3NB) {
         timerNB.elapsedInIntervalNB++;
-        if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak3NB) {
+        if (timerNB.elapsedInIntervalNB == currentIntervalDurationNB && timerNB.isBreak3NB) {
             if (!ismuteNB) {
                 audioObjects.exhaleRight.muted = false;
                 audioObjects.exhaleRight.play();
             }
+            NBchangeBall(0.5, timerSettingsNB.breakDurationNB);
+        }
+        if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak3NB) {
             timerNB.isBreakNB = true;
             timerNB.isBreak3NB = false;
             timerNB.isFinishedNB = timerNB.intervalsDoneNB === timerSettingsNB.intervalCountNB;
@@ -452,11 +577,14 @@ function onTimerTickNB() {
         updateInfoNB();
     } else if (timerNB.elapsedInIntervalNB <= currentIntervalDurationNB && timerNB.isBreakNB) {
         timerNB.elapsedInIntervalNB++;
-        if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreakNB) {
+        if (timerNB.elapsedInIntervalNB == currentIntervalDurationNB && timerNB.isBreakNB) {
             if (!ismuteNB) {
                 audioObjects.inhaleRight.muted = false;
                 audioObjects.inhaleRight.play();
             }
+            NBchangeBall(1.5, timerSettingsNB.breakDuration2NB);
+        }
+        if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreakNB) {
             timerNB.isBreak2NB = true;
             timerNB.isBreakNB = false;
             timerNB.isFinishedNB = timerNB.intervalsDoneNB === timerSettingsNB.intervalCountNB;
@@ -475,11 +603,14 @@ function onTimerTickNB() {
         updateInfoNB();
     } else if (timerNB.elapsedInIntervalNB <= currentIntervalDurationNB && timerNB.isBreak2NB) {
         timerNB.elapsedInIntervalNB++;
-        if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak2NB) {
+        if (timerNB.elapsedInIntervalNB == currentIntervalDurationNB && timerNB.isBreak2NB) {
             if (!ismuteNB) {
                 audioObjects.exhaleLeft.muted = false;
                 audioObjects.exhaleLeft.play();
             }
+            NBchangeBall(0.5, timerSettingsNB.breakDuration3NB);
+        }
+        if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak2NB) {
             timerNB.isBreak4NB = true;
             timerNB.isBreak2NB = false;
             timerNB.isFinishedNB = timerNB.intervalsDoneNB === timerSettingsNB.intervalCountNB;
@@ -498,11 +629,49 @@ function onTimerTickNB() {
         updateInfoNB();
     } else if (timerNB.elapsedInIntervalNB <= currentIntervalDurationNB && timerNB.isBreak4NB) {
         timerNB.elapsedInIntervalNB++;
-        if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak4NB) {
+        if (timerNB.elapsedInIntervalNB == currentIntervalDurationNB && timerNB.isBreak4NB) {
             if (!ismuteNB) {
-                audioObjects.inhaleLeft.muted = false;
-                audioObjects.inhaleLeft.play();
+                if (NBcountdownDisplay.textContent == '0:00') {
+                    audioObjects.inhale.muted = true;
+                    clearInterval(NBcountdown);
+                    if (!ismuteNB) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intNB);
+                    setTimerControlsDisabledStateNB(true, true, false);
+                    document.getElementById('stopBtnNB').style.color = '#990000';
+                    timerControlsButtonsNB.pauseNB.style.display = 'none';
+                    timerControlsButtonsNB.startNB.style.display = 'inline';
+                    timerControlsButtonsNB.startNB.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('NBSettings').disabled = false;
+                    document.getElementById('NBSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickNB();
+                    document.getElementById('NBDate').value = date;
+                    document.getElementById('NBSave').disabled = false;
+                    document.getElementById('NBSave').style.color = '#49B79D';
+                    clearInterval(NBcountdown);
+                    NBisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            NBballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            NBballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
+                } else {
+                    audioObjects.inhaleLeft.muted = false;
+                    audioObjects.inhaleLeft.play();
+                }
             }
+            NBchangeBall(1.5, timerSettingsNB.intervalDurationNB);
+        }
+        if (timerNB.elapsedInIntervalNB > currentIntervalDurationNB && timerNB.isBreak4NB) {
             timerNB.isBreak3NB = true;
             timerNB.isBreak4NB = false;
             timerNB.intervalsDoneNB++;
@@ -529,15 +698,26 @@ function updateInfoNB() {
     statusPanelNB.elapsedInBreakIntervalBoxNB.style.display = !timerNB.isFinishedNB && timerNB.isBreakNB ? 'block' : null;
     statusPanelNB.elapsedInBreakIntervalBox2NB.style.display = !timerNB.isFinishedNB && timerNB.isBreak2NB ? 'block' : null;
     statusPanelNB.elapsedInBreakIntervalBox3NB.style.display = !timerNB.isFinishedNB && timerNB.isBreak4NB ? 'block' : null;
-
-    if (timerNB.isBreakNB) {
-        statusPanelNB.elapsedInBreakIntervalNB.textContent = timerNB.elapsedInIntervalNB;
-    } else if (timerNB.isBreak2NB) {
-        statusPanelNB.elapsedInBreakInterval2NB.textContent = timerNB.elapsedInIntervalNB;
-    } else if (timerNB.isBreak4NB) {
-        statusPanelNB.elapsedInBreakInterval3NB.textContent = timerNB.elapsedInIntervalNB;
+    if (isPortuguese) {
+        if (timerNB.isBreakNB) {
+            NBballText.textContent = 'EXPIRA';
+        } else if (timerNB.isBreak2NB) {
+            NBballText.textContent = 'INSPIRA';
+        } else if (timerNB.isBreak4NB) {
+            NBballText.textContent = 'EXPIRA';
+        } else {
+            NBballText.textContent = 'INSPIRA';
+        }
     } else {
-        statusPanelNB.elapsedInIntervalNB.textContent = timerNB.elapsedInIntervalNB;
+        if (timerNB.isBreakNB) {
+            NBballText.textContent = 'EXHALE';
+        } else if (timerNB.isBreak2NB) {
+            NBballText.textContent = 'INHALE';
+        } else if (timerNB.isBreak4NB) {
+            NBballText.textContent = 'EXHALE';
+        } else {
+            NBballText.textContent = 'INHALE';
+        }
     }
     statusPanelNB.intervalsDoneNB.value = timerNB.intervalsDoneNB;
 }

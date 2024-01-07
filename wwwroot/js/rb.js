@@ -1,4 +1,73 @@
-/*478 JS*/
+﻿/*478 JS*/
+const RBball = document.getElementById('RBball');
+const RBballText = document.getElementById('RBballText');
+
+function RBchangeBall(scale, duration) {
+    RBball.style.transition = `transform ${duration}s ease`;
+    RBball.style.transform = `scale(${scale})`;
+}
+
+const RBtimeInput = document.getElementById('RBtimeInput');
+const RBcountdownDisplay = document.getElementById('RBcountdownDisplay');
+let RBcountdown;
+let RBtimeRemaining = Infinity;
+let RBisPaused = false;
+// Populate the dropdown with options
+for (let RBi = 2; RBi <= 60; RBi++) { // assuming 1 to 60 minutes
+    let RBoption = document.createElement('option');
+    RBoption.value = RBi * 60;
+    if (isPortuguese) {
+        RBoption.textContent = RBi + ' minutos';
+    } else {
+        RBoption.textContent = RBi + ' minutes';
+    }
+    RBtimeInput.appendChild(RBoption);
+}
+
+const RBmodal = document.getElementById("RBmodal");
+const RBcloseModal = document.getElementById("RBcloseModal");
+const RBBTN = document.getElementById("RBBTN");
+
+function RBopenmodal() {
+    RBmodal.style.display = "block";
+    audioObjects.exhale.load();
+    audioObjects.inhale.load();
+    audioObjects.hold.load();
+}
+// Function to close the modal
+function RBclose() {
+    RBmodal.style.display = "none";
+    clearInterval(intRB);
+    [secondsRB, minutesRB, hoursRB] = [0, 0, 0];
+    timerRefRB.value = '00 : 00 : 00';
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    timerControlsButtonsRB.pauseRB.style.display = 'none';
+    timerControlsButtonsRB.startRB.style.display = 'inline';
+    setFormDisabledStateRB(false);
+    setTimerControlsDisabledStateRB(false, true, true);
+    timerControlsButtonsRB.stopRB.style.color = "rgb(177, 177, 177)";
+    document.getElementById('RBSave').disabled = true;
+    document.getElementById('RBSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('RBSettings').disabled = false;
+    document.getElementById('RBSettings').style.color = '#49B79D';
+    stopTimerTickRB();
+    resetTimerRB();
+    isRBON = false;
+    document.getElementById('RBResultSaved').innerHTML = "";
+    clearInterval(RBcountdown);
+    RBisPaused = false;
+    RBtimeInput.classList.remove('CountdownHidden');
+    RBcountdownDisplay.classList.add('CountdownHidden');
+    RBchangeBall(1, 1);
+}
+// Event listener for closing the modal
+RBcloseModal.addEventListener("click", RBclose);
+RBBTN.onclick = function () {
+    RBopenmodal();
+}
 $(function () {
     $('#RBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -28,6 +97,8 @@ $(function () {
         document.getElementById('RBSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickRB();
         resetTimerRB();
+        CBtimeInput.classList.remove('CountdownHidden');
+        CBcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
@@ -140,35 +211,6 @@ initializeStatusPanelRB();
 initializeTimerSettingsFormRB();
 resetTimerRB();
 
-
-var minusBtnRB = document.getElementById("minusRB").style.display = "none",
-    plusBtnRB = document.getElementById("plusRB").style.display = "none",
-    numberRB = 3, /// numberRB value
-    minRB = 3, /// minRB numberRB
-    maxRB = 60;
-
-minusBtnRB.onclick = function () {
-    if (numberRB > minRB) {
-        numberRB = numberRB - 1; /// Minus 1 of the numberRB
-        formSettingsFieldsRB.intervalDurationRB.value = numberRB; /// Display the value in place of the numberRB
-        //fix here to change pranayama type
-        formSettingsFieldsRB.breakDurationRB.value = formSettingsFieldsRB.intervalDurationRB.value;
-        formSettingsFieldsRB.breakDuration2RB.value = formSettingsFieldsRB.intervalDurationRB.value*2;
-        setTimerSettingsRB(9999, formSettingsFieldsRB.intervalDurationRB.value, true, formSettingsFieldsRB.breakDurationRB.value, true, formSettingsFieldsRB.breakDuration2RB.value);
-    }
-}
-
-plusBtnRB.onclick = function () {
-    if (numberRB < maxRB) {
-        numberRB = numberRB + 1;
-        formSettingsFieldsRB.intervalDurationRB.value = numberRB; /// Display the value in place of the numberRB
-        //fix here to change pranayama type
-        formSettingsFieldsRB.breakDurationRB.value = formSettingsFieldsRB.intervalDurationRB.value;
-        formSettingsFieldsRB.breakDuration2RB.value = formSettingsFieldsRB.intervalDurationRB.value*2;
-        setTimerSettingsRB(9999, formSettingsFieldsRB.intervalDurationRB.value, true, formSettingsFieldsRB.breakDurationRB.value, true, formSettingsFieldsRB.breakDuration2RB.value);
-
-    }
-}
 
 function initializeTimerSettingsFormRB() {
     const oneDayInSecondsBRE = 60 * 60 * 24;
@@ -300,23 +342,30 @@ function setFormDisabledStateRB(disabled) {
     formSettingsFieldsRB.breakDurationRB.disabled = disabled;
     formSettingsFieldsRB.enableBreak2RB.disabled = disabled
     formSettingsFieldsRB.breakDuration2RB.disabled = disabled;
-    minusBtnRB.disabled = disabled;
-    plusBtnRB.disabled = disabled;
 }
 
 function startTimerRB() {
     if (intRB !== null) {
         clearInterval(intRB);
     }
-    intRB = setInterval(displayTimerRB, 1000);
     setFormDisabledStateRB(true);
-    setTimerControlsDisabledStateRB(true, false, true);
+    setTimerControlsDisabledStateRB(true, true, true);
+    setTimeout(() => {
+        setTimerControlsDisabledStateRB(true, false, true);
+    }, 2000);
     timerControlsButtonsRB.stopRB.style.color = "rgb(177, 177, 177)";
     if (timerRB.isBreak3RB) {
         if (!ismuteRB) {
-            audioObjects.inhale.muted = false;
-            audioObjects.inhale.play();
+            audioObjects.bell.muted = false;
+            audioObjects.bell.play();
+            setTimeout(() => {
+                audioObjects.inhale.muted = false;
+                audioObjects.inhale.play();
+            }, 1500);
         }
+        setTimeout(() => {
+            RBchangeBall(1.5, timerSettingsRB.intervalDurationRB);
+        }, 1500);
     }
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
@@ -324,7 +373,23 @@ function startTimerRB() {
     if (timerRB.isFinishedRB) {
         resetTimerRB();
     }
-    startTimerTickRB();
+    setTimeout(() => {
+        setTimeout(() => {
+            intRB = setInterval(displayTimerRB, 1000);
+        }, 1000);
+        startTimerTickRB();
+        if (RBisPaused) {
+            // Resume from paused state
+            RBstartTimer(RBtimeRemaining);
+            RBisPaused = false;
+        } else {
+            // Start a new timer
+            clearInterval(RBcountdown);
+            RBtimeRemaining = RBtimeInput.value === '∞' ? Infinity : parseInt(RBtimeInput.value);
+            RBcountdownDisplay.textContent = '';
+            RBstartTimer(RBtimeRemaining);
+        }
+    }, 1700);
     timerControlsButtonsRB.startRB.style.display = 'none';
     timerControlsButtonsRB.pauseRB.style.display = 'inline';
     document.getElementById('RBSettings').disabled = true;
@@ -332,7 +397,23 @@ function startTimerRB() {
     document.getElementById('RBSave').disabled = true;
     document.getElementById('RBSave').style.color = 'rgb(177, 177, 177)';
 }
-
+function RBstartTimer(RBduration) {
+    RBcountdown = setInterval(function () {
+        if (RBduration > 0 && RBduration !== Infinity) {
+            RBduration--;
+            RBtimeRemaining = RBduration;
+            let RBContdownminutes = Math.floor(RBduration / 60);
+            let RBContdownseconds = RBduration % 60;
+            RBcountdownDisplay.textContent = `${RBContdownminutes}:${RBContdownseconds.toString().padStart(2, '0')}`;
+            RBtimeInput.classList.add('CountdownHidden');
+            RBcountdownDisplay.classList.remove('CountdownHidden');
+        } else if (RBduration == Infinity) {
+            RBcountdownDisplay.textContent = '∞';
+            RBtimeInput.classList.add('CountdownHidden');
+            RBcountdownDisplay.classList.remove('CountdownHidden');
+        }
+    }, 1000);
+}
 function pauseTimerRB() {
     clearInterval(intRB);
     setTimerControlsDisabledStateRB(false, true, false);
@@ -348,6 +429,9 @@ function pauseTimerRB() {
     document.getElementById('RBDate').value = date;
     document.getElementById('RBSave').disabled = false;
     document.getElementById('RBSave').style.color = '#49B79D';
+    clearInterval(RBcountdown);
+    RBisPaused = true;
+    RBchangeBall(1, 1);
 }
 
 function stopTimerRB() {
@@ -362,8 +446,14 @@ function stopTimerRB() {
     timerControlsButtonsRB.stopRB.style.color = "rgb(177, 177, 177)";
     document.getElementById('RBSave').disabled = true;
     document.getElementById('RBSave').style.color = 'rgb(177, 177, 177)';
+    timerControlsButtonsRB.startRB.style.color = '#49B79D';
     stopTimerTickRB();
     resetTimerRB();
+    clearInterval(RBcountdown);
+    RBisPaused = false;
+    RBtimeInput.classList.remove('CountdownHidden');
+    RBcountdownDisplay.classList.add('CountdownHidden');
+    RBchangeBall(1, 1);
 }
 
 function displayTimerRB() {
@@ -394,11 +484,14 @@ function onTimerTickRB() {
     const currentIntervalDurationRB = timerRB.isBreakRB ? timerSettingsRB.breakDurationRB : timerRB.isBreak2RB ? timerSettingsRB.breakDuration2RB : timerSettingsRB.intervalDurationRB;
     if (timerRB.elapsedInIntervalRB <= currentIntervalDurationRB && timerRB.isBreak3RB) {
         timerRB.elapsedInIntervalRB++;
-        if (timerRB.elapsedInIntervalRB > currentIntervalDurationRB && timerRB.isBreak3RB) {
+        if (timerRB.elapsedInIntervalRB == currentIntervalDurationRB && timerRB.isBreak3RB) {
             if (!ismuteRB) {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
+            RBchangeBall(1.0, timerSettingsRB.breakDurationRB);
+        }
+        if (timerRB.elapsedInIntervalRB > currentIntervalDurationRB && timerRB.isBreak3RB) {
             timerRB.isBreakRB = true;
             timerRB.isBreak3RB = false;
             timerRB.isFinishedRB = timerRB.intervalsDoneRB === timerSettingsRB.intervalCountRB;
@@ -417,11 +510,14 @@ function onTimerTickRB() {
         updateInfoRB();
     } else if (timerRB.elapsedInIntervalRB <= currentIntervalDurationRB && timerRB.isBreakRB) {
         timerRB.elapsedInIntervalRB++;
-        if (timerRB.elapsedInIntervalRB > currentIntervalDurationRB && timerRB.isBreakRB) {
+        if (timerRB.elapsedInIntervalRB == currentIntervalDurationRB && timerRB.isBreakRB) {
             if (!ismuteRB) {
                 audioObjects.exhale.muted = false;
                 audioObjects.exhale.play();
             }
+            RBchangeBall(0.5, timerSettingsRB.breakDuration2RB);
+        }
+        if (timerRB.elapsedInIntervalRB > currentIntervalDurationRB && timerRB.isBreakRB) {
             timerRB.isBreak2RB = true;
             timerRB.isBreakRB = false;
             timerRB.isFinishedRB = timerRB.intervalsDoneRB === timerSettingsRB.intervalCountRB;
@@ -440,11 +536,49 @@ function onTimerTickRB() {
         updateInfoRB();
     } else if (timerRB.elapsedInIntervalRB <= currentIntervalDurationRB && timerRB.isBreak2RB) {
         timerRB.elapsedInIntervalRB++;
-        if (timerRB.elapsedInIntervalRB > currentIntervalDurationRB && timerRB.isBreak2RB) {
+        if (timerRB.elapsedInIntervalRB == currentIntervalDurationRB && timerRB.isBreak2RB) {
             if (!ismuteRB) {
-                audioObjects.inhale.muted = false;
-                audioObjects.inhale.play();
+                if (RBcountdownDisplay.textContent == '0:00') {
+                    audioObjects.inhale.muted = true;
+                    clearInterval(RBcountdown);
+                    if (!ismuteRB) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intRB);
+                    setTimerControlsDisabledStateRB(true, true, false);
+                    document.getElementById('stopBtnRB').style.color = '#990000';
+                    timerControlsButtonsRB.pauseRB.style.display = 'none';
+                    timerControlsButtonsRB.startRB.style.display = 'inline';
+                    timerControlsButtonsRB.startRB.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('RBSettings').disabled = false;
+                    document.getElementById('RBSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickRB();
+                    document.getElementById('RBDate').value = date;
+                    document.getElementById('RBSave').disabled = false;
+                    document.getElementById('RBSave').style.color = '#49B79D';
+                    clearInterval(RBcountdown);
+                    RBisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            RBballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            RBballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
+                } else {
+                    audioObjects.inhale.muted = false;
+                    audioObjects.inhale.play();
+                }
             }
+            RBchangeBall(1.5, timerSettingsRB.intervalDurationRB);
+        }
+        if (timerRB.elapsedInIntervalRB > currentIntervalDurationRB && timerRB.isBreak2RB) {
             timerRB.isBreak3RB = true;
             timerRB.isBreak2RB = false;
             timerRB.intervalsDoneRB++;
@@ -462,7 +596,7 @@ function onTimerTickRB() {
             updateInfoRB();
         }
         updateInfoRB();
-    } 
+    }
 }
 
 function updateInfoRB() {
@@ -470,12 +604,22 @@ function updateInfoRB() {
     statusPanelRB.elapsedInIntervalBoxRB.style.display = timerRB.isFinishedRB || timerRB.isBreakRB || timerRB.isBreak2RB || timerRB.isBreak4RB ? 'none' : null;
     statusPanelRB.elapsedInBreakIntervalBoxRB.style.display = !timerRB.isFinishedRB && timerRB.isBreakRB ? 'block' : null;
     statusPanelRB.elapsedInBreakIntervalBox2RB.style.display = !timerRB.isFinishedRB && timerRB.isBreak2RB ? 'block' : null;
-    if (timerRB.isBreakRB) {
-        statusPanelRB.elapsedInBreakIntervalRB.textContent = timerRB.elapsedInIntervalRB;
-    } else if (timerRB.isBreak2RB) {
-        statusPanelRB.elapsedInBreakInterval2RB.textContent = timerRB.elapsedInIntervalRB;
+    if (isPortuguese) {
+        if (timerRB.isBreakRB) {
+            RBballText.textContent = 'SEGURE';
+        } else if (timerRB.isBreak2RB) {
+            RBballText.textContent = 'EXPIRA';
+        } else {
+            RBballText.textContent = 'INSPIRA';
+        }
     } else {
-        statusPanelRB.elapsedInIntervalRB.textContent = timerRB.elapsedInIntervalRB;
+        if (timerRB.isBreakRB) {
+            RBballText.textContent = 'HOLD';
+        } else if (timerRB.isBreak2RB) {
+            RBballText.textContent = 'EXHALE';
+        } else {
+            RBballText.textContent = 'INHALE';
+        }
     }
     statusPanelRB.intervalsDoneRB.value = timerRB.intervalsDoneRB;
 }

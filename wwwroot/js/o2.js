@@ -1,4 +1,67 @@
 /*O2 JS*/
+const O2modal = document.getElementById("O2modal");
+const O2closeModal = document.getElementById("O2closeModal");
+const O2BTN = document.getElementById("O2BTN");
+
+function O2openmodal() {
+    O2modal.style.display = "block";
+    audioObjects.breathedeeply.load();
+    audioObjects.normalbreath.load();
+    audioObjects.hold.load();
+}
+// Function to close the modal
+function O2close() {
+    O2modal.style.display = "none";
+    document.getElementById("O2Results").innerHTML = "";
+    timerRefO2.value = "|";
+    clearInterval(intO2);
+    document.getElementById('O2Settings').disabled = false;
+    document.getElementById('O2Settings').style.color = '#49B79D';
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    timerControlsButtonsO2.pauseO2.style.display = 'none';
+    timerControlsButtonsO2.startO2.style.display = 'inline';
+    setFormDisabledStateO2(false);
+    setTimerControlsDisabledStateO2(false, true, true);
+    document.getElementById('stopBtnO2').style.display = 'inline';
+    timerControlsButtonsO2.stopO2.style.color = "rgb(177, 177, 177)";
+    timerControlsButtonsO2.startO2.style.color = "#0661AA";
+    stopTimerTickO2();
+    resetTimerO2();
+    timerO2.isFinishedO2 = true;
+    document.getElementById('O2Save').disabled = true;
+    document.getElementById('O2Save').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('O2ResultSaved').innerHTML = "";
+    document.getElementById("O2Results").innerHTML = "";
+    timerRefO2.value = "|";
+    clearInterval(intCO2);
+    timerControlsButtonsCO2.pauseCO2.style.display = 'none';
+    timerControlsButtonsCO2.startCO2.style.display = 'inline';
+    setFormDisabledStateCO2(false);
+    setTimerControlsDisabledStateCO2(false, true, true);
+    document.getElementById('stopBtnCO2').style.display = 'inline';
+    timerControlsButtonsCO2.stopCO2.style.color = "rgb(177, 177, 177)";
+    timerControlsButtonsCO2.startCO2.style.color = "#0661AA";
+    stopTimerTickCO2();
+    resetTimerCO2();
+    timerCO2.isFinishedCO2 = true;
+    document.getElementById('CO2Save').disabled = true;
+    document.getElementById('CO2Save').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('CO2ResultSaved').innerHTML = "";
+    document.getElementById("CO2Results").innerHTML = "";
+    document.getElementById('O2Btn').disabled = false;
+    document.getElementById('CO2Btn').disabled = false;
+    if (!ismuteO2) {
+        audioObjects.breathedeeply.pause();
+        audioObjects.breathedeeply.currentTime = 0;
+    }
+}
+// Event listener for closing the modal
+O2closeModal.addEventListener("click", O2close);
+O2BTN.onclick = function () {
+    O2openmodal();
+}
 $(function () {
     $('#O2Form').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -36,6 +99,8 @@ $(function () {
         resetTimerO2();
         timerO2.isFinishedO2 = true;
         stopTimerTickO2();
+        document.getElementById('O2Btn').disabled = false;
+        audioObjects.breathedeeply.currentTime = 0;
     });
 });
 
@@ -921,6 +986,7 @@ function initializeTimerSettingsFormO2() {
       timerControlsButtonsO2.pauseO2.style.display = 'inline';
       document.getElementById('O2Settings').disabled = true;
       document.getElementById('O2Settings').style.color = 'rgb(177, 177, 177)';
+      document.getElementById('O2Btn').disabled = true;
   }
 
   function pauseTimerO2() {
@@ -940,7 +1006,11 @@ function initializeTimerSettingsFormO2() {
     if (!audioPlayerBRT.muted) {
        audioPlayerBRT.pause();
     }
-    stopTimerTickO2();
+      stopTimerTickO2();
+      document.getElementById('O2Btn').disabled = false;
+      if (!ismuteO2) {
+          audioObjects.breathedeeply.pause();
+      }
   }
 
   function stopTimerO2() {
@@ -976,6 +1046,11 @@ function initializeTimerSettingsFormO2() {
     document.getElementsByClassName('gap1O2')[1].style.backgroundColor = '#49B79D';
     isBreak0O2 = true;
     document.getElementById("O2Results").innerHTML = "";
+    document.getElementById('O2Btn').disabled = false;
+    if (!ismuteO2) {
+        audioObjects.breathedeeply.pause();
+        audioObjects.breathedeeply.currentTime = 0;
+    }
   }
 
   function displayTimerO2(){
@@ -1004,6 +1079,8 @@ function initializeTimerSettingsFormO2() {
       timerO2.elapsedInIntervalO2++;
       if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak0O2){
           if (!ismuteO2) {
+            audioObjects.breathedeeply.pause();
+            audioObjects.breathedeeply.currentTime = 0;
             audioObjects.hold.muted = false;
             audioObjects.hold.play();
         }
@@ -1061,6 +1138,8 @@ function initializeTimerSettingsFormO2() {
       timerO2.elapsedInIntervalO2++;
       if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak2O2){
           if (!ismuteO2) {
+            audioObjects.breathedeeply.pause();
+            audioObjects.breathedeeply.currentTime = 0;
             audioObjects.hold.muted = false;
             audioObjects.hold.play();
         }
@@ -1118,6 +1197,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak4O2){
             if (!ismuteO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }
@@ -1175,6 +1256,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak6O2){
             if (!ismuteO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }
@@ -1232,6 +1315,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak8O2){
             if (!ismuteO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }
@@ -1289,6 +1374,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak10O2){
             if (!ismuteO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }
@@ -1346,6 +1433,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak12O2){
             if (!ismuteO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }
@@ -1403,6 +1492,8 @@ function initializeTimerSettingsFormO2() {
         timerO2.elapsedInIntervalO2++;
         if(timerO2.elapsedInIntervalO2 > currentIntervalDurationO2 && timerO2.isBreak14O2){
             if (!ismuteO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }

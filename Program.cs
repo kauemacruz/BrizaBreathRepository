@@ -21,7 +21,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     // Other cookie settings...
 });
 
-StripeConfiguration.ApiKey = builder.Configuration["sk_test_51NxKRKH1ADGiKAIzATlX1lO3n3gP2FqJbwtyWggvkSPPBRzwN3vTw6XniH7BYE8q2skZpSrdX46uno3cXqVLWTdi006iAEcoW6"];
+StripeConfiguration.ApiKey = builder.Configuration["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"];
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();

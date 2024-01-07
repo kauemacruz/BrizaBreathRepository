@@ -38,14 +38,13 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    padding: 20px;
+    padding: 20px 2px 20px 2px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
     color: #0661AA;
-    font-family: 'Playfair Display';
     overflow-y: auto;
-    max-height: 95%;
+    height: 95%;
 }
 .modal-content ul {
     list-style: none;
@@ -192,7 +191,6 @@ header {
 #change-password-form,
 #delete-user {
     text-align: center;
-    font-family: 'Playfair Display';
     color: #49B79D !important;
     font-size: 18px;
 }
@@ -456,9 +454,9 @@ hr {
         width: 100%;
     }
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (min-height: 850px) {
     .homepageimgs {
-        height: 160px !important;
+        height: 190px !important;
     }
 }
 /*homepage*/
@@ -472,16 +470,18 @@ hr {
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
-    font-family: 'Playfair Display';
     font-size: 14px;
     color: #0661AA;
 }
 
 .homepageimgs {
-    width: 100%;
+    width: 99%;
     height: auto;
     max-width: 400px;
     object-fit: cover;
+    box-shadow: 0px 3px 7px 0px #80808021;
+    margin-bottom: 1px;
+    border-radius: 5px;
 }
 
 .w-100 {
@@ -499,14 +499,26 @@ hr {
 }
 
 #navResults {
-    margin-left: 20px;
-    margin-right: 20px;
+    color: #0661AA;
 }
-
+#navResults2 {
+    color: #0661AA;
+}
+#navProfile {
+    color: #0661AA;
+}
+#navHome {
+    color: #0661AA;
+}
+#navHome2 {
+    color: #0661AA;
+}
+#navProfile2 {
+    color: #0661AA;
+}
 .navbar a {
     float: left;
     padding: 12px;
-    color: #0661AA;
     text-decoration: none;
     display: flex;
     flex-flow: column nowrap;
@@ -623,7 +635,7 @@ hr {
 @keyframes slideToTop {
     from {
         opacity: 0.1;
-        top: 500px;
+        top: 1000px;
     }
 
     to {
@@ -666,7 +678,6 @@ hr {
     }
 /*briza program page*/
 .brizaprogram {
-    font-family: 'Playfair Display';
     padding-left: 20px;
     padding-right: 20px;
     width: 100%;
@@ -682,8 +693,10 @@ hr {
 
 #programPage h2 {
     text-align: center;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #programPage ul {
@@ -711,6 +724,7 @@ hr {
     margin-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
+    margin-bottom: 40px;
 }
 
 #programPage h4 {
@@ -764,10 +778,11 @@ hr {
 }
 /*Breathing pages*/
 .breathingpages {
-    font-family: 'Playfair Display';
     margin-top: 25px;
     width: 100%;
     color: #0661AA;
+    text-align: center;
+    margin-bottom: 40px;
 }
 .breathingpages.BHbreathing{
    margin-bottom: 10px !important;
@@ -821,14 +836,6 @@ video[poster] {
     color: #0661AA;
     font-size: 15px;
     width: 95px;
-}
-
-.settings-form.BRE {
-    padding-left: 1rem !important;
-}
-
-.form-line.BRE input[type="number"] {
-    margin-right: 4px !important;
 }
 
 .timer-additional-info.BRE {
@@ -1025,11 +1032,9 @@ input#timerDisplayLungs {
     background-color: transparent;
     background-repeat: no-repeat;
     outline: none;
-    font-family: 'Playfair Display';
     font-weight: 900;
     color: #49B79D;
     width: 70px;
-    margin-left: 80%;
 }
 
 .audioButtons img {
@@ -1058,7 +1063,6 @@ input#timerDisplayLungs {
 
 .timer-overview .box {
     flex: 0 0 50%;
-    padding-top: 1rem;
 }
 
 .timer-overview .boxHAT {
@@ -1104,27 +1108,23 @@ input#timerDisplayLungs {
 }
 
 .buttonplus {
-    font-size: 35px;
-    padding: 0px 10px 2px 10px;
+    font-size: 25px;
     border: none;
     border-radius: 5px;
     background-color: transparent;
     background-repeat: no-repeat;
     outline: none;
-    font-family: 'Playfair Display';
     color: #49B79D;
     font-weight: 900;
 }
 
 .buttonminus {
-    font-size: 35px;
-    padding: 0px 20px 2px 10px;
+    font-size: 25px;
     border: none;
     border-radius: 5px;
     background-color: transparent;
     background-repeat: no-repeat;
     outline: none;
-    font-family: 'Playfair Display';
     color: #49B79D;
     font-weight: 900;
 }
@@ -1152,13 +1152,12 @@ input#timerDisplayLungs {
 
 .form-line input[type="number"] {
     width: 40px;
-    margin-right: 5px;
     border-radius: 5px;
     text-align: center;
     border: none;
     background-color: white;
     color: #0661AA;
-    font-size: 20px;
+    font-size: 18px;
 }
 /*TIMER*/
 .main-container {
@@ -1173,11 +1172,11 @@ input#timerDisplayLungs {
 
 .timer-controls {
     text-align: center;
+    margin-top: 30px;
 }
 
 .settings-form {
     text-align: center;
-    margin-bottom: 40px;
 }
 
 .settings-form.BB {
@@ -1276,18 +1275,22 @@ input#intervalsDoneHAT {
     border: none;
     padding: 0;
     margin: auto;
+    width: 80%;
+    background-color: white;
 }
 
 #CO2Btn {
     border: none;
     padding: 0;
     margin: auto;
+    width: 80%;
+    background-color: white;
 }
 
 .O2table {
     text-align: center;
     margin: auto;
-    font-size: 20px;
+    font-size: 18px;
     border-top: solid;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1329,6 +1332,13 @@ input#intervalsDoneHAT {
 button#startBtnWH {
     margin-right: 0 !important;
     width: 10rem;
+    margin-bottom: 15px;
+}
+
+button#pauseBtnWH {
+    margin-right: 0 !important;
+    width: 10rem;
+    margin-bottom: 15px;
 }
 
 input#WHSave {
@@ -1376,7 +1386,7 @@ input#breakDurationInput2WH {
     color: #0661AA;
 }
 
-input#breathSpeed {
+input#breathSpeedWH {
     border: none;
     text-align: center;
     font-size: 30px;
@@ -1396,6 +1406,77 @@ form#WHForm {
 #WHResults {
     margin-bottom: 50px;
 }
+button#startBtnKB {
+    margin-right: 0 !important;
+    width: 10rem;
+}
+
+input#KBSave {
+    width: 10rem;
+    margin: 0;
+}
+
+button#stopBtnKB {
+    color: rgb(177, 177, 177);
+    width: 10rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    margin-right: 15px;
+}
+
+button#resetBtnKB {
+    color: rgb(177, 177, 177);
+    width: 10rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    display: none;
+    margin-right: 15px;
+}
+
+#circleKB {
+    width: 100%;
+    text-align: center;
+}
+
+input#breakDurationInput2KB {
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    width: 100px;
+    color: #0661AA;
+}
+
+input#breathSpeedKB {
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    width: 150px;
+    color: #0661AA;
+}
+
+#KBtimer-controls {
+    height: 60px;
+}
+
+form#KBForm {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#KBResults {
+    margin-bottom: 50px;
+}
 
 .meditations {
     display: flex;
@@ -1409,6 +1490,7 @@ form#WHForm {
 .meditations ul {
     margin-top: 20px;
     font-size: 20px !important;
+    text-align: center;
 }
 
 .meditations ul::before {
@@ -1428,7 +1510,6 @@ form#WHForm {
     cursor: pointer;
     text-align: center;
     padding: 10px;
-    font-family: 'Playfair Display';
     font-size: 28px;
     color: #0661AA;
     display: flex;
@@ -1457,7 +1538,6 @@ form#WHForm {
     cursor: pointer;
     text-align: center;
     padding: 10px;
-    font-family: 'Playfair Display';
     font-size: 18px;
     color: #0661AA;
     border-top: solid 1px;
@@ -1493,7 +1573,6 @@ form#WHForm {
 }
 canvas#brtChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -1508,7 +1587,6 @@ canvas#brtChart {
     margin-top: 10px;
 }
 .BRTInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
@@ -1516,7 +1594,6 @@ canvas#brtChart {
 .BRTinfoOverview {
     display: inline-flex;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
     justify-content: space-between;
@@ -1531,13 +1608,11 @@ canvas#brtChart {
     padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 #BRTresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1545,7 +1620,6 @@ canvas#brtChart {
 #BRTresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -1556,13 +1630,12 @@ form.BRTdelete-form {
     line-height: 40px;
     height: 40px;
 }
-canvas#YOGICChart {
+canvas#YBChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
-.YOGICInfo {
+.YBInfo {
     width: 100%;
     max-width: 600px;
     background-color: #e4e3d40f;
@@ -1572,51 +1645,45 @@ canvas#YOGICChart {
     border-radius: 10px;
     margin-top: 10px;
 }
-.YOGICInfo h4 {
-    font-family: 'Playfair Display';
+.YBInfo h4 {
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
-.YOGICinfoOverview {
-    display: inline-flex;
+.YBinfoOverview {
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
-.YOGICinfoOverview input {
+.YBinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
-#YOGICinfoOverview {
-    padding: 10px;
+#YBinfoOverview {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
-#YOGICresultDateHeader {
+#YBresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-#YOGICresultSessions {
+#YBresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
 }
-form.YOGICdelete-form {
+form.YBdelete-form {
     display: inline-flex;
     margin-bottom: 70px;
     line-height: 40px;
@@ -1626,7 +1693,6 @@ form.YOGICdelete-form {
 }
 canvas#BREChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -1641,37 +1707,32 @@ canvas#BREChart {
     margin-top: 10px;
 }
 .BREInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 .BREinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 .BREinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 #BREinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 #BREresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1679,7 +1740,6 @@ canvas#BREChart {
 #BREresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -1694,7 +1754,6 @@ form.BREdelete-form {
 }
 canvas#BRWChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -1709,37 +1768,32 @@ canvas#BRWChart {
     margin-top: 10px;
 }
 .BRWInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 .BRWinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 .BRWinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 #BRWinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 #BRWresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1747,7 +1801,6 @@ canvas#BRWChart {
 #BRWresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -1762,7 +1815,6 @@ form.BRWdelete-form {
 }
 canvas#HUMChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -1778,41 +1830,36 @@ canvas#HUMChart {
 }
 
 .HUMInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .HUMinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
-    .HUMinfoOverview input {
-        border: none;
-        text-align: right;
-        color: #0661AA;
-        background-color: transparent;
-        width: 250px;
-    }
+.HUMinfoOverview input {
+    border: none;
+    text-align: center;
+    color: #0661AA;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
 
 #HUMinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #HUMresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1821,7 +1868,6 @@ canvas#HUMChart {
 #HUMresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -1837,7 +1883,6 @@ form.HUMdelete-form {
 }
 canvas#BBChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -1853,41 +1898,36 @@ canvas#BBChart {
 }
 
 .BBInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .BBinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .BBinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #BBinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #BBresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1896,7 +1936,6 @@ canvas#BBChart {
 #BBresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -1912,7 +1951,6 @@ form.BBdelete-form {
 }
 canvas#APChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -1928,41 +1966,36 @@ canvas#APChart {
 }
 
 .APInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .APinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .APinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #APinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #APresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1971,7 +2004,6 @@ canvas#APChart {
 #APresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -1985,84 +2017,9 @@ form.APdelete-form {
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-canvas#APChart {
-    height: 250px !important;
-    font-family: 'Playfair Display';
-    font-size: 2px;
-    color: #0661AA;
-}
 
-.APInfo {
-    width: 100%;
-    max-width: 600px;
-    background-color: #e4e3d40f;
-    padding: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    margin: auto;
-    border-radius: 10px;
-    margin-top: 10px;
-}
-
-.APInfo h4 {
-    font-family: 'Playfair Display';
-    font-size: 20px;
-    color: #0661AA;
-    text-align: center;
-}
-
-.APinfoOverview {
-    display: inline-flex;
-    width: 100%;
-    font-family: 'Playfair Display';
-    font-size: 15px;
-    color: #0661AA;
-    justify-content: space-between;
-}
-
-    .APinfoOverview input {
-        border: none;
-        text-align: right;
-        color: #0661AA;
-        background-color: transparent;
-        width: 250px;
-    }
-
-#APinfoOverview {
-    padding: 10px;
-    color: #0661AA;
-    text-align: center;
-    font-family: 'Playfair Display';
-    font-size: 15px;
-}
-
-#APresultDateHeader {
-    color: #0661AA;
-    text-align: center;
-    font-family: 'Playfair Display';
-    font-size: 25px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#APresultSessions {
-    color: #0661AA;
-    text-align: center;
-    font-family: 'Playfair Display';
-    font-size: 18px;
-    display: grid;
-    justify-content: center;
-}
-form.APdelete-form {
-    display: inline-flex;
-    margin-bottom: 70px;
-    line-height: 40px;
-    height: 40px;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
 canvas#CTChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2079,41 +2036,36 @@ canvas#CTChart {
 }
 
 .CTInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .CTinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .CTinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #CTinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #CTresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2122,7 +2074,6 @@ canvas#CTChart {
 #CTresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2138,7 +2089,6 @@ form.CTdelete-form {
 }
 canvas#LUNGSChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2155,7 +2105,6 @@ canvas#LUNGSChart {
 }
 
 .LUNGSInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
@@ -2164,7 +2113,6 @@ canvas#LUNGSChart {
 .LUNGSinfoOverview {
     display: inline-flex;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
     justify-content: space-between;
@@ -2182,14 +2130,12 @@ canvas#LUNGSChart {
     padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #LUNGSresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2198,7 +2144,6 @@ canvas#LUNGSChart {
 #LUNGSresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2214,7 +2159,6 @@ form.LUNGSdelete-form {
 }
 canvas#BOXChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2231,41 +2175,36 @@ canvas#BOXChart {
 }
 
 .BOXInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .BOXinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .BOXinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #BOXinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #BOXresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2274,7 +2213,6 @@ canvas#BOXChart {
 #BOXresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2290,7 +2228,6 @@ form.BOXdelete-form {
 }
 canvas#UBChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2307,41 +2244,36 @@ canvas#UBChart {
 }
 
 .UBInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .UBinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .UBinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #UBinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #UBresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2350,7 +2282,6 @@ canvas#UBChart {
 #UBresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2366,7 +2297,6 @@ form.UBdelete-form {
 }
 canvas#NBChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2383,41 +2313,36 @@ canvas#NBChart {
 }
 
 .NBInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .NBinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .NBinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #NBinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #NBresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2426,7 +2351,6 @@ canvas#NBChart {
 #NBresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2442,7 +2366,6 @@ form.NBdelete-form {
 }
 canvas#SBChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2459,41 +2382,36 @@ canvas#SBChart {
 }
 
 .SBInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .SBinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .SBinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #SBinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #SBresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2502,7 +2420,6 @@ canvas#SBChart {
 #SBresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2518,7 +2435,6 @@ form.SBdelete-form {
 }
 canvas#RBChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2535,41 +2451,36 @@ canvas#RBChart {
 }
 
 .RBInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .RBinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .RBinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #RBinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #RBresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2578,7 +2489,6 @@ canvas#RBChart {
 #RBresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2594,7 +2504,6 @@ form.RBdelete-form {
 }
 canvas#CBChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2611,41 +2520,36 @@ canvas#CBChart {
 }
 
 .CBInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .CBinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .CBinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #CBinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #CBresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2654,7 +2558,6 @@ canvas#CBChart {
 #CBresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2668,85 +2571,8 @@ form.CBdelete-form {
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-canvas#SEXChart {
-    height: 250px !important;
-    font-family: 'Playfair Display';
-    font-size: 2px;
-    color: #0661AA;
-}
-
-.SEXInfo {
-    width: 100%;
-    max-width: 600px;
-    background-color: #e4e3d40f;
-    padding: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    margin: auto;
-    border-radius: 10px;
-    margin-top: 10px;
-}
-
-.SEXInfo h4 {
-    font-family: 'Playfair Display';
-    font-size: 20px;
-    color: #0661AA;
-    text-align: center;
-}
-
-.SEXinfoOverview {
-    display: inline-flex;
-    width: 100%;
-    font-family: 'Playfair Display';
-    font-size: 15px;
-    color: #0661AA;
-    justify-content: space-between;
-}
-
-.SEXinfoOverview input {
-    border: none;
-    text-align: right;
-    color: #0661AA;
-    background-color: transparent;
-    width: 250px;
-}
-
-#SEXinfoOverview {
-    padding: 10px;
-    color: #0661AA;
-    text-align: center;
-    font-family: 'Playfair Display';
-    font-size: 15px;
-}
-
-#SEXresultDateHeader {
-    color: #0661AA;
-    text-align: center;
-    font-family: 'Playfair Display';
-    font-size: 25px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#SEXresultSessions {
-    color: #0661AA;
-    text-align: center;
-    font-family: 'Playfair Display';
-    font-size: 18px;
-    display: grid;
-    justify-content: center;
-}
-
-form.SEXdelete-form {
-    display: inline-flex;
-    margin-bottom: 70px;
-    line-height: 40px;
-    height: 40px;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
 canvas#WHChart {
     height: 300px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2763,7 +2589,6 @@ canvas#WHChart {
 }
 
 .WHInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
@@ -2772,7 +2597,6 @@ canvas#WHChart {
 .WHinfoOverview {
     display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
     text-align: center;
@@ -2789,14 +2613,12 @@ canvas#WHChart {
 #WHinfoOverview {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #WHresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2805,7 +2627,6 @@ canvas#WHChart {
 #WHresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2827,9 +2648,87 @@ input.btn.btn-danger.WHdelete-button {
     margin-top: 20px;
     margin-bottom: 40px;
 }
+canvas#KBChart {
+    height: 300px !important;
+    font-size: 2px;
+    color: #0661AA;
+}
+
+.KBInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e4e3d40f;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+    .KBInfo h4 {
+        font-size: 20px;
+        color: #0661AA;
+        text-align: center;
+    }
+
+.KBinfoOverview {
+    display: grid;
+    width: 100%;
+    font-size: 15px;
+    color: #0661AA;
+    text-align: center;
+}
+
+    .KBinfoOverview input {
+        border: none;
+        text-align: center;
+        color: #0661AA;
+        background-color: transparent;
+        margin-bottom: 10px;
+    }
+
+#KBinfoOverview {
+    color: #0661AA;
+    text-align: center;
+    font-size: 15px;
+}
+
+#KBresultDateHeader {
+    color: #0661AA;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#KBresultSessions {
+    color: #0661AA;
+    text-align: center;
+    font-size: 18px;
+    display: grid;
+    justify-content: center;
+}
+
+form.KBdelete-form {
+    display: grid;
+}
+
+.KBresultInput {
+    border: none;
+    text-align: left;
+    color: #0661AA;
+    background-color: transparent;
+    margin-left: 10px;
+}
+
+input.btn.btn-danger.KBdelete-button {
+    width: 150px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
 canvas#HATChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2846,41 +2745,36 @@ canvas#HATChart {
 }
 
 .HATInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .HATinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .HATinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #HATinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #HATresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2889,7 +2783,6 @@ canvas#HATChart {
 #HATresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2913,7 +2806,6 @@ input.btn.btn-danger.HATdelete-button {
 }
 canvas#HATCChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -2930,41 +2822,36 @@ canvas#HATCChart {
 }
 
 .HATCInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .HATCinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .HATCinfoOverview input {
-    border: none;
-    text-align: right;
+   border: none;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #HATCinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #HATCresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2973,7 +2860,6 @@ canvas#HATCChart {
 #HATCresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -2997,7 +2883,6 @@ input.btn.btn-danger.HATCdelete-button {
 }
 canvas#AHATChart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -3014,41 +2899,36 @@ canvas#AHATChart {
 }
 
 .AHATInfo h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .AHATinfoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .AHATinfoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #AHATinfoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #AHATresultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -3057,7 +2937,6 @@ canvas#AHATChart {
 #AHATresultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -3081,7 +2960,6 @@ input.btn.btn-danger.AHATdelete-button {
 }
 canvas#O2Chart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -3098,41 +2976,36 @@ canvas#O2Chart {
 }
 
 .O2Info h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .O2infoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .O2infoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #O2infoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #O2resultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -3141,7 +3014,6 @@ canvas#O2Chart {
 #O2resultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -3165,7 +3037,6 @@ input.btn.btn-danger.O2delete-button {
 }
 canvas#CO2Chart {
     height: 250px !important;
-    font-family: 'Playfair Display';
     font-size: 2px;
     color: #0661AA;
 }
@@ -3182,41 +3053,36 @@ canvas#CO2Chart {
 }
 
 .CO2Info h4 {
-    font-family: 'Playfair Display';
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
 
 .CO2infoOverview {
-    display: inline-flex;
+    display: grid;
     width: 100%;
-    font-family: 'Playfair Display';
     font-size: 15px;
     color: #0661AA;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .CO2infoOverview input {
     border: none;
-    text-align: right;
+    text-align: center;
     color: #0661AA;
     background-color: transparent;
-    width: 250px;
+    margin-bottom: 10px;
 }
 
 #CO2infoOverview {
-    padding: 10px;
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 15px;
 }
 
 #CO2resultDateHeader {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -3225,7 +3091,6 @@ canvas#CO2Chart {
 #CO2resultSessions {
     color: #0661AA;
     text-align: center;
-    font-family: 'Playfair Display';
     font-size: 18px;
     display: grid;
     justify-content: center;
@@ -3246,4 +3111,71 @@ input.btn.btn-danger.CO2delete-button {
     margin: auto;
     margin-top: 20px;
     margin-bottom: 40px;
+}
+.guidedBTN {
+    width: 80%;
+    font-size: 25px;
+    background-color: #0661AA;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.co2o2 img {
+    width: 100%;
+}
+#WHmodal h4.volumeSettings {
+    margin-bottom: 30px;
+}
+#KBmodal h4.volumeSettings {
+    margin-bottom: 30px;
+}
+#CBmodal .form-line input[type="number"] {
+    width: 50px;
+}
+.spreadExercises{
+    margin-top: 20px !important;
+}
+.countdownDisplay {
+    border: none;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 25px;
+    color: #0661AA;
+    background-color: white;
+}
+
+.CountdownHidden {
+    display: none;
+}
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 40px;
+}
+.ball {
+    position: relative;
+    width: 150px; /* Set the initial size of the ball */
+    height: 150px; /* Set the initial size of the ball */
+    transition: transform 0.5s ease;
+}
+.ball img {
+    width: 100%;
+    height: 100%;
+}
+
+.ball span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #0661AA;
+}
+.timer-overviewHidden{
+    display: none;
 }

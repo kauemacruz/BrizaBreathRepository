@@ -15,6 +15,7 @@
         document.getElementById("noActiveMembership").style.display = "block";
     }
 });
+
 // Get the elements with the class "song-select"
 var songSelects = document.getElementsByClassName('song-select');
 // Create an array to store the audio elements
@@ -26,11 +27,9 @@ for (var i = 0; i < songSelects.length; i++) {
     // Iterate over the options and create audio elements for each option
     for (var j = 0; j < options.length; j++) {
         var option = options[j];
-        if (option.hasAttribute('data-audio')) {
-            var audioSrc = option.getAttribute('data-audio');
-            var audioElement = new Audio(audioSrc);
-            audioElements.push(audioElement);
-        }
+        var audioSrc = option.value;
+        var audioElement = new Audio(audioSrc);
+        audioElements.push(audioElement);
     }
 }
 
@@ -224,11 +223,11 @@ yearlyBox.onclick = function () {
         monthlyBox.style.backgroundColor = "white";
     }
 }
-subscriptionBtn = document.getElementById("subscriptionBtn");
-subscriptionBtn2 = document.getElementById("subscriptionBtn2");
-getSubscriptionBtn = document.getElementById("getSubscriptionBtn");
-SUBDate = document.getElementById("SUBDate");
-SUBDate2 = document.getElementById("SUBDate2");
+var subscriptionBtn = document.getElementById("subscriptionBtn"),
+    subscriptionBtn2 = document.getElementById("subscriptionBtn2"),
+    getSubscriptionBtn = document.getElementById("getSubscriptionBtn"),
+    SUBDate = document.getElementById("SUBDate"),
+    SUBDate2 = document.getElementById("SUBDate2");
 let currentDate;
 
 subscriptionBtn.onclick = function () {
@@ -292,13 +291,13 @@ $(function () {
             success: function (response) {
                 console.log(response);
                 if (priceChoice.value == 3) {
-                    window.location.href = "https://buy.stripe.com/test_3csaG2awY1I04i4144?prefilled_email=" + response;
+                    window.location.href = "https://pay.brizabreath.com/b/4gw00udtj6Y57q8fZ1?prefilled_email=" + response;
                 } else if (priceChoice.value == 4) {
-                    window.location.href = "https://buy.stripe.com/test_9AQ9BYgVmcmEdSEbIJ?prefilled_email=" + response;
+                    window.location.href = "https://pay.brizabreath.com/b/00g9B4cpf5U18uc4gi?prefilled_email=" + response;
                 } else if (priceChoice.value == 5) {
-                    window.location.href = "https://buy.stripe.com/test_9AQcOadJa1I015S003?prefilled_email=" + response + "&locale=pt-BR";
+                    window.location.href = "https://pay.brizabreath.com/b/fZeeVo60R8294dW5kk?prefilled_email=" + response + "&locale=pt-BR";
                 } else if (priceChoice.value == 6) {
-                    window.location.href = "https://buy.stripe.com/test_28o8xU34waewbKw28a?prefilled_email=" + response + "&locale=pt-BR";
+                    window.location.href = "https://pay.brizabreath.com/b/dR66oSgFv0zHbGo9AB?prefilled_email=" + response + "&locale=pt-BR";
                 } else {
                     console.log("No Memberships with this id");
                 }
@@ -344,32 +343,11 @@ $(function () {
     });
 });
 let audioObjects = {};
-const soundNames = ['inhale', 'hold', 'exhale', 'pinchRun', 'ligthNasal', 'normalbreath', 'breathedeeply', 'recover', 'pinchWalk', 'hum', 'inhaleRight', 'inhaleLeft', 'exhaleRight', 'exhaleLeft', 'fullyin', 'fullyout', 'letGo', 'letgoandhold'];
+const soundNames = ['bell', 'breathedeeply', 'exhale', 'exhaleLeft', 'exhaleRight', 'fullyin', 'fullyinHold', 'fullyout', 'fullyout2', 'hold', 'hum', 'inhale', 'inhaleLeft', 'inhaleRight', 'letGo', 'letgoandhold', 'lightNasal', 'normalbreath', 'nextRound', 'pinchRun', 'pinchWalk', 'recover'];
 soundNames.forEach((name) => {
-    audioObjects[name] = new Audio(`../sounds/${name}${isPortuguese ? 'PT' : ''}.mp3`);
+    audioObjects[name] = new Audio(`https://brizastorage.blob.core.windows.net/sounds/${name}${isPortuguese ? 'PT' : ''}.mp3`);
 });
-function playAndReset(audio) {
-    audio.muted = true;
-    audio.play();
-    setTimeout(() => {
-        audio.pause();
-        audio.currentTime = 0;
-        audio.muted = false;
-    }, 500);
-}
-function startAudios() {
-    Object.values(audioObjects).forEach((audio) => {
-        playAndReset(audio);
-    });
 
-    playSelectedSongBRT(true);
-    audioPlayerBRT.muted = true;
-    playAndReset(audioPlayerBRT);
-
-    audioElements.forEach((audio) => {
-        playAndReset(audio);
-    });
-}
 /*Links*/
 var navResults = document.getElementById("navResults"),
     navResults2 = document.getElementById("navResults2"),
@@ -392,39 +370,27 @@ var navResults = document.getElementById("navResults"),
     backBRT = document.getElementById("backBRT"),
     diaphragmLink = document.getElementById("diaphragmLink"),
     backDiaphragm = document.getElementById("backDiaphragm"),
-    BRT10Link = document.getElementById("BRT10Link"),
-    backBRT10 = document.getElementById("backBRT10"),
     BRELink = document.getElementById("BRELink"),
     backBRE = document.getElementById("backBRE"),
     BRWLink = document.getElementById("BRWLink"),
     backBRW = document.getElementById("backBRW"),
-    HUMLink = document.getElementById("HUMLink"),
-    backHUM = document.getElementById("backHUM"),
-    BRT20Link = document.getElementById("BRT20Link"),
-    backBRT20 = document.getElementById("backBRT20"),
     BBLink = document.getElementById("BBLink"),
     backBB = document.getElementById("backBB"),
-    BRT30Link = document.getElementById("BRT30Link"),
-    backBRT30 = document.getElementById("backBRT30"),
     brtSettings = document.getElementById("brtSettings"),
     backBRTset = document.getElementById("backBRTset"),
-    yogicLink = document.getElementById("yogicLink"),
-    backYogic = document.getElementById("backYogic"),
-    yogicSettings = document.getElementById("yogicSettings"),
-    backYogicSet = document.getElementById("backYogicSet"),
+    YBLink = document.getElementById("YBLink"),
+    backYB = document.getElementById("backYB"),
+    YBSettings = document.getElementById("YBSettings"),
+    backYBSet = document.getElementById("backYBSet"),
     breSettings = document.getElementById("breSettings"),
     backBREset = document.getElementById("backBREset"),
     brwSettings = document.getElementById("brwSettings"),
     backBRWset = document.getElementById("backBRWset"),
-    humSettings = document.getElementById("humSettings"),
-    backHUMset = document.getElementById("backHUMset"),
-    bbSettings = document.getElementById("bbSettings"),
+    BBSettings = document.getElementById("BBSettings"),
     backBBset = document.getElementById("backBBset"),
     hatSettings = document.getElementById("hatSettings"),
     HATLink = document.getElementById("HATLink"),
     backHATset = document.getElementById("backHATset"),
-    BRT40Link = document.getElementById("BRT40Link"),
-    backBRT40 = document.getElementById("backBRT40"),
     HATCLink = document.getElementById("HATCLink"),
     hatcSettings = document.getElementById("hatcSettings"),
     backAHATCset = document.getElementById("backAHATCset"),
@@ -464,6 +430,8 @@ var navResults = document.getElementById("navResults"),
     backUBSet = document.getElementById("backUBSet"),
     KBLink = document.getElementById("KBLink"),
     backKB = document.getElementById("backKB"),
+    KBSettings = document.getElementById("KBSettings"),
+    backKBSet = document.getElementById("backKBset"),
     BOXLink = document.getElementById("BOXLink"),
     backBOX = document.getElementById("backBOX"),
     BOXSettings = document.getElementById("BOXSettings"),
@@ -504,16 +472,15 @@ var navResults = document.getElementById("navResults"),
     backICE = document.getElementById("backICE"),
     EXERCISINGLink = document.getElementById("EXERCISINGLink"),
     backEXERCISING = document.getElementById("backEXERCISING"),
-    SEXLink = document.getElementById("SEXLink"),
-    backSEX = document.getElementById("backSEX"),
-    SEXSettings = document.getElementById("SEXSettings"),
-    backSEXSet = document.getElementById("backSEXSet"),
+    HUMLink = document.getElementById("HUMLink"),
+    backHUM = document.getElementById("backHUM"),
+    humSettings = document.getElementById("humSettings"),
+    backHUMSet = document.getElementById("backHUMset"),
     backBRTresults = document.getElementById("backBRTresults"),
     backLUNGSresults = document.getElementById("backLUNGSresults"),
-    backYOGICresults = document.getElementById("backYOGICresults"),
+    backYBresults = document.getElementById("backYBresults"),
     backBREresults = document.getElementById("backBREresults"),
     backBRWresults = document.getElementById("backBRWresults"),
-    backHUMresults = document.getElementById("backHUMresults"),
     backBBresults = document.getElementById("backBBresults"),
     backAPresults = document.getElementById("backAPresults"),
     backCTresults = document.getElementById("backCTresults"),
@@ -523,8 +490,9 @@ var navResults = document.getElementById("navResults"),
     backSBresults = document.getElementById("backSBresults"),
     backCBresults = document.getElementById("backCBresults"),
     backRBresults = document.getElementById("backRBresults"),
-    backSEXresults = document.getElementById("backSEXresults"),
+    backHUMresults = document.getElementById("backHUMresults"),
     backWHresults = document.getElementById("backWHresults"),
+    backKBresults = document.getElementById("backKBresults"),
     backHATresults = document.getElementById("backHATresults"),
     backHATCresults = document.getElementById("backHATCresults"),
     backAHATresults = document.getElementById("backAHATresults"),
@@ -539,23 +507,17 @@ var homePage = document.getElementById("homePage"),
     noseUnblockPage = document.getElementById("noseUnblockPage"),
     brtPage = document.getElementById("brtPage"),
     diaphragmPage = document.getElementById("diaphragmPage"),
-    yogicPage = document.getElementById("yogicPage"),
-    yogicSettingsPage = document.getElementById("yogicSettingsPage"),
-    BRT10Page = document.getElementById("BRT10Page"),
+    YBPage = document.getElementById("YBPage"),
+    YBSettingsPage = document.getElementById("YBSettingsPage"),
     BREPage = document.getElementById("BREPage"),
     BRWPage = document.getElementById("BRWPage"),
-    HUMPage = document.getElementById("HUMPage"),
-    BRT20Page = document.getElementById("BRT20Page"),
     BBPage = document.getElementById("BBPage"),
-    BRT30Page = document.getElementById("BRT30Page"),
     brtSettingsPage = document.getElementById("brtSettingsPage"),
     breSettingsPage = document.getElementById("breSettingsPage"),
     brwSettingsPage = document.getElementById("brwSettingsPage"),
-    humSettingsPage = document.getElementById("humSettingsPage"),
     bbSettingsPage = document.getElementById("bbSettingsPage"),
     HATPage = document.getElementById("HATPage"),
     hatSettingsPage = document.getElementById("hatSettingsPage"),
-    BRT40Page = document.getElementById("BRT40Page"),
     HATCPage = document.getElementById("HATCPage"),
     hatcSettingsPage = document.getElementById("hatcSettingsPage"),
     AHATPage = document.getElementById("AHATPage"),
@@ -577,6 +539,7 @@ var homePage = document.getElementById("homePage"),
     UBPage = document.getElementById("UBPage"),
     UBSettingsPage = document.getElementById("UBSettingsPage"),
     KBPage = document.getElementById("KBPage"),
+    KBSettingsPage = document.getElementById("KBSettingsPage"),
     BOXPage = document.getElementById("BOXPage"),
     BOXSettingsPage = document.getElementById("BOXSettingsPage"),
     NBPage = document.getElementById("NBPage"),
@@ -597,8 +560,8 @@ var homePage = document.getElementById("homePage"),
     DIETPage = document.getElementById("DIETPage"),
     ICEPage = document.getElementById("ICEPage"),
     EXERCISINGPage = document.getElementById("EXERCISINGPage"),
-    SEXPage = document.getElementById("SEXPage"),
-    SEXSettingsPage = document.getElementById("SEXSettingsPage"),
+    HUMPage = document.getElementById("HUMPage"),
+    humSettingsPage = document.getElementById("humSettingsPage"),
     selectSongsList = document.getElementById("selectSongsList");
 
 /*Transition functions*/
@@ -652,16 +615,16 @@ navResults.onclick = function () {
                     LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
                 }
                 LUNGSupdateOverview();
-                // Check if there is at least one non-empty and non-null YOGICtimeString
-                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YOGICresultData) {
-                    var YOGICtimeString = YOGICresultData.yogicTotalTime;
-                    return YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null;
+                // Check if there is at least one non-empty and non-null YBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YBresultData) {
+                    var YBtimeString = YBresultData.YBTotalTime;
+                    return YBtimeString !== undefined && YBtimeString !== '' && YBtimeString !== null;
                 });
 
                 if (hasNonEmptyTimeStrings) {
-                    YOGICupdateChart(YOGICstartDate, YOGICendDate);
+                    YBupdateChart(YBstartDate, YBendDate);
                 }
-                YOGICupdateOverview();
+                YBupdateOverview();
                 // Check if there is at least one non-empty and non-null BREtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BREresultData) {
                     var BREtimeString = BREresultData.breTotalTime;
@@ -682,16 +645,6 @@ navResults.onclick = function () {
                     BRWupdateChart(BRWstartDate, BRWendDate);
                 }
                 BRWupdateOverview();
-                // Check if there is at least one non-empty and non-null HUMtimeString
-                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HUMresultData) {
-                    var HUMtimeString = HUMresultData.humTotalTime;
-                    return HUMtimeString !== undefined && HUMtimeString !== '' && HUMtimeString !== null;
-                });
-
-                if (hasNonEmptyTimeStrings) {
-                    HUMupdateChart(HUMstartDate, HUMendDate);
-                }
-                HUMupdateOverview();
                 // Check if there is at least one non-empty and non-null BBtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BBresultData) {
                     var BBtimeString = BBresultData.bbTotalTime;
@@ -782,16 +735,16 @@ navResults.onclick = function () {
                     RBupdateChart(RBstartDate, RBendDate);
                 }
                 RBupdateOverview();
-                // Check if there is at least one non-empty and non-null SEXtimeString
-                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SEXresultData) {
-                    var SEXtimeString = SEXresultData.sexTotalTime;
-                    return SEXtimeString !== undefined && SEXtimeString !== '' && SEXtimeString !== null;
+                // Check if there is at least one non-empty and non-null HUMtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HUMresultData) {
+                    var HUMtimeString = HUMresultData.humTotalTime;
+                    return HUMtimeString !== undefined && HUMtimeString !== '' && HUMtimeString !== null;
                 });
 
                 if (hasNonEmptyTimeStrings) {
-                    SEXupdateChart(SEXstartDate, SEXendDate);
+                    HUMupdateChart(HUMstartDate, HUMendDate);
                 }
-                SEXupdateOverview();
+                HUMupdateOverview();
                 // Check if there is at least one non-empty and non-null WHtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (WHresultData) {
                     var WHtimeString = WHresultData.whTotalTime;
@@ -802,6 +755,16 @@ navResults.onclick = function () {
                     WHupdateChart(WHstartDate, WHendDate);
                 }
                 WHupdateOverview();
+                // Check if there is at least one non-empty and non-null KBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (KBresultData) {
+                    var KBtimeString = KBresultData.kbTotalTime;
+                    return KBtimeString !== undefined && KBtimeString !== '' && KBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    KBupdateChart(KBstartDate, KBendDate);
+                }
+                KBupdateOverview();
                 // Check if there is at least one non-empty and non-null HATtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATresultData) {
                     var HATtimeString = HATresultData.hatTotalTime;
@@ -885,7 +848,7 @@ navResults2.onclick = function () {
                 }
 
                 BRTupdateOverview();
-                // Check if there is at least one non-empty and non-null BRTtimeString
+                // Check if there is at least one non-empty and non-null lungstimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (LUNGSresultData) {
                     var LUNGStimeString = LUNGSresultData.lungsResultScore;
                     return LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null;
@@ -895,16 +858,16 @@ navResults2.onclick = function () {
                     LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
                 }
                 LUNGSupdateOverview();
-                // Check if there is at least one non-empty and non-null YOGICtimeString
-                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YOGICresultData) {
-                    var YOGICtimeString = YOGICresultData.yogicTotalTime;
-                    return YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null;
+                // Check if there is at least one non-empty and non-null YBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YBresultData) {
+                    var YBtimeString = YBresultData.YBTotalTime;
+                    return YBtimeString !== undefined && YBtimeString !== '' && YBtimeString !== null;
                 });
 
                 if (hasNonEmptyTimeStrings) {
-                    YOGICupdateChart(YOGICstartDate, YOGICendDate);
+                    YBupdateChart(YBstartDate, YBendDate);
                 }
-                YOGICupdateOverview();
+                YBupdateOverview();
                 // Check if there is at least one non-empty and non-null BREtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BREresultData) {
                     var BREtimeString = BREresultData.breTotalTime;
@@ -925,16 +888,6 @@ navResults2.onclick = function () {
                     BRWupdateChart(BRWstartDate, BRWendDate);
                 }
                 BRWupdateOverview();
-                // Check if there is at least one non-empty and non-null HUMtimeString
-                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HUMresultData) {
-                    var HUMtimeString = HUMresultData.humTotalTime;
-                    return HUMtimeString !== undefined && HUMtimeString !== '' && HUMtimeString !== null;
-                });
-
-                if (hasNonEmptyTimeStrings) {
-                    HUMupdateChart(HUMstartDate, HUMendDate);
-                }
-                HUMupdateOverview();
                 // Check if there is at least one non-empty and non-null BBtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BBresultData) {
                     var BBtimeString = BBresultData.bbTotalTime;
@@ -1025,16 +978,16 @@ navResults2.onclick = function () {
                     RBupdateChart(RBstartDate, RBendDate);
                 }
                 RBupdateOverview();
-                // Check if there is at least one non-empty and non-null SEXtimeString
-                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (SEXresultData) {
-                    var SEXtimeString = SEXresultData.sexTotalTime;
-                    return SEXtimeString !== undefined && SEXtimeString !== '' && SEXtimeString !== null;
+                // Check if there is at least one non-empty and non-null HUMtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HUMresultData) {
+                    var HUMtimeString = HUMresultData.humTotalTime;
+                    return HUMtimeString !== undefined && HUMtimeString !== '' && HUMtimeString !== null;
                 });
 
                 if (hasNonEmptyTimeStrings) {
-                    SEXupdateChart(SEXstartDate, SEXendDate);
+                    HUMupdateChart(HUMstartDate, HUMendDate);
                 }
-                SEXupdateOverview();
+                HUMupdateOverview();
                 // Check if there is at least one non-empty and non-null WHtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (WHresultData) {
                     var WHtimeString = WHresultData.whTotalTime;
@@ -1045,6 +998,16 @@ navResults2.onclick = function () {
                     WHupdateChart(WHstartDate, WHendDate);
                 }
                 WHupdateOverview();
+                // Check if there is at least one non-empty and non-null KBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (KBresultData) {
+                    var KBtimeString = KBresultData.kbTotalTime;
+                    return KBtimeString !== undefined && KBtimeString !== '' && KBtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    KBupdateChart(KBstartDate, KBendDate);
+                }
+                KBupdateOverview();
                 // Check if there is at least one non-empty and non-null HATtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (HATresultData) {
                     var HATtimeString = HATresultData.hatTotalTime;
@@ -1129,29 +1092,45 @@ navHome2.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 programLink.onclick = function () {
-    openPage(homePage, programPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    startAudios();
+    if (isUserActiveSubscriber) {
+        $.ajax({
+            url: "/?fetchData=true",
+            type: 'GET',
+            success: function (data) {
+                fetchedDataArray = data;
+                // Check if there is at least one non-empty and non-null BRTtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRTresultData) {
+                    var BRTtimeString = BRTresultData.brtResultScore;
+                    return BRTtimeString !== undefined && BRTtimeString !== '' && BRTtimeString !== null;
+                });
+
+                if (hasNonEmptyTimeStrings) {
+                    BRTupdateChart(BRTstartDate, BRTendDate);
+                }
+                BRTupdateOverview();
+
+            },
+            error: function (error) {
+                console.error("Error fetching data:", error);
+            }
+        });
+        openPage(homePage, programPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        audioObjects.bell.load();
+        audioElements.forEach((audio) => {
+            audio.load();
+        });
+    } else {
+        openModal();
+    }
 }
 backProgram.onclick = function () {
     openPage(programPage, homePage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-nasalLink.onclick = function () {
-    openPage(programPage, nasalBreathingPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
 backNasal.onclick = function () {
     openPage(nasalBreathingPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-unblockLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, noseUnblockPage, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-        openModal();
-    }
 }
 backUnblock.onclick = function () {
     openPage(noseUnblockPage, programPage, 'slideRight');
@@ -1160,7 +1139,10 @@ backUnblock.onclick = function () {
 brtLink.onclick = function () {
     openPage(homePage, brtPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    startAudios();
+    audioObjects.bell.load();
+    audioElements.forEach((audio) => {
+        audio.load();
+    });
 }
 backBRT.onclick = function () {
     openPage(brtPage, homePage, 'slideRight');
@@ -1182,238 +1164,42 @@ backBRT.onclick = function () {
     audioPlayerBRT.currentTime = 0;
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-diaphragmLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, diaphragmPage, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-        openModal();
-    }
-}
+
 backDiaphragm.onclick = function () {
     openPage(diaphragmPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-yogicLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, yogicPage, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.inhale);  
-        playAndReset(audioObjects.exhale);  
-        playAndReset(audioObjects.hold);  
-    } else {
-        opneModal();
-    }
-}
-backYogic.onclick = function () {
-    openPage(yogicPage, programPage, 'slideRight');
+
+backYB.onclick = function () {
+    openPage(YBPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intYogic);
-    [secondsYogic, minutesYogic, hoursYogic] = [0, 0, 0];
-    timerRefYogic.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsYogic.pauseYogic.style.display = 'none';
-    timerControlsButtonsYogic.startYogic.style.display = 'inline';
-    setFormDisabledStateYogic(false);
-    setTimerControlsDisabledStateYogic(false, true, true);
-    timerControlsButtonsYogic.stopYogic.style.color = "rgb(177, 177, 177)";
-    document.getElementById('yogicSave').disabled = true;
-    document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('yogicSettings').disabled = false;
-    document.getElementById('yogicSettings').style.color = '#49B79D';
-    stopTimerTickYogic();
-    resetTimerYogic();
-    document.getElementById('yogicResultSaved').innerHTML = "";
 }
-yogicSettings.onclick = function () {
-    openPage(yogicPage, yogicSettingsPage, 'slideUp');
+YBSettings.onclick = function () {
+    openPage(YBPage, YBSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "block";
 }
-backYogicSet.onclick = function () {
+backYBSet.onclick = function () {
     if (!audioPlayerBRT.muted) {
         audioPlayerBRT.pause();
     }
     audioPlayerBRT.currentTime = 0;
-    openPage(yogicSettingsPage, yogicPage, 'slideDown');
+    openPage(YBSettingsPage, YBPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "none";
 }
-BRT10Link.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, BRT10Page, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-        openModal();
-    }
-}
-backBRT10.onclick = function () {
-    openPage(BRT10Page, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-BRELink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, BREPage, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-        openModal();
-    }
-}
+
 backBRE.onclick = function () {
     openPage(BREPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intBRE);
-    [secondsBRE, minutesBRE, hoursBRE] = [0, 0, 0];
-    timerRefBRE.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0
-    timerControlsButtonsBRE.pauseBRE.style.display = 'none';
-    timerControlsButtonsBRE.startBRE.style.display = 'inline';
-    setFormDisabledStateBRE(false);
-    setTimerControlsDisabledStateBRE(false, true, true);
-    timerControlsButtonsBRE.stopBRE.style.color = "rgb(177, 177, 177)";
-    document.getElementById('BRESave').disabled = true;
-    document.getElementById('BRESave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('breSettings').disabled = false;
-    document.getElementById('breSettings').style.color = '#49B79D';
-    stopTimerTickBRE();
-    resetTimerBRE();
-    isBREON = false;
-    document.getElementById('BREResultSaved').innerHTML = "";
-}
-BRWLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, BRWPage, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.inhale);
-        playAndReset(audioObjects.exhale);
-        playAndReset(audioObjects.hold);  
-    } else {
-        openModal();
-    }
 }
 backBRW.onclick = function () {
     openPage(BRWPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intBRW);
-    [secondsBRW, minutesBRW, hoursBRW] = [0, 0, 0];
-    timerRefBRW.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0
-    timerControlsButtonsBRW.pauseBRW.style.display = 'none';
-    timerControlsButtonsBRW.startBRW.style.display = 'inline';
-    setFormDisabledStateBRW(false);
-    setTimerControlsDisabledStateBRW(false, true, true);
-    timerControlsButtonsBRW.stopBRW.style.color = "rgb(177, 177, 177)";
-    document.getElementById('BRWSave').disabled = true;
-    document.getElementById('BRWSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('brwSettings').disabled = false;
-    document.getElementById('brwSettings').style.color = '#49B79D';
-    stopTimerTickBRW();
-    resetTimerBRW();
-    isBRWON = false;
-    document.getElementById('BRWResultSaved').innerHTML = "";
 }
-HUMLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, HUMPage, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.inhale);
-        playAndReset(audioObjects.hum);
-        playAndReset(audioObjects.hold);  
-    } else {
-        opneModal();
-    }
-}
-backHUM.onclick = function () {
-    openPage(HUMPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intHUM);
-    [secondsHUM, minutesHUM, hoursHUM] = [0, 0, 0];
-    timerRefHUM.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0
-    timerControlsButtonsHUM.pauseHUM.style.display = 'none';
-    timerControlsButtonsHUM.startHUM.style.display = 'inline';
-    setFormDisabledStateHUM(false);
-    setTimerControlsDisabledStateHUM(false, true, true);
-    timerControlsButtonsHUM.stopHUM.style.color = "rgb(177, 177, 177)";
-    stopTimerTickHUM();
-    resetTimerHUM();
-    document.getElementById('HUMSave').disabled = true;
-    document.getElementById('HUMSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('humSettings').disabled = false;
-    document.getElementById('humSettings').style.color = '#49B79D';
-    isHUMON = false;
-    document.getElementById('HUMResultSaved').innerHTML = "";
-}
-BRT20Link.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, BRT20Page, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-    else {
-        openModal();
-    }
-}
-backBRT20.onclick = function () {
-    openPage(BRT20Page, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-BBLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, BBPage, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.inhale);
-        playAndReset(audioObjects.exhale);
-        playAndReset(audioObjects.hold);  
-    }
-    else {
-        openModal();
-    }
-}
+
 backBB.onclick = function () {
     openPage(BBPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intBB);
-    [secondsBB, minutesBB, hoursBB] = [0, 0, 0];
-    timerRefBB.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0
-    timerControlsButtonsBB.pauseBB.style.display = 'none';
-    timerControlsButtonsBB.startBB.style.display = 'inline';
-    setFormDisabledStateBB(false);
-    setTimerControlsDisabledStateBB(false, true, true);
-    timerControlsButtonsBB.stopBB.style.color = "rgb(177, 177, 177)";
-    document.getElementById('bbSettings').disabled = false;
-    document.getElementById('bbSettings').style.color = '#49B79D';
-    stopTimerTickBB();
-    resetTimerBB();
-    timerControlsButtonsBB.stopBB.disabled = true;
-    isBBON = false;
-    document.getElementById('BBResultSaved').innerHTML = "";
-}
-BRT30Link.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, BRT30Page, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-        openModal();
-    }
-}
-backBRT30.onclick = function () {
-    openPage(BRT30Page, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 brtSettings.onclick = function () {
@@ -1458,21 +1244,7 @@ backBRWset.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "none";
 }
-humSettings.onclick = function () {
-    openPage(HUMPage, humSettingsPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-}
-backHUMset.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(humSettingsPage, HUMPage, 'slideDown');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-}
-bbSettings.onclick = function () {
+BBSettings.onclick = function () {
     openPage(BBPage, bbSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "block";
@@ -1486,43 +1258,9 @@ backBBset.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "none";
 }
-HATLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, HATPage, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.pinchWalk);
-        playAndReset(audioObjects.ligthNasal);
-        playAndReset(audioObjects.normalbreath);  
-    } else {
-        openModal();
-    }
-}
 backHAT.onclick = function () {
     openPage(HATPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.getElementById("HATResults").innerHTML = "";
-    timerRefHAT.value = "|";
-    clearInterval(intHAT);
-    document.getElementById('hatSettings').disabled = false;
-    document.getElementById('hatSettings').style.color = '#49B79D';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    timerControlsButtonsHAT.pauseHAT.style.display = 'none';
-    timerControlsButtonsHAT.startHAT.style.display = 'inline';
-    setFormDisabledStateHAT(false);
-    setTimerControlsDisabledStateHAT(false, true, true);
-    document.getElementById('resetBtnHAT').style.display = 'none';
-    document.getElementById('stopBtnHAT').style.display = 'inline';
-    timerControlsButtonsHAT.stopHAT.style.color = "rgb(177, 177, 177)";
-    timerControlsButtonsHAT.startHAT.style.color = "#0661AA";
-    stopTimerTickHAT();
-    resetTimerHAT();
-    timerHAT.isFinishedHAT = true;
-    isFirstTimeHAT = false;
-    document.getElementById('hatSave').disabled = true;
-    document.getElementById('hatSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('hatResultSaved').innerHTML = "";
 }
 hatSettings.onclick = function () {
     openPage(HATPage, hatSettingsPage, 'slideUp');
@@ -1538,54 +1276,10 @@ backHATset.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "none";
 }
-BRT40Link.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, BRT40Page, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-        openModal();
-    }
-}
-backBRT40.onclick = function () {
-    openPage(BRT40Page, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-HATCLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, HATCPage, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.pinchRun);
-        playAndReset(audioObjects.normalbreath);  
-    } else {
-        openModal();
-    }
-}
+
 backHATC.onclick = function () {
     openPage(HATCPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.getElementById("HATCResults").innerHTML = "";
-    timerRefHATC.value = "|";
-    clearInterval(intHATC);
-    document.getElementById('hatcSettings').disabled = false;
-    document.getElementById('hatcSettings').style.color = '#49B79D';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    timerControlsButtonsHATC.pauseHATC.style.display = 'none';
-    timerControlsButtonsHATC.startHATC.style.display = 'inline';
-    setFormDisabledStateHATC(false);
-    setTimerControlsDisabledStateHATC(false, true, true);
-    document.getElementById('resetBtnHATC').style.display = 'none';
-    document.getElementById('stopBtnHATC').style.display = 'inline';
-    timerControlsButtonsHATC.stopHATC.style.color = "rgb(177, 177, 177)";
-    timerControlsButtonsHATC.startHATC.style.color = "#0661AA";
-    stopTimerTickHATC();
-    resetTimerHATC();
-    timerHATC.isFinishedHATC = true;
-    isFirstTimeHATC = false;
-    document.getElementById('hatcSave').disabled = true;
-    document.getElementById('hatcSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('hatcResultSaved').innerHTML = "";
 }
 hatcSettings.onclick = function () {
     openPage(HATCPage, hatcSettingsPage, 'slideUp');
@@ -1601,43 +1295,10 @@ backHATCset.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "none";
 }
-AHATLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(programPage, AHATPage, 'slideUp');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.pinchRun);
-        playAndReset(audioObjects.ligthNasal);
-        playAndReset(audioObjects.normalbreath);  
-    } else {
-        openModal();
-    }
-}
+
 backAHAT.onclick = function () {
     openPage(AHATPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.getElementById("AHATResults").innerHTML = "";
-    timerRefAHAT.value = "|";
-    clearInterval(intAHAT);
-    document.getElementById('ahatSettings').disabled = false;
-    document.getElementById('ahatSettings').style.color = '#49B79D';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    timerControlsButtonsAHAT.pauseAHAT.style.display = 'none';
-    timerControlsButtonsAHAT.startAHAT.style.display = 'inline';
-    setFormDisabledStateAHAT(false);
-    setTimerControlsDisabledStateAHAT(false, true, true);
-    document.getElementById('resetBtnAHAT').style.display = 'none';
-    document.getElementById('stopBtnAHAT').style.display = 'inline';
-    timerControlsButtonsAHAT.stopAHAT.style.color = "rgb(177, 177, 177)";
-    timerControlsButtonsAHAT.startAHAT.style.color = "#0661AA";
-    stopTimerTickAHAT();
-    resetTimerAHAT();
-    timerAHAT.isFinishedAHAT = true;
-    isFirstTimeAHAT = false;
-    document.getElementById('ahatSave').disabled = true;
-    document.getElementById('ahatSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('ahatResultSaved').innerHTML = "";
 }
 ahatSettings.onclick = function () {
     openPage(AHATPage, hatSettingsPage, 'slideUp');
@@ -1657,7 +1318,10 @@ lungsLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(homePage, lungsPage, 'slideLeft');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        startAudios();
+        audioObjects.bell.load();
+        audioElements.forEach((audio) => {
+            audio.load();
+        });
     } else {
         openModal();
     }
@@ -1708,7 +1372,10 @@ backMobility.onclick = function () {
 breathHoldsLink.onclick = function () {
     openPage(homePage, BHPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    startAudios();
+    audioObjects.bell.load();
+    audioElements.forEach((audio) => {
+        audio.load();
+    });
 }
 backBH.onclick = function () {
     openPage(BHPage, homePage, 'slideRight');
@@ -1717,7 +1384,10 @@ backBH.onclick = function () {
 pranayamaLink.onclick = function () {
     openPage(homePage, PRANAPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    startAudios();
+    audioObjects.bell.load();
+    audioElements.forEach((audio) => {
+        audio.load();
+    });
 }
 backPRANA.onclick = function () {
     openPage(PRANAPage, homePage, 'slideRight');
@@ -1726,8 +1396,6 @@ backPRANA.onclick = function () {
 extrasLink.onclick = function () {
     openPage(homePage, EXTRAPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    startAudios();
-    playAndReset(meditationList[0]);//add meditations as needed
 }
 backEXTRA.onclick = function () {
     openPage(EXTRAPage, homePage, 'slideRight');
@@ -1736,32 +1404,10 @@ backEXTRA.onclick = function () {
 APLink.onclick = function () {
     openPage(BHPage, APPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playAndReset(audioObjects.inhale);
-    playAndReset(audioObjects.exhale);
-    playAndReset(audioObjects.hold);
 }
 backAP.onclick = function () {
     openPage(APPage, BHPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intAP);
-    [secondsAP, minutesAP, hoursAP] = [0, 0, 0];
-    timerRefAP.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsAP.pauseAP.style.display = 'none';
-    timerControlsButtonsAP.startAP.style.display = 'inline';
-    setFormDisabledStateAP(false);
-    setTimerControlsDisabledStateAP(false, true, true);
-    timerControlsButtonsAP.stopAP.style.color = "rgb(177, 177, 177)";
-    document.getElementById('APSave').disabled = true;
-    document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('APSettings').disabled = false;
-    document.getElementById('APSettings').style.color = '#49B79D';
-    stopTimerTickAP();
-    resetTimerAP();
-    document.getElementById('APResultSaved').innerHTML = "";
 }
 APSettings.onclick = function () {
     openPage(APPage, APSettingsPage, 'slideUp');
@@ -1781,9 +1427,6 @@ co2o2Link.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(BHPage, O2Page, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.breathedeeply);
-        playAndReset(audioObjects.normalbreath);
-        playAndReset(audioObjects.hold);
     } else {
         openModal();
     }
@@ -1791,45 +1434,6 @@ co2o2Link.onclick = function () {
 backO2.onclick = function () {
     openPage(O2Page, BHPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.getElementById("O2Results").innerHTML = "";
-    timerRefO2.value = "|";
-    clearInterval(intO2);
-    document.getElementById('O2Settings').disabled = false;
-    document.getElementById('O2Settings').style.color = '#49B79D';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    timerControlsButtonsO2.pauseO2.style.display = 'none';
-    timerControlsButtonsO2.startO2.style.display = 'inline';
-    setFormDisabledStateO2(false);
-    setTimerControlsDisabledStateO2(false, true, true);
-    document.getElementById('stopBtnO2').style.display = 'inline';
-    timerControlsButtonsO2.stopO2.style.color = "rgb(177, 177, 177)";
-    timerControlsButtonsO2.startO2.style.color = "#0661AA";
-    stopTimerTickO2();
-    resetTimerO2();
-    timerO2.isFinishedO2 = true;
-    document.getElementById('O2Save').disabled = true;
-    document.getElementById('O2Save').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('O2ResultSaved').innerHTML = "";
-    document.getElementById("O2Results").innerHTML = "";
-    timerRefO2.value = "|";
-    clearInterval(intCO2);
-    timerControlsButtonsCO2.pauseCO2.style.display = 'none';
-    timerControlsButtonsCO2.startCO2.style.display = 'inline';
-    setFormDisabledStateCO2(false);
-    setTimerControlsDisabledStateCO2(false, true, true);
-    document.getElementById('stopBtnCO2').style.display = 'inline';
-    timerControlsButtonsCO2.stopCO2.style.color = "rgb(177, 177, 177)";
-    timerControlsButtonsCO2.startCO2.style.color = "#0661AA";
-    stopTimerTickCO2();
-    resetTimerCO2();
-    timerCO2.isFinishedCO2 = true;
-    document.getElementById('CO2Save').disabled = true;
-    document.getElementById('CO2Save').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('CO2ResultSaved').innerHTML = "";
-    document.getElementById("CO2Results").innerHTML = "";
-
 }
 O2Settings.onclick = function () {
     openPage(O2Page, O2SettingsPage, 'slideUp');
@@ -1857,11 +1461,6 @@ WHLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(BHPage, WHPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.fullyin);
-        playAndReset(audioObjects.fullyout);
-        playAndReset(audioObjects.letgoandhold);
-        playAndReset(audioObjects.inhale);
-        playAndReset(audioObjects.normalbreath);
     } else {
         openModal();
     }
@@ -1869,34 +1468,6 @@ WHLink.onclick = function () {
 backWH.onclick = function () {
     openPage(WHPage, BHPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intWH);
-    [secondsWH, minutesWH] = [0, 0];
-    document.getElementById('WHSettings').disabled = false;
-    document.getElementById('WHSettings').style.color = '#49B79D';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsWH.pauseWH.style.display = 'none';
-    timerControlsButtonsWH.startWH.style.display = 'inline';
-    setFormDisabledStateWH(false);
-    setTimerControlsDisabledStateWH(false, true, true);
-    timerControlsButtonsWH.stopWH.style.color = "rgb(177, 177, 177)";
-    ctxWH.clearRect(0, 0, cWH.width, cWH.height);
-    ctxWH.fillStyle = my_gradientWH;
-    ctxWH.beginPath();
-    ctxWH.arc(150, 100, 80, 0, 2 * Math.PI, true);
-    ctxWH.fill();
-    ctxWH.font = "bold 48px serif"
-    ctxWH.fillStyle = "white";
-    ctxWH.textAlign = "center";
-    yWH = formSettingsFieldsWH.breakDuration2WH.value;
-    ctxWH.fillText(yWH, 150, 115);
-    document.getElementById("WHResults").innerHTML = '';
-    stopTimerTickWH();
-    resetTimerWH();
-    clearTimeout(myTimeoutWH);
-    clearTimeout(myTimeout2WH);
 }
 WHSettings.onclick = function () {
     openPage(WHPage, WHSettingsPage, 'slideUp');
@@ -1916,8 +1487,6 @@ CTLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(BHPage, CTPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.exhale);
-        playAndReset(audioObjects.inhale);
     } else {
         openModal();
     }
@@ -1925,25 +1494,6 @@ CTLink.onclick = function () {
 backCT.onclick = function () {
     openPage(CTPage, BHPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intCT);
-    [secondsCT, minutesCT, hoursCT] = [0, 0, 0];
-    timerRefCT.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsCT.pauseCT.style.display = 'none';
-    timerControlsButtonsCT.startCT.style.display = 'inline';
-    setFormDisabledStateCT(false);
-    setTimerControlsDisabledStateCT(false, true, true);
-    timerControlsButtonsCT.stopCT.style.color = "rgb(177, 177, 177)";
-    document.getElementById('CTSave').disabled = true;
-    document.getElementById('CTSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('CTSettings').disabled = false;
-    document.getElementById('CTSettings').style.color = '#49B79D';
-    stopTimerTickCT();
-    resetTimerCT();
-    document.getElementById('CTResultSaved').innerHTML = "";
 }
 CTSettings.onclick = function () {
     openPage(CTPage, CTSettingsPage, 'slideUp');
@@ -1962,33 +1512,10 @@ backCTSet.onclick = function () {
 UBLink.onclick = function () {
     openPage(PRANAPage, UBPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    playAndReset(audioObjects.exhale);
-    playAndReset(audioObjects.inhale);
-    playAndReset(audioObjects.hold);
 }
 backUB.onclick = function () {
     openPage(UBPage, PRANAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intUB);
-    [secondsUB, minutesUB, hoursUB] = [0, 0, 0];
-    timerRefUB.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsUB.pauseUB.style.display = 'none';
-    timerControlsButtonsUB.startUB.style.display = 'inline';
-    setFormDisabledStateUB(false);
-    setTimerControlsDisabledStateUB(false, true, true);
-    timerControlsButtonsUB.stopUB.style.color = "rgb(177, 177, 177)";
-    document.getElementById('UBSave').disabled = true;
-    document.getElementById('UBSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('UBSettings').disabled = false;
-    document.getElementById('UBSettings').style.color = '#49B79D';
-    stopTimerTickUB();
-    resetTimerUB();
-    isUBON = false;
-    document.getElementById('UBResultSaved').innerHTML = "";
 }
 UBSettings.onclick = function () {
     openPage(UBPage, UBSettingsPage, 'slideUp');
@@ -2005,20 +1532,35 @@ backUBSet.onclick = function () {
     selectSongsList.style.display = "none";
 }
 KBLink.onclick = function () {
-    openPage(PRANAPage, KBPage, 'slideUp');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, KBPage, 'slideUp');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        openModal();
+    }
 }
 backKB.onclick = function () {
     openPage(KBPage, PRANAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+KBSettings.onclick = function () {
+    openPage(KBPage, KBSettingsPage, 'slideUp');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+}
+backKBSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(KBSettingsPage, KBPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+}
 BOXLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, BOXPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.exhale);
-        playAndReset(audioObjects.inhale);
-        playAndReset(audioObjects.hold);
     } else {
         openModal();
     }
@@ -2026,26 +1568,6 @@ BOXLink.onclick = function () {
 backBOX.onclick = function () {
     openPage(BOXPage, PRANAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intBOX);
-    [secondsBOX, minutesBOX, hoursBOX] = [0, 0, 0];
-    timerRefBOX.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsBOX.pauseBOX.style.display = 'none';
-    timerControlsButtonsBOX.startBOX.style.display = 'inline';
-    setFormDisabledStateBOX(false);
-    setTimerControlsDisabledStateBOX(false, true, true);
-    timerControlsButtonsBOX.stopBOX.style.color = "rgb(177, 177, 177)";
-    document.getElementById('BOXSave').disabled = true;
-    document.getElementById('BOXSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('BOXSettings').disabled = false;
-    document.getElementById('BOXSettings').style.color = '#49B79D';
-    stopTimerTickBOX();
-    resetTimerBOX();
-    isBOXON = false;
-    document.getElementById('BOXResultSaved').innerHTML = "";
 }
 BOXSettings.onclick = function () {
     openPage(BOXPage, BOXSettingsPage, 'slideUp');
@@ -2065,10 +1587,6 @@ NBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, NBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.exhaleLeft);
-        playAndReset(audioObjects.inhaleLeft);
-        playAndReset(audioObjects.exhaleRight);
-        playAndReset(audioObjects.inhaleRight);
     } else {
         openModal();
     }
@@ -2076,26 +1594,6 @@ NBLink.onclick = function () {
 backNB.onclick = function () {
     openPage(NBPage, PRANAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intNB);
-    [secondsNB, minutesNB, hoursNB] = [0, 0, 0];
-    timerRefNB.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsNB.pauseNB.style.display = 'none';
-    timerControlsButtonsNB.startNB.style.display = 'inline';
-    setFormDisabledStateNB(false);
-    setTimerControlsDisabledStateNB(false, true, true);
-    timerControlsButtonsNB.stopNB.style.color = "rgb(177, 177, 177)";
-    document.getElementById('NBSave').disabled = true;
-    document.getElementById('NBSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('NBSettings').disabled = false;
-    document.getElementById('NBSettings').style.color = '#49B79D';
-    stopTimerTickNB();
-    resetTimerNB();
-    isNBON = false;
-    document.getElementById('NBResultSaved').innerHTML = "";
 }
 NBSettings.onclick = function () {
     openPage(NBPage, NBSettingsPage, 'slideUp');
@@ -2115,9 +1613,6 @@ CBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, CBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.exhale);
-        playAndReset(audioObjects.inhale);
-        playAndReset(audioObjects.hold);
     } else {
         openModal();
     }
@@ -2125,26 +1620,6 @@ CBLink.onclick = function () {
 backCB.onclick = function () {
     openPage(CBPage, PRANAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intCB);
-    [secondsCB, minutesCB, hoursCB] = [0, 0, 0];
-    timerRefCB.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsCB.pauseCB.style.display = 'none';
-    timerControlsButtonsCB.startCB.style.display = 'inline';
-    setFormDisabledStateCB(false);
-    setTimerControlsDisabledStateCB(false, true, true);
-    timerControlsButtonsCB.stopCB.style.color = "rgb(177, 177, 177)";
-    document.getElementById('CBSave').disabled = true;
-    document.getElementById('CBSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('CBSettings').disabled = false;
-    document.getElementById('CBSettings').style.color = '#49B79D';
-    stopTimerTickCB();
-    resetTimerCB();
-    isCBON = false;
-    document.getElementById('CBResultSaved').innerHTML = "";
 }
 CBSettings.onclick = function () {
     openPage(CBPage, CBSettingsPage, 'slideUp');
@@ -2164,9 +1639,6 @@ SBLink.onclick = function () {
         if (isUserActiveSubscriber) {
         openPage(PRANAPage, SBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.exhale);
-        playAndReset(audioObjects.inhale);
-        playAndReset(audioObjects.hold);
         }
         else {
             openModal();
@@ -2175,26 +1647,6 @@ SBLink.onclick = function () {
 backSB.onclick = function () {
     openPage(SBPage, PRANAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intSB);
-    [secondsSB, minutesSB, hoursSB] = [0, 0, 0];
-    timerRefSB.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsSB.pauseSB.style.display = 'none';
-    timerControlsButtonsSB.startSB.style.display = 'inline';
-    setFormDisabledStateSB(false);
-    setTimerControlsDisabledStateSB(false, true, true);
-    timerControlsButtonsSB.stopSB.style.color = "rgb(177, 177, 177)";
-    document.getElementById('SBSave').disabled = true;
-    document.getElementById('SBSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('SBSettings').disabled = false;
-    document.getElementById('SBSettings').style.color = '#49B79D';
-    stopTimerTickSB();
-    resetTimerSB();
-    isSBON = false;
-    document.getElementById('SBResultSaved').innerHTML = "";
 }
 SBSettings.onclick = function () {
     openPage(SBPage, SBSettingsPage, 'slideUp');
@@ -2212,23 +1664,20 @@ backSBSet.onclick = function () {
 }
 NKLink.onclick = function () {
     if (isUserActiveSubscriber) {
-        openPage(PRANAPage, NKPage, 'slideUp');
+        openPage(EXTRAPage, NKPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
         openModal();
     }
 }
 backNK.onclick = function () {
-    openPage(NKPage, PRANAPage, 'slideRight');
+    openPage(NKPage, EXTRAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 RBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, RBPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.exhale);
-        playAndReset(audioObjects.inhale);
-        playAndReset(audioObjects.hold);
     } else {
         openModal();
     }
@@ -2236,26 +1685,6 @@ RBLink.onclick = function () {
 backRB.onclick = function () {
     openPage(RBPage, PRANAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intRB);
-    [secondsRB, minutesRB, hoursRB] = [0, 0, 0];
-    timerRefRB.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsRB.pauseRB.style.display = 'none';
-    timerControlsButtonsRB.startRB.style.display = 'inline';
-    setFormDisabledStateRB(false);
-    setTimerControlsDisabledStateRB(false, true, true);
-    timerControlsButtonsRB.stopRB.style.color = "rgb(177, 177, 177)";
-    document.getElementById('RBSave').disabled = true;
-    document.getElementById('RBSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('RBSettings').disabled = false;
-    document.getElementById('RBSettings').style.color = '#49B79D';
-    stopTimerTickRB();
-    resetTimerRB();
-    isRBON = false;
-    document.getElementById('RBResultSaved').innerHTML = "";
 }
 RBSettings.onclick = function () {
     openPage(RBPage, RBSettingsPage, 'slideUp');
@@ -2275,16 +1704,8 @@ MEDLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(EXTRAPage, MEDPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        meditationList[0].muted = true;
-        meditationList[1].muted = true;
-        meditationList[0].play();
-        meditationList[1].play();
-        setTimeout(function () {
-            meditationList[0].pause();
-            meditationList[0].currentTime = 0;
-            meditationList[1].pause();
-            meditationList[1].currentTime = 0;
-        }, 1000);
+        meditationList[0].load();
+        meditationList[1].load();
     } else {
         openModal();
     }
@@ -2395,52 +1816,29 @@ backEXERCISING.onclick = function () {
     openPage(EXERCISINGPage, EXTRAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-SEXLink.onclick = function () {
+HUMLink.onclick = function () {
     if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, SEXPage, 'slideUp');
+        openPage(PRANAPage, HUMPage, 'slideUp');
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playAndReset(audioObjects.exhale);
-        playAndReset(audioObjects.inhale);
-        playAndReset(audioObjects.hold);
     } else {
         openModal();
     }
 }
-backSEX.onclick = function () {
-    openPage(SEXPage, EXTRAPage, 'slideRight');
+backHUM.onclick = function () {
+    openPage(HUMPage, PRANAPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(intSEX);
-    [secondsSEX, minutesSEX, hoursSEX] = [0, 0, 0];
-    timerRefSEX.value = '00 : 00 : 00';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsSEX.pauseSEX.style.display = 'none';
-    timerControlsButtonsSEX.startSEX.style.display = 'inline';
-    setFormDisabledStateSEX(false);
-    setTimerControlsDisabledStateSEX(false, true, true);
-    timerControlsButtonsSEX.stopSEX.style.color = "rgb(177, 177, 177)";
-    document.getElementById('SEXSave').disabled = true;
-    document.getElementById('SEXSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('SEXSettings').disabled = false;
-    document.getElementById('SEXSettings').style.color = '#49B79D';
-    stopTimerTickSEX();
-    resetTimerSEX();
-    isSEXON = false;
-    document.getElementById('SEXResultSaved').innerHTML = "";
 }
-SEXSettings.onclick = function () {
-    openPage(SEXPage, SEXSettingsPage, 'slideUp');
+humSettings.onclick = function () {
+    openPage(HUMPage, humSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "block";
 }
-backSEXSet.onclick = function () {
+backHUMSet.onclick = function () {
     if (!audioPlayerBRT.muted) {
         audioPlayerBRT.pause();
     }
     audioPlayerBRT.currentTime = 0;
-    openPage(SEXSettingsPage, SEXPage, 'slideDown');
+    openPage(humSettingsPage, HUMPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "none";
 }
@@ -2450,11 +1848,11 @@ backBRTresults.onclick = function () {
     BRTresultDateHeader.innerHTML = '';
     BRTresultSessions.innerHTML = '';
 }
-backYOGICresults.onclick = function () {
-    openPage(YOGICresultPage, resultsPage, 'slideDown');
+backYBresults.onclick = function () {
+    openPage(YBresultPage, resultsPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    YOGICresultDateHeader.innerHTML = '';
-    YOGICresultSessions.innerHTML = '';
+    YBresultDateHeader.innerHTML = '';
+    YBresultSessions.innerHTML = '';
 }
 backBREresults.onclick = function () {
     openPage(BREresultPage, resultsPage, 'slideDown');
@@ -2468,12 +1866,7 @@ backBRWresults.onclick = function () {
     BRWresultDateHeader.innerHTML = '';
     BRWresultSessions.innerHTML = '';
 }
-backHUMresults.onclick = function () {
-    openPage(HUMresultPage, resultsPage, 'slideDown');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    HUMresultDateHeader.innerHTML = '';
-    HUMresultSessions.innerHTML = '';
-}
+
 backBBresults.onclick = function () {
     openPage(BBresultPage, resultsPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -2522,17 +1915,23 @@ backSBresults.onclick = function () {
     SBresultDateHeader.innerHTML = '';
     SBresultSessions.innerHTML = '';
 }
-backSEXresults.onclick = function () {
-    openPage(SEXresultPage, resultsPage, 'slideDown');
+backHUMresults.onclick = function () {
+    openPage(HUMresultPage, resultsPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    SEXresultDateHeader.innerHTML = '';
-    SEXresultSessions.innerHTML = '';
+    HUMresultDateHeader.innerHTML = '';
+    HUMresultSessions.innerHTML = '';
 }
 backWHresults.onclick = function () {
     openPage(WHresultPage, resultsPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     WHresultDateHeader.innerHTML = '';
     WHresultSessions.innerHTML = '';
+}
+backKBresults.onclick = function () {
+    openPage(KBresultPage, resultsPage, 'slideDown');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    KBresultDateHeader.innerHTML = '';
+    KBresultSessions.innerHTML = '';
 }
 backHATresults.onclick = function () {
     openPage(HATresultPage, resultsPage, 'slideDown');

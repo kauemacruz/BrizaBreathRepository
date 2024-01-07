@@ -45,7 +45,7 @@ namespace BrizaBreath.Pages.Results
 
                 if (!string.IsNullOrEmpty(sessionId))
                 {
-                    StripeConfiguration.ApiKey = "sk_test_51NxKRKH1ADGiKAIzATlX1lO3n3gP2FqJbwtyWggvkSPPBRzwN3vTw6XniH7BYE8q2skZpSrdX46uno3cXqVLWTdi006iAEcoW6";
+                    StripeConfiguration.ApiKey = "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";
                     var service = new SessionService();
                     var session = await service.GetAsync(sessionId);
 
@@ -140,7 +140,7 @@ namespace BrizaBreath.Pages.Results
         }
         public bool IsUserActiveSubscriber(string userId)
         {
-            StripeConfiguration.ApiKey = "sk_test_51NxKRKH1ADGiKAIzATlX1lO3n3gP2FqJbwtyWggvkSPPBRzwN3vTw6XniH7BYE8q2skZpSrdX46uno3cXqVLWTdi006iAEcoW6";
+            StripeConfiguration.ApiKey = "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";
             var isStripeActive = _context.BrizaSubscription
                 .Where(s => s.UserId == userId && s.StripeCustID != null && s.IsActive == true)
                 .FirstOrDefault();
@@ -277,7 +277,7 @@ namespace BrizaBreath.Pages.Results
                 }
                 else
                 {
-                    StripeConfiguration.ApiKey = "sk_test_51NxKRKH1ADGiKAIzATlX1lO3n3gP2FqJbwtyWggvkSPPBRzwN3vTw6XniH7BYE8q2skZpSrdX46uno3cXqVLWTdi006iAEcoW6";
+                    StripeConfiguration.ApiKey = "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";
                     var latestSubscription = _context.BrizaSubscription
                     .Where(s => s.UserId == ResultUser && s.StripeCustID != null)
                     .OrderByDescending(s => s.StartDate)
@@ -294,7 +294,7 @@ namespace BrizaBreath.Pages.Results
                             var options = new Stripe.BillingPortal.SessionCreateOptions
                             {
                                 Customer = customerId,
-                                ReturnUrl = "https://38a8-111-220-129-56.ngrok-free.app",  // The URL to which the user will be redirected when they're done
+                                ReturnUrl = "https://brizabreathappservice.azurewebsites.net/",  // The URL to which the user will be redirected when they're done
                             };
 
                             var billingPortalService = new Stripe.BillingPortal.SessionService();

@@ -9,10 +9,10 @@ namespace BrizaBreath.Models
         [DataType(DataType.Date)]
         public DateTime? brtResultDate { get; set; }
         public required string UserId { get; set; }
-        public string? yogicTotalTime { get; set; }
-        public string? yogicIntervals { get; set; }
+        public string? YBTotalTime { get; set; }
+        public string? YBIntervals { get; set; }
         [DataType(DataType.Date)]
-        public DateTime? yogicResultDate { get; set; }
+        public DateTime? YBResultDate { get; set; }
         public string? BRETotalTime { get; set; }
         public string? BREIntervals { get; set; }
         [DataType(DataType.Date)]
@@ -60,6 +60,10 @@ namespace BrizaBreath.Models
         public string? WHIntervals { get; set; }
         [DataType(DataType.Date)]
         public DateTime? WHResultDate { get; set; }
+        public string? KBTotalTime { get; set; }
+        public string? KBIntervals { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? KBResultDate { get; set; }
         public string? CTTotalTime { get; set; }
         public string? CTIntervals { get; set; }
         [DataType(DataType.Date)]

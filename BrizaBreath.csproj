@@ -8,18 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\js\ahat.js" />
-    <Content Remove="wwwroot\js\BB.js" />
-    <Content Remove="wwwroot\js\box.js" />
-    <Content Remove="wwwroot\js\brt.js" />
-    <Content Remove="wwwroot\js\cb.js" />
-    <Content Remove="wwwroot\js\hat.js" />
-    <Content Remove="wwwroot\js\hatc.js" />
-    <Content Remove="wwwroot\js\nb.js" />
-    <Content Remove="wwwroot\js\results.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <_ContentIncludedByDefault Remove="manifest.json" />
     <_ContentIncludedByDefault Remove="wwwroot\js\BB.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\box.js" />
@@ -27,20 +15,6 @@
     <_ContentIncludedByDefault Remove="wwwroot\js\hat.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\nb.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\results.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\js\bb.js" />
-    <None Include="wwwroot\js\box.js" />
-    <None Include="wwwroot\js\brt.js" />
-    <None Include="wwwroot\js\ahat.js" />
-    <None Include="wwwroot\js\hatc.js" />
-    <None Include="wwwroot\js\hat.js" />
-    <None Include="wwwroot\js\cb.js" />
-    <None Include="wwwroot\js\nb.js" />
-    <None Include="wwwroot\js\results.js" />
-    <None Include="wwwroot\js\service-worker.js" />
-    <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 
   <ItemGroup>

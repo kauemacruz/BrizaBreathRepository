@@ -97,7 +97,7 @@ namespace BrizaBreath.Areas.Identity.Pages.Account
                 }
 
             }
-            StripeConfiguration.ApiKey = "sk_test_51NxKRKH1ADGiKAIzATlX1lO3n3gP2FqJbwtyWggvkSPPBRzwN3vTw6XniH7BYE8q2skZpSrdX46uno3cXqVLWTdi006iAEcoW6";
+            StripeConfiguration.ApiKey = "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";
             var isStripeActive = _context.BrizaSubscription
                 .Where(s => s.UserId == user.Id && s.StripeCustID != null && s.IsActive == true)
                 .FirstOrDefault();
