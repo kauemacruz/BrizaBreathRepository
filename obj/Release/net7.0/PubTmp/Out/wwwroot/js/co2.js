@@ -34,6 +34,8 @@ $(function () {
         resetTimerCO2();
         timerCO2.isFinishedCO2 = true;
         stopTimerTickCO2();
+        document.getElementById('CO2Btn').disabled = false;
+        audioObjects.breathedeeply.currentTime = 0;
     });
 });
 
@@ -956,8 +958,9 @@ function initializeTimerSettingsFormCO2() {
       resetTimerCO2();
     }
     startTimerTickCO2();  
-      timerControlsButtonsCO2.startCO2.style.display = 'none';
-      timerControlsButtonsCO2.pauseCO2.style.display = 'inline';
+    timerControlsButtonsCO2.startCO2.style.display = 'none';
+    timerControlsButtonsCO2.pauseCO2.style.display = 'inline';
+    document.getElementById('CO2Btn').disabled = true;
   }
 
   function pauseTimerCO2() {
@@ -977,7 +980,11 @@ function initializeTimerSettingsFormCO2() {
       if (!audioPlayerBRT.muted) {
         audioPlayerBRT.pause();
     }
-    stopTimerTickCO2();
+      stopTimerTickCO2();
+      document.getElementById('CO2Btn').disabled = false;
+      if (!ismuteCO2) {
+          audioObjects.breathedeeply.pause();
+      }
   }
 
   function stopTimerCO2() {
@@ -1013,6 +1020,11 @@ function initializeTimerSettingsFormCO2() {
     document.getElementsByClassName('gap1CO2')[1].style.backgroundColor = '#49B79D';
     isBreak0CO2 = true;
     document.getElementById("CO2Results").innerHTML = "";
+      document.getElementById('CO2Btn').disabled = false;
+      if (!ismuteO2) {
+          audioObjects.breathedeeply.pause();
+          audioObjects.breathedeeply.currentTime = 0;
+      }
   }
 
   function displayTimerCO2(){
@@ -1041,6 +1053,8 @@ function initializeTimerSettingsFormCO2() {
       timerCO2.elapsedInIntervalCO2++;
       if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak0CO2){
           if (!ismuteCO2) {
+            audioObjects.breathedeeply.pause();
+            audioObjects.breathedeeply.currentTime = 0;
             audioObjects.hold.muted = false;
             audioObjects.hold.play();
         }
@@ -1098,6 +1112,8 @@ function initializeTimerSettingsFormCO2() {
       timerCO2.elapsedInIntervalCO2++;
       if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak2CO2){
           if (!ismuteCO2) {
+              audioObjects.breathedeeply.pause();
+              audioObjects.breathedeeply.currentTime = 0;
             audioObjects.hold.muted = false;
             audioObjects.hold.play();
         }
@@ -1155,6 +1171,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak4CO2){
             if (!ismuteCO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }
@@ -1212,6 +1230,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak6CO2){
             if (!ismuteCO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }
@@ -1269,6 +1289,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak8CO2){
             if (!ismuteCO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }
@@ -1326,6 +1348,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak10CO2){
             if (!ismuteCO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }
@@ -1383,6 +1407,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak12CO2){
             if (!ismuteCO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }
@@ -1440,6 +1466,8 @@ function initializeTimerSettingsFormCO2() {
         timerCO2.elapsedInIntervalCO2++;
         if(timerCO2.elapsedInIntervalCO2 > currentIntervalDurationCO2 && timerCO2.isBreak14CO2){
             if (!ismuteCO2) {
+                audioObjects.breathedeeply.pause();
+                audioObjects.breathedeeply.currentTime = 0;
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
           }

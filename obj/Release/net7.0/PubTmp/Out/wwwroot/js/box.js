@@ -12,8 +12,7 @@ const BOXcountdownDisplay = document.getElementById('BOXcountdownDisplay');
 let BOXcountdown;
 let BOXtimeRemaining = Infinity;
 let BOXisPaused = false;
-var BOXroundTime;
-var BOXremainingRounds;
+
 // Populate the dropdown with options
 for (let BOXi = 2; BOXi <= 60; BOXi++) { // assuming 1 to 60 minutes
     let BOXoption = document.createElement('option');
@@ -450,8 +449,6 @@ function startTimerBOX() {
             // Start a new timer
             clearInterval(BOXcountdown);
             BOXtimeRemaining = BOXtimeInput.value === '∞' ? Infinity : parseInt(BOXtimeInput.value);
-            BOXroundTime = parseInt(timerSettingsBOX.intervalDurationBOX) + parseInt(timerSettingsBOX.breakDurationBOX) + parseInt(timerSettingsBOX.breakDuration2BOX) + parseInt(timerSettingsBOX.breakDuration3BOX);
-            BOXremainingRounds = BOXtimeRemaining / BOXroundTime;
             BOXcountdownDisplay.textContent = '';
             BOXstartTimer(BOXtimeRemaining);
         }
@@ -473,36 +470,6 @@ function BOXstartTimer(BOXduration) {
             BOXcountdownDisplay.textContent = `${BOXContdownminutes}:${BOXContdownseconds.toString().padStart(2, '0')}`;
             BOXtimeInput.classList.add('CountdownHidden');
             BOXcountdownDisplay.classList.remove('CountdownHidden');
-        } else if (Math.round(BOXremainingRounds + 1) == timerBOX.intervalsDoneBOX) {
-            clearInterval(BOXcountdown);
-            if (BOXduration !== Infinity) {
-                BOXcountdownDisplay.textContent = 'Back to normal breathing';
-                if (!ismuteBOX) {
-                    audioObjects.bell.muted = false;
-                    audioObjects.bell.play();
-                }
-                clearInterval(intBOX);
-                setTimerControlsDisabledStateBOX(true, true, false);
-                document.getElementById('stopBtnBOX').style.color = '#990000';
-                timerControlsButtonsBOX.pauseBOX.style.display = 'none';
-                timerControlsButtonsBOX.startBOX.style.display = 'inline';
-                timerControlsButtonsBOX.startBOX.style.color = "rgb(177, 177, 177)";
-                document.getElementById('BOXSettings').disabled = false;
-                document.getElementById('BOXSettings').style.color = '#49B79D';
-                if (!audioPlayerBRT.muted) {
-                    audioPlayerBRT.pause();
-                }
-                stopTimerTickBOX();
-                document.getElementById('BOXDate').value = date;
-                document.getElementById('BOXSave').disabled = false;
-                document.getElementById('BOXSave').style.color = '#49B79D';
-                clearInterval(BOXcountdown);
-                BOXisPaused = false;
-                setTimeout(() => {
-                    audioObjects.normalbreath.muted = false;
-                    audioObjects.normalbreath.play();
-                }, 1000);
-            }
         } else if (BOXduration == Infinity) {
             BOXcountdownDisplay.textContent = '∞';
             BOXtimeInput.classList.add('CountdownHidden');
@@ -660,8 +627,39 @@ function onTimerTickBOX() {
         timerBOX.elapsedInIntervalBOX++;
         if (timerBOX.elapsedInIntervalBOX == currentIntervalDurationBOX && timerBOX.isBreak4BOX) {
             if (!ismuteBOX) {
-                if (Math.round(BOXremainingRounds) == timerBOX.intervalsDoneBOX) {
+                if(BOXcountdownDisplay.textContent == '0:00') {
                     audioObjects.inhale.muted = true;
+                    clearInterval(BOXcountdown);
+                    if (!ismuteBOX) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intBOX);
+                    setTimerControlsDisabledStateBOX(true, true, false);
+                    document.getElementById('stopBtnBOX').style.color = '#990000';
+                    timerControlsButtonsBOX.pauseBOX.style.display = 'none';
+                    timerControlsButtonsBOX.startBOX.style.display = 'inline';
+                    timerControlsButtonsBOX.startBOX.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('BOXSettings').disabled = false;
+                    document.getElementById('BOXSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickBOX();
+                    document.getElementById('BOXDate').value = date;
+                    document.getElementById('BOXSave').disabled = false;
+                    document.getElementById('BOXSave').style.color = '#49B79D';
+                    clearInterval(BOXcountdown);
+                    BOXisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            BOXballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            BOXballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
                 } else {
                     audioObjects.inhale.muted = false;
                     audioObjects.inhale.play();

@@ -42,6 +42,12 @@ function WHclose() {
     WHmyTimeout = null;
     clearTimeout(WHmyTimeout2);
     WHmyTimeout2 = null;
+    timerWH.isBreak2WH = false;
+    timerWH.isBreak3WH = false;
+    timerWH.isBreakWH = false;
+    WHchangeBall(1.5, 1);
+    WHballText.textContent = formSettingsFieldsWH.breakDuration2WH.value;
+
 }
 // Event listener for closing the modal
 WHcloseModal.addEventListener("click", WHclose);
@@ -79,6 +85,9 @@ function WHanimate() {
     WHmyTimeout = setTimeout(WHanimate, WHbreathsSpeed);
 }
 function WHholdFunction() {
+    timerWH.isBreak3WH = true;
+    timerWH.isBreak2WH = false;
+    timerWH.isBreakWH = false;
     WHmyTimeout = null;
     setTimerControlsDisabledStateWH(true, false, false);
     timerControlsButtonsWH.pauseWH.style.color = '#0661AA';
@@ -108,6 +117,9 @@ function WHanimate2() {
     WHmyTimeout2 = setTimeout(WHanimate2, 1000);
 }
 function WHnextRound() {
+    timerWH.isBreak2WH = false;
+    timerWH.isBreak3WH = false;
+    timerWH.isBreakWH = true;
     WHmyTimeout2 = null;
     if (!ismuteWH) {
         audioObjects.nextRound.muted = false;
@@ -166,6 +178,15 @@ $(function () {
         document.getElementById('WHSave').style.color = 'rgb(177, 177, 177)';
         resetTimerWH();
         timerWH.isFinishedWH = true;
+        clearTimeout(WHmyTimeout);
+        WHmyTimeout = null;
+        clearTimeout(WHmyTimeout2);
+        WHmyTimeout2 = null;
+        timerWH.isBreak2WH = false;
+        timerWH.isBreak3WH = false;
+        timerWH.isBreakWH = false;
+        WHchangeBall(1.5, 1);
+        WHballText.textContent = formSettingsFieldsWH.breakDuration2WH.value;
     });
 });
 
@@ -360,8 +381,8 @@ SplusBtnWH.onclick = function () {
     else if (breathSpeedWH.value == "Medium") {
         breathSpeedWH.value = "Fast";
         SplusBtnWH.style.color = "rgb(177,177,177)";
-        WHbreathsSpeed = 1500;
-        WHbreathsSpeed2 = 0.75;
+        WHbreathsSpeed = 1800;
+        WHbreathsSpeed2 = 0.85;
     }
 }
 
@@ -429,6 +450,9 @@ function setFormDisabledStateWH(disabled) {
 }
 var musicIsOnWH = false;
 function startTimerWH() {
+    timerWH.isBreakWH = true;
+    timerWH.isBreak2WH = false;
+    timerWH.isBreak3WH = false;
     setFormDisabledStateWH(true);
     setTimerControlsDisabledStateWH(true, true, false);
     timerControlsButtonsWH.pauseWH.style.color = 'rgb(177, 177, 177)';
@@ -477,6 +501,7 @@ function pauseTimerWH() {
     WHanimate2();
     timerWH.isBreak2WH = true;
     timerWH.isBreak3WH = false;
+    timerWH.isBreakWH = false;
 }
 
 function stopTimerWH() {
@@ -525,7 +550,12 @@ function stopTimerWH() {
     WHmyTimeout = null;
     clearTimeout(WHmyTimeout2);
     WHmyTimeout2 = null;
+    timerWH.isBreak2WH = false;
+    timerWH.isBreak3WH = false;
+    timerWH.isBreakWH = false;
     WHchangeBall(1.5, 1);
+    WHballText.textContent = formSettingsFieldsWH.breakDuration2WH.value;
+
 }
 document.getElementById('resetBtnWH').addEventListener('click', function () {
     resetTimerWH();

@@ -357,6 +357,7 @@ hr {
 }
 .text-danger {
     font-size: 14px;
+    padding-right: 2rem;
 }
 @media only screen and (min-width: 700px) {
     .form-control {
@@ -1332,6 +1333,13 @@ input#intervalsDoneHAT {
 button#startBtnWH {
     margin-right: 0 !important;
     width: 10rem;
+    margin-bottom: 25px;
+}
+
+button#pauseBtnWH {
+    margin-right: 0 !important;
+    width: 10rem;
+    margin-bottom: 25px;
 }
 
 input#WHSave {
@@ -1402,6 +1410,13 @@ form#WHForm {
 button#startBtnKB {
     margin-right: 0 !important;
     width: 10rem;
+    margin-bottom: 25px;
+}
+
+button#pauseBtnKB {
+    margin-right: 0 !important;
+    width: 10rem;
+    margin-bottom: 25px;
 }
 
 input#KBSave {
@@ -1623,12 +1638,12 @@ form.BRTdelete-form {
     line-height: 40px;
     height: 40px;
 }
-canvas#YOGICChart {
+canvas#YBChart {
     height: 250px !important;
     font-size: 2px;
     color: #0661AA;
 }
-.YOGICInfo {
+.YBInfo {
     width: 100%;
     max-width: 600px;
     background-color: #e4e3d40f;
@@ -1638,45 +1653,45 @@ canvas#YOGICChart {
     border-radius: 10px;
     margin-top: 10px;
 }
-.YOGICInfo h4 {
+.YBInfo h4 {
     font-size: 20px;
     color: #0661AA;
     text-align: center;
 }
-.YOGICinfoOverview {
+.YBinfoOverview {
     display: grid;
     width: 100%;
     font-size: 15px;
     color: #0661AA;
     text-align: center;
 }
-.YOGICinfoOverview input {
+.YBinfoOverview input {
     border: none;
     text-align: center;
     color: #0661AA;
     background-color: transparent;
     margin-bottom: 10px;
 }
-#YOGICinfoOverview {
+#YBinfoOverview {
     color: #0661AA;
     text-align: center;
     font-size: 15px;
 }
-#YOGICresultDateHeader {
+#YBresultDateHeader {
     color: #0661AA;
     text-align: center;
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-#YOGICresultSessions {
+#YBresultSessions {
     color: #0661AA;
     text-align: center;
     font-size: 18px;
     display: grid;
     justify-content: center;
 }
-form.YOGICdelete-form {
+form.YBdelete-form {
     display: inline-flex;
     margin-bottom: 70px;
     line-height: 40px;
@@ -3134,7 +3149,6 @@ input.btn.btn-danger.CO2delete-button {
 .countdownDisplay {
     border: none;
     margin-top: 15px;
-    margin-bottom: 15px;
     text-align: center;
     font-size: 25px;
     color: #0661AA;
@@ -3172,4 +3186,7 @@ input.btn.btn-danger.CO2delete-button {
 }
 .timer-overviewHidden{
     display: none;
+}
+li::marker {
+    content: '';
 }

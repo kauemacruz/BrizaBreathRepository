@@ -1,4 +1,29 @@
-/*CT JS*/
+﻿/*CT JS*/
+const CTball = document.getElementById('CTball');
+const CTballText = document.getElementById('CTballText');
+
+function CTchangeBall(scale, duration) {
+    CTball.style.transition = `transform ${duration}s ease`;
+    CTball.style.transform = `scale(${scale})`;
+}
+
+const CTtimeInput = document.getElementById('CTtimeInput');
+const CTcountdownDisplay = document.getElementById('CTcountdownDisplay');
+let CTcountdown;
+let CTtimeRemaining = Infinity;
+let CTisPaused = false;
+// Populate the dropdown with options
+for (let CTi = 2; CTi <= 60; CTi++) { // assuming 1 to 60 minutes
+    let CToption = document.createElement('option');
+    CToption.value = CTi * 60;
+    if (isPortuguese) {
+        CToption.textContent = CTi + ' minutos';
+    } else {
+        CToption.textContent = CTi + ' minutes';
+    }
+    CTtimeInput.appendChild(CToption);
+}
+
 const CTmodal = document.getElementById("CTmodal");
 const CTcloseModal = document.getElementById("CTcloseModal");
 const CTBTN = document.getElementById("CTBTN");
@@ -31,6 +56,11 @@ function CTclose() {
     stopTimerTickCT();
     resetTimerCT();
     document.getElementById('CTResultSaved').innerHTML = "";
+    clearInterval(CTcountdown);
+    CTisPaused = false;
+    CTtimeInput.classList.remove('CountdownHidden');
+    CTcountdownDisplay.classList.add('CountdownHidden');
+    CTchangeBall(1, 1);
 }
 // Event listener for closing the modal
 CTcloseModal.addEventListener("click", CTclose);
@@ -70,6 +100,8 @@ $(function () {
         document.getElementById('resetBtnCT').style.display = 'none';
         timerControlsButtonsCT.stopCT.style.display = "inline";
         timerControlsButtonsCT.stopCT.style.color = "rgb(177, 177, 177)";
+        CBtimeInput.classList.remove('CountdownHidden');
+        CBcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
@@ -320,9 +352,11 @@ function startTimerCT() {
     if (intCT !== null) {
         clearInterval(intCT);
     }
-    intCT = setInterval(displayTimerCT, 1000);
     setFormDisabledStateCT(true);
-    setTimerControlsDisabledStateCT(true, false, false);
+    setTimerControlsDisabledStateCT(true, true, true);
+    setTimeout(() => {
+        setTimerControlsDisabledStateCT(false, false, false);
+    }, 2000);
     timerControlsButtonsCT.stopCT.style.color = '#990000';
     if (timerCT.isBreak3CT) {
         if (!ismuteCT) {
@@ -333,6 +367,9 @@ function startTimerCT() {
                 audioObjects.inhale.play();
             }, 1500);    
         }
+        setTimeout(() => {
+            CTchangeBall(1.5, timerSettingsCT.intervalDurationCT);
+        }, 1500);  
     }
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
@@ -341,8 +378,22 @@ function startTimerCT() {
         resetTimerCT();
     }
     setTimeout(() => {
+        setTimeout(() => {
+            intCT = setInterval(displayTimerCT, 1000);
+        }, 1000);
         startTimerTickCT();
-    }, 1700);   
+        if (CTisPaused) {
+            // Resume from paused state
+            CTstartTimer(CTtimeRemaining);
+            CTisPaused = false;
+        } else {
+            // Start a new timer
+            clearInterval(CTcountdown);
+            CTtimeRemaining = CTtimeInput.value === '∞' ? Infinity : parseInt(CTtimeInput.value);
+            CTcountdownDisplay.textContent = '';
+            CTstartTimer(CTtimeRemaining);
+        }
+    }, 1700);  
     timerControlsButtonsCT.startCT.style.display = 'none';
     timerControlsButtonsCT.pauseCT.style.display = 'inline';
     document.getElementById('CTSettings').disabled = true;
@@ -350,7 +401,23 @@ function startTimerCT() {
     document.getElementById('CTSave').disabled = true;
     document.getElementById('CTSave').style.color = 'rgb(177, 177, 177)';
 }
-
+function CTstartTimer(CTduration) {
+    CTcountdown = setInterval(function () {
+        if (CTduration > 0 && CTduration !== Infinity) {
+            CTduration--;
+            CTtimeRemaining = CTduration;
+            let CTContdownminutes = Math.floor(CTduration / 60);
+            let CTContdownseconds = CTduration % 60;
+            CTcountdownDisplay.textContent = `${CTContdownminutes}:${CTContdownseconds.toString().padStart(2, '0')}`;
+            CTtimeInput.classList.add('CountdownHidden');
+            CTcountdownDisplay.classList.remove('CountdownHidden');
+        } else if (CTduration == Infinity) {
+            CTcountdownDisplay.textContent = '∞';
+            CTtimeInput.classList.add('CountdownHidden');
+            CTcountdownDisplay.classList.remove('CountdownHidden');
+        }
+    }, 1000);
+}
 function pauseTimerCT() {
     stopTimerTickCT();
     if (!ismuteCT) {
@@ -366,6 +433,12 @@ function pauseTimerCT() {
     formSettingsFieldsCT.breakDurationCT.value = 3;
     timerSettingsCT.breakDuration2CT = 4;
     formSettingsFieldsCT.breakDuration2CT.value = 4;
+    CTchangeBall(1, 1);
+    if (isPortuguese) {
+        CTballText.textContent = 'INSPIRA';
+    } else {
+        CTballText.textContent = 'INHALE';
+    }
     setTimeout(function () {
         recoverCT();
         setTimerControlsDisabledStateCT(false, false, false);
@@ -377,6 +450,7 @@ function recoverCT() {
         audioObjects.inhale.muted = false;
         audioObjects.inhale.play();
     }
+    CTchangeBall(1.5, timerSettingsCT.intervalDurationCT);
 }
 function stopTimerCT() {
     clearInterval(intCT);
@@ -401,6 +475,9 @@ function stopTimerCT() {
     timerControlsButtonsCT.stopCT.style.display = "none";
     document.getElementById('resetBtnCT').style.display = 'inline';
     document.getElementById('resetBtnCT').style.color = '#990000';
+    clearInterval(CTcountdown);
+    CTisPaused = true;
+    CTchangeBall(1, 1);
 }
 document.getElementById('resetBtnCT').addEventListener('click', function () {
     resetTimerCT();
@@ -411,6 +488,11 @@ document.getElementById('resetBtnCT').addEventListener('click', function () {
     timerControlsButtonsCT.stopCT.style.display = "inline";
     document.getElementById('CTSave').disabled = true;
     document.getElementById('CTSave').style.color = 'rgb(177, 177, 177)';
+    clearInterval(CTcountdown);
+    CTisPaused = false;
+    CTtimeInput.classList.remove('CountdownHidden');
+    CTcountdownDisplay.classList.add('CountdownHidden');
+    CTchangeBall(1, 1);
 });
 function displayTimerCT() {
     secondsCT++;
@@ -445,6 +527,7 @@ function onTimerTickCT() {
                 audioObjects.exhale.muted = false;
                 audioObjects.exhale.play();
             }
+            CTchangeBall(0.5, timerSettingsCT.breakDurationCT);
         }
         if (timerCT.elapsedInIntervalCT > currentIntervalDurationCT && timerCT.isBreak3CT) {
             timerCT.isBreakCT = true;
@@ -470,6 +553,7 @@ function onTimerTickCT() {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
+            CTchangeBall(0.5, timerSettingsCT.breakDurationCT);
         }
         if (timerCT.elapsedInIntervalCT > currentIntervalDurationCT && timerCT.isBreakCT) {
             timerCT.isBreak2CT = true;
@@ -492,9 +576,45 @@ function onTimerTickCT() {
         timerCT.elapsedInIntervalCT++;
         if (timerCT.elapsedInIntervalCT == currentIntervalDurationCT && timerCT.isBreak2CT) {
             if (!ismuteCT) {
-                audioObjects.inhale.muted = false;
-                audioObjects.inhale.play();
+                if (CTcountdownDisplay.textContent == '0:00') {
+                    audioObjects.inhale.muted = true;
+                    clearInterval(CTcountdown);
+                    if (!ismuteCT) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intCT);
+                    setTimerControlsDisabledStateCT(true, true, false);
+                    document.getElementById('stopBtnCT').style.color = '#990000';
+                    timerControlsButtonsCT.pauseCT.style.display = 'none';
+                    timerControlsButtonsCT.startCT.style.display = 'inline';
+                    timerControlsButtonsCT.startCT.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('CTSettings').disabled = false;
+                    document.getElementById('CTSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickCT();
+                    document.getElementById('CTDate').value = date;
+                    document.getElementById('CTSave').disabled = false;
+                    document.getElementById('CTSave').style.color = '#49B79D';
+                    clearInterval(CTcountdown);
+                    CTisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            CTballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            CTballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
+                } else {
+                    audioObjects.inhale.muted = false;
+                    audioObjects.inhale.play();
+                }
             }
+            CTchangeBall(1.5, timerSettingsCT.intervalDurationCT);
         }
         if (timerCT.elapsedInIntervalCT > currentIntervalDurationCT && timerCT.isBreak2CT) {
             timerCT.isBreak3CT = true;
@@ -526,12 +646,22 @@ function updateInfoCT() {
     statusPanelCT.elapsedInIntervalBoxCT.style.display = timerCT.isFinishedCT || timerCT.isBreakCT || timerCT.isBreak2CT || timerCT.isBreak4CT ? 'none' : null;
     statusPanelCT.elapsedInBreakIntervalBoxCT.style.display = !timerCT.isFinishedCT && timerCT.isBreakCT ? 'block' : null;
     statusPanelCT.elapsedInBreakIntervalBox2CT.style.display = !timerCT.isFinishedCT && timerCT.isBreak2CT ? 'block' : null;
-    if (timerCT.isBreakCT) {
-        statusPanelCT.elapsedInBreakIntervalCT.textContent = timerCT.elapsedInIntervalCT;
-    } else if (timerCT.isBreak2CT) {
-        statusPanelCT.elapsedInBreakInterval2CT.textContent = timerCT.elapsedInIntervalCT;
+    if (isPortuguese) {
+        if (timerCT.isBreakCT) {
+            CTballText.textContent = 'EXPIRA';
+        } else if (timerCT.isBreak2CT) {
+            CTballText.textContent = 'SEGURE';
+        } else {
+            CTballText.textContent = 'INSPIRA';
+        }
     } else {
-        statusPanelCT.elapsedInIntervalCT.textContent = timerCT.elapsedInIntervalCT;
+        if (timerCT.isBreakCT) {
+            CTballText.textContent = 'EXHALE';
+        } else if (timerCT.isBreak2CT) {
+            CTballText.textContent = 'HOLD';
+        } else {
+            CTballText.textContent = 'INHALE';
+        }
     }
     statusPanelCT.intervalsDoneCT.value = timerCT.intervalsDoneCT;
 }

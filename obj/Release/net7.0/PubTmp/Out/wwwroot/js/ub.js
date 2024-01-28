@@ -1,4 +1,30 @@
-/*UB JS*/
+﻿/*UB JS*/
+const UBball = document.getElementById('UBball');
+const UBballText = document.getElementById('UBballText');
+
+function UBchangeBall(scale, duration) {
+    UBball.style.transition = `transform ${duration}s ease`;
+    UBball.style.transform = `scale(${scale})`;
+}
+
+const UBtimeInput = document.getElementById('UBtimeInput');
+const UBcountdownDisplay = document.getElementById('UBcountdownDisplay');
+let UBcountdown;
+let UBtimeRemaining = Infinity;
+let UBisPaused = false;
+
+// Populate the dropdown with options
+for (let UBi = 2; UBi <= 60; UBi++) { // assuming 1 to 60 minutes
+    let UBoption = document.createElement('option');
+    UBoption.value = UBi * 60;
+    if (isPortuguese) {
+        UBoption.textContent = UBi + ' minutos';
+    } else {
+        UBoption.textContent = UBi + ' minutes';
+    }
+    UBtimeInput.appendChild(UBoption);
+}
+
 const UBmodal = document.getElementById("UBmodal");
 const UBcloseModal = document.getElementById("UBcloseModal");
 const UBBTN = document.getElementById("UBBTN");
@@ -32,6 +58,11 @@ function UBclose() {
     resetTimerUB();
     isUBON = false;
     document.getElementById('UBResultSaved').innerHTML = "";
+    clearInterval(UBcountdown);
+    UBisPaused = false;
+    UBtimeInput.classList.remove('CountdownHidden');
+    UBcountdownDisplay.classList.add('CountdownHidden');
+    UBchangeBall(1, 1);
 }
 // Event listener for closing the modal
 UBcloseModal.addEventListener("click", UBclose);
@@ -67,6 +98,8 @@ $(function () {
         document.getElementById('UBSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickUB();
         resetTimerUB();
+        UBtimeInput.classList.remove('CountdownHidden');
+        UBcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
@@ -380,9 +413,11 @@ function startTimerUB() {
     if (intUB !== null) {
         clearInterval(intUB);
     }
-    intUB = setInterval(displayTimerUB, 1000);
     setFormDisabledStateUB(true);
-    setTimerControlsDisabledStateUB(true, false, true);
+    setTimerControlsDisabledStateUB(true, true, true);
+    setTimeout(() => {
+        setTimerControlsDisabledStateUB(true, false, true);
+    }, 2000);
     timerControlsButtonsUB.stopUB.style.color = "rgb(177, 177, 177)";
     if (timerUB.isBreak3UB) {
         if (!ismuteUB) {
@@ -391,8 +426,11 @@ function startTimerUB() {
             setTimeout(() => {
                 audioObjects.inhale.muted = false;
                 audioObjects.inhale.play();
-            }, 1500);    
+            }, 1500);
         }
+        setTimeout(() => {
+            UBchangeBall(1.5, timerSettingsUB.intervalDurationUB);
+        }, 1500);
     }
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
@@ -401,8 +439,22 @@ function startTimerUB() {
         resetTimerUB();
     }
     setTimeout(() => {
+        setTimeout(() => {
+            intUB = setInterval(displayTimerUB, 1000);
+        }, 1000);
         startTimerTickUB();
-    }, 1700);   
+        if (UBisPaused) {
+            // Resume from paused state
+            UBstartTimer(UBtimeRemaining);
+            UBisPaused = false;
+        } else {
+            // Start a new timer
+            clearInterval(UBcountdown);
+            UBtimeRemaining = UBtimeInput.value === '∞' ? Infinity : parseInt(UBtimeInput.value);
+            UBcountdownDisplay.textContent = '';
+            UBstartTimer(UBtimeRemaining);
+        }
+    }, 1700);
     timerControlsButtonsUB.startUB.style.display = 'none';
     timerControlsButtonsUB.pauseUB.style.display = 'inline';
     document.getElementById('UBSettings').disabled = true;
@@ -410,7 +462,23 @@ function startTimerUB() {
     document.getElementById('UBSave').disabled = true;
     document.getElementById('UBSave').style.color = 'rgb(177, 177, 177)';
 }
-
+function UBstartTimer(UBduration) {
+    UBcountdown = setInterval(function () {
+        if (UBduration > 0 && UBduration !== Infinity) {
+            UBduration--;
+            UBtimeRemaining = UBduration;
+            let UBContdownminutes = Math.floor(UBduration / 60);
+            let UBContdownseconds = UBduration % 60;
+            UBcountdownDisplay.textContent = `${UBContdownminutes}:${UBContdownseconds.toString().padStart(2, '0')}`;
+            UBtimeInput.classList.add('CountdownHidden');
+            UBcountdownDisplay.classList.remove('CountdownHidden');
+        } else if (UBduration == Infinity) {
+            UBcountdownDisplay.textContent = '∞';
+            UBtimeInput.classList.add('CountdownHidden');
+            UBcountdownDisplay.classList.remove('CountdownHidden');
+        }
+    }, 1000);
+}
 function pauseTimerUB() {
     clearInterval(intUB);
     setTimerControlsDisabledStateUB(false, true, false);
@@ -426,6 +494,9 @@ function pauseTimerUB() {
     document.getElementById('UBDate').value = date;
     document.getElementById('UBSave').disabled = false;
     document.getElementById('UBSave').style.color = '#49B79D';
+    clearInterval(UBcountdown);
+    UBisPaused = true;
+    UBchangeBall(1, 1);
 }
 
 function stopTimerUB() {
@@ -442,6 +513,12 @@ function stopTimerUB() {
     document.getElementById('UBSave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickUB();
     resetTimerUB();
+    timerControlsButtonsUB.startUB.style.color = '#49B79D';
+    clearInterval(UBcountdown);
+    UBisPaused = false;
+    UBtimeInput.classList.remove('CountdownHidden');
+    UBcountdownDisplay.classList.add('CountdownHidden');
+    UBchangeBall(1, 1);
 }
 
 function displayTimerUB() {
@@ -477,6 +554,7 @@ function onTimerTickUB() {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
+            UBchangeBall(1.3, timerSettingsUB.breakDurationUB);
         }
         if (timerUB.elapsedInIntervalUB > currentIntervalDurationUB && timerUB.isBreak3UB) {
             timerUB.isBreakUB = true;
@@ -502,6 +580,7 @@ function onTimerTickUB() {
                 audioObjects.exhale.muted = false;
                 audioObjects.exhale.play();
             }
+            UBchangeBall(0.5, timerSettingsUB.breakDuration2UB);
         }
         if (timerUB.elapsedInIntervalUB > currentIntervalDurationUB && timerUB.isBreakUB) {
             timerUB.isBreak2UB = true;
@@ -527,6 +606,7 @@ function onTimerTickUB() {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
+            UBchangeBall(0.5, timerSettingsUB.breakDuration3UB);
         }
         if (timerUB.elapsedInIntervalUB > currentIntervalDurationUB && timerUB.isBreak2UB) {
             timerUB.isBreak4UB = true;
@@ -549,9 +629,45 @@ function onTimerTickUB() {
         timerUB.elapsedInIntervalUB++;
         if (timerUB.elapsedInIntervalUB == currentIntervalDurationUB && timerUB.isBreak4UB) {
             if (!ismuteUB) {
-                audioObjects.inhale.muted = false;
-                audioObjects.inhale.play();
+                if (UBcountdownDisplay.textContent == '0:00') {
+                    audioObjects.inhale.muted = true;
+                    clearInterval(UBcountdown);
+                    if (!ismuteUB) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intUB);
+                    setTimerControlsDisabledStateUB(true, true, false);
+                    document.getElementById('stopBtnUB').style.color = '#990000';
+                    timerControlsButtonsUB.pauseUB.style.display = 'none';
+                    timerControlsButtonsUB.startUB.style.display = 'inline';
+                    timerControlsButtonsUB.startUB.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('UBSettings').disabled = false;
+                    document.getElementById('UBSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickUB();
+                    document.getElementById('UBDate').value = date;
+                    document.getElementById('UBSave').disabled = false;
+                    document.getElementById('UBSave').style.color = '#49B79D';
+                    clearInterval(UBcountdown);
+                    UBisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            UBballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            UBballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
+                } else {
+                    audioObjects.inhale.muted = false;
+                    audioObjects.inhale.play();
+                }
             }
+            UBchangeBall(1.5, timerSettingsUB.intervalDurationUB);
         }
         if (timerUB.elapsedInIntervalUB > currentIntervalDurationUB && timerUB.isBreak4UB) {
             timerUB.isBreak3UB = true;
@@ -580,16 +696,29 @@ function updateInfoUB() {
     statusPanelUB.elapsedInBreakIntervalBoxUB.style.display = !timerUB.isFinishedUB && timerUB.isBreakUB ? 'block' : null;
     statusPanelUB.elapsedInBreakIntervalBox2UB.style.display = !timerUB.isFinishedUB && timerUB.isBreak2UB ? 'block' : null;
     statusPanelUB.elapsedInBreakIntervalBox3UB.style.display = !timerUB.isFinishedUB && timerUB.isBreak4UB ? 'block' : null;
-
-    if (timerUB.isBreakUB) {
-        statusPanelUB.elapsedInBreakIntervalUB.textContent = timerUB.elapsedInIntervalUB;
-    } else if (timerUB.isBreak2UB) {
-        statusPanelUB.elapsedInBreakInterval2UB.textContent = timerUB.elapsedInIntervalUB;
-    } else if (timerUB.isBreak4UB) {
-        statusPanelUB.elapsedInBreakInterval3UB.textContent = timerUB.elapsedInIntervalUB;
+    if (isPortuguese) {
+        if (timerUB.isBreakUB) {
+            UBballText.textContent = 'SEGURE';
+        } else if (timerUB.isBreak2UB) {
+            UBballText.textContent = 'EXPIRA';
+        } else if (timerUB.isBreak4UB) {
+            UBballText.textContent = 'SEGURE';
+        } else {
+            UBballText.textContent = 'INSPIRA';
+        }
     } else {
-        statusPanelUB.elapsedInIntervalUB.textContent = timerUB.elapsedInIntervalUB;
+        if (timerUB.isBreakUB) {
+            UBballText.textContent = 'HOLD';
+        } else if (timerUB.isBreak2UB) {
+            UBballText.textContent = 'EXHALE';
+        } else if (timerUB.isBreak4UB) {
+            UBballText.textContent = 'HOLD';
+        } else {
+            UBballText.textContent = 'INHALE';
+        }
     }
     statusPanelUB.intervalsDoneUB.value = timerUB.intervalsDoneUB;
+
 }
+
 //---------------------------------------------------//

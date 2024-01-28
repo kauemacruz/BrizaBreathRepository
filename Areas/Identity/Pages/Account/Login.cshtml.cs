@@ -114,7 +114,7 @@ namespace BrizaBreath.Areas.Identity.Pages.Account
                 var user = await _userManager.FindByEmailAsync(Input.Email);
                 if (user == null)
                 {
-                    ModelState.AddModelError(string.Empty, "Email not found.");
+                    ModelState.AddModelError(string.Empty, "Email not found");
                     return Page();
                 }
 
@@ -137,7 +137,7 @@ namespace BrizaBreath.Areas.Identity.Pages.Account
                 else
                 {
                     // Since the user exists but the sign-in failed, it indicates wrong password
-                    ModelState.AddModelError(string.Empty, "Wrong password.");
+                    ModelState.AddModelError(string.Empty, "Wrong password");
                     return Page();
                 }
             }

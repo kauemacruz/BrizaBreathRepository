@@ -45,7 +45,7 @@ $.ajax({
         fetchedDataArray = data;
         // Call a function to initialize the charts here
         BRTinitializeChart();
-        YOGICinitializeChart();
+        YBinitializeChart();
         BREinitializeChart();
         BRWinitializeChart();
         HUMinitializeChart();
@@ -630,7 +630,6 @@ function BRTupdateOverview() {
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                      }
                  });
@@ -668,7 +667,7 @@ function BRTupdateOverview() {
                      '<div class="col"><a id="BRELink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
                      '<div class="col"><a id="BRWLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
                      '<div class="w-100"></div>' +
-                     '<div class="col"><a id="yogicLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
+                     '<div class="col"><a id="YBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/YBPT.svg" /></a></div>' +
                      '<div class="col"><a id="BBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
                      '</div>' +
                      '</div>' +
@@ -706,8 +705,8 @@ function BRTupdateOverview() {
                              openPage(programPage, diaphragmPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
-                         case 'yogicLink':
-                             openPage(programPage, yogicPage, 'slideUp');
+                         case 'YBLink':
+                             openPage(programPage, YBPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
                          case 'BRELink':
@@ -725,7 +724,6 @@ function BRTupdateOverview() {
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                      }
                  });
@@ -765,7 +763,7 @@ function BRTupdateOverview() {
                      '<div class="col"><a id="BRELink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
                      '<div class="col"><a id="BRWLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
                      '<div class="w-100"></div>' +
-                     '<div class="col"><a id="yogicLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
+                     '<div class="col"><a id="YBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/YBPT.svg" /></a></div>' +
                      '<div class="col"><a id="BBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
                      '<div class="w-100"></div>' +
                      '<div class="col"><a id="pranayamaLink2"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/pranayama2.svg"></a></div>' +
@@ -810,8 +808,8 @@ function BRTupdateOverview() {
                              openPage(programPage, diaphragmPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
-                         case 'yogicLink':
-                             openPage(programPage, yogicPage, 'slideUp');
+                         case 'YBLink':
+                             openPage(programPage, YBPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
                          case 'BRELink':
@@ -829,12 +827,10 @@ function BRTupdateOverview() {
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'pranayamaLink2':
                              openPage(programPage, PRANAPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                      }
                  });
@@ -861,7 +857,7 @@ function BRTupdateOverview() {
                      '<div class="col"><a id="unblockLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
                      '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
                      '<div class="w-100"></div>' +
-                     '<div class="col"><a id="yogicLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
+                     '<div class="col"><a id="YBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/YBPT.svg" /></a></div>' +
                      '<div class="col"><a></a></div>' +
                      '</div>' +
                      '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
@@ -918,8 +914,8 @@ function BRTupdateOverview() {
                              openPage(programPage, diaphragmPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
-                         case 'yogicLink':
-                             openPage(programPage, yogicPage, 'slideUp');
+                         case 'YBLink':
+                             openPage(programPage, YBPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
                          case 'BRELink':
@@ -937,12 +933,10 @@ function BRTupdateOverview() {
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'lungsLink2':
                              openPage(programPage, lungsPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'HATLink':
                              openPage(programPage, HATPage, 'slideUp');
@@ -973,7 +967,7 @@ function BRTupdateOverview() {
                      '<div class="col"><a id="unblockLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
                      '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
                      '<div class="w-100"></div>' +
-                     '<div class="col"><a id="yogicLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
+                     '<div class="col"><a id="YBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/YBPT.svg" /></a></div>' +
                      '<div class="col"><a></a></div>' +
                      '</div>' +
                      '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
@@ -1036,8 +1030,8 @@ function BRTupdateOverview() {
                              openPage(programPage, diaphragmPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
-                         case 'yogicLink':
-                             openPage(programPage, yogicPage, 'slideUp');
+                         case 'YBLink':
+                             openPage(programPage, YBPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
                          case 'BRELink':
@@ -1055,17 +1049,14 @@ function BRTupdateOverview() {
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'lungsLink2':
                              openPage(programPage, lungsPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'breathHoldsLink2':
                              openPage(programPage, BHPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'HATLink':
                              openPage(programPage, HATPage, 'slideUp');
@@ -1157,8 +1148,8 @@ function BRTupdateOverview() {
                              openPage(programPage, diaphragmPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
-                         case 'yogicLink':
-                             openPage(programPage, yogicPage, 'slideUp');
+                         case 'YBLink':
+                             openPage(programPage, YBPage, 'slideUp');
                              break;
                          case 'BRELink':
                              openPage(programPage, BREPage, 'slideUp');
@@ -1172,20 +1163,16 @@ function BRTupdateOverview() {
                              openPage(programPage, BBPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
-                        
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
-                             startAudios();
                              break;
                          case 'lungsLink2':
                              openPage(programPage, lungsPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'breathHoldsLink2':
                              openPage(programPage, BHPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'HATLink':
                              openPage(programPage, HATPage, 'slideUp');
@@ -1238,7 +1225,6 @@ function BRTupdateOverview() {
                      case 'brtLink2':
                          openPage(programPage, brtPage, 'slideUp');
                          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                         startAudios();
                          break;
                  }
              });
@@ -1327,7 +1313,6 @@ function BRTupdateOverview() {
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                     }
                 });
@@ -1365,7 +1350,7 @@ function BRTupdateOverview() {
                     '<div class="col"><a id="BRELink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysit.svg" /></a></div>' +
                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalking.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="yogicLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
+                    '<div class="col"><a id="YBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
                     '<div class="col"><a id="BBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" /></a></div>' +
 
                     '</div>' +
@@ -1404,8 +1389,8 @@ function BRTupdateOverview() {
                             openPage(programPage, diaphragmPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             break;
-                        case 'yogicLink':
-                            openPage(programPage, yogicPage, 'slideUp');
+                        case 'YBLink':
+                            openPage(programPage, YBPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             break;
                         case 'BRELink':
@@ -1423,7 +1408,6 @@ function BRTupdateOverview() {
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                     }
                 });
@@ -1463,7 +1447,7 @@ function BRTupdateOverview() {
                     '<div class="col"><a id="BRELink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysit.svg" /></a></div>' +
                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalking.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="yogicLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
+                    '<div class="col"><a id="YBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
                     '<div class="col"><a id="BBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
                     '<div class="col"><a id="pranayamaLink2"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/pranayama2.svg"></a></div>' +
@@ -1508,8 +1492,8 @@ function BRTupdateOverview() {
                             openPage(programPage, diaphragmPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             break;
-                        case 'yogicLink':
-                            openPage(programPage, yogicPage, 'slideUp');
+                        case 'YBLink':
+                            openPage(programPage, YBPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             break;
                         case 'BRELink':
@@ -1527,12 +1511,10 @@ function BRTupdateOverview() {
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'pranayamaLink2':
                             openPage(programPage, PRANAPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                     }
                 });
@@ -1559,7 +1541,7 @@ function BRTupdateOverview() {
                     '<div class="col"><a id="unblockLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/noseunblocking.svg" /></a></div>' +
                     '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/diaphragm.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="yogicLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
+                    '<div class="col"><a id="YBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
                     '<div class="col"><a></a></div>' +
                     '</div>' +
                     '<p class="spreadExercises"> Spread the following exercises throughout the day:</p> ' +
@@ -1616,8 +1598,8 @@ function BRTupdateOverview() {
                             openPage(programPage, diaphragmPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             break;
-                        case 'yogicLink':
-                            openPage(programPage, yogicPage, 'slideUp');
+                        case 'YBLink':
+                            openPage(programPage, YBPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             break;
                         case 'BRELink':
@@ -1635,12 +1617,10 @@ function BRTupdateOverview() {
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'HATLink':
                             openPage(programPage, HATPage, 'slideUp');
@@ -1671,7 +1651,7 @@ function BRTupdateOverview() {
                     '<div class="col"><a id="unblockLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/noseunblocking.svg" /></a></div>' +
                     '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/diaphragm.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="yogicLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
+                    '<div class="col"><a id="YBLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
                     '<div class="col"><a></a></div>' +
                     '</div>' +
                     '<p class="spreadExercises"> Spread the following exercises throughout the day:</p> ' +
@@ -1733,8 +1713,8 @@ function BRTupdateOverview() {
                             openPage(programPage, diaphragmPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             break;
-                        case 'yogicLink':
-                            openPage(programPage, yogicPage, 'slideUp');
+                        case 'YBLink':
+                            openPage(programPage, YBPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             break;
                         case 'BRELink':
@@ -1752,17 +1732,14 @@ function BRTupdateOverview() {
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'breathHoldsLink2':
                             openPage(programPage, BHPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'HATLink':
                             openPage(programPage, HATPage, 'slideUp');
@@ -1853,8 +1830,8 @@ function BRTupdateOverview() {
                             openPage(programPage, diaphragmPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             break;
-                        case 'yogicLink':
-                            openPage(programPage, yogicPage, 'slideUp');
+                        case 'YBLink':
+                            openPage(programPage, YBPage, 'slideUp');
                             break;
                         case 'BRELink':
                             openPage(programPage, BREPage, 'slideUp');
@@ -1870,17 +1847,14 @@ function BRTupdateOverview() {
                             break;
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
-                            startAudios();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'breathHoldsLink2':
                             openPage(programPage, BHPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'HATLink':
                             openPage(programPage, HATPage, 'slideUp');
@@ -1931,7 +1905,6 @@ function BRTupdateOverview() {
                     case 'brtLink2':
                         openPage(programPage, brtPage, 'slideUp');
                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        startAudios();
                         break;
                 }             
             });
@@ -2627,54 +2600,54 @@ function LUNGSdisplayDetailedInfo(LUNGSselectedDate) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 // END LUNGS
-// YOGIC
+// YB
 // Initialize startDate and endDate
-var YOGICtoday = new Date();
-var YOGIClast7Dates = [];
+var YBtoday = new Date();
+var YBlast7Dates = [];
 for (var i = 6; i >= 0; i--) {
-    var YOGICresultDate = new Date(YOGICtoday);
-    YOGICresultDate.setDate(YOGICtoday.getDate() - i);
-    YOGIClast7Dates.push(YOGICresultDate); // Push the Date object directly
+    var YBresultDate = new Date(YBtoday);
+    YBresultDate.setDate(YBtoday.getDate() - i);
+    YBlast7Dates.push(YBresultDate); // Push the Date object directly
 }
 
-var YOGICendDate = YOGIClast7Dates[YOGIClast7Dates.length - 1]; // Initialize with the latest date
-var YOGICstartDate = YOGIClast7Dates[0]; // Initialize with the earliest date
+var YBendDate = YBlast7Dates[YBlast7Dates.length - 1]; // Initialize with the latest date
+var YBstartDate = YBlast7Dates[0]; // Initialize with the earliest date
 // Initialize variables to track touch start position
-var YOGICtouchStartX = null;
+var YBtouchStartX = null;
 // Add event listener for mouse wheel on the canvas
-var YOGICContainer = document.getElementById('YOGICContainer');
-YOGICContainer.addEventListener('touchstart', function (event) {
-    YOGICtouchStartX = event.touches[0].clientX;
+var YBContainer = document.getElementById('YBContainer');
+YBContainer.addEventListener('touchstart', function (event) {
+    YBtouchStartX = event.touches[0].clientX;
 });
 
-var YOGICscrollThreshold = 10; // Adjust this value to control the scroll threshold
+var YBscrollThreshold = 10; // Adjust this value to control the scroll threshold
 
-var YOGIClastScrollX = null;
-var { YOGICchartData, YOGICmaxYValue, YOGICselectedDataDatesYear } = YOGICupdateChartData(YOGICstartDate, YOGICendDate, fetchedDataArray);
-var YOGICinfoOverview = document.getElementById('YOGICinfoOverview');
-var YOGICdateOfLongestResult;
-var YOGIClastIntervals;
-var YOGICintervals;
-var YOGIClastDate;
-var YOGIClatestResult;
-var YOGICchart;
-function YOGICinitializeChart() {
+var YBlastScrollX = null;
+var { YBchartData, YBmaxYValue, YBselectedDataDatesYear } = YBupdateChartData(YBstartDate, YBendDate, fetchedDataArray);
+var YBinfoOverview = document.getElementById('YBinfoOverview');
+var YBdateOfLongestResult;
+var YBlastIntervals;
+var YBintervals;
+var YBlastDate;
+var YBlatestResult;
+var YBchart;
+function YBinitializeChart() {
     // Sort the fetched data by date in ascending order
     fetchedDataArray.sort(function (a, b) {
-        var YOGICdateA = new Date(a.YOGICresultDate);
-        var YOGICdateB = new Date(b.YOGICresultDate);
-        return YOGICdateA - YOGICdateB;
+        var YBdateA = new Date(a.YBresultDate);
+        var YBdateB = new Date(b.YBresultDate);
+        return YBdateA - YBdateB;
     });
-    var YOGICselectedDataDatesMonthDay = YOGICselectedDataDatesYear.map(dateString => dateString.split('/')[0] + '/' + dateString.split('/')[1]);
+    var YBselectedDataDatesMonthDay = YBselectedDataDatesYear.map(dateString => dateString.split('/')[0] + '/' + dateString.split('/')[1]);
     if (isPortuguese) {
         // Initialize chart using initial dates
-        YOGICchart = new Chart("YOGICchart", {
+        YBchart = new Chart("YBchart", {
             type: "bar",
             data: {
-                labels: YOGICselectedDataDatesMonthDay,
+                labels: YBselectedDataDatesMonthDay,
                 datasets: [{
                     backgroundColor: '#49B79D',
-                    data: YOGICchartData,
+                    data: YBchartData,
                     barPercentage: 0.6,
                     categoryPercentage: 0.8,
                 }]
@@ -2683,7 +2656,7 @@ function YOGICinitializeChart() {
                 legend: { display: false }, // Display the legend
                 title: {
                     display: true,
-                    text: "Seus resultados da Respira\u00E7\u00E3o Yogic " + "(" + getYear(YOGICendDate) + ")",
+                    text: "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")",
                     font: {
                         family: 'Playfair Display', // Change to your desired font family
                         size: 14 // Change to your desired font size
@@ -2694,7 +2667,7 @@ function YOGICinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia ';
+                            return 'M\u00E9dia do dia ';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -2707,7 +2680,7 @@ function YOGICinitializeChart() {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
-                            max: YOGICmaxYValue,
+                            max: YBmaxYValue,
                             stepSize: 10,
                             font: {
                                 family: 'Playfair Display', // Change to your desired font family
@@ -2733,13 +2706,13 @@ function YOGICinitializeChart() {
         });
     } else {
         // Initialize chart using initial dates
-        YOGICchart = new Chart("YOGICchart", {
+        YBchart = new Chart("YBchart", {
             type: "bar",
             data: {
-                labels: YOGICselectedDataDatesMonthDay,
+                labels: YBselectedDataDatesMonthDay,
                 datasets: [{
                     backgroundColor: '#49B79D',
-                    data: YOGICchartData,
+                    data: YBchartData,
                     barPercentage: 0.6,
                     categoryPercentage: 0.8,
                 }]
@@ -2748,7 +2721,7 @@ function YOGICinitializeChart() {
                 legend: { display: false }, // Display the legend
                 title: {
                     display: true,
-                    text: "Your Yogic Breathing results " + "(" + getYear(YOGICendDate) + ")",
+                    text: "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")",
                     font: {
                         family: 'Playfair Display', // Change to your desired font family
                         size: 14 // Change to your desired font size
@@ -2759,7 +2732,7 @@ function YOGICinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -2772,7 +2745,7 @@ function YOGICinitializeChart() {
                     yAxes: [{
                         ticks: {
                             beginAtZero: true,
-                            max: YOGICmaxYValue,
+                            max: YBmaxYValue,
                             stepSize: 10,
                             font: {
                                 family: 'Playfair Display', // Change to your desired font family
@@ -2797,271 +2770,272 @@ function YOGICinitializeChart() {
             }
         });
     }
-    YOGICContainer.addEventListener('touchmove', function (event) {
+    YBContainer.addEventListener('touchmove', function (event) {
         event.preventDefault(); // Prevent default scrolling behavior
 
-        if (YOGICtouchStartX !== null) {
-            var YOGICtouchMoveX = event.touches[0].clientX;
+        if (YBtouchStartX !== null) {
+            var YBtouchMoveX = event.touches[0].clientX;
 
-            if (YOGIClastScrollX !== null) {
-                var YOGICdelta = YOGICtouchMoveX - YOGIClastScrollX;
+            if (YBlastScrollX !== null) {
+                var YBdelta = YBtouchMoveX - YBlastScrollX;
 
-                if (Math.abs(YOGICdelta) >= YOGICscrollThreshold) {
-                    YOGIClastScrollX = YOGICtouchMoveX;
+                if (Math.abs(YBdelta) >= YBscrollThreshold) {
+                    YBlastScrollX = YBtouchMoveX;
 
-                    if (YOGICdelta > 0) {
+                    if (YBdelta > 0) {
                         // Scroll right, decrease the date range
-                        YOGICendDate.setDate(YOGICendDate.getDate() - 1);
-                        YOGICstartDate.setDate(YOGICstartDate.getDate() - 1);
+                        YBendDate.setDate(YBendDate.getDate() - 1);
+                        YBstartDate.setDate(YBstartDate.getDate() - 1);
                         if (isPortuguese) {
-                            YOGICchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogic " + "(" + getYear(YOGICendDate) + ")";
+                            YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
                         } else {
-                            YOGICchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YOGICendDate) + ")";
+                            YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
                         }
-                    } else if (YOGICdelta < 0) {
-                        if (formatDateAsDMY(YOGICendDate) == formatDateAsDMY(YOGICtoday)) {
+                    } else if (YBdelta < 0) {
+                        if (formatDateAsDMY(YBendDate) == formatDateAsDMY(YBtoday)) {
                             // Do nothing if already at the current date
                         } else {
                             // Scroll left, increase the date range
-                            YOGICendDate.setDate(YOGICendDate.getDate() + 1);
-                            YOGICstartDate.setDate(YOGICstartDate.getDate() + 1);
+                            YBendDate.setDate(YBendDate.getDate() + 1);
+                            YBstartDate.setDate(YBstartDate.getDate() + 1);
                             if (isPortuguese) {
-                                YOGICchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogic " + "(" + getYear(YOGICendDate) + ")";
+                                YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
                             } else {
-                                YOGICchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YOGICendDate) + ")";
+                                YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
                             }                        }
                     }
-                    YOGICupdateChart(YOGICstartDate, YOGICendDate);
+                    YBupdateChart(YBstartDate, YBendDate);
                 }
             } else {
-                YOGIClastScrollX = YOGICtouchMoveX;
+                YBlastScrollX = YBtouchMoveX;
             }
         }
     });
 
-    YOGICContainer.addEventListener('touchend', function () {
-        YOGIClastScrollX = null;
+    YBContainer.addEventListener('touchend', function () {
+        YBlastScrollX = null;
     });
-    YOGICContainer.addEventListener('wheel', function (event) {
+    YBContainer.addEventListener('wheel', function (event) {
         // Determine the direction and magnitude of the horizontal scroll
-        var YOGICdelta = event.deltaX * 0.1;
+        var YBdelta = event.deltaX * 0.1;
 
-        if (YOGICdelta < 0) {
+        if (YBdelta < 0) {
             // Scroll left, decrease the date range
-            YOGICendDate.setDate(YOGICendDate.getDate() - 1);
-            YOGICstartDate.setDate(YOGICstartDate.getDate() - 1);
+            YBendDate.setDate(YBendDate.getDate() - 1);
+            YBstartDate.setDate(YBstartDate.getDate() - 1);
             if (isPortuguese) {
-                YOGICchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogic " + "(" + getYear(YOGICendDate) + ")";
+                YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
             } else {
-                YOGICchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YOGICendDate) + ")";
-            }        } else if (YOGICdelta > 0) {
-            if (formatDateAsDMY(YOGICendDate) == formatDateAsDMY(YOGICtoday)) { }
+                YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
+            }        } else if (YBdelta > 0) {
+            if (formatDateAsDMY(YBendDate) == formatDateAsDMY(YBtoday)) { }
             else {
                 // Scroll right, increase the date range
-                YOGICendDate.setDate(YOGICendDate.getDate() + 1);
-                YOGICstartDate.setDate(YOGICstartDate.getDate() + 1);
+                YBendDate.setDate(YBendDate.getDate() + 1);
+                YBstartDate.setDate(YBstartDate.getDate() + 1);
                 if (isPortuguese) {
-                    YOGICchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogic " + "(" + getYear(YOGICendDate) + ")";
+                    YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
                 } else {
-                    YOGICchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YOGICendDate) + ")";
+                    YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
                 }            }
         }
-        YOGICupdateChart(YOGICstartDate, YOGICendDate);
+        YBupdateChart(YBstartDate, YBendDate);
     });
-    YOGICupdateOverview();
+    YBupdateOverview();
     // Add a click event listener to the chart
     // Function to handle bar click event
-    function YOGIChandleBarClick(event, array) {
-        var YOGICindex = array[0]._index; // Get the clicked bar index
-        var YOGICselectedDate = YOGICselectedDataDatesYear[YOGICindex];
-        YOGICdisplayDetailedInfo(YOGICselectedDate);
+    function YBhandleBarClick(event, array) {
+        var YBindex = array[0]._index; // Get the clicked bar index
+        var YBselectedDate = YBselectedDataDatesYear[YBindex];
+        YBdisplayDetailedInfo(YBselectedDate);
     }
-    YOGICchart.options.onClick = function (event, array) {
+    YBchart.options.onClick = function (event, array) {
         if (array.length > 0) {
-            YOGIChandleBarClick(event, array);
+            YBhandleBarClick(event, array);
         }
     };
     // For touch-enabled devices
     if ('ontouchstart' in window || navigator.maxTouchPoints) {
-        YOGICchart.options.onClick = function (event, array) {
+        YBchart.options.onClick = function (event, array) {
             if (array.length > 0) {
-                YOGIChandleBarClick(event, array);
+                YBhandleBarClick(event, array);
             }
         };
     }
 }
 
-function YOGICfindMaxResult() {
-    var YOGICmaxResult = 0;
+function YBfindMaxResult() {
+    var YBmaxResult = 0;
 
-    fetchedDataArray.forEach(YOGICresultData => {
-        var YOGICtimeString = YOGICresultData.yogicTotalTime;
-
-        // Check if the timeString is not empty before parsing
-        if (YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null) {
-            var seconds = parseTimeToSeconds2(YOGICtimeString);
-            YOGICmaxResult = Math.max(YOGICmaxResult, secondsToMinutes(seconds));
-        }
-    });
-    return YOGICmaxResult;
-}
-function YOGICfindMaxResult2() {
-    var YOGICmaxResult = 0;
-
-    fetchedDataArray.forEach(YOGICresultData => {
-        var YOGICtimeString = YOGICresultData.yogicTotalTime;
+    fetchedDataArray.forEach(YBresultData => {
+        var YBtimeString = YBresultData.ybTotalTime;
 
         // Check if the timeString is not empty before parsing
-        if (YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null) {
-            var seconds = parseTimeToSeconds2(YOGICtimeString);
-            YOGICmaxResult = Math.max(YOGICmaxResult, seconds);
+        if (YBtimeString !== undefined && YBtimeString !== '' && YBtimeString !== null) {
+            var seconds = parseTimeToSeconds2(YBtimeString);
+            YBmaxResult = Math.max(YBmaxResult, secondsToMinutes(seconds));
         }
     });
-    return YOGICmaxResult;
+    return YBmaxResult;
 }
-function YOGICupdateChartData(YOGICstartDate, YOGICendDate) {
-    var YOGICdateRange = []; // New array to hold the date range between startDate and endDate
+function YBfindMaxResult2() {
+    var YBmaxResult = 0;
+
+    fetchedDataArray.forEach(YBresultData => {
+        var YBtimeString = YBresultData.ybTotalTime;
+
+        // Check if the timeString is not empty before parsing
+        if (YBtimeString !== undefined && YBtimeString !== '' && YBtimeString !== null) {
+            var seconds = parseTimeToSeconds2(YBtimeString);
+            YBmaxResult = Math.max(YBmaxResult, seconds);
+        }
+    });
+    return YBmaxResult;
+}
+function YBupdateChartData(YBstartDate, YBendDate) {
+    var YBdateRange = []; // New array to hold the date range between startDate and endDate
 
     // Populate the date range array
-    var YOGICcurrentDate = new Date(YOGICstartDate);
-    while (YOGICcurrentDate <= YOGICendDate) {
-        YOGICdateRange.push(new Date(YOGICcurrentDate));
-        YOGICcurrentDate.setDate(YOGICcurrentDate.getDate() + 1); // Move to the next day
+    var YBcurrentDate = new Date(YBstartDate);
+    while (YBcurrentDate <= YBendDate) {
+        YBdateRange.push(new Date(YBcurrentDate));
+        YBcurrentDate.setDate(YBcurrentDate.getDate() + 1); // Move to the next day
     }
 
-    var YOGICaggregatedData = {}; // Use an object to aggregate data by date
+    var YBaggregatedData = {}; // Use an object to aggregate data by date
 
-    fetchedDataArray.forEach(YOGICresultData => {
-        var YOGICresultDate = new Date(YOGICresultData.yogicResultDate);
-        var YOGICseconds;
-        var YOGICminutes;
-        var YOGICtimeString = YOGICresultData.yogicTotalTime;
-        if (YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null) {
-            YOGICseconds = parseTimeToSeconds2(YOGICtimeString);
-            YOGICminutes = secondsToMinutes(YOGICseconds);
+    fetchedDataArray.forEach(YBresultData => {
+        var YBresultDate = new Date(YBresultData.ybResultDate);
+        var YBseconds;
+        var YBminutes;
+        var YBtimeString = YBresultData.ybTotalTime;
+        if (YBtimeString !== undefined && YBtimeString !== '' && YBtimeString !== null) {
+            YBseconds = parseTimeToSeconds2(YBtimeString);
+            YBminutes = secondsToMinutes(YBseconds);
         } else {
-            YOGICminutes = 0;
+            YBminutes = 0;
         }
-        if (!isNaN(YOGICresultDate.getTime())) {
-            var YOGICformattedDate = formatDateAsDMY(YOGICresultDate);
+        if (!isNaN(YBresultDate.getTime())) {
+            var YBformattedDate = formatDateAsDMY(YBresultDate);
 
-            if (!YOGICaggregatedData[YOGICformattedDate]) {
+            if (!YBaggregatedData[YBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                YOGICaggregatedData[YOGICformattedDate] = { YOGICtotalValue: parseFloat(YOGICminutes) };
+                YBaggregatedData[YBformattedDate] = { YBtotalValue: parseFloat(YBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
-                YOGICaggregatedData[YOGICformattedDate].YOGICtotalValue += parseFloat(YOGICminutes);
+                YBaggregatedData[YBformattedDate].YBtotalValue += parseFloat(YBminutes);
+                YBaggregatedData[YBformattedDate].count++;
             }
         }
     });
-
-    var YOGICmaxResult = YOGICfindMaxResult();
-    var YOGICchartData = YOGICdateRange.map(YOGICresultDate => {
-        var YOGICformattedDate = formatDateAsDMY(YOGICresultDate);
-        var YOGICaggregatedDatum = YOGICaggregatedData[YOGICformattedDate];
-        return YOGICaggregatedDatum ? YOGICaggregatedDatum.YOGICtotalValue : 0;
+   
+    var YBmaxResult = YBfindMaxResult();
+    var YBchartData = YBdateRange.map(YBresultDate => {
+        var YBformattedDate = formatDateAsDMY(YBresultDate);
+        var YBaggregatedDatum = YBaggregatedData[YBformattedDate];
+        return YBaggregatedDatum ? YBaggregatedDatum.YBtotalValue / YBaggregatedDatum.count : 0;
     });
 
     return {
-        YOGICchartData: YOGICchartData,
-        YOGICmaxYValue: Math.floor(YOGICmaxResult + 2),
-        YOGICselectedDataDatesYear: YOGICdateRange.map(formatDateAsDMY)
+        YBchartData: YBchartData,
+        YBmaxYValue: Math.floor(YBmaxResult + 2),
+        YBselectedDataDatesYear: YBdateRange.map(formatDateAsDMY)
     };
 }
-function YOGICupdateChart(YOGICstartDate, YOGICendDate) {
-    var { YOGICchartData, YOGICmaxYValue, YOGICselectedDataDatesYear } = YOGICupdateChartData(YOGICstartDate, YOGICendDate);
+function YBupdateChart(YBstartDate, YBendDate) {
+    var { YBchartData, YBmaxYValue, YBselectedDataDatesYear } = YBupdateChartData(YBstartDate, YBendDate);
 
     // Update x-axis labels and chart data
-    var YOGICselectedDataDatesMonthDay = YOGICselectedDataDatesYear.map(dateString => dateString.split('/')[0] + '/' + dateString.split('/')[1]);
+    var YBselectedDataDatesMonthDay = YBselectedDataDatesYear.map(dateString => dateString.split('/')[0] + '/' + dateString.split('/')[1]);
 
-    YOGICchart.data.labels = YOGICselectedDataDatesMonthDay;
-    YOGICchart.data.datasets[0].data = YOGICchartData;
-    YOGICchart.options.scales.yAxes[0].ticks.max = YOGICmaxYValue;
-    function YOGIChandleBarClick(event, array) {
-        var YOGICindex = array[0]._index; // Get the clicked bar index
-        var YOGICselectedDate = YOGICselectedDataDatesYear[YOGICindex];
-        YOGICdisplayDetailedInfo(YOGICselectedDate);
+    YBchart.data.labels = YBselectedDataDatesMonthDay;
+    YBchart.data.datasets[0].data = YBchartData;
+    YBchart.options.scales.yAxes[0].ticks.max = YBmaxYValue;
+    function YBhandleBarClick(event, array) {
+        var YBindex = array[0]._index; // Get the clicked bar index
+        var YBselectedDate = YBselectedDataDatesYear[YBindex];
+        YBdisplayDetailedInfo(YBselectedDate);
     }
-    YOGICchart.options.onClick = function (event, array) {
+    YBchart.options.onClick = function (event, array) {
         if (array.length > 0) {
-            YOGIChandleBarClick(event, array);
+            YBhandleBarClick(event, array);
         }
     };
     // For touch-enabled devices
     if ('ontouchstart' in window || navigator.maxTouchPoints) {
-        YOGICchart.options.onClick = function (event, array) {
+        YBchart.options.onClick = function (event, array) {
             if (array.length > 0) {
-                YOGIChandleBarClick(event, array);
+                YBhandleBarClick(event, array);
             }
         };
     }
-    YOGICchart.update();
+    YBchart.update();
 }
-function YOGICupdateOverview() {
-    var YOGICnumberOfTests = 0;
-    var YOGICmax = YOGICfindMaxResult();
-    var YOGICmax2 = YOGICfindMaxResult2();
-    var YOGICinfoOverviewElements = document.getElementsByClassName('YOGICinfoOverview');
-    fetchedDataArray.forEach(YOGICresultData => {
-        var YOGICtimeString = YOGICresultData.yogicTotalTime;
-        var YOGICdateString = YOGICresultData.yogicResultDate;
-        var YOGICrounds = YOGICresultData.yogicIntervals;
+function YBupdateOverview() {
+    var YBnumberOfTests = 0;
+    var YBmax = YBfindMaxResult();
+    var YBmax2 = YBfindMaxResult2();
+    var YBinfoOverviewElements = document.getElementsByClassName('YBinfoOverview');
+    fetchedDataArray.forEach(YBresultData => {
+        var YBtimeString = YBresultData.ybTotalTime;
+        var YBdateString = YBresultData.ybResultDate;
+        var YBrounds = YBresultData.ybIntervals;
         // Check if the timeString is not empty before parsing
-        if (YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null) {
-            var YOGICseconds = parseTimeToSeconds2(YOGICtimeString);
-            // Store the value of dateOfLongestResult when YOGICmax is updated
-            if (YOGICseconds === YOGICmax2) {
-                YOGICdateOfLongestResult = YOGICdateString;
-                YOGICintervals = YOGICrounds;
+        if (YBtimeString !== undefined && YBtimeString !== '' && YBtimeString !== null) {
+            var YBseconds = parseTimeToSeconds2(YBtimeString);
+            // Store the value of dateOfLongestResult when YBmax is updated
+            if (YBseconds === YBmax2) {
+                YBdateOfLongestResult = YBdateString;
+                YBintervals = YBrounds;
             }
-            YOGIClatestResult = parseTimeToSeconds2(YOGICtimeString);
-            YOGIClastDate = YOGICdateString;
-            YOGIClastIntervals = YOGICrounds;
-            YOGICnumberOfTests++;
+            YBlatestResult = parseTimeToSeconds2(YBtimeString);
+            YBlastDate = YBdateString;
+            YBlastIntervals = YBrounds;
+            YBnumberOfTests++;
         }
     });
     if (isPortuguese) {
-        if (YOGICnumberOfTests !== 0) {
-            YOGICinfoOverview.innerHTML = '';
-            for (var i = 0; i < YOGICinfoOverviewElements.length; i++) {
-                YOGICinfoOverviewElements[i].style.display = 'grid';
+        if (YBnumberOfTests !== 0) {
+            YBinfoOverview.innerHTML = '';
+            for (var i = 0; i < YBinfoOverviewElements.length; i++) {
+                YBinfoOverviewElements[i].style.display = 'grid';
             }
-            document.getElementById('YOGICContainer').style.display = 'block';
-            document.getElementById('YOGICnumberOfSessions').value = YOGICnumberOfTests + ' Sess\u00F5es';
-            document.getElementById('YOGIClongestRound').value = convertMinToMinSec(YOGICmax) + YOGICintervals + ' rounds ' + formatDateAsDMY(YOGICdateOfLongestResult);
-            document.getElementById('YOGIClatestRound').value = convertMinToMinSec(secondsToMinutes(YOGIClatestResult)) + YOGIClastIntervals + ' rounds ' + formatDateAsDMY(YOGIClastDate);
+            document.getElementById('YBContainer').style.display = 'block';
+            document.getElementById('YBnumberOfSessions').value = YBnumberOfTests + ' Sess\u00F5es';
+            document.getElementById('YBlongestRound').value = convertMinToMinSec(YBmax) + YBintervals + ' rounds ' + formatDateAsDMY(YBdateOfLongestResult);
+            document.getElementById('YBlatestRound').value = convertMinToMinSec(secondsToMinutes(YBlatestResult)) + YBlastIntervals + ' rounds ' + formatDateAsDMY(YBlastDate);
         } else {
-            YOGICinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
-            for (var i = 0; i < YOGICinfoOverviewElements.length; i++) {
-                YOGICinfoOverviewElements[i].style.display = 'none';
+            YBinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
+            for (var i = 0; i < YBinfoOverviewElements.length; i++) {
+                YBinfoOverviewElements[i].style.display = 'none';
             }
-            document.getElementById('YOGICContainer').style.display = 'none';
+            document.getElementById('YBContainer').style.display = 'none';
         }
     } else {
-        if (YOGICnumberOfTests !== 0) {
-            YOGICinfoOverview.innerHTML = '';
-            for (var i = 0; i < YOGICinfoOverviewElements.length; i++) {
-                YOGICinfoOverviewElements[i].style.display = 'grid';
+        if (YBnumberOfTests !== 0) {
+            YBinfoOverview.innerHTML = '';
+            for (var i = 0; i < YBinfoOverviewElements.length; i++) {
+                YBinfoOverviewElements[i].style.display = 'grid';
             }
-            document.getElementById('YOGICContainer').style.display = 'block';
-            document.getElementById('YOGICnumberOfSessions').value = YOGICnumberOfTests + ' Sessions';
-            document.getElementById('YOGIClongestRound').value = convertMinToMinSec(YOGICmax) + YOGICintervals + ' rounds ' + formatDateAsDMY(YOGICdateOfLongestResult);
-            document.getElementById('YOGIClatestRound').value = convertMinToMinSec(secondsToMinutes(YOGIClatestResult)) + YOGIClastIntervals + ' rounds ' + formatDateAsDMY(YOGIClastDate);
+            document.getElementById('YBContainer').style.display = 'block';
+            document.getElementById('YBnumberOfSessions').value = YBnumberOfTests + ' Sessions';
+            document.getElementById('YBlongestRound').value = convertMinToMinSec(YBmax) + YBintervals + ' rounds ' + formatDateAsDMY(YBdateOfLongestResult);
+            document.getElementById('YBlatestRound').value = convertMinToMinSec(secondsToMinutes(YBlatestResult)) + YBlastIntervals + ' rounds ' + formatDateAsDMY(YBlastDate);
         } else {
-            YOGICinfoOverview.innerHTML = 'No results yet';
-            for (var i = 0; i < YOGICinfoOverviewElements.length; i++) {
-                YOGICinfoOverviewElements[i].style.display = 'none';
+            YBinfoOverview.innerHTML = 'No results yet';
+            for (var i = 0; i < YBinfoOverviewElements.length; i++) {
+                YBinfoOverviewElements[i].style.display = 'none';
             }
-            document.getElementById('YOGICContainer').style.display = 'none';
+            document.getElementById('YBContainer').style.display = 'none';
         }
     }
 }
-var YOGICresultPage = document.getElementById('YOGICresultPage'),
-    YOGICresultDateHeader = document.getElementById('YOGICresultDateHeader'),
-    YOGICresultSessions = document.getElementById('YOGICresultSessions');
+var YBresultPage = document.getElementById('YBresultPage'),
+    YBresultDateHeader = document.getElementById('YBresultDateHeader'),
+    YBresultSessions = document.getElementById('YBresultSessions');
 
-function YOGICdisplayDetailedInfo(YOGICselectedDate) {
-    function YOGICdeleteResult(resultId) {
+function YBdisplayDetailedInfo(YBselectedDate) {
+    function YBdeleteResult(resultId) {
         var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
 
         $.ajax({
@@ -3074,15 +3048,15 @@ function YOGICdisplayDetailedInfo(YOGICselectedDate) {
             success: function (response) {
                 if (response.success) {
                     // Remove the deleted form
-                    $('.YOGICdelete-form [name="resultId"][value="' + resultId + '"]').closest('.YOGICdelete-form').remove();
+                    $('.YBdelete-form [name="resultId"][value="' + resultId + '"]').closest('.YBdelete-form').remove();
                     $.ajax({
                         url: "/?fetchData=true",
                         type: 'GET',
                         success: function (data) {
                             fetchedDataArray = data;
-                            YOGICupdateChart(YOGICstartDate, YOGICendDate);
-                            YOGICupdateOverview();
-                            openPage(YOGICresultPage, resultsPage, 'slideRight');
+                            YBupdateChart(YBstartDate, YBendDate);
+                            YBupdateOverview();
+                            openPage(YBresultPage, resultsPage, 'slideRight');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         },
                         error: function (error) {
@@ -3098,56 +3072,56 @@ function YOGICdisplayDetailedInfo(YOGICselectedDate) {
             }
         });
     }
-    var YOGICnumberOfResults = 1;
-    YOGICresultSessions.innerHTML = ''; // Clear the existing content
-    fetchedDataArray.forEach(YOGICresultData => {
-        var YOGICtimeString = YOGICresultData.yogicTotalTime;
-        var YOGICdateString = YOGICresultData.yogicResultDate;
-        var YOGICresultId = YOGICresultData.resultId;
-        YOGICintervals = YOGICresultData.yogicIntervals;
+    var YBnumberOfResults = 1;
+    YBresultSessions.innerHTML = ''; // Clear the existing content
+    fetchedDataArray.forEach(YBresultData => {
+        var YBtimeString = YBresultData.ybTotalTime;
+        var YBdateString = YBresultData.ybResultDate;
+        var YBresultId = YBresultData.resultId;
+        YBintervals = YBresultData.ybIntervals;
         // Check if the timeString is not empty before parsing
-        if (YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null) {
-            var YOGICseconds = parseTimeToSeconds2(YOGICtimeString);
-            // Store the value of dateOfLongestResult when YOGICmax is updated
-            if (YOGICselectedDate === formatDateAsDMY(YOGICdateString)) {
+        if (YBtimeString !== undefined && YBtimeString !== '' && YBtimeString !== null) {
+            var YBseconds = parseTimeToSeconds2(YBtimeString);
+            // Store the value of dateOfLongestResult when YBmax is updated
+            if (YBselectedDate === formatDateAsDMY(YBdateString)) {
                 if (isPortuguese) {
-                    YOGICresultDateHeader.innerHTML = 'Resultados do dia ' + YOGICselectedDate;
-                    YOGICresultSessions.innerHTML += '<form method="post" class="YOGICdelete-form">' +
-                        '<div>Sess\u00E3o ' + YOGICnumberOfResults + ' __________</div>' +
-                        '<input value="' + convertMinToMinSec(secondsToMinutes(YOGICseconds)) + ' " readonly class="resultInput"/>' +
-                        '<input value="' + YOGICintervals + ' rounds" readonly class="resultInput"/>' +
-                        '<input name="resultId" value="' + YOGICresultId + '" style="display:none"/>' +
-                        '<input type="button" value="Deletar" class="btn btn-danger YOGICdelete-button" />' +
+                    YBresultDateHeader.innerHTML = 'Resultados do dia ' + YBselectedDate;
+                    YBresultSessions.innerHTML += '<form method="post" class="YBdelete-form">' +
+                        '<div>Sess\u00E3o ' + YBnumberOfResults + ' __________</div>' +
+                        '<input value="' + convertMinToMinSec(secondsToMinutes(YBseconds)) + ' " readonly class="resultInput"/>' +
+                        '<input value="' + YBintervals + ' rounds" readonly class="resultInput"/>' +
+                        '<input name="resultId" value="' + YBresultId + '" style="display:none"/>' +
+                        '<input type="button" value="Deletar" class="btn btn-danger YBdelete-button" />' +
                         '</form>';
                 } else {
-                    YOGICresultDateHeader.innerHTML = 'Results on ' + YOGICselectedDate;
-                    YOGICresultSessions.innerHTML += '<form method="post" class="YOGICdelete-form">' +
-                        '<div>Session ' + YOGICnumberOfResults + ' __________</div>' +
-                        '<input value="' + convertMinToMinSec(secondsToMinutes(YOGICseconds)) + ' " readonly class="resultInput"/>' +
-                        '<input value="' + YOGICintervals + ' rounds" readonly class="resultInput"/>' +
-                        '<input name="resultId" value="' + YOGICresultId + '" style="display:none"/>' +
-                        '<input type="button" value="Delete" class="btn btn-danger YOGICdelete-button" />' +
+                    YBresultDateHeader.innerHTML = 'Results on ' + YBselectedDate;
+                    YBresultSessions.innerHTML += '<form method="post" class="YBdelete-form">' +
+                        '<div>Session ' + YBnumberOfResults + ' __________</div>' +
+                        '<input value="' + convertMinToMinSec(secondsToMinutes(YBseconds)) + ' " readonly class="resultInput"/>' +
+                        '<input value="' + YBintervals + ' rounds" readonly class="resultInput"/>' +
+                        '<input name="resultId" value="' + YBresultId + '" style="display:none"/>' +
+                        '<input type="button" value="Delete" class="btn btn-danger YBdelete-button" />' +
                         '</form>';
                 }
-                YOGICnumberOfResults++;
+                YBnumberOfResults++;
             }
         }
     });
 
     // Add event listeners for delete buttons
-    var YOGICdeleteButtons = document.querySelectorAll('.YOGICdelete-button');
-    YOGICdeleteButtons.forEach(button => {
+    var YBdeleteButtons = document.querySelectorAll('.YBdelete-button');
+    YBdeleteButtons.forEach(button => {
         button.addEventListener('click', function () {
-            var YOGICform = this.closest('.YOGICdelete-form');
-            var YOGICresultId = YOGICform.querySelector('[name="resultId"]').value;
-            YOGICdeleteResult(YOGICresultId);
+            var YBform = this.closest('.YBdelete-form');
+            var YBresultId = YBform.querySelector('[name="resultId"]').value;
+            YBdeleteResult(YBresultId);
         });
     });
 
-    openPage(resultsPage, YOGICresultPage, 'slideLeft');
+    openPage(resultsPage, YBresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-// END YOGIC
+// END YB
 // BRE
 // Initialize startDate and endDate
 var BREtoday = new Date();
@@ -3215,7 +3189,7 @@ function BREinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -3280,7 +3254,7 @@ function BREinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -3468,10 +3442,11 @@ function BREupdateChartData(BREstartDate, BREendDate) {
 
             if (!BREaggregatedData[BREformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                BREaggregatedData[BREformattedDate] = { BREtotalValue: parseFloat(BREminutes) };
+                BREaggregatedData[BREformattedDate] = { BREtotalValue: parseFloat(BREminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 BREaggregatedData[BREformattedDate].BREtotalValue += parseFloat(BREminutes);
+                BREaggregatedData[BREformattedDate].count++;
             }
         }
     });
@@ -3480,7 +3455,7 @@ function BREupdateChartData(BREstartDate, BREendDate) {
     var BREchartData = BREdateRange.map(BREresultDate => {
         var BREformattedDate = formatDateAsDMY(BREresultDate);
         var BREaggregatedDatum = BREaggregatedData[BREformattedDate];
-        return BREaggregatedDatum ? BREaggregatedDatum.BREtotalValue : 0;
+        return BREaggregatedDatum ? BREaggregatedDatum.BREtotalValue / BREaggregatedDatum.count : 0;
     });
 
     return {
@@ -3801,7 +3776,7 @@ function BRWinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -3989,10 +3964,11 @@ function BRWupdateChartData(BRWstartDate, BRWendDate) {
 
             if (!BRWaggregatedData[BRWformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                BRWaggregatedData[BRWformattedDate] = { BRWtotalValue: parseFloat(BRWminutes) };
+                BRWaggregatedData[BRWformattedDate] = { BRWtotalValue: parseFloat(BRWminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 BRWaggregatedData[BRWformattedDate].BRWtotalValue += parseFloat(BRWminutes);
+                BRWaggregatedData[BRWformattedDate].count++;
             }
         }
     });
@@ -4001,7 +3977,7 @@ function BRWupdateChartData(BRWstartDate, BRWendDate) {
     var BRWchartData = BRWdateRange.map(BRWresultDate => {
         var BRWformattedDate = formatDateAsDMY(BRWresultDate);
         var BRWaggregatedDatum = BRWaggregatedData[BRWformattedDate];
-        return BRWaggregatedDatum ? BRWaggregatedDatum.BRWtotalValue : 0;
+        return BRWaggregatedDatum ? BRWaggregatedDatum.BRWtotalValue / BRWaggregatedDatum.count : 0;
     });
 
     return {
@@ -4322,7 +4298,7 @@ function HUMinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -4510,10 +4486,11 @@ function HUMupdateChartData(HUMstartDate, HUMendDate) {
 
             if (!HUMaggregatedData[HUMformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                HUMaggregatedData[HUMformattedDate] = { HUMtotalValue: parseFloat(HUMminutes) };
+                HUMaggregatedData[HUMformattedDate] = { HUMtotalValue: parseFloat(HUMminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 HUMaggregatedData[HUMformattedDate].HUMtotalValue += parseFloat(HUMminutes);
+                HUMaggregatedData[HUMformattedDate].count++;
             }
         }
     });
@@ -4522,7 +4499,7 @@ function HUMupdateChartData(HUMstartDate, HUMendDate) {
     var HUMchartData = HUMdateRange.map(HUMresultDate => {
         var HUMformattedDate = formatDateAsDMY(HUMresultDate);
         var HUMaggregatedDatum = HUMaggregatedData[HUMformattedDate];
-        return HUMaggregatedDatum ? HUMaggregatedDatum.HUMtotalValue : 0;
+        return HUMaggregatedDatum ? HUMaggregatedDatum.HUMtotalValue / HUMaggregatedDatum.count : 0;
     });
 
     return {
@@ -4844,7 +4821,7 @@ function BBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -4909,7 +4886,7 @@ function BBinitializeChart() {
                 displayColors: false,
                 callbacks: {
                     title: function (tooltipItems, data) {
-                        return 'Total Results on';
+                        return 'Average Results on';
                     },
                     label: function (tooltipItem, data) {
                         var label = data.labels[tooltipItem.index];
@@ -5096,10 +5073,11 @@ function BBupdateChartData(BBstartDate, BBendDate) {
 
             if (!BBaggregatedData[BBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                BBaggregatedData[BBformattedDate] = { BBtotalValue: parseFloat(BBminutes) };
+                BBaggregatedData[BBformattedDate] = { BBtotalValue: parseFloat(BBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 BBaggregatedData[BBformattedDate].BBtotalValue += parseFloat(BBminutes);
+                BBaggregatedData[BBformattedDate].count++;
             }
         }
     });
@@ -5108,7 +5086,7 @@ function BBupdateChartData(BBstartDate, BBendDate) {
     var BBchartData = BBdateRange.map(BBresultDate => {
         var BBformattedDate = formatDateAsDMY(BBresultDate);
         var BBaggregatedDatum = BBaggregatedData[BBformattedDate];
-        return BBaggregatedDatum ? BBaggregatedDatum.BBtotalValue : 0;
+        return BBaggregatedDatum ? BBaggregatedDatum.BBtotalValue / BBaggregatedDatum.count : 0;
     });
 
     return {
@@ -5429,7 +5407,7 @@ function APinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -5619,10 +5597,11 @@ function APupdateChartData(APstartDate, APendDate) {
 
             if (!APaggregatedData[APformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                APaggregatedData[APformattedDate] = { APtotalValue: parseFloat(APminutes) };
+                APaggregatedData[APformattedDate] = { APtotalValue: parseFloat(APminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 APaggregatedData[APformattedDate].APtotalValue += parseFloat(APminutes);
+                APaggregatedData[APformattedDate].count++;
             }
         }
     });
@@ -5631,7 +5610,7 @@ function APupdateChartData(APstartDate, APendDate) {
     var APchartData = APdateRange.map(APresultDate => {
         var APformattedDate = formatDateAsDMY(APresultDate);
         var APaggregatedDatum = APaggregatedData[APformattedDate];
-        return APaggregatedDatum ? APaggregatedDatum.APtotalValue : 0;
+        return APaggregatedDatum ? APaggregatedDatum.APtotalValue / APaggregatedDatum.count : 0;
     });
 
     return {
@@ -5877,7 +5856,7 @@ function CTinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia ';
+                            return 'M\u00E9dia do dia ';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -5942,7 +5921,7 @@ function CTinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -6130,10 +6109,11 @@ function CTupdateChartData(CTstartDate, CTendDate) {
 
             if (!CTaggregatedData[CTformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                CTaggregatedData[CTformattedDate] = { CTtotalValue: parseFloat(CTminutes) };
+                CTaggregatedData[CTformattedDate] = { CTtotalValue: parseFloat(CTminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 CTaggregatedData[CTformattedDate].CTtotalValue += parseFloat(CTminutes);
+                CTaggregatedData[CTformattedDate].count++;
             }
         }
     });
@@ -6142,7 +6122,7 @@ function CTupdateChartData(CTstartDate, CTendDate) {
     var CTchartData = CTdateRange.map(CTresultDate => {
         var CTformattedDate = formatDateAsDMY(CTresultDate);
         var CTaggregatedDatum = CTaggregatedData[CTformattedDate];
-        return CTaggregatedDatum ? CTaggregatedDatum.CTtotalValue : 0;
+        return CTaggregatedDatum ? CTaggregatedDatum.CTtotalValue / CTaggregatedDatum.count : 0;
     });
 
     return {
@@ -6388,7 +6368,7 @@ function BOXinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -6453,7 +6433,7 @@ function BOXinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -6641,10 +6621,11 @@ function BOXupdateChartData(BOXstartDate, BOXendDate) {
 
             if (!BOXaggregatedData[BOXformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                BOXaggregatedData[BOXformattedDate] = { BOXtotalValue: parseFloat(BOXminutes) };
+                BOXaggregatedData[BOXformattedDate] = { BOXtotalValue: parseFloat(BOXminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 BOXaggregatedData[BOXformattedDate].BOXtotalValue += parseFloat(BOXminutes);
+                BOXaggregatedData[BOXformattedDate].count++;
             }
         }
     });
@@ -6653,7 +6634,7 @@ function BOXupdateChartData(BOXstartDate, BOXendDate) {
     var BOXchartData = BOXdateRange.map(BOXresultDate => {
         var BOXformattedDate = formatDateAsDMY(BOXresultDate);
         var BOXaggregatedDatum = BOXaggregatedData[BOXformattedDate];
-        return BOXaggregatedDatum ? BOXaggregatedDatum.BOXtotalValue : 0;
+        return BOXaggregatedDatum ? BOXaggregatedDatum.BOXtotalValue / BOXaggregatedDatum.count : 0;
     });
 
     return {
@@ -6898,7 +6879,7 @@ function UBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -6963,7 +6944,7 @@ function UBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -7151,10 +7132,11 @@ function UBupdateChartData(UBstartDate, UBendDate) {
 
             if (!UBaggregatedData[UBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                UBaggregatedData[UBformattedDate] = { UBtotalValue: parseFloat(UBminutes) };
+                UBaggregatedData[UBformattedDate] = { UBtotalValue: parseFloat(UBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 UBaggregatedData[UBformattedDate].UBtotalValue += parseFloat(UBminutes);
+                UBaggregatedData[UBformattedDate].count++;
             }
         }
     });
@@ -7163,7 +7145,7 @@ function UBupdateChartData(UBstartDate, UBendDate) {
     var UBchartData = UBdateRange.map(UBresultDate => {
         var UBformattedDate = formatDateAsDMY(UBresultDate);
         var UBaggregatedDatum = UBaggregatedData[UBformattedDate];
-        return UBaggregatedDatum ? UBaggregatedDatum.UBtotalValue : 0;
+        return UBaggregatedDatum ? UBaggregatedDatum.UBtotalValue / UBaggregatedDatum.count : 0;
     });
 
     return {
@@ -7408,7 +7390,7 @@ function NBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -7473,7 +7455,7 @@ function NBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -7663,10 +7645,11 @@ function NBupdateChartData(NBstartDate, NBendDate) {
 
             if (!NBaggregatedData[NBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                NBaggregatedData[NBformattedDate] = { NBtotalValue: parseFloat(NBminutes) };
+                NBaggregatedData[NBformattedDate] = { NBtotalValue: parseFloat(NBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 NBaggregatedData[NBformattedDate].NBtotalValue += parseFloat(NBminutes);
+                NBaggregatedData[NBformattedDate].count++;
             }
         }
     });
@@ -7675,7 +7658,7 @@ function NBupdateChartData(NBstartDate, NBendDate) {
     var NBchartData = NBdateRange.map(NBresultDate => {
         var NBformattedDate = formatDateAsDMY(NBresultDate);
         var NBaggregatedDatum = NBaggregatedData[NBformattedDate];
-        return NBaggregatedDatum ? NBaggregatedDatum.NBtotalValue : 0;
+        return NBaggregatedDatum ? NBaggregatedDatum.NBtotalValue / NBaggregatedDatum.count : 0;
     });
 
     return {
@@ -7920,7 +7903,7 @@ function SBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -7985,7 +7968,7 @@ function SBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -8175,10 +8158,11 @@ function SBupdateChartData(SBstartDate, SBendDate) {
 
             if (!SBaggregatedData[SBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                SBaggregatedData[SBformattedDate] = { SBtotalValue: parseFloat(SBminutes) };
+                SBaggregatedData[SBformattedDate] = { SBtotalValue: parseFloat(SBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 SBaggregatedData[SBformattedDate].SBtotalValue += parseFloat(SBminutes);
+                SBaggregatedData[SBformattedDate].count++;
             }
         }
     });
@@ -8187,7 +8171,7 @@ function SBupdateChartData(SBstartDate, SBendDate) {
     var SBchartData = SBdateRange.map(SBresultDate => {
         var SBformattedDate = formatDateAsDMY(SBresultDate);
         var SBaggregatedDatum = SBaggregatedData[SBformattedDate];
-        return SBaggregatedDatum ? SBaggregatedDatum.SBtotalValue : 0;
+        return SBaggregatedDatum ? SBaggregatedDatum.SBtotalValue / SBaggregatedDatum.count : 0;
     });
 
     return {
@@ -8432,7 +8416,7 @@ function CBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -8497,7 +8481,7 @@ function CBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -8687,10 +8671,11 @@ function CBupdateChartData(CBstartDate, CBendDate) {
 
             if (!CBaggregatedData[CBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                CBaggregatedData[CBformattedDate] = { CBtotalValue: parseFloat(CBminutes) };
+                CBaggregatedData[CBformattedDate] = { CBtotalValue: parseFloat(CBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 CBaggregatedData[CBformattedDate].CBtotalValue += parseFloat(CBminutes);
+                CBaggregatedData[CBformattedDate].count++;
             }
         }
     });
@@ -8699,7 +8684,7 @@ function CBupdateChartData(CBstartDate, CBendDate) {
     var CBchartData = CBdateRange.map(CBresultDate => {
         var CBformattedDate = formatDateAsDMY(CBresultDate);
         var CBaggregatedDatum = CBaggregatedData[CBformattedDate];
-        return CBaggregatedDatum ? CBaggregatedDatum.CBtotalValue : 0;
+        return CBaggregatedDatum ? CBaggregatedDatum.CBtotalValue / CBaggregatedDatum.count : 0;
     });
 
     return {
@@ -8944,7 +8929,7 @@ function RBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -9009,7 +8994,7 @@ function RBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -9199,10 +9184,11 @@ function RBupdateChartData(RBstartDate, RBendDate) {
 
             if (!RBaggregatedData[RBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                RBaggregatedData[RBformattedDate] = { RBtotalValue: parseFloat(RBminutes) };
+                RBaggregatedData[RBformattedDate] = { RBtotalValue: parseFloat(RBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 RBaggregatedData[RBformattedDate].RBtotalValue += parseFloat(RBminutes);
+                RBaggregatedData[RBformattedDate].count++;
             }
         }
     });
@@ -9211,7 +9197,7 @@ function RBupdateChartData(RBstartDate, RBendDate) {
     var RBchartData = RBdateRange.map(RBresultDate => {
         var RBformattedDate = formatDateAsDMY(RBresultDate);
         var RBaggregatedDatum = RBaggregatedData[RBformattedDate];
-        return RBaggregatedDatum ? RBaggregatedDatum.RBtotalValue : 0;
+        return RBaggregatedDatum ? RBaggregatedDatum.RBtotalValue / RBaggregatedDatum.count : 0;
     });
 
     return {

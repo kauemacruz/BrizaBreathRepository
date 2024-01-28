@@ -1,4 +1,29 @@
-//BRE JS//
+﻿//BRE JS//
+const BREball = document.getElementById('BREball');
+const BREballText = document.getElementById('BREballText');
+
+function BREchangeBall(scale, duration) {
+    BREball.style.transition = `transform ${duration}s ease`;
+    BREball.style.transform = `scale(${scale})`;
+}
+
+const BREtimeInput = document.getElementById('BREtimeInput');
+const BREcountdownDisplay = document.getElementById('BREcountdownDisplay');
+let BREcountdown;
+let BREtimeRemaining = Infinity;
+let BREisPaused = false;
+// Populate the dropdown with options
+for (let BREi = 2; BREi <= 60; BREi++) { // assuming 1 to 60 minutes
+    let BREoption = document.createElement('option');
+    BREoption.value = BREi * 60;
+    if (isPortuguese) {
+        BREoption.textContent = BREi + ' minutos';
+    } else {
+        BREoption.textContent = BREi + ' minutes';
+    }
+    BREtimeInput.appendChild(BREoption);
+}
+
 const BREmodal = document.getElementById("BREmodal");
 const BREcloseModal = document.getElementById("BREcloseModal");
 const BREBTN = document.getElementById("BREBTN");
@@ -32,6 +57,11 @@ function BREclose() {
     resetTimerBRE();
     isBREON = false;
     document.getElementById('BREResultSaved').innerHTML = "";
+    clearInterval(BREcountdown);
+    BREisPaused = false;
+    BREtimeInput.classList.remove('CountdownHidden');
+    BREcountdownDisplay.classList.add('CountdownHidden');
+    BREchangeBall(1, 1);
 }
 // Event listener for closing the modal
 BREcloseModal.addEventListener("click", BREclose);
@@ -67,6 +97,8 @@ $(function () {
         document.getElementById('BRESave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickBRE();
         resetTimerBRE();
+        BREtimeInput.classList.remove('CountdownHidden');
+        BREcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
@@ -411,9 +443,11 @@ function startTimerBRE() {
     if (intBRE !== null) {
         clearInterval(intBRE);
     }
-    intBRE = setInterval(displayTimerBRE, 1000);
     setFormDisabledStateBRE(true);
-    setTimerControlsDisabledStateBRE(true, false, true);
+    setTimerControlsDisabledStateBRE(true, true, true);
+    setTimeout(() => {
+        setTimerControlsDisabledStateBRE(true, false, true);
+    }, 2000);
     timerControlsButtonsBRE.stopBRE.style.color = "rgb(177, 177, 177)";
     if (timerBRE.isBreak0BRE) {
         if (!ismuteBRE) {
@@ -424,6 +458,9 @@ function startTimerBRE() {
                 audioObjects.inhale.play();
             }, 1500);    
         }
+        setTimeout(() => {
+            BREchangeBall(1.5, timerSettingsBRE.intervalDurationBRE);
+        }, 1500); 
     }
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
@@ -432,7 +469,21 @@ function startTimerBRE() {
         resetTimerBRE();
     }
     setTimeout(() => {
+        setTimeout(() => {
+            intBRE = setInterval(displayTimerBRE, 1000);
+        }, 1000);
         startTimerTickBRE();
+        if (BREisPaused) {
+            // Resume from paused state
+            BREstartTimer(BREtimeRemaining);
+            BREisPaused = false;
+        } else {
+            // Start a new timer
+            clearInterval(BREcountdown);
+            BREtimeRemaining = BREtimeInput.value === '∞' ? Infinity : parseInt(BREtimeInput.value);
+            BREcountdownDisplay.textContent = '';
+            BREstartTimer(BREtimeRemaining);
+        }
     }, 1700);  
     timerControlsButtonsBRE.startBRE.style.display = 'none';
     timerControlsButtonsBRE.pauseBRE.style.display = 'inline';
@@ -441,7 +492,23 @@ function startTimerBRE() {
     document.getElementById('breSettings').disabled = true;
     document.getElementById('breSettings').style.color = 'rgb(177, 177, 177)';
 }
-
+function BREstartTimer(BREduration) {
+    BREcountdown = setInterval(function () {
+        if (BREduration > 0 && BREduration !== Infinity) {
+            BREduration--;
+            BREtimeRemaining = BREduration;
+            let BREContdownminutes = Math.floor(BREduration / 60);
+            let BREContdownseconds = BREduration % 60;
+            BREcountdownDisplay.textContent = `${BREContdownminutes}:${BREContdownseconds.toString().padStart(2, '0')}`;
+            BREtimeInput.classList.add('CountdownHidden');
+            BREcountdownDisplay.classList.remove('CountdownHidden');
+        } else if (BREduration == Infinity) {
+            BREcountdownDisplay.textContent = '∞';
+            BREtimeInput.classList.add('CountdownHidden');
+            BREcountdownDisplay.classList.remove('CountdownHidden');
+        }
+    }, 1000);
+}
 function pauseTimerBRE() {
     clearInterval(intBRE);
     setTimerControlsDisabledStateBRE(false, true, false);
@@ -457,6 +524,9 @@ function pauseTimerBRE() {
     document.getElementById('BRESave').style.color = '#49B79D';
     document.getElementById('breSettings').disabled = false;
     document.getElementById('breSettings').style.color = '#49B79D';
+    clearInterval(BREcountdown);
+    BREisPaused = true;
+    BREchangeBall(1, 1);
 }
 
 function stopTimerBRE() {
@@ -476,6 +546,12 @@ function stopTimerBRE() {
     document.getElementById('BRESave').style.color = 'rgb(177, 177, 177)';
     stopTimerTickBRE();
     resetTimerBRE();
+    timerControlsButtonsBRE.startBRE.style.color = '#49B79D';
+    clearInterval(BREcountdown);
+    BREisPaused = false;
+    BREtimeInput.classList.remove('CountdownHidden');
+    BREcountdownDisplay.classList.add('CountdownHidden');
+    BREchangeBall(1, 1);
 }
 
 function displayTimerBRE() {
@@ -511,6 +587,7 @@ function onTimerTickBRE() {
                 audioObjects.exhale.muted = false;
                 audioObjects.exhale.play();
             }
+            BREchangeBall(0.5, timerSettingsBRE.breakDurationBRE);
         }
         if (timerBRE.elapsedInIntervalBRE > currentIntervalDurationBRE && timerBRE.isBreak0BRE) {
             timerBRE.isBreakBRE = true;
@@ -536,6 +613,7 @@ function onTimerTickBRE() {
                 audioObjects.inhale.muted = false;
                 audioObjects.inhale.play();
             }
+            BREchangeBall(1.5, timerSettingsBRE.breakDuration2BRE);
         }
         if (timerBRE.elapsedInIntervalBRE > currentIntervalDurationBRE && timerBRE.isBreakBRE) {
             timerBRE.isBreak2BRE = true;
@@ -561,6 +639,7 @@ function onTimerTickBRE() {
                 audioObjects.exhale.muted = false;
                 audioObjects.exhale.play();
             }
+            BREchangeBall(0.5, timerSettingsBRE.breakDuration3BRE);
         }
         if (timerBRE.elapsedInIntervalBRE > currentIntervalDurationBRE && timerBRE.isBreak2BRE) {
             timerBRE.isBreak3BRE = true;
@@ -586,12 +665,7 @@ function onTimerTickBRE() {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
-        }
-        if (timerBRE.elapsedInIntervalBRE > currentIntervalDurationBRE && timerBRE.isBreak3BRE) {
-            if (!ismuteBRE) {
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
-            }
+            BREchangeBall(0.5, timerSettingsBRE.breakDuration4BRE);
             timerBRE.isBreak4BRE = true;
             timerBRE.isBreak3BRE = false;
             timerBRE.isFinishedBRE = timerBRE.intervalsDoneBRE === timerSettingsBRE.intervalCountBRE;
@@ -613,9 +687,45 @@ function onTimerTickBRE() {
         timerBRE.elapsedInIntervalBRE++;
         if (timerBRE.elapsedInIntervalBRE == currentIntervalDurationBRE && timerBRE.isBreak4BRE) {
             if (!ismuteBRE) {
-                audioObjects.inhale.muted = false;
-                audioObjects.inhale.play();
+                if(BREcountdownDisplay.textContent == '0:00') {
+                    audioObjects.inhale.muted = true;
+                    clearInterval(BREcountdown);
+                    if (!ismuteBRE) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intBRE);
+                    setTimerControlsDisabledStateBRE(true, true, false);
+                    document.getElementById('stopBtnBRE').style.color = '#990000';
+                    timerControlsButtonsBRE.pauseBRE.style.display = 'none';
+                    timerControlsButtonsBRE.startBRE.style.display = 'inline';
+                    timerControlsButtonsBRE.startBRE.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('breSettings').disabled = false;
+                    document.getElementById('breSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickBRE();
+                    document.getElementById('BREDate').value = date;
+                    document.getElementById('BRESave').disabled = false;
+                    document.getElementById('BRESave').style.color = '#49B79D';
+                    clearInterval(BREcountdown);
+                    BREisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            BREballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            BREballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
+                } else {
+                    audioObjects.inhale.muted = false;
+                    audioObjects.inhale.play();
+                }
             }
+            BREchangeBall(1.5, timerSettingsBRE.intervalDurationBRE);
         }
         if (timerBRE.elapsedInIntervalBRE > currentIntervalDurationBRE && timerBRE.isBreak4BRE) {
             timerBRE.isBreak0BRE = true;
@@ -644,18 +754,31 @@ function updateInfoBRE() {
     statusPanelBRE.elapsedInBreakIntervalBoxBRE.style.display = !timerBRE.isFinishedBRE && timerBRE.isBreakBRE ? 'block' : null;
     statusPanelBRE.elapsedInBreakIntervalBox2BRE.style.display = !timerBRE.isFinishedBRE && timerBRE.isBreak2BRE ? 'block' : null;
     statusPanelBRE.elapsedInBreakIntervalBox3BRE.style.display = !timerBRE.isFinishedBRE && timerBRE.isBreak3BRE ? 'block' : null;
-    statusPanelBRE.elapsedInBreakIntervalBox4BRE.style.display = !timerBRE.isFinishedBRE && timerBRE.isBreak4BRE ? 'block' : null;
-
-    if (timerBRE.isBreakBRE) {
-        statusPanelBRE.elapsedInBreakIntervalBRE.textContent = timerBRE.elapsedInIntervalBRE;
-    } else if (timerBRE.isBreak2BRE) {
-        statusPanelBRE.elapsedInBreakInterval2BRE.textContent = timerBRE.elapsedInIntervalBRE;
-    } else if (timerBRE.isBreak3BRE) {
-        statusPanelBRE.elapsedInBreakInterval3BRE.textContent = timerBRE.elapsedInIntervalBRE;
-    } else if (timerBRE.isBreak4BRE) {
-        statusPanelBRE.elapsedInBreakInterval4BRE.textContent = timerBRE.elapsedInIntervalBRE;
+    statusPanelBRE.elapsedInBreakIntervalBox4BRE.style.display = !timerBRE.isFinishedBRE && timerBRE.isBreak4BRE ? 'block' : null;  
+    if (isPortuguese) {
+        if(timerBRE.isBreakBRE) {
+            BREballText.textContent = 'EXPIRA';
+        } else if (timerBRE.isBreak2BRE) {
+            BREballText.textContent = 'INSPIRA';
+        } else if (timerBRE.isBreak3BRE) {
+            BREballText.textContent = 'EXPIRA';
+        } else if (timerBRE.isBreak4BRE) {
+            BREballText.textContent = 'SEGURE';
+        } else {
+            BREballText.textContent = 'INSPIRA';
+        }
     } else {
-        statusPanelBRE.elapsedInIntervalBRE.textContent = timerBRE.elapsedInIntervalBRE;
+        if (timerBRE.isBreakBRE) {
+            BREballText.textContent = 'EXHALE';
+        } else if (timerBRE.isBreak2BRE) {
+            BREballText.textContent = 'INHALE';
+        } else if (timerBRE.isBreak3BRE) {
+            BREballText.textContent = 'EXHALE';
+        } else if (timerBRE.isBreak4BRE) {
+            BREballText.textContent = 'HOLD';
+        } else {
+            BREballText.textContent = 'INHALE';
+        }
     }
     statusPanelBRE.intervalsDoneBRE.value = timerBRE.intervalsDoneBRE;
 }

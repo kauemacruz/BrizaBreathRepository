@@ -378,10 +378,10 @@ var navResults = document.getElementById("navResults"),
     backBB = document.getElementById("backBB"),
     brtSettings = document.getElementById("brtSettings"),
     backBRTset = document.getElementById("backBRTset"),
-    yogicLink = document.getElementById("yogicLink"),
-    backYogic = document.getElementById("backYogic"),
-    yogicSettings = document.getElementById("yogicSettings"),
-    backYogicSet = document.getElementById("backYogicSet"),
+    YBLink = document.getElementById("YBLink"),
+    backYB = document.getElementById("backYB"),
+    YBSettings = document.getElementById("YBSettings"),
+    backYBSet = document.getElementById("backYBSet"),
     breSettings = document.getElementById("breSettings"),
     backBREset = document.getElementById("backBREset"),
     brwSettings = document.getElementById("brwSettings"),
@@ -478,7 +478,7 @@ var navResults = document.getElementById("navResults"),
     backHUMSet = document.getElementById("backHUMset"),
     backBRTresults = document.getElementById("backBRTresults"),
     backLUNGSresults = document.getElementById("backLUNGSresults"),
-    backYOGICresults = document.getElementById("backYOGICresults"),
+    backYBresults = document.getElementById("backYBresults"),
     backBREresults = document.getElementById("backBREresults"),
     backBRWresults = document.getElementById("backBRWresults"),
     backBBresults = document.getElementById("backBBresults"),
@@ -507,8 +507,8 @@ var homePage = document.getElementById("homePage"),
     noseUnblockPage = document.getElementById("noseUnblockPage"),
     brtPage = document.getElementById("brtPage"),
     diaphragmPage = document.getElementById("diaphragmPage"),
-    yogicPage = document.getElementById("yogicPage"),
-    yogicSettingsPage = document.getElementById("yogicSettingsPage"),
+    YBPage = document.getElementById("YBPage"),
+    YBSettingsPage = document.getElementById("YBSettingsPage"),
     BREPage = document.getElementById("BREPage"),
     BRWPage = document.getElementById("BRWPage"),
     BBPage = document.getElementById("BBPage"),
@@ -615,16 +615,16 @@ navResults.onclick = function () {
                     LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
                 }
                 LUNGSupdateOverview();
-                // Check if there is at least one non-empty and non-null YOGICtimeString
-                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YOGICresultData) {
-                    var YOGICtimeString = YOGICresultData.yogicTotalTime;
-                    return YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null;
+                // Check if there is at least one non-empty and non-null YBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YBresultData) {
+                    var YBtimeString = YBresultData.YBTotalTime;
+                    return YBtimeString !== undefined && YBtimeString !== '' && YBtimeString !== null;
                 });
 
                 if (hasNonEmptyTimeStrings) {
-                    YOGICupdateChart(YOGICstartDate, YOGICendDate);
+                    YBupdateChart(YBstartDate, YBendDate);
                 }
-                YOGICupdateOverview();
+                YBupdateOverview();
                 // Check if there is at least one non-empty and non-null BREtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BREresultData) {
                     var BREtimeString = BREresultData.breTotalTime;
@@ -858,16 +858,16 @@ navResults2.onclick = function () {
                     LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
                 }
                 LUNGSupdateOverview();
-                // Check if there is at least one non-empty and non-null YOGICtimeString
-                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YOGICresultData) {
-                    var YOGICtimeString = YOGICresultData.yogicTotalTime;
-                    return YOGICtimeString !== undefined && YOGICtimeString !== '' && YOGICtimeString !== null;
+                // Check if there is at least one non-empty and non-null YBtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YBresultData) {
+                    var YBtimeString = YBresultData.YBTotalTime;
+                    return YBtimeString !== undefined && YBtimeString !== '' && YBtimeString !== null;
                 });
 
                 if (hasNonEmptyTimeStrings) {
-                    YOGICupdateChart(YOGICstartDate, YOGICendDate);
+                    YBupdateChart(YBstartDate, YBendDate);
                 }
-                YOGICupdateOverview();
+                YBupdateOverview();
                 // Check if there is at least one non-empty and non-null BREtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BREresultData) {
                     var BREtimeString = BREresultData.breTotalTime;
@@ -1170,21 +1170,21 @@ backDiaphragm.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-backYogic.onclick = function () {
-    openPage(yogicPage, programPage, 'slideRight');
+backYB.onclick = function () {
+    openPage(YBPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-yogicSettings.onclick = function () {
-    openPage(yogicPage, yogicSettingsPage, 'slideUp');
+YBSettings.onclick = function () {
+    openPage(YBPage, YBSettingsPage, 'slideUp');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "block";
 }
-backYogicSet.onclick = function () {
+backYBSet.onclick = function () {
     if (!audioPlayerBRT.muted) {
         audioPlayerBRT.pause();
     }
     audioPlayerBRT.currentTime = 0;
-    openPage(yogicSettingsPage, yogicPage, 'slideDown');
+    openPage(YBSettingsPage, YBPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "none";
 }
@@ -1848,11 +1848,11 @@ backBRTresults.onclick = function () {
     BRTresultDateHeader.innerHTML = '';
     BRTresultSessions.innerHTML = '';
 }
-backYOGICresults.onclick = function () {
-    openPage(YOGICresultPage, resultsPage, 'slideDown');
+backYBresults.onclick = function () {
+    openPage(YBresultPage, resultsPage, 'slideDown');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    YOGICresultDateHeader.innerHTML = '';
-    YOGICresultSessions.innerHTML = '';
+    YBresultDateHeader.innerHTML = '';
+    YBresultSessions.innerHTML = '';
 }
 backBREresults.onclick = function () {
     openPage(BREresultPage, resultsPage, 'slideDown');

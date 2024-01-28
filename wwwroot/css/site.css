@@ -357,6 +357,7 @@ hr {
 }
 .text-danger {
     font-size: 14px;
+    padding-right: 2rem;
 }
 @media only screen and (min-width: 700px) {
     .form-control {
@@ -1332,13 +1333,13 @@ input#intervalsDoneHAT {
 button#startBtnWH {
     margin-right: 0 !important;
     width: 10rem;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 button#pauseBtnWH {
     margin-right: 0 !important;
     width: 10rem;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 input#WHSave {
@@ -1409,6 +1410,13 @@ form#WHForm {
 button#startBtnKB {
     margin-right: 0 !important;
     width: 10rem;
+    margin-bottom: 25px;
+}
+
+button#pauseBtnKB {
+    margin-right: 0 !important;
+    width: 10rem;
+    margin-bottom: 25px;
 }
 
 input#KBSave {
@@ -3178,4 +3186,7 @@ input.btn.btn-danger.CO2delete-button {
 }
 .timer-overviewHidden{
     display: none;
+}
+li::marker {
+    content: '';
 }

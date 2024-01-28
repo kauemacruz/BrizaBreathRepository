@@ -630,7 +630,6 @@ function BRTupdateOverview() {
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                      }
                  });
@@ -725,7 +724,6 @@ function BRTupdateOverview() {
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                      }
                  });
@@ -829,12 +827,10 @@ function BRTupdateOverview() {
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'pranayamaLink2':
                              openPage(programPage, PRANAPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                      }
                  });
@@ -937,12 +933,10 @@ function BRTupdateOverview() {
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'lungsLink2':
                              openPage(programPage, lungsPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'HATLink':
                              openPage(programPage, HATPage, 'slideUp');
@@ -1055,17 +1049,14 @@ function BRTupdateOverview() {
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'lungsLink2':
                              openPage(programPage, lungsPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'breathHoldsLink2':
                              openPage(programPage, BHPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'HATLink':
                              openPage(programPage, HATPage, 'slideUp');
@@ -1172,20 +1163,16 @@ function BRTupdateOverview() {
                              openPage(programPage, BBPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                              break;
-                        
                          case 'brtLink2':
                              openPage(programPage, brtPage, 'slideUp');
-                             startAudios();
                              break;
                          case 'lungsLink2':
                              openPage(programPage, lungsPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'breathHoldsLink2':
                              openPage(programPage, BHPage, 'slideUp');
                              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             startAudios();
                              break;
                          case 'HATLink':
                              openPage(programPage, HATPage, 'slideUp');
@@ -1238,7 +1225,6 @@ function BRTupdateOverview() {
                      case 'brtLink2':
                          openPage(programPage, brtPage, 'slideUp');
                          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                         startAudios();
                          break;
                  }
              });
@@ -1327,7 +1313,6 @@ function BRTupdateOverview() {
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                     }
                 });
@@ -1357,7 +1342,7 @@ function BRTupdateOverview() {
                     '<p class="spreadExercises"> Spread the following exercises throughout the day:</p> ' +
                     '<ul> Breath Recovery Exercise 3 times a day (sitting or walking, 5 min each session)</ul> ' +
                     '<ul> Briza Breathing (5 minutes)</ul> ' +
-                    '<ul> YB Breathing (5 minutes)</ul> ' +
+                    '<ul> Yogic Breathing (5 minutes)</ul> ' +
                     '<ul> Daily walk of 10 to 15 minutes. If nasal breathing is easy and effortless while walking, add Walking Recovery Exercise</ul>' +
                     '</div>' +
                     '<div class="BHGrid"> ' +
@@ -1423,7 +1408,6 @@ function BRTupdateOverview() {
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                     }
                 });
@@ -1453,7 +1437,7 @@ function BRTupdateOverview() {
                     '<p class="spreadExercises"> Spread the following exercises throughout the day:</p> ' +
                     '<ul> Breath Recovery Exercise 3 times a day (sitting or walking, 5 min each session)</ul> ' +
                     '<ul> Briza Breathing twice a day (6 minutes)</ul> ' +
-                    '<ul> YB Breathing (5 minutes)</ul> ' +
+                    '<ul> Yogic Breathing (5 minutes)</ul> ' +
                     '<ul> Light breathing through nose while walking or slow jogging. 30 to 60 minutes per day</ul>' +
                     '<ul> Walking Recovery Exercise at the end of your daily walk (5 minutes)</ul>' +
                     '<ul> Start to explore our Pranayama Exercises</ul>' +
@@ -1527,12 +1511,10 @@ function BRTupdateOverview() {
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'pranayamaLink2':
                             openPage(programPage, PRANAPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                     }
                 });
@@ -1635,12 +1617,10 @@ function BRTupdateOverview() {
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'HATLink':
                             openPage(programPage, HATPage, 'slideUp');
@@ -1752,17 +1732,14 @@ function BRTupdateOverview() {
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'breathHoldsLink2':
                             openPage(programPage, BHPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'HATLink':
                             openPage(programPage, HATPage, 'slideUp');
@@ -1870,17 +1847,14 @@ function BRTupdateOverview() {
                             break;
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideUp');
-                            startAudios();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'breathHoldsLink2':
                             openPage(programPage, BHPage, 'slideUp');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            startAudios();
                             break;
                         case 'HATLink':
                             openPage(programPage, HATPage, 'slideUp');
@@ -1931,7 +1905,6 @@ function BRTupdateOverview() {
                     case 'brtLink2':
                         openPage(programPage, brtPage, 'slideUp');
                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        startAudios();
                         break;
                 }             
             });
@@ -2683,7 +2656,7 @@ function YBinitializeChart() {
                 legend: { display: false }, // Display the legend
                 title: {
                     display: true,
-                    text: "Seus resultados da Respira\u00E7\u00E3o YB " + "(" + getYear(YBendDate) + ")",
+                    text: "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")",
                     font: {
                         family: 'Playfair Display', // Change to your desired font family
                         size: 14 // Change to your desired font size
@@ -2694,7 +2667,7 @@ function YBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia ';
+                            return 'M\u00E9dia do dia ';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -2748,7 +2721,7 @@ function YBinitializeChart() {
                 legend: { display: false }, // Display the legend
                 title: {
                     display: true,
-                    text: "Your YB Breathing results " + "(" + getYear(YBendDate) + ")",
+                    text: "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")",
                     font: {
                         family: 'Playfair Display', // Change to your desired font family
                         size: 14 // Change to your desired font size
@@ -2759,7 +2732,7 @@ function YBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -2814,9 +2787,9 @@ function YBinitializeChart() {
                         YBendDate.setDate(YBendDate.getDate() - 1);
                         YBstartDate.setDate(YBstartDate.getDate() - 1);
                         if (isPortuguese) {
-                            YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o YB " + "(" + getYear(YBendDate) + ")";
+                            YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
                         } else {
-                            YBchart.options.title.text = "Your YB Breathing results " + "(" + getYear(YBendDate) + ")";
+                            YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
                         }
                     } else if (YBdelta < 0) {
                         if (formatDateAsDMY(YBendDate) == formatDateAsDMY(YBtoday)) {
@@ -2826,9 +2799,9 @@ function YBinitializeChart() {
                             YBendDate.setDate(YBendDate.getDate() + 1);
                             YBstartDate.setDate(YBstartDate.getDate() + 1);
                             if (isPortuguese) {
-                                YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o YB " + "(" + getYear(YBendDate) + ")";
+                                YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
                             } else {
-                                YBchart.options.title.text = "Your YB Breathing results " + "(" + getYear(YBendDate) + ")";
+                                YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
                             }                        }
                     }
                     YBupdateChart(YBstartDate, YBendDate);
@@ -2851,9 +2824,9 @@ function YBinitializeChart() {
             YBendDate.setDate(YBendDate.getDate() - 1);
             YBstartDate.setDate(YBstartDate.getDate() - 1);
             if (isPortuguese) {
-                YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o YB " + "(" + getYear(YBendDate) + ")";
+                YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
             } else {
-                YBchart.options.title.text = "Your YB Breathing results " + "(" + getYear(YBendDate) + ")";
+                YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
             }        } else if (YBdelta > 0) {
             if (formatDateAsDMY(YBendDate) == formatDateAsDMY(YBtoday)) { }
             else {
@@ -2861,9 +2834,9 @@ function YBinitializeChart() {
                 YBendDate.setDate(YBendDate.getDate() + 1);
                 YBstartDate.setDate(YBstartDate.getDate() + 1);
                 if (isPortuguese) {
-                    YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o YB " + "(" + getYear(YBendDate) + ")";
+                    YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
                 } else {
-                    YBchart.options.title.text = "Your YB Breathing results " + "(" + getYear(YBendDate) + ")";
+                    YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
                 }            }
         }
         YBupdateChart(YBstartDate, YBendDate);
@@ -2947,19 +2920,20 @@ function YBupdateChartData(YBstartDate, YBendDate) {
 
             if (!YBaggregatedData[YBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                YBaggregatedData[YBformattedDate] = { YBtotalValue: parseFloat(YBminutes) };
+                YBaggregatedData[YBformattedDate] = { YBtotalValue: parseFloat(YBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 YBaggregatedData[YBformattedDate].YBtotalValue += parseFloat(YBminutes);
+                YBaggregatedData[YBformattedDate].count++;
             }
         }
     });
-
+   
     var YBmaxResult = YBfindMaxResult();
     var YBchartData = YBdateRange.map(YBresultDate => {
         var YBformattedDate = formatDateAsDMY(YBresultDate);
         var YBaggregatedDatum = YBaggregatedData[YBformattedDate];
-        return YBaggregatedDatum ? YBaggregatedDatum.YBtotalValue : 0;
+        return YBaggregatedDatum ? YBaggregatedDatum.YBtotalValue / YBaggregatedDatum.count : 0;
     });
 
     return {
@@ -3215,7 +3189,7 @@ function BREinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -3280,7 +3254,7 @@ function BREinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -3468,10 +3442,11 @@ function BREupdateChartData(BREstartDate, BREendDate) {
 
             if (!BREaggregatedData[BREformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                BREaggregatedData[BREformattedDate] = { BREtotalValue: parseFloat(BREminutes) };
+                BREaggregatedData[BREformattedDate] = { BREtotalValue: parseFloat(BREminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 BREaggregatedData[BREformattedDate].BREtotalValue += parseFloat(BREminutes);
+                BREaggregatedData[BREformattedDate].count++;
             }
         }
     });
@@ -3480,7 +3455,7 @@ function BREupdateChartData(BREstartDate, BREendDate) {
     var BREchartData = BREdateRange.map(BREresultDate => {
         var BREformattedDate = formatDateAsDMY(BREresultDate);
         var BREaggregatedDatum = BREaggregatedData[BREformattedDate];
-        return BREaggregatedDatum ? BREaggregatedDatum.BREtotalValue : 0;
+        return BREaggregatedDatum ? BREaggregatedDatum.BREtotalValue / BREaggregatedDatum.count : 0;
     });
 
     return {
@@ -3801,7 +3776,7 @@ function BRWinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -3989,10 +3964,11 @@ function BRWupdateChartData(BRWstartDate, BRWendDate) {
 
             if (!BRWaggregatedData[BRWformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                BRWaggregatedData[BRWformattedDate] = { BRWtotalValue: parseFloat(BRWminutes) };
+                BRWaggregatedData[BRWformattedDate] = { BRWtotalValue: parseFloat(BRWminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 BRWaggregatedData[BRWformattedDate].BRWtotalValue += parseFloat(BRWminutes);
+                BRWaggregatedData[BRWformattedDate].count++;
             }
         }
     });
@@ -4001,7 +3977,7 @@ function BRWupdateChartData(BRWstartDate, BRWendDate) {
     var BRWchartData = BRWdateRange.map(BRWresultDate => {
         var BRWformattedDate = formatDateAsDMY(BRWresultDate);
         var BRWaggregatedDatum = BRWaggregatedData[BRWformattedDate];
-        return BRWaggregatedDatum ? BRWaggregatedDatum.BRWtotalValue : 0;
+        return BRWaggregatedDatum ? BRWaggregatedDatum.BRWtotalValue / BRWaggregatedDatum.count : 0;
     });
 
     return {
@@ -4322,7 +4298,7 @@ function HUMinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -4510,10 +4486,11 @@ function HUMupdateChartData(HUMstartDate, HUMendDate) {
 
             if (!HUMaggregatedData[HUMformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                HUMaggregatedData[HUMformattedDate] = { HUMtotalValue: parseFloat(HUMminutes) };
+                HUMaggregatedData[HUMformattedDate] = { HUMtotalValue: parseFloat(HUMminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 HUMaggregatedData[HUMformattedDate].HUMtotalValue += parseFloat(HUMminutes);
+                HUMaggregatedData[HUMformattedDate].count++;
             }
         }
     });
@@ -4522,7 +4499,7 @@ function HUMupdateChartData(HUMstartDate, HUMendDate) {
     var HUMchartData = HUMdateRange.map(HUMresultDate => {
         var HUMformattedDate = formatDateAsDMY(HUMresultDate);
         var HUMaggregatedDatum = HUMaggregatedData[HUMformattedDate];
-        return HUMaggregatedDatum ? HUMaggregatedDatum.HUMtotalValue : 0;
+        return HUMaggregatedDatum ? HUMaggregatedDatum.HUMtotalValue / HUMaggregatedDatum.count : 0;
     });
 
     return {
@@ -4844,7 +4821,7 @@ function BBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -4909,7 +4886,7 @@ function BBinitializeChart() {
                 displayColors: false,
                 callbacks: {
                     title: function (tooltipItems, data) {
-                        return 'Total Results on';
+                        return 'Average Results on';
                     },
                     label: function (tooltipItem, data) {
                         var label = data.labels[tooltipItem.index];
@@ -5096,10 +5073,11 @@ function BBupdateChartData(BBstartDate, BBendDate) {
 
             if (!BBaggregatedData[BBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                BBaggregatedData[BBformattedDate] = { BBtotalValue: parseFloat(BBminutes) };
+                BBaggregatedData[BBformattedDate] = { BBtotalValue: parseFloat(BBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 BBaggregatedData[BBformattedDate].BBtotalValue += parseFloat(BBminutes);
+                BBaggregatedData[BBformattedDate].count++;
             }
         }
     });
@@ -5108,7 +5086,7 @@ function BBupdateChartData(BBstartDate, BBendDate) {
     var BBchartData = BBdateRange.map(BBresultDate => {
         var BBformattedDate = formatDateAsDMY(BBresultDate);
         var BBaggregatedDatum = BBaggregatedData[BBformattedDate];
-        return BBaggregatedDatum ? BBaggregatedDatum.BBtotalValue : 0;
+        return BBaggregatedDatum ? BBaggregatedDatum.BBtotalValue / BBaggregatedDatum.count : 0;
     });
 
     return {
@@ -5429,7 +5407,7 @@ function APinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -5619,10 +5597,11 @@ function APupdateChartData(APstartDate, APendDate) {
 
             if (!APaggregatedData[APformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                APaggregatedData[APformattedDate] = { APtotalValue: parseFloat(APminutes) };
+                APaggregatedData[APformattedDate] = { APtotalValue: parseFloat(APminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 APaggregatedData[APformattedDate].APtotalValue += parseFloat(APminutes);
+                APaggregatedData[APformattedDate].count++;
             }
         }
     });
@@ -5631,7 +5610,7 @@ function APupdateChartData(APstartDate, APendDate) {
     var APchartData = APdateRange.map(APresultDate => {
         var APformattedDate = formatDateAsDMY(APresultDate);
         var APaggregatedDatum = APaggregatedData[APformattedDate];
-        return APaggregatedDatum ? APaggregatedDatum.APtotalValue : 0;
+        return APaggregatedDatum ? APaggregatedDatum.APtotalValue / APaggregatedDatum.count : 0;
     });
 
     return {
@@ -5877,7 +5856,7 @@ function CTinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia ';
+                            return 'M\u00E9dia do dia ';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -5942,7 +5921,7 @@ function CTinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -6130,10 +6109,11 @@ function CTupdateChartData(CTstartDate, CTendDate) {
 
             if (!CTaggregatedData[CTformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                CTaggregatedData[CTformattedDate] = { CTtotalValue: parseFloat(CTminutes) };
+                CTaggregatedData[CTformattedDate] = { CTtotalValue: parseFloat(CTminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 CTaggregatedData[CTformattedDate].CTtotalValue += parseFloat(CTminutes);
+                CTaggregatedData[CTformattedDate].count++;
             }
         }
     });
@@ -6142,7 +6122,7 @@ function CTupdateChartData(CTstartDate, CTendDate) {
     var CTchartData = CTdateRange.map(CTresultDate => {
         var CTformattedDate = formatDateAsDMY(CTresultDate);
         var CTaggregatedDatum = CTaggregatedData[CTformattedDate];
-        return CTaggregatedDatum ? CTaggregatedDatum.CTtotalValue : 0;
+        return CTaggregatedDatum ? CTaggregatedDatum.CTtotalValue / CTaggregatedDatum.count : 0;
     });
 
     return {
@@ -6388,7 +6368,7 @@ function BOXinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -6453,7 +6433,7 @@ function BOXinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -6641,10 +6621,11 @@ function BOXupdateChartData(BOXstartDate, BOXendDate) {
 
             if (!BOXaggregatedData[BOXformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                BOXaggregatedData[BOXformattedDate] = { BOXtotalValue: parseFloat(BOXminutes) };
+                BOXaggregatedData[BOXformattedDate] = { BOXtotalValue: parseFloat(BOXminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 BOXaggregatedData[BOXformattedDate].BOXtotalValue += parseFloat(BOXminutes);
+                BOXaggregatedData[BOXformattedDate].count++;
             }
         }
     });
@@ -6653,7 +6634,7 @@ function BOXupdateChartData(BOXstartDate, BOXendDate) {
     var BOXchartData = BOXdateRange.map(BOXresultDate => {
         var BOXformattedDate = formatDateAsDMY(BOXresultDate);
         var BOXaggregatedDatum = BOXaggregatedData[BOXformattedDate];
-        return BOXaggregatedDatum ? BOXaggregatedDatum.BOXtotalValue : 0;
+        return BOXaggregatedDatum ? BOXaggregatedDatum.BOXtotalValue / BOXaggregatedDatum.count : 0;
     });
 
     return {
@@ -6898,7 +6879,7 @@ function UBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -6963,7 +6944,7 @@ function UBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -7151,10 +7132,11 @@ function UBupdateChartData(UBstartDate, UBendDate) {
 
             if (!UBaggregatedData[UBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                UBaggregatedData[UBformattedDate] = { UBtotalValue: parseFloat(UBminutes) };
+                UBaggregatedData[UBformattedDate] = { UBtotalValue: parseFloat(UBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 UBaggregatedData[UBformattedDate].UBtotalValue += parseFloat(UBminutes);
+                UBaggregatedData[UBformattedDate].count++;
             }
         }
     });
@@ -7163,7 +7145,7 @@ function UBupdateChartData(UBstartDate, UBendDate) {
     var UBchartData = UBdateRange.map(UBresultDate => {
         var UBformattedDate = formatDateAsDMY(UBresultDate);
         var UBaggregatedDatum = UBaggregatedData[UBformattedDate];
-        return UBaggregatedDatum ? UBaggregatedDatum.UBtotalValue : 0;
+        return UBaggregatedDatum ? UBaggregatedDatum.UBtotalValue / UBaggregatedDatum.count : 0;
     });
 
     return {
@@ -7408,7 +7390,7 @@ function NBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -7473,7 +7455,7 @@ function NBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -7663,10 +7645,11 @@ function NBupdateChartData(NBstartDate, NBendDate) {
 
             if (!NBaggregatedData[NBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                NBaggregatedData[NBformattedDate] = { NBtotalValue: parseFloat(NBminutes) };
+                NBaggregatedData[NBformattedDate] = { NBtotalValue: parseFloat(NBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 NBaggregatedData[NBformattedDate].NBtotalValue += parseFloat(NBminutes);
+                NBaggregatedData[NBformattedDate].count++;
             }
         }
     });
@@ -7675,7 +7658,7 @@ function NBupdateChartData(NBstartDate, NBendDate) {
     var NBchartData = NBdateRange.map(NBresultDate => {
         var NBformattedDate = formatDateAsDMY(NBresultDate);
         var NBaggregatedDatum = NBaggregatedData[NBformattedDate];
-        return NBaggregatedDatum ? NBaggregatedDatum.NBtotalValue : 0;
+        return NBaggregatedDatum ? NBaggregatedDatum.NBtotalValue / NBaggregatedDatum.count : 0;
     });
 
     return {
@@ -7920,7 +7903,7 @@ function SBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -7985,7 +7968,7 @@ function SBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -8175,10 +8158,11 @@ function SBupdateChartData(SBstartDate, SBendDate) {
 
             if (!SBaggregatedData[SBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                SBaggregatedData[SBformattedDate] = { SBtotalValue: parseFloat(SBminutes) };
+                SBaggregatedData[SBformattedDate] = { SBtotalValue: parseFloat(SBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 SBaggregatedData[SBformattedDate].SBtotalValue += parseFloat(SBminutes);
+                SBaggregatedData[SBformattedDate].count++;
             }
         }
     });
@@ -8187,7 +8171,7 @@ function SBupdateChartData(SBstartDate, SBendDate) {
     var SBchartData = SBdateRange.map(SBresultDate => {
         var SBformattedDate = formatDateAsDMY(SBresultDate);
         var SBaggregatedDatum = SBaggregatedData[SBformattedDate];
-        return SBaggregatedDatum ? SBaggregatedDatum.SBtotalValue : 0;
+        return SBaggregatedDatum ? SBaggregatedDatum.SBtotalValue / SBaggregatedDatum.count : 0;
     });
 
     return {
@@ -8432,7 +8416,7 @@ function CBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -8497,7 +8481,7 @@ function CBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -8687,10 +8671,11 @@ function CBupdateChartData(CBstartDate, CBendDate) {
 
             if (!CBaggregatedData[CBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                CBaggregatedData[CBformattedDate] = { CBtotalValue: parseFloat(CBminutes) };
+                CBaggregatedData[CBformattedDate] = { CBtotalValue: parseFloat(CBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 CBaggregatedData[CBformattedDate].CBtotalValue += parseFloat(CBminutes);
+                CBaggregatedData[CBformattedDate].count++;
             }
         }
     });
@@ -8699,7 +8684,7 @@ function CBupdateChartData(CBstartDate, CBendDate) {
     var CBchartData = CBdateRange.map(CBresultDate => {
         var CBformattedDate = formatDateAsDMY(CBresultDate);
         var CBaggregatedDatum = CBaggregatedData[CBformattedDate];
-        return CBaggregatedDatum ? CBaggregatedDatum.CBtotalValue : 0;
+        return CBaggregatedDatum ? CBaggregatedDatum.CBtotalValue / CBaggregatedDatum.count : 0;
     });
 
     return {
@@ -8944,7 +8929,7 @@ function RBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Resultado total do dia';
+                            return 'M\u00E9dia do dia';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -9009,7 +8994,7 @@ function RBinitializeChart() {
                     displayColors: false,
                     callbacks: {
                         title: function (tooltipItems, data) {
-                            return 'Total Results on';
+                            return 'Average Results on';
                         },
                         label: function (tooltipItem, data) {
                             var label = data.labels[tooltipItem.index];
@@ -9199,10 +9184,11 @@ function RBupdateChartData(RBstartDate, RBendDate) {
 
             if (!RBaggregatedData[RBformattedDate]) {
                 // If the date doesn't exist in the aggregated data, create a new entry
-                RBaggregatedData[RBformattedDate] = { RBtotalValue: parseFloat(RBminutes) };
+                RBaggregatedData[RBformattedDate] = { RBtotalValue: parseFloat(RBminutes), count: 1 };
             } else {
                 // If the date already exists, update the existing entry
                 RBaggregatedData[RBformattedDate].RBtotalValue += parseFloat(RBminutes);
+                RBaggregatedData[RBformattedDate].count++;
             }
         }
     });
@@ -9211,7 +9197,7 @@ function RBupdateChartData(RBstartDate, RBendDate) {
     var RBchartData = RBdateRange.map(RBresultDate => {
         var RBformattedDate = formatDateAsDMY(RBresultDate);
         var RBaggregatedDatum = RBaggregatedData[RBformattedDate];
-        return RBaggregatedDatum ? RBaggregatedDatum.RBtotalValue : 0;
+        return RBaggregatedDatum ? RBaggregatedDatum.RBtotalValue / RBaggregatedDatum.count : 0;
     });
 
     return {

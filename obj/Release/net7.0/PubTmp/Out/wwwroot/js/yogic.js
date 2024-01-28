@@ -1,44 +1,74 @@
-/*YOGIC JS*/
-const YOGICmodal = document.getElementById("YOGICmodal");
-const YOGICcloseModal = document.getElementById("YOGICcloseModal");
-const YOGICBTN = document.getElementById("YOGICBTN");
+﻿/*YB JS*/
+const YBball = document.getElementById('YBball');
+const YBballText = document.getElementById('YBballText');
 
-function YOGICopenmodal() {
-    YOGICmodal.style.display = "block";
+function YBchangeBall(scale, duration) {
+    YBball.style.transition = `transform ${duration}s ease`;
+    YBball.style.transform = `scale(${scale})`;
+}
+
+const YBtimeInput = document.getElementById('YBtimeInput');
+const YBcountdownDisplay = document.getElementById('YBcountdownDisplay');
+let YBcountdown;
+let YBtimeRemaining = Infinity;
+let YBisPaused = false;
+
+// Populate the dropdown with options
+for (let YBi = 2; YBi <= 60; YBi++) { // assuming 1 to 60 minutes
+    let YBoption = document.createElement('option');
+    YBoption.value = YBi * 60;
+    if (isPortuguese) {
+        YBoption.textContent = YBi + ' minutos';
+    } else {
+        YBoption.textContent = YBi + ' minutes';
+    }
+    YBtimeInput.appendChild(YBoption);
+}
+const YBmodal = document.getElementById("YBmodal");
+const YBcloseModal = document.getElementById("YBcloseModal");
+const YBBTN = document.getElementById("YBBTN");
+
+function YBopenmodal() {
+    YBmodal.style.display = "block";
     audioObjects.exhale.load();
     audioObjects.inhale.load();
     audioObjects.hold.load();
 }
 // Function to close the modal
-function YOGICclose() {
-    YOGICmodal.style.display = "none";
-    clearInterval(intYogic);
-    [secondsYogic, minutesYogic, hoursYogic] = [0, 0, 0];
-    timerRefYogic.value = '00 : 00 : 00';
+function YBclose() {
+    YBmodal.style.display = "none";
+    clearInterval(intYB);
+    [secondsYB, minutesYB, hoursYB] = [0, 0, 0];
+    timerRefYB.value = '00 : 00 : 00';
     if (!audioPlayerBRT.muted) {
         audioPlayerBRT.pause();
     }
     audioPlayerBRT.currentTime = 0;
-    timerControlsButtonsYogic.pauseYogic.style.display = 'none';
-    timerControlsButtonsYogic.startYogic.style.display = 'inline';
-    setFormDisabledStateYogic(false);
-    setTimerControlsDisabledStateYogic(false, true, true);
-    timerControlsButtonsYogic.stopYogic.style.color = "rgb(177, 177, 177)";
-    document.getElementById('yogicSave').disabled = true;
-    document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('yogicSettings').disabled = false;
-    document.getElementById('yogicSettings').style.color = '#49B79D';
-    stopTimerTickYogic();
-    resetTimerYogic();
-    document.getElementById('yogicResultSaved').innerHTML = "";
+    timerControlsButtonsYB.pauseYB.style.display = 'none';
+    timerControlsButtonsYB.startYB.style.display = 'inline';
+    setFormDisabledStateYB(false);
+    setTimerControlsDisabledStateYB(false, true, true);
+    timerControlsButtonsYB.stopYB.style.color = "rgb(177, 177, 177)";
+    document.getElementById('YBSave').disabled = true;
+    document.getElementById('YBSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('YBSettings').disabled = false;
+    document.getElementById('YBSettings').style.color = '#49B79D';
+    stopTimerTickYB();
+    resetTimerYB();
+    document.getElementById('YBResultSaved').innerHTML = "";
+    clearInterval(YBcountdown);
+    YBisPaused = false;
+    YBtimeInput.classList.remove('CountdownHidden');
+    YBcountdownDisplay.classList.add('CountdownHidden');
+    YBchangeBall(1, 1);
 }
 // Event listener for closing the modal
-YOGICcloseModal.addEventListener("click", YOGICclose);
-YOGICBTN.onclick = function () {
-    YOGICopenmodal();
+YBcloseModal.addEventListener("click", YBclose);
+YBBTN.onclick = function () {
+    YBopenmodal();
 }
 $(function () {
-    $('#yogicForm').on('submit', function (e) {
+    $('#YBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
 
         var formData = new FormData(this); // Get the form data
@@ -50,341 +80,345 @@ $(function () {
             processData: false,
             contentType: false,
             success: function (result) {
-                $('#yogicResultSaved').html(result); // Update the result section with the server response
+                $('#YBResultSaved').html(result); // Update the result section with the server response
             }
         });
-        clearInterval(intYogic);
-        [secondsYogic, minutesYogic, hoursYogic] = [0, 0, 0];
-        timerRefYogic.value = '00 : 00 : 00';
+        clearInterval(intYB);
+        [secondsYB, minutesYB, hoursYB] = [0, 0, 0];
+        timerRefYB.value = '00 : 00 : 00';
         audioPlayerBRT.currentTime = 0
-        timerControlsButtonsYogic.pauseYogic.style.display = 'none';
-        timerControlsButtonsYogic.startYogic.style.display = 'inline';
-        setFormDisabledStateYogic(false);
-        setTimerControlsDisabledStateYogic(false, true, true);
-        timerControlsButtonsYogic.stopYogic.style.color = "rgb(177, 177, 177)";
-        document.getElementById('yogicSave').disabled = true;
-        document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
-        stopTimerTickYogic();
-        resetTimerYogic();
+        timerControlsButtonsYB.pauseYB.style.display = 'none';
+        timerControlsButtonsYB.startYB.style.display = 'inline';
+        setFormDisabledStateYB(false);
+        setTimerControlsDisabledStateYB(false, true, true);
+        timerControlsButtonsYB.stopYB.style.color = "rgb(177, 177, 177)";
+        document.getElementById('YBSave').disabled = true;
+        document.getElementById('YBSave').style.color = 'rgb(177, 177, 177)';
+        stopTimerTickYB();
+        resetTimerYB();
+        YBtimeInput.classList.remove('CountdownHidden');
+        YBcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
 let
-    formSettingsFieldsYogic,
-    timerControlsButtonsYogic,
-    statusPanelYogic,
-    timerYogic,
-    timerSettingsYogic;
+    formSettingsFieldsYB,
+    timerControlsButtonsYB,
+    statusPanelYB,
+    timerYB,
+    timerSettingsYB;
 
-function setTimerSettingsYogic(
-    intervalCountYogic = timerSettingsYogic.intervalCountYogic,
-    intervalDurationYogic = timerSettingsYogic.intervalDurationYogic,
-    enableBreakYogic = timerSettingsYogic.enableBreakYogic,
-    breakDurationYogic = timerSettingsYogic.breakDurationYogic,
-    enableBreak2Yogic = timerSettingsYogic.enableBreak2Yogic,
-    breakDuration2Yogic = timerSettingsYogic.breakDuration2Yogic,
-    enableBreak3Yogic = timerSettingsYogic.enableBreak3Yogic,
-    breakDuration3Yogic = timerSettingsYogic.breakDuration3Yogic
+function setTimerSettingsYB(
+    intervalCountYB = timerSettingsYB.intervalCountYB,
+    intervalDurationYB = timerSettingsYB.intervalDurationYB,
+    enableBreakYB = timerSettingsYB.enableBreakYB,
+    breakDurationYB = timerSettingsYB.breakDurationYB,
+    enableBreak2YB = timerSettingsYB.enableBreak2YB,
+    breakDuration2YB = timerSettingsYB.breakDuration2YB,
+    enableBreak3YB = timerSettingsYB.enableBreak3YB,
+    breakDuration3YB = timerSettingsYB.breakDuration3YB
 ) {
-    timerSettingsYogic = {
-        intervalCountYogic,
-        intervalDurationYogic,
-        enableBreakYogic,
-        breakDurationYogic,
-        enableBreak2Yogic,
-        breakDuration2Yogic,
-        enableBreak3Yogic,
-        breakDuration3Yogic
+    timerSettingsYB = {
+        intervalCountYB,
+        intervalDurationYB,
+        enableBreakYB,
+        breakDurationYB,
+        enableBreak2YB,
+        breakDuration2YB,
+        enableBreak3YB,
+        breakDuration3YB
     };
 }
 
-function resetTimerYogic() {
-    timerYogic = {
-        totalTimeElapsedYogic: 0,
-        elapsedInIntervalYogic: 0,
-        intervalsDoneYogic: 0,
-        isBreak3Yogic: true,
-        isBreakYogic: false,
-        isBreak2Yogic: false,
-        isBreak4Yogic: false,
-        isFinishedYogic: false
+function resetTimerYB() {
+    timerYB = {
+        totalTimeElapsedYB: 0,
+        elapsedInIntervalYB: 0,
+        intervalsDoneYB: 0,
+        isBreak3YB: true,
+        isBreakYB: false,
+        isBreak2YB: false,
+        isBreak4YB: false,
+        isFinishedYB: false
     };
-    updateInfoYogic();
+    updateInfoYB();
 }
 
-let [secondsYogic, minutesYogic, hoursYogic] = [0, 0, 0];
-let timerRefYogic = document.getElementById('timerDisplayYogic');
-let intYogic = null;
-document.getElementById('stopBtnYogic').disabled = true;
-document.getElementById('stopBtnYogic').style.color = 'rgb(177, 177, 177)';
-document.getElementById('yogicSave').disabled = true;
-document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
+let [secondsYB, minutesYB, hoursYB] = [0, 0, 0];
+let timerRefYB = document.getElementById('timerDisplayYB');
+let intYB = null;
+document.getElementById('stopBtnYB').disabled = true;
+document.getElementById('stopBtnYB').style.color = 'rgb(177, 177, 177)';
+document.getElementById('YBSave').disabled = true;
+document.getElementById('YBSave').style.color = 'rgb(177, 177, 177)';
 
-var audioYogic = document.getElementById("audioYogic"),
-    muteYogic = document.getElementById("muteYogic"),
-    ismuteYogic = false;
+var audioYB = document.getElementById("audioYB"),
+    muteYB = document.getElementById("muteYB"),
+    ismuteYB = false;
 
 audioPlayerBRT.loop = true;
 
-var audioSongYogic = document.getElementById("songYogic"),
-    muteSongYogic = document.getElementById("songMuteYogic");
-// Get the volumeVyogic bar element
-const volumeVoiceYogic = document.getElementById('volumeVoiceYogic');
+var audioSongYB = document.getElementById("songYB"),
+    muteSongYB = document.getElementById("songMuteYB");
+// Get the volumeVYB bar element
+const volumeVoiceYB = document.getElementById('volumeVoiceYB');
 
-// Add an event listener for the volumeVyogic change event
-volumeVoiceYogic.addEventListener('input', function () {
-    // Get the current volumeVyogic value
-    const volumeVyogic = parseFloat(volumeVoiceYogic.value);
+// Add an event listener for the volumeVYB change event
+volumeVoiceYB.addEventListener('input', function () {
+    // Get the current volumeVYB value
+    const volumeVYB = parseFloat(volumeVoiceYB.value);
 
-    // Check if volumeVyogic is 0 and mute the media if necessary
-    if (volumeVyogic === 0) {
+    // Check if volumeVYB is 0 and mute the media if necessary
+    if (volumeVYB === 0) {
         audioObjects.inhale.muted = true;
         audioObjects.exhale.muted = true;
         audioObjects.hold.muted = true;
-        audioYogic.style.display = "none";
-        muteYogic.style.display = "block";
-        ismuteYogic = true;
+        audioYB.style.display = "none";
+        muteYB.style.display = "block";
+        ismuteYB = true;
     } else {
         audioObjects.inhale.muted = false;
         audioObjects.exhale.muted = false;
         audioObjects.hold.muted = false;
-        muteYogic.style.display = "none";
-        audioYogic.style.display = "block";
-        ismuteYogic = false;
+        muteYB.style.display = "none";
+        audioYB.style.display = "block";
+        ismuteYB = false;
     }
 });
-// Get the volumeSyogic bar element
-const volumeSongYogic = document.getElementById('volumeSongYogic');
+// Get the volumeSYB bar element
+const volumeSongYB = document.getElementById('volumeSongYB');
 
-// Add an event listener for the volumeSyogic change event
-volumeSongYogic.addEventListener('input', function () {
-    // Get the current volumeSyogic value
-    const volumeSyogic = parseFloat(volumeSongYogic.value);
+// Add an event listener for the volumeSYB change event
+volumeSongYB.addEventListener('input', function () {
+    // Get the current volumeSYB value
+    const volumeSYB = parseFloat(volumeSongYB.value);
 
-    // Check if volumeSyogic is 0 and mute the media if necessary
-    if (volumeSyogic === 0) {
+    // Check if volumeSYB is 0 and mute the media if necessary
+    if (volumeSYB === 0) {
         audioPlayerBRT.muted = true;
-        audioSongYogic.style.display = "none";
-        muteSongYogic.style.display = "block";
+        audioSongYB.style.display = "none";
+        muteSongYB.style.display = "block";
     } else {
         audioPlayerBRT.muted = false;
-        muteSongYogic.style.display = "none";
-        audioSongYogic.style.display = "block";
+        muteSongYB.style.display = "none";
+        audioSongYB.style.display = "block";
     }
 });
 
 
-var inhaleYogic = 4;
-var holdYogic = inhaleYogic / 2;
-var exhaleYogic = inhaleYogic;
-var hold2Yogic = inhaleYogic / 2;
-setTimerSettingsYogic(9999, inhaleYogic, true, holdYogic, true, exhaleYogic, true, hold2Yogic);
-initializeTimerControlsYogic();
-initializeStatusPanelYogic();
-initializeTimerSettingsFormYogic();
-resetTimerYogic();
+var inhaleYB = 4;
+var holdYB = inhaleYB / 2;
+var exhaleYB = inhaleYB;
+var hold2YB = inhaleYB / 2;
+setTimerSettingsYB(9999, inhaleYB, true, holdYB, true, exhaleYB, true, hold2YB);
+initializeTimerControlsYB();
+initializeStatusPanelYB();
+initializeTimerSettingsFormYB();
+resetTimerYB();
 
 
-var minusBtnYogic = document.getElementById("minusYogic"),
-    plusBtnYogic = document.getElementById("plusYogic"),
-    numberYogic = 4, /// numberYogic value
-    minYogic = 4, /// minYogic numberYogic
-    maxYogic = 30;
+var minusBtnYB = document.getElementById("minusYB"),
+    plusBtnYB = document.getElementById("plusYB"),
+    numberYB = 4, /// numberYB value
+    minYB = 4, /// minYB numberYB
+    maxYB = 30;
 
-minusBtnYogic.onclick = function () {
-    if (numberYogic > minYogic) {
-        numberYogic = numberYogic - 2; /// Minus 1 of the numberYogic
-        formSettingsFieldsYogic.intervalDurationYogic.value = numberYogic; /// Display the value in place of the numberYogic
+minusBtnYB.onclick = function () {
+    if (numberYB > minYB) {
+        numberYB = numberYB - 2; /// Minus 1 of the numberYB
+        formSettingsFieldsYB.intervalDurationYB.value = numberYB; /// Display the value in place of the numberYB
         //fix here to change pranayama type
-        formSettingsFieldsYogic.breakDurationYogic.value = formSettingsFieldsYogic.intervalDurationYogic.value / 2;
-        formSettingsFieldsYogic.breakDuration2Yogic.value = formSettingsFieldsYogic.intervalDurationYogic.value;
-        formSettingsFieldsYogic.breakDuration3Yogic.value = formSettingsFieldsYogic.intervalDurationYogic.value / 2;
-        setTimerSettingsYogic(9999, formSettingsFieldsYogic.intervalDurationYogic.value, true, formSettingsFieldsYogic.breakDurationYogic.value, true, formSettingsFieldsYogic.breakDuration2Yogic.value, true, formSettingsFieldsYogic.breakDuration3Yogic.value);
+        formSettingsFieldsYB.breakDurationYB.value = formSettingsFieldsYB.intervalDurationYB.value / 2;
+        formSettingsFieldsYB.breakDuration2YB.value = formSettingsFieldsYB.intervalDurationYB.value;
+        formSettingsFieldsYB.breakDuration3YB.value = formSettingsFieldsYB.intervalDurationYB.value / 2;
+        setTimerSettingsYB(9999, formSettingsFieldsYB.intervalDurationYB.value, true, formSettingsFieldsYB.breakDurationYB.value, true, formSettingsFieldsYB.breakDuration2YB.value, true, formSettingsFieldsYB.breakDuration3YB.value);
     }
 }
 
-plusBtnYogic.onclick = function () {
-    if (numberYogic < maxYogic) {
-        numberYogic = numberYogic + 2;
-        formSettingsFieldsYogic.intervalDurationYogic.value = numberYogic; /// Display the value in place of the numberYogic
+plusBtnYB.onclick = function () {
+    if (numberYB < maxYB) {
+        numberYB = numberYB + 2;
+        formSettingsFieldsYB.intervalDurationYB.value = numberYB; /// Display the value in place of the numberYB
         //fix here to change pranayama type
-        formSettingsFieldsYogic.breakDurationYogic.value = formSettingsFieldsYogic.intervalDurationYogic.value / 2;
-        formSettingsFieldsYogic.breakDuration2Yogic.value = formSettingsFieldsYogic.intervalDurationYogic.value;
-        formSettingsFieldsYogic.breakDuration3Yogic.value = formSettingsFieldsYogic.intervalDurationYogic.value / 2;
-        setTimerSettingsYogic(9999, formSettingsFieldsYogic.intervalDurationYogic.value, true, formSettingsFieldsYogic.breakDurationYogic.value, true, formSettingsFieldsYogic.breakDuration2Yogic.value, true, formSettingsFieldsYogic.breakDuration3Yogic.value);
+        formSettingsFieldsYB.breakDurationYB.value = formSettingsFieldsYB.intervalDurationYB.value / 2;
+        formSettingsFieldsYB.breakDuration2YB.value = formSettingsFieldsYB.intervalDurationYB.value;
+        formSettingsFieldsYB.breakDuration3YB.value = formSettingsFieldsYB.intervalDurationYB.value / 2;
+        setTimerSettingsYB(9999, formSettingsFieldsYB.intervalDurationYB.value, true, formSettingsFieldsYB.breakDurationYB.value, true, formSettingsFieldsYB.breakDuration2YB.value, true, formSettingsFieldsYB.breakDuration3YB.value);
 
     }
 }
 
-function initializeTimerSettingsFormYogic() {
+function initializeTimerSettingsFormYB() {
     const oneDayInSecondsBRE = 60 * 60 * 24;
-    let lastUserSetEnableBreakYogic = timerSettingsYogic.enableBreakYogic;
-    let lastUserSetEnableBreak2Yogic = timerSettingsYogic.enableBreak2Yogic;
-    let lastUserSetEnableBreak3Yogic = timerSettingsYogic.enableBreak3Yogic;
+    let lastUserSetEnableBreakYB = timerSettingsYB.enableBreakYB;
+    let lastUserSetEnableBreak2YB = timerSettingsYB.enableBreak2YB;
+    let lastUserSetEnableBreak3YB = timerSettingsYB.enableBreak3YB;
 
-    formSettingsFieldsYogic = {
-        intervalCountYogic: document.getElementById('intervalCountInputYogic'),
-        intervalDurationYogic: document.getElementById('intervalDurationInputYogic'),
-        enableBreakYogic: document.getElementById('enableBreakInputYogic'),
-        breakDurationYogic: document.getElementById('breakDurationInputYogic'),
-        enableBreak2Yogic: document.getElementById('enableBreakInput2Yogic'),
-        breakDuration2Yogic: document.getElementById('breakDurationInput2Yogic'),
-        enableBreak3Yogic: document.getElementById('enableBreakInput3Yogic'),
-        breakDuration3Yogic: document.getElementById('breakDurationInput3Yogic'),
+    formSettingsFieldsYB = {
+        intervalCountYB: document.getElementById('intervalCountInputYB'),
+        intervalDurationYB: document.getElementById('intervalDurationInputYB'),
+        enableBreakYB: document.getElementById('enableBreakInputYB'),
+        breakDurationYB: document.getElementById('breakDurationInputYB'),
+        enableBreak2YB: document.getElementById('enableBreakInput2YB'),
+        breakDuration2YB: document.getElementById('breakDurationInput2YB'),
+        enableBreak3YB: document.getElementById('enableBreakInput3YB'),
+        breakDuration3YB: document.getElementById('breakDurationInput3YB'),
     };
 
-    formSettingsFieldsYogic.intervalCountYogic.value = timerSettingsYogic.intervalCountYogic;
-    formSettingsFieldsYogic.intervalDurationYogic.value = timerSettingsYogic.intervalDurationYogic;
-    formSettingsFieldsYogic.enableBreakYogic.checked = timerSettingsYogic.enableBreakYogic;
-    formSettingsFieldsYogic.breakDurationYogic.value = timerSettingsYogic.breakDurationYogic;
-    formSettingsFieldsYogic.enableBreak2Yogic.checked = timerSettingsYogic.enableBreak2Yogic;
-    formSettingsFieldsYogic.breakDuration2Yogic.value = timerSettingsYogic.breakDuration2Yogic;
-    formSettingsFieldsYogic.enableBreak3Yogic.checked = timerSettingsYogic.enableBreak3Yogic;
-    formSettingsFieldsYogic.breakDuration3Yogic.value = timerSettingsYogic.breakDuration3Yogic;
+    formSettingsFieldsYB.intervalCountYB.value = timerSettingsYB.intervalCountYB;
+    formSettingsFieldsYB.intervalDurationYB.value = timerSettingsYB.intervalDurationYB;
+    formSettingsFieldsYB.enableBreakYB.checked = timerSettingsYB.enableBreakYB;
+    formSettingsFieldsYB.breakDurationYB.value = timerSettingsYB.breakDurationYB;
+    formSettingsFieldsYB.enableBreak2YB.checked = timerSettingsYB.enableBreak2YB;
+    formSettingsFieldsYB.breakDuration2YB.value = timerSettingsYB.breakDuration2YB;
+    formSettingsFieldsYB.enableBreak3YB.checked = timerSettingsYB.enableBreak3YB;
+    formSettingsFieldsYB.breakDuration3YB.value = timerSettingsYB.breakDuration3YB;
 
-    function getNumberInBoundsOrDefaultYogic(value, minYogic, maxYogic, def = 1) {
-        const valueAsNumberYogic = parseInt(value);
-        return isNaN(valueAsNumberYogic) ? def : Math.max(minYogic, Math.min(valueAsNumberYogic, maxYogic));
+    function getNumberInBoundsOrDefaultYB(value, minYB, maxYB, def = 1) {
+        const valueAsNumberYB = parseInt(value);
+        return isNaN(valueAsNumberYB) ? def : Math.max(minYB, Math.min(valueAsNumberYB, maxYB));
     }
 
-    function setBreakDurationLineDisplayYogic(displayed) {
-        const breakDurationInputLineEltYogic = document.getElementById('breakDurationInputLineYogic');
-        breakDurationInputLineEltYogic.style.display = displayed ? null : 'none';
-        const breakDurationInputLineElt2Yogic = document.getElementById('breakDurationInputLine2Yogic');
-        breakDurationInputLineElt2Yogic.style.display = displayed ? null : 'none';
-        const breakDurationInputLineElt3Yogic = document.getElementById('breakDurationInputLine3Yogic');
-        breakDurationInputLineElt3Yogic.style.display = displayed ? null : 'none';
+    function setBreakDurationLineDisplayYB(displayed) {
+        const breakDurationInputLineEltYB = document.getElementById('breakDurationInputLineYB');
+        breakDurationInputLineEltYB.style.display = displayed ? null : 'none';
+        const breakDurationInputLineElt2YB = document.getElementById('breakDurationInputLine2YB');
+        breakDurationInputLineElt2YB.style.display = displayed ? null : 'none';
+        const breakDurationInputLineElt3YB = document.getElementById('breakDurationInputLine3YB');
+        breakDurationInputLineElt3YB.style.display = displayed ? null : 'none';
     }
 
-    formSettingsFieldsYogic.intervalCountYogic.addEventListener('input', () => {
-        const intervalCountYogic = getNumberInBoundsOrDefaultYogic(formSettingsFieldsYogic.intervalCountYogic.value, 1, 9999),
-            hasOneIntervalYogic = intervalCountYogic === 1,
-            hasBreakYogic = hasOneIntervalYogic ? false : lastUserSetEnableBreakYogic;
+    formSettingsFieldsYB.intervalCountYB.addEventListener('input', () => {
+        const intervalCountYB = getNumberInBoundsOrDefaultYB(formSettingsFieldsYB.intervalCountYB.value, 1, 9999),
+            hasOneIntervalYB = intervalCountYB === 1,
+            hasBreakYB = hasOneIntervalYB ? false : lastUserSetEnableBreakYB;
 
-        formSettingsFieldsYogic.enableBreakYogic.disabled = hasOneIntervalYogic === true;
-        formSettingsFieldsYogic.enableBreakYogic.checked = hasBreakYogic;
+        formSettingsFieldsYB.enableBreakYB.disabled = hasOneIntervalYB === true;
+        formSettingsFieldsYB.enableBreakYB.checked = hasBreakYB;
 
-        setBreakDurationLineDisplayYogic(hasBreakYogic);
+        setBreakDurationLineDisplayYB(hasBreakYB);
 
-        setTimerSettingsYogic(intervalCountYogic, undefined, hasBreakYogic);
-        updateInfoYogic();
+        setTimerSettingsYB(intervalCountYB, undefined, hasBreakYB);
+        updateInfoYB();
     });
 
-    formSettingsFieldsYogic.intervalDurationYogic.addEventListener('input', () => {
-        setTimerSettingsYogic(undefined, getNumberInBoundsOrDefaultYogic(formSettingsFieldsYogic.intervalDurationYogic.value, 1, oneDayInSecondsBRE));
-        updateInfoYogic();
+    formSettingsFieldsYB.intervalDurationYB.addEventListener('input', () => {
+        setTimerSettingsYB(undefined, getNumberInBoundsOrDefaultYB(formSettingsFieldsYB.intervalDurationYB.value, 1, oneDayInSecondsBRE));
+        updateInfoYB();
     });
 
-    formSettingsFieldsYogic.enableBreakYogic.addEventListener('change', () => {
-        const enableBreakYogic = formSettingsFieldsYogic.enableBreakYogic.checked;
+    formSettingsFieldsYB.enableBreakYB.addEventListener('change', () => {
+        const enableBreakYB = formSettingsFieldsYB.enableBreakYB.checked;
 
-        lastUserSetEnableBreakYogic = enableBreakYogic;
-        setBreakDurationLineDisplayYogic(enableBreakYogic);
-        setTimerSettingsYogic(undefined, undefined, enableBreakYogic);
-        updateInfoYogic();
+        lastUserSetEnableBreakYB = enableBreakYB;
+        setBreakDurationLineDisplayYB(enableBreakYB);
+        setTimerSettingsYB(undefined, undefined, enableBreakYB);
+        updateInfoYB();
     });
 
-    formSettingsFieldsYogic.breakDurationYogic.addEventListener('input', () => {
-        setTimerSettingsYogic(undefined, undefined, undefined,
-            getNumberInBoundsOrDefaultYogic(formSettingsFieldsYogic.breakDurationYogic.value, 1, oneDayInSecondsBRE)
+    formSettingsFieldsYB.breakDurationYB.addEventListener('input', () => {
+        setTimerSettingsYB(undefined, undefined, undefined,
+            getNumberInBoundsOrDefaultYB(formSettingsFieldsYB.breakDurationYB.value, 1, oneDayInSecondsBRE)
         );
-        updateInfoYogic();
+        updateInfoYB();
     });
 
-    formSettingsFieldsYogic.enableBreak2Yogic.addEventListener('change', () => {
-        const enableBreak2Yogic = formSettingsFieldsYogic.enableBreak2Yogic.checked;
+    formSettingsFieldsYB.enableBreak2YB.addEventListener('change', () => {
+        const enableBreak2YB = formSettingsFieldsYB.enableBreak2YB.checked;
 
-        lastUserSetEnableBreak2Yogic = enableBreak2Yogic;
-        setBreakDurationLineDisplayYogic(enableBreak2Yogic);
-        setTimerSettingsYogic(undefined, undefined, undefined, undefined, enableBreak2Yogic);
-        updateInfoYogic();
+        lastUserSetEnableBreak2YB = enableBreak2YB;
+        setBreakDurationLineDisplayYB(enableBreak2YB);
+        setTimerSettingsYB(undefined, undefined, undefined, undefined, enableBreak2YB);
+        updateInfoYB();
     });
 
-    formSettingsFieldsYogic.breakDuration2Yogic.addEventListener('input', () => {
-        setTimerSettingsYogic(undefined, undefined, undefined, undefined, undefined,
-            getNumberInBoundsOrDefaultYogic(formSettingsFieldsYogic.breakDuration2Yogic.value, 1, oneDayInSecondsBRE)
+    formSettingsFieldsYB.breakDuration2YB.addEventListener('input', () => {
+        setTimerSettingsYB(undefined, undefined, undefined, undefined, undefined,
+            getNumberInBoundsOrDefaultYB(formSettingsFieldsYB.breakDuration2YB.value, 1, oneDayInSecondsBRE)
         );
-        updateInfoYogic();
+        updateInfoYB();
     });
 
-    formSettingsFieldsYogic.enableBreak3Yogic.addEventListener('change', () => {
-        const enableBreak3Yogic = formSettingsFieldsYogic.enableBreak3Yogic.checked;
+    formSettingsFieldsYB.enableBreak3YB.addEventListener('change', () => {
+        const enableBreak3YB = formSettingsFieldsYB.enableBreak3YB.checked;
 
-        lastUserSetEnableBreak3Yogic = enableBreak2Yogic;
-        setBreakDurationLineDisplayYogic(enableBreak3Yogic);
-        setTimerSettingsYogic(undefined, undefined, undefined, undefined, undefined, undefined, enableBreak3Yogic);
-        updateInfoYogic();
+        lastUserSetEnableBreak3YB = enableBreak2YB;
+        setBreakDurationLineDisplayYB(enableBreak3YB);
+        setTimerSettingsYB(undefined, undefined, undefined, undefined, undefined, undefined, enableBreak3YB);
+        updateInfoYB();
     });
 
-    formSettingsFieldsYogic.breakDuration3Yogic.addEventListener('input', () => {
-        setTimerSettingsYogic(
+    formSettingsFieldsYB.breakDuration3YB.addEventListener('input', () => {
+        setTimerSettingsYB(
             undefined, undefined, undefined, undefined, undefined, undefined, undefined,
-            getNumberInBoundsOrDefaultYogic(formSettingsFieldsYogic.breakDuration3Yogic.value, 1, oneDayInSecondsBRE)
+            getNumberInBoundsOrDefaultYB(formSettingsFieldsYB.breakDuration3YB.value, 1, oneDayInSecondsBRE)
         );
-        updateInfoYogic();
+        updateInfoYB();
     });
 }
 
-function initializeTimerControlsYogic() {
-    timerControlsButtonsYogic = {
-        startYogic: document.getElementById('startBtnYogic'),
-        pauseYogic: document.getElementById('pauseBtnYogic'),
-        stopYogic: document.getElementById('stopBtnYogic'),
+function initializeTimerControlsYB() {
+    timerControlsButtonsYB = {
+        startYB: document.getElementById('startBtnYB'),
+        pauseYB: document.getElementById('pauseBtnYB'),
+        stopYB: document.getElementById('stopBtnYB'),
     };
 
-    setTimerControlsDisabledStateYogic(false, true, true);
+    setTimerControlsDisabledStateYB(false, true, true);
 
-    timerControlsButtonsYogic.startYogic.addEventListener('click', startTimerYogic);
-    timerControlsButtonsYogic.pauseYogic.addEventListener('click', pauseTimerYogic);
-    timerControlsButtonsYogic.stopYogic.addEventListener('click', stopTimerYogic);
+    timerControlsButtonsYB.startYB.addEventListener('click', startTimerYB);
+    timerControlsButtonsYB.pauseYB.addEventListener('click', pauseTimerYB);
+    timerControlsButtonsYB.stopYB.addEventListener('click', stopTimerYB);
 }
 
-function initializeStatusPanelYogic() {
-    statusPanelYogic = {
-        timeOverviewMessageYogic: document.getElementById('timeOverviewMessageYogic'),
+function initializeStatusPanelYB() {
+    statusPanelYB = {
+        timeOverviewMessageYB: document.getElementById('timeOverviewMessageYB'),
 
-        elapsedInIntervalBoxYogic: document.getElementById('elapsedInIntervalBoxYogic'),
-        elapsedInBreakIntervalBoxYogic: document.getElementById('elapsedInBreakIntervalBoxYogic'),
-        elapsedInIntervalYogic: document.getElementById('elapsedInIntervalYogic'),
-        elapsedInBreakIntervalYogic: document.getElementById('elapsedInBreakIntervalYogic'),
-        elapsedInBreakIntervalBox2Yogic: document.getElementById('elapsedInBreakIntervalBox2Yogic'),
-        elapsedInBreakInterval2Yogic: document.getElementById('elapsedInBreakInterval2Yogic'),
-        elapsedInBreakIntervalBox3Yogic: document.getElementById('elapsedInBreakIntervalBox3Yogic'),
-        elapsedInBreakInterval3Yogic: document.getElementById('elapsedInBreakInterval3Yogic'),
+        elapsedInIntervalBoxYB: document.getElementById('elapsedInIntervalBoxYB'),
+        elapsedInBreakIntervalBoxYB: document.getElementById('elapsedInBreakIntervalBoxYB'),
+        elapsedInIntervalYB: document.getElementById('elapsedInIntervalYB'),
+        elapsedInBreakIntervalYB: document.getElementById('elapsedInBreakIntervalYB'),
+        elapsedInBreakIntervalBox2YB: document.getElementById('elapsedInBreakIntervalBox2YB'),
+        elapsedInBreakInterval2YB: document.getElementById('elapsedInBreakInterval2YB'),
+        elapsedInBreakIntervalBox3YB: document.getElementById('elapsedInBreakIntervalBox3YB'),
+        elapsedInBreakInterval3YB: document.getElementById('elapsedInBreakInterval3YB'),
 
-        intervalsDoneYogic: document.getElementById('intervalsDoneYogic'),
+        intervalsDoneYB: document.getElementById('intervalsDoneYB'),
     };
 }
 
-function setTimerControlsDisabledStateYogic(startYogic, pauseYogic, stopYogic) {
-    timerControlsButtonsYogic.startYogic.disabled = startYogic;
-    timerControlsButtonsYogic.pauseYogic.disabled = pauseYogic;
-    timerControlsButtonsYogic.stopYogic.disabled = stopYogic;
+function setTimerControlsDisabledStateYB(startYB, pauseYB, stopYB) {
+    timerControlsButtonsYB.startYB.disabled = startYB;
+    timerControlsButtonsYB.pauseYB.disabled = pauseYB;
+    timerControlsButtonsYB.stopYB.disabled = stopYB;
 }
 
-function setFormDisabledStateYogic(disabled) {
-    formSettingsFieldsYogic.intervalCountYogic.disabled = disabled;
-    formSettingsFieldsYogic.intervalDurationYogic.disabled = disabled;
-    formSettingsFieldsYogic.enableBreakYogic.disabled = disabled || timerSettingsYogic.intervalCountYogic === 1;
-    formSettingsFieldsYogic.breakDurationYogic.disabled = disabled;
-    formSettingsFieldsYogic.enableBreak2Yogic.disabled = disabled
-    formSettingsFieldsYogic.breakDuration2Yogic.disabled = disabled;
-    formSettingsFieldsYogic.enableBreak3Yogic.disabled = disabled
-    formSettingsFieldsYogic.breakDuration3Yogic.disabled = disabled;
-    minusBtnYogic.disabled = disabled;
-    plusBtnYogic.disabled = disabled;
+function setFormDisabledStateYB(disabled) {
+    formSettingsFieldsYB.intervalCountYB.disabled = disabled;
+    formSettingsFieldsYB.intervalDurationYB.disabled = disabled;
+    formSettingsFieldsYB.enableBreakYB.disabled = disabled || timerSettingsYB.intervalCountYB === 1;
+    formSettingsFieldsYB.breakDurationYB.disabled = disabled;
+    formSettingsFieldsYB.enableBreak2YB.disabled = disabled
+    formSettingsFieldsYB.breakDuration2YB.disabled = disabled;
+    formSettingsFieldsYB.enableBreak3YB.disabled = disabled
+    formSettingsFieldsYB.breakDuration3YB.disabled = disabled;
+    minusBtnYB.disabled = disabled;
+    plusBtnYB.disabled = disabled;
 }
 
-function startTimerYogic() {
-    if (intYogic !== null) {
-        clearInterval(intYogic);
+function startTimerYB() {
+    if (intYB !== null) {
+        clearInterval(intYB);
     }
-    intYogic = setInterval(displayTimerYogic, 1000);
-    setFormDisabledStateYogic(true);
-    setTimerControlsDisabledStateYogic(true, false, true);
-    timerControlsButtonsYogic.stopYogic.style.color = "rgb(177, 177, 177)";
-    if (timerYogic.isBreak3Yogic) {
-        if (!ismuteYogic) {
+    setFormDisabledStateYB(true);
+    setTimerControlsDisabledStateYB(true, true, true);
+    setTimeout(() => {
+        setTimerControlsDisabledStateYB(true, false, true);
+    }, 2000);
+    timerControlsButtonsYB.stopYB.style.color = "rgb(177, 177, 177)";
+    if (timerYB.isBreak3YB) {
+        if (!ismuteYB) {
             audioObjects.bell.muted = false;
             audioObjects.bell.play();
             setTimeout(() => {
@@ -392,195 +426,297 @@ function startTimerYogic() {
                 audioObjects.inhale.play();
             }, 1500);    
         }
+        setTimeout(() => {
+            YBchangeBall(1.5, timerSettingsYB.intervalDurationYB);
+        }, 1500); 
     }
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
     }
-    if (timerYogic.isFinishedYogic) {
-        resetTimerYogic();
+    if (timerYB.isFinishedYB) {
+        resetTimerYB();
     }
     setTimeout(() => {
-        startTimerTickYogic();
-    }, 1700);   
-    timerControlsButtonsYogic.startYogic.style.display = 'none';
-    timerControlsButtonsYogic.pauseYogic.style.display = 'inline';
-    document.getElementById('yogicSettings').disabled = true;
-    document.getElementById('yogicSettings').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('yogicSave').disabled = true;
-    document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
+        setTimeout(() => {
+            intYB = setInterval(displayTimerYB, 1000);
+        }, 1000);
+        startTimerTickYB();
+        if (YBisPaused) {
+            // Resume from paused state
+            YBstartTimer(YBtimeRemaining);
+            YBisPaused = false;
+        } else {
+            // Start a new timer
+            clearInterval(YBcountdown);
+            YBtimeRemaining = YBtimeInput.value === '∞' ? Infinity : parseInt(YBtimeInput.value);
+            YBcountdownDisplay.textContent = '';
+            YBstartTimer(YBtimeRemaining);
+        }
+    }, 1700);    
+    timerControlsButtonsYB.startYB.style.display = 'none';
+    timerControlsButtonsYB.pauseYB.style.display = 'inline';
+    document.getElementById('YBSettings').disabled = true;
+    document.getElementById('YBSettings').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('YBSave').disabled = true;
+    document.getElementById('YBSave').style.color = 'rgb(177, 177, 177)';
 }
-
-function pauseTimerYogic() {
-    clearInterval(intYogic);
-    setTimerControlsDisabledStateYogic(false, true, false);
-    document.getElementById('stopBtnYogic').style.color = '#990000';
-    timerControlsButtonsYogic.pauseYogic.style.display = 'none';
-    timerControlsButtonsYogic.startYogic.style.display = 'inline';
-    document.getElementById('yogicSettings').disabled = false;
-    document.getElementById('yogicSettings').style.color = '#49B79D';
+function YBstartTimer(YBduration) {
+    YBcountdown = setInterval(function () {
+        if (YBduration > 0 && YBduration !== Infinity) {
+            YBduration--;
+            YBtimeRemaining = YBduration;
+            let YBContdownminutes = Math.floor(YBduration / 60);
+            let YBContdownseconds = YBduration % 60;
+            YBcountdownDisplay.textContent = `${YBContdownminutes}:${YBContdownseconds.toString().padStart(2, '0')}`;
+            YBtimeInput.classList.add('CountdownHidden');
+            YBcountdownDisplay.classList.remove('CountdownHidden');
+        } else if (YBduration == Infinity) {
+            YBcountdownDisplay.textContent = '∞';
+            YBtimeInput.classList.add('CountdownHidden');
+            YBcountdownDisplay.classList.remove('CountdownHidden');
+        }
+    }, 1000);
+}
+function pauseTimerYB() {
+    clearInterval(intYB);
+    setTimerControlsDisabledStateYB(false, true, false);
+    document.getElementById('stopBtnYB').style.color = '#990000';
+    timerControlsButtonsYB.pauseYB.style.display = 'none';
+    timerControlsButtonsYB.startYB.style.display = 'inline';
+    document.getElementById('YBSettings').disabled = false;
+    document.getElementById('YBSettings').style.color = '#49B79D';
     if (!audioPlayerBRT.muted) {
         audioPlayerBRT.pause();
     }
-    stopTimerTickYogic();
-    document.getElementById('yogicDate').value = date;
-    document.getElementById('yogicSave').disabled = false;
-    document.getElementById('yogicSave').style.color = '#49B79D';
+    stopTimerTickYB();
+    document.getElementById('YBDate').value = date;
+    document.getElementById('YBSave').disabled = false;
+    document.getElementById('YBSave').style.color = '#49B79D';
+    clearInterval(YBcountdown);
+    YBisPaused = true;
+    YBchangeBall(1, 1);
 }
 
-function stopTimerYogic() {
-    clearInterval(intYogic);
-    [secondsYogic, minutesYogic, hoursYogic] = [0, 0, 0];
-    timerRefYogic.value = '00 : 00 : 00';
+function stopTimerYB() {
+    clearInterval(intYB);
+    [secondsYB, minutesYB, hoursYB] = [0, 0, 0];
+    timerRefYB.value = '00 : 00 : 00';
     audioPlayerBRT.currentTime = 0
-    timerControlsButtonsYogic.pauseYogic.style.display = 'none';
-    timerControlsButtonsYogic.startYogic.style.display = 'inline';
-    setFormDisabledStateYogic(false);
-    setTimerControlsDisabledStateYogic(false, true, true);
-    timerControlsButtonsYogic.stopYogic.style.color = "rgb(177, 177, 177)";
-    document.getElementById('yogicSave').disabled = true;
-    document.getElementById('yogicSave').style.color = 'rgb(177, 177, 177)';
-    stopTimerTickYogic();
-    resetTimerYogic();
+    timerControlsButtonsYB.pauseYB.style.display = 'none';
+    timerControlsButtonsYB.startYB.style.display = 'inline';
+    setFormDisabledStateYB(false);
+    setTimerControlsDisabledStateYB(false, true, true);
+    timerControlsButtonsYB.stopYB.style.color = "rgb(177, 177, 177)";
+    document.getElementById('YBSave').disabled = true;
+    document.getElementById('YBSave').style.color = 'rgb(177, 177, 177)';
+    stopTimerTickYB();
+    resetTimerYB();
+    timerControlsButtonsYB.startYB.style.color = '#49B79D';
+    clearInterval(YBcountdown);
+    YBisPaused = false;
+    YBtimeInput.classList.remove('CountdownHidden');
+    YBcountdownDisplay.classList.add('CountdownHidden');
+    YBchangeBall(1, 1);
 }
 
-function displayTimerYogic() {
-    secondsYogic++;
-    if (secondsYogic == 60) {
-        secondsYogic = 0;
-        minutesYogic++;
-        if (minutesYogic == 60) {
-            minutesYogic = 0;
-            hoursYogic++;
+function displayTimerYB() {
+    secondsYB++;
+    if (secondsYB == 60) {
+        secondsYB = 0;
+        minutesYB++;
+        if (minutesYB == 60) {
+            minutesYB = 0;
+            hoursYB++;
         }
     }
-    let hYogic = hoursYogic < 10 ? "0" + hoursYogic : hoursYogic;
-    let mYogic = minutesYogic < 10 ? "0" + minutesYogic : minutesYogic;
-    let sYogic = secondsYogic < 10 ? "0" + secondsYogic : secondsYogic;
-    timerRefYogic.value = `${hYogic} : ${mYogic} : ${sYogic}`;
+    let hYB = hoursYB < 10 ? "0" + hoursYB : hoursYB;
+    let mYB = minutesYB < 10 ? "0" + minutesYB : minutesYB;
+    let sYB = secondsYB < 10 ? "0" + secondsYB : secondsYB;
+    timerRefYB.value = `${hYB} : ${mYB} : ${sYB}`;
 }
 
-function startTimerTickYogic() {
-    timerYogic.intervalId = setInterval(onTimerTickYogic, 1000);
+function startTimerTickYB() {
+    timerYB.intervalId = setInterval(onTimerTickYB, 1000);
 }
 
-function stopTimerTickYogic() {
-    clearInterval(timerYogic.intervalId);
+function stopTimerTickYB() {
+    clearInterval(timerYB.intervalId);
 }
 
-function onTimerTickYogic() {
-    const currentIntervalDurationYogic = timerYogic.isBreakYogic ? timerSettingsYogic.breakDurationYogic : timerYogic.isBreak2Yogic ? timerSettingsYogic.breakDuration2Yogic : timerYogic.isBreak4Yogic ? timerSettingsYogic.breakDuration3Yogic : timerSettingsYogic.intervalDurationYogic;
-    if (timerYogic.elapsedInIntervalYogic <= currentIntervalDurationYogic && timerYogic.isBreak3Yogic) {
-        timerYogic.elapsedInIntervalYogic++;
-        if (timerYogic.elapsedInIntervalYogic > currentIntervalDurationYogic && timerYogic.isBreak3Yogic) {
-            if (!ismuteYogic) {
+function onTimerTickYB() {
+    const currentIntervalDurationYB = timerYB.isBreakYB ? timerSettingsYB.breakDurationYB : timerYB.isBreak2YB ? timerSettingsYB.breakDuration2YB : timerYB.isBreak4YB ? timerSettingsYB.breakDuration3YB : timerSettingsYB.intervalDurationYB;
+    if (timerYB.elapsedInIntervalYB <= currentIntervalDurationYB && timerYB.isBreak3YB) {
+        timerYB.elapsedInIntervalYB++;
+        if (timerYB.elapsedInIntervalYB == currentIntervalDurationYB && timerYB.isBreak3YB) {
+            if (!ismuteYB) {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
-            timerYogic.isBreakYogic = true;
-            timerYogic.isBreak3Yogic = false;
-            timerYogic.isFinishedYogic = timerYogic.intervalsDoneYogic === timerSettingsYogic.intervalCountYogic;
-            if (!timerYogic.isFinishedYogic) {
-                timerYogic.elapsedInIntervalYogic = 1;
-            }
-            if (timerYogic.isFinishedYogic) {
-                setTimerControlsDisabledStateYogic(false, true, true);
-                setFormDisabledStateYogic(false);
-                stopTimerTickYogic();
-            } else {
-                timerYogic.totalTimeElapsedYogic++;
-            }
-            updateInfoYogic();
+            YBchangeBall(1.3, timerSettingsYB.breakDurationYB);
         }
-        updateInfoYogic();
-    } else if (timerYogic.elapsedInIntervalYogic <= currentIntervalDurationYogic && timerYogic.isBreakYogic) {
-        timerYogic.elapsedInIntervalYogic++;
-        if (timerYogic.elapsedInIntervalYogic > currentIntervalDurationYogic && timerYogic.isBreakYogic) {
-            if (!ismuteYogic) {
+        if (timerYB.elapsedInIntervalYB > currentIntervalDurationYB && timerYB.isBreak3YB) {
+            timerYB.isBreakYB = true;
+            timerYB.isBreak3YB = false;
+            timerYB.isFinishedYB = timerYB.intervalsDoneYB === timerSettingsYB.intervalCountYB;
+            if (!timerYB.isFinishedYB) {
+                timerYB.elapsedInIntervalYB = 1;
+            }
+            if (timerYB.isFinishedYB) {
+                setTimerControlsDisabledStateYB(false, true, true);
+                setFormDisabledStateYB(false);
+                stopTimerTickYB();
+            } else {
+                timerYB.totalTimeElapsedYB++;
+            }
+            updateInfoYB();
+        }
+        updateInfoYB();
+    } else if (timerYB.elapsedInIntervalYB <= currentIntervalDurationYB && timerYB.isBreakYB) {
+        timerYB.elapsedInIntervalYB++;
+        if (timerYB.elapsedInIntervalYB == currentIntervalDurationYB && timerYB.isBreakYB) {
+            if (!ismuteYB) {
                 audioObjects.exhale.muted = false;
                 audioObjects.exhale.play();
             }
-            timerYogic.isBreak2Yogic = true;
-            timerYogic.isBreakYogic = false;
-            timerYogic.isFinishedYogic = timerYogic.intervalsDoneYogic === timerSettingsYogic.intervalCountYogic;
-            if (!timerYogic.isFinishedYogic) {
-                timerYogic.elapsedInIntervalYogic = 1;
-            }
-            if (timerYogic.isFinishedYogic) {
-                setTimerControlsDisabledStateYogic(false, true, true);
-                setFormDisabledStateYogic(false);
-                stopTimerTickYogic();
-            } else {
-                timerYogic.totalTimeElapsedYogic++;
-            }
-            updateInfoYogic();
+            YBchangeBall(0.5, timerSettingsYB.breakDuration2YB);
         }
-        updateInfoYogic();
-    } else if (timerYogic.elapsedInIntervalYogic <= currentIntervalDurationYogic && timerYogic.isBreak2Yogic) {
-        timerYogic.elapsedInIntervalYogic++;
-        if (timerYogic.elapsedInIntervalYogic > currentIntervalDurationYogic && timerYogic.isBreak2Yogic) {
-            if (!ismuteYogic) {
+        if (timerYB.elapsedInIntervalYB > currentIntervalDurationYB && timerYB.isBreakYB) {
+            timerYB.isBreak2YB = true;
+            timerYB.isBreakYB = false;
+            timerYB.isFinishedYB = timerYB.intervalsDoneYB === timerSettingsYB.intervalCountYB;
+            if (!timerYB.isFinishedYB) {
+                timerYB.elapsedInIntervalYB = 1;
+            }
+            if (timerYB.isFinishedYB) {
+                setTimerControlsDisabledStateYB(false, true, true);
+                setFormDisabledStateYB(false);
+                stopTimerTickYB();
+            } else {
+                timerYB.totalTimeElapsedYB++;
+            }
+            updateInfoYB();
+        }
+        updateInfoYB();
+    } else if (timerYB.elapsedInIntervalYB <= currentIntervalDurationYB && timerYB.isBreak2YB) {
+        timerYB.elapsedInIntervalYB++;
+        if (timerYB.elapsedInIntervalYB == currentIntervalDurationYB && timerYB.isBreak2YB) {
+            if (!ismuteYB) {
                 audioObjects.hold.muted = false;
                 audioObjects.hold.play();
             }
-            timerYogic.isBreak4Yogic = true;
-            timerYogic.isBreak2Yogic = false;
-            timerYogic.isFinishedYogic = timerYogic.intervalsDoneYogic === timerSettingsYogic.intervalCountYogic;
-            if (!timerYogic.isFinishedYogic) {
-                timerYogic.elapsedInIntervalYogic = 1;
-            }
-            if (timerYogic.isFinishedYogic) {
-                setTimerControlsDisabledStateYogic(false, true, true);
-                setFormDisabledStateYogic(false);
-                stopTimerTickYogic();
-            } else {
-                timerYogic.totalTimeElapsedYogic++;
-            }
-            updateInfoYogic();
+            YBchangeBall(0.5, timerSettingsYB.breakDuration3YB);
         }
-        updateInfoYogic();
-    } else if (timerYogic.elapsedInIntervalYogic <= currentIntervalDurationYogic && timerYogic.isBreak4Yogic) {
-        timerYogic.elapsedInIntervalYogic++;
-        if (timerYogic.elapsedInIntervalYogic > currentIntervalDurationYogic && timerYogic.isBreak4Yogic) {
-            if (!ismuteYogic) {
-                audioObjects.inhale.muted = false;
-                audioObjects.inhale.play();
+        if (timerYB.elapsedInIntervalYB > currentIntervalDurationYB && timerYB.isBreak2YB) {
+            timerYB.isBreak4YB = true;
+            timerYB.isBreak2YB = false;
+            timerYB.isFinishedYB = timerYB.intervalsDoneYB === timerSettingsYB.intervalCountYB;
+            if (!timerYB.isFinishedYB) {
+                timerYB.elapsedInIntervalYB = 1;
             }
-            timerYogic.isBreak3Yogic = true;
-            timerYogic.isBreak4Yogic = false;
-            timerYogic.intervalsDoneYogic++;
-            timerYogic.isFinishedYogic = timerYogic.intervalsDoneYogic === timerSettingsYogic.intervalCountYogic;
-            if (!timerYogic.isFinishedYogic) {
-                timerYogic.elapsedInIntervalYogic = 1;
-            }
-            if (timerYogic.isFinishedYogic) {
-                setTimerControlsDisabledStateYogic(false, true, true);
-                setFormDisabledStateYogic(false);
-                stopTimerTickYogic();
+            if (timerYB.isFinishedYB) {
+                setTimerControlsDisabledStateYB(false, true, true);
+                setFormDisabledStateYB(false);
+                stopTimerTickYB();
             } else {
-                timerYogic.totalTimeElapsedYogic++;
+                timerYB.totalTimeElapsedYB++;
             }
-            updateInfoYogic();
+            updateInfoYB();
         }
-        updateInfoYogic();
+        updateInfoYB();
+    } else if (timerYB.elapsedInIntervalYB <= currentIntervalDurationYB && timerYB.isBreak4YB) {
+        timerYB.elapsedInIntervalYB++;
+        if (timerYB.elapsedInIntervalYB == currentIntervalDurationYB && timerYB.isBreak4YB) {
+            if (!ismuteYB) {
+                if (YBcountdownDisplay.textContent == '0:00') {
+                    audioObjects.inhale.muted = true;
+                    clearInterval(YBcountdown);
+                    if (!ismuteYB) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intYB);
+                    setTimerControlsDisabledStateYB(true, true, false);
+                    document.getElementById('stopBtnYB').style.color = '#990000';
+                    timerControlsButtonsYB.pauseYB.style.display = 'none';
+                    timerControlsButtonsYB.startYB.style.display = 'inline';
+                    timerControlsButtonsYB.startYB.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('YBSettings').disabled = false;
+                    document.getElementById('YBSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickYB();
+                    document.getElementById('YBDate').value = date;
+                    document.getElementById('YBSave').disabled = false;
+                    document.getElementById('YBSave').style.color = '#49B79D';
+                    clearInterval(YBcountdown);
+                    YBisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            YBballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            YBballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
+                } else {
+                    audioObjects.inhale.muted = false;
+                    audioObjects.inhale.play();
+                }
+            }
+            YBchangeBall(1.5, timerSettingsYB.intervalDurationYB);
+        }
+        if (timerYB.elapsedInIntervalYB > currentIntervalDurationYB && timerYB.isBreak4YB) {
+            timerYB.isBreak3YB = true;
+            timerYB.isBreak4YB = false;
+            timerYB.intervalsDoneYB++;
+            timerYB.isFinishedYB = timerYB.intervalsDoneYB === timerSettingsYB.intervalCountYB;
+            if (!timerYB.isFinishedYB) {
+                timerYB.elapsedInIntervalYB = 1;
+            }
+            if (timerYB.isFinishedYB) {
+                setTimerControlsDisabledStateYB(false, true, true);
+                setFormDisabledStateYB(false);
+                stopTimerTickYB();
+            } else {
+                timerYB.totalTimeElapsedYB++;
+            }
+            updateInfoYB();
+        }
+        updateInfoYB();
     }
 }
 
-function updateInfoYogic() {
-    statusPanelYogic.timeOverviewMessageYogic.style.display = timerYogic.isFinishedYogic ? 'block' : null;
-    statusPanelYogic.elapsedInIntervalBoxYogic.style.display = timerYogic.isFinishedYogic || timerYogic.isBreakYogic || timerYogic.isBreak2Yogic || timerYogic.isBreak4Yogic ? 'none' : null;
-    statusPanelYogic.elapsedInBreakIntervalBoxYogic.style.display = !timerYogic.isFinishedYogic && timerYogic.isBreakYogic ? 'block' : null;
-    statusPanelYogic.elapsedInBreakIntervalBox2Yogic.style.display = !timerYogic.isFinishedYogic && timerYogic.isBreak2Yogic ? 'block' : null;
-    statusPanelYogic.elapsedInBreakIntervalBox3Yogic.style.display = !timerYogic.isFinishedYogic && timerYogic.isBreak4Yogic ? 'block' : null;
-
-    if (timerYogic.isBreakYogic) {
-        statusPanelYogic.elapsedInBreakIntervalYogic.textContent = timerYogic.elapsedInIntervalYogic;
-    } else if (timerYogic.isBreak2Yogic) {
-        statusPanelYogic.elapsedInBreakInterval2Yogic.textContent = timerYogic.elapsedInIntervalYogic;
-    } else if (timerYogic.isBreak4Yogic) {
-        statusPanelYogic.elapsedInBreakInterval3Yogic.textContent = timerYogic.elapsedInIntervalYogic;
+function updateInfoYB() {
+    statusPanelYB.timeOverviewMessageYB.style.display = timerYB.isFinishedYB ? 'block' : null;
+    statusPanelYB.elapsedInIntervalBoxYB.style.display = timerYB.isFinishedYB || timerYB.isBreakYB || timerYB.isBreak2YB || timerYB.isBreak4YB ? 'none' : null;
+    statusPanelYB.elapsedInBreakIntervalBoxYB.style.display = !timerYB.isFinishedYB && timerYB.isBreakYB ? 'block' : null;
+    statusPanelYB.elapsedInBreakIntervalBox2YB.style.display = !timerYB.isFinishedYB && timerYB.isBreak2YB ? 'block' : null;
+    statusPanelYB.elapsedInBreakIntervalBox3YB.style.display = !timerYB.isFinishedYB && timerYB.isBreak4YB ? 'block' : null;
+    if (isPortuguese) {
+        if (timerYB.isBreakYB) {
+            YBballText.textContent = 'SEGURE';
+        } else if (timerYB.isBreak2YB) {
+            YBballText.textContent = 'EXPIRA';
+        } else if (timerYB.isBreak4YB) {
+            YBballText.textContent = 'SEGURE';
+        } else {
+            YBballText.textContent = 'INSPIRA';
+        }
     } else {
-        statusPanelYogic.elapsedInIntervalYogic.textContent = timerYogic.elapsedInIntervalYogic;
+        if (timerYB.isBreakYB) {
+            YBballText.textContent = 'HOLD';
+        } else if (timerYB.isBreak2YB) {
+            YBballText.textContent = 'EXHALE';
+        } else if (timerYB.isBreak4YB) {
+            YBballText.textContent = 'HOLD';
+        } else {
+            YBballText.textContent = 'INHALE';
+        }
     }
-    statusPanelYogic.intervalsDoneYogic.value = timerYogic.intervalsDoneYogic;
+    statusPanelYB.intervalsDoneYB.value = timerYB.intervalsDoneYB;
+
 }
+
 //---------------------------------------------------//

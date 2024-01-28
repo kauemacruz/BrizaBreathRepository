@@ -12,8 +12,6 @@ const APcountdownDisplay = document.getElementById('APcountdownDisplay');
 let APcountdown;
 let APtimeRemaining = Infinity;
 let APisPaused = false;
-var AProundTime;
-var APremainingRounds;
 // Populate the dropdown with options
 for (let APi = 2; APi <= 60; APi++) { // assuming 1 to 60 minutes
     let APoption = document.createElement('option');
@@ -99,8 +97,8 @@ $(function () {
         document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
         stopTimerTickAP();
         resetTimerAP();
-        APtimeInput.classList.remove('CountdownHidden');
-        APcountdownDisplay.classList.add('CountdownHidden');
+        CBtimeInput.classList.remove('CountdownHidden');
+        CBcountdownDisplay.classList.add('CountdownHidden');
     });
 });
 
@@ -420,8 +418,6 @@ function startTimerAP() {
             // Start a new timer
             clearInterval(APcountdown);
             APtimeRemaining = APtimeInput.value === '∞' ? Infinity : parseInt(APtimeInput.value);
-            AProundTime = parseInt(timerSettingsAP.intervalDurationAP) + parseInt(timerSettingsAP.breakDurationAP) + parseInt(timerSettingsAP.breakDuration2AP);
-            APremainingRounds = APtimeRemaining / AProundTime;
             APcountdownDisplay.textContent = '';
             APstartTimer(APtimeRemaining);
         }
@@ -443,36 +439,6 @@ function APstartTimer(APduration) {
             APcountdownDisplay.textContent = `${APContdownminutes}:${APContdownseconds.toString().padStart(2, '0')}`;
             APtimeInput.classList.add('CountdownHidden');
             APcountdownDisplay.classList.remove('CountdownHidden');
-        } else if (Math.round(APremainingRounds + 1) == timerAP.intervalsDoneAP) {
-            clearInterval(APcountdown);
-            if (APduration !== Infinity) {
-                APcountdownDisplay.textContent = 'Back to normal breathing';
-                if (!ismuteAP) {
-                    audioObjects.bell.muted = false;
-                    audioObjects.bell.play();
-                }
-                clearInterval(intAP);
-                setTimerControlsDisabledStateAP(true, true, false);
-                document.getElementById('stopBtnAP').style.color = '#990000';
-                timerControlsButtonsAP.pauseAP.style.display = 'none';
-                timerControlsButtonsAP.startAP.style.display = 'inline';
-                timerControlsButtonsAP.startAP.style.color = "rgb(177, 177, 177)";
-                document.getElementById('APSettings').disabled = false;
-                document.getElementById('APSettings').style.color = '#49B79D';
-                if (!audioPlayerBRT.muted) {
-                    audioPlayerBRT.pause();
-                }
-                stopTimerTickAP();
-                document.getElementById('APDate').value = date;
-                document.getElementById('APSave').disabled = false;
-                document.getElementById('APSave').style.color = '#49B79D';
-                clearInterval(APcountdown);
-                APisPaused = false;
-                setTimeout(() => {
-                    audioObjects.normalbreath.muted = false;
-                    audioObjects.normalbreath.play();
-                }, 1000);   
-            }
         } else if (APduration == Infinity) {
             APcountdownDisplay.textContent = '∞';
             APtimeInput.classList.add('CountdownHidden');
@@ -604,8 +570,39 @@ function onTimerTickAP() {
         timerAP.elapsedInIntervalAP++;
         if (timerAP.elapsedInIntervalAP == currentIntervalDurationAP && timerAP.isBreak2AP) {
             if (!ismuteAP) {
-                if (Math.round(APremainingRounds) == timerAP.intervalsDoneAP) {
+                if (APcountdownDisplay.textContent == '0:00') {
                     audioObjects.inhale.muted = true;
+                    clearInterval(APcountdown);
+                    if (!ismuteAP) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intAP);
+                    setTimerControlsDisabledStateAP(true, true, false);
+                    document.getElementById('stopBtnAP').style.color = '#990000';
+                    timerControlsButtonsAP.pauseAP.style.display = 'none';
+                    timerControlsButtonsAP.startAP.style.display = 'inline';
+                    timerControlsButtonsAP.startAP.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('APSettings').disabled = false;
+                    document.getElementById('APSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickAP();
+                    document.getElementById('APDate').value = date;
+                    document.getElementById('APSave').disabled = false;
+                    document.getElementById('APSave').style.color = '#49B79D';
+                    clearInterval(APcountdown);
+                    APisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            APballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            APballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
                 } else {
                     audioObjects.inhale.muted = false;
                     audioObjects.inhale.play();

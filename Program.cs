@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BrizaBreath.Services;
 using Stripe;
+using Microsoft.Extensions.Options;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,8 +24,16 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 StripeConfiguration.ApiKey = builder.Configuration["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"];
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = true;
+    // Configure your password settings here
+    options.Password.RequireNonAlphanumeric = true; // Ensure this is set to true
+                                                    // Other options as required
+})
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddErrorDescriber<CustomIdentityErrorDescriber>(); // Register the custom error describer
+
 builder.Services.AddRazorPages();
 builder.Services.AddMvc().AddRazorPagesOptions(options => options.Conventions.AddPageRoute("/Results/Create", ""));
 
@@ -68,3 +77,17 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+public class CustomIdentityErrorDescriber : IdentityErrorDescriber
+{
+    public override IdentityError PasswordRequiresNonAlphanumeric()
+    {
+        return new IdentityError
+        {
+            Code = nameof(PasswordRequiresNonAlphanumeric),
+            Description = "Passwords must have at least one symbol ('!', '@', '#', etc.)."
+        };
+    }
+
+    // Override other methods as needed
+}

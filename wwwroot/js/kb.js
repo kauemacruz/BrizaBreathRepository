@@ -42,6 +42,12 @@ function KBclose() {
     KBmyTimeout = null;
     clearTimeout(KBmyTimeout2);
     KBmyTimeout2 = null;
+    timerKB.isBreak2KB = false;
+    timerKB.isBreak3KB = false;
+    timerKB.isBreakKB = false;
+    setTimeout(() => {
+        KBchangeBall(1.5, 1);
+    }, 3000); KBballText.textContent = formSettingsFieldsKB.breakDuration2KB.value;
 }
 // Event listener for closing the modal
 KBcloseModal.addEventListener("click", KBclose);
@@ -50,8 +56,6 @@ KBBTN.onclick = function () {
 }
 
 var KBbreaths = 30;
-var KBbreathsSpeed = 1000;
-var KBbreathSpeed2 = 0.5;
 let KBmyTimeout;
 let KBmyTimeout2;
 KBballText.textContent = KBbreaths;
@@ -64,21 +68,30 @@ function KBanimate() {
         return;
     } else {
         KBballText.textContent = KBbreaths;
-        KBchangeBall(1.5, 0.2);
+        KBball.style.transition = `transform 0.2s linear`;
+        KBball.style.transform = `scale(1.5)`;
  
         setTimeout(function () {
-            KBchangeBall(0.5, KBbreathSpeed2);
-            if (!ismuteKB) {
-                audioObjects.fullyout2.play();
-            }
-        }, KBbreathsSpeed / 2);
+            KBball.style.transition = `transform 0.4s linear`;
+            KBball.style.transform = `scale(0.3)`;
+         }, 200);
     }
     KBbreaths--;
-    KBmyTimeout = setTimeout(KBanimate, KBbreathsSpeed);
+    KBmyTimeout = setTimeout(KBanimate, 600);
 }
 function KBholdFunction() {
+    setTimerControlsDisabledStateKB(true, true, true);
+    setTimeout(function () {
+        setTimerControlsDisabledStateKB(true, false, false);
+    }, 5000);
+    timerKB.isBreak3KB = true;
+    timerKB.isBreak2KB = false;
+    timerKB.isBreakKB = false;
     KBmyTimeout = null;
-    setTimerControlsDisabledStateKB(true, false, false);
+    if (!ismuteKB) {
+        audioObjects.fullyout2.pause();
+        audioObjects.fullyout2.currentTime = 0;
+    }
     timerControlsButtonsKB.pauseKB.style.color = '#0661AA';
     if (!ismuteKB) {
         audioObjects.fullyinHold.muted = false;
@@ -94,7 +107,7 @@ function KBholdFunction() {
         displayTimerKB();
     }, 3000);
 }
-var KBcountdown = 30;
+var KBcountdown = 15;
 function KBanimate2() {
     if (KBcountdown < 1) {
         clearTimeout(KBmyTimeout2);
@@ -106,6 +119,9 @@ function KBanimate2() {
     KBmyTimeout2 = setTimeout(KBanimate2, 1000);
 }
 function KBnextRound() {
+    timerKB.isBreak2KB = false;
+    timerKB.isBreak3KB = false;
+    timerKB.isBreakKB = true;
     KBmyTimeout2 = null;
     if (!ismuteKB) {
         audioObjects.nextRound.muted = false;
@@ -164,6 +180,15 @@ $(function () {
         document.getElementById('KBSave').style.color = 'rgb(177, 177, 177)';
         resetTimerKB();
         timerKB.isFinishedKB = true;
+        clearTimeout(KBmyTimeout);
+        KBmyTimeout = null;
+        clearTimeout(KBmyTimeout2);
+        KBmyTimeout2 = null;
+        timerKB.isBreak2KB = false;
+        timerKB.isBreak3KB = false;
+        timerKB.isBreakKB = false;
+        KBchangeBall(1.5, 1);
+        KBballText.textContent = formSettingsFieldsKB.breakDuration2KB.value;
     });
 });
 
@@ -330,39 +355,8 @@ plusBtnKB.onclick = function () {
     }
 }
 var SminusBtnKB = document.getElementById("SminusKB"),
-    SplusBtnKB = document.getElementById("SplusKB"),
-    breathSpeedKB = document.getElementById("breathSpeedKB");
-breathSpeedKB.value = "Medium";
-SminusBtnKB.onclick = function () {
-    if (breathSpeedKB.value == "Medium") {
-        SminusBtnKB.style.color = "rgb(177,177,177)";
-        breathSpeedKB.value = "Slow";
-        KBbreathsSpeed = 1300;
-        KBbreathsSpeed2 = 0.7;
-    }
-    else if (breathSpeedKB.value == "Fast") {
-        breathSpeedKB.value = "Medium";
-        KBbreathsSpeed = 1000;
-        KBbreathsSpeed2 = 0.5;
-        SplusBtnKB.style.color = "#49B79D";
-    }
-}
-
-SplusBtnKB.onclick = function () {
-    if (breathSpeedKB.value == "Slow") {
-        SminusBtnKB.style.color = "#49B79D";
-        breathSpeedKB.value = "Medium";
-        KBbreathsSpeed = 1000;
-        KBbreathsSpeed2 = 0.5;
-    }
-    else if (breathSpeedKB.value == "Medium") {
-        breathSpeedKB.value = "Fast";
-        SplusBtnKB.style.color = "rgb(177,177,177)";
-        KBbreathsSpeed = 700;
-        KBbreathsSpeed2 = 0.3;
-    }
-}
-
+    SplusBtnKB = document.getElementById("SplusKB");
+   
 function initializeTimerSettingsFormKB() {
     const oneDayInSecondsKB = 60 * 60 * 24;
     let lastUserSetEnableBreakKB = timerSettingsKB.enableBreakKB;
@@ -427,6 +421,9 @@ function setFormDisabledStateKB(disabled) {
 }
 var musicIsOnKB = false;
 function startTimerKB() {
+    timerKB.isBreakKB = true;
+    timerKB.isBreak2KB = false;
+    timerKB.isBreak3KB = false;
     setFormDisabledStateKB(true);
     setTimerControlsDisabledStateKB(true, true, false);
     timerControlsButtonsKB.pauseKB.style.color = 'rgb(177, 177, 177)';
@@ -439,10 +436,8 @@ function startTimerKB() {
     if (!audioPlayerBRT.muted) {
         playSelectedSongBRT(true);
     }
-    if (!BismuteKB) {
-        audioObjects.fullyin.muted = false;
-        audioObjects.fullyin.loop = false;
-        audioObjects.fullyin.play();
+    if (!ismuteKB) {
+        audioObjects.fullyout2.play();
     }
     KBanimate();
     timerControlsButtonsKB.startKB.style.display = 'none';
@@ -468,6 +463,8 @@ function pauseTimerKB() {
     [secondsKB, minutesKB] = [0, 0];
     timerControlsButtonsKB.stopKB.style.color = '#990000';
     if (!ismuteKB) {
+        audioObjects.fullyout2.pause();
+        audioObjects.fullyout2.currentTime = 0;
         audioObjects.normalbreath.muted = false;
         audioObjects.normalbreath.play();
     }
@@ -475,6 +472,7 @@ function pauseTimerKB() {
     KBanimate2();
     timerKB.isBreak2KB = true;
     timerKB.isBreak3KB = false;
+    timerKB.isBreakKB = false;
 }
 
 function stopTimerKB() {
@@ -516,14 +514,21 @@ function stopTimerKB() {
     KBbreaths = formSettingsFieldsKB.breakDuration2KB.value;
     KBballText.textContent = KBbreaths;
     if (!ismuteKB) {
+        audioObjects.fullyout2.pause();
+        audioObjects.fullyout2.currentTime = 0;
         audioObjects.normalbreath.muted = false;
         audioObjects.normalbreath.play();
-    }
+    }  
     clearTimeout(KBmyTimeout);
     KBmyTimeout = null;
     clearTimeout(KBmyTimeout2);
     KBmyTimeout2 = null;
-    KBchangeBall(1.5, 1);
+    timerKB.isBreak2KB = false;
+    timerKB.isBreak3KB = false;
+    timerKB.isBreakKB = false;
+    setTimeout(() => {
+        KBchangeBall(1.5, 1);
+    }, 3000); KBballText.textContent = formSettingsFieldsKB.breakDuration2KB.value;
 }
 document.getElementById('resetBtnKB').addEventListener('click', function () {
     resetTimerKB();
@@ -534,6 +539,9 @@ document.getElementById('resetBtnKB').addEventListener('click', function () {
     timerControlsButtonsKB.stopKB.style.display = "inline";
     document.getElementById('KBSave').disabled = true;
     document.getElementById('KBSave').style.color = 'rgb(177, 177, 177)';
+    setTimeout(() => {
+        KBchangeBall(1.5, 1);
+    }, 3000);
 });
 
 

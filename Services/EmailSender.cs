@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System;
 
 namespace BrizaBreath.Services;
 
@@ -10,12 +11,24 @@ public class EmailSender : IEmailSender
 {
     private readonly ILogger _logger;
 
-    public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor,
-                       ILogger<EmailSender> logger)
+    public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor, ILogger<EmailSender> logger)
     {
-        Options = optionsAccessor.Value;
         _logger = logger;
+
+        // Read SendGridKey from environment variable
+        string sendGridKey = Environment.GetEnvironmentVariable("SendGridApiKey") ?? throw new InvalidOperationException("SendGrid API key not found in environment variables.");
+
+        if (string.IsNullOrWhiteSpace(sendGridKey))
+        {
+            _logger.LogError("SendGrid API key not found in environment variables.");
+            throw new Exception("SendGrid API key not found.");
+        }
+
+        // Set the SendGridKey in Options
+        Options = optionsAccessor.Value;
+        Options.SendGridKey = sendGridKey;
     }
+
 
     public AuthMessageSenderOptions Options { get; } //Set with Secret Manager.
 

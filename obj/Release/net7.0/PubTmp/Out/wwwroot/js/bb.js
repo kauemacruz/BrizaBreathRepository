@@ -12,8 +12,6 @@ const BBcountdownDisplay = document.getElementById('BBcountdownDisplay');
 let BBcountdown;
 let BBtimeRemaining = Infinity;
 let BBisPaused = false;
-var BBroundTime;
-var BBremainingRounds;
 // Populate the dropdown with options
 for (let BBi = 2; BBi <= 60; BBi++) { // assuming 1 to 60 minutes
     let BBoption = document.createElement('option');
@@ -407,8 +405,6 @@ function startTimerBB() {
             // Start a new timer
             clearInterval(BBcountdown);
             BBtimeRemaining = BBtimeInput.value === '∞' ? Infinity : parseInt(BBtimeInput.value);
-            BBroundTime = parseInt(timerSettingsBB.intervalDurationBB) + parseInt(timerSettingsBB.breakDurationBB) + parseInt(timerSettingsBB.breakDuration2BB) + parseInt(timerSettingsBB.breakDuration3BB);
-            BBremainingRounds = BBtimeRemaining / BBroundTime;
             BBcountdownDisplay.textContent = '';
             BBstartTimer(BBtimeRemaining);
         }
@@ -430,36 +426,6 @@ function BBstartTimer(BBduration) {
             BBcountdownDisplay.textContent = `${BBContdownminutes}:${BBContdownseconds.toString().padStart(2, '0')}`;
             BBtimeInput.classList.add('CountdownHidden');
             BBcountdownDisplay.classList.remove('CountdownHidden');
-        } else if (Math.round(BBremainingRounds + 1) == timerBB.intervalsDoneBB) {
-            clearInterval(BBcountdown);
-            if (BBduration !== Infinity) {
-                BBcountdownDisplay.textContent = 'Back to normal breathing';
-                if (!ismuteBB) {
-                    audioObjects.bell.muted = false;
-                    audioObjects.bell.play();
-                }
-                clearInterval(intBB);
-                setTimerControlsDisabledStateBB(true, true, false);
-                document.getElementById('stopBtnBB').style.color = '#990000';
-                timerControlsButtonsBB.pauseBB.style.display = 'none';
-                timerControlsButtonsBB.startBB.style.display = 'inline';
-                timerControlsButtonsBB.startBB.style.color = "rgb(177, 177, 177)";
-                document.getElementById('BBSettings').disabled = false;
-                document.getElementById('BBSettings').style.color = '#49B79D';
-                if (!audioPlayerBRT.muted) {
-                    audioPlayerBRT.pause();
-                }
-                stopTimerTickBB();
-                document.getElementById('BBDate').value = date;
-                document.getElementById('BBSave').disabled = false;
-                document.getElementById('BBSave').style.color = '#49B79D';
-                clearInterval(BBcountdown);
-                BBisPaused = false;
-                setTimeout(() => {
-                    audioObjects.normalbreath.muted = false;
-                    audioObjects.normalbreath.play();
-                }, 1000);
-            }
         } else if (BBduration == Infinity) {
             BBcountdownDisplay.textContent = '∞';
             BBtimeInput.classList.add('CountdownHidden');
@@ -622,8 +588,39 @@ function onTimerTickBB() {
         timerBB.elapsedInIntervalBB++;
         if (timerBB.elapsedInIntervalBB == currentIntervalDurationBB && timerBB.isBreak4BB) {
             if (!ismuteBB) {
-                if (Math.round(BBremainingRounds) == timerBB.intervalsDoneBB) {
+                if(BBcountdownDisplay.textContent == '0:00') {
                     audioObjects.inhale.muted = true;
+                    clearInterval(BBcountdown);
+                    if (!ismuteBB) {
+                        audioObjects.bell.muted = false;
+                        audioObjects.bell.play();
+                    }
+                    clearInterval(intBB);
+                    setTimerControlsDisabledStateBB(true, true, false);
+                    document.getElementById('stopBtnBB').style.color = '#990000';
+                    timerControlsButtonsBB.pauseBB.style.display = 'none';
+                    timerControlsButtonsBB.startBB.style.display = 'inline';
+                    timerControlsButtonsBB.startBB.style.color = "rgb(177, 177, 177)";
+                    document.getElementById('BBSettings').disabled = false;
+                    document.getElementById('BBSettings').style.color = '#49B79D';
+                    if (!audioPlayerBRT.muted) {
+                        audioPlayerBRT.pause();
+                    }
+                    stopTimerTickBB();
+                    document.getElementById('BBDate').value = date;
+                    document.getElementById('BBSave').disabled = false;
+                    document.getElementById('BBSave').style.color = '#49B79D';
+                    clearInterval(BBcountdown);
+                    BBisPaused = false;
+                    setTimeout(() => {
+                        audioObjects.normalbreath.muted = false;
+                        audioObjects.normalbreath.play();
+                        if (isPortuguese) {
+                            BBballText.textContent = 'Respira\u00E7\u00E3o Normal';
+                        } else {
+                            BBballText.textContent = 'Normal Breath';
+                        }
+                    }, 1000);
                 } else {
                     audioObjects.inhale.muted = false;
                     audioObjects.inhale.play();
