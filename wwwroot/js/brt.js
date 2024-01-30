@@ -1,4 +1,5 @@
 /*BRT JS*/
+var isBRTon = false;
 const songSelectBRT = document.getElementById('song-selectBRT');
 const audioPlayerBRT = document.getElementById('audio-playerBRT');
 const startBtnBRT = document.getElementById('brtStart');
@@ -87,6 +88,7 @@ document.getElementById('brtStop').style.color = 'rgb(177, 177, 177)';
 document.getElementById('brtSave').disabled = true;
 document.getElementById('brtSave').style.color = 'rgb(177, 177, 177)';
 startBtnBRT.addEventListener('click', () => {
+    isBRTon = true;
     if (brtInt !== null) {
         clearInterval(brtInt);
     }
@@ -106,6 +108,7 @@ startBtnBRT.addEventListener('click', () => {
     }
 });
 document.getElementById('brtPause').addEventListener('click', () => {
+    isBRTon = false;
     clearInterval(brtInt);
     document.getElementById('brtStart').style.display = 'inline';
     document.getElementById('brtPause').style.display = 'none';
@@ -121,6 +124,7 @@ document.getElementById('brtPause').addEventListener('click', () => {
     document.getElementById('brtDate').value = date;
 });
 document.getElementById('brtStop').addEventListener('click', () => {
+    isBRTon = false;
     clearInterval(brtInt);
     [brtSeconds, brtMinutes] = [0, 0];
     brtTimerRef.value = '00 : 00';

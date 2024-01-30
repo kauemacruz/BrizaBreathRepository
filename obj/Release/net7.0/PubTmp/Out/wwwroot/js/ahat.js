@@ -1,4 +1,5 @@
 /*AHAT JS*/
+var isAHATon = false;
 const AHATmodal = document.getElementById("AHATmodal");
 const AHATcloseModal = document.getElementById("AHATcloseModal");
 const AHATBTN = document.getElementById("AHATBTN");
@@ -11,6 +12,7 @@ function AHATopenmodal() {
 }
 // Function to close the modal
 function AHATclose() {
+    isAHATon = false;
     AHATmodal.style.display = "none";
     clearInterval(intAHAT);
     document.getElementById("AHATResults").innerHTML = "";
@@ -314,6 +316,7 @@ function setFormDisabledStateAHAT(disabled) {
 }
 var isFirstTimeAHAT = true;
 function startTimerAHAT() {
+    isAHATon = true;
     setFormDisabledStateAHAT(true);
     setTimerControlsDisabledStateAHAT(false, true, false);
     document.getElementById('stopBtnAHAT').style.color = '#990000';
@@ -361,6 +364,7 @@ function pauseTimerAHAT() {
 }
 
 function stopTimerAHAT() {
+    isAHATon = false;
     if (elapsedInIntervalBoxAHAT.style.display !== "none") {
         if (isPortuguese) {
             document.getElementById("AHATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerAHAT.intervalsDoneAHAT + 1) + "</div><div>" + timerAHAT.elapsedInIntervalAHAT + " segundos</div></div>";

@@ -15,7 +15,197 @@
         document.getElementById("noActiveMembership").style.display = "block";
     }
 });
-
+//stop any exercise if they ARE ON WHEN SCREEN LOCK HAPPENS
+document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === 'hidden') {
+        if (isAHATon) {
+            stopTimerAHAT();
+        }
+        if (isCTon) {
+            stopTimerCT();
+        }
+        if (isHATon) {
+            stopTimerHAT();
+        }
+        if (isHATCon) {
+            stopTimerHATC();
+        }
+        if (isKBon) {
+            stopTimerKB();
+        }
+        if (isWHon) {
+            stopTimerWH();
+        }
+        if (isAPon) {
+            pauseTimerAP();
+        }
+        if (isBBon) {
+            pauseTimerBB();
+        }
+        if (isBOXon) {
+            pauseTimerBOX();
+        }
+        if (isBREon) {
+            pauseTimerBRE();
+        }
+        if (isBRTon) {
+            isBRTon = false;
+            clearInterval(brtInt);
+            document.getElementById('brtStart').style.display = 'inline';
+            document.getElementById('brtPause').style.display = 'none';
+            document.getElementById('brtStop').disabled = false;
+            document.getElementById('brtStop').style.color = '#990000';
+            document.getElementById('brtSave').disabled = false;
+            document.getElementById('brtSave').style.color = '#49B79D';
+            document.getElementById('brtSettings').disabled = false;
+            document.getElementById('brtSettings').style.color = '#49B79D';
+            if (!audioPlayerBRT.muted) {
+                audioPlayerBRT.pause();
+            }
+            document.getElementById('brtDate').value = date;
+        }
+        if (isBRWon) {
+            pauseTimerBRW();
+        }
+        if (isCBon) {
+            pauseTimerCB();
+        }
+        if (isCO2on) {
+            pauseTimerCO2();
+        }
+        if (isHUMon) {
+            pauseTimerHUM();
+        }
+        if (isLUNGSon) {
+            isLUNGSon = false;
+            clearInterval(lungsInt);
+            document.getElementById('lungsStart').style.display = 'inline';
+            document.getElementById('lungsPause').style.display = 'none';
+            document.getElementById('lungsStop').disabled = false;
+            document.getElementById('lungsStop').style.color = '#990000';
+            document.getElementById('lungsSave').disabled = false;
+            document.getElementById('lungsSave').style.color = '#49B79D';
+            document.getElementById('lungsSettings').disabled = false;
+            document.getElementById('lungsSettings').style.color = '#49B79D';
+            if (!audioPlayerBRT.muted) {
+                audioPlayerBRT.pause();
+            }
+            document.getElementById('lungsDate').value = date;
+        }
+        if (isNBon) {
+            pauseTimerNB();
+        }
+        if (isO2on) {
+            pauseTimerO2();
+        }
+        if (isRBon) {
+            pauseTimerRB();
+        }
+        if (isSBon) {
+            pauseTimerSB();
+        }
+        if (isUBon) {
+            pauseTimerUB();
+        }
+        if (isYBon) {
+            pauseTimerYB();
+        }
+    }
+});
+window.addEventListener("beforeunload", function (event) {
+    if (isAHATon) {
+        stopTimerAHAT();
+    }
+    if (isCTon) {
+        stopTimerCT();
+    }
+    if (isHATon) {
+        stopTimerHAT();
+    }
+    if (isHATCon) {
+        stopTimerHATC();
+    }
+    if (isKBon) {
+        stopTimerKB();
+    }
+    if (isWHon) {
+        stopTimerWH();
+    }
+    if (isAPon) {
+        pauseTimerAP();
+    }
+    if (isBBon) {
+        pauseTimerBB();
+    }
+    if (isBOXon) {
+        pauseTimerBOX();
+    }
+    if (isBREon) {
+        pauseTimerBRE();
+    }
+    if (isBRTon) {
+        isBRTon = false;
+        clearInterval(brtInt);
+        document.getElementById('brtStart').style.display = 'inline';
+        document.getElementById('brtPause').style.display = 'none';
+        document.getElementById('brtStop').disabled = false;
+        document.getElementById('brtStop').style.color = '#990000';
+        document.getElementById('brtSave').disabled = false;
+        document.getElementById('brtSave').style.color = '#49B79D';
+        document.getElementById('brtSettings').disabled = false;
+        document.getElementById('brtSettings').style.color = '#49B79D';
+        if (!audioPlayerBRT.muted) {
+            audioPlayerBRT.pause();
+        }
+        document.getElementById('brtDate').value = date;
+    }
+    if (isBRWon) {
+        pauseTimerBRW();
+    }
+    if (isCBon) {
+        pauseTimerCB();
+    }
+    if (isCO2on) {
+        pauseTimerCO2();
+    }
+    if (isHUMon) {
+        pauseTimerHUM();
+    }
+    if (isLUNGSon) {
+        isLUNGSon = false;
+        clearInterval(lungsInt);
+        document.getElementById('lungsStart').style.display = 'inline';
+        document.getElementById('lungsPause').style.display = 'none';
+        document.getElementById('lungsStop').disabled = false;
+        document.getElementById('lungsStop').style.color = '#990000';
+        document.getElementById('lungsSave').disabled = false;
+        document.getElementById('lungsSave').style.color = '#49B79D';
+        document.getElementById('lungsSettings').disabled = false;
+        document.getElementById('lungsSettings').style.color = '#49B79D';
+        if (!audioPlayerBRT.muted) {
+            audioPlayerBRT.pause();
+        }
+        document.getElementById('lungsDate').value = date;
+    }
+    if (isNBon) {
+        pauseTimerNB();
+    }
+    if (isO2on) {
+        pauseTimerO2();
+    }
+    if (isRBon) {
+        pauseTimerRB();
+    }
+    if (isSBon) {
+        pauseTimerSB();
+    }
+    if (isUBon) {
+        pauseTimerUB();
+    }
+    if (isYBon) {
+        pauseTimerYB();
+    }
+});
 // Get the elements with the class "song-select"
 var songSelects = document.getElementsByClassName('song-select');
 // Create an array to store the audio elements
@@ -1145,6 +1335,7 @@ brtLink.onclick = function () {
     });
 }
 backBRT.onclick = function () {
+    isBRTon = false;
     openPage(brtPage, homePage, 'slideRight');
     clearInterval(brtInt);
     [brtSeconds, brtMinutes] = [0, 0];
@@ -1327,6 +1518,7 @@ lungsLink.onclick = function () {
     }
 }
 backLungs.onclick = function () {
+    isLUNGSon = false;
     openPage(lungsPage, homePage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     clearInterval(lungsInt);

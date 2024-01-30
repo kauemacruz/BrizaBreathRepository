@@ -1,4 +1,6 @@
 /*Lungs JS*/
+var isLUNGSon = false;
+
 const startBtnLungs = document.getElementById('lungsStart');
 $(function () {
     $('#lungsForm').on('submit', function (e) {
@@ -35,6 +37,7 @@ document.getElementById('lungsStop').style.color = 'rgb(177, 177, 177)';
 document.getElementById('lungsSave').disabled = true;
 document.getElementById('lungsSave').style.color = 'rgb(177, 177, 177)';
 startBtnLungs.addEventListener('click', () => {
+    isLUNGSon = true;
     if (lungsInt !== null) {
         clearInterval(lungsInt);
     }
@@ -54,6 +57,7 @@ startBtnLungs.addEventListener('click', () => {
     }
 });
 document.getElementById('lungsPause').addEventListener('click', () => {
+    isLUNGSon = false;
     clearInterval(lungsInt);
     document.getElementById('lungsStart').style.display = 'inline';
     document.getElementById('lungsPause').style.display = 'none';
@@ -69,6 +73,7 @@ document.getElementById('lungsPause').addEventListener('click', () => {
     document.getElementById('lungsDate').value = date;
 });
 document.getElementById('lungsStop').addEventListener('click', () => {
+    isLUNGSon = false;
     clearInterval(lungsInt);
     [lungsSeconds, lungsMinutes] = [0, 0];
     lungsTimerRef.value = '00 : 00';

@@ -1,4 +1,5 @@
 /*O2 JS*/
+var isO2on = false;
 const O2modal = document.getElementById("O2modal");
 const O2closeModal = document.getElementById("O2closeModal");
 const O2BTN = document.getElementById("O2BTN");
@@ -7,10 +8,12 @@ function O2openmodal() {
     O2modal.style.display = "block";
     audioObjects.breathedeeply.load();
     audioObjects.normalbreath.load();
-    audioObjects.hold.load();
+    audioObjects.fullyinHold.load();
 }
 // Function to close the modal
 function O2close() {
+    isCO2on = false;
+    isO2on = false;
     O2modal.style.display = "none";
     document.getElementById("O2Results").innerHTML = "";
     timerRefO2.value = "|";
@@ -961,7 +964,8 @@ function initializeTimerSettingsFormO2() {
     plusBtnO2.disabled = disabled;
   }
 
-  function startTimerO2() {
+function startTimerO2() {
+    isO2on = true;
     if(intO2!==null){
       clearInterval(intO2);
     }
@@ -989,7 +993,8 @@ function initializeTimerSettingsFormO2() {
       document.getElementById('O2Btn').disabled = true;
   }
 
-  function pauseTimerO2() {
+function pauseTimerO2() {
+    isO2on = false;
     clearInterval(intO2);
     setTimerControlsDisabledStateO2(false, true, false);
     document.getElementById('stopBtnO2').style.color = '#990000';
@@ -1013,7 +1018,8 @@ function initializeTimerSettingsFormO2() {
       }
   }
 
-  function stopTimerO2() {
+function stopTimerO2() {
+    isO2on = false;
     clearInterval(intO2);
     timerRefO2.value = '|';
     if (!audioPlayerBRT.muted) {
@@ -1026,6 +1032,8 @@ function initializeTimerSettingsFormO2() {
     setTimerControlsDisabledStateO2(false, true, true);
     timerControlsButtonsO2.stopO2.style.color = "rgb(177, 177, 177)";
     timerControlsButtonsO2.startO2.style.color = "#0661AA";
+    document.getElementById('O2Save').disabled = true;
+    document.getElementById('O2Save').style.color = "rgb(177, 177, 177)";
     stopTimerTickO2();
     resetTimerO2();
     document.getElementsByClassName('gap2O2')[0].style.backgroundColor = '#ffffff';
@@ -1081,8 +1089,8 @@ function initializeTimerSettingsFormO2() {
           if (!ismuteO2) {
             audioObjects.breathedeeply.pause();
             audioObjects.breathedeeply.currentTime = 0;
-            audioObjects.hold.muted = false;
-            audioObjects.hold.play();
+            audioObjects.fullyinHold.muted = false;
+            audioObjects.fullyinHold.play();
         }
         timerO2.isBreakO2 = true;  
         timerO2.isBreak0O2 = false;
@@ -1140,8 +1148,8 @@ function initializeTimerSettingsFormO2() {
           if (!ismuteO2) {
             audioObjects.breathedeeply.pause();
             audioObjects.breathedeeply.currentTime = 0;
-            audioObjects.hold.muted = false;
-            audioObjects.hold.play();
+            audioObjects.fullyinHold.muted = false;
+            audioObjects.fullyinHold.play();
         }
         timerO2.isBreak3O2 = true;
         timerO2.isBreak2O2 = false;
@@ -1199,8 +1207,8 @@ function initializeTimerSettingsFormO2() {
             if (!ismuteO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerO2.isBreak5O2 = true;
           timerO2.isBreak4O2 = false;
@@ -1258,8 +1266,8 @@ function initializeTimerSettingsFormO2() {
             if (!ismuteO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerO2.isBreak7O2 = true;
           timerO2.isBreak6O2 = false;
@@ -1317,8 +1325,8 @@ function initializeTimerSettingsFormO2() {
             if (!ismuteO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerO2.isBreak9O2 = true;
           timerO2.isBreak8O2 = false;
@@ -1376,8 +1384,8 @@ function initializeTimerSettingsFormO2() {
             if (!ismuteO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerO2.isBreak11O2 = true;
           timerO2.isBreak10O2 = false;
@@ -1435,8 +1443,8 @@ function initializeTimerSettingsFormO2() {
             if (!ismuteO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerO2.isBreak13O2 = true;
           timerO2.isBreak12O2 = false;
@@ -1494,8 +1502,8 @@ function initializeTimerSettingsFormO2() {
             if (!ismuteO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerO2.isBreak15O2 = true;
           timerO2.isBreak14O2 = false;

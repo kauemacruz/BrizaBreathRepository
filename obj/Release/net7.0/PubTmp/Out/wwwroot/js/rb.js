@@ -1,4 +1,5 @@
 ﻿/*478 JS*/
+var isRBon = false;
 const RBball = document.getElementById('RBball');
 const RBballText = document.getElementById('RBballText');
 
@@ -36,6 +37,7 @@ function RBopenmodal() {
 }
 // Function to close the modal
 function RBclose() {
+    isRBon = false;
     RBmodal.style.display = "none";
     clearInterval(intRB);
     [secondsRB, minutesRB, hoursRB] = [0, 0, 0];
@@ -345,6 +347,7 @@ function setFormDisabledStateRB(disabled) {
 }
 
 function startTimerRB() {
+    isRBon = true;
     if (intRB !== null) {
         clearInterval(intRB);
     }
@@ -415,6 +418,7 @@ function RBstartTimer(RBduration) {
     }, 1000);
 }
 function pauseTimerRB() {
+    isRBon = false;
     clearInterval(intRB);
     setTimerControlsDisabledStateRB(false, true, false);
     document.getElementById('stopBtnRB').style.color = '#990000';
@@ -435,6 +439,7 @@ function pauseTimerRB() {
 }
 
 function stopTimerRB() {
+    isRBon = false;
     clearInterval(intRB);
     [secondsRB, minutesRB, hoursRB] = [0, 0, 0];
     timerRefRB.value = '00 : 00 : 00';

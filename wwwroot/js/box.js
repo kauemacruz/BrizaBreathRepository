@@ -1,4 +1,5 @@
 ﻿/*BOX JS*/
+var isBOXon = false;
 const BOXball = document.getElementById('BOXball');
 const BOXballText = document.getElementById('BOXballText');
 
@@ -37,6 +38,7 @@ function BOXopenmodal() {
 }
 // Function to close the modal
 function BOXclose() {
+    isBOXon = false;
     BOXmodal.style.display = "none";
     clearInterval(intBOX);
     [secondsBOX, minutesBOX, hoursBOX] = [0, 0, 0];
@@ -408,6 +410,7 @@ function setFormDisabledStateBOX(disabled) {
 }
 
 function startTimerBOX() {
+    isBOXon = true;
     if (intBOX !== null) {
         clearInterval(intBOX);
     }
@@ -478,6 +481,7 @@ function BOXstartTimer(BOXduration) {
     }, 1000);
 }
 function pauseTimerBOX() {
+    isBOXon = false;
     clearInterval(intBOX);
     setTimerControlsDisabledStateBOX(false, true, false);
     document.getElementById('stopBtnBOX').style.color = '#990000';
@@ -498,6 +502,7 @@ function pauseTimerBOX() {
 }
 
 function stopTimerBOX() {
+    isBOXon = false;
     clearInterval(intBOX);
     [secondsBOX, minutesBOX, hoursBOX] = [0, 0, 0];
     timerRefBOX.value = '00 : 00 : 00';

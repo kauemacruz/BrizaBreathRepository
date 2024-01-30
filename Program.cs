@@ -22,7 +22,10 @@ builder.Services.ConfigureApplicationCookie(options =>
     // Other cookie settings...
 });
 
-StripeConfiguration.ApiKey = builder.Configuration["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"];
+StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
+
+// Configure Stripe with the API Key from appsettings or environment variable
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {

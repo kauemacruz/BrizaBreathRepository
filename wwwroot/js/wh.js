@@ -1,4 +1,5 @@
 //WH js//
+var isWHon = false;
 const WHball = document.getElementById('WHball');
 const WHballText = document.getElementById('WHballText');
 
@@ -22,6 +23,7 @@ function WHopenmodal() {
 }
 // Function to close the modal
 function WHclose() {
+    isWHon = false;
     WHmodal.style.display = "none";
     clearTimeout(intWH);
     intWH = null;
@@ -450,6 +452,7 @@ function setFormDisabledStateWH(disabled) {
 }
 var musicIsOnWH = false;
 function startTimerWH() {
+    isWHon = true;
     timerWH.isBreakWH = true;
     timerWH.isBreak2WH = false;
     timerWH.isBreak3WH = false;
@@ -505,6 +508,7 @@ function pauseTimerWH() {
 }
 
 function stopTimerWH() {
+    isWHon = false;
     if (timerWH.isBreak3WH) {
         timerWH.intervalsDoneWH++;
         intervalsDoneWH.value = timerWH.intervalsDoneWH;

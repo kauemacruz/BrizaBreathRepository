@@ -1,4 +1,5 @@
 ﻿//BB JS//
+var isBBon = false;
 const BBball = document.getElementById('BBball');
 const BBballText = document.getElementById('BBballText');
 
@@ -36,6 +37,7 @@ function BBopenmodal() {
 }
 // Function to close the modal
 function BBclose() {
+    isBBon = false;
     BBmodal.style.display = "none";
     clearInterval(intBB);
     [secondsBB, minutesBB, hoursBB] = [0, 0, 0];
@@ -364,6 +366,7 @@ function setFormDisabledStateBB(disabled) {
 }
 
 function startTimerBB() {
+    isBBon = true;
     if(intBB!==null){
       clearInterval(intBB);
     }
@@ -434,6 +437,7 @@ function BBstartTimer(BBduration) {
     }, 1000);
 }
 function pauseTimerBB() {
+    isBBon = false;
     clearInterval(intBB);
     setTimerControlsDisabledStateBB(false, true, false);
     document.getElementById('stopBtnBB').style.color = '#990000';
@@ -454,6 +458,7 @@ function pauseTimerBB() {
 }
 
 function stopTimerBB() {
+    isBBon = false;
     clearInterval(intBB);
     [secondsBB,minutesBB,hoursBB] = [0,0,0];
     timerRefBB.value = '00 : 00 : 00';

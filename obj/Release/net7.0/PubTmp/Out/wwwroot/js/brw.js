@@ -1,4 +1,5 @@
 ﻿//BRW JS//
+var isBRWon = false;
 const BRWball = document.getElementById('BRWball');
 const BRWballText = document.getElementById('BRWballText');
 
@@ -36,6 +37,7 @@ function BRWopenmodal() {
 }
 // Function to close the modal
 function BRWclose() {
+    isBRWon = false;
     BRWmodal.style.display = "none";
     clearInterval(intBRW);
     [secondsBRW, minutesBRW, hoursBRW] = [0, 0, 0];
@@ -440,6 +442,7 @@ function setFormDisabledStateBRW(disabled) {
     plusBtnBRW.disabled = disabled;
 }
 function startTimerBRW() {
+    isBRWon = true;
     if (intBRW !== null) {
         clearInterval(intBRW);
     }
@@ -510,6 +513,7 @@ function BRWstartTimer(BRWduration) {
     }, 1000);
 }
 function pauseTimerBRW() {
+    isBRWon = false;
     clearInterval(intBRW);
     setTimerControlsDisabledStateBRW(false, true, false);
     document.getElementById('stopBtnBRW').style.color = '#990000';
@@ -530,6 +534,7 @@ function pauseTimerBRW() {
 }
 
 function stopTimerBRW() {
+    isBRWon = false;
     clearInterval(intBRW);
     [secondsBRW, minutesBRW, hoursBRW] = [0, 0, 0];
     timerRefBRW.value = '00 : 00 : 00';

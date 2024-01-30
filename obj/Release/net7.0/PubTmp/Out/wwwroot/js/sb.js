@@ -1,4 +1,5 @@
 ﻿/*SB JS*/
+var isSBon = false;
 const SBball = document.getElementById('SBball');
 const SBballText = document.getElementById('SBballText');
 
@@ -35,6 +36,7 @@ function SBopenmodal() {
 }
 // Function to close the modal
 function SBclose() {
+    isSBon = false;
     SBmodal.style.display = "none";
     clearInterval(intSB);
     [secondsSB, minutesSB, hoursSB] = [0, 0, 0];
@@ -375,6 +377,7 @@ function setFormDisabledStateSB(disabled) {
 }
 
 function startTimerSB() {
+    isSBon = true;
     if (intSB !== null) {
         clearInterval(intSB);
     }
@@ -445,6 +448,7 @@ function SBstartTimer(SBduration) {
     }, 1000);
 }
 function pauseTimerSB() {
+    isSBon = false;
     clearInterval(intSB);
     setTimerControlsDisabledStateSB(false, true, false);
     document.getElementById('stopBtnSB').style.color = '#990000';
@@ -465,6 +469,7 @@ function pauseTimerSB() {
 }
 
 function stopTimerSB() {
+    isSBon = false;
     clearInterval(intSB);
     [secondsSB, minutesSB, hoursSB] = [0, 0, 0];
     timerRefSB.value = '00 : 00 : 00';

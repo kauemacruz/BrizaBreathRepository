@@ -1,4 +1,5 @@
 ﻿/*UB JS*/
+var isUBon = false;
 const UBball = document.getElementById('UBball');
 const UBballText = document.getElementById('UBballText');
 
@@ -37,6 +38,7 @@ function UBopenmodal() {
 }
 // Function to close the modal
 function UBclose() {
+    isUBon = false;
     UBmodal.style.display = "none";
     clearInterval(intUB);
     [secondsUB, minutesUB, hoursUB] = [0, 0, 0];
@@ -410,6 +412,7 @@ function setFormDisabledStateUB(disabled) {
 }
 
 function startTimerUB() {
+    isUBon = true;
     if (intUB !== null) {
         clearInterval(intUB);
     }
@@ -480,6 +483,7 @@ function UBstartTimer(UBduration) {
     }, 1000);
 }
 function pauseTimerUB() {
+    isUBon = false;
     clearInterval(intUB);
     setTimerControlsDisabledStateUB(false, true, false);
     document.getElementById('stopBtnUB').style.color = '#990000';
@@ -500,6 +504,7 @@ function pauseTimerUB() {
 }
 
 function stopTimerUB() {
+    isUBon = false;
     clearInterval(intUB);
     [secondsUB, minutesUB, hoursUB] = [0, 0, 0];
     timerRefUB.value = '00 : 00 : 00';

@@ -1,4 +1,5 @@
 ﻿/*APNEA JS*/
+var isAPon = false;
 const APball = document.getElementById('APball');
 const APballText = document.getElementById('APballText');
 
@@ -37,6 +38,7 @@ function APopenmodal() {
 }
 // Function to close the modal
 function APclose() {
+    isAPon = false;
     APmodal.style.display = "none";
     clearInterval(intAP);
     [secondsAP, minutesAP, hoursAP] = [0, 0, 0];
@@ -377,6 +379,7 @@ function setFormDisabledStateAP(disabled) {
 }
 
 function startTimerAP() {
+    isAPon = true;
     if (intAP !== null) {
         clearInterval(intAP);
     }
@@ -447,6 +450,7 @@ function APstartTimer(APduration) {
     }, 1000);
 }
 function pauseTimerAP() {
+    isAPon = false;
     clearInterval(intAP);
     setTimerControlsDisabledStateAP(false, true, false);
     document.getElementById('stopBtnAP').style.color = '#990000';
@@ -467,6 +471,7 @@ function pauseTimerAP() {
 }
 
 function stopTimerAP() {
+    isAPon = false;
     clearInterval(intAP);
     [secondsAP, minutesAP, hoursAP] = [0, 0, 0];
     timerRefAP.value = '00 : 00 : 00';

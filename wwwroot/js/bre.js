@@ -1,4 +1,5 @@
 ﻿//BRE JS//
+var isBREon = false;
 const BREball = document.getElementById('BREball');
 const BREballText = document.getElementById('BREballText');
 
@@ -36,6 +37,7 @@ function BREopenmodal() {
 }
 // Function to close the modal
 function BREclose() {
+    isBREon = false;
     BREmodal.style.display = "none";
     clearInterval(intBRE);
     [secondsBRE, minutesBRE, hoursBRE] = [0, 0, 0];
@@ -440,6 +442,7 @@ function setFormDisabledStateBRE(disabled) {
     plusBtnBRE.disabled = disabled;
 }
 function startTimerBRE() {
+    isBREon = true;
     if (intBRE !== null) {
         clearInterval(intBRE);
     }
@@ -510,6 +513,7 @@ function BREstartTimer(BREduration) {
     }, 1000);
 }
 function pauseTimerBRE() {
+    isBREon = false;
     clearInterval(intBRE);
     setTimerControlsDisabledStateBRE(false, true, false);
     document.getElementById('stopBtnBRE').style.color = '#990000';
@@ -530,6 +534,7 @@ function pauseTimerBRE() {
 }
 
 function stopTimerBRE() {
+    isBREon = false;
     clearInterval(intBRE);
     [secondsBRE, minutesBRE, hoursBRE] = [0, 0, 0];
     timerRefBRE.value = '00 : 00 : 00';

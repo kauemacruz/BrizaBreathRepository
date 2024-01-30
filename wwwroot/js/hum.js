@@ -1,4 +1,5 @@
 ﻿//HUM JS//
+var isHUMon = false;
 const HUMball = document.getElementById('HUMball');
 const HUMballText = document.getElementById('HUMballText');
 
@@ -35,6 +36,7 @@ function HUMopenmodal() {
 }
 // Function to close the modal
 function HUMclose() {
+    isHUMon = false;
     HUMmodal.style.display = "none";
     clearInterval(intHUM);
     [secondsHUM, minutesHUM, hoursHUM] = [0, 0, 0];
@@ -408,6 +410,7 @@ function setFormDisabledStateHUM(disabled) {
 }
 
 function startTimerHUM() {
+    isHUMon = true;
     if (intHUM !== null) {
         clearInterval(intHUM);
     }
@@ -478,6 +481,7 @@ function HUMstartTimer(HUMduration) {
     }, 1000);
 }
 function pauseTimerHUM() {
+    isHUMon = false;
     clearInterval(intHUM);
     setTimerControlsDisabledStateHUM(false, true, false);
     document.getElementById('stopBtnHUM').style.color = '#990000';
@@ -498,6 +502,7 @@ function pauseTimerHUM() {
 }
 
 function stopTimerHUM() {
+    isHUMon = false;
     clearInterval(intHUM);
     [secondsHUM, minutesHUM, hoursHUM] = [0, 0, 0];
     timerRefHUM.value = '00 : 00 : 00';

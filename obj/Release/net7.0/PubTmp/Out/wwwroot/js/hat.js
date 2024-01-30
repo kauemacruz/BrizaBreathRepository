@@ -1,4 +1,5 @@
 /*HAT JS*/
+var isHATon = false;
 const HATmodal = document.getElementById("HATmodal");
 const HATcloseModal = document.getElementById("HATcloseModal");
 const HATBTN = document.getElementById("HATBTN");
@@ -11,6 +12,7 @@ function HATopenmodal() {
 }
 // Function to close the modal
 function HATclose() {
+    isHATon = false;
     HATmodal.style.display = "none";
     document.getElementById("HATResults").innerHTML = "";
     timerRefHAT.value = "|";
@@ -313,6 +315,7 @@ function setFormDisabledStateHAT(disabled) {
 }
 var isFirstTimeHAT = true;
 function startTimerHAT() {
+    isHATon = true;
     setFormDisabledStateHAT(true);
     setTimerControlsDisabledStateHAT(false, true, false);
     document.getElementById('stopBtnHAT').style.color = '#990000';
@@ -360,6 +363,7 @@ function pauseTimerHAT() {
 }
 
 function stopTimerHAT() {
+    isHATon = false;
     if (elapsedInIntervalBoxHAT.style.display !== "none") {
         if (isPortuguese) {
             document.getElementById("HATResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHAT.intervalsDoneHAT + 1) + "</div><div>" + timerHAT.elapsedInIntervalHAT + " segundos</div></div>";

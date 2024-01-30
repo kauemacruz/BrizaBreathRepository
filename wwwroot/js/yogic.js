@@ -1,4 +1,5 @@
 ﻿/*YB JS*/
+var isYBon = false;
 const YBball = document.getElementById('YBball');
 const YBballText = document.getElementById('YBballText');
 
@@ -36,6 +37,7 @@ function YBopenmodal() {
 }
 // Function to close the modal
 function YBclose() {
+    isYBon = false;
     YBmodal.style.display = "none";
     clearInterval(intYB);
     [secondsYB, minutesYB, hoursYB] = [0, 0, 0];
@@ -408,6 +410,7 @@ function setFormDisabledStateYB(disabled) {
 }
 
 function startTimerYB() {
+    isYBon = true;
     if (intYB !== null) {
         clearInterval(intYB);
     }
@@ -478,6 +481,7 @@ function YBstartTimer(YBduration) {
     }, 1000);
 }
 function pauseTimerYB() {
+    isYBon = false;
     clearInterval(intYB);
     setTimerControlsDisabledStateYB(false, true, false);
     document.getElementById('stopBtnYB').style.color = '#990000';
@@ -498,6 +502,7 @@ function pauseTimerYB() {
 }
 
 function stopTimerYB() {
+    isYBon = false;
     clearInterval(intYB);
     [secondsYB, minutesYB, hoursYB] = [0, 0, 0];
     timerRefYB.value = '00 : 00 : 00';

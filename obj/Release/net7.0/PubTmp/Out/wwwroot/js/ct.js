@@ -1,4 +1,5 @@
 ﻿/*CT JS*/
+var isCTon = false;
 const CTball = document.getElementById('CTball');
 const CTballText = document.getElementById('CTballText');
 
@@ -33,9 +34,11 @@ function CTopenmodal() {
     audioObjects.exhale.load();
     audioObjects.inhale.load();
     audioObjects.hold.load();
+    audioObjects.normalbreath.load();
 }
 // Function to close the modal
 function CTclose() {
+    isCTon = false;
     CTmodal.style.display = "none";
     clearInterval(intCT);
     [secondsCT, minutesCT, hoursCT] = [0, 0, 0];
@@ -349,6 +352,7 @@ function setFormDisabledStateCT(disabled) {
 }
 
 function startTimerCT() {
+    isCTon = true;
     if (intCT !== null) {
         clearInterval(intCT);
     }
@@ -453,6 +457,7 @@ function recoverCT() {
     CTchangeBall(1.5, timerSettingsCT.intervalDurationCT);
 }
 function stopTimerCT() {
+    isCTon = false;
     clearInterval(intCT);
     [secondsCT, minutesCT, hoursCT] = [0, 0, 0];
     if (!audioPlayerBRT.muted) {

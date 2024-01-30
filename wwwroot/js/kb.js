@@ -1,4 +1,5 @@
 //KB js//
+var isKBon = false;
 const KBball = document.getElementById('KBball');
 const KBballText = document.getElementById('KBballText');
 
@@ -22,6 +23,7 @@ function KBopenmodal() {
 }
 // Function to close the modal
 function KBclose() {
+    isKBon = false;
     KBmodal.style.display = "none";
     clearTimeout(intKB);
     intKB = null;
@@ -421,6 +423,7 @@ function setFormDisabledStateKB(disabled) {
 }
 var musicIsOnKB = false;
 function startTimerKB() {
+    isKBon = true;
     timerKB.isBreakKB = true;
     timerKB.isBreak2KB = false;
     timerKB.isBreak3KB = false;
@@ -476,6 +479,7 @@ function pauseTimerKB() {
 }
 
 function stopTimerKB() {
+    isKBon = false;
     if (timerKB.isBreak3KB) {
         timerKB.intervalsDoneKB++;
         intervalsDoneKB.value = timerKB.intervalsDoneKB;

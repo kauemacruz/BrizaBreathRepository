@@ -1,4 +1,5 @@
 ﻿/*NB JS*/
+var isNBon = false;
 const NBball = document.getElementById('NBball');
 const NBballText = document.getElementById('NBballText');
 
@@ -37,6 +38,7 @@ function NBopenmodal() {
 }
 // Function to close the modal
 function NBclose() {
+    isNBon = false;
     NBmodal.style.display = "none";
     clearInterval(intNB);
     [secondsNB, minutesNB, hoursNB] = [0, 0, 0];
@@ -412,6 +414,7 @@ function setFormDisabledStateNB(disabled) {
 }
 
 function startTimerNB() {
+    isNBon = true;
     if (intNB !== null) {
         clearInterval(intNB);
     }
@@ -482,6 +485,7 @@ function NBstartTimer(NBduration) {
     }, 1000);
 }
 function pauseTimerNB() {
+    isNBon = false;
     clearInterval(intNB);
     setTimerControlsDisabledStateNB(false, true, false);
     document.getElementById('stopBtnNB').style.color = '#990000';
@@ -502,6 +506,7 @@ function pauseTimerNB() {
 }
 
 function stopTimerNB() {
+    isNBon = false;
     clearInterval(intNB);
     [secondsNB, minutesNB, hoursNB] = [0, 0, 0];
     timerRefNB.value = '00 : 00 : 00';

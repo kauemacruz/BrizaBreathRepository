@@ -45,7 +45,7 @@ namespace BrizaBreath.Pages.Results
 
                 if (!string.IsNullOrEmpty(sessionId))
                 {
-                    StripeConfiguration.ApiKey = "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";
+                    StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
                     var service = new SessionService();
                     var session = await service.GetAsync(sessionId);
 
@@ -139,7 +139,7 @@ namespace BrizaBreath.Pages.Results
         }
         public bool IsUserActiveSubscriber(string userId)
         {
-            StripeConfiguration.ApiKey = "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";
+            StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
             var isStripeActive = _context.BrizaSubscription
                 .Where(s => s.UserId == userId && s.StripeCustID != null && s.IsActive == true)
                 .FirstOrDefault();
@@ -279,7 +279,7 @@ namespace BrizaBreath.Pages.Results
                 }
                 else
                 {
-                    StripeConfiguration.ApiKey = "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";
+                    StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
                     var latestSubscription = _context.BrizaSubscription
                         .Where(s => s.UserId == ResultUser && s.StripeCustID != null)
                         .OrderByDescending(s => s.StartDate)

@@ -1,4 +1,5 @@
 ﻿/*CB JS*/
+var isCBon = false;
 const CBball = document.getElementById('CBball');
 const CBballText = document.getElementById('CBballText');
 
@@ -35,6 +36,7 @@ function CBopenmodal() {
 }
 // Function to close the modal
 function CBclose() {
+    isCBon = false;
     CBmodal.style.display = "none";
     clearInterval(intCB);
     [secondsCB, minutesCB, hoursCB] = [0, 0, 0];
@@ -309,6 +311,7 @@ function setFormDisabledStateCB(disabled) {
 }
 
 function startTimerCB() {
+    isCBon = true;
     if (intCB !== null) {
         clearInterval(intCB);
     }
@@ -379,6 +382,7 @@ function CBstartTimer(CBduration) {
     }, 1000);
 }
 function pauseTimerCB() {
+    isCBon = false;
     clearInterval(intCB);
     setTimerControlsDisabledStateCB(false, true, false);
     document.getElementById('stopBtnCB').style.color = '#990000';
@@ -399,6 +403,7 @@ function pauseTimerCB() {
 }
 
 function stopTimerCB() {
+    isCBon = false;
     clearInterval(intCB);
     [secondsCB, minutesCB, hoursCB] = [0, 0, 0];
     timerRefCB.value = '00 : 00 : 00';

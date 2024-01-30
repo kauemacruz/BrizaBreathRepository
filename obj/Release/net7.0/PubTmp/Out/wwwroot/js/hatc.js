@@ -1,4 +1,5 @@
 /*HATC JS*/
+var isHATCon = false;
 const HATCmodal = document.getElementById("HATCmodal");
 const HATCcloseModal = document.getElementById("HATCcloseModal");
 const HATCBTN = document.getElementById("HATCBTN");
@@ -10,6 +11,7 @@ function HATCopenmodal() {
 }
 // Function to close the modal
 function HATCclose() {
+    isHATCon = false;
     HATCmodal.style.display = "none";
     document.getElementById("HATCResults").innerHTML = "";
     timerRefHATC.value = "|";
@@ -309,6 +311,7 @@ function setFormDisabledStateHATC(disabled) {
 }
 var isFirstTimeHATC = true;
 function startTimerHATC() {
+    isHATCon = true;
     setFormDisabledStateHATC(true);
     setTimerControlsDisabledStateHATC(false, true, false);
     document.getElementById('stopBtnHATC').style.color = '#990000';
@@ -356,6 +359,7 @@ function pauseTimerHATC() {
 }
 
 function stopTimerHATC() {
+    isHATCon = false;
     if (elapsedInIntervalBoxHATC.style.display !== "none") {
         if (isPortuguese) {
             document.getElementById("HATCResults").innerHTML += "<div class='NOfSteps'> <div>Round " + (timerHATC.intervalsDoneHATC + 1) + "</div><div>" + timerHATC.elapsedInIntervalHATC + " segundos</div></div>";

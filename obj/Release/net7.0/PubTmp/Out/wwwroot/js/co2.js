@@ -1,4 +1,5 @@
 /*CO2 JS*/
+var isCO2on = false;
 $(function () {
     $('#CO2Form').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -164,7 +165,7 @@ volumeVoiceO2.addEventListener('input', function () {
     if (volumeVO2 === 0) {
         audioObjects.breathedeeply.muted = true;
         audioObjects.normalbreath.muted = true;
-        audioObjects.hold.muted = true;
+        audioObjects.fullyinHold.muted = true;
         audioO2.style.display = "none";
         muteO2.style.display = "block";
         ismuteO2 = true;
@@ -172,7 +173,7 @@ volumeVoiceO2.addEventListener('input', function () {
     } else {
         audioObjects.breathedeeply.muted = false;
         audioObjects.normalbreath.muted = false;
-        audioObjects.hold.muted = false;
+        audioObjects.fullyinHold.muted = false;
         muteO2.style.display = "none";
         audioO2.style.display = "block";
         ismuteO2 = false;
@@ -937,7 +938,8 @@ function initializeTimerSettingsFormCO2() {
     plusBtnCO2.disabled = disabled;
   }
 
-  function startTimerCO2() {
+function startTimerCO2() {
+    isCO2on = true;
     if(intCO2!==null){
       clearInterval(intCO2);
     }
@@ -963,7 +965,8 @@ function initializeTimerSettingsFormCO2() {
     document.getElementById('CO2Btn').disabled = true;
   }
 
-  function pauseTimerCO2() {
+function pauseTimerCO2() {
+    isCO2on = false;
     clearInterval(intCO2);
     setTimerControlsDisabledStateCO2(false, true, false);
     document.getElementById('stopBtnCO2').style.color = '#990000';
@@ -987,7 +990,8 @@ function initializeTimerSettingsFormCO2() {
       }
   }
 
-  function stopTimerCO2() {
+function stopTimerCO2() {
+    isCO2on = false;
     clearInterval(intCO2);
     timerRefCO2.value = '|';
     if (!audioPlayerBRT.muted) {
@@ -1000,6 +1004,8 @@ function initializeTimerSettingsFormCO2() {
     setTimerControlsDisabledStateCO2(false, true, true);
     timerControlsButtonsCO2.stopCO2.style.color = "rgb(177, 177, 177)";
     timerControlsButtonsCO2.startCO2.style.color = "#0661AA";
+    document.getElementById('CO2Save').disabled = true;
+    document.getElementById('CO2Save').style.color = "rgb(177, 177, 177)";
     stopTimerTickCO2();
     resetTimerCO2();
     document.getElementsByClassName('gap2CO2')[0].style.backgroundColor = '#ffffff';
@@ -1055,8 +1061,8 @@ function initializeTimerSettingsFormCO2() {
           if (!ismuteCO2) {
             audioObjects.breathedeeply.pause();
             audioObjects.breathedeeply.currentTime = 0;
-            audioObjects.hold.muted = false;
-            audioObjects.hold.play();
+            audioObjects.fullyinHold.muted = false;
+            audioObjects.fullyinHold.play();
         }
         timerCO2.isBreakCO2 = true;  
         timerCO2.isBreak0CO2 = false;
@@ -1114,8 +1120,8 @@ function initializeTimerSettingsFormCO2() {
           if (!ismuteCO2) {
               audioObjects.breathedeeply.pause();
               audioObjects.breathedeeply.currentTime = 0;
-            audioObjects.hold.muted = false;
-            audioObjects.hold.play();
+            audioObjects.fullyinHold.muted = false;
+            audioObjects.fullyinHold.play();
         }
         timerCO2.isBreak3CO2 = true;
         timerCO2.isBreak2CO2 = false;
@@ -1173,8 +1179,8 @@ function initializeTimerSettingsFormCO2() {
             if (!ismuteCO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerCO2.isBreak5CO2 = true;
           timerCO2.isBreak4CO2 = false;
@@ -1232,8 +1238,8 @@ function initializeTimerSettingsFormCO2() {
             if (!ismuteCO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerCO2.isBreak7CO2 = true;
           timerCO2.isBreak6CO2 = false;
@@ -1291,8 +1297,8 @@ function initializeTimerSettingsFormCO2() {
             if (!ismuteCO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerCO2.isBreak9CO2 = true;
           timerCO2.isBreak8CO2 = false;
@@ -1350,8 +1356,8 @@ function initializeTimerSettingsFormCO2() {
             if (!ismuteCO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerCO2.isBreak11CO2 = true;
           timerCO2.isBreak10CO2 = false;
@@ -1409,8 +1415,8 @@ function initializeTimerSettingsFormCO2() {
             if (!ismuteCO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerCO2.isBreak13CO2 = true;
           timerCO2.isBreak12CO2 = false;
@@ -1468,8 +1474,8 @@ function initializeTimerSettingsFormCO2() {
             if (!ismuteCO2) {
                 audioObjects.breathedeeply.pause();
                 audioObjects.breathedeeply.currentTime = 0;
-                audioObjects.hold.muted = false;
-                audioObjects.hold.play();
+                audioObjects.fullyinHold.muted = false;
+                audioObjects.fullyinHold.play();
           }
           timerCO2.isBreak15CO2 = true;
           timerCO2.isBreak14CO2 = false;
