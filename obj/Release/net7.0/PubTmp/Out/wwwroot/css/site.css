@@ -485,7 +485,9 @@ hr {
     border-radius: 5px;
     filter: brightness(100%) !important;
 }
-
+.notDark{
+    will-change: transform;
+}
 .w-100 {
     margin-top: 0px;
 }

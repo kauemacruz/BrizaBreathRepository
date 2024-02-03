@@ -6,16 +6,6 @@
     // Display the content
     homePage.classList.remove('hidden');
     homePage.classList.add('open');
-    document.querySelectorAll('img.notDark').forEach(img => {
-        const highResImage = img.dataset.highres;
-        if (highResImage) {
-            const newImg = new Image();
-            newImg.onload = function () {
-                img.src = this.src;
-            };
-            newImg.src = highResImage;
-        }
-    });
     if (isUserActiveSubscriber) {
         document.getElementById("manageMembership").style.display = "block";
         document.getElementById("noActiveMembership").style.display = "none";
