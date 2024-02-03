@@ -1,0 +1,8 @@
+{
+  "appId": "com.brizabreath.app",
+  "appName": "Briza Breath & Performance",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

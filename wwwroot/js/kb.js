@@ -124,6 +124,7 @@ function KBnextRound() {
     timerKB.isBreak2KB = false;
     timerKB.isBreak3KB = false;
     timerKB.isBreakKB = true;
+    KBcountdown = 15;
     KBmyTimeout2 = null;
     if (!ismuteKB) {
         audioObjects.nextRound.muted = false;

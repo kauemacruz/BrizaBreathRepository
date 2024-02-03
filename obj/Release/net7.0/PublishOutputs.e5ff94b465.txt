@@ -1,6 +1,11 @@
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\BrizaBreath.exe
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\appsettings.Development.json
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\appsettings.json
+C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\capacitor.config.json
+C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\ios\App\App\Assets.xcassets\AppIcon.appiconset\Contents.json
+C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\ios\App\App\Assets.xcassets\Contents.json
+C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\ios\App\App\Assets.xcassets\Splash.imageset\Contents.json
+C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\ios\App\App\capacitor.config.json
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\package-lock.json
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\package.json
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\PubTmp\Out\wwwroot\js\bb.js

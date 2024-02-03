@@ -288,3 +288,8 @@ C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\refint\BrizaBreath.dl
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\BrizaBreath.pdb
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\BrizaBreath.genruntimeconfig.cache
 C:\Users\kaue_\source\repos\BrizaBreath\obj\Release\net7.0\ref\BrizaBreath.dll
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Release\net7.0\capacitor.config.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Release\net7.0\ios\App\App\Assets.xcassets\AppIcon.appiconset\Contents.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Release\net7.0\ios\App\App\Assets.xcassets\Contents.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Release\net7.0\ios\App\App\Assets.xcassets\Splash.imageset\Contents.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Release\net7.0\ios\App\App\capacitor.config.json

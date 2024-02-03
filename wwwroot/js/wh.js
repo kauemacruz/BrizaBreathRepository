@@ -122,6 +122,7 @@ function WHnextRound() {
     timerWH.isBreak2WH = false;
     timerWH.isBreak3WH = false;
     timerWH.isBreakWH = true;
+    WHcountdown = 15;
     WHmyTimeout2 = null;
     if (!ismuteWH) {
         audioObjects.nextRound.muted = false;

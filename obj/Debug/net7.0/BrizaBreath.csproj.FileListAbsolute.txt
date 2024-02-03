@@ -288,3 +288,8 @@ C:\Users\kaue_\source\repos\BrizaBreath\obj\Debug\net7.0\ref\BrizaBreath.dll
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\package-lock.json
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\package.json
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\Stripe.net.dll
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\capacitor.config.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\ios\App\App\Assets.xcassets\AppIcon.appiconset\Contents.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\ios\App\App\Assets.xcassets\Contents.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\ios\App\App\Assets.xcassets\Splash.imageset\Contents.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\ios\App\App\capacitor.config.json

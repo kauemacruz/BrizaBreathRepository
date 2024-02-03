@@ -25,7 +25,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
 
 // Configure Stripe with the API Key from appsettings or environment variable
-StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+//StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
