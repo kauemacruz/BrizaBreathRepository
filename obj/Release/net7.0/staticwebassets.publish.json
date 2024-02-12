@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Hhf3imZGlfRz2V8EMz8fyMUBDuU/QpF8KrKXRqbMp40=",
+  "Hash": "yWKlcVv3ByOVhQg8CNkMg7IbqZHMMniXiAYC1SOCQuw=",
   "Source": "BrizaBreath",
   "BasePath": "_content/BrizaBreath",
   "Mode": "Default",
@@ -1307,6 +1307,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\extra.js"
+    },
+    {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\global.js",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "js/global.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\global.js"
     },
     {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\hat.js",

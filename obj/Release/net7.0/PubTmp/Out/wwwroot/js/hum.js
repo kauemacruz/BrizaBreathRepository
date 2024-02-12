@@ -33,6 +33,7 @@ function HUMopenmodal() {
     audioObjects.inhale.load();
     audioObjects.hum.load();
     audioObjects.hold.load();
+    audioObjects.normalbreath.load();
 }
 // Function to close the modal
 function HUMclose() {
@@ -94,6 +95,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0
         timerControlsButtonsHUM.pauseHUM.style.display = 'none';
         timerControlsButtonsHUM.startHUM.style.display = 'inline';
+        timerControlsButtonsBB.startHUM.style.color = '#0661AA';
         setFormDisabledStateHUM(false);
         setTimerControlsDisabledStateHUM(false, true, true);
         timerControlsButtonsHUM.stopHUM.style.color = "rgb(177, 177, 177)";

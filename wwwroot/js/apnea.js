@@ -55,7 +55,7 @@ function APclose() {
     document.getElementById('APSave').disabled = true;
     document.getElementById('APSave').style.color = 'rgb(177, 177, 177)';
     document.getElementById('APSettings').disabled = false;
-    document.getElementById('APSettings').style.color = '#49B79D';
+    document.getElementById('APSettings').style.color = '#0661AA';
     stopTimerTickAP();
     resetTimerAP();
     document.getElementById('APResultSaved').innerHTML = "";
@@ -92,6 +92,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0
         timerControlsButtonsAP.pauseAP.style.display = 'none';
         timerControlsButtonsAP.startAP.style.display = 'inline';
+        timerControlsButtonsBB.startAP.style.color = '#49B79D';
         setFormDisabledStateAP(false);
         setTimerControlsDisabledStateAP(false, true, true);
         timerControlsButtonsAP.stopAP.style.color = "rgb(177, 177, 177)";

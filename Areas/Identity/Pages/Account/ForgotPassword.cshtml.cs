@@ -62,7 +62,7 @@ namespace BrizaBreath.Areas.Identity.Pages.Account
                 <html>
                     <body style='background-color: white;'>
                         <div style='text-align: center;'>
-                            <img src='https://brizastorage.blob.core.windows.net/images/brizalogo.svg' alt='Briza Breath & Performance Logo' style='max-width: 200px; margin-bottom: 20px;'/>
+                            <img src='https://brizastorage.blob.core.windows.net/images/brizalogo.png' alt='Briza Breath & Performance Logo' style='max-width: 200px; margin-bottom: 20px;'/>
                             <h1 style='color: #333;'>Reset Your Password</h1>
                             <p style='color: #555;'>Hello,</p>
                             <p style='color: #555;'>

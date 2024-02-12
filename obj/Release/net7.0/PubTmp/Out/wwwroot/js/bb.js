@@ -34,6 +34,7 @@ function BBopenmodal() {
     audioObjects.inhale.load();
     audioObjects.exhale.load();
     audioObjects.hold.load();
+    audioObjects.normalbreath.load();
 }
 // Function to close the modal
 function BBclose() {
@@ -91,6 +92,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0
         timerControlsButtonsBB.pauseBB.style.display = 'none';
         timerControlsButtonsBB.startBB.style.display = 'inline';
+        timerControlsButtonsBB.startBB.style.color = '#0661AA';
         setFormDisabledStateBB(false);
         setTimerControlsDisabledStateBB(false, true, true);
         timerControlsButtonsBB.stopBB.style.color = "rgb(177, 177, 177)";

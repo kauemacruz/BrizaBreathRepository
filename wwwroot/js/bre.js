@@ -34,6 +34,7 @@ function BREopenmodal() {
     audioObjects.inhale.load();
     audioObjects.exhale.load();
     audioObjects.hold.load();
+    audioObjects.normalbreath.load();
 }
 // Function to close the modal
 function BREclose() {
@@ -92,6 +93,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0
         timerControlsButtonsBRE.pauseBRE.style.display = 'none';
         timerControlsButtonsBRE.startBRE.style.display = 'inline';
+        timerControlsButtonsBB.startBRE.style.color = '#0661AA';
         setFormDisabledStateBRE(false);
         setTimerControlsDisabledStateBRE(false, true, true);
         timerControlsButtonsBRE.stopBRE.style.color = "rgb(177, 177, 177)";

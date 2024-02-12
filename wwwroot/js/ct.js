@@ -93,7 +93,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0
         timerControlsButtonsCT.pauseCT.style.display = 'none';
         timerControlsButtonsCT.startCT.style.display = 'inline';
-        timerControlsButtonsCT.startCT.style.color = '#49B79D';
+        timerControlsButtonsCT.startCT.style.color = '#0661AA';
         setFormDisabledStateCT(false);
         setTimerControlsDisabledStateCT(false, true, true);
         document.getElementById('CTSave').disabled = true;

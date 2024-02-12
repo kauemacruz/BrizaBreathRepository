@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\js\\extra.js"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\global.js",
+      "PackagePath": "staticwebassets\\js\\global.js"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\hat.js",
       "PackagePath": "staticwebassets\\js\\hat.js"
     },

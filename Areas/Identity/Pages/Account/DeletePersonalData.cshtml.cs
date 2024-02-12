@@ -151,7 +151,7 @@ namespace BrizaBreath.Areas.Identity.Pages.Account
             _logger.LogInformation("User with ID '{UserId}' deleted themselves.", userId);
 
 
-            return Redirect("~/");
+            return Redirect("~/Identity/Account/Login");
         }
     }
 }

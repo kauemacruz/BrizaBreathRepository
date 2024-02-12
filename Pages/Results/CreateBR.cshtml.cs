@@ -33,6 +33,7 @@ namespace BrizaBreath.Pages.Results
             // Retrieve the user's email
             var userEmailClaim = User.FindFirst(ClaimTypes.Email);
             UserEmail = userEmailClaim?.Value;
+            ViewData["UserEmail"] = UserEmail;
             if (_context.Result != null)
             {
                 GetResult = await _context.Result
@@ -77,7 +78,6 @@ namespace BrizaBreath.Pages.Results
             bool isActiveSubscriber = IsUserActiveSubscriber(ResultUser);
             // Pass the isActiveSubscriber flag to your Razor Page
             ViewData["IsActiveSubscriber"] = isActiveSubscriber;
-            ViewData["UserEmail"] = UserEmail;
             return Page();
         }
 
@@ -205,6 +205,24 @@ namespace BrizaBreath.Pages.Results
                                         userInDb.NormalizedUserName = stripeEmail.ToUpper();
                                         _context.Update(userInDb);
                                         _context.SaveChanges();
+                                        ViewData["UserEmail"] = stripeEmail;
+                                    }
+                                    else
+                                    {
+                                        try
+                                        {
+                                            var options = new CustomerUpdateOptions
+                                            {
+                                                Email = userInDb.Email,
+                                            };
+                                            var customer = customerService.UpdateAsync(customerId, options);
+                                            ViewData["UserEmail"] = options.Email;
+                                            ViewData["AlertMessage"] = "Este e-mail já existe no banco de dados. Revertemos para o seu e-mail original (" + options.Email + ")";
+                                        }
+                                        catch (StripeException ex)
+                                        {
+                                            Console.WriteLine($"Stripe API error: {ex.Message}");
+                                        }
                                     }
                                 }
 

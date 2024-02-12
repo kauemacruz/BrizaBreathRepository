@@ -1,10 +1,12 @@
 var meditationList = [];
 if (isPortuguese) {
-    meditationList.push(new Audio('https://brizastorage.blob.core.windows.net/audio/morningMeditation.mp3'));
-    meditationList.push(new Audio('https://brizastorage.blob.core.windows.net/audio/sleepMeditation.mp3'));
+    meditationList.push(new Audio('https://brizastorage.blob.core.windows.net/audio/morningMeditationPT.mp3'));
+    meditationList.push(new Audio('https://brizastorage.blob.core.windows.net/audio/sleepMeditationPT.mp3'));
+    meditationList.push(new Audio('https://brizastorage.blob.core.windows.net/audio/bodyScanPT.mp3'));
 } else {
     meditationList.push(new Audio('https://brizastorage.blob.core.windows.net/audio/morningMeditation.mp3'));
     meditationList.push(new Audio('https://brizastorage.blob.core.windows.net/audio/sleepMeditation.mp3'));
+    meditationList.push(new Audio('https://brizastorage.blob.core.windows.net/audio/bodyScan.mp3'));
 }
 
 //MEDITATATION 1
@@ -28,6 +30,9 @@ function startMED1() {
     meditationList[0].play();
     if (MED2isON) {
         resetMED2();
+    }
+    if (MED3isON) {
+        resetMED3();
     }
 }
 
@@ -95,6 +100,9 @@ function startMED2() {
     if (MED1isON) {
         resetMED1();
     }
+    if (MED3isON) {
+        resetMED3();
+    }
 }
 
 function pauseMED2() {
@@ -133,4 +141,68 @@ function resetMED2() {
     meditationList[1].currentTime = 0;
     document.getElementById("progressBarMED2").value = 0;
     MED2isON = false;
+}
+//MEDITATION 3
+document.getElementById("startBtnMED3").addEventListener('click', startMED3);
+document.getElementById("pauseBtnMED3").addEventListener('click', pauseMED3);
+
+// Update the progress bar while playing
+meditationList[2].addEventListener('timeupdate', updateProgressBarMED3);
+var MED3isON = false;
+
+// Reset when the audio finishes playing
+meditationList[2].addEventListener('ended', function () {
+    resetMED3();
+});
+
+function startMED3() {
+    document.getElementById("startBtnMED3").style.display = "none";
+    document.getElementById("pauseBtnMED3").style.display = "inline";
+    MED3isON = true;
+    meditationList[2].muted = false;
+    meditationList[2].play();
+    if (MED1isON) {
+        resetMED1();
+    }
+    if (MED2isON) {
+        resetMED2();
+    }
+}
+
+function pauseMED3() {
+    document.getElementById("startBtnMED3").style.display = "inline";
+    document.getElementById("pauseBtnMED3").style.display = "none";
+    MED3isON = false;
+    meditationList[2].pause();
+}
+
+function updateProgressBarMED3() {
+    var progressBarMED3 = document.getElementById("progressBarMED3");
+    var currentTimeMED3 = meditationList[2].currentTime;
+    var durationMED3 = meditationList[2].duration;
+
+    if (isNaN(durationMED3)) {
+        progressBarMED3.value = 0;
+    } else {
+        progressBarMED3.value = (currentTimeMED3 / durationMED3) * 100;
+    }
+}
+
+// Seek to the specified time when the progress bar is clicked
+document.getElementById("progressBarMED3").addEventListener('input', function () {
+    var progressBarMED3 = document.getElementById("progressBarMED3");
+    var durationMED3 = meditationList[2].duration;
+
+    if (!isNaN(durationMED3)) {
+        var seekTimeMED3 = (progressBarMED3.value / 100) * durationMED3;
+        meditationList[2].currentTime = seekTimeMED3;
+    }
+});
+function resetMED3() {
+    document.getElementById("startBtnMED3").style.display = "inline";
+    document.getElementById("pauseBtnMED3").style.display = "none";
+    meditationList[2].pause();
+    meditationList[2].currentTime = 0;
+    document.getElementById("progressBarMED3").value = 0;
+    MED3isON = false;
 }
