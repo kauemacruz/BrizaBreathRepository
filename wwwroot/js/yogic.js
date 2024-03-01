@@ -160,8 +160,6 @@ var audioYB = document.getElementById("audioYB"),
     muteYB = document.getElementById("muteYB"),
     ismuteYB = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongYB = document.getElementById("songYB"),
     muteSongYB = document.getElementById("songMuteYB");
 // Get the volumeVYB bar element

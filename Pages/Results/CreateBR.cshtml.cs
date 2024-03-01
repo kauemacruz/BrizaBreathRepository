@@ -153,7 +153,7 @@ namespace BrizaBreath.Pages.Results
                     var subscriptionService = new SubscriptionService();
                     Subscription subscription = subscriptionService.Get(subscriptionId);
                     string status = subscription.Status;
-                    if (status == "past_due" || status == "unpaid" || status == "canceled")
+                    if (status == "canceled")
                     {
                         var userSubscription = _context.BrizaSubscription.FirstOrDefault(sub => sub.StripeCustID == CheckSession.Id);
 
@@ -300,7 +300,7 @@ namespace BrizaBreath.Pages.Results
                     StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
                     var latestSubscription = _context.BrizaSubscription
                         .Where(s => s.UserId == ResultUser && s.StripeCustID != null)
-                        .OrderByDescending(s => s.StartDate)
+                        .OrderByDescending(s => s.Id)
                         .FirstOrDefault();
                     if (latestSubscription != null)
                     {

@@ -248,8 +248,6 @@ var BaudioKB = document.getElementById("BaudioKB"),
     BmuteKB = document.getElementById("BmuteKB"),
     BismuteKB = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongKB = document.getElementById("songKB"),
     muteSongKB = document.getElementById("songMuteKB");
 // Get the volumeVKB bar element

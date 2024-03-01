@@ -7,7 +7,6 @@ const URLS_TO_CACHE = [
     '/css/site.css',
     '/BrizaBreath.styles.css',
     '/lib/bootstrap/dist/css/bootstrap.min.css',
-    'https://fonts.googleapis.com/css?family=Playfair+Display',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
     'https://code.jquery.com/jquery-3.6.0.min.js',
     '/lib/jquery/dist/jquery.min.js',

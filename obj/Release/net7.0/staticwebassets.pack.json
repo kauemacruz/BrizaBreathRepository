@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\dist\\css\\site.min.css",
+      "PackagePath": "staticwebassets\\dist\\css\\site.min.css"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\dist\\js\\site.min.js",
+      "PackagePath": "staticwebassets\\dist\\js\\site.min.js"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
@@ -79,10 +87,6 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\kb.js",
       "PackagePath": "staticwebassets\\js\\kb.js"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\lungs.js",
-      "PackagePath": "staticwebassets\\js\\lungs.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\nb.js",
@@ -355,10 +359,6 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\manifest.json",
       "PackagePath": "staticwebassets\\manifest.json"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\videos\\movie.mp4",
-      "PackagePath": "staticwebassets\\videos\\movie.mp4"
     },
     {
       "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.BrizaBreath.Microsoft.AspNetCore.StaticWebAssets.props",

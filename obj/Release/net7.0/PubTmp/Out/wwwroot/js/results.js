@@ -11,7 +11,6 @@ $.ajax({
         BRWinitializeChart();
         HUMinitializeChart();
         BBinitializeChart();
-        LUNGSinitializeChart();
         APinitializeChart();
         CTinitializeChart();
         BOXinitializeChart();
@@ -51,12 +50,12 @@ accordionHeaders.forEach(header => {
                 if (isContentDisplayed) {
                     otherHeader.parentNode.style.minHeight = '120px';
                     otherHeader.parentNode.style.paddingTop = '30px';
-                }      
+                }
             }
         });
         content.style.display = content.style.display === 'block' ? 'none' : 'block';
         parentElement.style.minHeight = '120px';
-        parentElement.style.paddingTop = '30px';   
+        parentElement.style.paddingTop = '30px';
     });
 });
 const accordionHeaders2 = document.querySelectorAll('.accordion-header2');
@@ -183,7 +182,7 @@ function BRTinitializeChart() {
                     display: true,
                     text: "Seus resultados de TRB em segundos " + "(" + getYear(BRTendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -210,7 +209,7 @@ function BRTinitializeChart() {
                             max: BRTmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -219,7 +218,7 @@ function BRTinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -250,7 +249,7 @@ function BRTinitializeChart() {
                     display: true,
                     text: "Your BRT results in seconds " + "(" + getYear(BRTendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -277,7 +276,7 @@ function BRTinitializeChart() {
                             max: BRTmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -286,7 +285,7 @@ function BRTinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -299,7 +298,7 @@ function BRTinitializeChart() {
             }
         });
     }
-    
+
     BRTContainer.addEventListener('touchmove', function (event) {
         event.preventDefault(); // Prevent default scrolling behavior
 
@@ -332,7 +331,8 @@ function BRTinitializeChart() {
                                 BRTchart.options.title.text = "Seus resultados de TRB em segundos " + "(" + getYear(BRTendDate) + ")";
                             } else {
                                 BRTchart.options.title.text = "Your BRT results in seconds " + "(" + getYear(BRTendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     BRTupdateChart(BRTstartDate, BRTendDate);
                 }
@@ -358,7 +358,7 @@ function BRTinitializeChart() {
             } else {
                 BRTchart.options.title.text = "Your BRT results in seconds " + "(" + getYear(BRTendDate) + ")";
             }
-} else if (BRTdelta > 0) {
+        } else if (BRTdelta > 0) {
             if (formatDateAsDMY(BRTendDate) == formatDateAsDMY(BRTtoday)) { }
             else {
                 // Scroll right, increase the date range
@@ -507,740 +507,740 @@ function BRTupdateOverview() {
         }
     });
     if (isPortuguese) {
-         if (BRTnumberOfTests >= 1) {
+        if (BRTnumberOfTests >= 1) {
             var BRTinnerText = '';
             for (var i = 0; i < BRTinfoOverviewElements.length; i++) {
                 BRTinfoOverviewElements[i].style.display = 'inline-flex';
             }
             document.getElementById('BRTContainer').style.display = 'block';
-             if (BRTlatestResult <= 10) {
-                 BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), parece que sua resist\u00EAncia ao CO2 \u00E9 muito baixa.<br>';
-                 BRTinnerText += '<br>Voc\u00EA pode ter dificuldades para ter uma boa noite de sono, respira\u00E7\u00E3o frequente pela boca, acordar com a boca seca, bocejar frequentemente e baixos n\u00EDveis de energia durante o dia.<br>';
-                 BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA se concentre em estabelecer uma rotina baseada no Programa Briza para melhorar sua condi\u00E7\u00E3o f\u00EDsica e bem-estar.';
-                 BRTinfoOverview.innerHTML = BRTinnerText;
-                 personalTraining.innerHTML = "";
-                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                     '<h2>Seu resultado BRT \u00E9: </h2>' +
-                     '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                     '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                     '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                     '<ul> Fita na boca durante o sono</ul > ' +
-                     '<ul> Aprenda a usar o diafragma</ul > ' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                     '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                     '</div>' +
-                     '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                     '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o 3 vezes ao dia (sentado ou caminhando, 5 min cada sess\u00E3o)</ul> ' +
-                     '<ul> Caminhadas di\u00E1rias de 10 a 15 minutos com a boca fechada (pare de caminhar se sentir vontade de respirar pela boca e recupere a respira\u00E7\u00E3o, sempre pelo nariz)</ul> ' +
-                     '</div>' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
-                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
-                     '</div>' +
-                     '</div>' +
-                     '<div class="brizaprogram">' +
-                     '<p>Benef\u00EDcios deste programa:</p>' +
-                     '<ul>Mais energia</ul>' +
-                     '<ul>Maior consci\u00EAncia</ul>' +
-                     '<ul>Cura r\u00E1pida</ul>' +
-                     '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                     '<ul>Melhor sono</ul>' +
-                     '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                     '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                     '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
-                     '</div>';
-                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                     var targetElement = event.target;
+            if (BRTlatestResult <= 10) {
+                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), parece que sua resist\u00EAncia ao CO2 \u00E9 muito baixa.<br>';
+                BRTinnerText += '<br>Voc\u00EA pode ter dificuldades para ter uma boa noite de sono, respira\u00E7\u00E3o frequente pela boca, acordar com a boca seca, bocejar frequentemente e baixos n\u00EDveis de energia durante o dia.<br>';
+                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA se concentre em estabelecer uma rotina baseada no Programa Briza para melhorar sua condi\u00E7\u00E3o f\u00EDsica e bem-estar.';
+                BRTinfoOverview.innerHTML = BRTinnerText;
+                personalTraining.innerHTML = "";
+                personalTraining.innerHTML += '<div class="breathingpages">' +
+                    '<h2>Seu resultado BRT \u00E9: </h2>' +
+                    '<h2>' + BRTlatestResult + ' segundos</h2>' +
+                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
+                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
+                    '<ul> Fita na boca durante o sono</ul > ' +
+                    '<ul> Aprenda a usar o diafragma</ul > ' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
+                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
+                    '</div>' +
+                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
+                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o 3 vezes ao dia (sentado ou caminhando, 5 min cada sess\u00E3o)</ul> ' +
+                    '<ul> Caminhadas di\u00E1rias de 10 a 15 minutos com a boca fechada (pare de caminhar se sentir vontade de respirar pela boca e recupere a respira\u00E7\u00E3o, sempre pelo nariz)</ul> ' +
+                    '</div>' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
+                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="brizaprogram">' +
+                    '<p>Benef\u00EDcios deste programa:</p>' +
+                    '<ul>Mais energia</ul>' +
+                    '<ul>Maior consci\u00EAncia</ul>' +
+                    '<ul>Cura r\u00E1pida</ul>' +
+                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
+                    '<ul>Melhor sono</ul>' +
+                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
+                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
+                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
+                    '</div>';
+                document.getElementById('personalizedBriza').addEventListener('click', function (event) {
+                    var targetElement = event.target;
 
-                     // If the target is an image inside the link, get the parent element
-                     if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                         targetElement = targetElement.parentElement;
-                     }
+                    // If the target is an image inside the link, get the parent element
+                    if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
+                        targetElement = targetElement.parentElement;
+                    }
 
-                     var elementId = targetElement.id;
+                    var elementId = targetElement.id;
 
-                     switch (elementId) {
-                         case 'nasalLink':
-                             openPage(programPage, nasalBreathingPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backNasal.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'unblockLink':
-                             openPage(programPage, noseUnblockPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backUnblock.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'diaphragmLink':
-                             openPage(programPage, diaphragmPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backDiaphragm.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BRELink':
-                             openPage(programPage, BREPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRE.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BRWLink':
-                             openPage(programPage, BRWPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRW.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'brtLink2':
-                             openPage(programPage, brtPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRT.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                     }
-                 });
-             } else if (BRTlatestResult > 10 && BRTlatestResult < 15) {
-                 BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 est\u00E1 em um intervalo intermedi\u00E1rio.<br>';
-                 BRTinnerText += '<br>Voc\u00EA pode frequentemente experimentar respira\u00E7\u00E3o pela boca, leves dist\u00FArbios do sono e fadiga leve durante o dia.<br>';
-                 BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA se concentre em estabelecer uma rotina baseada no Programa Briza para melhorar sua condi\u00E7\u00E3o f\u00EDsica e bem-estar.';
-                 BRTinfoOverview.innerHTML = BRTinnerText;
-                 personalTraining.innerHTML = "";
-                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                     '<h2>Seu resultado BRT \u00E9: </h2>' +
-                     '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                     '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                     '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                     '<ul> Fita na boca durante o sono</ul > ' +
-                     '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
-                     '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                     '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                     '</div>' +
-                     '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                     '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o 3 vezes ao dia (sentado ou caminhando, 5 min cada sess\u00E3o)</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o Briza (5 minutos)</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o Y\u00F3gica (5 minutos)</ul> ' +
-                     '<ul> Caminhada di\u00E1ria de 10 a 15 minutos. Se a respira\u00E7\u00E3o nasal for f\u00E1cil e sem esfor\u00E7o enquanto caminha, adicione o Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada</ul>' +
-                     '</div>' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
-                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
-                     '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
-                     '</div>' +
-                     '</div>' +
-                     '<div class="brizaprogram">' +
-                     '<p>Benef\u00EDcios deste programa:</p>' +
-                     '<ul>Mais energia</ul>' +
-                     '<ul>Maior consci\u00EAncia</ul>' +
-                     '<ul>Cura r\u00E1pida</ul>' +
-                     '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                     '<ul>Melhor sono</ul>' +
-                     '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                     '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                     '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
-                     '</div>';
-                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                     var targetElement = event.target;
+                    switch (elementId) {
+                        case 'nasalLink':
+                            openPage(programPage, nasalBreathingPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backNasal.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'unblockLink':
+                            openPage(programPage, noseUnblockPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backUnblock.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'diaphragmLink':
+                            openPage(programPage, diaphragmPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backDiaphragm.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BRELink':
+                            openPage(programPage, BREPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRE.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BRWLink':
+                            openPage(programPage, BRWPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRW.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'brtLink2':
+                            openPage(programPage, brtPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRT.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                    }
+                });
+            } else if (BRTlatestResult > 10 && BRTlatestResult < 15) {
+                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 est\u00E1 em um intervalo intermedi\u00E1rio.<br>';
+                BRTinnerText += '<br>Voc\u00EA pode frequentemente experimentar respira\u00E7\u00E3o pela boca, leves dist\u00FArbios do sono e fadiga leve durante o dia.<br>';
+                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA se concentre em estabelecer uma rotina baseada no Programa Briza para melhorar sua condi\u00E7\u00E3o f\u00EDsica e bem-estar.';
+                BRTinfoOverview.innerHTML = BRTinnerText;
+                personalTraining.innerHTML = "";
+                personalTraining.innerHTML += '<div class="breathingpages">' +
+                    '<h2>Seu resultado BRT \u00E9: </h2>' +
+                    '<h2>' + BRTlatestResult + ' segundos</h2>' +
+                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
+                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
+                    '<ul> Fita na boca durante o sono</ul > ' +
+                    '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
+                    '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
+                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
+                    '</div>' +
+                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
+                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o 3 vezes ao dia (sentado ou caminhando, 5 min cada sess\u00E3o)</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o Briza (5 minutos)</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o Y\u00F3gica (5 minutos)</ul> ' +
+                    '<ul> Caminhada di\u00E1ria de 10 a 15 minutos. Se a respira\u00E7\u00E3o nasal for f\u00E1cil e sem esfor\u00E7o enquanto caminha, adicione o Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada</ul>' +
+                    '</div>' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
+                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
+                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="brizaprogram">' +
+                    '<p>Benef\u00EDcios deste programa:</p>' +
+                    '<ul>Mais energia</ul>' +
+                    '<ul>Maior consci\u00EAncia</ul>' +
+                    '<ul>Cura r\u00E1pida</ul>' +
+                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
+                    '<ul>Melhor sono</ul>' +
+                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
+                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
+                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
+                    '</div>';
+                document.getElementById('personalizedBriza').addEventListener('click', function (event) {
+                    var targetElement = event.target;
 
-                     // If the target is an image inside the link, get the parent element
-                     if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                         targetElement = targetElement.parentElement;
-                     }
+                    // If the target is an image inside the link, get the parent element
+                    if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
+                        targetElement = targetElement.parentElement;
+                    }
 
-                     var elementId = targetElement.id;
+                    var elementId = targetElement.id;
 
-                     switch (elementId) {
-                         case 'nasalLink':
-                             openPage(programPage, nasalBreathingPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backNasal.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'unblockLink':
-                             openPage(programPage, noseUnblockPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backUnblock.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'diaphragmLink':
-                             openPage(programPage, diaphragmPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backDiaphragm.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'YBLink':
-                             openPage(programPage, YBPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backYB.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BRELink':
-                             openPage(programPage, BREPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRE.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BRWLink':
-                             openPage(programPage, BRWPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRW.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BBLink':
-                             openPage(programPage, BBPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });      
-                             backBB.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'brtLink2':
-                             openPage(programPage, brtPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRT.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                     }
-                 });
-             } else if (BRTlatestResult >= 15 && BRTlatestResult < 20) {
-                 BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 est\u00E1 em um intervalo intermedi\u00E1rio.<br>';
-                 BRTinnerText += '<br>Voc\u00EA pode experimentar ocasionalmente respira\u00E7\u00E3o pela boca, leves dist\u00FArbios do sono e fadiga leve durante o dia.<br>';
-                 BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA se concentre em estabelecer uma rotina baseada no Programa Briza para melhorar sua condi\u00E7\u00E3o f\u00EDsica e bem-estar.';
-                 BRTinfoOverview.innerHTML = BRTinnerText;
-                 personalTraining.innerHTML = "";
-                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                     '<h2>Seu resultado BRT \u00E9: </h2>' +
-                     '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                     '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                     '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                     '<ul> Fita na boca durante o sono</ul > ' +
-                     '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
-                     '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                     '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                     '</div>' +
-                     '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                     '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o 3 vezes ao dia (sentado ou caminhando, 5 min cada sess\u00E3o)</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o Briza duas vezes ao dia (6 minutos)</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o Y\u00F3gica (5 minutos)</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o leve pelo nariz durante caminhada ou corrida lenta. 30 a 60 minutos por dia</ul>' +
-                     '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada no final da sua caminhada di\u00E1ria (5 minutos)</ul>' +
-                     '<ul> Come\u00E7ar a explorar nossos Exerc\u00EDcios de Pranayama</ul>' +
-                     '</div>' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
-                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
-                     '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="pranayamaLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/pranayama2.svg"></a></div>' +
-                     '<div class="col"><a></a></div>' +
-                     '</div>' +
-                     '</div>' +
-                     '<div class="brizaprogram">' +
-                     '<p>Benef\u00EDcios deste programa:</p>' +
-                     '<ul>Mais energia</ul>' +
-                     '<ul>Maior consci\u00EAncia</ul>' +
-                     '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
-                     '<ul>Cura r\u00E1pida</ul>' +
-                     '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                     '<ul>Livre de estresse</ul>' +
-                     '<ul>Melhor sono</ul>' +
-                     '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                     '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
-                     '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                     '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
-                     '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
-                     '</div>';
-                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                     var targetElement = event.target;
+                    switch (elementId) {
+                        case 'nasalLink':
+                            openPage(programPage, nasalBreathingPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backNasal.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'unblockLink':
+                            openPage(programPage, noseUnblockPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backUnblock.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'diaphragmLink':
+                            openPage(programPage, diaphragmPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backDiaphragm.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'YBLink':
+                            openPage(programPage, YBPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backYB.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BRELink':
+                            openPage(programPage, BREPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRE.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BRWLink':
+                            openPage(programPage, BRWPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRW.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BBLink':
+                            openPage(programPage, BBPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBB.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'brtLink2':
+                            openPage(programPage, brtPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRT.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                    }
+                });
+            } else if (BRTlatestResult >= 15 && BRTlatestResult < 20) {
+                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 est\u00E1 em um intervalo intermedi\u00E1rio.<br>';
+                BRTinnerText += '<br>Voc\u00EA pode experimentar ocasionalmente respira\u00E7\u00E3o pela boca, leves dist\u00FArbios do sono e fadiga leve durante o dia.<br>';
+                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA se concentre em estabelecer uma rotina baseada no Programa Briza para melhorar sua condi\u00E7\u00E3o f\u00EDsica e bem-estar.';
+                BRTinfoOverview.innerHTML = BRTinnerText;
+                personalTraining.innerHTML = "";
+                personalTraining.innerHTML += '<div class="breathingpages">' +
+                    '<h2>Seu resultado BRT \u00E9: </h2>' +
+                    '<h2>' + BRTlatestResult + ' segundos</h2>' +
+                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
+                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
+                    '<ul> Fita na boca durante o sono</ul > ' +
+                    '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
+                    '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
+                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
+                    '</div>' +
+                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
+                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o 3 vezes ao dia (sentado ou caminhando, 5 min cada sess\u00E3o)</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o Briza duas vezes ao dia (6 minutos)</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o Y\u00F3gica (5 minutos)</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o leve pelo nariz durante caminhada ou corrida lenta. 30 a 60 minutos por dia</ul>' +
+                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada no final da sua caminhada di\u00E1ria (5 minutos)</ul>' +
+                    '<ul> Come\u00E7ar a explorar nossos Exerc\u00EDcios de Pranayama</ul>' +
+                    '</div>' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
+                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
+                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="pranayamaLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/pranayama2.svg"></a></div>' +
+                    '<div class="col"><a></a></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="brizaprogram">' +
+                    '<p>Benef\u00EDcios deste programa:</p>' +
+                    '<ul>Mais energia</ul>' +
+                    '<ul>Maior consci\u00EAncia</ul>' +
+                    '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
+                    '<ul>Cura r\u00E1pida</ul>' +
+                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
+                    '<ul>Livre de estresse</ul>' +
+                    '<ul>Melhor sono</ul>' +
+                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
+                    '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
+                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
+                    '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
+                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
+                    '</div>';
+                document.getElementById('personalizedBriza').addEventListener('click', function (event) {
+                    var targetElement = event.target;
 
-                     // If the target is an image inside the link, get the parent element
-                     if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                         targetElement = targetElement.parentElement;
-                     }
+                    // If the target is an image inside the link, get the parent element
+                    if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
+                        targetElement = targetElement.parentElement;
+                    }
 
-                     var elementId = targetElement.id;
+                    var elementId = targetElement.id;
 
-                     switch (elementId) {
-                         case 'nasalLink':
-                             openPage(programPage, nasalBreathingPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backNasal.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'unblockLink':
-                             openPage(programPage, noseUnblockPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backUnblock.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'diaphragmLink':
-                             openPage(programPage, diaphragmPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backDiaphragm.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'YBLink':
-                             openPage(programPage, YBPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backYB.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BRELink':
-                             openPage(programPage, BREPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRE.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BRWLink':
-                             openPage(programPage, BRWPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRW.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BBLink':
-                             openPage(programPage, BBPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });    
-                             backBB.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'brtLink2':
-                             openPage(programPage, brtPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRT.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'pranayamaLink2':
-                             openPage(programPage, PRANAPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backPRANA.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                     }
-                 });
-             } else if (BRTlatestResult >= 20 && BRTlatestResult <= 25) {
-                 BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 \u00E9 relativamente boa.<br>';
-                 BRTinnerText += '<br>Voc\u00EA provavelmente respira pelo nariz na maior parte do tempo e desfruta de um sono tranquilo. Seus n\u00EDveis de energia e concentra\u00E7\u00E3o s\u00E3o geralmente satisfat\u00F3rios.<br>';
-                 BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina baseada no Programa Briza. Adicione expans\u00E3o pulmonar \u00E0 sua pr\u00E1tica. Voc\u00EA tamb\u00E9m pode explorar os exerc\u00EDcios de Pranayama';
-                 BRTinfoOverview.innerHTML = BRTinnerText;
-                 personalTraining.innerHTML = "";
-                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                     '<h2>Seu resultado BRT \u00E9: </h2>' +
-                     '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                     '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                     '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                     '<ul> Fita na boca durante o sono</ul > ' +
-                     '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
-                     '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                     '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
-                     '<div class="col"><a></a></div>' +
-                     '</div>' +
-                     '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                     '<ul> Respira\u00E7\u00E3o Briza 3 vezes ao dia (10 minutos)</ul> ' +
-                     '<ul> Treinamento em Alta Altitude uma vez por dia ou pelo menos uma vez a cada dois dias</ul>' +
-                     '<ul> Respira\u00E7\u00E3o leve pelo nariz durante caminhada r\u00E1pida ou corrida. 30 a 60 minutos por dia</ul>' +
-                     '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada ap\u00F3s treinos intensos (5 minutos)</ul>' +
-                     '<ul> Treinamento de Expans\u00E3o Pulmonar uma vez por semana</ul>' +
-                     '</div>' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar2.svg"></a></div>' +
-                     '</div>' +
-                     '</div>' +
-                     '<div class="brizaprogram">' +
-                     '<p>Benef\u00EDcios deste programa:</p>' +
-                     '<ul>Mais energia</ul>' +
-                     '<ul>Maior consci\u00EAncia</ul>' +
-                     '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
-                     '<ul>Cura r\u00E1pida</ul>' +
-                     '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                     '<ul>Livre de estresse</ul>' +
-                     '<ul>Melhor sono</ul>' +
-                     '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                     '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
-                     '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                     '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
-                     '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
-                     '</div>';  
-                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                     var targetElement = event.target;
+                    switch (elementId) {
+                        case 'nasalLink':
+                            openPage(programPage, nasalBreathingPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backNasal.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'unblockLink':
+                            openPage(programPage, noseUnblockPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backUnblock.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'diaphragmLink':
+                            openPage(programPage, diaphragmPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backDiaphragm.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'YBLink':
+                            openPage(programPage, YBPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backYB.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BRELink':
+                            openPage(programPage, BREPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRE.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BRWLink':
+                            openPage(programPage, BRWPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRW.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BBLink':
+                            openPage(programPage, BBPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBB.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'brtLink2':
+                            openPage(programPage, brtPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRT.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'pranayamaLink2':
+                            openPage(programPage, PRANAPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backPRANA.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                    }
+                });
+            } else if (BRTlatestResult >= 20 && BRTlatestResult <= 25) {
+                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 \u00E9 relativamente boa.<br>';
+                BRTinnerText += '<br>Voc\u00EA provavelmente respira pelo nariz na maior parte do tempo e desfruta de um sono tranquilo. Seus n\u00EDveis de energia e concentra\u00E7\u00E3o s\u00E3o geralmente satisfat\u00F3rios.<br>';
+                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina baseada no Programa Briza. Adicione expans\u00E3o pulmonar \u00E0 sua pr\u00E1tica. Voc\u00EA tamb\u00E9m pode explorar os exerc\u00EDcios de Pranayama';
+                BRTinfoOverview.innerHTML = BRTinnerText;
+                personalTraining.innerHTML = "";
+                personalTraining.innerHTML += '<div class="breathingpages">' +
+                    '<h2>Seu resultado BRT \u00E9: </h2>' +
+                    '<h2>' + BRTlatestResult + ' segundos</h2>' +
+                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
+                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
+                    '<ul> Fita na boca durante o sono</ul > ' +
+                    '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
+                    '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
+                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
+                    '<div class="col"><a></a></div>' +
+                    '</div>' +
+                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
+                    '<ul> Respira\u00E7\u00E3o Briza 3 vezes ao dia (10 minutos)</ul> ' +
+                    '<ul> Treinamento em Alta Altitude uma vez por dia ou pelo menos uma vez a cada dois dias</ul>' +
+                    '<ul> Respira\u00E7\u00E3o leve pelo nariz durante caminhada r\u00E1pida ou corrida. 30 a 60 minutos por dia</ul>' +
+                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada ap\u00F3s treinos intensos (5 minutos)</ul>' +
+                    '<ul> Treinamento de Expans\u00E3o Pulmonar uma vez por semana</ul>' +
+                    '</div>' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar2.svg"></a></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="brizaprogram">' +
+                    '<p>Benef\u00EDcios deste programa:</p>' +
+                    '<ul>Mais energia</ul>' +
+                    '<ul>Maior consci\u00EAncia</ul>' +
+                    '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
+                    '<ul>Cura r\u00E1pida</ul>' +
+                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
+                    '<ul>Livre de estresse</ul>' +
+                    '<ul>Melhor sono</ul>' +
+                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
+                    '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
+                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
+                    '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
+                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
+                    '</div>';
+                document.getElementById('personalizedBriza').addEventListener('click', function (event) {
+                    var targetElement = event.target;
 
-                     // If the target is an image inside the link, get the parent element
-                     if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                         targetElement = targetElement.parentElement;
-                     }
+                    // If the target is an image inside the link, get the parent element
+                    if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
+                        targetElement = targetElement.parentElement;
+                    }
 
-                     var elementId = targetElement.id;
+                    var elementId = targetElement.id;
 
-                     switch (elementId) {
-                         case 'nasalLink':
-                             openPage(programPage, nasalBreathingPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backNasal.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'unblockLink':
-                             openPage(programPage, noseUnblockPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backUnblock.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'diaphragmLink':
-                             openPage(programPage, diaphragmPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backDiaphragm.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'YBLink':
-                             openPage(programPage, YBPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backYB.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BRWLink':
-                             openPage(programPage, BRWPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRW.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BBLink':
-                             openPage(programPage, BBPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });    
-                             backBB.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'brtLink2':
-                             openPage(programPage, brtPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRT.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'lungsLink2':
-                             openPage(programPage, lungsPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backLungs.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'HATLink':
-                             openPage(programPage, HATPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backHAT.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                     }
-                 });
-             } else if (BRTlatestResult >= 25 && BRTlatestResult <= 30) {
-                 BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 \u00E9 excelente.<br>';
-                 BRTinnerText += '<br>Voc\u00EA provavelmente est\u00E1 experimentando os benef\u00EDcios de uma respira\u00E7\u00E3o eficiente, incluindo sono restaurador, altos n\u00EDveis de energia e boa concentra\u00E7\u00E3o.<br>';
-                 BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina baseada no Programa Briza. Adicione expans\u00E3o pulmonar e os exerc\u00EDcios de reten\u00E7\u00E3o de respira\u00E7\u00E3o \u00E0 sua pr\u00E1tica di\u00E1ria.';
-                 BRTinfoOverview.innerHTML = BRTinnerText;
-                 personalTraining.innerHTML = "";
-                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                     '<h2>Seu resultado BRT \u00E9: </h2>' +
-                     '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                     '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                     '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                     '<ul> Fita na boca durante o sono</ul > ' +
-                     '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
-                     '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                     '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
-                     '<div class="col"><a></a></div>' +
-                     '</div>' +
-                     '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                     '<ul> Respira\u00E7\u00E3o Briza 3 vezes ao dia (10 minutos cada sess\u00E3o, uma delas antes de ir para a cama \u00E0 noite)</ul> ' +
-                     '<ul> Treinamento em Alta Altitude uma vez por dia ou pelo menos uma vez a cada dois dias</ul>' +
-                     '<ul> Treinamento em Alta Altitude durante a corrida 8 a 10 s\u00E9ries de vez em quando</ul>' +
-                     '<ul> Respira\u00E7\u00E3o leve pelo nariz durante a corrida. 30 a 60 minutos por dia</ul>' +
-                     '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada ap\u00F3s treinos intensos (5 minutos)</ul>' +
-                     '<ul> Treinamento de Expans\u00E3o Pulmonar duas vezes por semana</ul>' +
-                     '<ul> Exerc\u00EDcios de Reten\u00E7\u00E3o de Respira\u00E7\u00E3o duas vezes por semana (escolha um ou dois)</ul>' +
-                     '</div>' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar2.svg"></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="breathHoldsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathhold2PT.svg"></a></div>' +
-                     '<div class="col"><a></a></div>' +
-                     '</div>' +
-                     '</div>' +
-                     '<div class="brizaprogram">' +
-                     '<p>Benef\u00EDcios deste programa:</p>' +
-                     '<ul>Mais energia</ul>' +
-                     '<ul>Maior consci\u00EAncia</ul>' +
-                     '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
-                     '<ul>Cura r\u00E1pida</ul>' +
-                     '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                     '<ul>Livre de estresse</ul>' +
-                     '<ul>Melhor sono</ul>' +
-                     '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                     '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
-                     '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                     '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
-                     '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
-                     '</div>';
-          
-                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                     var targetElement = event.target;
+                    switch (elementId) {
+                        case 'nasalLink':
+                            openPage(programPage, nasalBreathingPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backNasal.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'unblockLink':
+                            openPage(programPage, noseUnblockPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backUnblock.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'diaphragmLink':
+                            openPage(programPage, diaphragmPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backDiaphragm.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'YBLink':
+                            openPage(programPage, YBPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backYB.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BRWLink':
+                            openPage(programPage, BRWPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRW.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BBLink':
+                            openPage(programPage, BBPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBB.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'brtLink2':
+                            openPage(programPage, brtPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRT.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'lungsLink2':
+                            openPage(programPage, lungsPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backLungs.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'HATLink':
+                            openPage(programPage, HATPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backHAT.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                    }
+                });
+            } else if (BRTlatestResult >= 25 && BRTlatestResult <= 30) {
+                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 \u00E9 excelente.<br>';
+                BRTinnerText += '<br>Voc\u00EA provavelmente est\u00E1 experimentando os benef\u00EDcios de uma respira\u00E7\u00E3o eficiente, incluindo sono restaurador, altos n\u00EDveis de energia e boa concentra\u00E7\u00E3o.<br>';
+                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina baseada no Programa Briza. Adicione expans\u00E3o pulmonar e os exerc\u00EDcios de reten\u00E7\u00E3o de respira\u00E7\u00E3o \u00E0 sua pr\u00E1tica di\u00E1ria.';
+                BRTinfoOverview.innerHTML = BRTinnerText;
+                personalTraining.innerHTML = "";
+                personalTraining.innerHTML += '<div class="breathingpages">' +
+                    '<h2>Seu resultado BRT \u00E9: </h2>' +
+                    '<h2>' + BRTlatestResult + ' segundos</h2>' +
+                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
+                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
+                    '<ul> Fita na boca durante o sono</ul > ' +
+                    '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
+                    '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
+                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
+                    '<div class="col"><a></a></div>' +
+                    '</div>' +
+                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
+                    '<ul> Respira\u00E7\u00E3o Briza 3 vezes ao dia (10 minutos cada sess\u00E3o, uma delas antes de ir para a cama \u00E0 noite)</ul> ' +
+                    '<ul> Treinamento em Alta Altitude uma vez por dia ou pelo menos uma vez a cada dois dias</ul>' +
+                    '<ul> Treinamento em Alta Altitude durante a corrida 8 a 10 s\u00E9ries de vez em quando</ul>' +
+                    '<ul> Respira\u00E7\u00E3o leve pelo nariz durante a corrida. 30 a 60 minutos por dia</ul>' +
+                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada ap\u00F3s treinos intensos (5 minutos)</ul>' +
+                    '<ul> Treinamento de Expans\u00E3o Pulmonar duas vezes por semana</ul>' +
+                    '<ul> Exerc\u00EDcios de Reten\u00E7\u00E3o de Respira\u00E7\u00E3o duas vezes por semana (escolha um ou dois)</ul>' +
+                    '</div>' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar2.svg"></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="breathHoldsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathhold2PT.svg"></a></div>' +
+                    '<div class="col"><a></a></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="brizaprogram">' +
+                    '<p>Benef\u00EDcios deste programa:</p>' +
+                    '<ul>Mais energia</ul>' +
+                    '<ul>Maior consci\u00EAncia</ul>' +
+                    '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
+                    '<ul>Cura r\u00E1pida</ul>' +
+                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
+                    '<ul>Livre de estresse</ul>' +
+                    '<ul>Melhor sono</ul>' +
+                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
+                    '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
+                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
+                    '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
+                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
+                    '</div>';
 
-                     // If the target is an image inside the link, get the parent element
-                     if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                         targetElement = targetElement.parentElement;
-                     }
+                document.getElementById('personalizedBriza').addEventListener('click', function (event) {
+                    var targetElement = event.target;
 
-                     var elementId = targetElement.id;
+                    // If the target is an image inside the link, get the parent element
+                    if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
+                        targetElement = targetElement.parentElement;
+                    }
 
-                     switch (elementId) {
-                         case 'nasalLink':
-                             openPage(programPage, nasalBreathingPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backNasal.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'unblockLink':
-                             openPage(programPage, noseUnblockPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backUnblock.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'diaphragmLink':
-                             openPage(programPage, diaphragmPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backDiaphragm.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'YBLink':
-                             openPage(programPage, YBPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backYB.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BRWLink':
-                             openPage(programPage, BRWPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRW.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BBLink':
-                             openPage(programPage, BBPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });    
-                             backBB.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'brtLink2':
-                             openPage(programPage, brtPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRT.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'lungsLink2':
-                             openPage(programPage, lungsPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backLungs.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'breathHoldsLink2':
-                             openPage(programPage, BHPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBH.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'HATLink':
-                             openPage(programPage, HATPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backHAT.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                     }
-                 });
-             } else if (BRTlatestResult > 30) {
-                 BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 \u00E9 excelente.<br>';
-                 BRTinnerText += '<br>Voc\u00EA provavelmente est\u00E1 experimentando os benef\u00EDcios de uma respira\u00E7\u00E3o eficiente, incluindo sono restaurador, altos n\u00EDveis de energia e boa concentra\u00E7\u00E3o.<br>';
-                 BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina baseada no Programa Briza. Certifique-se de manter os bons resultados. Explore o aplicativo para adicionar mais h\u00E1bitos de sa\u00FAde \u00E0 sua rotina.';
-                 BRTinfoOverview.innerHTML = BRTinnerText;
-                 personalTraining.innerHTML = "";
-                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                     '<h2>Seu resultado BRT \u00E9: </h2>' +
-                     '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                     '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                     '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                     '<ul> Fita na boca durante o sono</ul > ' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                     '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                     '</div>' +
-                     '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                     '<ul> Respira\u00E7\u00E3o Briza 3 vezes ao dia (10 minutos cada sess\u00E3o, uma delas antes de ir para a cama \u00E0 noite)</ul> ' +
-                     '<ul> Respira\u00E7\u00E3o Briza durante a corrida</ul> ' +
-                     '<ul> Treinamento em Alta Altitude durante a corrida 8 a 10 s\u00E9ries de vez em quando</ul>' +
-                     '<ul> Treinamento Avan\u00E7ado em Alta Altitude algumas vezes por semana</ul>' +
-                     '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada ap\u00F3s treinos intensos (5 minutos)</ul>' +
-                     '<ul> Treinamento de Expans\u00E3o Pulmonar duas vezes por semana</ul>' +
-                     '<ul> Exerc\u00EDcios de Reten\u00E7\u00E3o de Respira\u00E7\u00E3o duas vezes por semana (escolha um ou dois)</ul>' +
-                     '</div>' +
-                     '<div class="BHGrid"> ' +
-                     '<div class="row g-2">' +
-                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="HATCLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatcyclingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="AHATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/advancedhatPT.svg" /></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
-                     '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar2.svg"></a></div>' +
-                     '<div class="w-100"></div>' +
-                     '<div class="col"><a id="breathHoldsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathhold2PT.svg"></a></div>' +
-                     '<div class="col"><a></a></div>' +
-                     '</div>' +
-                     '</div>' +
-                     '<div class="brizaprogram">' +
-                     '<p>Benef\u00EDcios deste programa:</p>' +
-                     '<ul>Mais energia</ul>' +
-                     '<ul>Maior consci\u00EAncia</ul>' +
-                     '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
-                     '<ul>Cura r\u00E1pida</ul>' +
-                     '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                     '<ul>Livre de estresse</ul>' +
-                     '<ul>Melhor sono</ul>' +
-                     '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                     '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
-                     '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                     '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
-                     '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
-                     '</div>';
-               
-                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                     var targetElement = event.target;
+                    var elementId = targetElement.id;
 
-                     // If the target is an image inside the link, get the parent element
-                     if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                         targetElement = targetElement.parentElement;
-                     }
+                    switch (elementId) {
+                        case 'nasalLink':
+                            openPage(programPage, nasalBreathingPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backNasal.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'unblockLink':
+                            openPage(programPage, noseUnblockPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backUnblock.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'diaphragmLink':
+                            openPage(programPage, diaphragmPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backDiaphragm.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'YBLink':
+                            openPage(programPage, YBPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backYB.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BRWLink':
+                            openPage(programPage, BRWPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRW.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BBLink':
+                            openPage(programPage, BBPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBB.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'brtLink2':
+                            openPage(programPage, brtPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRT.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'lungsLink2':
+                            openPage(programPage, lungsPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backLungs.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'breathHoldsLink2':
+                            openPage(programPage, BHPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBH.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'HATLink':
+                            openPage(programPage, HATPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backHAT.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                    }
+                });
+            } else if (BRTlatestResult > 30) {
+                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 \u00E9 excelente.<br>';
+                BRTinnerText += '<br>Voc\u00EA provavelmente est\u00E1 experimentando os benef\u00EDcios de uma respira\u00E7\u00E3o eficiente, incluindo sono restaurador, altos n\u00EDveis de energia e boa concentra\u00E7\u00E3o.<br>';
+                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina baseada no Programa Briza. Certifique-se de manter os bons resultados. Explore o aplicativo para adicionar mais h\u00E1bitos de sa\u00FAde \u00E0 sua rotina.';
+                BRTinfoOverview.innerHTML = BRTinnerText;
+                personalTraining.innerHTML = "";
+                personalTraining.innerHTML += '<div class="breathingpages">' +
+                    '<h2>Seu resultado BRT \u00E9: </h2>' +
+                    '<h2>' + BRTlatestResult + ' segundos</h2>' +
+                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
+                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
+                    '<ul> Fita na boca durante o sono</ul > ' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
+                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
+                    '</div>' +
+                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
+                    '<ul> Respira\u00E7\u00E3o Briza 3 vezes ao dia (10 minutos cada sess\u00E3o, uma delas antes de ir para a cama \u00E0 noite)</ul> ' +
+                    '<ul> Respira\u00E7\u00E3o Briza durante a corrida</ul> ' +
+                    '<ul> Treinamento em Alta Altitude durante a corrida 8 a 10 s\u00E9ries de vez em quando</ul>' +
+                    '<ul> Treinamento Avan\u00E7ado em Alta Altitude algumas vezes por semana</ul>' +
+                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada ap\u00F3s treinos intensos (5 minutos)</ul>' +
+                    '<ul> Treinamento de Expans\u00E3o Pulmonar duas vezes por semana</ul>' +
+                    '<ul> Exerc\u00EDcios de Reten\u00E7\u00E3o de Respira\u00E7\u00E3o duas vezes por semana (escolha um ou dois)</ul>' +
+                    '</div>' +
+                    '<div class="BHGrid"> ' +
+                    '<div class="row g-2">' +
+                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="HATCLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatcyclingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="AHATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/advancedhatPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar2.svg"></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<div class="col"><a id="breathHoldsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathhold2PT.svg"></a></div>' +
+                    '<div class="col"><a></a></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="brizaprogram">' +
+                    '<p>Benef\u00EDcios deste programa:</p>' +
+                    '<ul>Mais energia</ul>' +
+                    '<ul>Maior consci\u00EAncia</ul>' +
+                    '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
+                    '<ul>Cura r\u00E1pida</ul>' +
+                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
+                    '<ul>Livre de estresse</ul>' +
+                    '<ul>Melhor sono</ul>' +
+                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
+                    '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
+                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
+                    '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
+                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
+                    '</div>';
 
-                     var elementId = targetElement.id;
+                document.getElementById('personalizedBriza').addEventListener('click', function (event) {
+                    var targetElement = event.target;
 
-                     switch (elementId) {
-                         case 'nasalLink':
-                             openPage(programPage, nasalBreathingPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backNasal.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'unblockLink':
-                             openPage(programPage, noseUnblockPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backUnblock.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'diaphragmLink':
-                             openPage(programPage, diaphragmPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backDiaphragm.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BRWLink':
-                             openPage(programPage, BRWPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRW.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'BBLink':
-                             openPage(programPage, BBPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBB.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'brtLink2':
-                             openPage(programPage, brtPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBRT.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'lungsLink2':
-                             openPage(programPage, lungsPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backLungs.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'breathHoldsLink2':
-                             openPage(programPage, BHPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backBH.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'HATLink':
-                             openPage(programPage, HATPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backHAT.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'HATCLink':
-                             openPage(programPage, HATCPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });   
-                             backHATC.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                         case 'AHATLink':
-                             openPage(programPage, AHATPage, 'slideLeft');
-                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                             backAHAT.style.display = "block";
-                             backProgram.style.display = "none";
-                             break;
-                     }
-                 });
-             }
+                    // If the target is an image inside the link, get the parent element
+                    if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
+                        targetElement = targetElement.parentElement;
+                    }
+
+                    var elementId = targetElement.id;
+
+                    switch (elementId) {
+                        case 'nasalLink':
+                            openPage(programPage, nasalBreathingPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backNasal.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'unblockLink':
+                            openPage(programPage, noseUnblockPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backUnblock.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'diaphragmLink':
+                            openPage(programPage, diaphragmPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backDiaphragm.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BRWLink':
+                            openPage(programPage, BRWPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRW.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'BBLink':
+                            openPage(programPage, BBPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBB.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'brtLink2':
+                            openPage(programPage, brtPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRT.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'lungsLink2':
+                            openPage(programPage, lungsPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backLungs.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'breathHoldsLink2':
+                            openPage(programPage, BHPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBH.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'HATLink':
+                            openPage(programPage, HATPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backHAT.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'HATCLink':
+                            openPage(programPage, HATCPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backHATC.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                        case 'AHATLink':
+                            openPage(programPage, AHATPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backAHAT.style.display = "block";
+                            backProgram.style.display = "none";
+                            break;
+                    }
+                });
+            }
 
 
             if (BRTmax > BRTlatestResult) {
@@ -1252,37 +1252,37 @@ function BRTupdateOverview() {
             }
             document.getElementById('BRTnumberOfSessions').value = BRTnumberOfTests + ' Testes';
             document.getElementById('BRTlongestRound').value = BRTmax + ' segundos ' + formatDateAsDMY(BRTdateOfLongestResult);
-            document.getElementById('BRTlatestRound').value = BRTlatestResult + ' segundos ' + formatDateAsDMY(BRTlastDate);          
-         } else if (BRTnumberOfTests == 0) {
-             BRTinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
-             for (var i = 0; i < BRTinfoOverviewElements.length; i++) {
-                 BRTinfoOverviewElements[i].style.display = 'none';
-             }
-             document.getElementById('BRTContainer').style.display = 'none';
-             personalTraining.innerHTML = '<div class="breathingpages">' +
-                 '<h2>Parece que voc\u00EA ainda n\u00E3o fez seu Teste de Reten\u00E7\u00E3o de Briza. Descubra qual \u00E9 o seu resultado BRT para come\u00E7ar com o Programa Briza</h2> ' +
-                 '<a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brtPT.svg" /></a>' +
-                 '</div>';
-             document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                 var targetElement = event.target;
+            document.getElementById('BRTlatestRound').value = BRTlatestResult + ' segundos ' + formatDateAsDMY(BRTlastDate);
+        } else if (BRTnumberOfTests == 0) {
+            BRTinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
+            for (var i = 0; i < BRTinfoOverviewElements.length; i++) {
+                BRTinfoOverviewElements[i].style.display = 'none';
+            }
+            document.getElementById('BRTContainer').style.display = 'none';
+            personalTraining.innerHTML = '<div class="breathingpages">' +
+                '<h2>Parece que voc\u00EA ainda n\u00E3o fez seu Teste de Reten\u00E7\u00E3o de Briza. Descubra qual \u00E9 o seu resultado BRT para come\u00E7ar com o Programa Briza</h2> ' +
+                '<a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brtPT.svg" /></a>' +
+                '</div>';
+            document.getElementById('personalizedBriza').addEventListener('click', function (event) {
+                var targetElement = event.target;
 
-                 // If the target is an image inside the link, get the parent element
-                 if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                     targetElement = targetElement.parentElement;
-                 }
+                // If the target is an image inside the link, get the parent element
+                if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
+                    targetElement = targetElement.parentElement;
+                }
 
-                 var elementId = targetElement.id;
+                var elementId = targetElement.id;
 
-                 switch (elementId) {
-                     case 'brtLink2':
-                         openPage(programPage, brtPage, 'slideLeft');
-                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                         backBRT.style.display = "block";
-                         backProgram.style.display = "none";
-                         break;
-                 }
-             });
-         }
+                switch (elementId) {
+                    case 'brtLink2':
+                        openPage(programPage, brtPage, 'slideLeft');
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        backBRT.style.display = "block";
+                        backProgram.style.display = "none";
+                        break;
+                }
+            });
+        }
 
     } else {
         if (BRTnumberOfTests >= 1) {
@@ -1481,7 +1481,7 @@ function BRTupdateOverview() {
                             break;
                         case 'BBLink':
                             openPage(programPage, BBPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBB.style.display = "block";
                             backProgram.style.display = "none";
                             break;
@@ -1603,7 +1603,7 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBB.style.display = "block";
                             backProgram.style.display = "none";
-                            break;   
+                            break;
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1746,7 +1746,7 @@ function BRTupdateOverview() {
                             backHAT.style.display = "block";
                             backProgram.style.display = "none";
                             break;
-                    }               
+                    }
                 });
             } else if (BRTlatestResult >= 25 && BRTlatestResult <= 30) {
                 BRTinnerText = 'Based on your latest test (' + BRTlatestResult + ' seconds), your resilience to CO2 is excellent.<br>';
@@ -1887,7 +1887,7 @@ function BRTupdateOverview() {
                             backHAT.style.display = "block";
                             backProgram.style.display = "none";
                             break;
-                    }               
+                    }
                 });
             } else if (BRTlatestResult > 30) {
                 BRTinnerText = 'Based on your latest test (' + BRTlatestResult + ' seconds), your resilience to CO2 is excellent.<br>';
@@ -2032,7 +2032,7 @@ function BRTupdateOverview() {
                             backAHAT.style.display = "block";
                             backProgram.style.display = "none";
                             break;
-                    }     
+                    }
                 });
             }
             if (BRTmax > BRTlatestResult) {
@@ -2053,7 +2053,7 @@ function BRTupdateOverview() {
             document.getElementById('BRTContainer').style.display = 'none';
             personalTraining.innerHTML = '<div class="breathingpages">' +
                 '<h2>It looks like you haven`t done your Briza Retention Test yet. Find out what your BRT score is, to get started with the Briza Program</h2> ' +
-                '<a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt.svg" /></a>'+
+                '<a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt.svg" /></a>' +
                 '</div>';
             document.getElementById('personalizedBriza').addEventListener('click', function (event) {
                 var targetElement = event.target;
@@ -2072,7 +2072,7 @@ function BRTupdateOverview() {
                         backBRT.style.display = "block";
                         backProgram.style.display = "none";
                         break;
-                }             
+                }
             });
         }
     }
@@ -2169,607 +2169,6 @@ function BRTdisplayDetailedInfo(BRTselectedDate) {
     backBRTresults.style.display = "block";
 }
 // END BRT
-// LUNGS
-// Initialize startDate and endDate
-var LUNGStoday = new Date();
-var LUNGSlast7Dates = [];
-for (var i = 6; i >= 0; i--) {
-    var LUNGSresultDate = new Date(LUNGStoday);
-    LUNGSresultDate.setDate(LUNGStoday.getDate() - i);
-    LUNGSlast7Dates.push(LUNGSresultDate); // Push the Date object directly
-}
-
-var LUNGSendDate = LUNGSlast7Dates[LUNGSlast7Dates.length - 1]; // Initialize with the latest date
-var LUNGSstartDate = LUNGSlast7Dates[0]; // Initialize with the earliest date
-// Initialize variables to track touch start position
-var LUNGStouchStartX = null;
-// Add event listener for mouse wheel on the canvas
-var LUNGSContainer = document.getElementById('LUNGSContainer');
-LUNGSContainer.addEventListener('touchstart', function (event) {
-    LUNGStouchStartX = event.touches[0].clientX;
-});
-
-var LUNGSscrollThreshold = 10; // Adjust this value to control the scroll threshold
-
-var LUNGSlastScrollX = null;
-var { LUNGSchartData, LUNGSmaxYValue, LUNGSselectedDataDatesYear } = LUNGSupdateChartData(LUNGSstartDate, LUNGSendDate, fetchedDataArray);
-var LUNGSinfoOverview = document.getElementById('LUNGSinfoOverview');
-var LUNGSdateOfLongestResult;
-var LUNGSlastDate;
-var LUNGSlatestResult;
-var LUNGSchart;
-function LUNGSinitializeChart() {
-    // Sort the fetched data by date in ascending order
-    fetchedDataArray.sort(function (a, b) {
-        var LUNGSdateA = new Date(a.LUNGSresultDate);
-        var LUNGSdateB = new Date(b.LUNGSresultDate);
-        return LUNGSdateA - LUNGSdateB;
-    });
-    var LUNGSselectedDataDatesMonthDay = LUNGSselectedDataDatesYear.map(dateString => dateString.split('/')[0] + '/' + dateString.split('/')[1]);
-
-    if (isPortuguese) {
-        // Initialize chart using initial dates
-        LUNGSchart = new Chart("LUNGSchart", {
-            type: "bar",
-            data: {
-                labels: LUNGSselectedDataDatesMonthDay,
-                datasets: [{
-                    backgroundColor: '#49B79D',
-                    data: LUNGSchartData,
-                    barPercentage: 0.6,
-                    categoryPercentage: 0.8,
-                }]
-            },
-            options: {
-                legend: { display: false }, // Display the legend
-                title: {
-                    display: true,
-                    text: "Seus resultados de expans\u00E3o pulmonar em segundos " + "(" + getYear(LUNGSendDate) + ")",
-                    font: {
-                        family: 'Playfair Display', // Change to your desired font family
-                        size: 14 // Change to your desired font size
-                    },
-                    fontColor: '#0661AA', // Change to your desired font color
-                },
-                tooltips: {
-                    displayColors: false,
-                    callbacks: {
-                        title: function (tooltipItems, data) {
-                            // Customize the tooltip title here (e.g., return 'Custom Title')
-                            return 'Media do dia';
-                        },
-                        label: function (tooltipItem, data) {
-                            var label = data.labels[tooltipItem.index];
-                            var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                            // Customize the tooltip label format here (e.g., return 'Label: Value')
-                            return label + ': ' + Math.round(value * 100) / 100 + ' segundos';
-                        },
-                    }
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            max: LUNGSmaxYValue,
-                            stepSize: 10,
-                            font: {
-                                family: 'Playfair Display', // Change to your desired font family
-                                size: 10 // Change to your desired font size
-                            },
-                            fontColor: '#0661AA' // Change to your desired font color
-                        },
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            font: {
-                                family: 'Playfair Display', // Change to your desired font family
-                                size: 10 // Change to your desired font size
-                            },
-                            fontColor: '#0661AA' // Change to your desired font color
-                        },
-                        gridLines: {
-                            color: "rgba(0, 0, 0, 0)",
-                        }
-                    }]
-                }
-            }
-        });
-    } else {
-        // Initialize chart using initial dates
-        LUNGSchart = new Chart("LUNGSchart", {
-            type: "bar",
-            data: {
-                labels: LUNGSselectedDataDatesMonthDay,
-                datasets: [{
-                    backgroundColor: '#49B79D',
-                    data: LUNGSchartData,
-                    barPercentage: 0.6,
-                    categoryPercentage: 0.8,
-                }]
-            },
-            options: {
-                legend: { display: false }, // Display the legend
-                title: {
-                    display: true,
-                    text: "Your Lungs Expansion results in seconds " + "(" + getYear(LUNGSendDate) + ")",
-                    font: {
-                        family: 'Playfair Display', // Change to your desired font family
-                        size: 14 // Change to your desired font size
-                    },
-                    fontColor: '#0661AA', // Change to your desired font color
-                },
-                tooltips: {
-                    displayColors: false,
-                    callbacks: {
-                        title: function (tooltipItems, data) {
-                            // Customize the tooltip title here (e.g., return 'Custom Title')
-                            return 'Average Score on';
-                        },
-                        label: function (tooltipItem, data) {
-                            var label = data.labels[tooltipItem.index];
-                            var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                            // Customize the tooltip label format here (e.g., return 'Label: Value')
-                            return label + ': ' + Math.round(value * 100) / 100 + ' seconds';
-                        },
-                    }
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true,
-                            max: LUNGSmaxYValue,
-                            stepSize: 10,
-                            font: {
-                                family: 'Playfair Display', // Change to your desired font family
-                                size: 10 // Change to your desired font size
-                            },
-                            fontColor: '#0661AA' // Change to your desired font color
-                        },
-                    }],
-                    xAxes: [{
-                        ticks: {
-                            font: {
-                                family: 'Playfair Display', // Change to your desired font family
-                                size: 10 // Change to your desired font size
-                            },
-                            fontColor: '#0661AA' // Change to your desired font color
-                        },
-                        gridLines: {
-                            color: "rgba(0, 0, 0, 0)",
-                        }
-                    }]
-                }
-            }
-        });
-    }
-    LUNGSContainer.addEventListener('touchmove', function (event) {
-        event.preventDefault(); // Prevent default scrolling behavior
-
-        if (LUNGStouchStartX !== null) {
-            var LUNGStouchMoveX = event.touches[0].clientX;
-
-            if (LUNGSlastScrollX !== null) {
-                var LUNGSdelta = LUNGStouchMoveX - LUNGSlastScrollX;
-
-                if (Math.abs(LUNGSdelta) >= LUNGSscrollThreshold) {
-                    LUNGSlastScrollX = LUNGStouchMoveX;
-
-                    if (LUNGSdelta > 0) {
-                        // Scroll right, decrease the date range
-                        LUNGSendDate.setDate(LUNGSendDate.getDate() - 1);
-                        LUNGSstartDate.setDate(LUNGSstartDate.getDate() - 1);
-                        if (isPortuguese) {
-                            LUNGSchart.options.title.text = "Seus resultados de expans\u00E3o pulmonar em segundos " + "(" + getYear(LUNGSendDate) + ")";
-                        } else {
-                            LUNGSchart.options.title.text = "Your Lungs Expansion results in seconds " + "(" + getYear(LUNGSendDate) + ")";
-                        }
-                    } else if (LUNGSdelta < 0) {
-                        if (formatDateAsDMY(LUNGSendDate) == formatDateAsDMY(LUNGStoday)) {
-                            // Do nothing if already at the current date
-                        } else {
-                            // Scroll left, increase the date range
-                            LUNGSendDate.setDate(LUNGSendDate.getDate() + 1);
-                            LUNGSstartDate.setDate(LUNGSstartDate.getDate() + 1);
-                            if (isPortuguese) {
-                                LUNGSchart.options.title.text = "Seus resultados de expans\u00E3o pulmonar em segundos " + "(" + getYear(LUNGSendDate) + ")";
-                            } else {
-                                LUNGSchart.options.title.text = "Your Lungs Expansion results in seconds " + "(" + getYear(LUNGSendDate) + ")";
-                            }                        }
-                    }
-                    LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
-                }
-            } else {
-                LUNGSlastScrollX = LUNGStouchMoveX;
-            }
-        }
-    });
-
-    LUNGSContainer.addEventListener('touchend', function () {
-        LUNGSlastScrollX = null;
-    });
-    LUNGSContainer.addEventListener('wheel', function (event) {
-        // Determine the direction and magnitude of the horizontal scroll
-        var LUNGSdelta = event.deltaX * 0.1;
-
-        if (LUNGSdelta < 0) {
-            // Scroll left, decrease the date range
-            LUNGSendDate.setDate(LUNGSendDate.getDate() - 1);
-            LUNGSstartDate.setDate(LUNGSstartDate.getDate() - 1);
-            if (isPortuguese) {
-                LUNGSchart.options.title.text = "Seus resultados de expans\u00E3o pulmonar em segundos " + "(" + getYear(LUNGSendDate) + ")";
-            } else {
-                LUNGSchart.options.title.text = "Your Lungs Expansion results in seconds " + "(" + getYear(LUNGSendDate) + ")";
-            }        } else if (LUNGSdelta > 0) {
-            if (formatDateAsDMY(LUNGSendDate) == formatDateAsDMY(LUNGStoday)) { }
-            else {
-                // Scroll right, increase the date range
-                LUNGSendDate.setDate(LUNGSendDate.getDate() + 1);
-                LUNGSstartDate.setDate(LUNGSstartDate.getDate() + 1);
-                if (isPortuguese) {
-                    LUNGSchart.options.title.text = "Seus resultados de expans\u00E3o pulmonar em segundos " + "(" + getYear(LUNGSendDate) + ")";
-                } else {
-                    LUNGSchart.options.title.text = "Your Lungs Expansion results in seconds " + "(" + getYear(LUNGSendDate) + ")";
-                }            }
-        }
-        LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
-    });
-    LUNGSupdateOverview();
-    // Add a click event listener to the chart
-    // Function to handle bar click event
-    function LUNGShandleBarClick(event, array) {
-        var LUNGSindex = array[0]._index; // Get the clicked bar index
-        var LUNGSselectedDate = LUNGSselectedDataDatesYear[LUNGSindex];
-        LUNGSdisplayDetailedInfo(LUNGSselectedDate);
-    }
-    LUNGSchart.options.onClick = function (event, array) {
-        if (array.length > 0) {
-            LUNGShandleBarClick(event, array);
-        }
-    };
-    // For touch-enabled devices
-    if ('ontouchstart' in window || navigator.maxTouchPoints) {
-        LUNGSchart.options.onClick = function (event, array) {
-            if (array.length > 0) {
-                LUNGShandleBarClick(event, array);
-            }
-        };
-    }
-}
-
-function LUNGSfindMaxResult() {
-    var LUNGSmaxResult = 0;
-
-    fetchedDataArray.forEach(LUNGSresultData => {
-        var LUNGStimeString = LUNGSresultData.lungsResultScore;
-
-        // Check if the timeString is not empty before parsing
-        if (LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null) {
-            var seconds = parseTimeToSeconds(LUNGStimeString);
-            LUNGSmaxResult = Math.max(LUNGSmaxResult, seconds);
-        }
-    });
-
-    return LUNGSmaxResult;
-}
-function LUNGSupdateChartData(LUNGSstartDate, LUNGSendDate) {
-    var LUNGSdateRange = []; // New array to hold the date range between startDate and endDate
-
-    // Populate the date range array
-    var LUNGScurrentDate = new Date(LUNGSstartDate);
-    while (LUNGScurrentDate <= LUNGSendDate) {
-        LUNGSdateRange.push(new Date(LUNGScurrentDate));
-        LUNGScurrentDate.setDate(LUNGScurrentDate.getDate() + 1); // Move to the next day
-    }
-
-    var LUNGSaggregatedData = {}; // Use an object to aggregate data by date
-
-    fetchedDataArray.forEach(LUNGSresultData => {
-        var LUNGSresultDate = new Date(LUNGSresultData.lungsResultDate);
-        var LUNGSseconds;
-        var LUNGStimeString = LUNGSresultData.lungsResultScore;
-        if (LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null) {
-            LUNGSseconds = parseTimeToSeconds(LUNGStimeString);
-        } else {
-            LUNGSseconds = 0;
-        }
-        if (!isNaN(LUNGSresultDate.getTime())) {
-            var LUNGSformattedDate = formatDateAsDMY(LUNGSresultDate);
-
-            if (!LUNGSaggregatedData[LUNGSformattedDate]) {
-                LUNGSaggregatedData[LUNGSformattedDate] = { LUNGStotalValue: LUNGSseconds, count: 1 };
-            } else {
-                LUNGSaggregatedData[LUNGSformattedDate].LUNGStotalValue += LUNGSseconds;
-                LUNGSaggregatedData[LUNGSformattedDate].count++;
-            }
-        }
-    });
-
-    var LUNGSmaxResult = LUNGSfindMaxResult();
-    var LUNGSchartData = LUNGSdateRange.map(LUNGSresultDate => {
-        var LUNGSformattedDate = formatDateAsDMY(LUNGSresultDate);
-        var LUNGSaggregatedDatum = LUNGSaggregatedData[LUNGSformattedDate];
-        return LUNGSaggregatedDatum ? LUNGSaggregatedDatum.LUNGStotalValue / LUNGSaggregatedDatum.count : 0;
-    });
-
-    return {
-        LUNGSchartData: LUNGSchartData,
-        LUNGSmaxYValue: LUNGSmaxResult + 10,
-        LUNGSselectedDataDatesYear: LUNGSdateRange.map(formatDateAsDMY)
-    };
-}
-function LUNGSupdateChart(LUNGSstartDate, LUNGSendDate) {
-    var { LUNGSchartData, LUNGSmaxYValue, LUNGSselectedDataDatesYear } = LUNGSupdateChartData(LUNGSstartDate, LUNGSendDate);
-
-    // Update x-axis labels and chart data
-    var LUNGSselectedDataDatesMonthDay = LUNGSselectedDataDatesYear.map(dateString => dateString.split('/')[0] + '/' + dateString.split('/')[1]);
-
-    LUNGSchart.data.labels = LUNGSselectedDataDatesMonthDay;
-    LUNGSchart.data.datasets[0].data = LUNGSchartData;
-    LUNGSchart.options.scales.yAxes[0].ticks.max = LUNGSmaxYValue;
-    function LUNGShandleBarClick(event, array) {
-        var LUNGSindex = array[0]._index; // Get the clicked bar index
-        var LUNGSselectedDate = LUNGSselectedDataDatesYear[LUNGSindex];
-        LUNGSdisplayDetailedInfo(LUNGSselectedDate);
-    }
-    LUNGSchart.options.onClick = function (event, array) {
-        if (array.length > 0) {
-            LUNGShandleBarClick(event, array);
-        }
-    };
-    // For touch-enabled devices
-    if ('ontouchstart' in window || navigator.maxTouchPoints) {
-        LUNGSchart.options.onClick = function (event, array) {
-            if (array.length > 0) {
-                LUNGShandleBarClick(event, array);
-            }
-        };
-    }
-    LUNGSchart.update();
-}
-function LUNGSupdateOverview() {
-    var LUNGSnumberOfTests = 0;
-    var LUNGSmax = LUNGSfindMaxResult();
-    var LUNGSinfoOverviewElements = document.getElementsByClassName('LUNGSinfoOverview');
-    fetchedDataArray.forEach(LUNGSresultData => {
-        var LUNGStimeString = LUNGSresultData.lungsResultScore;
-        var LUNGSdateString = LUNGSresultData.lungsResultDate;
-        // Check if the timeString is not empty before parsing
-        if (LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null) {
-            var LUNGSseconds = parseTimeToSeconds(LUNGStimeString);
-            // Store the value of dateOfLongestResult when LUNGSmax is updated
-            if (LUNGSseconds === LUNGSmax) {
-                LUNGSdateOfLongestResult = LUNGSdateString;
-            }
-            LUNGSlatestResult = parseTimeToSeconds(LUNGStimeString);
-            LUNGSlastDate = LUNGSdateString;
-            LUNGSnumberOfTests++;
-        }
-    });
-    if (isPortuguese) {
-        if (LUNGSnumberOfTests == 1) {
-            var LUNGSinnerText = '';
-            for (var i = 0; i < LUNGSinfoOverviewElements.length; i++) {
-                LUNGSinfoOverviewElements[i].style.display = 'inline-flex';
-            }
-            document.getElementById('LUNGSContainer').style.display = 'block';
-            if (LUNGSlatestResult <= 15) {
-                LUNGSinnerText = 'Com base no seu primeiro teste (' + LUNGSlatestResult + ' segundos), parece que a capacidade dos seus pulm\u00F5es \u00E9 muito baixa.<br>';
-                LUNGSinnerText += '<br>Voc\u00EA pode ter dificuldades para ter uma boa noite de sono, respira\u00E7\u00E3o frequente pela boca, acordar com a boca seca, bocejar frequentemente e baixos n\u00EDveis de energia durante o dia.<br>';
-                LUNGSinnerText += '<br>\u00C9 recomend\u00E1vel que voc\u00EA pratique os exerc\u00EDcios de expans\u00E3o dos pulm\u00F5es uma vez por semana e se concentre em estabelecer uma rotina com base nos fundamentos e princ\u00EDpios b\u00E1sicos do Programa Briza para melhorar sua sa\u00FAde e bem-estar.';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult > 15 && LUNGSlatestResult < 25) {
-                LUNGSinnerText = 'Com base no seu primeiro teste (' + LUNGSlatestResult + ' segundos), a capacidade dos seus pulm\u00F5es se encontra na faixa intermedi\u00E1ria.<br>';
-                LUNGSinnerText += '<br>Recomenda-se que voc\u00EA pratique os exerc\u00EDcios de expans\u00E3o dos pulm\u00F5es de 2 a 3 vezes por semana e se concentre em estabelecer uma rotina com base nos fundamentos e princ\u00EDpios b\u00E1sicos do Programa Briza para melhorar sua sa\u00FAde e bem-estar.';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult >= 25 && LUNGSlatestResult <= 40) {
-                LUNGSinnerText = 'Com base no seu primeiro teste (' + LUNGSlatestResult + ' segundos), a capacidade dos seus pulm\u00F5es \u00E9 relativamente boa.<br>';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult > 40) {
-                LUNGSinnerText = 'Com base no seu primeiro teste (' + LUNGSlatestResult + ' segundos), a capacidade dos seus pulm\u00F5es \u00E9 excelente.<br>';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            }
-            document.getElementById('LUNGSnumberOfSessions').value = LUNGSnumberOfTests + ' Testes';
-            document.getElementById('LUNGSlongestRound').value = LUNGSmax + ' segundos ' + formatDateAsDMY(LUNGSdateOfLongestResult);
-            document.getElementById('LUNGSlatestRound').value = LUNGSlatestResult + ' segundos ' + formatDateAsDMY(LUNGSlastDate);
-        } else if (LUNGSnumberOfTests > 1) {
-            var LUNGSinnerText = '';
-            for (var i = 0; i < LUNGSinfoOverviewElements.length; i++) {
-                LUNGSinfoOverviewElements[i].style.display = 'inline-flex';
-            }
-            document.getElementById('LUNGSContainer').style.display = 'block';
-            if (LUNGSlatestResult <= 15) {
-                LUNGSinnerText = 'Com base no seu teste mais recente (' + LUNGSlatestResult + ' segundos), parece que a capacidade dos seus pulm\u00F5es \u00E9 muito baixa.<br>';
-                LUNGSInnerText += '<br>Voc\u00EA pode ter dificuldades para ter uma boa noite de sono, respira\u00E7\u00E3o frequente pela boca, acordar com a boca seca, bocejar frequentemente e baixos n\u00EDveis de energia durante o dia.<br>';
-                LUNGSInnerText += '<br>\u00C9 recomend\u00E1vel que voc\u00EA pratique os exerc\u00EDcios de expans\u00E3o dos pulm\u00F5es uma vez por semana e se concentre em estabelecer uma rotina com base nos fundamentos e princ\u00EDpios b\u00E1sicos do Programa Briza para melhorar sua sa\u00FAde e bem-estar.';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult > 15 && LUNGSlatestResult < 25) {
-                LUNGSinnerText = 'Com base no seu teste mais recente (' + LUNGSlatestResult + ' segundos), a capacidade dos seus pulm\u00F5es se encontra na faixa intermedi\u00E1ria.<br>';
-                LUNGSinnerText += '<br>Recomenda-se que voc\u00EA pratique os exerc\u00EDcios de expans\u00E3o dos pulm\u00F5es de 2 a 3 vezes por semana e se concentre em estabelecer uma rotina com base nos fundamentos e princ\u00EDpios b\u00E1sicos do Programa Briza para melhorar sua sa\u00FAde e bem-estar.';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult >= 25 && LUNGSlatestResult <= 40) {
-                LUNGSinnerText = 'Com base no seu teste mais recente (' + LUNGSlatestResult + ' segundos), a capacidade dos seus pulm\u00F5es \u00E9 relativamente boa.<br>';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult > 40) {
-                LUNGSinnerText = 'Com base no seu teste mais recente (' + LUNGSlatestResult + ' segundos), a capacidade dos seus pulm\u00F5es \u00E9 excelente.<br>';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            }
-            if (LUNGSmax > LUNGSlatestResult) {
-                LUNGSinnerText += '<br><br>Comparando com o seu teste mais longo, seus resultados est\u00E3o caindo. Certifique-se de ser consistente em sua pr\u00E1tica para voltar aos melhores resultados.'
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else {
-                LUNGSinnerText += '<br><br>Parab\u00E9ns. Parece que seu teste mais recente tamb\u00E9m \u00E9 o mais longo. Continue seguindo os exerc\u00EDcios de expans\u00E3o dos pulm\u00F5es para obter resultados ainda melhores.'
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            }
-            document.getElementById('LUNGSnumberOfSessions').value = LUNGSnumberOfTests + ' Testes';
-            document.getElementById('LUNGSlongestRound').value = LUNGSmax + ' segundos ' + formatDateAsDMY(LUNGSdateOfLongestResult);
-            document.getElementById('LUNGSlatestRound').value = LUNGSlatestResult + ' segundos ' + formatDateAsDMY(LUNGSlastDate);
-        } else if (LUNGSnumberOfTests == 0) {
-            LUNGSinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
-            for (var i = 0; i < LUNGSinfoOverviewElements.length; i++) {
-                LUNGSinfoOverviewElements[i].style.display = 'none';
-            }
-            document.getElementById('LUNGSContainer').style.display = 'none';
-        }
-    } else {
-        if (LUNGSnumberOfTests == 1) {
-            var LUNGSinnerText = '';
-            for (var i = 0; i < LUNGSinfoOverviewElements.length; i++) {
-                LUNGSinfoOverviewElements[i].style.display = 'inline-flex';
-            }
-            document.getElementById('LUNGSContainer').style.display = 'block';
-            if (LUNGSlatestResult <= 15) {
-                LUNGSinnerText = 'Based on your first test (' + LUNGSlatestResult + ' seconds), it seems that your lungs capacity is very low.<br>';
-                LUNGSinnerText += '<br>You may experience difficulties getting a good night\'s sleep, frequent mouth breathing, waking up with a dry mouth, frequent yawning, and low energy levels during the day.<br>';
-                LUNGSinnerText += '<br>It is recommended that you practice the lungs expansion exercises once a week and focus on establishing a routine based on the foundations and basics of the Briza Program to improve your fitness and well-being.';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult > 15 && LUNGSlatestResult < 25) {
-                LUNGSinnerText = 'Based on your first test (' + LUNGSlatestResult + ' seconds), your lungs capacity falls in the intermediate range.<br>';
-                LUNGSinnerText += '<br>It is recommended that you practice the lungs expansion exercises 2 to 3 times a week and focus on establishing a routine based on the foundations and basics of the Briza Program to improve your fitness and well-being.';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult >= 25 && LUNGSlatestResult <= 40) {
-                LUNGSinnerText = 'Based on your first test (' + LUNGSlatestResult + ' seconds), your lungs capacity is relatively good.<br>';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult > 40) {
-                LUNGSinnerText = 'Based on your first test (' + LUNGSlatestResult + ' seconds), your lungs capacity is excellent.<br>';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            }
-            document.getElementById('LUNGSnumberOfSessions').value = LUNGSnumberOfTests + ' Tests';
-            document.getElementById('LUNGSlongestRound').value = LUNGSmax + ' seconds ' + formatDateAsDMY(LUNGSdateOfLongestResult);
-            document.getElementById('LUNGSlatestRound').value = LUNGSlatestResult + ' seconds ' + formatDateAsDMY(LUNGSlastDate);
-        } else if (LUNGSnumberOfTests > 1) {
-            var LUNGSinnerText = '';
-            for (var i = 0; i < LUNGSinfoOverviewElements.length; i++) {
-                LUNGSinfoOverviewElements[i].style.display = 'inline-flex';
-            }
-            document.getElementById('LUNGSContainer').style.display = 'block';
-            if (LUNGSlatestResult <= 15) {
-                LUNGSinnerText = 'Based on your latest test (' + LUNGSlatestResult + ' seconds), it seems that your lungs capacity is very low.<br>';
-                LUNGSinnerText += '<br>You may experience difficulties getting a good night\'s sleep, frequent mouth breathing, waking up with a dry mouth, frequent yawning, and low energy levels during the day.<br>';
-                LUNGSinnerText += '<br>It is recommended that you practice the lungs expansion exercises once a week and focus on establishing a routine based on the foundations and basics of the Briza Program to improve your fitness and well-being.';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult > 15 && LUNGSlatestResult < 25) {
-                LUNGSinnerText = 'Based on your latest test (' + LUNGSlatestResult + ' seconds), your lungs capacity falls in the intermediate range.<br>';
-                LUNGSinnerText += '<br>It is recommended that you practice the lungs expansion exercises 2 to 3 times a week and focus on establishing a routine based on the foundations and basics of the Briza Program to improve your fitness and well-being.';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult >= 25 && LUNGSlatestResult <= 40) {
-                LUNGSinnerText = 'Based on your latest test (' + LUNGSlatestResult + ' seconds), your lungs capacity is relatively good.<br>';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else if (LUNGSlatestResult > 40) {
-                LUNGSinnerText = 'Based on your latest test (' + LUNGSlatestResult + ' seconds), your lungs capacity is excellent.<br>';
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            }
-            if (LUNGSmax > LUNGSlatestResult) {
-                LUNGSinnerText += '<br><br>Comparing with your longest Test, your results are dropping. Make sure to be consistent in your practice to get back to your best results.'
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            } else {
-                LUNGSinnerText += '<br><br>Well done. It looks that your latest test is also your longest. Keep following the lungs expansion exercises to achieve even better results'
-                LUNGSinfoOverview.innerHTML = LUNGSinnerText;
-            }
-            document.getElementById('LUNGSnumberOfSessions').value = LUNGSnumberOfTests + ' Tests';
-            document.getElementById('LUNGSlongestRound').value = LUNGSmax + ' seconds ' + formatDateAsDMY(LUNGSdateOfLongestResult);
-            document.getElementById('LUNGSlatestRound').value = LUNGSlatestResult + ' seconds ' + formatDateAsDMY(LUNGSlastDate);
-        } else if (LUNGSnumberOfTests == 0) {
-            LUNGSinfoOverview.innerHTML = 'No results yet';
-            for (var i = 0; i < LUNGSinfoOverviewElements.length; i++) {
-                LUNGSinfoOverviewElements[i].style.display = 'none';
-            }
-            document.getElementById('LUNGSContainer').style.display = 'none';
-        }
-    }
-}
-
-
-var LUNGSresultPage = document.getElementById('LUNGSresultPage'),
-    LUNGSresultDateHeader = document.getElementById('LUNGSresultDateHeader'),
-    LUNGSresultSessions = document.getElementById('LUNGSresultSessions');
-
-function LUNGSdisplayDetailedInfo(LUNGSselectedDate) {
-    function LUNGSdeleteResult(resultId) {
-        var antiForgeryToken = $('input[name="__RequestVerificationToken"]').val();
-
-        $.ajax({
-            url: "/?handler=Delete",
-            type: 'POST',
-            data: {
-                resultId: resultId,
-                __RequestVerificationToken: antiForgeryToken
-            },
-            success: function (response) {
-                if (response.success) {
-                    // Remove the deleted form
-                    $('.LUNGSdelete-form [name="resultId"][value="' + resultId + '"]').closest('.LUNGSdelete-form').remove();
-                    $.ajax({
-                        url: "/?fetchData=true",
-                        type: 'GET',
-                        success: function (data) {
-                            fetchedDataArray = data;
-                            LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
-                            LUNGSupdateOverview();
-                            openPage(LUNGSresultPage, resultsPage, 'slideRight');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backLUNGSresults.style.display = "none";
-                        },
-                        error: function (error) {
-                            console.error("Error fetching data:", error);
-                        }
-                    });
-                } else {
-                    console.error("Failed to delete result");
-                }
-            },
-            error: function (error) {
-                console.error("Error deleting result:", error);
-            }
-        });
-    }
-    var LUNGSnumberOfResults = 1;
-    LUNGSresultSessions.innerHTML = ''; // Clear the existing content
-    fetchedDataArray.forEach(LUNGSresultData => {
-        var LUNGStimeString = LUNGSresultData.lungsResultScore;
-        var LUNGSdateString = LUNGSresultData.lungsResultDate;
-        var LUNGSresultId = LUNGSresultData.resultId;
-        // Check if the timeString is not empty before parsing
-        if (LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null) {
-            var LUNGSseconds = parseTimeToSeconds(LUNGStimeString);
-            // Store the value of dateOfLongestResult when LUNGSmax is updated
-            if (LUNGSselectedDate === formatDateAsDMY(LUNGSdateString)) {
-                if (isPortuguese) {
-                    LUNGSresultDateHeader.innerHTML = 'Resultados do dia ' + LUNGSselectedDate;
-                    LUNGSresultSessions.innerHTML += '<form method="post" class="LUNGSdelete-form">' +
-                        '<div>Teste ' + LUNGSnumberOfResults + ' __________</div>' +
-                        '<input value="' + LUNGSseconds + ' segundos" readonly class="resultInput"/>' +
-                        '<input name="resultId" value="' + LUNGSresultId + '" style="display:none"/>' +
-                        '<input type="button" value="Deletar" class="btn btn-danger LUNGSdelete-button" />' +
-                        '</form>';
-                } else {
-                    LUNGSresultDateHeader.innerHTML = 'Results on ' + LUNGSselectedDate;
-                    LUNGSresultSessions.innerHTML += '<form method="post" class="LUNGSdelete-form">' +
-                        '<div>Test ' + LUNGSnumberOfResults + ' __________</div>' +
-                        '<input value="' + LUNGSseconds + ' seconds" readonly class="resultInput"/>' +
-                        '<input name="resultId" value="' + LUNGSresultId + '" style="display:none"/>' +
-                        '<input type="button" value="Delete" class="btn btn-danger LUNGSdelete-button" />' +
-                        '</form>';
-                }
-                LUNGSnumberOfResults++;
-            }
-        }
-    });
-
-    // Add event listeners for delete buttons
-    var LUNGSdeleteButtons = document.querySelectorAll('.LUNGSdelete-button');
-    LUNGSdeleteButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            var LUNGSform = this.closest('.LUNGSdelete-form');
-            var LUNGSresultId = LUNGSform.querySelector('[name="resultId"]').value;
-            LUNGSdeleteResult(LUNGSresultId);
-        });
-    });
-
-    openPage(resultsPage, LUNGSresultPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backLUNGSresults.style.display = "block";
-}
-// END LUNGS
 // YB
 // Initialize startDate and endDate
 var YBtoday = new Date();
@@ -2828,7 +2227,7 @@ function YBinitializeChart() {
                     display: true,
                     text: "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -2853,7 +2252,7 @@ function YBinitializeChart() {
                             max: YBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -2862,7 +2261,7 @@ function YBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -2893,7 +2292,7 @@ function YBinitializeChart() {
                     display: true,
                     text: "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -2918,7 +2317,7 @@ function YBinitializeChart() {
                             max: YBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -2927,7 +2326,7 @@ function YBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -2972,7 +2371,8 @@ function YBinitializeChart() {
                                 YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
                             } else {
                                 YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     YBupdateChart(YBstartDate, YBendDate);
                 }
@@ -2997,7 +2397,8 @@ function YBinitializeChart() {
                 YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
             } else {
                 YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
-            }        } else if (YBdelta > 0) {
+            }
+        } else if (YBdelta > 0) {
             if (formatDateAsDMY(YBendDate) == formatDateAsDMY(YBtoday)) { }
             else {
                 // Scroll right, increase the date range
@@ -3007,7 +2408,8 @@ function YBinitializeChart() {
                     YBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Yogi " + "(" + getYear(YBendDate) + ")";
                 } else {
                     YBchart.options.title.text = "Your Yogic Breathing results " + "(" + getYear(YBendDate) + ")";
-                }            }
+                }
+            }
         }
         YBupdateChart(YBstartDate, YBendDate);
     });
@@ -3098,7 +2500,7 @@ function YBupdateChartData(YBstartDate, YBendDate) {
             }
         }
     });
-   
+
     var YBmaxResult = YBfindMaxResult();
     var YBchartData = YBdateRange.map(YBresultDate => {
         var YBformattedDate = formatDateAsDMY(YBresultDate);
@@ -3352,7 +2754,7 @@ function BREinitializeChart() {
                     display: true,
                     text: "Seus resultados de Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o " + "(" + getYear(BREendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -3377,7 +2779,7 @@ function BREinitializeChart() {
                             max: BREmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -3386,7 +2788,7 @@ function BREinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -3417,7 +2819,7 @@ function BREinitializeChart() {
                     display: true,
                     text: "Your Briza Recovery Exercise results " + "(" + getYear(BREendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -3442,7 +2844,7 @@ function BREinitializeChart() {
                             max: BREmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -3451,7 +2853,7 @@ function BREinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -3496,7 +2898,8 @@ function BREinitializeChart() {
                                 BREchart.options.title.text = "Seus resultados de Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o " + "(" + getYear(BREendDate) + ")";
                             } else {
                                 BREchart.options.title.text = "Your Breath Recovery Exercise results " + "(" + getYear(BREendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     BREupdateChart(BREstartDate, BREendDate);
                 }
@@ -3521,7 +2924,8 @@ function BREinitializeChart() {
                 BREchart.options.title.text = "Seus resultados de Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o " + "(" + getYear(BREendDate) + ")";
             } else {
                 BREchart.options.title.text = "Your Breath Recovery Exercise results " + "(" + getYear(BREendDate) + ")";
-            }        } else if (BREdelta > 0) {
+            }
+        } else if (BREdelta > 0) {
             if (formatDateAsDMY(BREendDate) == formatDateAsDMY(BREtoday)) { }
             else {
                 // Scroll right, increase the date range
@@ -3531,7 +2935,8 @@ function BREinitializeChart() {
                     BREchart.options.title.text = "Seus resultados de Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o " + "(" + getYear(BREendDate) + ")";
                 } else {
                     BREchart.options.title.text = "Your Breath Recovery Exercise results " + "(" + getYear(BREendDate) + ")";
-                }            }
+                }
+            }
         }
         BREupdateChart(BREstartDate, BREendDate);
     });
@@ -3797,7 +3202,7 @@ function BREdisplayDetailedInfo(BREselectedDate) {
                         '<input name="resultId" value="' + BREresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger BREdelete-button" />' +
                         '</form>';
-                }          
+                }
                 BREnumberOfResults++;
             }
         }
@@ -3876,7 +3281,7 @@ function BRWinitializeChart() {
                     display: true,
                     text: "Seus resultados de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o Caminhando " + "(" + getYear(BRWendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -3901,7 +3306,7 @@ function BRWinitializeChart() {
                             max: BRWmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -3910,7 +3315,7 @@ function BRWinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -3922,7 +3327,7 @@ function BRWinitializeChart() {
                 }
             }
         });
-    }else{
+    } else {
         // Initialize chart using initial dates
         BRWchart = new Chart("BRWchart", {
             type: "bar",
@@ -3941,7 +3346,7 @@ function BRWinitializeChart() {
                     display: true,
                     text: "Your Breath Recovery while Walking results " + "(" + getYear(BRWendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -3966,7 +3371,7 @@ function BRWinitializeChart() {
                             max: BRWmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -3975,7 +3380,7 @@ function BRWinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -4020,7 +3425,8 @@ function BRWinitializeChart() {
                                 BRWchart.options.title.text = "Seus resultados de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o Caminhando " + "(" + getYear(BRWendDate) + ")";
                             } else {
                                 BRWchart.options.title.text = "Your Breath Recovery while Walking results " + "(" + getYear(BRWendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     BRWupdateChart(BRWstartDate, BRWendDate);
                 }
@@ -4045,7 +3451,8 @@ function BRWinitializeChart() {
                 BRWchart.options.title.text = "Seus resultados de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o Caminhando " + "(" + getYear(BRWendDate) + ")";
             } else {
                 BRWchart.options.title.text = "Your Breath Recovery while Walking results " + "(" + getYear(BRWendDate) + ")";
-            }        } else if (BRWdelta > 0) {
+            }
+        } else if (BRWdelta > 0) {
             if (formatDateAsDMY(BRWendDate) == formatDateAsDMY(BRWtoday)) { }
             else {
                 // Scroll right, increase the date range
@@ -4055,7 +3462,8 @@ function BRWinitializeChart() {
                     BRWchart.options.title.text = "Seus resultados de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o Caminhando " + "(" + getYear(BRWendDate) + ")";
                 } else {
                     BRWchart.options.title.text = "Your Breath Recovery while Walking results " + "(" + getYear(BRWendDate) + ")";
-                }            }
+                }
+            }
         }
         BRWupdateChart(BRWstartDate, BRWendDate);
     });
@@ -4400,7 +3808,7 @@ function HUMinitializeChart() {
                     display: true,
                     text: "Seus resultados do exerc\u00EDcio de zumbido " + "(" + getYear(HUMendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -4425,7 +3833,7 @@ function HUMinitializeChart() {
                             max: HUMmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -4434,7 +3842,7 @@ function HUMinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -4465,7 +3873,7 @@ function HUMinitializeChart() {
                     display: true,
                     text: "Your Humming Exercise results " + "(" + getYear(HUMendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -4490,7 +3898,7 @@ function HUMinitializeChart() {
                             max: HUMmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -4499,7 +3907,7 @@ function HUMinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -4544,7 +3952,8 @@ function HUMinitializeChart() {
                                 HUMchart.options.title.text = "Seus resultados do exerc\u00EDcio de zumbido " + "(" + getYear(HUMendDate) + ")";
                             } else {
                                 HUMchart.options.title.text = "Your Humming Exercise results " + "(" + getYear(HUMendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     HUMupdateChart(HUMstartDate, HUMendDate);
                 }
@@ -4569,7 +3978,8 @@ function HUMinitializeChart() {
                 HUMchart.options.title.text = "Seus resultados do exerc\u00EDcio de zumbido " + "(" + getYear(HUMendDate) + ")";
             } else {
                 HUMchart.options.title.text = "Your Humming Exercise results " + "(" + getYear(HUMendDate) + ")";
-            }        } else if (HUMdelta > 0) {
+            }
+        } else if (HUMdelta > 0) {
             if (formatDateAsDMY(HUMendDate) == formatDateAsDMY(HUMtoday)) { }
             else {
                 // Scroll right, increase the date range
@@ -4579,7 +3989,8 @@ function HUMinitializeChart() {
                     HUMchart.options.title.text = "Seus resultados do exerc\u00EDcio de zumbido " + "(" + getYear(HUMendDate) + ")";
                 } else {
                     HUMchart.options.title.text = "Your Humming Exercise results " + "(" + getYear(HUMendDate) + ")";
-                }            }
+                }
+            }
         }
         HUMupdateChart(HUMstartDate, HUMendDate);
     });
@@ -4845,7 +4256,7 @@ function HUMdisplayDetailedInfo(HUMselectedDate) {
                         '<input name="resultId" value="' + HUMresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger HUMdelete-button" />' +
                         '</form>';
-                }   
+                }
                 HUMnumberOfResults++;
             }
         }
@@ -4924,7 +4335,7 @@ function BBinitializeChart() {
                     display: true,
                     text: "Seus resultados do seu exerc\u00EDcio de Respira\u00E7\u00E3o Briza " + "(" + getYear(BBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -4949,7 +4360,7 @@ function BBinitializeChart() {
                             max: BBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -4958,7 +4369,7 @@ function BBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -4990,7 +4401,7 @@ function BBinitializeChart() {
                     display: true,
                     text: "Your Briza Breathing Exercise results " + "(" + getYear(BBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -5015,7 +4426,7 @@ function BBinitializeChart() {
                             max: BBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -5024,7 +4435,7 @@ function BBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -5080,7 +4491,7 @@ function BBinitializeChart() {
                         max: BBmaxYValue,
                         stepSize: 10,
                         font: {
-                            family: 'Playfair Display', // Change to your desired font family
+    
                             size: 10 // Change to your desired font size
                         },
                         fontColor: '#0661AA' // Change to your desired font color
@@ -5089,7 +4500,7 @@ function BBinitializeChart() {
                 xAxes: [{
                     ticks: {
                         font: {
-                            family: 'Playfair Display', // Change to your desired font family
+    
                             size: 10 // Change to your desired font size
                         },
                         fontColor: '#0661AA' // Change to your desired font color
@@ -5121,7 +4532,8 @@ function BBinitializeChart() {
                             BBchart.options.title.text = "Seus resultados do seu exerc\u00EDcio de Respira\u00E7\u00E3o Briza " + "(" + getYear(BBendDate) + ")";
                         } else {
                             BBchart.options.title.text = "Your Briza Breathing Exercise results " + "(" + getYear(BBendDate) + ")";
-                        }                    } else if (BBdelta < 0) {
+                        }
+                    } else if (BBdelta < 0) {
                         if (formatDateAsDMY(BBendDate) == formatDateAsDMY(BBtoday)) {
                             // Do nothing if already at the current date
                         } else {
@@ -5132,7 +4544,8 @@ function BBinitializeChart() {
                                 BBchart.options.title.text = "Seus resultados do seu exerc\u00EDcio de Respira\u00E7\u00E3o Briza " + "(" + getYear(BBendDate) + ")";
                             } else {
                                 BBchart.options.title.text = "Your Briza Breathing Exercise results " + "(" + getYear(BBendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     BBupdateChart(BBstartDate, BBendDate);
                 }
@@ -5168,7 +4581,8 @@ function BBinitializeChart() {
                     BBchart.options.title.text = "Seus resultados do seu exerc\u00EDcio de Respira\u00E7\u00E3o Briza " + "(" + getYear(BBendDate) + ")";
                 } else {
                     BBchart.options.title.text = "Your Briza Breathing Exercise results " + "(" + getYear(BBendDate) + ")";
-                }            }
+                }
+            }
         }
         BBupdateChart(BBstartDate, BBendDate);
     });
@@ -5513,7 +4927,7 @@ function APinitializeChart() {
                     display: true,
                     text: "Seus resultados de Treinamento de Apneia " + "(" + getYear(APendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -5538,7 +4952,7 @@ function APinitializeChart() {
                             max: APmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -5547,7 +4961,7 @@ function APinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -5578,7 +4992,7 @@ function APinitializeChart() {
                     display: true,
                     text: "Your Apnea Training results " + "(" + getYear(APendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -5603,7 +5017,7 @@ function APinitializeChart() {
                             max: APmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -5612,7 +5026,7 @@ function APinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -5625,7 +5039,7 @@ function APinitializeChart() {
             }
         });
     }
-    
+
     APContainer.addEventListener('touchmove', function (event) {
         event.preventDefault(); // Prevent default scrolling behavior
 
@@ -5644,7 +5058,7 @@ function APinitializeChart() {
                         APstartDate.setDate(APstartDate.getDate() - 1);
                         if (isPortuguese) {
                             APchart.options.title.text = "Seus resultados de Treinamento de Apneia " + "(" + getYear(APendDate) + ")";
-                        } else{
+                        } else {
                             APchart.options.title.text = "Your Apnea Training results " + "(" + getYear(APendDate) + ")";
                         }
                     } else if (APdelta < 0) {
@@ -5658,7 +5072,8 @@ function APinitializeChart() {
                                 APchart.options.title.text = "Seus resultados de Treinamento de Apneia " + "(" + getYear(APendDate) + ")";
                             } else {
                                 APchart.options.title.text = "Your Apnea Training results " + "(" + getYear(APendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     APupdateChart(APstartDate, APendDate);
                 }
@@ -5683,7 +5098,8 @@ function APinitializeChart() {
                 APchart.options.title.text = "Seus resultados de Treinamento de Apneia " + "(" + getYear(APendDate) + ")";
             } else {
                 APchart.options.title.text = "Your Apnea Training results " + "(" + getYear(APendDate) + ")";
-            }        } else if (APdelta > 0) {
+            }
+        } else if (APdelta > 0) {
             if (formatDateAsDMY(APendDate) == formatDateAsDMY(APtoday)) { }
             else {
                 // Scroll right, increase the date range
@@ -5950,7 +5366,7 @@ function APdisplayDetailedInfo(APselectedDate) {
                         '<input name="resultId" value="' + APresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger APdelete-button" />' +
                         '</form>';
-                }      
+                }
                 APnumberOfResults++;
             }
         }
@@ -6029,7 +5445,7 @@ function CTinitializeChart() {
                     display: true,
                     text: "Seus resultados de Treinamento de Tolerância ao CO2 " + "(" + getYear(CTendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -6054,7 +5470,7 @@ function CTinitializeChart() {
                             max: CTmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -6063,7 +5479,7 @@ function CTinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -6094,7 +5510,7 @@ function CTinitializeChart() {
                     display: true,
                     text: "Your CO2 Tolerance Training results " + "(" + getYear(CTendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -6119,7 +5535,7 @@ function CTinitializeChart() {
                             max: CTmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -6128,7 +5544,7 @@ function CTinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -6173,7 +5589,8 @@ function CTinitializeChart() {
                                 CTchart.options.title.text = "Seus resultados de Treinamento de Tolerância ao CO2 " + "(" + getYear(CTendDate) + ")";
                             } else {
                                 CTchart.options.title.text = "Your CO2 Tolerance Training results " + "(" + getYear(CTendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     CTupdateChart(CTstartDate, CTendDate);
                 }
@@ -6198,7 +5615,8 @@ function CTinitializeChart() {
                 CTchart.options.title.text = "Seus resultados de Treinamento de Tolerância ao CO2 " + "(" + getYear(CTendDate) + ")";
             } else {
                 CTchart.options.title.text = "Your CO2 Tolerance Training results " + "(" + getYear(CTendDate) + ")";
-            }        } else if (CTdelta > 0) {
+            }
+        } else if (CTdelta > 0) {
             if (formatDateAsDMY(CTendDate) == formatDateAsDMY(CTtoday)) { }
             else {
                 // Scroll right, increase the date range
@@ -6208,7 +5626,8 @@ function CTinitializeChart() {
                     CTchart.options.title.text = "Seus resultados de Treinamento de Tolerância ao CO2 " + "(" + getYear(CTendDate) + ")";
                 } else {
                     CTchart.options.title.text = "Your CO2 Tolerance Training results " + "(" + getYear(CTendDate) + ")";
-                }            }
+                }
+            }
         }
         CTupdateChart(CTstartDate, CTendDate);
     });
@@ -6380,11 +5799,10 @@ function CTupdateOverview() {
         document.getElementById('CTlatestRound').value = convertMinToMinSec(secondsToMinutes(CTlatestResult)) + ' ' + CTlastIntervals + ' rounds ' + formatDateAsDMY(CTlastDate);
     } else {
         if (isPortuguese) {
-
+            CTinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
-
+            CTinfoOverview.innerHTML = 'No results yet';
         }
-        CTinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         for (var i = 0; i < CTinfoOverviewElements.length; i++) {
             CTinfoOverviewElements[i].style.display = 'none';
         }
@@ -6464,7 +5882,7 @@ function CTdisplayDetailedInfo(CTselectedDate) {
                         '<input name="resultId" value="' + CTresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger CTdelete-button" />' +
                         '</form>';
-                } 
+                }
                 CTnumberOfResults++;
             }
         }
@@ -6543,7 +5961,7 @@ function BOXinitializeChart() {
                     display: true,
                     text: "Seus resultados de Respira\u00E7\u00E3o da Caixa " + "(" + getYear(BOXendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -6568,7 +5986,7 @@ function BOXinitializeChart() {
                             max: BOXmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -6577,7 +5995,7 @@ function BOXinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -6608,7 +6026,7 @@ function BOXinitializeChart() {
                     display: true,
                     text: "Your Box Breathing results " + "(" + getYear(BOXendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -6633,7 +6051,7 @@ function BOXinitializeChart() {
                             max: BOXmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -6642,7 +6060,7 @@ function BOXinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -6687,7 +6105,8 @@ function BOXinitializeChart() {
                                 BOXchart.options.title.text = "Seus resultados de Respira\u00E7\u00E3o da Caixa " + "(" + getYear(BOXendDate) + ")";
                             } else {
                                 BOXchart.options.title.text = "Your Box Breathing results " + "(" + getYear(BOXendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     BOXupdateChart(BOXstartDate, BOXendDate);
                 }
@@ -6712,7 +6131,8 @@ function BOXinitializeChart() {
                 BOXchart.options.title.text = "Seus resultados de Respira\u00E7\u00E3o da Caixa " + "(" + getYear(BOXendDate) + ")";
             } else {
                 BOXchart.options.title.text = "Your Box Breathing results " + "(" + getYear(BOXendDate) + ")";
-            }        } else if (BOXdelta > 0) {
+            }
+        } else if (BOXdelta > 0) {
             if (formatDateAsDMY(BOXendDate) == formatDateAsDMY(BOXtoday)) { }
             else {
                 // Scroll right, increase the date range
@@ -6722,7 +6142,8 @@ function BOXinitializeChart() {
                     BOXchart.options.title.text = "Seus resultados de Respira\u00E7\u00E3o da Caixa " + "(" + getYear(BOXendDate) + ")";
                 } else {
                     BOXchart.options.title.text = "Your Box Breathing results " + "(" + getYear(BOXendDate) + ")";
-                }            }
+                }
+            }
         }
         BOXupdateChart(BOXstartDate, BOXendDate);
     });
@@ -7056,7 +6477,7 @@ function UBinitializeChart() {
                     display: true,
                     text: "Seus resultados da Respira\u00E7\u00E3o Ujjayi " + "(" + getYear(UBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -7081,7 +6502,7 @@ function UBinitializeChart() {
                             max: UBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -7090,7 +6511,7 @@ function UBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -7121,7 +6542,7 @@ function UBinitializeChart() {
                     display: true,
                     text: "Your Ujjayi Breathing results " + "(" + getYear(UBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -7146,7 +6567,7 @@ function UBinitializeChart() {
                             max: UBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -7155,7 +6576,7 @@ function UBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -7200,7 +6621,8 @@ function UBinitializeChart() {
                                 UBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Ujjay " + "(" + getYear(UBendDate) + ")";
                             } else {
                                 UBchart.options.title.text = "Your Ujjayi Breathing results " + "(" + getYear(UBendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     UBupdateChart(UBstartDate, UBendDate);
                 }
@@ -7225,7 +6647,8 @@ function UBinitializeChart() {
                 UBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Ujjay " + "(" + getYear(UBendDate) + ")";
             } else {
                 UBchart.options.title.text = "Your Ujjayi Breathing results " + "(" + getYear(UBendDate) + ")";
-            }        } else if (UBdelta > 0) {
+            }
+        } else if (UBdelta > 0) {
             if (formatDateAsDMY(UBendDate) == formatDateAsDMY(UBtoday)) { }
             else {
                 // Scroll right, increase the date range
@@ -7235,7 +6658,8 @@ function UBinitializeChart() {
                     UBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Ujjay " + "(" + getYear(UBendDate) + ")";
                 } else {
                     UBchart.options.title.text = "Your Ujjayi Breathing results " + "(" + getYear(UBendDate) + ")";
-                }            }
+                }
+            }
         }
         UBupdateChart(UBstartDate, UBendDate);
     });
@@ -7490,7 +6914,7 @@ function UBdisplayDetailedInfo(UBselectedDate) {
                         '<input name="resultId" value="' + UBresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger UBdelete-button" />' +
                         '</form>';
-                }              
+                }
                 UBnumberOfResults++;
             }
         }
@@ -7569,7 +6993,7 @@ function NBinitializeChart() {
                     display: true,
                     text: "Seus resultados da Respira\u00E7\u00E3o Nadi Shodhana " + "(" + getYear(NBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -7594,7 +7018,7 @@ function NBinitializeChart() {
                             max: NBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -7603,7 +7027,7 @@ function NBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -7634,7 +7058,7 @@ function NBinitializeChart() {
                     display: true,
                     text: "Your Nadi Shodhana Breathing results " + "(" + getYear(NBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -7659,7 +7083,7 @@ function NBinitializeChart() {
                             max: NBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -7668,7 +7092,7 @@ function NBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -7713,7 +7137,8 @@ function NBinitializeChart() {
                                 NBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Nadi Shodhana " + "(" + getYear(NBendDate) + ")";
                             } else {
                                 NBchart.options.title.text = "Your Nadi Shodhana Breathing results " + "(" + getYear(NBendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     NBupdateChart(NBstartDate, NBendDate);
                 }
@@ -8005,7 +7430,7 @@ function NBdisplayDetailedInfo(NBselectedDate) {
                         '<input name="resultId" value="' + NBresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger NBdelete-button" />' +
                         '</form>';
-                }              
+                }
                 NBnumberOfResults++;
             }
         }
@@ -8084,7 +7509,7 @@ function SBinitializeChart() {
                     display: true,
                     text: "Seus resultados da Respira\u00E7\u00E3o Sitali " + "(" + getYear(SBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -8109,7 +7534,7 @@ function SBinitializeChart() {
                             max: SBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -8118,7 +7543,7 @@ function SBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -8149,7 +7574,7 @@ function SBinitializeChart() {
                     display: true,
                     text: "Your Sitali Breathing results " + "(" + getYear(SBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -8174,7 +7599,7 @@ function SBinitializeChart() {
                             max: SBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -8183,7 +7608,7 @@ function SBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -8228,7 +7653,8 @@ function SBinitializeChart() {
                                 SBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Sitali " + "(" + getYear(SBendDate) + ")";
                             } else {
                                 SBchart.options.title.text = "Your Sitali Breathing results " + "(" + getYear(SBendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     SBupdateChart(SBstartDate, SBendDate);
                 }
@@ -8520,7 +7946,7 @@ function SBdisplayDetailedInfo(SBselectedDate) {
                         '<input name="resultId" value="' + SBresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger SBdelete-button" />' +
                         '</form>';
-                }              
+                }
                 SBnumberOfResults++;
             }
         }
@@ -8599,7 +8025,7 @@ function CBinitializeChart() {
                     display: true,
                     text: "Seus resultados da Respira\u00E7\u00E3o Coerente " + "(" + getYear(CBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -8624,7 +8050,7 @@ function CBinitializeChart() {
                             max: CBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -8633,7 +8059,7 @@ function CBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -8664,7 +8090,7 @@ function CBinitializeChart() {
                     display: true,
                     text: "Your Coherent Breathing results " + "(" + getYear(CBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -8689,7 +8115,7 @@ function CBinitializeChart() {
                             max: CBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -8698,7 +8124,7 @@ function CBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -8743,7 +8169,8 @@ function CBinitializeChart() {
                                 CBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o Coerente " + "(" + getYear(CBendDate) + ")";
                             } else {
                                 CBchart.options.title.text = "Your Coherent Breathing results " + "(" + getYear(CBendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     CBupdateChart(CBstartDate, CBendDate);
                 }
@@ -9035,7 +8462,7 @@ function CBdisplayDetailedInfo(CBselectedDate) {
                         '<input name="resultId" value="' + CBresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger CBdelete-button" />' +
                         '</form>';
-                }               
+                }
                 CBnumberOfResults++;
             }
         }
@@ -9114,7 +8541,7 @@ function RBinitializeChart() {
                     display: true,
                     text: "Seus resultados da Respira\u00E7\u00E3o 478 " + "(" + getYear(RBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -9139,7 +8566,7 @@ function RBinitializeChart() {
                             max: RBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -9148,7 +8575,7 @@ function RBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -9179,7 +8606,7 @@ function RBinitializeChart() {
                     display: true,
                     text: "Your 478 Breathing results " + "(" + getYear(RBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -9204,7 +8631,7 @@ function RBinitializeChart() {
                             max: RBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -9213,7 +8640,7 @@ function RBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -9258,7 +8685,8 @@ function RBinitializeChart() {
                                 RBchart.options.title.text = "Seus resultados da Respira\u00E7\u00E3o 478 " + "(" + getYear(RBendDate) + ")";
                             } else {
                                 RBchart.options.title.text = "Your 478 Breathing results " + "(" + getYear(RBendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     RBupdateChart(RBstartDate, RBendDate);
                 }
@@ -9550,7 +8978,7 @@ function RBdisplayDetailedInfo(RBselectedDate) {
                         '<input name="resultId" value="' + RBresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger RBdelete-button" />' +
                         '</form>';
-                }               
+                }
                 RBnumberOfResults++;
             }
         }
@@ -9677,7 +9105,7 @@ function WHinitializeChart() {
                     display: true,
                     text: "Seus resultados de Hiperventila\u00E7\u00E3o Controlada " + "(" + getYear(WHendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -9709,7 +9137,7 @@ function WHinitializeChart() {
                             max: WHmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -9718,7 +9146,7 @@ function WHinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -9757,7 +9185,7 @@ function WHinitializeChart() {
                     display: true,
                     text: "Your Controlled Hyperventilation results " + "(" + getYear(WHendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -9789,7 +9217,7 @@ function WHinitializeChart() {
                             max: WHmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -9798,7 +9226,7 @@ function WHinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -9843,7 +9271,8 @@ function WHinitializeChart() {
                                 WHchart.options.title.text = "Seus resultados de Hiperventila\u00E7\u00E3o Controlada " + "(" + getYear(WHendDate) + ")";
                             } else {
                                 WHchart.options.title.text = "Your Controlled Hyperventilation results " + "(" + getYear(WHendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     WHupdateChart(WHstartDate, WHendDate);
                 }
@@ -9941,7 +9370,7 @@ function WHfindMaxResult2() {
 }
 function WHfindMaxAverage() {
     var WHmaxResult = 0;
-    
+
     fetchedDataArray.forEach(WHresultData => {
         var WHtimeString = WHresultData.whTotalTime;
         var WHdateString = WHresultData.whResultDate;
@@ -10026,7 +9455,7 @@ function WHupdateChartData(WHstartDate, WHendDate) {
     };
 }
 function WHupdateChart(WHstartDate, WHendDate) {
-    var { WHchartData, WHmaxYValue, WHselectedDataDatesYear, longestRoundData} = WHupdateChartData(WHstartDate, WHendDate);
+    var { WHchartData, WHmaxYValue, WHselectedDataDatesYear, longestRoundData } = WHupdateChartData(WHstartDate, WHendDate);
 
     // Update x-axis labels and chart data
     var WHselectedDataDatesMonthDay = WHselectedDataDatesYear.map(dateString => dateString.split('/')[0] + '/' + dateString.split('/')[1]);
@@ -10177,7 +9606,7 @@ function WHdisplayDetailedInfo(WHselectedDate) {
                         '<input name="resultId" value="' + WHresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger WHdelete-button" />' +
                         '</form>';
-                }               
+                }
                 WHnumberOfResults++;
             }
         }
@@ -10304,7 +9733,7 @@ function KBinitializeChart() {
                     display: true,
                     text: "Seus resultados de Kapalabhati " + "(" + getYear(KBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -10336,7 +9765,7 @@ function KBinitializeChart() {
                             max: KBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -10345,7 +9774,7 @@ function KBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -10384,7 +9813,7 @@ function KBinitializeChart() {
                     display: true,
                     text: "Your Kapalabhati results " + "(" + getYear(KBendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -10416,7 +9845,7 @@ function KBinitializeChart() {
                             max: KBmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -10425,7 +9854,7 @@ function KBinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -10915,7 +10344,7 @@ function HATinitializeChart() {
                     display: true,
                     text: "Seus resultados de Treinamento em Alta Altitude " + "(" + getYear(HATendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -10947,7 +10376,7 @@ function HATinitializeChart() {
                             max: HATmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -10956,7 +10385,7 @@ function HATinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -10995,7 +10424,7 @@ function HATinitializeChart() {
                     display: true,
                     text: "Your High Altitude Training results " + "(" + getYear(HATendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -11027,7 +10456,7 @@ function HATinitializeChart() {
                             max: HATmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -11036,7 +10465,7 @@ function HATinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -11081,7 +10510,8 @@ function HATinitializeChart() {
                                 HATchart.options.title.text = "Seus resultados de Treinamento em Alta Altitude " + "(" + getYear(HATendDate) + ")";
                             } else {
                                 HATchart.options.title.text = "Your High Altitude Training results " + "(" + getYear(HATendDate) + ")";
-                            }                        }
+                            }
+                        }
                     }
                     HATupdateChart(HATstartDate, HATendDate);
                 }
@@ -11300,7 +10730,7 @@ function HATupdateOverview() {
             document.getElementById('HATnumberOfSessions').value = HATnumberOfTests + ' Sessions';
             document.getElementById('HATlongestRound').value = HATmax + ' seconds on ' + formatDateAsDMY(HATdateOfLongestResult);
             document.getElementById('HATlongestSession').value = HATmaxAverage + ' seconds in ' + HATLongestAverageIntervals + ' rounds on ' + formatDateAsDMY(HATlongestAverageDate);
-        }      
+        }
     } else {
         if (isPortuguese) {
             HATinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
@@ -11389,7 +10819,7 @@ function HATdisplayDetailedInfo(HATselectedDate) {
                         '<input name="resultId" value="' + HATresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger HATdelete-button" />' +
                         '</form>';
-                }               
+                }
                 HATnumberOfResults++;
             }
         }
@@ -11499,7 +10929,7 @@ function HATCinitializeChart() {
                     display: true,
                     text: "Seus resultados de Treinamento em Alta Altitude Pedalando/Correndo " + "(" + getYear(HATCendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -11531,7 +10961,7 @@ function HATCinitializeChart() {
                             max: HATCmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -11540,7 +10970,7 @@ function HATCinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -11579,7 +11009,7 @@ function HATCinitializeChart() {
                     display: true,
                     text: "Your High Altitude Training Cycling/Running results " + "(" + getYear(HATCendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -11611,7 +11041,7 @@ function HATCinitializeChart() {
                             max: HATCmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -11620,7 +11050,7 @@ function HATCinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -11691,7 +11121,8 @@ function HATCinitializeChart() {
                 HATCchart.options.title.text = "Seus resultados de Treinamento em Alta Altitude Pedalando/Correndo " + "(" + getYear(HATCendDate) + ")";
             } else {
                 HATCchart.options.title.text = "Your High Altitude Training Cycling/Running results " + "(" + getYear(HATCendDate) + ")";
-            }        } else if (HATCdelta > 0) {
+            }
+        } else if (HATCdelta > 0) {
             if (formatDateAsDMY(HATCendDate) == formatDateAsDMY(HATCtoday)) { }
             else {
                 // Scroll right, increase the date range
@@ -11701,7 +11132,8 @@ function HATCinitializeChart() {
                     HATCchart.options.title.text = "Seus resultados de Treinamento em Alta Altitude Pedalando/Correndo " + "(" + getYear(HATCendDate) + ")";
                 } else {
                     HATCchart.options.title.text = "Your High Altitude Training Cycling/Running results " + "(" + getYear(HATCendDate) + ")";
-                }            }
+                }
+            }
         }
         HATCupdateChart(HATCstartDate, HATCendDate);
     });
@@ -11883,7 +11315,7 @@ function HATCupdateOverview() {
             document.getElementById('HATCnumberOfSessions').value = HATCnumberOfTests + ' Sessions';
             document.getElementById('HATClongestRound').value = HATCmax + ' seconds on ' + formatDateAsDMY(HATCdateOfLongestResult);
             document.getElementById('HATClongestSession').value = HATCmaxAverage + ' seconds in ' + HATCLongestAverageIntervals + ' rounds on ' + formatDateAsDMY(HATClongestAverageDate);
-        }        
+        }
     } else {
         if (isPortuguese) {
             HATCinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
@@ -11972,7 +11404,7 @@ function HATCdisplayDetailedInfo(HATCselectedDate) {
                         '<input name="resultId" value="' + HATCresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger HATCdelete-button" />' +
                         '</form>';
-                }                
+                }
                 HATCnumberOfResults++;
             }
         }
@@ -12082,7 +11514,7 @@ function AHATinitializeChart() {
                     display: true,
                     text: "Seus resultados de Treinamento em Alta Altitude Avan\u00E7ado " + "(" + getYear(AHATendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -12114,7 +11546,7 @@ function AHATinitializeChart() {
                             max: AHATmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -12123,7 +11555,7 @@ function AHATinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -12162,7 +11594,7 @@ function AHATinitializeChart() {
                     display: true,
                     text: "Your Advanced High Altitude Training results " + "(" + getYear(AHATendDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -12194,7 +11626,7 @@ function AHATinitializeChart() {
                             max: AHATmaxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -12203,7 +11635,7 @@ function AHATinitializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -12215,7 +11647,7 @@ function AHATinitializeChart() {
                 }
             }
         });
-    }    
+    }
     AHATContainer.addEventListener('touchmove', function (event) {
         event.preventDefault(); // Prevent default scrolling behavior
 
@@ -12473,7 +11905,7 @@ function AHATupdateOverview() {
             document.getElementById('AHATnumberOfSessions').value = AHATnumberOfTests + ' Sessions';
             document.getElementById('AHATlongestRound').value = AHATmax + ' seconds on ' + formatDateAsDMY(AHATdateOfLongestResult);
             document.getElementById('AHATlongestSession').value = AHATmaxAverage + ' seconds in ' + AHATLongestAverageIntervals + ' rounds on ' + formatDateAsDMY(AHATlongestAverageDate);
-        }      
+        }
     } else {
         if (isPortuguese) {
             AHATinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
@@ -12562,7 +11994,7 @@ function AHATdisplayDetailedInfo(AHATselectedDate) {
                         '<input name="resultId" value="' + AHATresultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger AHATdelete-button" />' +
                         '</form>';
-                }                
+                }
                 AHATnumberOfResults++;
             }
         }
@@ -12672,7 +12104,7 @@ function CO2initializeChart() {
                     display: true,
                     text: "Seus resultados de Treinamento da Tabela CO2 " + "(" + getYear(CO2endDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -12704,7 +12136,7 @@ function CO2initializeChart() {
                             max: CO2maxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -12713,7 +12145,7 @@ function CO2initializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -12752,7 +12184,7 @@ function CO2initializeChart() {
                     display: true,
                     text: "Your CO2 Table Training results " + "(" + getYear(CO2endDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -12784,7 +12216,7 @@ function CO2initializeChart() {
                             max: CO2maxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -12793,7 +12225,7 @@ function CO2initializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -13058,7 +12490,7 @@ function CO2updateOverview() {
             document.getElementById('CO2numberOfSessions').value = CO2numberOfTests + ' Sessions';
             document.getElementById('CO2longestRound').value = CO2max + ' seconds on ' + formatDateAsDMY(CO2dateOfLongestResult);
             document.getElementById('CO2longestSession').value = CO2maxAverage + ' seconds in ' + CO2LongestAverageIntervals + ' rounds on ' + formatDateAsDMY(CO2longestAverageDate);
-        }       
+        }
     } else {
         if (isPortuguese) {
             CO2infoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
@@ -13147,7 +12579,7 @@ function CO2displayDetailedInfo(CO2selectedDate) {
                         '<input name="resultId" value="' + CO2resultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger CO2delete-button" />' +
                         '</form>';
-                }                
+                }
                 CO2numberOfResults++;
             }
         }
@@ -13257,7 +12689,7 @@ function O2initializeChart() {
                     display: true,
                     text: "Seus resultados de Treinamento da Tabela CO2 " + "(" + getYear(O2endDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -13289,7 +12721,7 @@ function O2initializeChart() {
                             max: O2maxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -13298,7 +12730,7 @@ function O2initializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -13337,7 +12769,7 @@ function O2initializeChart() {
                     display: true,
                     text: "Your O2 Table Training results " + "(" + getYear(O2endDate) + ")",
                     font: {
-                        family: 'Playfair Display', // Change to your desired font family
+
                         size: 14 // Change to your desired font size
                     },
                     fontColor: '#0661AA', // Change to your desired font color
@@ -13369,7 +12801,7 @@ function O2initializeChart() {
                             max: O2maxYValue,
                             stepSize: 10,
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -13378,7 +12810,7 @@ function O2initializeChart() {
                     xAxes: [{
                         ticks: {
                             font: {
-                                family: 'Playfair Display', // Change to your desired font family
+        
                                 size: 10 // Change to your desired font size
                             },
                             fontColor: '#0661AA' // Change to your desired font color
@@ -13390,7 +12822,7 @@ function O2initializeChart() {
                 }
             }
         });
-    }    
+    }
     O2Container.addEventListener('touchmove', function (event) {
         event.preventDefault(); // Prevent default scrolling behavior
 
@@ -13643,7 +13075,7 @@ function O2updateOverview() {
             document.getElementById('O2numberOfSessions').value = O2numberOfTests + ' Sessions';
             document.getElementById('O2longestRound').value = O2max + ' seconds on ' + formatDateAsDMY(O2dateOfLongestResult);
             document.getElementById('O2longestSession').value = O2maxAverage + ' seconds in ' + O2LongestAverageIntervals + ' rounds on ' + formatDateAsDMY(O2longestAverageDate);
-        }        
+        }
     } else {
         if (isPortuguese) {
             O2infoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
@@ -13732,7 +13164,7 @@ function O2displayDetailedInfo(O2selectedDate) {
                         '<input name="resultId" value="' + O2resultId + '" style="display:none"/>' +
                         '<input type="button" value="Delete" class="btn btn-danger O2delete-button" />' +
                         '</form>';
-                }               
+                }
                 O2numberOfResults++;
             }
         }

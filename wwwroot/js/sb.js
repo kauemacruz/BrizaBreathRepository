@@ -155,8 +155,6 @@ var audioSB = document.getElementById("audioSB"),
     muteSB = document.getElementById("muteSB"),
     ismuteSB = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongSB = document.getElementById("songSB"),
     muteSongSB = document.getElementById("songMuteSB");
 // Get the volumeVSB bar element

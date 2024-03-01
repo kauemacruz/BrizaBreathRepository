@@ -155,8 +155,6 @@ var audioAP = document.getElementById("audioAP"),
     muteAP = document.getElementById("muteAP"),
     ismuteAP = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongAP = document.getElementById("songAP"),
     muteSongAP = document.getElementById("songMuteAP");
 

@@ -509,7 +509,14 @@ hr {
     box-shadow: 0px 3px 7px 0px #80808021;
     margin-bottom: 1px;
     border-radius: 5px;
-    filter: brightness(100%) !important;
+}
+.homepageimgs2 {
+    width: 99%;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0px 3px 7px 0px #80808021;
+    margin-bottom: 1px;
+    border-radius: 5px;
 }
 
 .w-100 {
@@ -1480,7 +1487,7 @@ form#KBForm {
 }
 
 .meditations ul::before {
-    content: '';
+    content: none;
 }
 
 .progress-bar {

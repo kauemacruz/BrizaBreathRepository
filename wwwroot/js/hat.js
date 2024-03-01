@@ -136,8 +136,6 @@ var audioHAT = document.getElementById("audioHAT"),
     muteHAT = document.getElementById("muteHAT"),
     ismuteHAT = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongHAT = document.getElementById("songHAT"),
     muteSongHAT = document.getElementById("songMuteHAT");
 // Get the volumeVhat bar element

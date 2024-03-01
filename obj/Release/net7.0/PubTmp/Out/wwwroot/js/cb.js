@@ -149,8 +149,6 @@ var audioCB = document.getElementById("audioCB"),
     muteCB = document.getElementById("muteCB"),
     ismuteCB = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongCB = document.getElementById("songCB"),
     muteSongCB = document.getElementById("songMuteCB");
 

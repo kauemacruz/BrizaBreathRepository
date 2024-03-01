@@ -136,8 +136,6 @@ var audioAHAT = document.getElementById("audioAHAT"),
     muteAHAT = document.getElementById("muteAHAT"),
     ismuteAHAT = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongAHAT = document.getElementById("songAHAT"),
     muteSongAHAT = document.getElementById("songMuteAHAT");
 

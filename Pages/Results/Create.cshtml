@@ -27,7 +27,6 @@
         <ul>Lungs expansion training</ul>
         <ul>Briza Program</ul>
         <ul>Welness tips</ul>
-        <ul>Mobility & Stretching</ul>
         <ul>Paranayama Techniques</ul>
         <ul>And more...</ul>
         <button type="button" id="subscriptionBtn2">Learn More</button>
@@ -53,7 +52,7 @@
 <div id="myModal2" class="modal">
     <div class="modal-content">
         <span class="close" id="closeModal2">&times;</span>
-        <p>Your membership starts as soon as you set up payment. Your monthly/yearly auto-renew charge will occur on the last day of the current billing period. We will renew your membership for you (unless you have canceled your subscription in the profile page 24 hours before end of billing cycle). Once you become a member you can manage your subscription. </p>
+        <p>Your membership starts as soon as you set up payment. Your monthly/yearly auto-renew charge will occur on the last day of the current billing period. We will renew your membership for you (unless you have canceled your subscription in the profile page 24 hours before end of billing cycle) </p>
         <form method="post" id="manageSubscriptionForm">
             <input type="submit" value="Manage Membership" id="subscriptionBtn4" class="subscriptionBtn2" readonly/>
         </form>
@@ -85,7 +84,6 @@
         <a class="goback" id="backHATresults">&#8249;</a> 
         <a class="goback" id="backHATCresults">&#8249;</a>
         <a class="goback" id="backAHATresults">&#8249;</a>
-        <a class="goback" id="backLUNGSresults">&#8249;</a>
         <a class="goback" id="backProgram">&#8249;</a>
         <a class="goback" id="backNasal">&#8249;</a>
         <a class="goback" id="backUnblock">&#8249;</a>
@@ -108,13 +106,10 @@
         <a class="goback" id="backHATC">&#8249;</a>
         <a class="goback" id="backAHATset">&#8249;</a>
         <a class="goback" id="backAHAT">&#8249;</a>
-        <a class="goback" id="backLungsset">&#8249;</a>
         <a class="goback" id="backLungs">&#8249;</a>
-        <a class="goback" id="backMobility">&#8249;</a>
         <a class="goback" id="backBH">&#8249;</a>
         <a class="goback" id="backBH">&#8249;</a>
         <a class="goback" id="backPRANA">&#8249;</a>
-        <a class="goback" id="backEXTRA">&#8249;</a>
         <a class="goback" id="backAPSet">&#8249;</a>
         <a class="goback" id="backAP">&#8249;</a>
         <a class="goback" id="backO2Set">&#8249;</a>
@@ -138,15 +133,6 @@
         <a class="goback" id="backNK">&#8249;</a>
         <a class="goback" id="backRBSet">&#8249;</a>
         <a class="goback" id="backRB">&#8249;</a>
-        <a class="goback" id="backMED">&#8249;</a>
-        <a class="goback" id="backSLEEP">&#8249;</a>
-        <a class="goback" id="backHYD">&#8249;</a>
-        <a class="goback" id="backSHOT">&#8249;</a>
-        <a class="goback" id="backIL">&#8249;</a>
-        <a class="goback" id="backBEET">&#8249;</a>
-        <a class="goback" id="backDIET">&#8249;</a>
-        <a class="goback" id="backICE">&#8249;</a>
-        <a class="goback" id="backEXERCISING">&#8249;</a>
     </div>
     <div class="logo-container">
         <img class="logoimg" src="https://brizastorage.blob.core.windows.net/images/B_DEGRAD.svg" width="50" height="50" />
@@ -160,14 +146,10 @@
             <a id="brtLink"><img class="BRTtile__img" src="https://brizastorage.blob.core.windows.net/images/brt.svg" /></a>
         </div>
         <div class="row g-2">
-            <div class="col"><a id="programLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/brizaprogram.svg" /></a></div>
+            <div class="col"><a id="programLink"><img class="homepageimgs2" src="https://brizastorage.blob.core.windows.net/images/brizaprogram.svg" /></a></div>
+            <div class="w-100"></div>
             <div class="col"><a id="breathHoldsLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/breathhold.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="lungsLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/lungsexpansion.svg" /></a></div>
             <div class="col"><a id="pranayamaLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/pranayama.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="mobilityLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/mobility.svg" /></a></div>
-            <div class="col"><a id="extrasLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/wellness.svg" /></a></div>
         </div>
     </div>
     <footer id="homeFooter">
@@ -178,557 +160,559 @@
         </div>
     </footer>
 </div>
+<div id="myModalResults" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalResultsBTN">&times;</span>
+        <div class="accordion">
+            <div class="accordion-item" id="BRTaccordion">
+                <h2 class="accordion-header">Briza Retention Test &#8595;</h2>
+                <div class="accordion-content">
+                    <div class="chart-container" id="BRTContainer">
+                        <canvas id="BRTchart"></canvas>
+                    </div>
+                    <div class="BRTInfo">
+                        <h4><b>Overview</b></h4>
+                        <div class="BRTinfoOverview">
+                            <div>Latest Test</div>
+                            <input type="text" id="BRTlatestRound" readonly>
+                        </div>
+                        <div class="BRTinfoOverview">
+                            <div>Longest Test</div>
+                            <input type="text" id="BRTlongestRound" readonly>
+                        </div>
+                        <div class="BRTinfoOverview">
+                            <div>Total Tests</div>
+                            <input type="text" id="BRTnumberOfSessions" readonly>
+                        </div>
+                        <div id="BRTinfoOverview"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item" id="BPaccordion">
+                <h2 class="accordion-header">Briza Program &#8595;</h2>
+                <div class="accordion-content">
+                    <div class="accordion2">
+                        <div class="accordion-item2" id="BPNoResults">
+                            <h1>No Results Yet</h1>
+                        </div>
+                        <div class="accordion-item2" id="YBaccordion">
+                            <h2 class="accordion-header2">Yogic Breathing &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="YBContainer">
+                                    <canvas id="YBchart"></canvas>
+                                </div>
+                                <div class="YBInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="YBinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="YBlatestRound" readonly>
+                                    </div>
+                                    <div class="YBinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="YBlongestRound" readonly>
+                                    </div>
+                                    <div class="YBinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="YBnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="YBinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="BREaccordion">
+                            <h2 class="accordion-header2">Breath Recovery Exercise &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="BREContainer">
+                                    <canvas id="BREchart"></canvas>
+                                </div>
+                                <div class="BREInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="BREinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="BRElatestRound" readonly>
+                                    </div>
+                                    <div class="BREinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="BRElongestRound" readonly>
+                                    </div>
+                                    <div class="BREinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="BREnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="BREinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="BRWaccordion">
+                            <h2 class="accordion-header2">Breath Recovery while Walking &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="BRWContainer">
+                                    <canvas id="BRWchart"></canvas>
+                                </div>
+                                <div class="BRWInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="BRWinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="BRWlatestRound" readonly>
+                                    </div>
+                                    <div class="BRWinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="BRWlongestRound" readonly>
+                                    </div>
+                                    <div class="BRWinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="BRWnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="BRWinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="BBaccordion">
+                            <h2 class="accordion-header2">Briza Breathing &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="BBContainer">
+                                    <canvas id="BBchart"></canvas>
+                                </div>
+                                <div class="BBInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="BBinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="BBlatestRound" readonly>
+                                    </div>
+                                    <div class="BBinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="BBlongestRound" readonly>
+                                    </div>
+                                    <div class="BBinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="BBnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="BBinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="HATaccordion">
+                            <h2 class="accordion-header2">High Altitude Training &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="HATContainer">
+                                    <canvas id="HATchart"></canvas>
+                                </div>
+                                <div class="HATInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="HATinfoOverview">
+                                        <div>Longest Session Average</div>
+                                        <input type="text" id="HATlongestSession" readonly>
+                                    </div>
+                                    <div class="HATinfoOverview">
+                                        <div>Longest Round</div>
+                                        <input type="text" id="HATlongestRound" readonly>
+                                    </div>
+                                    <div class="HATinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="HATnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="HATinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="HATCaccordion">
+                            <h2 class="accordion-header2">High Altitude Training while Running/Cycling &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="HATCContainer">
+                                    <canvas id="HATCchart"></canvas>
+                                </div>
+                                <div class="HATCInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="HATCinfoOverview">
+                                        <div>Longest Session Average</div>
+                                        <input type="text" id="HATClongestSession" readonly>
+                                    </div>
+                                    <div class="HATCinfoOverview">
+                                        <div>Longest Round</div>
+                                        <input type="text" id="HATClongestRound" readonly>
+                                    </div>
+                                    <div class="HATCinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="HATCnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="HATCinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="AHATaccordion">
+                            <h2 class="accordion-header2">Advanced High Altitude Training &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="AHATContainer">
+                                    <canvas id="AHATchart"></canvas>
+                                </div>
+                                <div class="AHATInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="AHATinfoOverview">
+                                        <div>Longest Session Average</div>
+                                        <input type="text" id="AHATlongestSession" readonly>
+                                    </div>
+                                    <div class="AHATinfoOverview">
+                                        <div>Longest Round</div>
+                                        <input type="text" id="AHATlongestRound" readonly>
+                                    </div>
+                                    <div class="AHATinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="AHATnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="AHATinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item" id="BHaccordion">
+                <h2 class="accordion-header">Breath Holds &#8595;</h2>
+                <div class="accordion-content">
+                    <div class="accordion2">
+                        <div class="accordion-item2" id="BHNoResults">
+                            <h1>No Results Yet</h1>
+                        </div>
+                        <div class="accordion-item2" id="APaccordion">
+                            <h2 class="accordion-header2">Apnea Training &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="APContainer">
+                                    <canvas id="APchart"></canvas>
+                                </div>
+                                <div class="APInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="APinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="APlatestRound" readonly>
+                                    </div>
+                                    <div class="APinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="APlongestRound" readonly>
+                                    </div>
+                                    <div class="APinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="APnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="APinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="CTaccordion">
+                            <h2 class="accordion-header2">CO2 Tolerance Training &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="CTContainer">
+                                    <canvas id="CTchart"></canvas>
+                                </div>
+                                <div class="CTInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="CTinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="CTlatestRound" readonly>
+                                    </div>
+                                    <div class="CTinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="CTlongestRound" readonly>
+                                    </div>
+                                    <div class="CTinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="CTnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="CTinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="WHaccordion">
+                            <h2 class="accordion-header2">Controled Hyperventilation &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="WHContainer">
+                                    <canvas id="WHchart"></canvas>
+                                </div>
+                                <div class="WHInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="WHinfoOverview">
+                                        <div>Longest Session Average</div>
+                                        <input type="text" id="WHlongestSession" readonly>
+                                    </div>
+                                    <div class="WHinfoOverview">
+                                        <div>Longest Round</div>
+                                        <input type="text" id="WHlongestRound" readonly>
+                                    </div>
+                                    <div class="WHinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="WHnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="WHinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="O2accordion">
+                            <h2 class="accordion-header2">O2 Table &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="O2Container">
+                                    <canvas id="O2chart"></canvas>
+                                </div>
+                                <div class="O2Info">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="O2infoOverview">
+                                        <div>Longest Session Average</div>
+                                        <input type="text" id="O2longestSession" readonly>
+                                    </div>
+                                    <div class="O2infoOverview">
+                                        <div>Longest Round</div>
+                                        <input type="text" id="O2longestRound" readonly>
+                                    </div>
+                                    <div class="O2infoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="O2numberOfSessions" readonly>
+                                    </div>
+                                    <div id="O2infoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="CO2accordion">
+                            <h2 class="accordion-header2">CO2 Table &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="CO2Container">
+                                    <canvas id="CO2chart"></canvas>
+                                </div>
+                                <div class="CO2Info">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="CO2infoOverview">
+                                        <div>Longest Session Average</div>
+                                        <input type="text" id="CO2longestSession" readonly>
+                                    </div>
+                                    <div class="CO2infoOverview">
+                                        <div>Longest Round</div>
+                                        <input type="text" id="CO2longestRound" readonly>
+                                    </div>
+                                    <div class="CO2infoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="CO2numberOfSessions" readonly>
+                                    </div>
+                                    <div id="CO2infoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item" id="PRANAaccordion">
+                <h2 class="accordion-header">Pranayama &#8595;</h2>
+                <div class="accordion-content">
+                    <div class="accordion2">
+                        <div class="accordion-item2" id="PRANANoResults">
+                            <h1>No Results Yet</h1>
+                        </div>
+                        <div class="accordion-item2" id="UBaccordion">
+                            <h2 class="accordion-header2">Ujjayi Breathing &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="UBContainer">
+                                    <canvas id="UBchart"></canvas>
+                                </div>
+                                <div class="UBInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="UBinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="UBlatestRound" readonly>
+                                    </div>
+                                    <div class="UBinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="UBlongestRound" readonly>
+                                    </div>
+                                    <div class="UBinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="UBnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="UBinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="KBaccordion">
+                            <h2 class="accordion-header2">Kapalabhati &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="KBContainer">
+                                    <canvas id="KBchart"></canvas>
+                                </div>
+                                <div class="KBInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="KBinfoOverview">
+                                        <div>Longest Session Average</div>
+                                        <input type="text" id="KBlongestSession" readonly>
+                                    </div>
+                                    <div class="KBinfoOverview">
+                                        <div>Longest Round</div>
+                                        <input type="text" id="KBlongestRound" readonly>
+                                    </div>
+                                    <div class="KBinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="KBnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="KBinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="BOXaccordion">
+                            <h2 class="accordion-header2">Box Breathing &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="BOXContainer">
+                                    <canvas id="BOXchart"></canvas>
+                                </div>
+                                <div class="BOXInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="BOXinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="BOXlatestRound" readonly>
+                                    </div>
+                                    <div class="BOXinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="BOXlongestRound" readonly>
+                                    </div>
+                                    <div class="BOXinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="BOXnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="BOXinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="NBaccordion">
+                            <h2 class="accordion-header2">Nadi Shodhana &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="NBContainer">
+                                    <canvas id="NBchart"></canvas>
+                                </div>
+                                <div class="NBInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="NBinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="NBlatestRound" readonly>
+                                    </div>
+                                    <div class="NBinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="NBlongestRound" readonly>
+                                    </div>
+                                    <div class="NBinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="NBnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="NBinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="SBaccordion">
+                            <h2 class="accordion-header2">Sitali Breathing &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="SBContainer">
+                                    <canvas id="SBchart"></canvas>
+                                </div>
+                                <div class="SBInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="SBinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="SBlatestRound" readonly>
+                                    </div>
+                                    <div class="SBinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="SBlongestRound" readonly>
+                                    </div>
+                                    <div class="SBinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="SBnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="SBinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="CBaccordion">
+                            <h2 class="accordion-header2">Coherent Breathing &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="CBContainer">
+                                    <canvas id="CBchart"></canvas>
+                                </div>
+                                <div class="CBInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="CBinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="CBlatestRound" readonly>
+                                    </div>
+                                    <div class="CBinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="CBlongestRound" readonly>
+                                    </div>
+                                    <div class="CBinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="CBnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="CBinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="RBaccordion">
+                            <h2 class="accordion-header2">478 Breathing &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="RBContainer">
+                                    <canvas id="RBchart"></canvas>
+                                </div>
+                                <div class="RBInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="RBinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="RBlatestRound" readonly>
+                                    </div>
+                                    <div class="RBinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="RBlongestRound" readonly>
+                                    </div>
+                                    <div class="RBinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="RBnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="RBinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item2" id="HUMaccordion">
+                            <h2 class="accordion-header2">Humming Exercise &#8595;</h2>
+                            <div class="accordion-content2">
+                                <div class="chart-container" id="HUMContainer">
+                                    <canvas id="HUMchart"></canvas>
+                                </div>
+                                <div class="HUMInfo">
+                                    <h4><b>Overview</b></h4>
+                                    <div class="HUMinfoOverview">
+                                        <div>Latest Session</div>
+                                        <input type="text" id="HUMlatestRound" readonly>
+                                    </div>
+                                    <div class="HUMinfoOverview">
+                                        <div>Longest Session</div>
+                                        <input type="text" id="HUMlongestRound" readonly>
+                                    </div>
+                                    <div class="HUMinfoOverview">
+                                        <div>Total Sessions</div>
+                                        <input type="text" id="HUMnumberOfSessions" readonly>
+                                    </div>
+                                    <div id="HUMinfoOverview"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="resultsPage" class="hidden">
-    <div class="accordion">
-        <div class="accordion-item">
-            <h2 class="accordion-header">Briza Retention Test &#8595;</h2>
-            <div class="accordion-content">
-                <div class="chart-container" id="BRTContainer">
-                    <canvas id="BRTchart"></canvas>
-                </div>
-                <div class="BRTInfo">
-                    <h4><b>Overview</b></h4>
-                    <div class="BRTinfoOverview">
-                        <div>Latest Test</div>
-                        <input type="text" id="BRTlatestRound" readonly>     
-                    </div>
-                    <div class="BRTinfoOverview">
-                        <div>Longest Test</div>
-                        <input type="text" id="BRTlongestRound" readonly>     
-                    </div>
-                    <div class="BRTinfoOverview"> 
-                        <div>Total Tests</div>
-                        <input type="text" id="BRTnumberOfSessions" readonly>     
-                    </div>
-                    <div id="BRTinfoOverview"></div>
-                </div>
-            </div>
+    <div id="homepagegrid3">
+        <div class="row g-2">
+            <div class="col"><a id="brtLinkResults"><img class="homepageimgs2" src="https://brizastorage.blob.core.windows.net/images/brt2.svg" /></a></div>
+            <div class="col"><a id="programLinkResults"><img class="homepageimgs2" src="https://brizastorage.blob.core.windows.net/images/brizaprogram.svg" /></a></div>
+            <div class="w-100"></div>
+            <div class="col"><a id="breathHoldsLinkResults"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/breathhold.svg" /></a></div>
+            <div class="col"><a id="pranayamaLinkResults"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/pranayama.svg" /></a></div>
         </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header">Briza Program &#8595;</h2>
-            <div class="accordion-content">
-                <div class="accordion2">
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Yogic Breathing &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="YBContainer">
-                                <canvas id="YBchart"></canvas>
-                            </div>
-                            <div class="YBInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="YBinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="YBlatestRound" readonly>
-                                </div>
-                                <div class="YBinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="YBlongestRound" readonly>
-                                </div>
-                                <div class="YBinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="YBnumberOfSessions" readonly>
-                                </div>
-                                <div id="YBinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Breath Recovery Exercise &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="BREContainer">
-                                <canvas id="BREchart"></canvas>
-                            </div>
-                            <div class="BREInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="BREinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="BRElatestRound" readonly>
-                                </div>
-                                <div class="BREinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="BRElongestRound" readonly>
-                                </div>
-                                <div class="BREinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="BREnumberOfSessions" readonly>
-                                </div>
-                                <div id="BREinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Breath Recovery while Walking &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="BRWContainer">
-                                <canvas id="BRWchart"></canvas>
-                            </div>
-                            <div class="BRWInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="BRWinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="BRWlatestRound" readonly>
-                                </div>
-                                <div class="BRWinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="BRWlongestRound" readonly>
-                                </div>
-                                <div class="BRWinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="BRWnumberOfSessions" readonly>
-                                </div>
-                                <div id="BRWinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Briza Breathing &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="BBContainer">
-                                <canvas id="BBchart"></canvas>
-                            </div>
-                            <div class="BBInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="BBinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="BBlatestRound" readonly>
-                                </div>
-                                <div class="BBinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="BBlongestRound" readonly>
-                                </div>
-                                <div class="BBinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="BBnumberOfSessions" readonly>
-                                </div>
-                                <div id="BBinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">High Altitude Training &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="HATContainer">
-                                <canvas id="HATchart"></canvas>
-                            </div>
-                            <div class="HATInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="HATinfoOverview">
-                                    <div>Longest Session Average</div>
-                                    <input type="text" id="HATlongestSession" readonly>
-                                </div>
-                                <div class="HATinfoOverview">
-                                    <div>Longest Round</div>
-                                    <input type="text" id="HATlongestRound" readonly>
-                                </div>
-                                <div class="HATinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="HATnumberOfSessions" readonly>
-                                </div>
-                                <div id="HATinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">High Altitude Training while Running/Cycling &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="HATCContainer">
-                                <canvas id="HATCchart"></canvas>
-                            </div>
-                            <div class="HATCInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="HATCinfoOverview">
-                                    <div>Longest Session Average</div>
-                                    <input type="text" id="HATClongestSession" readonly>
-                                </div>
-                                <div class="HATCinfoOverview">
-                                    <div>Longest Round</div>
-                                    <input type="text" id="HATClongestRound" readonly>
-                                </div>
-                                <div class="HATCinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="HATCnumberOfSessions" readonly>
-                                </div>
-                                <div id="HATCinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Advanced High Altitude Training &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="AHATContainer">
-                                <canvas id="AHATchart"></canvas>
-                            </div>
-                            <div class="AHATInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="AHATinfoOverview">
-                                    <div>Longest Session Average</div>
-                                    <input type="text" id="AHATlongestSession" readonly>
-                                </div>
-                                <div class="AHATinfoOverview">
-                                    <div>Longest Round</div>
-                                    <input type="text" id="AHATlongestRound" readonly>
-                                </div>
-                                <div class="AHATinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="AHATnumberOfSessions" readonly>
-                                </div>
-                                <div id="AHATinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header">Lungs Expansion Test &#8595;</h2>
-            <div class="accordion-content">
-                <div class="chart-container" id="LUNGSContainer">
-                    <canvas id="LUNGSchart"></canvas>
-                </div>
-                <div class="LUNGSInfo">
-                    <h4><b>Overview</b></h4>
-                    <div class="LUNGSinfoOverview">
-                        <div>Latest Test</div>
-                        <input type="text" id="LUNGSlatestRound" readonly>     
-                    </div>
-                    <div class="LUNGSinfoOverview">
-                        <div>Longest Test</div>
-                        <input type="text" id="LUNGSlongestRound" readonly>     
-                    </div>
-                    <div class="LUNGSinfoOverview"> 
-                        <div>Total Tests</div>
-                        <input type="text" id="LUNGSnumberOfSessions" readonly>     
-                    </div>
-                    <div id="LUNGSinfoOverview"></div>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header">Breath Holds &#8595;</h2>
-            <div class="accordion-content">
-                <div class="accordion2">
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Apnea Training &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="APContainer">
-                                <canvas id="APchart"></canvas>
-                            </div>
-                            <div class="APInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="APinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="APlatestRound" readonly>
-                                </div>
-                                <div class="APinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="APlongestRound" readonly>
-                                </div>
-                                <div class="APinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="APnumberOfSessions" readonly>
-                                </div>
-                                <div id="APinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">CO2 Tolerance Training &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="CTContainer">
-                                <canvas id="CTchart"></canvas>
-                            </div>
-                            <div class="CTInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="CTinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="CTlatestRound" readonly>
-                                </div>
-                                <div class="CTinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="CTlongestRound" readonly>
-                                </div>
-                                <div class="CTinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="CTnumberOfSessions" readonly>
-                                </div>
-                                <div id="CTinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Controled Hyperventilation &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="WHContainer">
-                                <canvas id="WHchart"></canvas>
-                            </div>
-                            <div class="WHInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="WHinfoOverview">
-                                    <div>Longest Session Average</div>
-                                    <input type="text" id="WHlongestSession" readonly>
-                                </div>
-                                <div class="WHinfoOverview">
-                                    <div>Longest Round</div>
-                                    <input type="text" id="WHlongestRound" readonly>
-                                </div>
-                                <div class="WHinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="WHnumberOfSessions" readonly>
-                                </div>
-                                <div id="WHinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">O2 Table &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="O2Container">
-                                <canvas id="O2chart"></canvas>
-                            </div>
-                            <div class="O2Info">
-                                <h4><b>Overview</b></h4>
-                                <div class="O2infoOverview">
-                                    <div>Longest Session Average</div>
-                                    <input type="text" id="O2longestSession" readonly>
-                                </div>
-                                <div class="O2infoOverview">
-                                    <div>Longest Round</div>
-                                    <input type="text" id="O2longestRound" readonly>
-                                </div>
-                                <div class="O2infoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="O2numberOfSessions" readonly>
-                                </div>
-                                <div id="O2infoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="accordion-item2">
-                        <h2 class="accordion-header2">CO2 Table &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="CO2Container">
-                                <canvas id="CO2chart"></canvas>
-                            </div>
-                            <div class="CO2Info">
-                                <h4><b>Overview</b></h4>
-                                <div class="CO2infoOverview">
-                                    <div>Longest Session Average</div>
-                                    <input type="text" id="CO2longestSession" readonly>
-                                </div>
-                                <div class="CO2infoOverview">
-                                    <div>Longest Round</div>
-                                    <input type="text" id="CO2longestRound" readonly>
-                                </div>
-                                <div class="CO2infoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="CO2numberOfSessions" readonly>
-                                </div>
-                                <div id="CO2infoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header">Pranayama &#8595;</h2>
-            <div class="accordion-content">
-                <div class="accordion2">
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Ujjayi Breathing &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="UBContainer">
-                                <canvas id="UBchart"></canvas>
-                            </div>
-                            <div class="UBInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="UBinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="UBlatestRound" readonly>
-                                </div>
-                                <div class="UBinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="UBlongestRound" readonly>
-                                </div>
-                                <div class="UBinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="UBnumberOfSessions" readonly>
-                                </div>
-                                <div id="UBinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Kapalabhati &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="KBContainer">
-                                <canvas id="KBchart"></canvas>
-                            </div>
-                            <div class="KBInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="KBinfoOverview">
-                                    <div>Longest Session Average</div>
-                                    <input type="text" id="KBlongestSession" readonly>
-                                </div>
-                                <div class="KBinfoOverview">
-                                    <div>Longest Round</div>
-                                    <input type="text" id="KBlongestRound" readonly>
-                                </div>
-                                <div class="KBinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="KBnumberOfSessions" readonly>
-                                </div>
-                                <div id="KBinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Box Breathing &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="BOXContainer">
-                                <canvas id="BOXchart"></canvas>
-                            </div>
-                            <div class="BOXInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="BOXinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="BOXlatestRound" readonly>
-                                </div>
-                                <div class="BOXinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="BOXlongestRound" readonly>
-                                </div>
-                                <div class="BOXinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="BOXnumberOfSessions" readonly>
-                                </div>
-                                <div id="BOXinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Nadi Shodhana &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="NBContainer">
-                                <canvas id="NBchart"></canvas>
-                            </div>
-                            <div class="NBInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="NBinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="NBlatestRound" readonly>
-                                </div>
-                                <div class="NBinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="NBlongestRound" readonly>
-                                </div>
-                                <div class="NBinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="NBnumberOfSessions" readonly>
-                                </div>
-                                <div id="NBinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Sitali Breathing &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="SBContainer">
-                                <canvas id="SBchart"></canvas>
-                            </div>
-                            <div class="SBInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="SBinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="SBlatestRound" readonly>
-                                </div>
-                                <div class="SBinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="SBlongestRound" readonly>
-                                </div>
-                                <div class="SBinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="SBnumberOfSessions" readonly>
-                                </div>
-                                <div id="SBinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Coherent Breathing &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="CBContainer">
-                                <canvas id="CBchart"></canvas>
-                            </div>
-                            <div class="CBInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="CBinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="CBlatestRound" readonly>
-                                </div>
-                                <div class="CBinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="CBlongestRound" readonly>
-                                </div>
-                                <div class="CBinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="CBnumberOfSessions" readonly>
-                                </div>
-                                <div id="CBinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">478 Breathing &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="RBContainer">
-                                <canvas id="RBchart"></canvas>
-                            </div>
-                            <div class="RBInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="RBinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="RBlatestRound" readonly>
-                                </div>
-                                <div class="RBinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="RBlongestRound" readonly>
-                                </div>
-                                <div class="RBinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="RBnumberOfSessions" readonly>
-                                </div>
-                                <div id="RBinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item2">
-                        <h2 class="accordion-header2">Humming Exercise &#8595;</h2>
-                        <div class="accordion-content2">
-                            <div class="chart-container" id="HUMContainer">
-                                <canvas id="HUMchart"></canvas>
-                            </div>
-                            <div class="HUMInfo">
-                                <h4><b>Overview</b></h4>
-                                <div class="HUMinfoOverview">
-                                    <div>Latest Session</div>
-                                    <input type="text" id="HUMlatestRound" readonly>
-                                </div>
-                                <div class="HUMinfoOverview">
-                                    <div>Longest Session</div>
-                                    <input type="text" id="HUMlongestRound" readonly>
-                                </div>
-                                <div class="HUMinfoOverview">
-                                    <div>Total Sessions</div>
-                                    <input type="text" id="HUMnumberOfSessions" readonly>
-                                </div>
-                                <div id="HUMinfoOverview"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>  
+    <div class="breathingpages">
+        <p>Monitor your results and track the advancement in your preferred breathing and breath-holding exercises. Observing your progress serves as a powerful motivator, encouraging you to continue your training and strive for better performance </p>
     </div>
     <footer id="resultsFooter">
         <div class="navbar">
@@ -741,10 +725,6 @@
 <div id="BRTresultPage" class="hidden">
     <div id="BRTresultDateHeader"></div>
     <div id="BRTresultSessions"></div>
-</div>
-<div id="LUNGSresultPage" class="hidden">
-    <div id="LUNGSresultDateHeader"></div>
-    <div id="LUNGSresultSessions"></div>
 </div>
 <div id="YBresultPage" class="hidden">
     <div id="YBresultDateHeader"></div>
@@ -895,17 +875,11 @@
     </footer>
 </div>
 <div id="programPage" class="hidden">
-    <div class="brizaprogram">
-        <h1>Briza Program</h1>
-    </div>
     <div id="personalizedBriza"></div>
 </div>
 <div id="nasalBreathingPage" class="hidden">
     <div class="breathingpages">
         <h1>Nasal Breathing</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/nasalbreathing.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/nasal.mp4" type="video/mp4">
-        </video>
         <p>
             Nasal breathing is a natural and beneficial way to breathe that can support overall health and well-being. It is important to breathe through the nose whenever possible, especially during exercise, sleep, and periods of stress or anxiety.
             Breathing through the nose has several benefits for the body and the mind, as it is the natural and intended way for humans to breathe. Here are some of the benefits of nasal breathing:
@@ -922,9 +896,6 @@
 <div id="noseUnblockPage" class="hidden">
     <div class="breathingpages">
         <h1>Nose Unblocking</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/noseunblocking.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/unblock.mp4" type="video/mp4">
-        </video>
         <p>
             Learn this simple technique that will help you to breathe through the nose instantly.
             It helps if you have a stuffed or congested nose in case you are suffering from an allergy, cold or any other reason.
@@ -951,9 +922,6 @@
 <div id="brtPage" class="hidden">
     <div class="breathingpages">
         <h1>Briza Retention Test</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/brt2.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/brt.mp4" type="video/mp4">
-        </video>
         <p>BRT, which stands for Briza Retention Test, is a measure of breath-holding time and can provide insights into a person's breathing efficiency and tolerance to carbon dioxide (CO2).</p>
         <form method="post" id="brtForm">
             <div class="settingButtons">
@@ -987,9 +955,6 @@
 <div id="diaphragmPage" class="hidden">
     <div class="breathingpages">
         <h1>Diaphragmatic Breathing</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/diaphragm.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/diaphragm.mp4" type="video/mp4">
-        </video>
         <p>
             Using the diaphragm to breathe has several benefits. First, it allows for a more efficient exchange of oxygen and carbon dioxide, which can help to reduce feelings of fatigue and improve overall energy levels.
             Additionally, diaphragmatic breathing can help to reduce stress and anxiety by activating the body's relaxation response.
@@ -1026,9 +991,6 @@
 <div id="YBPage" class="hidden">
     <div class="breathingpages">
         <h1>Yogic Breathing</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/yogic.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/yb.mp4" type="video/mp4">
-        </video>
         <p>Find a comfortable sitting position or lay down and follow our guided breathing session above to ease your mind, body and spirit</p>
         <button id="YBBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="YBmodal" class="modal">
@@ -1174,9 +1136,6 @@
 <div id="BREPage" class="hidden">
     <div class="breathingpages">
         <h1>Breath Recovery Exercise</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/breathrecoverysit.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/bre.mp4" type="video/mp4">
-        </video>
         <p>Simple exercise that can be used to recover your breath after a physical activity or simply used as a breathing exercise to improve your BRT</p>
         <button id="BREBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="BREmodal" class="modal">
@@ -1340,9 +1299,6 @@
 <div id="BRWPage" class="hidden">
     <div class="breathingpages">
         <h1>Walking Recovery Exercise</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/breathrecoverywalking.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/brw.mp4" type="video/mp4">
-        </video>
         <p>Simple exercise that can be used to recover your breath after a physical activity or simply used as a breathing exercise to improve your BRT</p>
         <button id="BRWBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="BRWmodal" class="modal">
@@ -1507,9 +1463,6 @@
 <div id="HUMPage" class="hidden">
     <div class="breathingpages">
         <h1>Humming and Nitric Oxide</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/humming.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/hum.mp4" type="video/mp4">
-        </video>
         <p>Find a comfortable sitting position or lay down, follow our guided breathing session below and produce 15x more nitric oxide to improve your overall health</p>
         <button id="HUMBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="HUMmodal" class="modal">
@@ -1659,9 +1612,6 @@
 <div id="BBPage" class="hidden">
     <div class="breathingpages">
         <h1>Briza Breathing</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/bb.mp4" type="video/mp4">
-        </video>
         <p>Learn how to breathe so light that if you had a feather under your nose it would not move</p>
         <button id="BBBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="BBmodal" class="modal">
@@ -1825,9 +1775,6 @@
 <div id="HATPage" class="hidden">
     <div class="breathingpages">
         <h1>High Altitude Training</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/hat.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/hat.mp4" type="video/mp4">
-        </video>
         <p>High altitude environments can help to improve cardiovascular fitness, strengthen muscles, stimulate the production of red blood cells, and stimulate the production of certain immune cells</p>
         <button id="HATBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="HATmodal" class="modal">
@@ -1937,9 +1884,6 @@
 <div id="HATCPage" class="hidden">
     <div class="breathingpages">
         <h1>High Altitude Training while Cycling</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/hatcycling.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/hatc.mp4" type="video/mp4">
-        </video>
         <p>Bring your high altitude training to another level</p>
         <button id="HATCBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="HATCmodal" class="modal">
@@ -2049,9 +1993,6 @@
 <div id="AHATPage" class="hidden">
     <div class="breathingpages">
         <h1>Advanced High Altitude Training</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/advancedhat.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/ahat.mp4" type="video/mp4">
-        </video>
         <p>Bring your high altitude training to another level</p>
         <button id="AHATBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="AHATmodal" class="modal">
@@ -2115,88 +2056,19 @@
         <ul>Press "Stop" once you finish and save your results</ul>
     </div>
 </div>
-<div id="lungsSettingsPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Lungs Expansion Settings</h1>
-        <div class="volume-bar">
-            <h4 class="volumeSettings">Play Song?</h4>
-            <div class="audioButtons">
-                <div id="lungsaudio" class="audio"><img loading="lazy" src="https://brizastorage.blob.core.windows.net/images/speaker.png"></div>
-                <div id="lungsmute" class="mute"><img loading="lazy" src="https://brizastorage.blob.core.windows.net/images/mute.png"></div>
-            </div>
-            <input type="range" id="volumeBarLungs" min="0" max="1" step="1" value="1">
-        </div>
-        <hr />
-    </div>
-</div>
 <div id="lungsPage" class="hidden">
     <div class="breathingpages">
         <h1>Lungs Expansion Training</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/lungsexpansion.svg" playsinline preload="none">
+        <video controls poster="https://brizastorage.blob.core.windows.net/images/lungsexpansion.svg" playsinline>
             <source src="https://brizastorage.blob.core.windows.net/videos/lungs.mp4" type="video/mp4">
         </video>
         <p>Follow this 15 minutes video at least twice a week and learn how to expand your lungs creating more volume capacity and making full use of your breathing system</p>
-        <form method="post" id="lungsForm">
-            <div class="settingButtons">
-                <button id="lungsSettings" class="audioSet" type="button">Settings<img loading="lazy" src="https://brizastorage.blob.core.windows.net/images/settings.png"></button>
-            </div>
-            <div id="lungsResultSaved" class="resultSaved"></div>
-            <div class="timerDisplayBRT">
-                <input id="timerDisplayLungs" asp-for="Result.lungsResultScore" readonly value="00 : 00" />
-            </div>
-            <div>
-                <input id="lungsDate" type="text" type="hidden" asp-for="Result.lungsResultDate" />
-            </div>
-            <div class="BrtBtns">
-                <button type="button" class="pauseBtnBRT" id="lungsPause">Pause</button>
-                <button type="button" class="startBtnBRT" id="lungsStart">Start</button>
-                <button type="button" class="stopBtnBRT" id="lungsStop">Reset</button>
-            </div>
-            <div>
-                <input id="LUNGSuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
-            </div>
-            <div class="saveBtnBRT">
-                <input type="submit" value="Save" id="lungsSave" />
-            </div>
-        </form>
-        <p>In order to track your progress of lungs expansion, follow the instructions below and save your score:</p>
-        <ul>1 - Inhale as much air as possible in one breath</ul>
-        <ul>2 - Press "Start" and exhale as slow and as long as possible until lungs are empty</ul>
-        <ul>3 - Press "Pause", get back to normal breathing and save your result</ul>
-        <p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Breath & Performance App`s exercises</p>
-    </div>
-</div>
-<div id="mobilityPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Stretching & Mobility</h1>
-        <h2>Lower back, hips & thighs </h2>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/lowerback.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/lower.mp4" type="video/mp4">
-        </video>
-        <p>Follow this 45 minutes session to gain mobility of your hips, and alleviate lower back pain. This session helps with sciatica, piriformis syndrome, thigh hips and more</p>
-        <h2>Shoulders, neck, elbows & wrists</h2>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/shoulders.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/shoulders.mp4" type="video/mp4">
-        </video>
-        <p>Follow this 30 minutes session to gain mobility of neck and shoulder, and alleviate sore areas of the upper body. This session helps with tennis elbow, carpal tunnel, rotator cuff injuries, stiff neck, rhomboid injuries and more</p>
-        <h2>Ankles & knees</h2>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/ankles.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/ankles.mp4" type="video/mp4">
-        </video>
-        <p>Follow this 30 minutes session to gain mobility of ankles, and relieve knees and ankles. This session helps with flat feet, shin splints, knee discomfort, ligament or tendon damage and more  </p>
-        <p>Stretching and mobility exercises have many benefits for the body and mind. Some of the key benefits include:</p>
-        <ul>Increased flexibility and range of motion can help to improve athletic performance by allowing you to move more efficiently and effectively</ul>
-        <ul>improvement of blood flow to the muscles, which can increase nutrient delivery and waste removal from the body</ul>
-        <ul>Lengthening and loosening of muscles, which can improve your ability to move your joints through a full range of motion</ul>
-        <ul>improvement of your body's flexibility and strength, which can reduce your risk of muscle strains, sprains, and other injuries</ul>
-        <ul>Tight muscles can contribute to poor posture, which can lead to back pain and other musculoskeletal problems. Stretching can help to improve your posture and reduce these issues</ul>
-        <ul>After exercising, stretching can help to reduce muscle soreness and stiffness by increasing blood flow to the muscles and promoting their recovery</ul>
-        <ul>Reduction of tension in the muscles and promote relaxation, which can reduce stress levels and improve overall wellbeing</ul>
     </div>
 </div>
 <div id="BHPage" class="hidden">
     <div class="breathingpages BHbreathing">
         <h1>Breath Holding</h1>
+         <div class="questionMark"><a id="BHquestion"><img class="questionIMG" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/question.png" /></a></div>
     </div>
     <div class="BHGrid">
         <div class="row g-2">
@@ -2208,18 +2080,46 @@
         </div>
     </div>
     <div class="breathingpages">
-        <p>Explore our breath-holding exercises and get many potential benefits out of it. Breath holds can:</p>
-        <ul>Increase the strength and capacity of your lungs by forcing them to work harder to deliver oxygen to your body</ul>
-        <ul>Help calm your mind and reduce stress and anxiety by slowing down your heart rate and promoting relaxation</ul>
-        <ul>Improve your cardiovascular health by increasing the amount of oxygen your body can transport to your cells and tissues</ul>
-        <ul>Help you focus and clear your mind by increasing blood flow and oxygenation to the brain</ul>
-        <ul>Improve your endurance and performance in sports by increasing your ability to use oxygen efficiently and delaying the onset of fatigue</ul>
         <p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Breath & Performance App`s exercises</p>
+    </div>
+</div>
+<div id="myModalBH" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBH">&times;</span>
+        <div class="slideshow-container">
+            <div class="mySlides fade BHslides">
+                <div class="numbertext">1 / 3</div>
+                <img src="images/img1.png">
+                <div class="text">Breath-holding exercises offer a range of benefits that can significantly enhance performance, particularly for athletes, swimmers, free divers and individuals seeking to improve their overall health and well-being. Explore our breath-holding exercises and get many potential benefits out of it</div>
+            </div>
+            <div class="mySlides fade BHslides">
+                <div class="numbertext">2 / 3</div>
+                <img src="images/img1.png">
+                <div class="text">
+                    <ul>Increase lungs capacity and improve the efficiency of oxygen usage by the body. This means more oxygen can be delivered to muscles during intense activity, enhancing endurance and performance.</ul>
+                    <ul>Improve the body's tolerance to carbon dioxide. Higher CO2 tolerance can delay the onset of fatigue, allowing for longer periods of intense exercise or activity</ul>
+                    <ul>Improve diaphragm strength. These exercises strengthen the diaphragm, which plays a crucial role in breathing. A stronger diaphragm can enhance breathing efficiency, leading to better performance in physical activities.</ul>
+                </div>
+            </div>
+            <div class="mySlides fade BHslides">
+                <div class="numbertext">3 / 3</div>
+                <img src="images/img1.png">
+                <div class="text">
+                    <ul>Increase anaerobic capacity allowing your body to perform better in situations where oxygen is scarce. This can be particularly beneficial in high-intensity sports or activities that require short bursts of effort</ul>
+                    <ul>Improve cardiovascular health. These exercises contribute to cardiovascular health by enhancing circulatory efficiency and lowering heart rate, which is beneficial for long-term heart health and performance</ul>
+                    <ul>Enhance mental toughness. The practice of holding one's breath teaches discipline, patience, and mental fortitude. These mental benefits can translate into improved performance in both physical and cognitive tasks</ul>
+                </div>
+            </div>
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1, 'BHslides')">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 'BHslides')">&#10095;</a>
+        </div>
     </div>
 </div>
 <div id="PRANAPage" class="hidden">
     <div class="breathingpages BHbreathing">
         <h1>Pranayama</h1>
+        <div class="questionMark"><a id="PRANAquestion"><img class="questionIMG" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/question.png" /></a></div>
     </div>
     <div class="BHGrid">
         <div class="row g-2">
@@ -2237,37 +2137,40 @@
         </div>
     </div>
     <div class="breathingpages">
-        <p>Explore our pranayama exercises and get many potential benefits out of it. Pranayama exercises can:</p>
-        <ul>Increase the strength and capacity of your lungs by forcing them to work harder to deliver oxygen to your body</ul>
-        <ul>Help calm your mind and reduce stress and anxiety by slowing down your heart rate and promoting relaxation</ul>
-        <ul>Improve your cardiovascular health by increasing the amount of oxygen your body can transport to your cells and tissues</ul>
-        <ul>Help you focus and clear your mind by increasing blood flow and oxygenation to the brain</ul>
-        <ul>Improve your endurance and performance in sports by increasing your ability to use oxygen efficiently and delaying the onset of fatigue</ul>
         <p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Breath & Performance App`s exercises</p>
     </div>
 </div>
-<div id="EXTRAPage" class="hidden">
-    <div class="breathingpages BHbreathing">
-        <h1>Wellness - Tips for better health & performance</h1>
-    </div>
-    <div class="BHGrid welnessGrid">
-        <div class="row g-2">
-            <div class="col"><a id="MEDLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/meditation.svg" /></a></div>
-            <div class="col"><a id="SLEEPLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/sleep.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="ICELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/cold.svg" /></a></div>
-            <div class="col"><a id="EXERCISINGLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/exercise.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="HYDLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hydration.svg" /></a></div>
-            <div class="col"><a id="SHOTLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/shot.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="ILLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/iron.svg" /></a></div>
-            <div class="col"><a id="BEETLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/beet.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="DIETLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diet.svg" /></a></div>
-            <div class="col"><a id="NKLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nauli.svg" /></a></div>
+<div id="myModalPRANA" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalPRANA">&times;</span>
+        <div class="slideshow-container">
+            <div class="mySlides fade PRANAslides">
+                <div class="numbertext">1 / 3</div>
+                <img src="images/img1.png">
+                <div class="text">Pranayama (Prana = life force, Yama = control), a key component of yoga, involves the control and regulation of breath and is known for its profound impact on physical, mental, and emotional well-being. Incorporating pranayama exercises into one's routine can significantly improve performance across various sports</div>
+            </div>
+            <div class="mySlides fade PRANAslides">
+                <div class="numbertext">2 / 3</div>
+                <img src="images/img1.png">
+                <div class="text">
+                    <ul>Increase the strength and capacity of your lungs by forcing them to work harder to deliver oxygen to your body</ul>
+                    <ul>Help calm your mind and reduce stress and anxiety by slowing down your heart rate and promoting relaxation</ul>
+                    <ul>Improve your cardiovascular health by increasing the amount of oxygen your body can transport to your cells and tissues</ul>
+                </div>
+            </div>
+            <div class="mySlides fade PRANAslides">
+                <div class="numbertext">3 / 3</div>
+                <img src="images/img1.png">
+                <div class="text">
+                    <ul>Help you focus and clear your mind by increasing blood flow and oxygenation to the brain</ul>
+                    <ul>Increase energy levels. Pranayama exercises help in balancing energy levels. Improved breathing patterns can lead to increased vitality and stamina, enabling individuals to perform better in their daily activities.</ul>
+                    <ul>Boost your immune system. These exercises strengthen the immune system, making the body more resilient to infections and diseases. A strong immune system supports overall health and minimizes disruptions to training and performance goals.</ul>
+                </div>
+            </div>
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1, 'PRANAslides')">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 'PRANAslides')">&#10095;</a>
         </div>
-        <p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these exercises are safe to you, consult a doctor before practicing any of the Briza Breath & Performance App`s exercises</p>
     </div>
 </div>
 <div id="APSettingsPage" class="hidden">
@@ -2296,9 +2199,6 @@
 <div id="APPage" class="hidden">
    <div class="breathingpages">
         <h1>Apnea Training</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/apneatraining.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/ap.mp4" type="video/mp4">
-        </video> 
         <p>Find a comfortable sitting position or lay down and follow our guided breathing session below</p>
         <button id="APBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="APmodal" class="modal">
@@ -2431,9 +2331,6 @@
 <div id="O2Page" class="hidden">
     <div class="breathingpages">
         <h1>CO2 and O2 Tables</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/tables.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/o2.mp4" type="video/mp4">
-        </video>
         <p>Choose the CO2 or the O2 table, set the table to your own level and follow the guided session</p>
         <button id="O2BTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="O2modal" class="modal">
@@ -3006,9 +2903,6 @@
 <div id="WHPage" class="hidden">
     <div class="breathingpages">
         <h1>Guided Hyperventilation</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/guidedhyper.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/wh.mp4" type="video/mp4">
-        </video>  
         <p>Choose the number and speed of breaths to prepare for the breath hold in the settings, find a comfortable sitting position or lay down and follow our guided breathing session below</p>
         <button id="WHBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="WHmodal" class="modal">
@@ -3100,10 +2994,7 @@
 </div>
 <div id="CTPage" class="hidden">
     <div class="breathingpages">
-        <h1>CO2 Tolerance Training</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/tolerance.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/ct.mp4" type="video/mp4">
-        </video>        
+        <h1>CO2 Tolerance Training</h1>     
         <p>Find a comfortable sitting position or lay down and follow our guided breathing session below. Press "Restart" when you can no longer cope with the technique, this will take you back to the begining. Do this technique for 5 to 10 minutes.</p>
         <button id="CTBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="CTmodal" class="modal">
@@ -3230,10 +3121,7 @@
 </div>
 <div id="UBPage" class="hidden">
     <div class="breathingpages">
-        <h1>Ujjayi Breathing</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/ujjayi.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/ub.mp4" type="video/mp4">
-        </video>        
+        <h1>Ujjayi Breathing</h1>      
         <p>Find a comfortable sitting position or lay down and follow our guided breathing session below</p>
         <button id="UBBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="UBmodal" class="modal">
@@ -3421,9 +3309,6 @@
 <div id="KBPage" class="hidden">
     <div class="breathingpages">
         <h1>Kapalabhati</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/kapalabhati.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/kb.mp4" type="video/mp4">
-        </video>
         <p>Choose the number of breaths to prepare for the breath hold in the settings, find a comfortable sitting position and follow our guided breathing session below</p>
         <button id="KBBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="KBmodal" class="modal">
@@ -3524,9 +3409,6 @@
 <div id="BOXPage" class="hidden">
     <div class="breathingpages">
         <h1>Sama Vritti - Box Breathing</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/boxbreathing.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/box.mp4" type="video/mp4">
-        </video>
         <p>Choose an appropriated time for your session, find a comfortable sitting position or lay down and follow our guided breathing session above to ease your mind, body and spirit</p>
         <button id="BOXBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="BOXmodal" class="modal">
@@ -3671,9 +3553,6 @@
 <div id="NBPage" class="hidden">
     <div class="breathingpages">
         <h1>Nadi Shodhana</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/nadishodhana.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/nb.mp4" type="video/mp4">
-        </video>
         <p>Choose an appropriated time for your session, find a comfortable sitting position and follow our guided breathing session below to balance your mind, body and spirit</p>
         <button id="NBBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="NBmodal" class="modal">
@@ -3818,9 +3697,6 @@
 <div id="CBPage" class="hidden">
    <div class="breathingpages">
         <h1>Coherent Breathing</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/coherent.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/cb.mp4" type="video/mp4">
-        </video>
         <p>Find a comfortable sitting position or lay down, follow our guided breathing session below and learn how to relax your mind and body in a few minutes</p>
         <button id="CBBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="CBmodal" class="modal">
@@ -3934,9 +3810,6 @@
 <div id="SBPage" class="hidden">
     <div class="breathingpages">
         <h1>Sitali Breathing</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/sitali.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/sb.mp4" type="video/mp4">
-        </video> 
         <p>Find a comfortable sitting position and follow our guided breathing session below</p>
         <button id="SBBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="SBmodal" class="modal">
@@ -4045,29 +3918,6 @@
         regulating body temperature, soothing the nervous system, improving digestion and reducing acidity in the body, and reducing inflammation in the body. It's important to note that sitali breathing should be avoided if you have a respiratory condition that makes it difficult to breathe through your mouth, such as asthma or bronchitis. Additionally, if you live in a polluted environment or have allergies, it's important to practice sitali breathing in a clean and fresh air environment</p>
     </div>
 </div>
-<div id="NKPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Nauli Kriya</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/nauli.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/nk.mp4" type="video/mp4">
-        </video>
-        <p>Nauli kriya is an advanced yogic practice that involves isolating and contracting the abdominal muscles in a specific way to massage and tone the digestive organs. It should be avoided by pregnant women, those with abdominal or digestive disorders, and those with high blood pressure or heart conditions. Here is an overview of the steps involved:</p>
-        <ul>Stand with your feet hip-width apart and your hands on your thighs</ul>
-        <ul>Take a deep breath in and exhale completely</ul>
-        <ul>Contract your lower abdominal muscles and pull them in towards your spine. This is known as the "Uddiyana Bandha"</ul>
-        <ul>Hold the contraction and then release it slightly, allowing the abdominal muscles to relax</ul>
-        <ul>Now, contract your right-side abdominal muscles and pull them towards the center of your body</ul>
-        <ul>Hold the contraction and then release it slightly, allowing the abdominal muscles to relax</ul>
-        <ul>Finally, contract your left-side abdominal muscles and pull them towards the center of your body</ul>
-        <ul>Hold the contraction and then release it slightly, allowing the abdominal muscles to relax</ul>
-        <ul>Release the Uddiyana Bandha and inhale deeply</ul>
-        <p>Nauli kriya is said to have several potential benefits, including:</p>
-        <ul>Massaging and toning the digestive organs, which can improve digestion and relieve constipation</ul>
-        <ul>Strengthening the abdominal muscles and improving core stability</ul>
-        <ul>Increasing circulation to the abdominal area</ul>
-        <ul>Stimulating the solar plexus, which is associated with personal power and self-esteem</ul>
-    </div>
-</div>
 <div id="RBSettingsPage" class="hidden">
     <div class="breathingpages">
         <h1>4-7-8 Relaxation Settings</h1>
@@ -4093,10 +3943,7 @@
 </div>
 <div id="RBPage" class="hidden">
     <div class="breathingpages">
-        <h1>4-7-8 Relaxation Breathing</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/478.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/rb.mp4" type="video/mp4">
-        </video>   
+        <h1>4-7-8 Relaxation Breathing</h1>  
         <p>Find a comfortable sitting position or lay down, follow our guided breathing session above and learn how to relax your mind and body in a few minutes</p>
         <button id="RBBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="RBmodal" class="modal">
@@ -4234,117 +4081,6 @@
         <ul>Improved mental resilience: Meditation can help individuals to develop greater mental resilience, which can be beneficial for coping with challenges and setbacks and maintaining a positive mindset</ul>
         <ul>Improved sleep: Meditation has been shown to improve sleep quality and duration, which can have a positive impact on overall well-being and performance</ul>
     </div> 
-</div>
-<div id="SLEEPPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Sleep Hygiene</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/sleep.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/sleep.mp4" type="video/mp4">
-        </video>
-        <p>Sleep hygiene refers to a set of practices and habits that can help promote good sleep quality and quantity, helping you with your performance during the day. Here are some tips for improving sleep hygiene:</p>
-        <ul>Breathe through your nose: If your mouth is dry in the morning, or if you snore much, you most likely breathing through the mouth while asleep. Taping your mouth may be a good idea</ul>
-        <ul>If you struggle to nasal breathe while and maybe snore much, a nose dilator can help you</ul>
-        <ul>Stick to a regular sleep schedule: Try to go to bed and wake up at the same time every day, even on weekends</ul>
-        <ul>Create a relaxing bedtime routine: Develop a relaxing pre-sleep routine, such as taking a warm bath, reading a book, or practicing relaxation techniques like deep breathing or meditation</ul>
-        <ul>Keep the bedroom comfortable: Create a comfortable sleep environment by keeping the room cool, dark, and quiet. Use comfortable pillows and a supportive mattress</ul>
-        <ul>Limit exposure to screens: Avoid using electronic devices, such as phones, tablets, or laptops, for at least an hour before bedtime as the blue light from these devices can interfere with your body's natural sleep-wake cycle</ul>
-        <ul>Avoid caffeine and alcohol: Avoid consuming caffeine and alcohol in the hours leading up to bedtime, as they can disrupt sleep</ul>
-        <ul>Exercise regularly: Regular exercise can help to improve sleep quality, but it is best to avoid vigorous exercise in the hours immediately before bedtime</ul>
-        <ul>Limit naps: If you take naps, limit them to 20-30 minutes and avoid napping in the late afternoon or evening.</ul>
-     </div>  
-</div>
-<div id="HYDPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Hydration</h1>
-        <p>Hydration is essential for optimal performance and blood flow in the body. Here are some ways in which hydration can affect performance and blood flow:</p>
-        <ul>Dehydration can reduce blood volume: When the body is dehydrated, blood volume decreases, which can make it more difficult for blood to flow through the vessels. This can reduce oxygen delivery to the muscles and other organs, leading to decreased performance</ul>
-        <ul>Hydration can improve cardiovascular function: Adequate hydration can improve cardiovascular function by increasing blood volume, which in turn helps to improve blood flow and oxygen delivery to the muscles and other organs</ul>
-        <ul>Hydration can regulate body temperature: Hydration is essential for regulating body temperature during exercise, as it helps the body to sweat and cool down. When the body is overheated, blood vessels dilate, which can reduce blood flow to the muscles and organs, negatively impacting performance</ul>
-        <ul>Hydration can improve cognitive function: Dehydration can impair cognitive function, including attention, memory, and decision-making abilities, which can impact performance in sports or other activities.</ul>
-        <ul>To ensure adequate hydration, it is recommended to drink water regularly throughout the day, especially before, during, and after exercise</ul>
-        <ul>The amount of water needed depends on various factors, including body weight, activity level, and climate. As a general guideline, it is recommended to drink at least 8 cups of water per day plus the water you sweat out during exercise</ul>
-        <ul>It is also important to listen to your body and drink more water if you are feeling thirsty or if you are sweating excessively.</ul>
-        <ul>Avoid tap water: Drink filtered water or purified water to make sure the water you are drinking is not contaminated</ul>
-        <ul>Add electrolytes to your water specially when exercising</ul>
-    </div> 
-</div>
-<div id="SHOTPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Morning Shot</h1>
-        <p>The morning shot is a popular healthy drink that has lemon, ginger, tumeric & black pepper in it. Here are some of the potential benefits of consuming a lemon and ginger shot in the morning:</p>
-        <ul>It is rich in antioxidants and vitamin C, which helps boost the immune system and protect against infections and diseases</ul>
-        <ul>It contains compounds that have anti-inflammatory properties, which can help reduce inflammation throughout the body</ul>
-        <ul>It has digestive properties that help reduce bloating, gas, and constipation. Lemon also aids digestion and helps to detoxify the liver</ul>
-        <ul>It can help boost metabolism, reduce appetite, and aid digestion, which can help with weight loss efforts</ul>
-        <ul>Vitamin C in lemon helps to produce collagen, which is essential for healthy skin. Ginger also helps to improve blood circulation, which helps to maintain skin health</ul>
-        <ul>Turmeric has been found to be effective in improving heart health by reducing cholesterol levels, inflammation, and oxidative stress</ul>
-        <ul>Turmeric has been found to improve brain function and reduce the risk of brain diseases like Alzheimer's and dementia</ul>
-        <ul>Turmeric's anti-inflammatory properties can also help reduce joint pain and stiffness</ul>
-        <ul>Black pepper contains piperine, which can enhance the absorption of curcumin, the active compound in turmeric, by up to 2,000%. This means that the combination of turmeric and black pepper can help to increase the bioavailability of curcumin, allowing for better absorption and utilization by the body</ul>
-    </div>
-</div>
-<div id="ILPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Iron Levels</h1>
-        <p>Iron is an essential mineral that plays a crucial role in the production of hemoglobin, a protein in red blood cells that carries oxygen from the lungs to the rest of the body. Iron deficiency can lead to reduced levels of hemoglobin, which can result in decreased oxygen delivery to the cells and tissues in the body. This can cause a range of symptoms, including fatigue, weakness, shortness of breath, dizziness, and pale skin</p>
-        <p>Iron is also important for the production of myoglobin, a protein found in muscle cells that helps to store oxygen and support muscle function. Low iron levels can also impair muscle function and lead to reduced athletic performance</p>
-        <p>To maintain adequate iron levels, it is important to consume a balanced and varied diet that includes iron-rich foods. It is also important to consume vitamin C-rich foods as vitamin C can enhance iron absorption</p>
-        <p>However, it is important to note that excessive iron intake can also be harmful and lead to iron overload, which can cause organ damage and other health problems. Therefore, it is recommended to speak with a healthcare professional before taking iron supplements or making significant changes to your diet to ensure that you are getting the appropriate amount of iron for your individual needs</p>
-    </div> 
-</div>
-<div id="BEETPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Beetroot</h1>
-        <p>Beetroot juice has been shown to have potential performance-enhancing effects due to its high nitrate content. Nitrate is converted to nitric oxide in the body, which can help to improve blood flow and oxygen delivery to the muscles, leading to improved endurance and performance. Here are some potential benefits of beetroot juice for performance:</p>
-        <ul>Improved endurance: Beetroot juice consumption has been shown to improve endurance performance in both trained and untrained individuals. This may be due to improved blood flow and oxygen delivery to the muscles</ul>
-        <ul>Reduced fatigue: Beetroot juice may also help to reduce fatigue during exercise, allowing individuals to exercise for longer periods of time before becoming exhausted</ul>
-        <ul>Enhanced muscle contraction: Beetroot juice may improve muscle contractility, leading to more efficient muscle contractions and potentially improving power output during exercise</ul>
-        <ul>Reduced oxygen consumption: Beetroot juice may also reduce oxygen consumption during exercise, which may be beneficial for endurance athletes.</ul>
-    </div> 
-</div>
-<div id="DIETPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Diet and Blood Flow</h1>
-        <p>Diet can play a significant role in improving blood flow and circulation throughout the body. Here are some dietary factors that can help to promote healthy blood flow:</p>
-        <ul>Eating a diet rich in fruits and vegetables: Fruits and vegetables are rich in antioxidants, vitamins, and minerals that help to protect blood vessels from damage and improve circulation.</ul>
-        <ul>Consuming foods rich in omega-3 fatty acids: Omega-3 fatty acids can help to improve blood flow by reducing inflammation and promoting the health of blood vessels.</ul>
-        <ul>Incorporating garlic into your diet: Garlic has been found to improve blood flow by increasing the production of nitric oxide, a compound that helps to dilate blood vessels.</ul>
-        <ul>Drinking green tea: Green tea contains compounds called catechins, which can help to improve blood flow by promoting the production of nitric oxide.</ul>
-        <ul>Reducing intake of saturated and trans fats: Diets high in saturated and trans fats can contribute to the buildup of plaque in the arteries, which can reduce blood flow and increase the risk of heart disease.</ul>
-        <ul>Avoiding excessive salt intake: Consuming too much salt can lead to high blood pressure, which can damage blood vessels and reduce blood flow.</ul>
-     </div>
-</div>
-<div id="ICEPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Ice Bath/Cold Shower</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/cold.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/ice.mp4" type="video/mp4">
-        </video>
-        <p>Ice baths and cold showers have gained popularity among athletes and wellness enthusiasts for their potential benefits in performance improvement and overall health. Here's how they might help with blood oxygenation and enhance performance:</p>      
-        <ul>Boost in Circulation: Immersion in cold water can cause blood vessels to constrict and then dilate upon exiting, potentially enhancing circulation and oxygen distribution to vital organs and muscles.</ul>
-        <ul>Reduction in Inflammation: Cold exposure might reduce muscle inflammation and soreness post-exercise, allowing athletes to recover more efficiently.</ul>
-        <ul>Enhanced Mental Toughness: Regularly exposing oneself to the discomfort of cold water can improve mental resilience, aiding in performance in stressful or challenging situations.</ul>
-        <ul>Improved Lymphatic Movement: Cold showers might stimulate the lymphatic system, helping in the removal of waste from cells and potentially boosting the immune system.</ul>
-        <ul>Oxygen Utilization: The body may adapt over time to use oxygen more efficiently during cold exposure, potentially benefiting aerobic performance.</ul>
-        <ul>Release of Endorphins: Cold exposure can trigger the release of endorphins, the body's natural painkillers, promoting a sense of well-being and potentially aiding in recovery.</ul>
-        <ul>Thermogenic Activation: Cold showers and ice baths might activate brown adipose tissue (BAT), which can increase calorie burn and potentially aid in weight management.</ul>
-     </div>
-</div>
-<div id="EXERCISINGPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Proper breathing during exercises</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/exercise.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videos/exercising.mp4" type="video/mp4">
-        </video>
-        <p>Proper breathing during exercises plays a pivotal role in athletic performance and overall health. Here's why it's so essential:</p>
-        <ul>Enhanced Oxygen Supply: Breathing correctly ensures that your muscles receive the optimal amount of oxygen, necessary for prolonged activity and stamina.</ul>
-        <ul>Improved Metabolic Efficiency: Efficient breathing patterns can enhance metabolic reactions, aiding in energy production and waste removal.</ul>
-        <ul>Increased Mental Focus: Coordinating breath with movements can sharpen concentration and enhance the mind-body connection.</ul>
-        <ul>Stabilization of Core: Breathing engages core muscles, supporting better posture and alignment during workouts.</ul>
-        <ul>Prevention of Fatigue: Inefficient breathing can lead to premature muscle fatigue and lactic acid build-up.</ul>
-        <ul>Optimal Cardiovascular Function: Proper breathing supports heart function, helping to distribute oxygen-rich blood throughout the body more efficiently.</ul>
-        <ul>Stress Reduction: Coherent breathing patterns can activate the parasympathetic nervous system, reducing exercise-induced stress and promoting recovery.</ul>
-     </div>
 </div>
 <div id="selectSongsList" class="breathingpages">
     <h4 class="volumeSettings">Choose a song</h4>

@@ -161,8 +161,6 @@ var audioHUM = document.getElementById("audioHUM"),
     muteHUM = document.getElementById("muteHUM"),
     ismuteHUM = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongHUM = document.getElementById("songHUM"),
     muteSongHUM = document.getElementById("songMuteHUM");
 // Get the volumeVbre bar element

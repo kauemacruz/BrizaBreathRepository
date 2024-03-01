@@ -134,8 +134,6 @@ var audioHATC = document.getElementById("audioHATC"),
     muteHATC = document.getElementById("muteHATC"),
     ismuteHATC = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongHATC = document.getElementById("songHATC"),
     muteSongHATC = document.getElementById("songMuteHATC");
 // Get the volumeVhatc bar element

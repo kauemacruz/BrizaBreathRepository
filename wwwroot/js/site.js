@@ -59,22 +59,6 @@ document.addEventListener("visibilitychange", function () {
         if (isHUMon) {
             pauseTimerHUM();
         }
-        if (isLUNGSon) {
-            isLUNGSon = false;
-            clearInterval(lungsInt);
-            document.getElementById('lungsStart').style.display = 'inline';
-            document.getElementById('lungsPause').style.display = 'none';
-            document.getElementById('lungsStop').disabled = false;
-            document.getElementById('lungsStop').style.color = '#990000';
-            document.getElementById('lungsSave').disabled = false;
-            document.getElementById('lungsSave').style.color = '#49B79D';
-            document.getElementById('lungsSettings').disabled = false;
-            document.getElementById('lungsSettings').style.color = '#49B79D';
-            if (!audioPlayerBRT.muted) {
-                audioPlayerBRT.pause();
-            }
-            document.getElementById('lungsDate').value = date;
-        }
         if (isNBon) {
             pauseTimerNB();
         }
@@ -153,22 +137,6 @@ window.addEventListener("beforeunload", function (event) {
     }
     if (isHUMon) {
         pauseTimerHUM();
-    }
-    if (isLUNGSon) {
-        isLUNGSon = false;
-        clearInterval(lungsInt);
-        document.getElementById('lungsStart').style.display = 'inline';
-        document.getElementById('lungsPause').style.display = 'none';
-        document.getElementById('lungsStop').disabled = false;
-        document.getElementById('lungsStop').style.color = '#990000';
-        document.getElementById('lungsSave').disabled = false;
-        document.getElementById('lungsSave').style.color = '#49B79D';
-        document.getElementById('lungsSettings').disabled = false;
-        document.getElementById('lungsSettings').style.color = '#49B79D';
-        if (!audioPlayerBRT.muted) {
-            audioPlayerBRT.pause();
-        }
-        document.getElementById('lungsDate').value = date;
     }
     if (isNBon) {
         pauseTimerNB();
@@ -287,6 +255,104 @@ $(function () {
         profilePage.classList.add('hidden');
     });
 });
+//slide show in explanation
+var slideIndex = 1;
+
+// Next/previous controls
+function plusSlides(n, className) {
+    showSlides(slideIndex += n, className);
+}
+function showSlides(n, className) {
+    var i;
+    var slides = document.getElementsByClassName(className);
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+}
+// Touch event handling for slide navigation
+function setupSwipeGesture(className) {
+    var slides = document.getElementsByClassName(className);
+    Array.from(slides).forEach(function (slide) {
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        function checkSwipeDirection() {
+            if (touchendX < touchstartX) plusSlides(1, className);
+            if (touchendX > touchstartX) plusSlides(-1, className);
+        }
+
+        slide.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        slide.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            checkSwipeDirection();
+        });
+    });
+}
+
+//BH Modal
+const modalBH = document.getElementById("myModalBH");
+const closeModalBHButton = document.getElementById("closeModalBH");
+var BHquestion = document.getElementById("BHquestion");
+
+function openModalBH() {
+    modalBH.style.display = "block";
+    showSlides(slideIndex, 'BHslides');
+    setupSwipeGesture('BHslides'); 
+}
+
+// Function to close the modalBH
+function closeModalBH() {
+    modalBH.style.display = "none";
+    slideIndex = 1;
+}
+
+// Event listener for closing the modalBH
+closeModalBHButton.addEventListener("click", closeModalBH);
+
+// Close the modalBH if the user clicks outside the modalBH content
+window.addEventListener("click", function (event) {
+    if (event.target === modalBH) {
+        closeModalBH();
+    }
+});
+BHquestion.onclick = function () {
+    openModalBH();
+}
+//PRANA Modal
+const modalPRANA = document.getElementById("myModalPRANA");
+const closeModalPRANAButton = document.getElementById("closeModalPRANA");
+var PRANAquestion = document.getElementById("PRANAquestion");
+
+function openModalPRANA() {
+    modalPRANA.style.display = "block";
+    showSlides(slideIndex, 'PRANAslides');
+}
+
+// Function to close the modalPRANA
+function closeModalPRANA() {
+    modalPRANA.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalPRANA
+closeModalPRANAButton.addEventListener("click", closeModalPRANA);
+
+// Close the modalPRANA if the user clicks outside the modalPRANA content
+window.addEventListener("click", function (event) {
+    if (event.target === modalPRANA) {
+        closeModalPRANA();
+    }
+});
+PRANAquestion.onclick = function () {
+    openModalPRANA();
+}
 //membership modal
 
 const modal = document.getElementById("myModal");
@@ -442,6 +508,7 @@ subscriptionBtn2.onclick = function () {
     else { console.log("Membership does no exist") }
     openModal3();
 }
+
 $(function () {
     $('#subscriptionForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -559,16 +626,6 @@ navResults.onclick = function () {
                     BRTupdateChart(BRTstartDate, BRTendDate);
                 }
                 BRTupdateOverview();
-                // Check if there is at least one non-empty and non-null BRTtimeString
-                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (LUNGSresultData) {
-                    var LUNGStimeString = LUNGSresultData.lungsResultScore;
-                    return LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null;
-                });
-
-                if (hasNonEmptyTimeStrings) {
-                    LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
-                }
-                LUNGSupdateOverview();
                 // Check if there is at least one non-empty and non-null YBtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YBresultData) {
                     var YBtimeString = YBresultData.YBTotalTime;
@@ -802,16 +859,6 @@ navResults2.onclick = function () {
                 }
 
                 BRTupdateOverview();
-                // Check if there is at least one non-empty and non-null lungstimeString
-                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (LUNGSresultData) {
-                    var LUNGStimeString = LUNGSresultData.lungsResultScore;
-                    return LUNGStimeString !== undefined && LUNGStimeString !== '' && LUNGStimeString !== null;
-                });
-
-                if (hasNonEmptyTimeStrings) {
-                    LUNGSupdateChart(LUNGSstartDate, LUNGSendDate);
-                }
-                LUNGSupdateOverview();
                 // Check if there is at least one non-empty and non-null YBtimeString
                 var hasNonEmptyTimeStrings = fetchedDataArray.some(function (YBresultData) {
                     var YBtimeString = YBresultData.YBTotalTime;
@@ -1324,69 +1371,10 @@ backAHATset.onclick = function () {
     backAHAT.style.display = "block";
     backAHATset.style.display = "none";
 }
-lungsLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(homePage, lungsPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        audioObjects.bell.load();
-        audioElements.forEach((audio) => {
-            audio.load();
-        });
-        backLungs.style.display = "block";
-    } else {
-        openModal();
-    }
-}
 backLungs.onclick = function () {
-    isLUNGSon = false;
-    openPage(lungsPage, homePage, 'slideRight');
+    openPage(lungsPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearInterval(lungsInt);
-    [lungsSeconds, lungsMinutes] = [0, 0];
-    lungsTimerRef.value = '00 : 00';
-    document.getElementById('lungsStart').style.display = 'inline';
-    document.getElementById('lungsPause').style.display = 'none';
-    document.getElementById('lungsStop').disabled = true;
-    document.getElementById('lungsStop').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('lungsSave').disabled = true;
-    document.getElementById('lungsSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('lungsResultSaved').innerHTML = "";
-    document.getElementById('lungsSettings').disabled = false;
-    document.getElementById('lungsSettings').style.color = '#49B79D';
-    if (!audioPlayerBRT.muted){
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    lungsIsOn = false;
     backLungs.style.display = "none";
-}
-lungsSettings.onclick = function () {
-    openPage(lungsPage, lungsSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backLungs.style.display = "none";
-    backLungsset.style.display = "block";
-}
-backLungsset.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(lungsSettingsPage, lungsPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backLungs.style.display = "block";
-    backLungsset.style.display = "none";
-}
-mobilityLink.onclick = function () {
-    openPage(homePage, mobilityPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backMobility.style.display = "block";
-}
-backMobility.onclick = function () {
-    openPage(mobilityPage, homePage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backMobility.style.display = "none";
 }
 breathHoldsLink.onclick = function () {
     openPage(homePage, BHPage, 'slideLeft');
@@ -1415,16 +1403,6 @@ backPRANA.onclick = function () {
     openPage(PRANAPage, homePage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backPRANA.style.display = "none";
-}
-extrasLink.onclick = function () {
-    openPage(homePage, EXTRAPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "block";
-}
-backEXTRA.onclick = function () {
-    openPage(EXTRAPage, homePage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "none";
 }
 APLink.onclick = function () {
     openPage(BHPage, APPage, 'slideLeft');
@@ -1767,22 +1745,7 @@ backSBSet.onclick = function () {
     backSB.style.display = "block";
     backSBSet.style.display = "none";
 }
-NKLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, NKPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backNK.style.display = "block";
-        backEXTRA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backNK.onclick = function () {
-    openPage(NKPage, EXTRAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "block";
-    backNK.style.display = "none";
-}
+
 RBLink.onclick = function () {
     if (isUserActiveSubscriber) {
         openPage(PRANAPage, RBPage, 'slideLeft');
@@ -1816,158 +1779,6 @@ backRBSet.onclick = function () {
     selectSongsList.style.display = "none";
     backRB.style.display = "block";
     backRBSet.style.display = "none";
-}
-MEDLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, MEDPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        meditationList[0].load();
-        meditationList[1].load();
-        backMED.style.display = "block";
-        backEXTRA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backMED.onclick = function () {
-    openPage(MEDPage, EXTRAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    if (MED1isON) {
-        resetMED1();
-    }
-    if (MED2isON) {
-        resetMED2();
-    }
-    backEXTRA.style.display = "block";
-    backMED.style.display = "none";
-}
-SLEEPLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, SLEEPPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backSLEEP.style.display = "block";
-        backEXTRA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backSLEEP.onclick = function () {
-    openPage(SLEEPPage, EXTRAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "block";
-    backSLEEP.style.display = "none";
-}
-HYDLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, HYDPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backHYD.style.display = "block";
-        backEXTRA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backHYD.onclick = function () {
-    openPage(HYDPage, EXTRAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "block";
-    backHYD.style.display = "none";
-}
-SHOTLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, SHOTPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backSHOT.style.display = "block";
-        backEXTRA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backSHOT.onclick = function () {
-    openPage(SHOTPage, EXTRAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "block";
-    backSHOT.style.display = "none";
-}
-ILLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, ILPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backIL.style.display = "block";
-        backEXTRA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backIL.onclick = function () {
-    openPage(ILPage, EXTRAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "block";
-    backIL.style.display = "none";
-}
-BEETLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, BEETPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backBEET.style.display = "block";
-        backEXTRA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backBEET.onclick = function () {
-    openPage(BEETPage, EXTRAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "block";
-    backBEET.style.display = "none";
-}
-DIETLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, DIETPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backDIET.style.display = "block";
-        backEXTRA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backDIET.onclick = function () {
-    openPage(DIETPage, EXTRAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "block";
-    backDIET.style.display = "none";
-}
-ICELink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, ICEPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backICE.style.display = "block";
-        backEXTRA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backICE.onclick = function () {
-    openPage(ICEPage, EXTRAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "block";
-    backICE.style.display = "none";
-}
-EXERCISINGLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(EXTRAPage, EXERCISINGPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backEXERCISING.style.display = "block";
-        backEXTRA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backEXERCISING.onclick = function () {
-    openPage(EXERCISINGPage, EXTRAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backEXTRA.style.display = "block";
-    backEXERCISING.style.display = "none";
 }
 HUMLink.onclick = function () {
     if (isUserActiveSubscriber) {
@@ -2038,13 +1849,6 @@ backBBresults.onclick = function () {
     BBresultDateHeader.innerHTML = '';
     BBresultSessions.innerHTML = '';
     backBBresults.style.display = "none";
-}
-backLUNGSresults.onclick = function () {
-    openPage(LUNGSresultPage, resultsPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    LUNGSresultDateHeader.innerHTML = '';
-    LUNGSresultSessions.innerHTML = '';
-    backLUNGSresults.style.display = "none";
 }
 backAPresults.onclick = function () {
     openPage(APresultPage, resultsPage, 'slideRight');

@@ -246,8 +246,6 @@ var BaudioWH = document.getElementById("BaudioWH"),
     BmuteWH = document.getElementById("BmuteWH"),
     BismuteWH = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongWH = document.getElementById("songWH"),
     muteSongWH = document.getElementById("songMuteWH");
 // Get the volumeVWH bar element

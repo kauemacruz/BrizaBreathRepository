@@ -222,8 +222,6 @@ var audioO2 = document.getElementById("audioO2"),
     muteO2 = document.getElementById("muteO2"),
     ismuteO2 = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongO2 = document.getElementById("songO2"),
     muteSongO2 = document.getElementById("songMuteO2");
 

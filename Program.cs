@@ -5,7 +5,10 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using BrizaBreath.Services;
 using Stripe;
 using Microsoft.Extensions.Options;
-
+using Azure.Storage.Blobs;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,8 +45,13 @@ builder.Services.AddMvc().AddRazorPagesOptions(options => options.Conventions.Ad
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
+builder.Services.AddSingleton<BlobStorageService>();
+
 var app = builder.Build();
 
+// New code to invoke BlobStorageService
+var blobService = app.Services.GetRequiredService<BlobStorageService>();
+await blobService.SetCacheControlOnBlobsAsync();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -93,4 +101,49 @@ public class CustomIdentityErrorDescriber : IdentityErrorDescriber
     }
 
     // Override other methods as needed
+}
+public class BlobStorageService
+{
+    private readonly IConfiguration _configuration;
+
+    public BlobStorageService(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
+
+    public async Task SetCacheControlOnBlobsAsync()
+    {
+        var connectionString = _configuration.GetConnectionString("AzureBlobStorage");
+        var containers = new List<string> { "images", "videos", "videospt", "sounds", "audio" };
+        var cacheControlValue = "public, max-age=31536000"; // 1 year cache
+
+        var blobServiceClient = new BlobServiceClient(connectionString);
+
+        foreach (var containerName in containers)
+        {
+            var blobContainerClient = blobServiceClient.GetBlobContainerClient(containerName);
+
+            await foreach (var blobItem in blobContainerClient.GetBlobsAsync())
+            {
+                var blobClient = blobContainerClient.GetBlobClient(blobItem.Name);
+
+                // Check if the blob is an SVG file
+                if (blobItem.Name.EndsWith(".svg", StringComparison.OrdinalIgnoreCase))
+                {
+                    await blobClient.SetHttpHeadersAsync(new Azure.Storage.Blobs.Models.BlobHttpHeaders
+                    {
+                        CacheControl = cacheControlValue,
+                        ContentType = "image/svg+xml" // Ensure correct MIME type for SVG files
+                    });
+                }
+                else
+                {
+                    await blobClient.SetHttpHeadersAsync(new Azure.Storage.Blobs.Models.BlobHttpHeaders
+                    {
+                        CacheControl = cacheControlValue
+                    });
+                }
+            }
+        }
+    }
 }

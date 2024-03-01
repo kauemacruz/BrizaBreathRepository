@@ -163,7 +163,6 @@ document.getElementById('BBSave').style.color = 'rgb(177, 177, 177)';
 var audioBB = document.getElementById("audioBB"),
     muteBB = document.getElementById("muteBB"),
     ismuteBB = false;
-audioPlayerBRT.loop = true;
 var audioSongBB = document.getElementById("songBB"),
     muteSongBB = document.getElementById("songMuteBB");
 // Get the volumeVbre bar element

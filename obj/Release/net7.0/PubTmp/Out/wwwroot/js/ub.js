@@ -162,8 +162,6 @@ var audioUB = document.getElementById("audioUB"),
     muteUB = document.getElementById("muteUB"),
     ismuteUB = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongUB = document.getElementById("songUB"),
     muteSongUB = document.getElementById("songMuteUB");
 // Get the volumeVUB bar element

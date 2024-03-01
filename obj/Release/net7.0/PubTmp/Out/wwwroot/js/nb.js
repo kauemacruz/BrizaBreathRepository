@@ -162,8 +162,6 @@ var audioNB = document.getElementById("audioNB"),
     muteNB = document.getElementById("muteNB"),
     ismuteNB = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongNB = document.getElementById("songNB"),
     muteSongNB = document.getElementById("songMuteNB");
 // Get the volumeVNB bar element

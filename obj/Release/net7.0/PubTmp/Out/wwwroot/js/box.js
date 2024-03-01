@@ -160,8 +160,6 @@ var audioBOX = document.getElementById("audioBOX"),
     muteBOX = document.getElementById("muteBOX"),
     ismuteBOX = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongBOX = document.getElementById("songBOX"),
     muteSongBOX = document.getElementById("songMuteBOX");
 // Get the volumeVBOX bar element

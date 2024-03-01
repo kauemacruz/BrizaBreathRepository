@@ -7,13 +7,12 @@
     <link rel="manifest" href="~/manifest.json" />
     <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
     <title>@ViewData["Title"] Briza Breath & Performance</title>
-    <link rel="preconnect" href='https://fonts.googleapis.com/css?family=Playfair+Display' type='text/css'>
     <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="~/dist/css/site.min.css">
     <noscript>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     </noscript>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BrizaBreath.styles.css" asp-append-version="true" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Specify the service worker registration dynamically based on the current URL -->
@@ -64,35 +63,10 @@
             @RenderBody()
         </main>
     </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="~/js/global.js" asp-append-version="true"></script>
-    <script defer src="~/js/results.js" asp-append-version="true"></script>
-    <script defer src="~/js/brt.js" asp-append-version="true"></script>
-    <script defer src="~/js/yogic.js" asp-append-version="true"></script>
-    <script defer src="~/js/bre.js" asp-append-version="true"></script>
-    <script defer src="~/js/brw.js" asp-append-version="true"></script>
-    <script defer src="~/js/hum.js" asp-append-version="true"></script>
-    <script defer src="~/js/bb.js" asp-append-version="true"></script>
-    <script defer src="~/js/hat.js" asp-append-version="true"></script>
-    <script defer src="~/js/hatc.js" asp-append-version="true"></script>
-    <script defer src="~/js/ahat.js" asp-append-version="true"></script>
-    <script defer src="~/js/lungs.js" asp-append-version="true"></script>
-    <script defer src="~/js/apnea.js" asp-append-version="true"></script>
-    <script defer src="~/js/o2.js" asp-append-version="true"></script>
-    <script defer src="~/js/co2.js" asp-append-version="true"></script>
-    <script defer src="~/js/wh.js" asp-append-version="true"></script>
-    <script defer src="~/js/kb.js" asp-append-version="true"></script>
-    <script defer src="~/js/ct.js" asp-append-version="true"></script>
-    <script defer src="~/js/ub.js" asp-append-version="true"></script>
-    <script defer src="~/js/box.js" asp-append-version="true"></script>
-    <script defer src="~/js/nb.js" asp-append-version="true"></script>
-    <script defer src="~/js/cb.js" asp-append-version="true"></script>
-    <script defer src="~/js/sb.js" asp-append-version="true"></script>
-    <script defer src="~/js/rb.js" asp-append-version="true"></script>
-    <script defer src="~/js/extra.js" asp-append-version="true"></script>
-    <script defer src="~/js/site.js" asp-append-version="true"></script>
+    <script defer src="~/dist/js/site.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

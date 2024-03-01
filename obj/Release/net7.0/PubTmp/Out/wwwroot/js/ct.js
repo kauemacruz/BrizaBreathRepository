@@ -158,8 +158,6 @@ var audioCT = document.getElementById("audioCT"),
     muteCT = document.getElementById("muteCT"),
     ismuteCT = false;
 
-audioPlayerBRT.loop = true;
-
 var audioSongCT = document.getElementById("songCT"),
     muteSongCT = document.getElementById("songMuteCT");
 

@@ -27,7 +27,6 @@
         <ul>Treinamento de expansão pulmonar</ul>
         <ul>Programa Briza</ul>
         <ul>Dicas de bem-estar</ul>
-        <ul>Mobilidade & Alongamento</ul>
         <ul>Técnicas de Paranayama</ul>
         <ul>E muito mais...</ul>
         <button type="button" id="subscriptionBtn2">Saiba Mais</button>
@@ -53,7 +52,7 @@
 <div id="myModal2" class="modal">
     <div class="modal-content">
         <span class="close" id="closeModal2">&times;</span>
-        <p>Sua assinatura começa assim que você efetua o pagamento. A cobrança automática mensal/anual será realizada no último dia do período de faturamento atual. Renovaremos sua assinatura para você (a menos que tenha cancelado sua assinatura na página de perfil 24 horas antes do final do ciclo de faturamento). Uma vez que se torne um assinante, você pode gerenciar sua assinatura.</p>
+        <p>Sua assinatura começa assim que você efetua o pagamento. A cobrança automática mensal/anual será realizada no último dia do período de faturamento atual. Renovaremos sua assinatura para você (a menos que tenha cancelado sua assinatura na página de perfil 24 horas antes do final do ciclo de faturamento)</p>
         <form method="post" id="manageSubscriptionForm">
         <input type="submit" value="Gerenciar Assinatura" id="subscriptionBtn4" class="subscriptionBtn2" readonly />
         </form>
@@ -85,7 +84,6 @@
         <a class="goback" id="backHATresults">&#8249;</a> 
         <a class="goback" id="backHATCresults">&#8249;</a>
         <a class="goback" id="backAHATresults">&#8249;</a>
-        <a class="goback" id="backLUNGSresults">&#8249;</a>
         <a class="goback" id="backProgram">&#8249;</a>
         <a class="goback" id="backNasal">&#8249;</a>
         <a class="goback" id="backUnblock">&#8249;</a>
@@ -108,13 +106,10 @@
         <a class="goback" id="backHATC">&#8249;</a>
         <a class="goback" id="backAHATset">&#8249;</a>
         <a class="goback" id="backAHAT">&#8249;</a>
-        <a class="goback" id="backLungsset">&#8249;</a>
         <a class="goback" id="backLungs">&#8249;</a>
-        <a class="goback" id="backMobility">&#8249;</a>
         <a class="goback" id="backBH">&#8249;</a>
         <a class="goback" id="backBH">&#8249;</a>
         <a class="goback" id="backPRANA">&#8249;</a>
-        <a class="goback" id="backEXTRA">&#8249;</a>
         <a class="goback" id="backAPSet">&#8249;</a>
         <a class="goback" id="backAP">&#8249;</a>
         <a class="goback" id="backO2Set">&#8249;</a>
@@ -159,14 +154,10 @@
             <a id="brtLink"><img class="BRTtile__img" src="https://brizastorage.blob.core.windows.net/images/brtPT.svg" /></a>
         </div>
         <div class="row g-2">
-            <div class="col"><a id="programLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/programabriza.svg" /></a></div>
+            <div class="col"><a id="programLink"><img class="homepageimgs2" src="https://brizastorage.blob.core.windows.net/images/programabriza.svg" /></a></div>
+            <div class="w-100"></div>
             <div class="col"><a id="breathHoldsLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/retencao.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="lungsLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar.svg" /></a></div>
             <div class="col"><a id="pranayamaLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/pranayama.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="mobilityLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/mobilidade.svg" /></a></div>
-            <div class="col"><a id="extrasLink"><img class="homepageimgs" src="https://brizastorage.blob.core.windows.net/images/bemestar.svg" /></a></div>
         </div>
     </div>
     <footer id="homeFooter">
@@ -375,30 +366,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header">Teste de Expansão Pulmonar &#8595;</h2>
-            <div class="accordion-content">
-                <div class="chart-container" id="LUNGSContainer">
-                    <canvas id="LUNGSchart"></canvas>
-                </div>
-                <div class="LUNGSInfo">
-                    <h4><b>Sumário</b></h4>
-                    <div class="LUNGSinfoOverview">
-                        <div>Teste mais recente</div>
-                        <input type="text" id="LUNGSlatestRound" readonly>     
-                    </div>
-                    <div class="LUNGSinfoOverview">
-                        <div>Teste mais longo</div>
-                        <input type="text" id="LUNGSlongestRound" readonly>     
-                    </div>
-                    <div class="LUNGSinfoOverview"> 
-                        <div>Núumero de testes</div>
-                        <input type="text" id="LUNGSnumberOfSessions" readonly>     
-                    </div>
-                    <div id="LUNGSinfoOverview"></div>
                 </div>
             </div>
         </div>
@@ -741,10 +708,6 @@
     <div id="BRTresultDateHeader"></div>
     <div id="BRTresultSessions"></div>
 </div>
-<div id="LUNGSresultPage" class="hidden">
-    <div id="LUNGSresultDateHeader"></div>
-    <div id="LUNGSresultSessions"></div>
-</div>
 <div id="YBresultPage" class="hidden">
     <div id="YBresultDateHeader"></div>
     <div id="YBresultSessions"></div>
@@ -903,9 +866,6 @@
 <div id="nasalBreathingPage" class="hidden">
     <div class="breathingpages">
         <h1>Respiração Nasal</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/nasal.mp4" type="video/mp4">
-        </video>
         <p>
             A respiração nasal é uma forma natural e benéfica de respirar que pode apoiar a saúde e o bem-estar em geral. É importante respirar pelo nariz sempre que possível, especialmente durante o exercício, o sono e períodos de estresse ou ansiedade.
             A respiração pelo nariz oferece vários benefícios para o corpo e a mente, pois é a forma natural e pretendida para os seres humanos respirarem. Aqui estão alguns dos benefícios da respiração nasal:
@@ -922,9 +882,6 @@
 <div id="noseUnblockPage" class="hidden">
     <div class="breathingpages">
         <h1>Desobstrução Nasal</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/unblock.mp4" type="video/mp4">
-        </video>
         <p>
             Aprenda esta técnica simples que ajudará você a respirar pelo nariz instantaneamente.
             Isso é útil se você estiver com o nariz entupido devido a alergias, resfriados ou qualquer outro motivo.
@@ -951,9 +908,6 @@
 <div id="brtPage" class="hidden">
     <div class="breathingpages">
         <h1>Teste de Retenção Briza</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/brt.mp4" type="video/mp4">
-        </video>
         <p>A pontuação "TRB", que significa Teste de Retenção Briza, é uma medida do tempo de retenção Briza e pode fornecer informações sobre a eficiência respiratória de uma pessoa e sua tolerância ao dióxido de carbono (CO2).</p>
         <form method="post" id="brtForm">
             <div class="settingButtons">
@@ -988,9 +942,6 @@
 <div id="diaphragmPage" class="hidden">
     <div class="breathingpages">
         <h1>Respiração Diafragmática</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/diaphragm.mp4" type="video/mp4">
-        </video>
         <p>
             Usar o diafragma para respirar tem vários benefícios. Primeiro, permite uma troca mais eficiente de oxigênio e dióxido de carbono, o que pode ajudar a reduzir sentimentos de fadiga e melhorar os níveis de energia geral.
             Além disso, a respiração diafragmática pode ajudar a reduzir o estresse e a ansiedade, ativando a resposta de relaxamento do corpo.
@@ -1027,9 +978,6 @@
 <div id="YBPage" class="hidden">
     <div class="breathingpages">
         <h1>Respiração Yogi</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/yb.mp4" type="video/mp4">
-        </video>
         <p>Encontre uma posição confortável sentado ou deitado e siga a nossa sessão de respiração guiada acima para acalmar sua mente, corpo e espírito</p>
         <button id="YBBTN" type="button" class="guidedBTN">Guided Technique</button>
         <div id="YBmodal" class="modal">
@@ -1175,9 +1123,6 @@
 <div id="BREPage" class="hidden">
     <div class="breathingpages">
         <h1>Exercício de Recuperação da Respiração</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/bre.mp4" type="video/mp4">
-        </video>
         <p>Exercício simples que pode ser usado para recuperar sua respiração após uma atividade física ou simplesmente como um exercício de respiração para melhorar seu TRB</p>
         <button id="BREBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="BREmodal" class="modal">
@@ -1341,9 +1286,6 @@
 <div id="BRWPage" class="hidden">
     <div class="breathingpages">
         <h1>Exercício de Recuperação Caminhando</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/brw.mp4" type="video/mp4">
-        </video>
         <p>Exercício simples que pode ser usado para recuperar sua respiração após uma atividade física ou simplesmente como um exercício de respiração para melhorar seu TRB</p>
         <button id="BRWBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="BRWmodal" class="modal">
@@ -1508,9 +1450,6 @@
 <div id="HUMPage" class="hidden">
     <div class="breathingpages">
         <h1>Zumbido e Óxido Nítrico</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/hummingPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/hum.mp4" type="video/mp4">
-        </video>
         <p>Encontre uma posição confortável para sentar ou deitar, siga nossa sessão de respiração guiada abaixo e produza 15 vezes mais óxido nítrico para melhorar sua saúde geral</p>
         <button id="HUMBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="HUMmodal" class="modal">
@@ -1660,9 +1599,6 @@
 <div id="BBPage" class="hidden">
     <div class="breathingpages">
         <h1>Respiração Briza</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/bb.mp4" type="video/mp4">
-        </video>
         <p>Aprenda a respirar tão suavemente que, se tivesse uma pena sob o nariz, ela não se moveria</p>
         <button id="BBBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="BBmodal" class="modal">
@@ -1825,9 +1761,6 @@
 <div id="HATPage" class="hidden">
     <div class="breathingpages">
         <h1>Treinamento em Alta Altitude</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/hatPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/hat.mp4" type="video/mp4">
-        </video>
         <p>Ambientes de alta altitude podem ajudar a melhorar a aptidão cardiovascular, fortalecer músculos, estimular a produção de glóbulos vermelhos e promover a produção de certas células imunológicas</p>
         <button id="HATBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="HATmodal" class="modal">
@@ -1938,9 +1871,6 @@
 <div id="HATCPage" class="hidden">
     <div class="breathingpages">
         <h1>Treinamento em Alta Altitude Pedalando/Correndo</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/hatcyclingPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/hatc.mp4" type="video/mp4">
-        </video>
         <p>Eleve seu treinamento em alta altitude a outro nível</p>
         <button id="HATCBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="HATCmodal" class="modal">
@@ -2050,9 +1980,6 @@
 <div id="AHATPage" class="hidden">
     <div class="breathingpages">
         <h1>Treinamento Avançado de Alta Altitude</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/advancedhatPT.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/ahat.mp4" type="video/mp4">
-        </video>
         <p>Eleve o seu treinamento em alta altitude a um nível superior</p>
         <button id="AHATBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="AHATmodal" class="modal">
@@ -2116,88 +2043,13 @@
         <ul>Pressione "Parar" quando terminar e salve seus resultados</ul>
     </div>
 </div>
-<div id="lungsSettingsPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Configurações de Expansão Pulmonar</h1>
-        <div class="volume-bar">
-            <h4 class="volumeSettings">Reproduzir Música?</h4>
-            <div class="audioButtons">
-                <div id="lungsaudio" class="audio"><img loading="lazy" src="https://brizastorage.blob.core.windows.net/images/speaker.png"></div>
-                <div id="lungsmute" class="mute"><img loading="lazy" src="https://brizastorage.blob.core.windows.net/images/mute.png"></div>
-            </div>
-            <input type="range" id="volumeBarLungs" min="0" max="1" step="1" value="1">
-        </div>
-        <hr />
-    </div>
-</div>
 <div id="lungsPage" class="hidden">
     <div class="breathingpages">
         <h1>Treinamento de Expansão Pulmonar</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/expansaopulmonar.svg" playsinline preload="none">
+        <video controls poster="https://brizastorage.blob.core.windows.net/images/expansaopulmonar.svg" playsinline>
             <source src="https://brizastorage.blob.core.windows.net/videospt/lungs.mp4" type="video/mp4">
         </video>
         <p>Siga este vídeo de 15 minutos pelo menos duas vezes por semana e aprenda como expandir seus pulmões, criando mais capacidade volumétrica e aproveitando ao máximo seu sistema respiratório.</p>
-        <form method="post" id="lungsForm">
-            <div class="settingButtons">
-                <button id="lungsSettings" class="audioSet" type="button">Configurações<img loading="lazy" src="https://brizastorage.blob.core.windows.net/images/settings.png"></button>
-            </div>
-            <div id="lungsResultSaved" class="resultSaved"></div>
-            <div class="timerDisplayBRT">
-                <input id="timerDisplayLungs" asp-for="Result.lungsResultScore" readonly value="00 : 00" />
-            </div>
-            <div>
-                <input id="lungsDate" type="text" type="hidden" asp-for="Result.lungsResultDate" />
-            </div>
-            <div class="BrtBtns">
-                <button type="button" class="pauseBtnBRT" id="lungsPause">Pausar</button>
-                <button type="button" class="startBtnBRT" id="lungsStart">Iniciar</button>
-                <button type="button" class="stopBtnBRT" id="lungsStop">Reiniciar</button>
-            </div>
-            <div>
-                <input id="LUNGSuserInput" type="hidden" asp-for="Result.UserId" class="form-control" value="@Model.ResultUser" />
-            </div>
-            <div class="saveBtnBRT">
-                <input type="submit" value="Salvar" id="lungsSave" />
-            </div>
-        </form>
-        <p>Para acompanhar seu progresso na expansão pulmonar, siga as instruções acima e salve sua pontuação:</p>
-        <ul>1 - Inspire o máximo de ar possível em uma única respiração</ul>
-        <ul>2 - Pressione "Iniciar" e expire o mais devagar e o mais longamente possível até que os pulmões estejam vazios</ul>
-        <ul>3 - Pressione "Pausar", volte a respirar normalmente e salve seu resultado</ul>
-        <p class="atention">NÃO ultrapasse seus limites. Se você tiver alguma condição de saúde grave, consulte um médico antes de praticar qualquer um dos exercícios do Aplicativo Briza Breath & Performance para garantir que sejam seguros para você.</p>
-    </div>
-</div>
-<div id="mobilityPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Alongamento e Mobilidade</h1>
-    
-        <h2>Lombar, Quadris e Coxas</h2>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/lowerback-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/lower.mp4" type="video/mp4">
-        </video>
-        <p>Siga esta sessão de 45 minutos para ganhar mobilidade nos quadris e aliviar a dor lombar. Esta sessão ajuda com ciática, síndrome do piriforme, quadril e coxas tensas, e muito mais.</p>
-    
-        <h2>Ombros, Pescoço, Cotovelos e Punhos</h2>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/shoulders-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/shoulders.mp4" type="video/mp4">
-        </video>
-        <p>Siga esta sessão de 30 minutos para ganhar mobilidade no pescoço e ombros e aliviar áreas doloridas da parte superior do corpo. Esta sessão ajuda com epicondilite lateral (cotovelo de tenista), síndrome do túnel do carpo, lesões no manguito rotador, pescoço rígido, lesões no músculo romboide e muito mais.</p>
-    
-        <h2>Tornozelos e Joelhos</h2>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/ankles-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/ankles.mp4" type="video/mp4">
-        </video>
-        <p>Siga esta sessão de 30 minutos para ganhar mobilidade nos tornozelos e aliviar desconfortos nos joelhos e tornozelos. Esta sessão ajuda com pés planos, canelite, desconforto nos joelhos, lesões em ligamentos ou tendões e muito mais.</p>
-    
-        <p>Exercícios de alongamento e mobilidade têm muitos benefícios para o corpo e a mente. Alguns dos principais benefícios incluem:</p>
-    
-        <ul>Aumento da flexibilidade e amplitude de movimento, o que pode melhorar o desempenho atlético, permitindo que você se mova com mais eficiência e eficácia.</ul>
-        <ul>Melhoria do fluxo sanguíneo para os músculos, o que pode aumentar a entrega de nutrientes e remoção de resíduos do corpo.</ul>
-        <ul>Alongamento e relaxamento dos músculos, o que pode melhorar sua capacidade de mover as articulações em toda a amplitude de movimento.</ul>
-        <ul>Melhoria da flexibilidade e força do corpo, o que pode reduzir o risco de distensões musculares, entorses e outras lesões.</ul>
-        <ul>Músculos tensos podem contribuir para uma má postura, o que pode levar a dores nas costas e outros problemas musculoesqueléticos. O alongamento pode ajudar a melhorar sua postura e reduzir esses problemas.</ul>
-        <ul>Após o exercício, o alongamento pode ajudar a reduzir a dor e a rigidez muscular, aumentando o fluxo sanguíneo para os músculos e promovendo sua recuperação.</ul>
-        <ul>Redução da tensão nos músculos e promoção do relaxamento, o que pode reduzir os níveis de estresse e melhorar o bem-estar geral.</ul>
     </div>
 </div>
 <div id="BHPage" class="hidden">
@@ -2252,29 +2104,6 @@
         <p class="atention">NÃO ultrapasse seus limites. Se você tiver alguma condição de saúde grave, consulte um médico antes de praticar qualquer um dos exercícios do Aplicativo Briza Breath & Performance para garantir que sejam seguros para você.</p>
     </div>
 </div>
-<div id="EXTRAPage" class="hidden">
-    <div class="breathingpages BHbreathing">
-        <h1>Bem-estar - Dicas para Melhor Desempenho e Saúde</h1>
-    </div>
-    <div class="BHGrid welnessGrid">
-        <div class="row g-2">
-            <div class="col"><a id="MEDLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/meditation-pt.svg" /></a></div>
-            <div class="col"><a id="SLEEPLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/sleep-pt.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="ICELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/cold-pt.svg" /></a></div>
-            <div class="col"><a id="EXERCISINGLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/exercise-pt.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="HYDLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hydration-pt.svg" /></a></div>
-            <div class="col"><a id="SHOTLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/shot-pt.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="ILLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/iron-pt.svg" /></a></div>
-            <div class="col"><a id="BEETLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/beet-pt.svg" /></a></div>
-            <div class="w-100"></div>
-            <div class="col"><a id="DIETLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diet-pt.svg" /></a></div>
-            <div class="col"><a id="NKLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nauli-pt.svg"/></a></div>
-        </div>
-    </div>
-</div>
 <div id="APSettingsPage" class="hidden">
     <div class="breathingpages">
         <h1>Apnea Configurações</h1>
@@ -2301,9 +2130,6 @@
 <div id="APPage" class="hidden">
    <div class="breathingpages">
         <h1>Treinamento de Apneia</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/treinodeapneia.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/ap.mp4" type="video/mp4">
-        </video> 
         <p>Encontre uma posição confortável sentado ou deitado e siga nossa sessão de respiração guiada abaixo</p>
         <button id="APBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="APmodal" class="modal">
@@ -2436,9 +2262,6 @@
 <div id="O2Page" class="hidden">
     <div class="breathingpages">
         <h1>Tabelas CO2 e O2</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/tabelas.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/o2.mp4" type="video/mp4">
-        </video>
         <p>Escolha a tabela de CO2 ou de O2, ajuste-a ao seu próprio nível e siga a sessão guiada</p>
         <button id="O2BTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="O2modal" class="modal">
@@ -3011,9 +2834,6 @@
 <div id="WHPage" class="hidden">
     <div class="breathingpages">
         <h1>Hiperventilação Guiada</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/guiadahiper.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/wh.mp4" type="video/mp4">
-        </video>  
         <p>Escolha o número e a velocidade das respirações para se preparar para a apneia nas configurações, encontre uma posição confortável sentado ou deitado e siga a nossa sessão de respiração guiada abaixo</p>
         <button id="WHBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="WHmodal" class="modal">
@@ -3105,10 +2925,7 @@
 </div>
 <div id="CTPage" class="hidden">
     <div class="breathingpages">
-        <h1>Treinamento de Tolerância ao CO2</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/tolerancia.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/ct.mp4" type="video/mp4">
-        </video>        
+        <h1>Treinamento de Tolerância ao CO2</h1>      
         <p>Encontre uma posição confortável sentado ou deitado e siga nossa sessão de respiração guiada abaixo. Pressione "Reiniciar" quando não puder mais lidar com a técnica; isso o levará de volta ao início. Faça essa técnica por 5 a 10 minutos.</p>
         <button id="CTBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="CTmodal" class="modal">
@@ -3235,10 +3052,7 @@
 </div>
 <div id="UBPage" class="hidden">
     <div class="breathingpages">
-        <h1>Respiração Ujjayi</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/ujjayi-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/ub.mp4" type="video/mp4">
-        </video>        
+        <h1>Respiração Ujjayi</h1>     
         <p>Encontre uma posição confortável sentado ou deitado e siga a nossa sessão de respiração guiada abaixo</p>
         <button id="UBBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="UBmodal" class="modal">
@@ -3426,9 +3240,6 @@
 <div id="KBPage" class="hidden">
     <div class="breathingpages">
         <h1>Kapalabhati</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/kapalabhati-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/kb.mp4" type="video/mp4">
-        </video>
         <p>Escolha o número de respirações para se preparar para a apneia nas configurações, encontre uma posição confortável sentado e siga a nossa sessão de respiração guiada abaixo</p>
         <button id="KBBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="KBmodal" class="modal">
@@ -3529,9 +3340,6 @@
 <div id="BOXPage" class="hidden">
     <div class="breathingpages">
         <h1>Sama Vritti - Respiração da Caixa</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/boxbreathing-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/box.mp4" type="video/mp4">
-        </video>
         <p>Escolha um tempo apropriado para sua sessão, encontre uma posição confortável sentado ou deitado e siga nossa sessão de respiração guiada acima para acalmar sua mente, corpo e espírito.</p>
         <button id="BOXBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="BOXmodal" class="modal">
@@ -3676,9 +3484,6 @@
 <div id="NBPage" class="hidden">
     <div class="breathingpages">
         <h1>Nadi Shodhana</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/nadishodhana-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/nb.mp4" type="video/mp4">
-        </video>
         <p>Escolha um intervalo apropriado para a sua sessão, encontre uma posição confortável sentado e siga a nossa sessão de respiração guiada abaixo para equilibrar sua mente, corpo e espírito.</p>
         <button id="NBBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="NBmodal" class="modal">
@@ -3823,9 +3628,6 @@
 <div id="CBPage" class="hidden">
    <div class="breathingpages">
         <h1>Respiração Coerente</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/coherent-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/cb.mp4" type="video/mp4">
-        </video>
         <p>Encontre uma posição confortável sentado ou deitado, siga a nossa sessão de respiração guiada abaixo e aprenda a relaxar sua mente e corpo em poucos minutos.</p>
         <button id="CBBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="CBmodal" class="modal">
@@ -3938,9 +3740,6 @@
 <div id="SBPage" class="hidden">
     <div class="breathingpages">
         <h1>Respiração Sitali</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/sitali-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/sb.mp4" type="video/mp4">
-        </video> 
         <p>Encontre uma posição confortável sentado ou deitado e siga a nossa sessão de respiração guiada abaixo</p>
         <button id="SBBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="SBmodal" class="modal">
@@ -4049,29 +3848,6 @@
         regulação da temperatura corporal, acalmar o sistema nervoso, melhorar a digestão e reduzir a acidez no corpo, e reduzir a inflamação no corpo. É importante observar que a Respiração Sitali deve ser evitada se você tiver uma condição respiratória que dificulte a respiração pela boca, como asma ou bronquite. Além disso, se você mora em um ambiente poluído ou tem alergias, é importante praticar a Respiração Sitali em um ambiente com ar limpo e fresco.</p>
     </div>
 </div>
-<div id="NKPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Nauli Kriya</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/nauli-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/nk.mp4" type="video/mp4">
-        </video>
-        <p>Nauli kriya é uma prática avançada de yoga que envolve isolar e contrair os músculos abdominais de uma maneira específica para massagear e tonificar os órgãos digestivos. Ela deve ser evitada por mulheres grávidas, pessoas com distúrbios abdominais ou digestivos e aquelas com pressão alta ou problemas cardíacos. Aqui está uma visão geral das etapas envolvidas:</p>
-        <ul>Fique com os pés na largura dos quadris e as mãos nas coxas</ul>
-        <ul>Faça uma inspiração profunda e expire completamente</ul>
-        <ul>Contraia os músculos abdominais inferiores e puxe-os em direção à sua coluna. Isso é conhecido como "Uddiyana Bandha"</ul>
-        <ul>Mantenha a contração e depois solte-a um pouco, permitindo que os músculos abdominais relaxem</ul>
-        <ul>Agora, contraia os músculos abdominais do lado direito e puxe-os em direção ao centro do seu corpo</ul>
-        <ul>Mantenha a contração e depois solte-a um pouco, permitindo que os músculos abdominais relaxem</ul>
-        <ul>Por fim, contraia os músculos abdominais do lado esquerdo e puxe-os em direção ao centro do seu corpo</ul>
-        <ul>Mantenha a contração e depois solte-a um pouco, permitindo que os músculos abdominais relaxem</ul>
-        <ul>Libere o "Uddiyana Bandha" e inspire profundamente</ul>
-        <p>Diz-se que a Nauli kriya possui vários benefícios potenciais, incluindo:</p>
-        <ul>Massagear e tonificar os órgãos digestivos, o que pode melhorar a digestão e aliviar a constipação</ul>
-        <ul>Fortalecer os músculos abdominais e melhorar a estabilidade do núcleo</ul>
-        <ul>Aumentar a circulação na área abdominal</ul>
-        <ul>Estimular o plexo solar, que está associado ao poder pessoal e autoestima</ul>
-    </div>
-</div>
 <div id="RBSettingsPage" class="hidden">
     <div class="breathingpages">
         <h1>Configurações de 4-7-8</h1>
@@ -4097,10 +3873,7 @@
 </div>
 <div id="RBPage" class="hidden">
     <div class="breathingpages">
-        <h1>4-7-8 Respiração de Relaxamento</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/478-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/rb.mp4" type="video/mp4">
-        </video>   
+        <h1>4-7-8 Respiração de Relaxamento</h1> 
         <p>Encontre uma posição confortável sentado ou deitado, siga a nossa sessão de respiração guiada abaixo e aprenda como relaxar a sua mente e corpo em poucos minutos</p>
         <button id="RBBTN" type="button" class="guidedBTN">Técnica guiada</button>
         <div id="RBmodal" class="modal">
@@ -4238,117 +4011,6 @@
         <ul>Melhora da resiliência mental: A meditação pode ajudar as pessoas a desenvolver maior resiliência mental, o que pode ser benéfico para lidar com desafios e contratempos e manter uma mentalidade positiva.</ul>
         <ul>Melhora do sono: A meditação tem mostrado melhorar a qualidade e a duração do sono, o que pode ter um impacto positivo no bem-estar geral e no desempenho.</ul>
     </div>
-</div>
-<div id="SLEEPPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Higiene do Sono</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/sleep-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/sleep.mp4" type="video/mp4">
-        </video>
-        <p>A higiene do sono refere-se a um conjunto de práticas e hábitos que podem ajudar a promover uma boa qualidade e quantidade de sono, auxiliando no seu desempenho durante o dia. Aqui estão algumas dicas para melhorar a higiene do sono:</p>
-        <ul>Respire pelo nariz: Se você acorda com a boca seca de manhã ou se ronca muito, é provável que esteja respirando pela boca durante o sono. Colocar um fita na boca pode ser uma boa ideia.</ul>
-        <ul>Se você tem dificuldade em respirar pelo nariz e ronca muito, um dilatador nasal pode ajudar.</ul>
-        <ul>Mantenha um horário regular de sono: Tente ir para a cama e acordar no mesmo horário todos os dias, mesmo nos fins de semana.</ul>
-        <ul>Crie uma rotina relaxante antes de dormir: Desenvolva uma rotina relaxante antes de dormir, como tomar um banho quente, ler um livro ou praticar técnicas de relaxamento, como respiração profunda ou meditação.</ul>
-        <ul>Mantenha o quarto confortável: Crie um ambiente de sono confortável mantendo o quarto fresco, escuro e silencioso. Use travesseiros confortáveis e um colchão de apoio.</ul>
-        <ul>Limite a exposição às telas: Evite usar dispositivos eletrônicos, como telefones, tablets ou laptops, pelo menos uma hora antes de dormir, pois a luz azul desses dispositivos pode interferir no ciclo natural de sono-vigília do seu corpo.</ul>
-        <ul>Evite cafeína e álcool: Evite consumir cafeína e álcool nas horas que antecedem o sono, pois podem atrapalhar o sono.</ul>
-        <ul>Exercite-se regularmente: O exercício regular pode ajudar a melhorar a qualidade do sono, mas é melhor evitar exercícios vigorosos nas horas imediatamente antes de dormir.</ul>
-        <ul>Limite cochilos: Se você tirar cochilos, limite-os a 20-30 minutos e evite cochilar no final da tarde ou à noite.</ul>
-    </div>
-  
-</div>
-<div id="HYDPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Hidratação</h1>
-        <p>A hidratação é essencial para um desempenho ótimo e para o fluxo sanguíneo no corpo. Aqui estão algumas maneiras pelas quais a hidratação pode afetar o desempenho e o fluxo sanguíneo:</p>
-        <ul>A desidratação pode reduzir o volume sanguíneo: Quando o corpo está desidratado, o volume sanguíneo diminui, o que pode dificultar o fluxo sanguíneo pelos vasos. Isso pode reduzir a entrega de oxigênio aos músculos e outros órgãos, levando a um desempenho reduzido.</ul>
-        <ul>A hidratação pode melhorar a função cardiovascular: Uma hidratação adequada pode melhorar a função cardiovascular, aumentando o volume sanguíneo, o que, por sua vez, ajuda a melhorar o fluxo sanguíneo e a entrega de oxigênio aos músculos e outros órgãos.</ul>
-        <ul>A hidratação pode regular a temperatura corporal: A hidratação é essencial para regular a temperatura corporal durante o exercício, pois ajuda o corpo a suar e se resfriar. Quando o corpo está superaquecido, os vasos sanguíneos se dilatam, o que pode reduzir o fluxo sanguíneo para os músculos e órgãos, afetando negativamente o desempenho.</ul>
-        <ul>A hidratação pode melhorar a função cognitiva: A desidratação pode prejudicar a função cognitiva, incluindo a atenção, memória e capacidade de tomada de decisão, o que pode afetar o desempenho em esportes ou outras atividades.</ul>
-        <ul>Para garantir uma hidratação adequada, recomenda-se beber água regularmente ao longo do dia, especialmente antes, durante e após o exercício.</ul>
-        <ul>A quantidade de água necessária depende de vários fatores, incluindo peso corporal, nível de atividade e clima. Como diretriz geral, é recomendável beber pelo menos 8 copos de água por dia, além da água que você transpira durante o exercício.</ul>
-        <ul>Também é importante ouvir seu corpo e beber mais água se estiver com sede ou suando excessivamente.</ul>
-        <ul>Avoid a água da torneira: Beba água filtrada ou purificada para garantir que a água que você está bebendo não esteja contaminada.</ul>
-        <ul>Adicione eletrólitos à sua água, especialmente durante o exercício.</ul>
-    </div>
-</div>
-<div id="SHOTPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Morning Shot</h1>
-        <p>O shot da manhã é uma bebida saudável popular que contém limão, gengibre, curcuma e pimenta preta. Aqui estão alguns dos potenciais benefícios de consumir um shot de limão e gengibre de manhã:</p>
-        <ul>É rico em antioxidantes e vitamina C, que ajudam a impulsionar o sistema imunológico e proteger contra infecções e doenças.</ul>
-        <ul>Contém compostos com propriedades anti-inflamatórias, que podem ajudar a reduzir a inflamação em todo o corpo.</ul>
-        <ul>Possui propriedades digestivas que ajudam a reduzir inchaço, gases e prisão de ventre. O limão também auxilia na digestão e na desintoxicação do fígado.</ul>
-        <ul>Pode ajudar a aumentar o metabolismo, reduzir o apetite e auxiliar na digestão, o que pode contribuir para esforços de perda de peso.</ul>
-        <ul>A vitamina C no limão ajuda a produzir colágeno, essencial para uma pele saudável. O gengibre também melhora a circulação sanguínea, o que ajuda a manter a saúde da pele.</ul>
-        <ul>O curcuma mostrou ser eficaz na melhoria da saúde do coração, reduzindo os níveis de colesterol, inflamação e estresse oxidativo.</ul>
-        <ul>O curcuma mostrou melhorar a função cerebral e reduzir o risco de doenças cerebrais como Alzheimer e demência.</ul>
-        <ul>As propriedades anti-inflamatórias do curcuma também podem ajudar a reduzir dor e rigidez nas articulações.</ul>
-        <ul>A pimenta preta contém piperina, que pode melhorar a absorção da curcumina, o composto ativo no curcuma, em até 2.000%. Isso significa que a combinação de curcuma e pimenta preta pode aumentar a biodisponibilidade da curcumina, permitindo uma melhor absorção e utilização pelo corpo.</ul>
-    </div>
-</div>
-<div id="ILPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Níveis de Ferro</h1>
-        <p>O ferro é um mineral essencial que desempenha um papel crucial na produção de hemoglobina, uma proteína encontrada nas células vermelhas do sangue que transporta oxigênio dos pulmões para o restante do corpo. A deficiência de ferro pode levar a níveis reduzidos de hemoglobina, resultando na entrega reduzida de oxigênio às células e tecidos do corpo. Isso pode causar uma variedade de sintomas, incluindo fadiga, fraqueza, falta de ar, tontura e pele pálida.</p>
-        <p>O ferro também é importante para a produção de mioglobina, uma proteína encontrada nas células musculares que ajuda a armazenar oxigênio e suportar a função muscular. Baixos níveis de ferro também podem prejudicar a função muscular e levar a um desempenho atlético reduzido.</p>
-        <p>Para manter níveis adequados de ferro, é importante consumir uma dieta equilibrada e variada que inclua alimentos ricos em ferro. Também é importante consumir alimentos ricos em vitamina C, pois a vitamina C pode aumentar a absorção de ferro.</p>
-        <p>No entanto, é importante observar que a ingestão excessiva de ferro também pode ser prejudicial e levar à sobrecarga de ferro, o que pode causar danos aos órgãos e outros problemas de saúde. Portanto, é recomendável falar com um profissional de saúde antes de tomar suplementos de ferro ou fazer alterações significativas em sua dieta para garantir que você esteja obtendo a quantidade apropriada de ferro para suas necessidades individuais.</p>
-    </div>
-</div>
-<div id="BEETPage" class="hidden">
-   <div class="breathingpages">
-        <h1>Beterraba</h1>
-        <p>O suco de beterraba demonstrou ter efeitos potencialmente melhoradores de desempenho devido ao seu alto teor de nitrato. O nitrato é convertido em óxido nítrico no corpo, o que pode melhorar o fluxo sanguíneo e a entrega de oxigênio aos músculos, resultando em maior resistência e desempenho. Aqui estão alguns benefícios potenciais do suco de beterraba para o desempenho:</p>
-        <ul>Melhoria da resistência: A ingestão de suco de beterraba mostrou melhorar o desempenho de resistência em indivíduos treinados e não treinados. Isso pode ser devido ao melhor fluxo sanguíneo e entrega de oxigênio aos músculos</ul>
-        <ul>Redução da fadiga: O suco de beterraba também pode ajudar a reduzir a fadiga durante o exercício, permitindo que as pessoas se exercitem por períodos mais longos antes de ficarem exaustas</ul>
-        <ul>Melhoria na contração muscular: O suco de beterraba pode melhorar a contratilidade muscular, resultando em contrações musculares mais eficientes e potencialmente melhorando a produção de energia durante o exercício</ul>
-        <ul>Redução do consumo de oxigênio: O suco de beterraba também pode reduzir o consumo de oxigênio durante o exercício, o que pode ser benéfico para atletas de resistência.</ul>
-    </div>
-</div>
-<div id="DIETPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Alimentação e Fluxo Sanguíneo</h1>
-        <p>A dieta pode desempenhar um papel significativo na melhoria do fluxo sanguíneo e circulação em todo o corpo. Aqui estão alguns fatores dietéticos que podem ajudar a promover um fluxo sanguíneo saudável:</p>
-        <ul>Consumir uma dieta rica em frutas e vegetais: Frutas e vegetais são ricos em antioxidantes, vitaminas e minerais que ajudam a proteger os vasos sanguíneos contra danos e melhoram a circulação.</ul>
-        <ul>Incluir alimentos ricos em ácidos graxos ômega-3: Os ácidos graxos ômega-3 podem melhorar o fluxo sanguíneo ao reduzir a inflamação e promover a saúde dos vasos sanguíneos.</ul>
-        <ul>Incorporar alho em sua dieta: O alho mostrou melhorar o fluxo sanguíneo ao aumentar a produção de óxido nítrico, um composto que ajuda a dilatar os vasos sanguíneos.</ul>
-        <ul>Beber chá verde: O chá verde contém compostos chamados catequinas, que podem ajudar a melhorar o fluxo sanguíneo ao promover a produção de óxido nítrico.</ul>
-        <ul>Reduzir o consumo de gorduras saturadas e gorduras trans: Dietas ricas em gorduras saturadas e gorduras trans podem contribuir para o acúmulo de placas nas artérias, o que pode reduzir o fluxo sanguíneo e aumentar o risco de doenças cardíacas.</ul>
-        <ul>Evite excesso de ingestão de sal: Consumir muito sal pode levar à hipertensão, o que pode danificar os vasos sanguíneos e reduzir o fluxo sanguíneo.</ul>
-    </div>
-</div>
-<div id="ICEPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Banheira de Gelo/Duchas Frias</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/cold-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/ice.mp4" type="video/mp4">
-        </video>
-        <p>Banheira de gelo e duchas frias ganharam popularidade entre atletas e entusiastas do bem-estar por seus potenciais benefícios na melhoria do desempenho e saúde geral. Veja como eles podem ajudar na oxigenação do sangue e aprimorar o desempenho:</p>
-        <ul>Aumento da Circulação: A imersão em água fria pode fazer com que os vasos sanguíneos se contraiam e depois dilatem ao sair, potencialmente aprimorando a circulação e distribuição de oxigênio para órgãos vitais e músculos.</ul>
-        <ul>Redução da Inflamação: A exposição ao frio pode reduzir a inflamação e a dor muscular após o exercício, permitindo uma recuperação mais eficiente aos atletas.</ul>
-        <ul>Fortalecimento Mental: Expor-se regularmente ao desconforto da água fria pode aprimorar a resiliência mental, ajudando no desempenho em situações estressantes ou desafiadoras.</ul>
-        <ul>Melhora do Movimento Linfático: Duchas frias podem estimular o sistema linfático, ajudando na remoção de resíduos das células e potencialmente impulsionando o sistema imunológico.</ul>
-        <ul>Utilização de Oxigênio: O corpo pode se adaptar ao longo do tempo para usar oxigênio de maneira mais eficiente durante a exposição ao frio, beneficiando potencialmente o desempenho aeróbico.</ul>
-        <ul>Liberar de Endorfinas: A exposição ao frio pode desencadear a liberação de endorfinas, os analgésicos naturais do corpo, promovendo uma sensação de bem-estar e potencialmente auxiliando na recuperação.</ul>
-        <ul>Ativação Termogênica: Duchas frias e banhos gelados podem ativar o tecido adiposo marrom (BAT), o que pode aumentar a queima de calorias e potencialmente auxiliar no controle de peso.</ul>
-     </div>
-</div>
-<div id="EXERCISINGPage" class="hidden">
-    <div class="breathingpages">
-        <h1>Respirando corretamente durante exercícios</h1>
-        <video controls poster="https://brizastorage.blob.core.windows.net/images/exercise-pt.svg" playsinline preload="none">
-            <source src="https://brizastorage.blob.core.windows.net/videospt/exercising.mp4" type="video/mp4">
-        </video>
-        <p>Respirar corretamente durante exercícios desempenha um papel fundamental no desempenho atlético e na saúde geral. Veja por que isso é tão essencial:</p>
-        <ul>Fornecimento Aprimorado de Oxigênio: Respirar corretamente garante que seus músculos recebam a quantidade ideal de oxigênio, necessária para atividade prolongada e resistência.</ul>
-        <ul>Metabolismo mais Eficiente: Padrões respiratórios eficientes podem aprimorar reações metabólicas, auxiliando na produção de energia e remoção de resíduos.</ul>
-        <ul>Concentração Aumentada: Coordenar a respiração com os movimentos pode aprimorar a concentração e intensificar a conexão mente-corpo.</ul>
-        <ul>Estabilização do Core: A respiração envolve os músculos centrais, apoiando uma melhor postura e alinhamento durante os treinos.</ul>
-        <ul>Prevenção da Fadiga: Uma respiração ineficiente pode levar à fadiga muscular prematura e ao acúmulo de ácido lático.</ul>
-        <ul>Função Cardiovascular Ótima: Uma respiração adequada apoia a função cardíaca, ajudando a distribuir o sangue rico em oxigênio pelo corpo de forma mais eficiente.</ul>
-     </div>
 </div>
 <div id="selectSongsList" class="breathingpages">
     <h4 class="volumeSettings">Escolha uma música</h4>
