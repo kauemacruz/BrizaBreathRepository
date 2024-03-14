@@ -169,3 +169,104 @@ volumeBarBRT.addEventListener('input', function () {
         brtaudio.style.display = "block";
     }
 });
+//BRT Modal
+const modalBRT = document.getElementById("myModalBRT");
+const closeModalBRTButton = document.getElementById("closeModalBRT");
+var BRTquestion = document.getElementById("BRTquestion");
+
+function openModalBRT() {
+    modalBRT.style.display = "block";
+    showSlides(slideIndex, 'BRTslides');
+}
+
+// Function to close the modalBRT
+function closeModalBRT() {
+    modalBRT.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalBRT
+closeModalBRTButton.addEventListener("click", closeModalBRT);
+
+// Close the modalBRT if the user clicks outside the modalBRT content
+window.addEventListener("click", function (event) {
+    if (event.target === modalBRT) {
+        closeModalBRT();
+    }
+});
+BRTquestion.onclick = function () {
+    openModalBRT();
+}
+brtLink.onclick = function () {
+    openPage(homePage, brtPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    audioObjects.bell.load();
+    audioElements.forEach((audio) => {
+        audio.load();
+    });
+    backBRT.style.display = "block";
+}
+backBRT.onclick = function () {
+    isBRTon = false;
+    openPage(brtPage, homePage, 'slideRight');
+    clearInterval(brtInt);
+    [brtSeconds, brtMinutes] = [0, 0];
+    brtTimerRef.value = '00 : 00';
+    document.getElementById('brtStart').style.display = 'inline';
+    document.getElementById('brtPause').style.display = 'none';
+    document.getElementById('brtStop').disabled = true;
+    document.getElementById('brtStop').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('brtSave').disabled = true;
+    document.getElementById('brtSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('brtResultSaved').innerHTML = "";
+    document.getElementById('brtSettings').disabled = false;
+    document.getElementById('brtSettings').style.color = '#49B79D';
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backBRT.style.display = "none";
+}
+backBRT2.onclick = function () {
+    isBRTon = false;
+    openPage(brtPage, programPage, 'slideRight');
+    clearInterval(brtInt);
+    [brtSeconds, brtMinutes] = [0, 0];
+    brtTimerRef.value = '00 : 00';
+    document.getElementById('brtStart').style.display = 'inline';
+    document.getElementById('brtPause').style.display = 'none';
+    document.getElementById('brtStop').disabled = true;
+    document.getElementById('brtStop').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('brtSave').disabled = true;
+    document.getElementById('brtSave').style.color = 'rgb(177, 177, 177)';
+    document.getElementById('brtResultSaved').innerHTML = "";
+    document.getElementById('brtSettings').disabled = false;
+    document.getElementById('brtSettings').style.color = '#49B79D';
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backBRT2.style.display = "none";
+    backProgram.style.display = "block";
+}
+brtSettings.onclick = function () {
+    openPage(brtPage, brtSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backBRTset.style.display = "block";
+    backBRT.style.display = "none";
+}
+backBRTset.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(brtSettingsPage, brtPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backBRT.style.display = "block";
+    backBRTset.style.display = "none";
+}

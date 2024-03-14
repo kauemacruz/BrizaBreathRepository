@@ -8,23 +8,110 @@ function WHchangeBall(scale, duration) {
     WHball.style.transform = `scale(${scale})`;
 }
 
-const WHmodal = document.getElementById("WHmodal");
-const WHcloseModal = document.getElementById("WHcloseModal");
-const WHBTN = document.getElementById("WHBTN");
+//WH Modal
+const modalWH = document.getElementById("myModalWH");
+const closeModalWHButton = document.getElementById("closeModalWH");
+var WHquestion = document.getElementById("WHquestion");
 
-function WHopenmodal() {
-    WHmodal.style.display = "block";
-    audioObjects.fullyin.load();
-    audioObjects.fullyout.load();
-    audioObjects.letgoandhold.load();
-    audioObjects.fullyinHold.load();
-    audioObjects.normalbreath.load();
-    audioObjects.nextRound.load();
+function openModalWH() {
+    modalWH.style.display = "block";
+    showSlides(slideIndex, 'WHslides');
 }
-// Function to close the modal
+
+// Function to close the modalWH
+function closeModalWH() {
+    modalWH.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalWH
+closeModalWHButton.addEventListener("click", closeModalWH);
+
+// Close the modalWH if the user clicks outside the modalWH content
+window.addEventListener("click", function (event) {
+    if (event.target === modalWH) {
+        closeModalWH();
+    }
+});
+WHquestion.onclick = function () {
+    openModalWH();
+}
+
+WHLink.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(BHPage, WHPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backBH.style.display = "none";
+        backWH.style.display = "block";
+        audioObjects.fullyin.load();
+        audioObjects.fullyout.load();
+        audioObjects.letgoandhold.load();
+        audioObjects.fullyinHold.load();
+        audioObjects.normalbreath.load();
+        audioObjects.nextRound.load();
+    } else {
+        openModal();
+    }
+}
+WHLink3.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(programPage2, WHPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backProgram2.style.display = "none";
+        backWH3.style.display = "block";
+        audioObjects.fullyin.load();
+        audioObjects.fullyout.load();
+        audioObjects.letgoandhold.load();
+        audioObjects.fullyinHold.load();
+        audioObjects.normalbreath.load();
+        audioObjects.nextRound.load();
+    } else {
+        openModal();
+    }
+}
+backWH.onclick = function () {
+    openPage(WHPage, BHPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backBH.style.display = "block";
+    backWH.style.display = "none";
+    WHclose();
+}
+backWH2.onclick = function () {
+    openPage(WHPage, programPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram.style.display = "block";
+    backWH2.style.display = "none";
+    WHclose();
+}
+backWH3.onclick = function () {
+    openPage(WHPage, programPage2, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "block";
+    backWH3.style.display = "none";
+    WHclose();
+}
+WHSettings.onclick = function () {
+    openPage(WHPage, WHSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backWHSet.style.display = "block";
+    backWH.style.display = "none";
+}
+backWHSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(WHSettingsPage, WHPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backWH.style.display = "block";
+    backWHSet.style.display = "none";
+}
+
 function WHclose() {
     isWHon = false;
-    WHmodal.style.display = "none";
     clearTimeout(intWH);
     intWH = null;
     [secondsWH, minutesWH] = [0, 0];
@@ -50,11 +137,6 @@ function WHclose() {
     WHchangeBall(1.5, 1);
     WHballText.textContent = formSettingsFieldsWH.breakDuration2WH.value;
 
-}
-// Event listener for closing the modal
-WHcloseModal.addEventListener("click", WHclose);
-WHBTN.onclick = function () {
-    WHopenmodal();
 }
 
 var WHbreaths = 30;

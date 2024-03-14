@@ -25,21 +25,81 @@ for (let YBi = 2; YBi <= 60; YBi++) { // assuming 1 to 60 minutes
     }
     YBtimeInput.appendChild(YBoption);
 }
-const YBmodal = document.getElementById("YBmodal");
-const YBcloseModal = document.getElementById("YBcloseModal");
-const YBBTN = document.getElementById("YBBTN");
+//YB Modal
+const modalYB = document.getElementById("myModalYB");
+const closeModalYBButton = document.getElementById("closeModalYB");
+var YBquestion = document.getElementById("YBquestion");
 
-function YBopenmodal() {
-    YBmodal.style.display = "block";
+function openModalYB() {
+    modalYB.style.display = "block";
+    showSlides(slideIndex, 'YBslides');
+}
+
+// Function to close the modalYB
+function closeModalYB() {
+    modalYB.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalYB
+closeModalYBButton.addEventListener("click", closeModalYB);
+
+// Close the modalYB if the user clicks outside the modalYB content
+window.addEventListener("click", function (event) {
+    if (event.target === modalYB) {
+        closeModalYB();
+    }
+});
+YBquestion.onclick = function () {
+    openModalYB();
+}
+
+backYB.onclick = function () {
+    openPage(YBPage, programPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram.style.display = "block";
+    backYB.style.display = "none";
+    YBclose();
+}
+backYB2.onclick = function () {
+    openPage(YBPage, programPage2, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "block";
+    backYB2.style.display = "none";
+    YBclose();
+}
+YBLink2.onclick = function () {
+    openPage(programPage2, YBPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backYB2.style.display = "block";
+    backProgram2.style.display = "none";
     audioObjects.exhale.load();
     audioObjects.inhale.load();
     audioObjects.hold.load();
     audioObjects.normalbreath.load();
 }
+YBSettings.onclick = function () {
+    openPage(YBPage, YBSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backYBSet.style.display = "block";
+}
+backYBSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(YBSettingsPage, YBPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backYB.style.display = "block";
+    backYBSet.style.display = "none";
+}
+
 // Function to close the modal
 function YBclose() {
     isYBon = false;
-    YBmodal.style.display = "none";
     clearInterval(intYB);
     [secondsYB, minutesYB, hoursYB] = [0, 0, 0];
     timerRefYB.value = '00 : 00 : 00';
@@ -65,11 +125,7 @@ function YBclose() {
     YBcountdownDisplay.classList.add('CountdownHidden');
     YBchangeBall(1, 1);
 }
-// Event listener for closing the modal
-YBcloseModal.addEventListener("click", YBclose);
-YBBTN.onclick = function () {
-    YBopenmodal();
-}
+
 $(function () {
     $('#YBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -92,7 +148,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0
         timerControlsButtonsYB.pauseYB.style.display = 'none';
         timerControlsButtonsYB.startYB.style.display = 'inline';
-        timerControlsButtonsAHAT.startYB.style.color = "#0661AA";
+        timerControlsButtonsYB.startYB.style.color = "#0661AA";
         setFormDisabledStateYB(false);
         setTimerControlsDisabledStateYB(false, true, true);
         timerControlsButtonsYB.stopYB.style.color = "rgb(177, 177, 177)";

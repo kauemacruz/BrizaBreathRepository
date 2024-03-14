@@ -31,33 +31,65 @@ $.ajax({
         console.error("Error fetching data:", error);
     }
 });
-//accordion function
-const accordionHeaders = document.querySelectorAll('.accordion-header');
-const accordionItems = document.querySelectorAll('.accordion-item');
-accordionHeaders.forEach(header => {
-    header.addEventListener('click', function () {
-        // Toggle the display of the content when the header is clicked
-        const content = this.nextElementSibling;
-        const parentElement = this.parentNode;
-        // Check if the content is already displayed
-        const isContentDisplayed = content.style.display === 'block';
-        // Collapse all other content sections
-        accordionHeaders.forEach(otherHeader => {
-            if (otherHeader !== this) {
-                otherHeader.nextElementSibling.style.display = 'none';
-                otherHeader.parentNode.style.minHeight = '60px';
-                otherHeader.parentNode.style.paddingTop = '0';
-                if (isContentDisplayed) {
-                    otherHeader.parentNode.style.minHeight = '120px';
-                    otherHeader.parentNode.style.paddingTop = '30px';
-                }
-            }
-        });
-        content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        parentElement.style.minHeight = '120px';
-        parentElement.style.paddingTop = '30px';
-    });
+const myModalResults = document.getElementById("myModalResults");
+const closeModalResultsBTN = document.getElementById("closeModalResultsBTN");
+// Function to open the modal
+function openModalResults() {
+    myModalResults.style.display = "block";
+}
+
+// Function to close the modal
+function closeModalResults() {
+    myModalResults.style.display = "none";
+    document.getElementById("BRTaccordion").style.display = 'none';
+    document.getElementById("BPaccordion").style.display = 'none';
+    document.getElementById("BHaccordion").style.display = 'none';
+    document.getElementById("PRANAaccordion").style.display = 'none';
+
+}
+
+// Event listener for closing the modal
+closeModalResultsBTN.addEventListener("click", closeModalResults);
+
+// Close the modal if the user clicks outside the modal content
+window.addEventListener("click", function (event) {
+    if (event.target === myModalResults) {
+        closeModalResults();
+    }
 });
+brtLinkResults.onclick = function () { 
+    openModalResults();
+    document.getElementById("BRTaccordion").style.display = 'flex';
+}
+programLinkResults.onclick = function () {
+    openModalResults();
+    document.getElementById("BPaccordion").style.display = 'flex';
+    if (YBnumberOfTests == 0 && BREnumberOfTests == 0 && BRWnumberOfTests == 0 && BBnumberOfTests == 0 && HATnumberOfTests == 0 && HATCnumberOfTests == 0 && AHATnumberOfTests == 0) {
+        document.getElementById("BPNoResults").style.display = 'block';
+    } else {
+        document.getElementById("BPNoResults").style.display = 'none';
+    }
+}
+breathHoldsLinkResults.onclick = function () {
+    openModalResults();
+    document.getElementById("BHaccordion").style.display = 'flex';
+    if (APnumberOfTests == 0 && CTnumberOfTests == 0 && WHnumberOfTests == 0 && O2numberOfTests == 0 && CO2numberOfTests == 0) {
+        document.getElementById("BHNoResults").style.display = 'block';
+    } else {
+        document.getElementById("BHNoResults").style.display = 'none';
+    }
+}
+pranayamaLinkResults.onclick = function () {
+    openModalResults();
+    document.getElementById("PRANAaccordion").style.display = 'flex';
+    if (UBnumberOfTests == 0 && KBnumberOfTests == 0 && BOXnumberOfTests == 0 && NBnumberOfTests == 0 && SBnumberOfTests == 0 && CBnumberOfTests == 0 && RBnumberOfTests == 0 && HUMnumberOfTests == 0) {
+        document.getElementById("PRANANoResults").style.display = 'block';
+    } else {
+        document.getElementById("PRANANoResults").style.display = 'none';
+    }
+}
+
+//accordion function
 const accordionHeaders2 = document.querySelectorAll('.accordion-header2');
 accordionHeaders2.forEach(header => {
     header.addEventListener('click', function () {
@@ -513,146 +545,32 @@ function BRTupdateOverview() {
                 BRTinfoOverviewElements[i].style.display = 'inline-flex';
             }
             document.getElementById('BRTContainer').style.display = 'block';
-            if (BRTlatestResult <= 10) {
+            if (BRTlatestResult <= 15) {
                 BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), parece que sua resist\u00EAncia ao CO2 \u00E9 muito baixa.<br>';
-                BRTinnerText += '<br>Voc\u00EA pode ter dificuldades para ter uma boa noite de sono, respira\u00E7\u00E3o frequente pela boca, acordar com a boca seca, bocejar frequentemente e baixos n\u00EDveis de energia durante o dia.<br>';
-                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA se concentre em estabelecer uma rotina baseada no Programa Briza para melhorar sua condi\u00E7\u00E3o f\u00EDsica e bem-estar.';
+                BRTinnerText += '<br>Voc\u00EA pode ter dificuldades para ter uma boa noite de sono, respira\u00E7\u00E3o pela boca frequente, acordar com a boca seca, bocejar frequentemente e baixos n\u00EDveis de energia durante o dia.<br>';
+                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA se concentre em estabelecer uma rotina do Programa Briza para melhorar sua aptid\u00E3o f\u00EDsica e bem-estar.';
                 BRTinfoOverview.innerHTML = BRTinnerText;
                 personalTraining.innerHTML = "";
                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                    '<h2>Seu resultado BRT \u00E9: </h2>' +
+                    '<h2>Seu resultado de teste de reten\u00E7\u00E3o \u00E9: </h2>' +
                     '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                    '<ul> Fita na boca durante o sono</ul > ' +
-                    '<ul> Aprenda a usar o diafragma</ul > ' +
+                    '<p> Rotina para melhorar sua efici\u00EAncia respirat\u00F3ria</p> ' +
                     '<div class="BHGrid"> ' +
                     '<div class="row g-2">' +
+                    '<p>Todo dia</p>' +
                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o 3 vezes ao dia (sentado ou caminhando, 5 min cada sess\u00E3o)</ul> ' +
-                    '<ul> Caminhadas di\u00E1rias de 10 a 15 minutos com a boca fechada (pare de caminhar se sentir vontade de respirar pela boca e recupere a respira\u00E7\u00E3o, sempre pelo nariz)</ul> ' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
-                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
-                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="brizaprogram">' +
-                    '<p>Benef\u00EDcios deste programa:</p>' +
-                    '<ul>Mais energia</ul>' +
-                    '<ul>Maior consci\u00EAncia</ul>' +
-                    '<ul>Cura r\u00E1pida</ul>' +
-                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                    '<ul>Melhor sono</ul>' +
-                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
-                    '</div>';
-                document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                    var targetElement = event.target;
-
-                    // If the target is an image inside the link, get the parent element
-                    if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                        targetElement = targetElement.parentElement;
-                    }
-
-                    var elementId = targetElement.id;
-
-                    switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BRELink':
-                            openPage(programPage, BREPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRE.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BRWLink':
-                            openPage(programPage, BRWPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRW.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'brtLink2':
-                            openPage(programPage, brtPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                    }
-                });
-            } else if (BRTlatestResult > 10 && BRTlatestResult < 15) {
-                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 est\u00E1 em um intervalo intermedi\u00E1rio.<br>';
-                BRTinnerText += '<br>Voc\u00EA pode frequentemente experimentar respira\u00E7\u00E3o pela boca, leves dist\u00FArbios do sono e fadiga leve durante o dia.<br>';
-                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA se concentre em estabelecer uma rotina baseada no Programa Briza para melhorar sua condi\u00E7\u00E3o f\u00EDsica e bem-estar.';
-                BRTinfoOverview.innerHTML = BRTinnerText;
-                personalTraining.innerHTML = "";
-                personalTraining.innerHTML += '<div class="breathingpages">' +
-                    '<h2>Seu resultado BRT \u00E9: </h2>' +
-                    '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                    '<ul> Fita na boca durante o sono</ul > ' +
-                    '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
-                    '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
-                    '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o 3 vezes ao dia (sentado ou caminhando, 5 min cada sess\u00E3o)</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o Briza (5 minutos)</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o Y\u00F3gica (5 minutos)</ul> ' +
-                    '<ul> Caminhada di\u00E1ria de 10 a 15 minutos. Se a respira\u00E7\u00E3o nasal for f\u00E1cil e sem esfor\u00E7o enquanto caminha, adicione o Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada</ul>' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
-                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
-                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
                     '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
                     '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
+                    '<div class="col"><a></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<p>Pelo menos 3 vezes por semana</p>' +
+                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
+                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
                     '</div>' +
                     '</div>' +
                     '<div class="brizaprogram">' +
-                    '<p>Benef\u00EDcios deste programa:</p>' +
-                    '<ul>Mais energia</ul>' +
-                    '<ul>Maior consci\u00EAncia</ul>' +
-                    '<ul>Cura r\u00E1pida</ul>' +
-                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                    '<ul>Melhor sono</ul>' +
-                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
+                    '<p class="atention"> N\u00C3O force-se al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios respirat\u00F3rios sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do aplicativo Briza Breath & Performance</p>' +
                     '</div>';
                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
                     var targetElement = event.target;
@@ -665,237 +583,84 @@ function BRTupdateOverview() {
                     var elementId = targetElement.id;
 
                     switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
                         case 'YBLink':
                             openPage(programPage, YBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backYB.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.exhale.load();
+                            audioObjects.inhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BRELink':
                             openPage(programPage, BREPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBRE.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BRWLink':
                             openPage(programPage, BRWPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBRW.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
+                            break;
+                        case 'brtLink2':
+                            openPage(programPage, brtPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRT2.style.display = "block";
+                            backProgram.style.display = "none";
+                            audioObjects.bell.load();
                             break;
                         case 'BBLink':
                             openPage(programPage, BBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBB.style.display = "block";
                             backProgram.style.display = "none";
-                            break;
-                        case 'brtLink2':
-                            openPage(programPage, brtPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
-                            backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                     }
                 });
-            } else if (BRTlatestResult >= 15 && BRTlatestResult < 20) {
-                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 est\u00E1 em um intervalo intermedi\u00E1rio.<br>';
-                BRTinnerText += '<br>Voc\u00EA pode experimentar ocasionalmente respira\u00E7\u00E3o pela boca, leves dist\u00FArbios do sono e fadiga leve durante o dia.<br>';
-                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA se concentre em estabelecer uma rotina baseada no Programa Briza para melhorar sua condi\u00E7\u00E3o f\u00EDsica e bem-estar.';
+            } else if (BRTlatestResult >= 15 && BRTlatestResult <= 25) {
+                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resili\u00EAncia ao CO2 \u00E9 relativamente boa.<br>';
+                BRTinnerText += '<br>Provavelmente voc\u00EA est\u00E1 respirando principalmente pelo nariz na maior parte do tempo e desfrutando de um sono tranquilo. Seus n\u00EDveis de energia e concentra\u00E7\u00E3o s\u00E3o geralmente satisfat\u00F3rios.<br>';
+                BRTinnerText += '<br> \u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina do Programa Briza para melhorar a efici\u00EAncia da sua respira\u00E7\u00E3o e obter melhores resultados.';
                 BRTinfoOverview.innerHTML = BRTinnerText;
                 personalTraining.innerHTML = "";
                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                    '<h2>Seu resultado BRT \u00E9: </h2>' +
+                    '<h2>Seu resultado de teste de reten\u00E7\u00E3o \u00E9: </h2>' +
                     '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                    '<ul> Fita na boca durante o sono</ul > ' +
-                    '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
-                    '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
+                    '<p> Rotina para melhorar sua efici\u00EAncia respirat\u00F3ria</p> ' +
                     '<div class="BHGrid"> ' +
                     '<div class="row g-2">' +
+                    '<p>Todo dia</p>' +
                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Respira\u00E7\u00E3o 3 vezes ao dia (sentado ou caminhando, 5 min cada sess\u00E3o)</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o Briza duas vezes ao dia (6 minutos)</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o Y\u00F3gica (5 minutos)</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o leve pelo nariz durante caminhada ou corrida lenta. 30 a 60 minutos por dia</ul>' +
-                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada no final da sua caminhada di\u00E1ria (5 minutos)</ul>' +
-                    '<ul> Come\u00E7ar a explorar nossos Exerc\u00EDcios de Pranayama</ul>' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
-                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysitPT.svg" /></a></div>' +
-                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
                     '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="pranayamaLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/pranayama2.svg"></a></div>' +
-                    '<div class="col"><a></a></div>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="brizaprogram">' +
-                    '<p>Benef\u00EDcios deste programa:</p>' +
-                    '<ul>Mais energia</ul>' +
-                    '<ul>Maior consci\u00EAncia</ul>' +
-                    '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
-                    '<ul>Cura r\u00E1pida</ul>' +
-                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                    '<ul>Livre de estresse</ul>' +
-                    '<ul>Melhor sono</ul>' +
-                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                    '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
-                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                    '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
-                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
-                    '</div>';
-                document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                    var targetElement = event.target;
-
-                    // If the target is an image inside the link, get the parent element
-                    if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                        targetElement = targetElement.parentElement;
-                    }
-
-                    var elementId = targetElement.id;
-
-                    switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'YBLink':
-                            openPage(programPage, YBPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backYB.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BRELink':
-                            openPage(programPage, BREPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRE.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BRWLink':
-                            openPage(programPage, BRWPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRW.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BBLink':
-                            openPage(programPage, BBPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBB.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'brtLink2':
-                            openPage(programPage, brtPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'pranayamaLink2':
-                            openPage(programPage, PRANAPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backPRANA.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                    }
-                });
-            } else if (BRTlatestResult >= 20 && BRTlatestResult <= 25) {
-                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 \u00E9 relativamente boa.<br>';
-                BRTinnerText += '<br>Voc\u00EA provavelmente respira pelo nariz na maior parte do tempo e desfruta de um sono tranquilo. Seus n\u00EDveis de energia e concentra\u00E7\u00E3o s\u00E3o geralmente satisfat\u00F3rios.<br>';
-                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina baseada no Programa Briza. Adicione expans\u00E3o pulmonar \u00E0 sua pr\u00E1tica. Voc\u00EA tamb\u00E9m pode explorar os exerc\u00EDcios de Pranayama';
-                BRTinfoOverview.innerHTML = BRTinnerText;
-                personalTraining.innerHTML = "";
-                personalTraining.innerHTML += '<div class="breathingpages">' +
-                    '<h2>Seu resultado BRT \u00E9: </h2>' +
-                    '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                    '<ul> Fita na boca durante o sono</ul > ' +
-                    '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
-                    '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
-                    '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
                     '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
-                    '<div class="col"><a></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                    '<ul> Respira\u00E7\u00E3o Briza 3 vezes ao dia (10 minutos)</ul> ' +
-                    '<ul> Treinamento em Alta Altitude uma vez por dia ou pelo menos uma vez a cada dois dias</ul>' +
-                    '<ul> Respira\u00E7\u00E3o leve pelo nariz durante caminhada r\u00E1pida ou corrida. 30 a 60 minutos por dia</ul>' +
-                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada ap\u00F3s treinos intensos (5 minutos)</ul>' +
-                    '<ul> Treinamento de Expans\u00E3o Pulmonar uma vez por semana</ul>' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<p>Pelo menos 2 vezes por semana</p>' +
                     '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatPT.svg" /></a></div>' +
+                    '<div class="col"><a id="WHLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/guiadahiper2.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
                     '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar2.svg"></a></div>' +
+                    '<div class="col"><a></a></div>' +
                     '</div>' +
                     '</div>' +
                     '<div class="brizaprogram">' +
-                    '<p>Benef\u00EDcios deste programa:</p>' +
-                    '<ul>Mais energia</ul>' +
-                    '<ul>Maior consci\u00EAncia</ul>' +
-                    '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
-                    '<ul>Cura r\u00E1pida</ul>' +
-                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                    '<ul>Livre de estresse</ul>' +
-                    '<ul>Melhor sono</ul>' +
-                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                    '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
-                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                    '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
-                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
+                    '<p class="atention"> N\u00C3O force-se al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios respirat\u00F3rios sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do aplicativo Briza Breath & Performance</p>' +
                     '</div>';
                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
                     var targetElement = event.target;
@@ -908,47 +673,42 @@ function BRTupdateOverview() {
                     var elementId = targetElement.id;
 
                     switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
                         case 'YBLink':
                             openPage(programPage, YBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backYB.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.exhale.load();
+                            audioObjects.inhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BRWLink':
                             openPage(programPage, BRWPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBRW.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BBLink':
                             openPage(programPage, BBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBB.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
+                            backBRT2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.bell.load();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideLeft');
@@ -961,72 +721,48 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backHAT.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.pinchWalk.load();
+                            audioObjects.lightNasal.load();
+                            audioObjects.normalbreath.load();
+                            break;
+                        case 'WHLink2':
+                            openPage(programPage, WHPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backWH2.style.display = "block";
+                            backProgram.style.display = "none";
                             break;
                     }
                 });
-            } else if (BRTlatestResult >= 25 && BRTlatestResult <= 30) {
-                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 \u00E9 excelente.<br>';
+            } else if (BRTlatestResult >= 25 && BRTlatestResult <= 35) {
+                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resili\u00EAncia ao CO2 \u00E9 excelente.<br>';
                 BRTinnerText += '<br>Voc\u00EA provavelmente est\u00E1 experimentando os benef\u00EDcios de uma respira\u00E7\u00E3o eficiente, incluindo sono restaurador, altos n\u00EDveis de energia e boa concentra\u00E7\u00E3o.<br>';
-                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina baseada no Programa Briza. Adicione expans\u00E3o pulmonar e os exerc\u00EDcios de reten\u00E7\u00E3o de respira\u00E7\u00E3o \u00E0 sua pr\u00E1tica di\u00E1ria.';
+                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina do Programa Briza para alcan\u00E7ar resultados ainda melhores e se sentir ilimitado.';
                 BRTinfoOverview.innerHTML = BRTinnerText;
                 personalTraining.innerHTML = "";
                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                    '<h2>Seu resultado BRT \u00E9: </h2>' +
+                    '<h2>Seu resultado de teste de reten\u00E7\u00E3o \u00E9: </h2>' +
                     '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                    '<ul> Fita na boca durante o sono</ul > ' +
-                    '<ul> Observe sua respira\u00E7\u00E3o durante o dia</ul>' +
-                    '<ul> Segure a respira\u00E7\u00E3o sempre que sentir um suspiro ou bocejo chegando para evit\u00E1-lo. Segure a respira\u00E7\u00E3o por 10 segundos toda vez que perder</ul>' +
+                    '<p> Rotina para melhorar sua efici\u00EAncia respirat\u00F3ria</p> ' +
                     '<div class="BHGrid"> ' +
                     '<div class="row g-2">' +
+                    '<p>Todo dia</p>' +
                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogicPT.svg" /></a></div>' +
-                    '<div class="col"><a></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                    '<ul> Respira\u00E7\u00E3o Briza 3 vezes ao dia (10 minutos cada sess\u00E3o, uma delas antes de ir para a cama \u00E0 noite)</ul> ' +
-                    '<ul> Treinamento em Alta Altitude uma vez por dia ou pelo menos uma vez a cada dois dias</ul>' +
-                    '<ul> Treinamento em Alta Altitude durante a corrida 8 a 10 s\u00E9ries de vez em quando</ul>' +
-                    '<ul> Respira\u00E7\u00E3o leve pelo nariz durante a corrida. 30 a 60 minutos por dia</ul>' +
-                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada ap\u00F3s treinos intensos (5 minutos)</ul>' +
-                    '<ul> Treinamento de Expans\u00E3o Pulmonar duas vezes por semana</ul>' +
-                    '<ul> Exerc\u00EDcios de Reten\u00E7\u00E3o de Respira\u00E7\u00E3o duas vezes por semana (escolha um ou dois)</ul>' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
                     '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatPT.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
-                    '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar2.svg"></a></div>' +
+                    '<p>Pelo menos 3 vezes por semana</p>' +
+                    '<div class="col"><a id="CTLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/tolerancia2.svg"></a></div>' +
+                    '<div class="col"><a id="WHLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/guiadahiper2.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="breathHoldsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathhold2PT.svg"></a></div>' +
+                    '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar2.svg"></a></div>' +
                     '<div class="col"><a></a></div>' +
                     '</div>' +
                     '</div>' +
                     '<div class="brizaprogram">' +
-                    '<p>Benef\u00EDcios deste programa:</p>' +
-                    '<ul>Mais energia</ul>' +
-                    '<ul>Maior consci\u00EAncia</ul>' +
-                    '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
-                    '<ul>Cura r\u00E1pida</ul>' +
-                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                    '<ul>Livre de estresse</ul>' +
-                    '<ul>Melhor sono</ul>' +
-                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                    '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
-                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                    '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
-                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
+                    '<p class="atention"> N\u00C3O force-se al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios respirat\u00F3rios sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do aplicativo Briza Breath & Performance</p>' +
                     '</div>';
-
                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
                     var targetElement = event.target;
 
@@ -1038,28 +774,10 @@ function BRTupdateOverview() {
                     var elementId = targetElement.id;
 
                     switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
+                        case 'WHLink2':
+                            openPage(programPage, WHPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'YBLink':
-                            openPage(programPage, YBPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backYB.style.display = "block";
+                            backWH2.style.display = "block";
                             backProgram.style.display = "none";
                             break;
                         case 'BRWLink':
@@ -1067,18 +785,27 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBRW.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BBLink':
                             openPage(programPage, BBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBB.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
+                            backBRT2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.bell.load();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideLeft');
@@ -1086,10 +813,10 @@ function BRTupdateOverview() {
                             backLungs.style.display = "block";
                             backProgram.style.display = "none";
                             break;
-                        case 'breathHoldsLink2':
-                            openPage(programPage, BHPage, 'slideLeft');
+                        case 'CTLink2':
+                            openPage(programPage, CTPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBH.style.display = "block";
+                            backCT2.style.display = "block";
                             backProgram.style.display = "none";
                             break;
                         case 'HATLink':
@@ -1097,70 +824,42 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backHAT.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.pinchWalk.load();
+                            audioObjects.lightNasal.load();
+                            audioObjects.normalbreath.load();
                             break;
                     }
                 });
-            } else if (BRTlatestResult > 30) {
-                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resist\u00EAncia ao CO2 \u00E9 excelente.<br>';
-                BRTinnerText += '<br>Voc\u00EA provavelmente est\u00E1 experimentando os benef\u00EDcios de uma respira\u00E7\u00E3o eficiente, incluindo sono restaurador, altos n\u00EDveis de energia e boa concentra\u00E7\u00E3o.<br>';
-                BRTinnerText += '<br>\u00C9 recomendado que voc\u00EA estabele\u00E7a uma rotina baseada no Programa Briza. Certifique-se de manter os bons resultados. Explore o aplicativo para adicionar mais h\u00E1bitos de sa\u00FAde \u00E0 sua rotina.';
+            } else if (BRTlatestResult > 35) {
+                BRTinnerText = 'Com base no seu \u00FAltimo teste (' + BRTlatestResult + ' segundos), sua resili\u00EAncia ao CO2 \u00E9 excelente.<br>';
+                BRTinnerText += '<br>Voc\u00EA provavelmente est\u00E1 experimentando os benef\u00EDcios de uma respira\u00E7\u00E3o eficiente, incluindo sono restaurador, altos n\u00EDveis de energia e grande concentra\u00E7\u00E3o.<br>';
+                BRTinnerText += 'Certifique-se de manter os bons resultados mantendo uma rotina do Programa Briza. Use o aplicativo para salvar seus resultados e acompanhar seu progresso.';
                 BRTinfoOverview.innerHTML = BRTinnerText;
                 personalTraining.innerHTML = "";
                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                    '<h2>Seu resultado BRT \u00E9: </h2>' +
+                    '<h2>Seu resultado de teste de reten\u00E7\u00E3o \u00E9: </h2>' +
                     '<h2>' + BRTlatestResult + ' segundos</h2>' +
-                    '<p> Rotina para melhorar seu BRT com exerc\u00EDcios de respira\u00E7\u00E3o di\u00E1rios e novos h\u00E1bitos (isso \u00E9 apenas um guia, voc\u00EA n\u00E3o precisa fazer tudo todos os dias. Apenas fa\u00E7a o seu melhor e tente ajustar sua agenda com os exerc\u00EDcios):</p> ' +
-                    '<ul> Medir BRT toda manh\u00E3</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o nasal em todos os momentos</ul> ' +
-                    '<ul> Fita na boca durante o sono</ul > ' +
+                    '<p> Rotina para melhorar sua efici\u00EAncia respirat\u00F3ria</p> ' +
                     '<div class="BHGrid"> ' +
                     '<div class="row g-2">' +
+                    '<p>Todo dia</p>' +
                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2PT.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathingPT.svg" /></a></div>' +
+                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblockingPT.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragmPT.svg" /></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Espalhe os seguintes exerc\u00EDcios ao longo do dia:</p> ' +
-                    '<ul> Respira\u00E7\u00E3o Briza 3 vezes ao dia (10 minutos cada sess\u00E3o, uma delas antes de ir para a cama \u00E0 noite)</ul> ' +
-                    '<ul> Respira\u00E7\u00E3o Briza durante a corrida</ul> ' +
-                    '<ul> Treinamento em Alta Altitude durante a corrida 8 a 10 s\u00E9ries de vez em quando</ul>' +
-                    '<ul> Treinamento Avan\u00E7ado em Alta Altitude algumas vezes por semana</ul>' +
-                    '<ul> Exerc\u00EDcio de Recupera\u00E7\u00E3o da Caminhada ap\u00F3s treinos intensos (5 minutos)</ul>' +
-                    '<ul> Treinamento de Expans\u00E3o Pulmonar duas vezes por semana</ul>' +
-                    '<ul> Exerc\u00EDcios de Reten\u00E7\u00E3o de Respira\u00E7\u00E3o duas vezes por semana (escolha um ou dois)</ul>' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalkingPT.svg" /></a></div>' +
-                    '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatPT.svg" /></a></div>' +
+                    '<div class="col"><a id="CTLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/tolerancia2.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
+                    '<p>Pelo menos 3 vezes por semana</p>' +
                     '<div class="col"><a id="HATCLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatcyclingPT.svg" /></a></div>' +
                     '<div class="col"><a id="AHATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/advancedhatPT.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathingPT.svg" /></a></div>' +
                     '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/expansaopulmonar2.svg"></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="breathHoldsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathhold2PT.svg"></a></div>' +
-                    '<div class="col"><a></a></div>' +
+                    '<div class="col"><a id="WHLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/guiadahiper2.svg"></a></div>' +
                     '</div>' +
                     '</div>' +
                     '<div class="brizaprogram">' +
-                    '<p>Benef\u00EDcios deste programa:</p>' +
-                    '<ul>Mais energia</ul>' +
-                    '<ul>Maior consci\u00EAncia</ul>' +
-                    '<ul>Recupera\u00E7\u00E3o mais r\u00E1pida e melhor</ul>' +
-                    '<ul>Cura r\u00E1pida</ul>' +
-                    '<ul>Preven\u00E7\u00E3o de doen\u00E7as</ul>' +
-                    '<ul>Livre de estresse</ul>' +
-                    '<ul>Melhor sono</ul>' +
-                    '<ul>Respira\u00E7\u00E3o mais f\u00E1cil</ul>' +
-                    '<ul>Aumento do desempenho e resist\u00EAncia</ul>' +
-                    '<ul>Oxigena\u00E7\u00E3o de \u00F3rg\u00E3os e m\u00FAsculos</ul>' +
-                    '<ul>Redu\u00E7\u00E3o do \u00E1cido l\u00E1ctico e fadiga</ul>' +
-                    '<p class="atention"> N\u00E3o se esforce al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios de respira\u00E7\u00E3o sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do App Briza Breath & Performance</p>' +
+                    '<p class="atention"> N\u00C3O force-se al\u00E9m dos seus limites. Se voc\u00EA tiver alguma condi\u00E7\u00E3o de sa\u00FAde grave, para garantir que esses exerc\u00EDcios respirat\u00F3rios sejam seguros para voc\u00EA, consulte um m\u00E9dico antes de praticar qualquer um dos exerc\u00EDcios do aplicativo Briza Breath & Performance</p>' +
                     '</div>';
-
                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
                     var targetElement = event.target;
 
@@ -1172,22 +871,10 @@ function BRTupdateOverview() {
                     var elementId = targetElement.id;
 
                     switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
+                         case 'WHLink2':
+                            openPage(programPage, WHPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
+                            backWH2.style.display = "block";
                             backProgram.style.display = "none";
                             break;
                         case 'BRWLink':
@@ -1195,18 +882,27 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBRW.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BBLink':
                             openPage(programPage, BBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBB.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
+                            backBRT2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.bell.load();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideLeft');
@@ -1214,10 +910,10 @@ function BRTupdateOverview() {
                             backLungs.style.display = "block";
                             backProgram.style.display = "none";
                             break;
-                        case 'breathHoldsLink2':
-                            openPage(programPage, BHPage, 'slideLeft');
+                        case 'CTLink2':
+                            openPage(programPage, CTPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBH.style.display = "block";
+                            backCT2.style.display = "block";
                             backProgram.style.display = "none";
                             break;
                         case 'HATLink':
@@ -1225,42 +921,48 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backHAT.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.pinchWalk.load();
+                            audioObjects.lightNasal.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'HATCLink':
                             openPage(programPage, HATCPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backHATC.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.pinchRun.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'AHATLink':
                             openPage(programPage, AHATPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backAHAT.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.pinchRun.load();
+                            audioObjects.lightNasal.load();
+                            audioObjects.normalbreath.load();
                             break;
                     }
                 });
             }
-
-
-            if (BRTmax > BRTlatestResult) {
-                BRTinnerText += '<br><br>Comparando com o seu teste mais longo, seus resultados est\u00E3o caindo. Certifique-se de ser consistente em sua pr\u00E1tica para voltar aos melhores resultados.'
+            if(BRTmax > BRTlatestResult) {
+                BRTinnerText += '<br><br>Comparando com o seu teste mais longo, seus resultados est\u00E3o caindo. Certifique-se de ser consistente em sua pr\u00E1tica para voltar aos seus melhores resultados.'
                 BRTinfoOverview.innerHTML = BRTinnerText;
             } else {
-                BRTinnerText += '<br><br>Parab\u00E9ns. Parece que seu teste mais recente tamb\u00E9m \u00E9 o mais longo. Continue seguindo o Programa Briza para obter resultados ainda melhores.'
+                BRTinnerText += '<br><br>Bem feito. Parece que seu \u00FAltimo teste tamb\u00E9m \u00E9 o mais longo. Continue seguindo o Programa Briza para alcan\u00E7ar resultados ainda melhores'
                 BRTinfoOverview.innerHTML = BRTinnerText;
             }
             document.getElementById('BRTnumberOfSessions').value = BRTnumberOfTests + ' Testes';
             document.getElementById('BRTlongestRound').value = BRTmax + ' segundos ' + formatDateAsDMY(BRTdateOfLongestResult);
             document.getElementById('BRTlatestRound').value = BRTlatestResult + ' segundos ' + formatDateAsDMY(BRTlastDate);
         } else if (BRTnumberOfTests == 0) {
-            BRTinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
+            BRTinfoOverview.innerHTML = 'Nenhum resultado ainda';
             for (var i = 0; i < BRTinfoOverviewElements.length; i++) {
                 BRTinfoOverviewElements[i].style.display = 'none';
             }
             document.getElementById('BRTContainer').style.display = 'none';
             personalTraining.innerHTML = '<div class="breathingpages">' +
-                '<h2>Parece que voc\u00EA ainda n\u00E3o fez seu Teste de Reten\u00E7\u00E3o de Briza. Descubra qual \u00E9 o seu resultado BRT para come\u00E7ar com o Programa Briza</h2> ' +
+                '<h3>Parece que voc\u00EA ainda n\u00E3o fez o seu Teste de Reten\u00E7\u00E3o Briza. Descubra qual \u00E9 a sua pontua\u00E7\u00E3o para come\u00E7ar com o Programa Briza</h3> ' +
                 '<a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brtPT.svg" /></a>' +
                 '</div>';
             document.getElementById('personalizedBriza').addEventListener('click', function (event) {
@@ -1277,8 +979,9 @@ function BRTupdateOverview() {
                     case 'brtLink2':
                         openPage(programPage, brtPage, 'slideLeft');
                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        backBRT.style.display = "block";
+                        backBRT2.style.display = "block";
                         backProgram.style.display = "none";
+                        audioObjects.bell.load();
                         break;
                 }
             });
@@ -1291,264 +994,31 @@ function BRTupdateOverview() {
                 BRTinfoOverviewElements[i].style.display = 'inline-flex';
             }
             document.getElementById('BRTContainer').style.display = 'block';
-            if (BRTlatestResult <= 10) {
+            if (BRTlatestResult <= 15) {
                 BRTinnerText = 'Based on your latest test (' + BRTlatestResult + ' seconds), it seems that your resilience to CO2 is very low.<br>';
                 BRTinnerText += '<br>You may experience difficulties getting a good night\'s sleep, frequent mouth breathing, waking up with a dry mouth, frequent yawning, and low energy levels during the day.<br>';
-                BRTinnerText += '<br> It is recommended that you focus on establishing a routine based on the Briza Program to improve your fitness and well-being.';
+                BRTinnerText += '<br> It is recommended that you focus on establishing a Briza Program routine to improve your fitness and well-being.';
                 BRTinfoOverview.innerHTML = BRTinnerText;
                 personalTraining.innerHTML = "";
                 personalTraining.innerHTML += '<div class="breathingpages">' +
                     '<h2>Your BRT score is: </h2>' +
                     '<h2>' + BRTlatestResult + ' seconds</h2>' +
-                    '<p> Routine to improve your BRT with daily breathing exercises and new habits (this is only a guide, you do not need to do it all everyday. Just do your best and try to ajust your schedule with the exercises):</p> ' +
-                    '<ul> Measure BRT every morning</ul> ' +
-                    '<ul> Nasal breathing at all times and mouthtape during sleep</ul> ' +
-                    '<ul> Learn how to use your diaphragm</ul > ' +
+                    '<p> Routine to improve your breathing efficiency</p> ' +
                     '<div class="BHGrid"> ' +
                     '<div class="row g-2">' +
+                    '<p>Every day</p>'+
                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathing.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblocking.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragm.svg" /></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Spread the following exercises throughout the day:</p> ' +
-                    '<ul> Breath Recovery Exercise 3 times a day (sitting or walking, 5 min each session)</ul> ' +
-                    '<ul> Daily walks of 10 to 15 minutes mouth closed (stop walking if you feel the urge to breath through mouth and recover your breath, always through the nose)</ul> ' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
-                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysit.svg" /></a></div>' +
-                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalking.svg" /></a></div>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="brizaprogram">' +
-                    '<p>Benefits of this program:</p>' +
-                    '<ul>More energy</ul>' +
-                    '<ul>Better awareness</ul>' +
-                    '<ul>Fast healing</ul>' +
-                    '<ul>Prevention of diseases</ul>' +
-                    '<ul>Better sleep</ul>' +
-                    '<ul>Easier breathing</ul>' +
-                    '<ul>Oxygenation of organs and muscles</ul>' +
-                    '<p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Breath & Performance App`s exercises</p>' +
-                    '</div>';
-                document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                    var targetElement = event.target;
-
-                    // If the target is an image inside the link, get the parent element
-                    if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                        targetElement = targetElement.parentElement;
-                    }
-
-                    var elementId = targetElement.id;
-
-                    switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BRELink':
-                            openPage(programPage, BREPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRE.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BRWLink':
-                            openPage(programPage, BRWPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRW.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'brtLink2':
-                            openPage(programPage, brtPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                    }
-                });
-            } else if (BRTlatestResult > 10 && BRTlatestResult < 15) {
-                BRTinnerText = 'Based on your latest test (' + BRTlatestResult + ' seconds), your resilience to CO2 falls in the intermediate range.<br>';
-                BRTinnerText += '<br>You may often experience mouth breathing, slight sleep disturbances, and mild daytime fatigue.<br>';
-                BRTinnerText += '<br> It is recommended that you focus on establishing a routine based on the Briza Program to improve your fitness and well-being.';
-                BRTinfoOverview.innerHTML = BRTinnerText;
-                personalTraining.innerHTML = "";
-                personalTraining.innerHTML += '<div class="breathingpages">' +
-                    '<h2>Your BRT score is: </h2>' +
-                    '<h2>' + BRTlatestResult + ' seconds</h2>' +
-                    '<p> Routine to improve your BRT with daily breathing exercises and new habits (this is only a guide, you do not need to do it all everyday. Just do your best and try to ajust your schedule with the exercises):</p> ' +
-                    '<ul> Measure BRT every morning</ul> ' +
-                    '<ul> Nasal breathing at all times</ul> ' +
-                    '<ul> Mouthtape during sleep</ul > ' +
-                    '<ul> Observe your breath during the day</ul>' +
-                    '<ul> Hold your breath every time you feel a sight or yawn coming to avoid it. Hold your breath for 10 seconds everytime you miss it</ul>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
-                    '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathing.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblocking.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragm.svg" /></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Spread the following exercises throughout the day:</p> ' +
-                    '<ul> Breath Recovery Exercise 3 times a day (sitting or walking, 5 min each session)</ul> ' +
-                    '<ul> Briza Breathing (5 minutes)</ul> ' +
-                    '<ul> Yogic Breathing (5 minutes)</ul> ' +
-                    '<ul> Daily walk of 10 to 15 minutes. If nasal breathing is easy and effortless while walking, add Walking Recovery Exercise</ul>' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
-                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysit.svg" /></a></div>' +
-                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalking.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
                     '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
                     '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" /></a></div>' +
-
-                    '</div>' +
-                    '</div>' +
-                    '<div class="brizaprogram">' +
-                    '<p>Benefits of this program:</p>' +
-                    '<ul>More energy</ul>' +
-                    '<ul>Better awareness</ul>' +
-                    '<ul>Fast healing</ul>' +
-                    '<ul>Prevention of diseases</ul>' +
-                    '<ul>Better sleep</ul>' +
-                    '<ul>Easier breathing</ul>' +
-                    '<ul>Oxygenation of organs and muscles</ul>' +
-                    '<p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Breath & Performance App`s exercises</p>' +
-                    '</div>';
-                document.getElementById('personalizedBriza').addEventListener('click', function (event) {
-                    var targetElement = event.target;
-
-                    // If the target is an image inside the link, get the parent element
-                    if (targetElement.tagName === 'IMG' && targetElement.parentElement.tagName === 'A') {
-                        targetElement = targetElement.parentElement;
-                    }
-
-                    var elementId = targetElement.id;
-
-                    switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'YBLink':
-                            openPage(programPage, YBPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backYB.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BRELink':
-                            openPage(programPage, BREPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRE.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BRWLink':
-                            openPage(programPage, BRWPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRW.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BBLink':
-                            openPage(programPage, BBPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBB.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'brtLink2':
-                            openPage(programPage, brtPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                    }
-                });
-            } else if (BRTlatestResult >= 15 && BRTlatestResult < 20) {
-                BRTinnerText = 'Based on your latest test (' + BRTlatestResult + ' seconds), your resilience to CO2 falls in the intermediate range.<br>';
-                BRTinnerText += '<br>You may experience occasional mouth breathing, slight sleep disturbances, and mild daytime fatigue.<br>';
-                BRTinnerText += '<br> It is recommended that you focus on establishing a routine based on the Briza Program to improve your fitness and well-being.';
-                BRTinfoOverview.innerHTML = BRTinnerText;
-                personalTraining.innerHTML = "";
-                personalTraining.innerHTML += '<div class="breathingpages">' +
-                    '<h2>Your BRT score is: </h2>' +
-                    '<h2>' + BRTlatestResult + ' seconds</h2>' +
-                    '<p> Routine to improve your BRT with daily breathing exercises and new habits (this is only a guide, you do not need to do it all everyday. Just do your best and try to ajust your schedule with the exercises):</p> ' +
-                    '<ul> Measure BRT every morning</ul> ' +
-                    '<ul> Nasal breathing at all times</ul> ' +
-                    '<ul> Mouthtape during sleep</ul > ' +
-                    '<ul> Observe your breath during the day</ul>' +
-                    '<ul> Hold your breath every time you feel a sight or yawn coming to avoid it. Hold your breath for 10 seconds everytime you miss it</ul>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
-                    '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathing.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblocking.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragm.svg" /></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Spread the following exercises throughout the day:</p> ' +
-                    '<ul> Breath Recovery Exercise 3 times a day (sitting or walking, 5 min each session)</ul> ' +
-                    '<ul> Briza Breathing twice a day (6 minutes)</ul> ' +
-                    '<ul> Yogic Breathing (5 minutes)</ul> ' +
-                    '<ul> Light breathing through nose while walking or slow jogging. 30 to 60 minutes per day</ul>' +
-                    '<ul> Walking Recovery Exercise at the end of your daily walk (5 minutes)</ul>' +
-                    '<ul> Start to explore our Pranayama Exercises</ul>' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
-                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysit.svg" /></a></div>' +
-                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalking.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
-                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="pranayamaLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/pranayama2.svg"></a></div>' +
                     '<div class="col"><a></a></div>' +
+                    '<div class="w-100"></div>' +
+                    '<p>At least 3 times a week</p>' +
+                    '<div class="col"><a id="BRELink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverysit.svg" /></a></div>' +
+                    '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalking.svg" /></a></div>' +
                     '</div>' +
                     '</div>' +
                     '<div class="brizaprogram">' +
-                    '<p>Benefits of this program:</p>' +
-                    '<ul>More energy</ul>' +
-                    '<ul>Better awareness</ul>' +
-                    '<ul>Quicker and better recovery</ul>' +
-                    '<ul>Fast healing</ul>' +
-                    '<ul>Prevention of diseases</ul>' +
-                    '<ul>Stress free</ul>' +
-                    '<ul>Better sleep</ul>' +
-                    '<ul>Easier breathing</ul>' +
-                    '<ul>Increased performance and endurance</ul>' +
-                    '<ul>Oxygenation of organs and muscles</ul>' +
-                    '<ul>Reduction of lactic acid and fatigue</ul>' +
                     '<p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Breath & Performance App`s exercises</p>' +
                     '</div>';
                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
@@ -1562,117 +1032,83 @@ function BRTupdateOverview() {
                     var elementId = targetElement.id;
 
                     switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
                         case 'YBLink':
                             openPage(programPage, YBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backYB.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.exhale.load();
+                            audioObjects.inhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BRELink':
                             openPage(programPage, BREPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBRE.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BRWLink':
                             openPage(programPage, BRWPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBRW.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
+                            break;
+                        case 'brtLink2':
+                            openPage(programPage, brtPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backBRT2.style.display = "block";
+                            backProgram.style.display = "none";
+                            audioObjects.bell.load();
                             break;
                         case 'BBLink':
                             openPage(programPage, BBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBB.style.display = "block";
                             backProgram.style.display = "none";
-                            break;
-                        case 'brtLink2':
-                            openPage(programPage, brtPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'pranayamaLink2':
-                            openPage(programPage, PRANAPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backPRANA.style.display = "block";
-                            backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                     }
                 });
-            } else if (BRTlatestResult >= 20 && BRTlatestResult <= 25) {
+            } else if (BRTlatestResult >= 15 && BRTlatestResult <= 25) {
                 BRTinnerText = 'Based on your latest test (' + BRTlatestResult + ' seconds), your resilience to CO2 is relatively good.<br>';
                 BRTinnerText += '<br>You are likely breathing through your nose most of the time and enjoying restful sleep. Your energy levels and concentration are generally satisfactory.<br>';
-                BRTinnerText += '<br>It is recommended that you establish a routine based on the Briza Program. Add lungs expansion to your practice. You can also explore the Pranayama exercises';
+                BRTinnerText += '<br>It is recommended that you establish a Briza Program routine to improve your breathing efficiency and gain better results';
                 BRTinfoOverview.innerHTML = BRTinnerText;
                 personalTraining.innerHTML = "";
                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                    '<h2>Your BRT score is: </h2>' +
+                    '<h2>Your BRT seu is: </h2>' +
                     '<h2>' + BRTlatestResult + ' seconds</h2>' +
-                    '<p> Routine to improve your BRT with daily breathing exercises and new habits (this is only a guide, you do not need to do it all everyday. Just do your best and try to ajust your schedule with the exercises):</p> ' +
-                    '<ul> Measure BRT every morning</ul> ' +
-                    '<ul> Nasal breathing at all times</ul> ' +
-                    '<ul> Mouthtape during sleep</ul > ' +
-                    '<ul> Observe your breath during the day</ul>' +
-                    '<ul> Hold your breath every time you feel a sight or yawn coming to avoid it. Hold your breath for 10 seconds everytime you miss it</ul>' +
+                    '<p> Routine to improve your breathing efficiency</p> ' +
                     '<div class="BHGrid"> ' +
                     '<div class="row g-2">' +
+                    '<p>Every day</p>' +
                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathing.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblocking.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragm.svg" /></a></div>' +
+                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
                     '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
-                    '<div class="col"><a></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Spread the following exercises throughout the day:</p> ' +
-                    '<ul> Briza Breathing 3 times a day (10 minutes)</ul> ' +
-                    '<ul> High Altitude Training once a day or at least once every second day</ul>' +
-                    '<ul> Light breathing through nose while fast walking or jogging. 30 to 60 minutes per day</ul>' +
-                    '<ul> Walking Recovery Exercise after intense workouts (5 minutes)</ul>' +
-                    '<ul> Lungs Expansion Training once a week</ul>' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalking.svg" /></a></div>' +
-                    '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hat.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" /></a></div>' +
+                    '<p>At least 2 times per week</p>' +
+                    '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hat.svg" /></a></div>' +
+                    '<div class="col"><a id="WHLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/guidedhyper2.svg" /></a></div>' +
+                    '<div class="w-100"></div>' +
                     '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/lungsexpansion2.svg"></a></div>' +
+                    '<div class="col"><a></a></div>' +
                     '</div>' +
                     '</div>' +
                     '<div class="brizaprogram">' +
-                    '<p>Benefits of this program:</p>' +
-                    '<ul>More energy</ul>' +
-                    '<ul>Better awareness</ul>' +
-                    '<ul>Quicker and better recovery</ul>' +
-                    '<ul>Fast healing</ul>' +
-                    '<ul>Prevention of diseases</ul>' +
-                    '<ul>Stress free</ul>' +
-                    '<ul>Better sleep</ul>' +
-                    '<ul>Easier breathing</ul>' +
-                    '<ul>Increased performance and endurance</ul>' +
-                    '<ul>Oxygenation of organs and muscles</ul>' +
-                    '<ul>Reduction of lactic acid and fatigue</ul>' +
                     '<p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Breath & Performance App`s exercises</p>' +
                     '</div>';
                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
@@ -1686,53 +1122,42 @@ function BRTupdateOverview() {
                     var elementId = targetElement.id;
 
                     switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
                         case 'YBLink':
                             openPage(programPage, YBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backYB.style.display = "block";
                             backProgram.style.display = "none";
-                            break;
-                        case 'BRELink':
-                            openPage(programPage, BREPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRE.style.display = "block";
-                            backProgram.style.display = "none";
+                            audioObjects.exhale.load();
+                            audioObjects.inhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BRWLink':
                             openPage(programPage, BRWPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBRW.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BBLink':
                             openPage(programPage, BBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBB.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
+                            backBRT2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.bell.load();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideLeft');
@@ -1745,69 +1170,46 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backHAT.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.pinchWalk.load();
+                            audioObjects.lightNasal.load();
+                            audioObjects.normalbreath.load();
+                            break;
+                        case 'WHLink2':
+                            openPage(programPage, WHPage, 'slideLeft');
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            backWH2.style.display = "block";
+                            backProgram.style.display = "none";
                             break;
                     }
                 });
-            } else if (BRTlatestResult >= 25 && BRTlatestResult <= 30) {
+            } else if (BRTlatestResult >= 25 && BRTlatestResult <= 35) {
                 BRTinnerText = 'Based on your latest test (' + BRTlatestResult + ' seconds), your resilience to CO2 is excellent.<br>';
                 BRTinnerText += '<br>You are likely experiencing the benefits of efficient breathing, including restorative sleep, high energy levels, and good focus.<br>';
-                BRTinnerText += '<br>It is recommended that you establish a routine based on the Briza Program. Add lungs expansion and the breath holds exercises to your daily practice.';
+                BRTinnerText += '<br>It is recommended that you establish a Briza Program routine to achieve even better results and feel limitless';
                 BRTinfoOverview.innerHTML = BRTinnerText;
                 personalTraining.innerHTML = "";
                 personalTraining.innerHTML += '<div class="breathingpages">' +
                     '<h2>Your BRT score is: </h2>' +
                     '<h2>' + BRTlatestResult + ' seconds</h2>' +
-                    '<p> Routine to improve your BRT with daily breathing exercises and new habits (this is only a guide, you do not need to do it all everyday. Just do your best and try to ajust your schedule with the exercises):</p> ' +
-                    '<ul> Measure BRT every morning</ul> ' +
-                    '<ul> Nasal breathing at all times</ul> ' +
-                    '<ul> Mouthtape during sleep</ul > ' +
-                    '<ul> Observe your breath during the day</ul>' +
-                    '<ul> Hold your breath every time you feel a sight or yawn coming to avoid it. Hold your breath for 10 seconds everytime you miss it</ul>' +
+                    '<p> Routine to improve your breathing efficiency</p> ' +
                     '<div class="BHGrid"> ' +
                     '<div class="row g-2">' +
+                    '<p>Every day</p>' +
                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathing.svg" /></a></div>' +
+                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblocking.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragm.svg" /></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="YBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/yogic.svg" /></a></div>' +
-                    '<div class="col"><a></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Spread the following exercises throughout the day:</p> ' +
-                    '<ul> Briza Breathing 3 times a day (10 minutes each sesssion, one of them before going to bed at night)</ul> ' +
-                    '<ul> High Altitude Training once a day or at least once every second day</ul>' +
-                    '<ul> High Altitude Training while jogging 8 to 10 sets every now and then</ul>' +
-                    '<ul> Light breathing through nose while jogging. 30 to 60 minutes per day</ul>' +
-                    '<ul> Walking Recovery Exercise after intense workouts (5 minutes)</ul>' +
-                    '<ul> Lungs Expansion Training twice a week</ul>' +
-                    '<ul> Breath Hold Exercises twice a week (choose one or two)</ul>' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalking.svg" /></a></div>' +
                     '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hat.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" /></a></div>' +
-                    '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/lungsexpansion2.svg"></a></div>' +
+                    '<p>At least 3 times a week</p>' +
+                    '<div class="col"><a id="CTLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/tolerance2.svg"></a></div>' +
+                    '<div class="col"><a id="WHLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/guidedhyper2.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="breathHoldsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathhold2.svg"></a></div>' +
+                    '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/lungsexpansion2.svg"></a></div>' +
                     '<div class="col"><a></a></div>' +
                     '</div>' +
                     '</div>' +
                     '<div class="brizaprogram">' +
-                    '<p>Benefits of this program:</p>' +
-                    '<ul>More energy</ul>' +
-                    '<ul>Better awareness</ul>' +
-                    '<ul>Quicker and better recovery</ul>' +
-                    '<ul>Fast healing</ul>' +
-                    '<ul>Prevention of diseases</ul>' +
-                    '<ul>Stress free</ul>' +
-                    '<ul>Better sleep</ul>' +
-                    '<ul>Easier breathing</ul>' +
-                    '<ul>Increased performance and endurance</ul>' +
-                    '<ul>Oxygenation of organs and muscles</ul>' +
-                    '<ul>Reduction of lactic acid and fatigue</ul>' +
                     '<p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Breath & Performance App`s exercises</p>' +
                     '</div>';
                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
@@ -1821,34 +1223,10 @@ function BRTupdateOverview() {
                     var elementId = targetElement.id;
 
                     switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
+                        case 'WHLink2':
+                            openPage(programPage, WHPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'YBLink':
-                            openPage(programPage, YBPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backYB.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BRELink':
-                            openPage(programPage, BREPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRE.style.display = "block";
+                            backWH2.style.display = "block";
                             backProgram.style.display = "none";
                             break;
                         case 'BRWLink':
@@ -1856,18 +1234,27 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBRW.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BBLink':
                             openPage(programPage, BBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBB.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
+                            backBRT2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.bell.load();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideLeft');
@@ -1875,10 +1262,10 @@ function BRTupdateOverview() {
                             backLungs.style.display = "block";
                             backProgram.style.display = "none";
                             break;
-                        case 'breathHoldsLink2':
-                            openPage(programPage, BHPage, 'slideLeft');
+                        case 'CTLink2':
+                            openPage(programPage, CTPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBH.style.display = "block";
+                            backCT2.style.display = "block";
                             backProgram.style.display = "none";
                             break;
                         case 'HATLink':
@@ -1886,67 +1273,40 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backHAT.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.pinchWalk.load();
+                            audioObjects.lightNasal.load();
+                            audioObjects.normalbreath.load();
                             break;
                     }
                 });
-            } else if (BRTlatestResult > 30) {
+            } else if (BRTlatestResult > 35) {
                 BRTinnerText = 'Based on your latest test (' + BRTlatestResult + ' seconds), your resilience to CO2 is excellent.<br>';
-                BRTinnerText += '<br>You are likely experiencing the benefits of efficient breathing, including restorative sleep, high energy levels, and good focus.<br>';
-                BRTinnerText += '<br>It is recommended that you establish a routine based on the Briza Program. Make sure to keep up the good results. Explore the app to add more health habits to your routine.';
+                BRTinnerText += '<br>You are likely experiencing the benefits of efficient breathing, including restorative sleep, high energy levels, and great focus.<br>';
+                BRTinnerText += 'Make sure to keep up the good results by keeping a Briza Program routine. Use the app to save your results and keep track of them';
                 BRTinfoOverview.innerHTML = BRTinnerText;
                 personalTraining.innerHTML = "";
                 personalTraining.innerHTML += '<div class="breathingpages">' +
                     '<h2>Your BRT score is: </h2>' +
                     '<h2>' + BRTlatestResult + ' seconds</h2>' +
-                    '<p> Routine to improve your BRT with daily breathing exercises and new habits (this is only a guide, you do not need to do it all everyday. Just do your best and try to ajust your schedule with the exercises):</p> ' +
-                    '<ul> Measure BRT every morning</ul> ' +
-                    '<ul> Nasal breathing at all times</ul> ' +
-                    '<ul> Mouthtape during sleep</ul > ' +
+                    '<p> Routine to improve your breathing efficiency</p> ' +
                     '<div class="BHGrid"> ' +
                     '<div class="row g-2">' +
+                    '<p>Every day</p>' +
                     '<div class="col"><a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt2.svg" /></a></div>' +
-                    '<div class="col"><a id="nasalLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/nasalbreathing.svg" /></a></div>' +
+                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="unblockLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/noseunblocking.svg" /></a></div>' +
-                    '<div class="col"><a id="diaphragmLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/diaphragm.svg" /></a></div>' +
-                    '</div>' +
-                    '<p class="spreadExercises"> Spread the following exercises throughout the day:</p> ' +
-                    '<ul> Briza Breathing 3 times a day (10 minutes each session,one of them before going to bed at night)</ul> ' +
-                    '<ul> Briza Breathing while jogging</ul> ' +
-                    '<ul> High Altitude Training while running 8 to 10 sets every now and then</ul>' +
-                    '<ul> Advanced High Altitude Training a couple of times per week</ul>' +
-                    '<ul> Walking Recovery Exercise after intense workouts (5 minutes)</ul>' +
-                    '<ul> Lungs Expansion Training twice a week</ul>' +
-                    '<ul> Breath Hold Exercises twice a week (choose one or two)</ul>' +
-                    '</div>' +
-                    '<div class="BHGrid"> ' +
-                    '<div class="row g-2">' +
                     '<div class="col"><a id="BRWLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathrecoverywalking.svg" /></a></div>' +
-                    '<div class="col"><a id="HATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hat.svg" /></a></div>' +
+                    '<div class="col"><a id="CTLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/tolerance2.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
+                    '<p>At least 3 times a week</p>' +
                     '<div class="col"><a id="HATCLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/hatcycling.svg" /></a></div>' +
                     '<div class="col"><a id="AHATLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/advancedhat.svg" /></a></div>' +
                     '<div class="w-100"></div>' +
-                    '<div class="col"><a id="BBLink"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brizabreathing.svg" /></a></div>' +
                     '<div class="col"><a id="lungsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/lungsexpansion2.svg"></a></div>' +
-                    '<div class="w-100"></div>' +
-                    '<div class="col"><a id="breathHoldsLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/breathhold2.svg"></a></div>' +
-                    '<div class="col"><a></a></div>' +
+                    '<div class="col"><a id="WHLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/guidedhyper2.svg"></a></div>' +
                     '</div>' +
                     '</div>' +
                     '<div class="brizaprogram">' +
-                    '<p>Benefits of this program:</p>' +
-                    '<ul>More energy</ul>' +
-                    '<ul>Better awareness</ul>' +
-                    '<ul>Quicker and better recovery</ul>' +
-                    '<ul>Fast healing</ul>' +
-                    '<ul>Prevention of diseases</ul>' +
-                    '<ul>Stress free</ul>' +
-                    '<ul>Better sleep</ul>' +
-                    '<ul>Easier breathing</ul>' +
-                    '<ul>Increased performance and endurance</ul>' +
-                    '<ul>Oxygenation of organs and muscles</ul>' +
-                    '<ul>Reduction of lactic acid and fatigue</ul>' +
                     '<p class="atention"> Do NOT push yourself over your limits. If you have any serious health conditions, to ensure these breathing exercises are safe to you, consult a doctor before practicing any of the Briza Breath & Performance App`s exercises</p>' +
                     '</div>';
                 document.getElementById('personalizedBriza').addEventListener('click', function (event) {
@@ -1960,28 +1320,10 @@ function BRTupdateOverview() {
                     var elementId = targetElement.id;
 
                     switch (elementId) {
-                        case 'nasalLink':
-                            openPage(programPage, nasalBreathingPage, 'slideLeft');
+                         case 'WHLink2':
+                            openPage(programPage, WHPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backNasal.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'unblockLink':
-                            openPage(programPage, noseUnblockPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backUnblock.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'diaphragmLink':
-                            openPage(programPage, diaphragmPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backDiaphragm.style.display = "block";
-                            backProgram.style.display = "none";
-                            break;
-                        case 'BRELink':
-                            openPage(programPage, BREPage, 'slideLeft');
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRE.style.display = "block";
+                            backWH2.style.display = "block";
                             backProgram.style.display = "none";
                             break;
                         case 'BRWLink':
@@ -1989,18 +1331,27 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBRW.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'BBLink':
                             openPage(programPage, BBPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backBB.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.inhale.load();
+                            audioObjects.exhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'brtLink2':
                             openPage(programPage, brtPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBRT.style.display = "block";
+                            backBRT2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.bell.load();
                             break;
                         case 'lungsLink2':
                             openPage(programPage, lungsPage, 'slideLeft');
@@ -2008,10 +1359,10 @@ function BRTupdateOverview() {
                             backLungs.style.display = "block";
                             backProgram.style.display = "none";
                             break;
-                        case 'breathHoldsLink2':
-                            openPage(programPage, BHPage, 'slideLeft');
+                        case 'CTLink2':
+                            openPage(programPage, CTPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            backBH.style.display = "block";
+                            backCT2.style.display = "block";
                             backProgram.style.display = "none";
                             break;
                         case 'HATLink':
@@ -2019,18 +1370,26 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backHAT.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.pinchWalk.load();
+                            audioObjects.lightNasal.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'HATCLink':
                             openPage(programPage, HATCPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backHATC.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.pinchRun.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'AHATLink':
                             openPage(programPage, AHATPage, 'slideLeft');
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backAHAT.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.pinchRun.load();
+                            audioObjects.lightNasal.load();
+                            audioObjects.normalbreath.load();
                             break;
                     }
                 });
@@ -2052,7 +1411,7 @@ function BRTupdateOverview() {
             }
             document.getElementById('BRTContainer').style.display = 'none';
             personalTraining.innerHTML = '<div class="breathingpages">' +
-                '<h2>It looks like you haven`t done your Briza Retention Test yet. Find out what your BRT score is, to get started with the Briza Program</h2> ' +
+                '<h3>It looks like you haven`t done your Briza Retention Test yet. Find out what your BRT score is, to get started with the Briza Program</h3> ' +
                 '<a id="brtLink2"><img class="homepageimgs" loading="lazy" src="https://brizastorage.blob.core.windows.net/images/brt.svg" /></a>' +
                 '</div>';
             document.getElementById('personalizedBriza').addEventListener('click', function (event) {
@@ -2069,8 +1428,9 @@ function BRTupdateOverview() {
                     case 'brtLink2':
                         openPage(programPage, brtPage, 'slideLeft');
                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        backBRT.style.display = "block";
+                        backBRT2.style.display = "block";
                         backProgram.style.display = "none";
+                        audioObjects.bell.load();
                         break;
                 }
             });
@@ -2167,6 +1527,7 @@ function BRTdisplayDetailedInfo(BRTselectedDate) {
     openPage(resultsPage, BRTresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backBRTresults.style.display = "block";
+    closeModalResults();
 }
 // END BRT
 // YB
@@ -2543,8 +1904,9 @@ function YBupdateChart(YBstartDate, YBendDate) {
     }
     YBchart.update();
 }
+var YBnumberOfTests;
 function YBupdateOverview() {
-    var YBnumberOfTests = 0;
+    YBnumberOfTests = 0;
     var YBmax = YBfindMaxResult();
     var YBmax2 = YBfindMaxResult2();
     var YBinfoOverviewElements = document.getElementsByClassName('YBinfoOverview');
@@ -2576,7 +1938,9 @@ function YBupdateOverview() {
             document.getElementById('YBnumberOfSessions').value = YBnumberOfTests + ' Sess\u00F5es';
             document.getElementById('YBlongestRound').value = convertMinToMinSec(YBmax) + YBintervals + ' rounds ' + formatDateAsDMY(YBdateOfLongestResult);
             document.getElementById('YBlatestRound').value = convertMinToMinSec(secondsToMinutes(YBlatestResult)) + YBlastIntervals + ' rounds ' + formatDateAsDMY(YBlastDate);
+            document.getElementById('YBaccordion').style.display = 'block';
         } else {
+            document.getElementById('YBaccordion').style.display = 'none';
             YBinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
             for (var i = 0; i < YBinfoOverviewElements.length; i++) {
                 YBinfoOverviewElements[i].style.display = 'none';
@@ -2593,7 +1957,9 @@ function YBupdateOverview() {
             document.getElementById('YBnumberOfSessions').value = YBnumberOfTests + ' Sessions';
             document.getElementById('YBlongestRound').value = convertMinToMinSec(YBmax) + ' ' + YBintervals + ' rounds ' + formatDateAsDMY(YBdateOfLongestResult);
             document.getElementById('YBlatestRound').value = convertMinToMinSec(secondsToMinutes(YBlatestResult)) + ' ' + YBlastIntervals + ' rounds ' + formatDateAsDMY(YBlastDate);
+            document.getElementById('YBaccordion').style.display = 'block';
         } else {
+            document.getElementById('YBaccordion').style.display = 'none';
             YBinfoOverview.innerHTML = 'No results yet';
             for (var i = 0; i < YBinfoOverviewElements.length; i++) {
                 YBinfoOverviewElements[i].style.display = 'none';
@@ -2694,6 +2060,7 @@ function YBdisplayDetailedInfo(YBselectedDate) {
     openPage(resultsPage, YBresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backYBresults.style.display = "block";
+    closeModalResults();
 }
 // END YB
 // BRE
@@ -3070,8 +2437,9 @@ function BREupdateChart(BREstartDate, BREendDate) {
     }
     BREchart.update();
 }
+var BREnumberOfTests;
 function BREupdateOverview() {
-    var BREnumberOfTests = 0;
+    BREnumberOfTests = 0;
     var BREmax = BREfindMaxResult();
     var BREmax2 = BREfindMaxResult2();
     var BREinfoOverviewElements = document.getElementsByClassName('BREinfoOverview');
@@ -3103,7 +2471,9 @@ function BREupdateOverview() {
             document.getElementById('BREnumberOfSessions').value = BREnumberOfTests + ' Sess\u00F5es';
             document.getElementById('BRElongestRound').value = convertMinToMinSec(BREmax) + ' ' + BREintervals + ' rounds ' + formatDateAsDMY(BREdateOfLongestResult);
             document.getElementById('BRElatestRound').value = convertMinToMinSec(secondsToMinutes(BRElatestResult)) + ' ' + BRElastIntervals + ' rounds ' + formatDateAsDMY(BRElastDate);
+            document.getElementById('BREaccordion').style.display = 'block';
         } else {
+            document.getElementById('BREaccordion').style.display = 'none';
             BREinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
             for (var i = 0; i < BREinfoOverviewElements.length; i++) {
                 BREinfoOverviewElements[i].style.display = 'none';
@@ -3120,7 +2490,9 @@ function BREupdateOverview() {
             document.getElementById('BREnumberOfSessions').value = BREnumberOfTests + ' Sessions';
             document.getElementById('BRElongestRound').value = convertMinToMinSec(BREmax) + ' ' + BREintervals + ' rounds ' + formatDateAsDMY(BREdateOfLongestResult);
             document.getElementById('BRElatestRound').value = convertMinToMinSec(secondsToMinutes(BRElatestResult)) + ' ' + BRElastIntervals + ' rounds ' + formatDateAsDMY(BRElastDate);
+            document.getElementById('BREaccordion').style.display = 'block';
         } else {
+            document.getElementById('BREaccordion').style.display = 'none';
             BREinfoOverview.innerHTML = 'No results yet';
             for (var i = 0; i < BREinfoOverviewElements.length; i++) {
                 BREinfoOverviewElements[i].style.display = 'none';
@@ -3221,6 +2593,7 @@ function BREdisplayDetailedInfo(BREselectedDate) {
     openPage(resultsPage, BREresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backBREresults.style.display = "block";
+    closeModalResults();
 }
 // END BRE
 // BRW
@@ -3597,8 +2970,9 @@ function BRWupdateChart(BRWstartDate, BRWendDate) {
     }
     BRWchart.update();
 }
+var BRWnumberOfTests;
 function BRWupdateOverview() {
-    var BRWnumberOfTests = 0;
+    BRWnumberOfTests = 0;
     var BRWmax = BRWfindMaxResult();
     var BRWmax2 = BRWfindMaxResult2();
     var BRWinfoOverviewElements = document.getElementsByClassName('BRWinfoOverview');
@@ -3630,7 +3004,9 @@ function BRWupdateOverview() {
             document.getElementById('BRWnumberOfSessions').value = BRWnumberOfTests + ' Sess\u00F5es';
             document.getElementById('BRWlongestRound').value = convertMinToMinSec(BRWmax) + ' ' + BRWintervals + ' rounds ' + formatDateAsDMY(BRWdateOfLongestResult);
             document.getElementById('BRWlatestRound').value = convertMinToMinSec(secondsToMinutes(BRWlatestResult)) + ' ' + BRWlastIntervals + ' rounds ' + formatDateAsDMY(BRWlastDate);
+            document.getElementById('BRWaccordion').style.display = 'block';
         } else {
+            document.getElementById('BRWaccordion').style.display = 'none';
             BRWinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
             for (var i = 0; i < BRWinfoOverviewElements.length; i++) {
                 BRWinfoOverviewElements[i].style.display = 'none';
@@ -3647,7 +3023,9 @@ function BRWupdateOverview() {
             document.getElementById('BRWnumberOfSessions').value = BRWnumberOfTests + ' Sessions';
             document.getElementById('BRWlongestRound').value = convertMinToMinSec(BRWmax) + ' ' + BRWintervals + ' rounds ' + formatDateAsDMY(BRWdateOfLongestResult);
             document.getElementById('BRWlatestRound').value = convertMinToMinSec(secondsToMinutes(BRWlatestResult)) + ' ' + BRWlastIntervals + ' rounds ' + formatDateAsDMY(BRWlastDate);
+            document.getElementById('BRWaccordion').style.display = 'block';
         } else {
+            document.getElementById('BRWaccordion').style.display = 'none';
             BRWinfoOverview.innerHTML = 'No results yet';
             for (var i = 0; i < BRWinfoOverviewElements.length; i++) {
                 BRWinfoOverviewElements[i].style.display = 'none';
@@ -3748,6 +3126,7 @@ function BRWdisplayDetailedInfo(BRWselectedDate) {
     openPage(resultsPage, BRWresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backBRWresults.style.display = "block";
+    closeModalResults();
 }
 // END BRW
 // HUM
@@ -4124,8 +3503,9 @@ function HUMupdateChart(HUMstartDate, HUMendDate) {
     }
     HUMchart.update();
 }
+var HUMnumberOfTests;
 function HUMupdateOverview() {
-    var HUMnumberOfTests = 0;
+    HUMnumberOfTests = 0;
     var HUMmax = HUMfindMaxResult();
     var HUMmax2 = HUMfindMaxResult2();
     var HUMinfoOverviewElements = document.getElementsByClassName('HUMinfoOverview');
@@ -4157,7 +3537,9 @@ function HUMupdateOverview() {
             document.getElementById('HUMnumberOfSessions').value = HUMnumberOfTests + ' Sess\u00F5es';
             document.getElementById('HUMlongestRound').value = convertMinToMinSec(HUMmax) + ' ' + HUMintervals + ' rounds ' + formatDateAsDMY(HUMdateOfLongestResult);
             document.getElementById('HUMlatestRound').value = convertMinToMinSec(secondsToMinutes(HUMlatestResult)) + ' ' + HUMlastIntervals + ' rounds ' + formatDateAsDMY(HUMlastDate);
+            document.getElementById('HUMaccordion').style.display = 'block';
         } else {
+            document.getElementById('HUMaccordion').style.display = 'none';
             HUMinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
             for (var i = 0; i < HUMinfoOverviewElements.length; i++) {
                 HUMinfoOverviewElements[i].style.display = 'none';
@@ -4174,7 +3556,9 @@ function HUMupdateOverview() {
             document.getElementById('HUMnumberOfSessions').value = HUMnumberOfTests + ' Sessions';
             document.getElementById('HUMlongestRound').value = convertMinToMinSec(HUMmax) + ' ' + HUMintervals + ' rounds ' + formatDateAsDMY(HUMdateOfLongestResult);
             document.getElementById('HUMlatestRound').value = convertMinToMinSec(secondsToMinutes(HUMlatestResult)) + ' ' + HUMlastIntervals + ' rounds ' + formatDateAsDMY(HUMlastDate);
+            document.getElementById('HUMaccordion').style.display = 'block';
         } else {
+            document.getElementById('HUMaccordion').style.display = 'none';
             HUMinfoOverview.innerHTML = 'No results yet';
             for (var i = 0; i < HUMinfoOverviewElements.length; i++) {
                 HUMinfoOverviewElements[i].style.display = 'none';
@@ -4275,6 +3659,7 @@ function HUMdisplayDetailedInfo(HUMselectedDate) {
     openPage(resultsPage, HUMresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backHUMresults.style.display = "block";
+    closeModalResults();
 }
 // END HUM
 // BB
@@ -4716,8 +4101,9 @@ function BBupdateChart(BBstartDate, BBendDate) {
     }
     BBchart.update();
 }
+var BBnumberOfTests;
 function BBupdateOverview() {
-    var BBnumberOfTests = 0;
+    BBnumberOfTests = 0;
     var BBmax = BBfindMaxResult();
     var BBmax2 = BBfindMaxResult2();
     var BBinfoOverviewElements = document.getElementsByClassName('BBinfoOverview');
@@ -4749,7 +4135,9 @@ function BBupdateOverview() {
             document.getElementById('BBnumberOfSessions').value = BBnumberOfTests + ' Sess\u00F5es';
             document.getElementById('BBlongestRound').value = convertMinToMinSec(BBmax) + ' ' + BBintervals + ' rounds ' + formatDateAsDMY(BBdateOfLongestResult);
             document.getElementById('BBlatestRound').value = convertMinToMinSec(secondsToMinutes(BBlatestResult)) + ' ' + BBlastIntervals + ' rounds ' + formatDateAsDMY(BBlastDate);
+            document.getElementById('BBaccordion').style.display = 'block';
         } else {
+            document.getElementById('BBaccordion').style.display = 'none';
             BBinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
             for (var i = 0; i < BBinfoOverviewElements.length; i++) {
                 BBinfoOverviewElements[i].style.display = 'none';
@@ -4766,7 +4154,9 @@ function BBupdateOverview() {
             document.getElementById('BBnumberOfSessions').value = BBnumberOfTests + ' Sessions';
             document.getElementById('BBlongestRound').value = convertMinToMinSec(BBmax) + ' ' + BBintervals + ' rounds ' + formatDateAsDMY(BBdateOfLongestResult);
             document.getElementById('BBlatestRound').value = convertMinToMinSec(secondsToMinutes(BBlatestResult)) + ' ' + BBlastIntervals + ' rounds ' + formatDateAsDMY(BBlastDate);
+            document.getElementById('BBaccordion').style.display = 'block';
         } else {
+            document.getElementById('BBaccordion').style.display = 'none';
             BBinfoOverview.innerHTML = 'No results yet';
             for (var i = 0; i < BBinfoOverviewElements.length; i++) {
                 BBinfoOverviewElements[i].style.display = 'none';
@@ -4867,6 +4257,7 @@ function BBdisplayDetailedInfo(BBselectedDate) {
     openPage(resultsPage, BBresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backBBresults.style.display = "block";
+    closeModalResults();
 }
 // END BB
 // AP
@@ -5244,8 +4635,9 @@ function APupdateChart(APstartDate, APendDate) {
     }
     APchart.update();
 }
+var APnumberOfTests;
 function APupdateOverview() {
-    var APnumberOfTests = 0;
+    APnumberOfTests = 0;
     var APmax = APfindMaxResult();
     var APmax2 = APfindMaxResult2();
     var APinfoOverviewElements = document.getElementsByClassName('APinfoOverview');
@@ -5281,7 +4673,9 @@ function APupdateOverview() {
         }
         document.getElementById('APlongestRound').value = convertMinToMinSec(APmax) + ' ' + APintervals + ' rounds ' + formatDateAsDMY(APdateOfLongestResult);
         document.getElementById('APlatestRound').value = convertMinToMinSec(secondsToMinutes(APlatestResult)) + ' ' + APlastIntervals + ' rounds ' + formatDateAsDMY(APlastDate);
+        document.getElementById('APaccordion').style.display = 'block';
     } else {
+        document.getElementById('APaccordion').style.display = 'none';
         if (isPortuguese) {
             APinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
 
@@ -5385,6 +4779,7 @@ function APdisplayDetailedInfo(APselectedDate) {
     openPage(resultsPage, APresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backAPresults.style.display = "block";
+    closeModalResults();
 }
 // END AP
 // CT
@@ -5508,7 +4903,7 @@ function CTinitializeChart() {
                 legend: { display: false }, // Display the legend
                 title: {
                     display: true,
-                    text: "Your CO2 Tolerance Training results " + "(" + getYear(CTendDate) + ")",
+                    text: "Your CO2 tolerance2 Training results " + "(" + getYear(CTendDate) + ")",
                     font: {
 
                         size: 14 // Change to your desired font size
@@ -5576,7 +4971,7 @@ function CTinitializeChart() {
                         if (isPortuguese) {
                             CTchart.options.title.text = "Seus resultados de Treinamento de Tolerância ao CO2 " + "(" + getYear(CTendDate) + ")";
                         } else {
-                            CTchart.options.title.text = "Your CO2 Tolerance Training results " + "(" + getYear(CTendDate) + ")";
+                            CTchart.options.title.text = "Your CO2 tolerance2 Training results " + "(" + getYear(CTendDate) + ")";
                         }
                     } else if (CTdelta < 0) {
                         if (formatDateAsDMY(CTendDate) == formatDateAsDMY(CTtoday)) {
@@ -5588,7 +4983,7 @@ function CTinitializeChart() {
                             if (isPortuguese) {
                                 CTchart.options.title.text = "Seus resultados de Treinamento de Tolerância ao CO2 " + "(" + getYear(CTendDate) + ")";
                             } else {
-                                CTchart.options.title.text = "Your CO2 Tolerance Training results " + "(" + getYear(CTendDate) + ")";
+                                CTchart.options.title.text = "Your CO2 tolerance2 Training results " + "(" + getYear(CTendDate) + ")";
                             }
                         }
                     }
@@ -5614,7 +5009,7 @@ function CTinitializeChart() {
             if (isPortuguese) {
                 CTchart.options.title.text = "Seus resultados de Treinamento de Tolerância ao CO2 " + "(" + getYear(CTendDate) + ")";
             } else {
-                CTchart.options.title.text = "Your CO2 Tolerance Training results " + "(" + getYear(CTendDate) + ")";
+                CTchart.options.title.text = "Your CO2 tolerance2 Training results " + "(" + getYear(CTendDate) + ")";
             }
         } else if (CTdelta > 0) {
             if (formatDateAsDMY(CTendDate) == formatDateAsDMY(CTtoday)) { }
@@ -5625,7 +5020,7 @@ function CTinitializeChart() {
                 if (isPortuguese) {
                     CTchart.options.title.text = "Seus resultados de Treinamento de Tolerância ao CO2 " + "(" + getYear(CTendDate) + ")";
                 } else {
-                    CTchart.options.title.text = "Your CO2 Tolerance Training results " + "(" + getYear(CTendDate) + ")";
+                    CTchart.options.title.text = "Your CO2 tolerance2 Training results " + "(" + getYear(CTendDate) + ")";
                 }
             }
         }
@@ -5761,8 +5156,9 @@ function CTupdateChart(CTstartDate, CTendDate) {
     }
     CTchart.update();
 }
+var CTnumberOfTests;
 function CTupdateOverview() {
-    var CTnumberOfTests = 0;
+    CTnumberOfTests = 0;
     var CTmax = CTfindMaxResult();
     var CTmax2 = CTfindMaxResult2();
     var CTinfoOverviewElements = document.getElementsByClassName('CTinfoOverview');
@@ -5797,7 +5193,9 @@ function CTupdateOverview() {
         }
         document.getElementById('CTlongestRound').value = convertMinToMinSec(CTmax) + ' ' + CTintervals + ' rounds ' + formatDateAsDMY(CTdateOfLongestResult);
         document.getElementById('CTlatestRound').value = convertMinToMinSec(secondsToMinutes(CTlatestResult)) + ' ' + CTlastIntervals + ' rounds ' + formatDateAsDMY(CTlastDate);
+        document.getElementById('CTaccordion').style.display = 'block';
     } else {
+        document.getElementById('CTaccordion').style.display = 'none';
         if (isPortuguese) {
             CTinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -5901,6 +5299,7 @@ function CTdisplayDetailedInfo(CTselectedDate) {
     openPage(resultsPage, CTresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backCTresults.style.display = "block";
+    closeModalResults();
 }
 // END CT
 // BOX
@@ -6277,8 +5676,9 @@ function BOXupdateChart(BOXstartDate, BOXendDate) {
     }
     BOXchart.update();
 }
+var BOXnumberOfTests;
 function BOXupdateOverview() {
-    var BOXnumberOfTests = 0;
+    BOXnumberOfTests = 0;
     var BOXmax = BOXfindMaxResult();
     var BOXmax2 = BOXfindMaxResult2();
     var BOXinfoOverviewElements = document.getElementsByClassName('BOXinfoOverview');
@@ -6313,7 +5713,9 @@ function BOXupdateOverview() {
         }
         document.getElementById('BOXlongestRound').value = convertMinToMinSec(BOXmax) + ' ' + BOXintervals + ' rounds ' + formatDateAsDMY(BOXdateOfLongestResult);
         document.getElementById('BOXlatestRound').value = convertMinToMinSec(secondsToMinutes(BOXlatestResult)) + ' ' + BOXlastIntervals + ' rounds ' + formatDateAsDMY(BOXlastDate);
+        document.getElementById('BOXaccordion').style.display = 'block';
     } else {
+        document.getElementById('BOXaccordion').style.display = 'none';
         if (isPortuguese) {
             BOXinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -6417,6 +5819,7 @@ function BOXdisplayDetailedInfo(BOXselectedDate) {
     openPage(resultsPage, BOXresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backBOXresults.style.display = "block";
+    closeModalResults();
 }
 // END BOX
 // UB
@@ -6793,8 +6196,9 @@ function UBupdateChart(UBstartDate, UBendDate) {
     }
     UBchart.update();
 }
+var UBnumberOfTests;
 function UBupdateOverview() {
-    var UBnumberOfTests = 0;
+    UBnumberOfTests = 0;
     var UBmax = UBfindMaxResult();
     var UBmax2 = UBfindMaxResult2();
     var UBinfoOverviewElements = document.getElementsByClassName('UBinfoOverview');
@@ -6829,7 +6233,9 @@ function UBupdateOverview() {
         }
         document.getElementById('UBlongestRound').value = convertMinToMinSec(UBmax) + ' ' + UBintervals + ' rounds ' + formatDateAsDMY(UBdateOfLongestResult);
         document.getElementById('UBlatestRound').value = convertMinToMinSec(secondsToMinutes(UBlatestResult)) + ' ' + UBlastIntervals + ' rounds ' + formatDateAsDMY(UBlastDate);
+        document.getElementById('UBaccordion').style.display = 'block';
     } else {
+        document.getElementById('UBaccordion').style.display = 'none';
         if (isPortuguese) {
             UBinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -6933,6 +6339,7 @@ function UBdisplayDetailedInfo(UBselectedDate) {
     openPage(resultsPage, UBresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backUBresults.style.display = "block";
+    closeModalResults();
 }
 // END UB
 // NB
@@ -7309,8 +6716,9 @@ function NBupdateChart(NBstartDate, NBendDate) {
     }
     NBchart.update();
 }
+var NBnumberOfTests;
 function NBupdateOverview() {
-    var NBnumberOfTests = 0;
+    NBnumberOfTests = 0;
     var NBmax = NBfindMaxResult();
     var NBmax2 = NBfindMaxResult2();
     var NBinfoOverviewElements = document.getElementsByClassName('NBinfoOverview');
@@ -7345,7 +6753,9 @@ function NBupdateOverview() {
         }
         document.getElementById('NBlongestRound').value = convertMinToMinSec(NBmax) + ' ' + NBintervals + ' rounds ' + formatDateAsDMY(NBdateOfLongestResult);
         document.getElementById('NBlatestRound').value = convertMinToMinSec(secondsToMinutes(NBlatestResult)) + ' ' + NBlastIntervals + ' rounds ' + formatDateAsDMY(NBlastDate);
+        document.getElementById('NBaccordion').style.display = 'block';
     } else {
+        document.getElementById('NBaccordion').style.display = 'none';
         if (isPortuguese) {
             NBinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -7449,6 +6859,7 @@ function NBdisplayDetailedInfo(NBselectedDate) {
     openPage(resultsPage, NBresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backNBresults.style.display = "block";
+    closeModalResults();
 }
 // END NB
 // SB
@@ -7825,8 +7236,9 @@ function SBupdateChart(SBstartDate, SBendDate) {
     }
     SBchart.update();
 }
+var SBnumberOfTests;
 function SBupdateOverview() {
-    var SBnumberOfTests = 0;
+    SBnumberOfTests = 0;
     var SBmax = SBfindMaxResult();
     var SBmax2 = SBfindMaxResult2();
     var SBinfoOverviewElements = document.getElementsByClassName('SBinfoOverview');
@@ -7861,7 +7273,9 @@ function SBupdateOverview() {
         }
         document.getElementById('SBlongestRound').value = convertMinToMinSec(SBmax) + ' ' + SBintervals + ' rounds ' + formatDateAsDMY(SBdateOfLongestResult);
         document.getElementById('SBlatestRound').value = convertMinToMinSec(secondsToMinutes(SBlatestResult)) + ' ' + SBlastIntervals + ' rounds ' + formatDateAsDMY(SBlastDate);
+        document.getElementById('SBaccordion').style.display = 'block';
     } else {
+        document.getElementById('SBaccordion').style.display = 'none';
         if (isPortuguese) {
             SBinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -7965,6 +7379,7 @@ function SBdisplayDetailedInfo(SBselectedDate) {
     openPage(resultsPage, SBresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backSBresults.style.display = "block";
+    closeModalResults();
 }
 // END SB
 // CB
@@ -8341,8 +7756,9 @@ function CBupdateChart(CBstartDate, CBendDate) {
     }
     CBchart.update();
 }
+var CBnumberOfTests;
 function CBupdateOverview() {
-    var CBnumberOfTests = 0;
+    CBnumberOfTests = 0;
     var CBmax = CBfindMaxResult();
     var CBmax2 = CBfindMaxResult2();
     var CBinfoOverviewElements = document.getElementsByClassName('CBinfoOverview');
@@ -8377,7 +7793,9 @@ function CBupdateOverview() {
         }
         document.getElementById('CBlongestRound').value = convertMinToMinSec(CBmax) + ' ' + CBintervals + ' rounds ' + formatDateAsDMY(CBdateOfLongestResult);
         document.getElementById('CBlatestRound').value = convertMinToMinSec(secondsToMinutes(CBlatestResult)) + ' ' + CBlastIntervals + ' rounds ' + formatDateAsDMY(CBlastDate);
+        document.getElementById('CBaccordion').style.display = 'block';
     } else {
+        document.getElementById('CBaccordion').style.display = 'none';
         if (isPortuguese) {
             CBinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -8481,6 +7899,7 @@ function CBdisplayDetailedInfo(CBselectedDate) {
     openPage(resultsPage, CBresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backCBresults.style.display = "block";
+    closeModalResults();
 }
 // END CB
 // RB
@@ -8857,8 +8276,9 @@ function RBupdateChart(RBstartDate, RBendDate) {
     }
     RBchart.update();
 }
+var RBnumberOfTests;
 function RBupdateOverview() {
-    var RBnumberOfTests = 0;
+    RBnumberOfTests = 0;
     var RBmax = RBfindMaxResult();
     var RBmax2 = RBfindMaxResult2();
     var RBinfoOverviewElements = document.getElementsByClassName('RBinfoOverview');
@@ -8893,7 +8313,9 @@ function RBupdateOverview() {
         }
         document.getElementById('RBlongestRound').value = convertMinToMinSec(RBmax) + ' ' + RBintervals + ' rounds ' + formatDateAsDMY(RBdateOfLongestResult);
         document.getElementById('RBlatestRound').value = convertMinToMinSec(secondsToMinutes(RBlatestResult)) + ' ' + RBlastIntervals + ' rounds ' + formatDateAsDMY(RBlastDate);
+        document.getElementById('RBaccordion').style.display = 'block';
     } else {
+        document.getElementById('RBaccordion').style.display = 'none';
         if (isPortuguese) {
             RBinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -8997,6 +8419,7 @@ function RBdisplayDetailedInfo(RBselectedDate) {
     openPage(resultsPage, RBresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backRBresults.style.display = "block";
+    closeModalResults();
 }
 // END RB
 // WH
@@ -9484,8 +8907,9 @@ function WHupdateChart(WHstartDate, WHendDate) {
     }
     WHchart.update();
 }
+var WHnumberOfTests;
 function WHupdateOverview() {
-    var WHnumberOfTests = 0;
+    WHnumberOfTests = 0;
     var WHmax = WHfindMaxResult();
     var WHmax2 = WHfindMaxResult2();
     var WHmaxAverage = WHfindMaxAverage();
@@ -9518,7 +8942,9 @@ function WHupdateOverview() {
             document.getElementById('WHlongestRound').value = convertMinToMinSec(WHmax) + 'on ' + formatDateAsDMY(WHdateOfLongestResult);
             document.getElementById('WHlongestSession').value = convertMinToMinSec(secondsToMinutes(WHmaxAverage)) + ' in ' + WHLongestAverageIntervals + ' rounds on ' + formatDateAsDMY(WHlongestAverageDate);
         }
+        document.getElementById('WHaccordion').style.display = 'block';
     } else {
+        document.getElementById('WHaccordion').style.display = 'none';
         if (isPortuguese) {
             WHinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -9625,6 +9051,7 @@ function WHdisplayDetailedInfo(WHselectedDate) {
     openPage(resultsPage, WHresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backWHresults.style.display = "block";
+    closeModalResults();
 }
 // END WH
 // KB
@@ -10112,8 +9539,9 @@ function KBupdateChart(KBstartDate, KBendDate) {
     }
     KBchart.update();
 }
+var KBnumberOfTests;
 function KBupdateOverview() {
-    var KBnumberOfTests = 0;
+    KBnumberOfTests = 0;
     var KBmax = KBfindMaxResult();
     var KBmax2 = KBfindMaxResult2();
     var KBmaxAverage = KBfindMaxAverage();
@@ -10146,7 +9574,9 @@ function KBupdateOverview() {
             document.getElementById('KBlongestRound').value = convertMinToMinSec(KBmax) + 'on ' + formatDateAsDMY(KBdateOfLongestResult);
             document.getElementById('KBlongestSession').value = convertMinToMinSec(secondsToMinutes(KBmaxAverage)) + ' in ' + KBLongestAverageIntervals + ' rounds on ' + formatDateAsDMY(KBlongestAverageDate);
         }
+        document.getElementById('KBaccordion').style.display = 'block';
     } else {
+        document.getElementById('KBaccordion').style.display = 'none';
         if (isPortuguese) {
             KBinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -10253,6 +9683,7 @@ function KBdisplayDetailedInfo(KBselectedDate) {
     openPage(resultsPage, KBresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backKBresults.style.display = "block";
+    closeModalResults();
 }
 // END KB
 // HAT
@@ -10699,8 +10130,9 @@ function HATupdateChart(HATstartDate, HATendDate) {
     }
     HATchart.update();
 }
+var HATnumberOfTests;
 function HATupdateOverview() {
-    var HATnumberOfTests = 0;
+    HATnumberOfTests = 0;
     var HATmax = HATfindMaxResult();
     var HATmaxAverage = HATfindMaxAverage();
     var HATinfoOverviewElements = document.getElementsByClassName('HATinfoOverview');
@@ -10731,7 +10163,9 @@ function HATupdateOverview() {
             document.getElementById('HATlongestRound').value = HATmax + ' seconds on ' + formatDateAsDMY(HATdateOfLongestResult);
             document.getElementById('HATlongestSession').value = HATmaxAverage + ' seconds in ' + HATLongestAverageIntervals + ' rounds on ' + formatDateAsDMY(HATlongestAverageDate);
         }
+        document.getElementById('HATaccordion').style.display = 'block';
     } else {
+        document.getElementById('HATaccordion').style.display = 'none';
         if (isPortuguese) {
             HATinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -10838,6 +10272,7 @@ function HATdisplayDetailedInfo(HATselectedDate) {
     openPage(resultsPage, HATresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backHATresults.style.display = "block";
+    closeModalResults();
 }
 // END HAT
 // HATC
@@ -11284,8 +10719,9 @@ function HATCupdateChart(HATCstartDate, HATCendDate) {
     }
     HATCchart.update();
 }
+var HATCnumberOfTests;
 function HATCupdateOverview() {
-    var HATCnumberOfTests = 0;
+    HATCnumberOfTests = 0;
     var HATCmax = HATCfindMaxResult();
     var HATCmaxAverage = HATCfindMaxAverage();
     var HATCinfoOverviewElements = document.getElementsByClassName('HATCinfoOverview');
@@ -11316,7 +10752,9 @@ function HATCupdateOverview() {
             document.getElementById('HATClongestRound').value = HATCmax + ' seconds on ' + formatDateAsDMY(HATCdateOfLongestResult);
             document.getElementById('HATClongestSession').value = HATCmaxAverage + ' seconds in ' + HATCLongestAverageIntervals + ' rounds on ' + formatDateAsDMY(HATClongestAverageDate);
         }
+        document.getElementById('HATCaccordion').style.display = 'block';
     } else {
+        document.getElementById('HATCaccordion').style.display = 'none';
         if (isPortuguese) {
             HATCinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -11423,6 +10861,7 @@ function HATCdisplayDetailedInfo(HATCselectedDate) {
     openPage(resultsPage, HATCresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backHATCresults.style.display = "block";
+    closeModalResults();
 }
 // END HATC
 // AHAT
@@ -11874,8 +11313,9 @@ function AHATupdateChart(AHATstartDate, AHATendDate) {
     }
     AHATchart.update();
 }
+var AHATnumberOfTests;
 function AHATupdateOverview() {
-    var AHATnumberOfTests = 0;
+    AHATnumberOfTests = 0;
     var AHATmax = AHATfindMaxResult();
     var AHATmaxAverage = AHATfindMaxAverage();
     var AHATinfoOverviewElements = document.getElementsByClassName('AHATinfoOverview');
@@ -11906,7 +11346,9 @@ function AHATupdateOverview() {
             document.getElementById('AHATlongestRound').value = AHATmax + ' seconds on ' + formatDateAsDMY(AHATdateOfLongestResult);
             document.getElementById('AHATlongestSession').value = AHATmaxAverage + ' seconds in ' + AHATLongestAverageIntervals + ' rounds on ' + formatDateAsDMY(AHATlongestAverageDate);
         }
+        document.getElementById('AHATaccordion').style.display = 'block';
     } else {
+        document.getElementById('AHATaccordion').style.display = 'none';
         if (isPortuguese) {
             AHATinfoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -12013,6 +11455,7 @@ function AHATdisplayDetailedInfo(AHATselectedDate) {
     openPage(resultsPage, AHATresultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backAHATresults.style.display = "block";
+    closeModalResults();
 }
 // END AHAT
 // CO2
@@ -12459,8 +11902,9 @@ function CO2updateChart(CO2startDate, CO2endDate) {
     }
     CO2chart.update();
 }
+var CO2numberOfTests;
 function CO2updateOverview() {
-    var CO2numberOfTests = 0;
+    CO2numberOfTests = 0;
     var CO2max = CO2findMaxResult();
     var CO2maxAverage = CO2findMaxAverage();
     var CO2infoOverviewElements = document.getElementsByClassName('CO2infoOverview');
@@ -12491,7 +11935,9 @@ function CO2updateOverview() {
             document.getElementById('CO2longestRound').value = CO2max + ' seconds on ' + formatDateAsDMY(CO2dateOfLongestResult);
             document.getElementById('CO2longestSession').value = CO2maxAverage + ' seconds in ' + CO2LongestAverageIntervals + ' rounds on ' + formatDateAsDMY(CO2longestAverageDate);
         }
+        document.getElementById('CO2accordion').style.display = 'block';
     } else {
+        document.getElementById('CO2accordion').style.display = 'none';
         if (isPortuguese) {
             CO2infoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -12598,6 +12044,7 @@ function CO2displayDetailedInfo(CO2selectedDate) {
     openPage(resultsPage, CO2resultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backCO2results.style.display = "block";
+    closeModalResults();
 }
 // END CO2
 // O2
@@ -13044,8 +12491,9 @@ function O2updateChart(O2startDate, O2endDate) {
     }
     O2chart.update();
 }
+var O2numberOfTests;
 function O2updateOverview() {
-    var O2numberOfTests = 0;
+    O2numberOfTests = 0;
     var O2max = O2findMaxResult();
     var O2maxAverage = O2findMaxAverage();
     var O2infoOverviewElements = document.getElementsByClassName('O2infoOverview');
@@ -13076,7 +12524,9 @@ function O2updateOverview() {
             document.getElementById('O2longestRound').value = O2max + ' seconds on ' + formatDateAsDMY(O2dateOfLongestResult);
             document.getElementById('O2longestSession').value = O2maxAverage + ' seconds in ' + O2LongestAverageIntervals + ' rounds on ' + formatDateAsDMY(O2longestAverageDate);
         }
+        document.getElementById('O2accordion').style.display = 'block';
     } else {
+        document.getElementById('O2accordion').style.display = 'none';
         if (isPortuguese) {
             O2infoOverview.innerHTML = 'Ainda n\u00E3o h\u00E1 resultados';
         } else {
@@ -13183,5 +12633,6 @@ function O2displayDetailedInfo(O2selectedDate) {
     openPage(resultsPage, O2resultPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backO2results.style.display = "block";
+    closeModalResults();
 }
 // END O2

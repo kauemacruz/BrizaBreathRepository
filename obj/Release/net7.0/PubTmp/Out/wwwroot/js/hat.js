@@ -1,19 +1,77 @@
 /*HAT JS*/
 var isHATon = false;
-const HATmodal = document.getElementById("HATmodal");
-const HATcloseModal = document.getElementById("HATcloseModal");
-const HATBTN = document.getElementById("HATBTN");
+//HAT Modal
+const modalHAT = document.getElementById("myModalHAT");
+const closeModalHATButton = document.getElementById("closeModalHAT");
+var HATquestion = document.getElementById("HATquestion");
 
-function HATopenmodal() {
-    HATmodal.style.display = "block";
+function openModalHAT() {
+    modalHAT.style.display = "block";
+    showSlides(slideIndex, 'HATslides');
+}
+
+// Function to close the modalHAT
+function closeModalHAT() {
+    modalHAT.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalHAT
+closeModalHATButton.addEventListener("click", closeModalHAT);
+
+// Close the modalHAT if the user clicks outside the modalHAT content
+window.addEventListener("click", function (event) {
+    if (event.target === modalHAT) {
+        closeModalHAT();
+    }
+});
+HATquestion.onclick = function () {
+    openModalHAT();
+}
+backHAT.onclick = function () {
+    openPage(HATPage, programPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram.style.display = "block";
+    backHAT.style.display = "none";
+}
+backHAT2.onclick = function () {
+    openPage(HATPage, programPage2, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "block";
+    backHAT2.style.display = "none";
+}
+HATLink2.onclick = function () {
+    openPage(programPage2, HATPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backHAT2.style.display = "block";
+    backProgram2.style.display = "none";
     audioObjects.pinchWalk.load();
     audioObjects.lightNasal.load();
     audioObjects.normalbreath.load();
 }
+hatSettings.onclick = function () {
+    openPage(HATPage, hatSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backHATset.style.display = "block";
+    backHAT.style.display = "none";
+}
+backHATset.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(hatSettingsPage, HATPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backHAT.style.display = "block";
+    backHATset.style.display = "none";
+}
+
 // Function to close the modal
 function HATclose() {
     isHATon = false;
-    HATmodal.style.display = "none";
     document.getElementById("HATResults").innerHTML = "";
     timerRefHAT.value = "|";
     clearInterval(intHAT);
@@ -38,11 +96,7 @@ function HATclose() {
     document.getElementById('hatSave').style.color = 'rgb(177, 177, 177)';
     document.getElementById('hatResultSaved').innerHTML = "";
 }
-// Event listener for closing the modal
-HATcloseModal.addEventListener("click", HATclose);
-HATBTN.onclick = function () {
-    HATopenmodal();
-}
+
 $(function () {
     $('#hatForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission

@@ -1,18 +1,80 @@
 /*HATC JS*/
 var isHATCon = false;
-const HATCmodal = document.getElementById("HATCmodal");
-const HATCcloseModal = document.getElementById("HATCcloseModal");
-const HATCBTN = document.getElementById("HATCBTN");
+//HATC Modal
+const modalHATC = document.getElementById("myModalHATC");
+const closeModalHATCButton = document.getElementById("closeModalHATC");
+var HATCquestion = document.getElementById("HATCquestion");
 
-function HATCopenmodal() {
-    HATCmodal.style.display = "block";
+function openModalHATC() {
+    modalHATC.style.display = "block";
+    showSlides(slideIndex, 'HATCslides');
+}
+
+// Function to close the modalHATC
+function closeModalHATC() {
+    modalHATC.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalHATC
+closeModalHATCButton.addEventListener("click", closeModalHATC);
+
+// Close the modalHATC if the user clicks outside the modalHATC content
+window.addEventListener("click", function (event) {
+    if (event.target === modalHATC) {
+        closeModalHATC();
+    }
+});
+HATCquestion.onclick = function () {
+    openModalHATC();
+}
+
+backHATC.onclick = function () {
+    openPage(HATCPage, programPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram.style.display = "block";
+    backHATC.style.display = "none";
+    HATCclose();
+}
+backHATC2.onclick = function () {
+    openPage(HATCPage, programPage2, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "block";
+    backHATC2.style.display = "none";
+    HATCclose();
+}
+HATCLink2.onclick = function () {
+    openPage(programPage2, HATCPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backHATC2.style.display = "block";
+    backProgram2.style.display = "none";
     audioObjects.pinchRun.load();
     audioObjects.normalbreath.load();
 }
+hatcSettings.onclick = function () {
+    openPage(HATCPage, hatcSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backHATCset.style.display = "block";
+    backHATC.style.display = "none";
+}
+backHATCset.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(hatcSettingsPage, HATCPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backHATC.style.display = "block";
+    backHATCset.style.display = "none";
+}
+
+
 // Function to close the modal
 function HATCclose() {
     isHATCon = false;
-    HATCmodal.style.display = "none";
     document.getElementById("HATCResults").innerHTML = "";
     timerRefHATC.value = "|";
     clearInterval(intHATC);
@@ -37,11 +99,7 @@ function HATCclose() {
     document.getElementById('hatcSave').style.color = 'rgb(177, 177, 177)';
     document.getElementById('hatcResultSaved').innerHTML = "";
 }
-// Event listener for closing the modal
-HATCcloseModal.addEventListener("click", HATCclose);
-HATCBTN.onclick = function () {
-    HATCopenmodal();
-}
+
 $(function () {
     $('#hatcForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission

@@ -8,23 +8,80 @@ function KBchangeBall(scale, duration) {
     KBball.style.transform = `scale(${scale})`;
 }
 
-const KBmodal = document.getElementById("KBmodal");
-const KBcloseModal = document.getElementById("KBcloseModal");
-const KBBTN = document.getElementById("KBBTN");
+//KB Modal
+const modalKB = document.getElementById("myModalKB");
+const closeModalKBButton = document.getElementById("closeModalKB");
+var KBquestion = document.getElementById("KBquestion");
 
-function KBopenmodal() {
-    KBmodal.style.display = "block";
-    audioObjects.fullyin.load();
-    audioObjects.fullyout2.load();
-    audioObjects.letgoandhold.load();
-    audioObjects.fullyinHold.load();
-    audioObjects.normalbreath.load();
-    audioObjects.nextRound.load();
+function openModalKB() {
+    modalKB.style.display = "block";
+    showSlides(slideIndex, 'KBslides');
+}
+
+// Function to close the modalKB
+function closeModalKB() {
+    modalKB.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalKB
+closeModalKBButton.addEventListener("click", closeModalKB);
+
+// Close the modalKB if the user clicks outside the modalKB content
+window.addEventListener("click", function (event) {
+    if (event.target === modalKB) {
+        closeModalKB();
+    }
+});
+KBquestion.onclick = function () {
+    openModalKB();
+}
+
+KBLink.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, KBPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backKB.style.display = "block";
+        backPRANA.style.display = "none";
+        audioObjects.fullyin.load();
+        audioObjects.fullyout2.load();
+        audioObjects.letgoandhold.load();
+        audioObjects.fullyinHold.load();
+        audioObjects.normalbreath.load();
+        audioObjects.nextRound.load();
+    } else {
+        openModal();
+    }
+}
+backKB.onclick = function () {
+    openPage(KBPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backPRANA.style.display = "block";
+    backKB.style.display = "none";
+    KBclose();
+}
+KBSettings.onclick = function () {
+    openPage(KBPage, KBSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backKBSet.style.display = "block";
+    backKB.style.display = "none";
+}
+backKBSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(KBSettingsPage, KBPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backKB.style.display = "block";
+    backKBSet.style.display = "none";
 }
 // Function to close the modal
 function KBclose() {
     isKBon = false;
-    KBmodal.style.display = "none";
     clearTimeout(intKB);
     intKB = null;
     [secondsKB, minutesKB] = [0, 0];
@@ -51,11 +108,7 @@ function KBclose() {
         KBchangeBall(1.5, 1);
     }, 3000); KBballText.textContent = formSettingsFieldsKB.breakDuration2KB.value;
 }
-// Event listener for closing the modal
-KBcloseModal.addEventListener("click", KBclose);
-KBBTN.onclick = function () {
-    KBopenmodal();
-}
+
 
 var KBbreaths = 30;
 let KBmyTimeout;

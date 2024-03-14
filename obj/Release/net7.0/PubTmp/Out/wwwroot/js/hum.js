@@ -24,21 +24,78 @@ for (let HUMi = 2; HUMi <= 60; HUMi++) { // assuming 1 to 60 minutes
     }
     HUMtimeInput.appendChild(HUMoption);
 }
-const HUMmodal = document.getElementById("HUMmodal");
-const HUMcloseModal = document.getElementById("HUMcloseModal");
-const HUMBTN = document.getElementById("HUMBTN");
+//HUM Modal
+const modalHUM = document.getElementById("myModalHUM");
+const closeModalHUMButton = document.getElementById("closeModalHUM");
+var HUMquestion = document.getElementById("HUMquestion");
 
-function HUMopenmodal() {
-    HUMmodal.style.display = "block";
-    audioObjects.inhale.load();
-    audioObjects.hum.load();
-    audioObjects.hold.load();
-    audioObjects.normalbreath.load();
+function openModalHUM() {
+    modalHUM.style.display = "block";
+    showSlides(slideIndex, 'HUMslides');
+}
+
+// Function to close the modalHUM
+function closeModalHUM() {
+    modalHUM.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalHUM
+closeModalHUMButton.addEventListener("click", closeModalHUM);
+
+// Close the modalHUM if the user clicks outside the modalHUM content
+window.addEventListener("click", function (event) {
+    if (event.target === modalHUM) {
+        closeModalHUM();
+    }
+});
+HUMquestion.onclick = function () {
+    openModalHUM();
+}
+
+HUMLink.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, HUMPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backHUM.style.display = "block";
+        backPRANA.style.display = "none";
+        audioObjects.inhale.load();
+        audioObjects.hum.load();
+        audioObjects.hold.load();
+        audioObjects.normalbreath.load();
+    } else {
+        openModal();
+    }
+}
+backHUM.onclick = function () {
+    openPage(HUMPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backPRANA.style.display = "block";
+    backHUM.style.display = "none";
+    HUMclose();
+}
+humSettings.onclick = function () {
+    openPage(HUMPage, humSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backHUMSet.style.display = "block";
+    backHUM.style.display = "none";
+}
+backHUMSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(humSettingsPage, HUMPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backHUM.style.display = "block";
+    backHUMSet.style.display = "none";
 }
 // Function to close the modal
 function HUMclose() {
     isHUMon = false;
-    HUMmodal.style.display = "none";
     clearInterval(intHUM);
     [secondsHUM, minutesHUM, hoursHUM] = [0, 0, 0];
     timerRefHUM.value = '00 : 00 : 00';
@@ -68,11 +125,7 @@ function HUMclose() {
     HUMcountdownDisplay.classList.add('CountdownHidden');
     HUMchangeBall(1, 1);
 }
-// Event listener for closing the modal
-HUMcloseModal.addEventListener("click", HUMclose);
-HUMBTN.onclick = function () {
-    HUMopenmodal();
-}
+
 $(function () {
     $('#HUMForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission

@@ -25,21 +25,81 @@ for (let BBi = 2; BBi <= 60; BBi++) { // assuming 1 to 60 minutes
     BBtimeInput.appendChild(BBoption);
 }
 
-const BBmodal = document.getElementById("BBmodal");
-const BBcloseModal = document.getElementById("BBcloseModal");
-const BBBTN = document.getElementById("BBBTN");
+//BB Modal
+const modalBB = document.getElementById("myModalBB");
+const closeModalBBButton = document.getElementById("closeModalBB");
+var BBquestion = document.getElementById("BBquestion");
 
-function BBopenmodal() {
-    BBmodal.style.display = "block";
+function openModalBB() {
+    modalBB.style.display = "block";
+    showSlides(slideIndex, 'BBslides');
+}
+
+// Function to close the modalBB
+function closeModalBB() {
+    modalBB.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalBB
+closeModalBBButton.addEventListener("click", closeModalBB);
+
+// Close the modalBB if the user clicks outside the modalBB content
+window.addEventListener("click", function (event) {
+    if (event.target === modalBB) {
+        closeModalBB();
+    }
+});
+BBquestion.onclick = function () {
+    openModalBB();
+}
+
+backBB.onclick = function () {
+    openPage(BBPage, programPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram.style.display = "block";
+    backBB.style.display = "none";
+    BBclose();
+}
+backBB2.onclick = function () {
+    openPage(BBPage, programPage2, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "block";
+    backBB2.style.display = "none";
+    BBclose();
+}
+BBLink2.onclick = function () {
+    openPage(programPage2, BBPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backBB2.style.display = "block";
+    backProgram2.style.display = "none";
     audioObjects.inhale.load();
     audioObjects.exhale.load();
     audioObjects.hold.load();
     audioObjects.normalbreath.load();
 }
+BBSettings.onclick = function () {
+    openPage(BBPage, bbSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backBBset.style.display = "block";
+    backBB.style.display = "none";
+}
+backBBset.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(bbSettingsPage, BBPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backBB.style.display = "block";
+    backBBset.style.display = "none";
+}
 // Function to close the modal
 function BBclose() {
     isBBon = false;
-    BBmodal.style.display = "none";
     clearInterval(intBB);
     [secondsBB, minutesBB, hoursBB] = [0, 0, 0];
     timerRefBB.value = '00 : 00 : 00';
@@ -64,11 +124,6 @@ function BBclose() {
     BBtimeInput.classList.remove('CountdownHidden');
     BBcountdownDisplay.classList.add('CountdownHidden');
     BBchangeBall(1, 1);
-}
-// Event listener for closing the modal
-BBcloseModal.addEventListener("click", BBclose);
-BBBTN.onclick = function () {
-    BBopenmodal();
 }
 $(function () {
     $('#BBForm').on('submit', function (e) {

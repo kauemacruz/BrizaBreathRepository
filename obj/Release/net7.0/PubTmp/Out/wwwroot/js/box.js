@@ -26,21 +26,79 @@ for (let BOXi = 2; BOXi <= 60; BOXi++) { // assuming 1 to 60 minutes
     BOXtimeInput.appendChild(BOXoption);
 }
 
-const BOXmodal = document.getElementById("BOXmodal");
-const BOXcloseModal = document.getElementById("BOXcloseModal");
-const BOXBTN = document.getElementById("BOXBTN");
+//BOX Modal
+const modalBOX = document.getElementById("myModalBOX");
+const closeModalBOXButton = document.getElementById("closeModalBOX");
+var BOXquestion = document.getElementById("BOXquestion");
 
-function BOXopenmodal() {
-    BOXmodal.style.display = "block";
-    audioObjects.exhale.load();
-    audioObjects.inhale.load();
-    audioObjects.hold.load();
-    audioObjects.normalbreath.load();
+function openModalBOX() {
+    modalBOX.style.display = "block";
+    showSlides(slideIndex, 'BOXslides');
 }
+
+// Function to close the modalBOX
+function closeModalBOX() {
+    modalBOX.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalBOX
+closeModalBOXButton.addEventListener("click", closeModalBOX);
+
+// Close the modalBOX if the user clicks outside the modalBOX content
+window.addEventListener("click", function (event) {
+    if (event.target === modalBOX) {
+        closeModalBOX();
+    }
+});
+BOXquestion.onclick = function () {
+    openModalBOX();
+}
+
+BOXLink.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, BOXPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backBOX.style.display = "block";
+        backPRANA.style.display = "none";
+        audioObjects.exhale.load();
+        audioObjects.inhale.load();
+        audioObjects.hold.load();
+        audioObjects.normalbreath.load();
+    } else {
+        openModal();
+    }
+}
+backBOX.onclick = function () {
+    openPage(BOXPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backPRANA.style.display = "block";
+    backBOX.style.display = "none";
+    BOXclose();
+}
+BOXSettings.onclick = function () {
+    openPage(BOXPage, BOXSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backBOXSet.style.display = "block";
+    backBOX.style.display = "none";
+}
+backBOXSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(BOXSettingsPage, BOXPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backBOX.style.display = "block";
+    backBOXSet.style.display = "none";
+}
+
 // Function to close the modal
 function BOXclose() {
     isBOXon = false;
-    BOXmodal.style.display = "none";
     clearInterval(intBOX);
     [secondsBOX, minutesBOX, hoursBOX] = [0, 0, 0];
     timerRefBOX.value = '00 : 00 : 00';
@@ -66,11 +124,7 @@ function BOXclose() {
     BOXcountdownDisplay.classList.add('CountdownHidden');
     BOXchangeBall(1, 1);
 }
-// Event listener for closing the modal
-BOXcloseModal.addEventListener("click", BOXclose);
-BOXBTN.onclick = function () {
-    BOXopenmodal();
-}
+
 $(function () {
     $('#BOXForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission

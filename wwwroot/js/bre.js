@@ -25,21 +25,81 @@ for (let BREi = 2; BREi <= 60; BREi++) { // assuming 1 to 60 minutes
     BREtimeInput.appendChild(BREoption);
 }
 
-const BREmodal = document.getElementById("BREmodal");
-const BREcloseModal = document.getElementById("BREcloseModal");
-const BREBTN = document.getElementById("BREBTN");
+//BRE Modal
+const modalBRE = document.getElementById("myModalBRE");
+const closeModalBREButton = document.getElementById("closeModalBRE");
+var BREquestion = document.getElementById("BREquestion");
 
-function BREopenmodal() {
-    BREmodal.style.display = "block";
+function openModalBRE() {
+    modalBRE.style.display = "block";
+    showSlides(slideIndex, 'BREslides');
+}
+
+// Function to close the modalBRE
+function closeModalBRE() {
+    modalBRE.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalBRE
+closeModalBREButton.addEventListener("click", closeModalBRE);
+
+// Close the modalBRE if the user clicks outside the modalBRE content
+window.addEventListener("click", function (event) {
+    if (event.target === modalBRE) {
+        closeModalBRE();
+    }
+});
+BREquestion.onclick = function () {
+    openModalBRE();
+}
+
+backBRE.onclick = function () {
+    openPage(BREPage, programPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram.style.display = "block";
+    backBRE.style.display = "none";
+    BREclose();
+}
+backBRE2.onclick = function () {
+    openPage(BREPage, programPage2, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "block";
+    backBRE2.style.display = "none";
+    BREclose();
+}
+BRELink2.onclick = function () {
+    openPage(programPage2, BREPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "none";
+    backBRE2.style.display = "block";
     audioObjects.inhale.load();
     audioObjects.exhale.load();
     audioObjects.hold.load();
     audioObjects.normalbreath.load();
 }
+breSettings.onclick = function () {
+    openPage(BREPage, breSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backBREset.style.display = "block";
+    backBRE.style.display = "none";
+}
+backBREset.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(breSettingsPage, BREPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backBRE.style.display = "block";
+    backBREset.style.display = "none";
+}
 // Function to close the modal
 function BREclose() {
     isBREon = false;
-    BREmodal.style.display = "none";
     clearInterval(intBRE);
     [secondsBRE, minutesBRE, hoursBRE] = [0, 0, 0];
     timerRefBRE.value = '00 : 00 : 00';
@@ -66,11 +126,7 @@ function BREclose() {
     BREcountdownDisplay.classList.add('CountdownHidden');
     BREchangeBall(1, 1);
 }
-// Event listener for closing the modal
-BREcloseModal.addEventListener("click", BREclose);
-BREBTN.onclick = function () {
-    BREopenmodal();
-}
+
 $(function () {
     $('#BREForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission

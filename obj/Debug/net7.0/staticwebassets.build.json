@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HSFjChxyw8YSvRA6DBmkV63KHeyjiDQ79INsGJ/mPv4=",
+  "Hash": "v1xzVdA2AJJZBL5J9SIZkXsZdvxw2Mz4sjFpqlwynTc=",
   "Source": "BrizaBreath",
   "BasePath": "_content/BrizaBreath",
   "Mode": "Default",
@@ -1156,12 +1156,12 @@
       "OriginalItemSpec": "wwwroot\\images\\icon.png"
     },
     {
-      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\img1.png",
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\medit.png",
       "SourceId": "BrizaBreath",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
       "BasePath": "_content/BrizaBreath",
-      "RelativePath": "images/img1.png",
+      "RelativePath": "images/medit.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1170,7 +1170,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\img1.png"
+      "OriginalItemSpec": "wwwroot\\images\\medit.png"
     },
     {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\ahat.js",

@@ -26,21 +26,75 @@ for (let UBi = 2; UBi <= 60; UBi++) { // assuming 1 to 60 minutes
     UBtimeInput.appendChild(UBoption);
 }
 
-const UBmodal = document.getElementById("UBmodal");
-const UBcloseModal = document.getElementById("UBcloseModal");
-const UBBTN = document.getElementById("UBBTN");
+//UB Modal
+const modalUB = document.getElementById("myModalUB");
+const closeModalUBButton = document.getElementById("closeModalUB");
+var UBquestion = document.getElementById("UBquestion");
 
-function UBopenmodal() {
-    UBmodal.style.display = "block";
+function openModalUB() {
+    modalUB.style.display = "block";
+    showSlides(slideIndex, 'UBslides');
+}
+
+// Function to close the modalUB
+function closeModalUB() {
+    modalUB.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalUB
+closeModalUBButton.addEventListener("click", closeModalUB);
+
+// Close the modalUB if the user clicks outside the modalUB content
+window.addEventListener("click", function (event) {
+    if (event.target === modalUB) {
+        closeModalUB();
+    }
+});
+UBquestion.onclick = function () {
+    openModalUB();
+}
+
+UBLink.onclick = function () {
+    openPage(PRANAPage, UBPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backUB.style.display = "block";
+    backPRANA.style.display = "none";
     audioObjects.exhale.load();
     audioObjects.inhale.load();
     audioObjects.hold.load();
     audioObjects.normalbreath.load();
 }
+backUB.onclick = function () {
+    openPage(UBPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backPRANA.style.display = "block";
+    backUB.style.display = "none";
+    UBclose();
+}
+UBSettings.onclick = function () {
+    openPage(UBPage, UBSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backUBSet.style.display = "block";
+    backUB.style.display = "none";
+}
+backUBSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(UBSettingsPage, UBPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backUB.style.display = "block";
+    backUBSet.style.display = "none";
+}
+
 // Function to close the modal
 function UBclose() {
     isUBon = false;
-    UBmodal.style.display = "none";
     clearInterval(intUB);
     [secondsUB, minutesUB, hoursUB] = [0, 0, 0];
     timerRefUB.value = '00 : 00 : 00';
@@ -66,11 +120,6 @@ function UBclose() {
     UBtimeInput.classList.remove('CountdownHidden');
     UBcountdownDisplay.classList.add('CountdownHidden');
     UBchangeBall(1, 1);
-}
-// Event listener for closing the modal
-UBcloseModal.addEventListener("click", UBclose);
-UBBTN.onclick = function () {
-    UBopenmodal();
 }
 $(function () {
     $('#UBForm').on('submit', function (e) {

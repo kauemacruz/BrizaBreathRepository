@@ -1,20 +1,84 @@
 /*O2 JS*/
 var isO2on = false;
-const O2modal = document.getElementById("O2modal");
-const O2closeModal = document.getElementById("O2closeModal");
 const O2BTN = document.getElementById("O2BTN");
+//O2 Modal
+const modalO2 = document.getElementById("myModalO2");
+const closeModalO2Button = document.getElementById("closeModalO2");
+var O2question = document.getElementById("O2question");
 
-function O2openmodal() {
-    O2modal.style.display = "block";
-    audioObjects.breathedeeply.load();
-    audioObjects.normalbreath.load();
-    audioObjects.fullyinHold.load();
+function openModalO2() {
+    modalO2.style.display = "block";
+    showSlides(slideIndex, 'O2slides');
 }
-// Function to close the modal
+
+// Function to close the modalO2
+function closeModalO2() {
+    modalO2.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalO2
+closeModalO2Button.addEventListener("click", closeModalO2);
+
+// Close the modalO2 if the user clicks outside the modalO2 content
+window.addEventListener("click", function (event) {
+    if (event.target === modalO2) {
+        closeModalO2();
+    }
+});
+O2question.onclick = function () {
+    openModalO2();
+}
+co2o2Link.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(BHPage, O2Page, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backBH.style.display = "none";
+        backO2.style.display = "block";
+        audioObjects.breathedeeply.load();
+        audioObjects.normalbreath.load();
+        audioObjects.fullyinHold.load();
+    } else {
+        openModal();
+    }
+}
+backO2.onclick = function () {
+    openPage(O2Page, BHPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backBH.style.display = "block";
+    backO2.style.display = "none";
+    O2close();
+}
+O2Settings.onclick = function () {
+    openPage(O2Page, O2SettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backO2.style.display = "none";
+    backO2Set.style.display = "block";
+}
+backO2Set.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(O2SettingsPage, O2Page, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backO2.style.display = "block";
+    backO2Set.style.display = "none";
+}
+CO2Btn.onclick = function () {
+    document.getElementById("O2Table").style.display = 'block';
+    document.getElementById("CO2Table").style.display = 'none';
+}
+O2Btn.onclick = function () {
+    document.getElementById("CO2Table").style.display = 'block';
+    document.getElementById("O2Table").style.display = 'none';
+}
 function O2close() {
     isCO2on = false;
     isO2on = false;
-    O2modal.style.display = "none";
     document.getElementById("O2Results").innerHTML = "";
     timerRefO2.value = "|";
     clearInterval(intO2);
@@ -59,11 +123,6 @@ function O2close() {
         audioObjects.breathedeeply.pause();
         audioObjects.breathedeeply.currentTime = 0;
     }
-}
-// Event listener for closing the modal
-O2closeModal.addEventListener("click", O2close);
-O2BTN.onclick = function () {
-    O2openmodal();
 }
 $(function () {
     $('#O2Form').on('submit', function (e) {

@@ -25,22 +25,79 @@ for (let NBi = 2; NBi <= 60; NBi++) { // assuming 1 to 60 minutes
     }
     NBtimeInput.appendChild(NBoption);
 }
-const NBmodal = document.getElementById("NBmodal");
-const NBcloseModal = document.getElementById("NBcloseModal");
-const NBBTN = document.getElementById("NBBTN");
+//NB Modal
+const modalNB = document.getElementById("myModalNB");
+const closeModalNBButton = document.getElementById("closeModalNB");
+var NBquestion = document.getElementById("NBquestion");
 
-function NBopenmodal() {
-    NBmodal.style.display = "block";
-    audioObjects.exhaleLeft.load();
-    audioObjects.inhaleLeft.load();
-    audioObjects.exhaleRight.load();
-    audioObjects.inhaleRight.load();
-    audioObjects.normalbreath.load();
+function openModalNB() {
+    modalNB.style.display = "block";
+    showSlides(slideIndex, 'NBslides');
+}
+
+// Function to close the modalNB
+function closeModalNB() {
+    modalNB.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalNB
+closeModalNBButton.addEventListener("click", closeModalNB);
+
+// Close the modalNB if the user clicks outside the modalNB content
+window.addEventListener("click", function (event) {
+    if (event.target === modalNB) {
+        closeModalNB();
+    }
+});
+NBquestion.onclick = function () {
+    openModalNB();
+}
+
+NBLink.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, NBPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backNB.style.display = "block";
+        backPRANA.style.display = "none";
+        audioObjects.exhaleLeft.load();
+        audioObjects.inhaleLeft.load();
+        audioObjects.exhaleRight.load();
+        audioObjects.inhaleRight.load();
+        audioObjects.normalbreath.load();
+    } else {
+        openModal();
+    }
+}
+backNB.onclick = function () {
+    openPage(NBPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backPRANA.style.display = "block";
+    backNB.style.display = "none";
+    NBclose();
+}
+NBSettings.onclick = function () {
+    openPage(NBPage, NBSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backNBSet.style.display = "block";
+    backNB.style.display = "none";
+}
+backNBSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(NBSettingsPage, NBPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backNB.style.display = "block";
+    backNBSet.style.display = "none";
 }
 // Function to close the modal
 function NBclose() {
     isNBon = false;
-    NBmodal.style.display = "none";
     clearInterval(intNB);
     [secondsNB, minutesNB, hoursNB] = [0, 0, 0];
     timerRefNB.value = '00 : 00 : 00';
@@ -67,11 +124,7 @@ function NBclose() {
     NBcountdownDisplay.classList.add('CountdownHidden');
     NBchangeBall(1, 1);
 }
-// Event listener for closing the modal
-NBcloseModal.addEventListener("click", NBclose);
-NBBTN.onclick = function () {
-    NBopenmodal();
-}
+
 $(function () {
     $('#NBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission

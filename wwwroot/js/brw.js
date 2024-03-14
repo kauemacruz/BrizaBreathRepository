@@ -25,21 +25,82 @@ for (let BRWi = 2; BRWi <= 60; BRWi++) { // assuming 1 to 60 minutes
     BRWtimeInput.appendChild(BRWoption);
 }
 
-const BRWmodal = document.getElementById("BRWmodal");
-const BRWcloseModal = document.getElementById("BRWcloseModal");
-const BRWBTN = document.getElementById("BRWBTN");
+//BRW Modal
+const modalBRW = document.getElementById("myModalBRW");
+const closeModalBRWButton = document.getElementById("closeModalBRW");
+var BRWquestion = document.getElementById("BRWquestion");
 
-function BRWopenmodal() {
-    BRWmodal.style.display = "block";
+function openModalBRW() {
+    modalBRW.style.display = "block";
+    showSlides(slideIndex, 'BRWslides');
+}
+
+// Function to close the modalBRW
+function closeModalBRW() {
+    modalBRW.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalBRW
+closeModalBRWButton.addEventListener("click", closeModalBRW);
+
+// Close the modalBRW if the user clicks outside the modalBRW content
+window.addEventListener("click", function (event) {
+    if (event.target === modalBRW) {
+        closeModalBRW();
+    }
+});
+BRWquestion.onclick = function () {
+    openModalBRW();
+}
+
+backBRW.onclick = function () {
+    openPage(BRWPage, programPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram.style.display = "block";
+    backBRW.style.display = "none";
+    BRWclose();
+}
+
+backBRW2.onclick = function () {
+    openPage(BRWPage, programPage2, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "block";
+    backBRW2.style.display = "none";
+    BRWclose();
+}
+BRWLink2.onclick = function () {
+    openPage(programPage2, BRWPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "none";
+    backBRW2.style.display = "block";
     audioObjects.inhale.load();
     audioObjects.exhale.load();
     audioObjects.hold.load();
     audioObjects.normalbreath.load();
 }
+brwSettings.onclick = function () {
+    openPage(BRWPage, brwSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backBRWset.style.display = "block";
+    backBRW.style.display = "none";
+}
+backBRWset.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(brwSettingsPage, BRWPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backBRW.style.display = "block";
+    backBRWset.style.display = "none";
+}
 // Function to close the modal
 function BRWclose() {
     isBRWon = false;
-    BRWmodal.style.display = "none";
     clearInterval(intBRW);
     [secondsBRW, minutesBRW, hoursBRW] = [0, 0, 0];
     timerRefBRW.value = '00 : 00 : 00';
@@ -66,11 +127,7 @@ function BRWclose() {
     BRWcountdownDisplay.classList.add('CountdownHidden');
     BRWchangeBall(1, 1);
 }
-// Event listener for closing the modal
-BRWcloseModal.addEventListener("click", BRWclose);
-BRWBTN.onclick = function () {
-    BRWopenmodal();
-}
+
 $(function () {
     $('#BRWForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission

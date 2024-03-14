@@ -25,21 +25,51 @@ for (let APi = 2; APi <= 60; APi++) { // assuming 1 to 60 minutes
     APtimeInput.appendChild(APoption);
 }
 
-const APmodal = document.getElementById("APmodal");
-const APcloseModal = document.getElementById("APcloseModal");
-const APBTN = document.getElementById("APBTN");
+//AP Modal
+const modalAP = document.getElementById("myModalAP");
+const closeModalAPButton = document.getElementById("closeModalAP");
+var APquestion = document.getElementById("APquestion");
 
-function APopenmodal() {
-    APmodal.style.display = "block";
+function openModalAP() {
+    modalAP.style.display = "block";
+    showSlides(slideIndex, 'APslides');
+}
+
+// Function to close the modalAP
+function closeModalAP() {
+    modalAP.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalAP
+closeModalAPButton.addEventListener("click", closeModalAP);
+
+// Close the modalAP if the user clicks outside the modalAP content
+window.addEventListener("click", function (event) {
+    if (event.target === modalAP) {
+        closeModalAP();
+    }
+});
+APquestion.onclick = function () {
+    openModalAP();
+}
+APLink.onclick = function () {
+    openPage(BHPage, APPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backAP.style.display = "block";
+    backBH.style.display = "none";
     audioObjects.inhale.load();
     audioObjects.exhale.load();
     audioObjects.hold.load();
     audioObjects.normalbreath.load();
 }
-// Function to close the modal
-function APclose() {
+backAP.onclick = function () {
+    openPage(APPage, BHPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backAP.style.display = "none";
+    backBH.style.display = "block";
     isAPon = false;
-    APmodal.style.display = "none";
     clearInterval(intAP);
     [secondsAP, minutesAP, hoursAP] = [0, 0, 0];
     timerRefAP.value = '00 : 00 : 00';
@@ -65,11 +95,25 @@ function APclose() {
     APcountdownDisplay.classList.add('CountdownHidden');
     APchangeBall(1, 1);
 }
-// Event listener for closing the modal
-APcloseModal.addEventListener("click", APclose);
-APBTN.onclick = function () {
-    APopenmodal();
+APSettings.onclick = function () {
+    openPage(APPage, APSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backAP.style.display = "none";
+    backAPSet.style.display = "block";
 }
+backAPSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(APSettingsPage, APPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backAP.style.display = "block";
+    backAPSet.style.display = "none";
+}
+
 $(function () {
     $('#APForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -92,7 +136,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0
         timerControlsButtonsAP.pauseAP.style.display = 'none';
         timerControlsButtonsAP.startAP.style.display = 'inline';
-        timerControlsButtonsBB.startAP.style.color = '#49B79D';
+        timerControlsButtonsAP.startAP.style.color = '#49B79D';
         setFormDisabledStateAP(false);
         setTimerControlsDisabledStateAP(false, true, true);
         timerControlsButtonsAP.stopAP.style.color = "rgb(177, 177, 177)";

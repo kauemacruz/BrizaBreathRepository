@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\images\\icon.png"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\medit.png",
+      "PackagePath": "staticwebassets\\images\\medit.png"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\ahat.js",
       "PackagePath": "staticwebassets\\js\\ahat.js"
     },
@@ -63,10 +67,6 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\ct.js",
       "PackagePath": "staticwebassets\\js\\ct.js"
-    },
-    {
-      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\extra.js",
-      "PackagePath": "staticwebassets\\js\\extra.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\global.js",

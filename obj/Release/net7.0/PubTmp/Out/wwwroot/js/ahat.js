@@ -1,19 +1,80 @@
 /*AHAT JS*/
 var isAHATon = false;
-const AHATmodal = document.getElementById("AHATmodal");
-const AHATcloseModal = document.getElementById("AHATcloseModal");
-const AHATBTN = document.getElementById("AHATBTN");
+//AHAT Modal
+const modalAHAT = document.getElementById("myModalAHAT");
+const closeModalAHATButton = document.getElementById("closeModalAHAT");
+var AHATquestion = document.getElementById("AHATquestion");
 
-function AHATopenmodal() {
-    AHATmodal.style.display = "block";
+function openModalAHAT() {
+    modalAHAT.style.display = "block";
+    showSlides(slideIndex, 'AHATslides');
+}
+
+// Function to close the modalAHAT
+function closeModalAHAT() {
+    modalAHAT.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalAHAT
+closeModalAHATButton.addEventListener("click", closeModalAHAT);
+
+// Close the modalAHAT if the user clicks outside the modalAHAT content
+window.addEventListener("click", function (event) {
+    if (event.target === modalAHAT) {
+        closeModalAHAT();
+    }
+});
+AHATquestion.onclick = function () {
+    openModalAHAT();
+}
+
+backAHAT.onclick = function () {
+    openPage(AHATPage, programPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram.style.display = "block";
+    backAHAT.style.display = "none";
+    AHATclose();
+}
+backAHAT2.onclick = function () {
+    openPage(AHATPage, programPage2, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "block";
+    backAHAT2.style.display = "none";
+    AHATclose();
+}
+AHATLink2.onclick = function () {
+    openPage(programPage2, AHATPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backAHAT2.style.display = "block";
+    backProgram2.style.display = "none";
     audioObjects.pinchRun.load();
     audioObjects.lightNasal.load();
     audioObjects.normalbreath.load();
 }
+ahatSettings.onclick = function () {
+    openPage(AHATPage, hatSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backAHAT.style.display = "none";
+    backAHATset.style.display = "block";
+}
+backAHATset.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(ahatSettingsPage, AHATPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backAHAT.style.display = "block";
+    backAHATset.style.display = "none";
+}
+
 // Function to close the modal
 function AHATclose() {
     isAHATon = false;
-    AHATmodal.style.display = "none";
     clearInterval(intAHAT);
     document.getElementById("AHATResults").innerHTML = "";
     timerRefAHAT.value = "|";
@@ -39,11 +100,7 @@ function AHATclose() {
     document.getElementById('ahatSave').style.color = 'rgb(177, 177, 177)';
     document.getElementById('ahatResultSaved').innerHTML = "";
 }
-// Event listener for closing the modal
-AHATcloseModal.addEventListener("click", AHATclose);
-AHATBTN.onclick = function () {
-    AHATopenmodal();
-}
+
 $(function () {
     $('#ahatForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission

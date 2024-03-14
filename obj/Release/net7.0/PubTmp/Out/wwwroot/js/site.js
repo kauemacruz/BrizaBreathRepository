@@ -255,8 +255,111 @@ $(function () {
         profilePage.classList.add('hidden');
     });
 });
-//membership modal
+//slide show in explanation
+var slideIndex = 1;
 
+// Next/previous controls
+function plusSlides(n, className) {
+    showSlides(slideIndex += n, className);
+}
+function showSlides(n, className) {
+    var i;
+    var slides = document.getElementsByClassName(className);
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+}
+//BH Modal
+const modalBH = document.getElementById("myModalBH");
+const closeModalBHButton = document.getElementById("closeModalBH");
+var BHquestion = document.getElementById("BHquestion");
+
+function openModalBH() {
+    modalBH.style.display = "block";
+    showSlides(slideIndex, 'BHslides');
+}
+
+// Function to close the modalBH
+function closeModalBH() {
+    modalBH.style.display = "none";
+    slideIndex = 1;
+}
+
+// Event listener for closing the modalBH
+closeModalBHButton.addEventListener("click", closeModalBH);
+
+// Close the modalBH if the user clicks outside the modalBH content
+window.addEventListener("click", function (event) {
+    if (event.target === modalBH) {
+        closeModalBH();
+    }
+});
+BHquestion.onclick = function () {
+    openModalBH();
+}
+//PRANA Modal
+const modalPRANA = document.getElementById("myModalPRANA");
+const closeModalPRANAButton = document.getElementById("closeModalPRANA");
+var PRANAquestion = document.getElementById("PRANAquestion");
+
+function openModalPRANA() {
+    modalPRANA.style.display = "block";
+    showSlides(slideIndex, 'PRANAslides');
+}
+
+// Function to close the modalPRANA
+function closeModalPRANA() {
+    modalPRANA.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalPRANA
+closeModalPRANAButton.addEventListener("click", closeModalPRANA);
+
+// Close the modalPRANA if the user clicks outside the modalPRANA content
+window.addEventListener("click", function (event) {
+    if (event.target === modalPRANA) {
+        closeModalPRANA();
+    }
+});
+PRANAquestion.onclick = function () {
+    openModalPRANA();
+}
+//BP Modal
+const modalBP = document.getElementById("myModalBP");
+const closeModalBPButton = document.getElementById("closeModalBP");
+var BPquestion = document.getElementById("BPquestion");
+
+function openModalBP() {
+    modalBP.style.display = "block";
+    showSlides(slideIndex, 'BPslides');
+}
+
+// Function to close the modalBP
+function closeModalBP() {
+    modalBP.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalBP
+closeModalBPButton.addEventListener("click", closeModalBP);
+
+// Close the modalBP if the user clicks outside the modalBP content
+window.addEventListener("click", function (event) {
+    if (event.target === modalBP) {
+        closeModalBP();
+    }
+});
+BPquestion.onclick = function () {
+    openModalBP();
+}
+
+//membership modal
 const modal = document.getElementById("myModal");
 const closeModalButton = document.getElementById("closeModal");
 const modal2 = document.getElementById("myModal2");
@@ -367,10 +470,7 @@ yearlyBox.onclick = function () {
 }
 var subscriptionBtn = document.getElementById("subscriptionBtn"),
     subscriptionBtn2 = document.getElementById("subscriptionBtn2"),
-    getSubscriptionBtn = document.getElementById("getSubscriptionBtn"),
-    SUBDate = document.getElementById("SUBDate"),
-    SUBDate2 = document.getElementById("SUBDate2");
-let currentDate;
+    getSubscriptionBtn = document.getElementById("getSubscriptionBtn");
 
 subscriptionBtn.onclick = function () {
     openModal2();
@@ -397,19 +497,9 @@ window.addEventListener("click", function (event) {
     }
 });
 subscriptionBtn2.onclick = function () {
-    SUBDate.value = date;
-    currentDate = new Date();
-    if (priceChoice.value == 3 || priceChoice.value == 5) {
-        currentDate.setDate(currentDate.getDate() + 30);
-        SUBDate2.value = currentDate.toLocaleDateString("en-IN");
-    }
-    else if (priceChoice.value == 4 || priceChoice.value == 6) {
-        currentDate.setDate(currentDate.getDate() + 365);
-        SUBDate2.value = currentDate.toLocaleDateString("en-IN");
-    }
-    else { console.log("Membership does no exist") }
     openModal3();
 }
+
 $(function () {
     $('#subscriptionForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -433,13 +523,13 @@ $(function () {
             success: function (response) {
                 console.log(response);
                 if (priceChoice.value == 3) {
-                    window.location.href = "https://pay.brizabreath.com/b/4gw00udtj6Y57q8fZ1?prefilled_email=" + response;
+                    window.location.href = "https://pay.brizabreath.com/b/14k9B4ah70zH5i0cMT?prefilled_email=" + response;
                 } else if (priceChoice.value == 4) {
-                    window.location.href = "https://pay.brizabreath.com/b/00g9B4cpf5U18uc4gi?prefilled_email=" + response;
+                    window.location.href = "https://pay.brizabreath.com/b/00g3cG2OF2HP39S7sy?prefilled_email=" + response;
                 } else if (priceChoice.value == 5) {
-                    window.location.href = "https://pay.brizabreath.com/b/fZeeVo60R8294dW5kk?prefilled_email=" + response + "&locale=pt-BR";
+                    window.location.href = "https://pay.brizabreath.com/b/8wM5kO74V1DLeSA28c?prefilled_email=" + response + "&locale=pt-BR";
                 } else if (priceChoice.value == 6) {
-                    window.location.href = "https://pay.brizabreath.com/b/dR66oSgFv0zHbGo9AB?prefilled_email=" + response + "&locale=pt-BR";
+                    window.location.href = "https://pay.brizabreath.com/b/28o28CdtjdmtcKs9AF?prefilled_email=" + response + "&locale=pt-BR";
                 } else {
                     console.log("No Memberships with this id");
                 }
@@ -1032,250 +1122,58 @@ backProgram.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backProgram.style.display = "none";
 }
-backNasal.onclick = function () {
-    openPage(nasalBreathingPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backProgram.style.display = "block";
-    backNasal.style.display = "none";
-}
-backUnblock.onclick = function () {
-    openPage(noseUnblockPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backProgram.style.display = "block";
-    backUnblock.style.display = "none";
-}
-brtLink.onclick = function () {
-    openPage(homePage, brtPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    audioObjects.bell.load();
-    audioElements.forEach((audio) => {
-        audio.load();
-    });
-    backBRT.style.display = "block";
-}
-backBRT.onclick = function () {
-    isBRTon = false;
-    openPage(brtPage, homePage, 'slideRight');
-    clearInterval(brtInt);
-    [brtSeconds, brtMinutes] = [0, 0];
-    brtTimerRef.value = '00 : 00';
-    document.getElementById('brtStart').style.display = 'inline';
-    document.getElementById('brtPause').style.display = 'none';
-    document.getElementById('brtStop').disabled = true;
-    document.getElementById('brtStop').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('brtSave').disabled = true;
-    document.getElementById('brtSave').style.color = 'rgb(177, 177, 177)';
-    document.getElementById('brtResultSaved').innerHTML = "";
-    document.getElementById('brtSettings').disabled = false;
-    document.getElementById('brtSettings').style.color = '#49B79D';
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backBRT.style.display = "none";
-}
+programLink2.onclick = function () {
+    if (isUserActiveSubscriber) {
+        $.ajax({
+            url: "/?fetchData=true",
+            type: 'GET',
+            success: function (data) {
+                fetchedDataArray = data;
+                // Check if there is at least one non-empty and non-null BRTtimeString
+                var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRTresultData) {
+                    var BRTtimeString = BRTresultData.brtResultScore;
+                    return BRTtimeString !== undefined && BRTtimeString !== '' && BRTtimeString !== null;
+                });
 
-backDiaphragm.onclick = function () {
-    openPage(diaphragmPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backProgram.style.display = "block";
-    backDiaphragm.style.display = "none";
-}
+                if (hasNonEmptyTimeStrings) {
+                    BRTupdateChart(BRTstartDate, BRTendDate);
+                }
+                BRTupdateOverview();
 
-backYB.onclick = function () {
-    openPage(YBPage, programPage, 'slideRight');
+            },
+            error: function (error) {
+                console.error("Error fetching data:", error);
+            }
+        });
+        openPage(programPage, programPage2, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backProgram2.style.display = "block";
+        backProgram.style.display = "none";
+        audioObjects.bell.load();
+        audioElements.forEach((audio) => {
+            audio.load();
+        });
+    } else {
+        openModal();
+    }
+}
+backProgram2.onclick = function () {
+    openPage(programPage2, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "none";
     backProgram.style.display = "block";
-    backYB.style.display = "none";
-}
-YBSettings.onclick = function () {
-    openPage(YBPage, YBSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backYBSet.style.display = "block";
-}
-backYBSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(YBSettingsPage, YBPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backYB.style.display = "block";
-    backYBSet.style.display = "none";
-}
-
-backBRE.onclick = function () {
-    openPage(BREPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backProgram.style.display = "block";
-    backBRE.style.display = "none";
-}
-backBRW.onclick = function () {
-    openPage(BRWPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backProgram.style.display = "block";
-    backBRW.style.display = "none";
-}
-
-backBB.onclick = function () {
-    openPage(BBPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backProgram.style.display = "block";
-    backBB.style.display = "none";
-}
-brtSettings.onclick = function () {
-    openPage(brtPage, brtSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backBRTset.style.display = "block";
-    backBRT.style.display = "none";
-}
-backBRTset.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(brtSettingsPage, brtPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backBRT.style.display = "block";
-    backBRTset.style.display = "none";
-}
-breSettings.onclick = function () {
-    openPage(BREPage, breSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backBREset.style.display = "block";
-    backBRE.style.display = "none";
-}
-backBREset.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(breSettingsPage, BREPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backBRE.style.display = "block";
-    backBREset.style.display = "none";
-}
-brwSettings.onclick = function () {
-    openPage(BRWPage, brwSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backBRWset.style.display = "block";
-    backBRW.style.display = "none";
-}
-backBRWset.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(brwSettingsPage, BRWPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backBRW.style.display = "block";
-    backBRWset.style.display = "none";
-}
-BBSettings.onclick = function () {
-    openPage(BBPage, bbSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backBBset.style.display = "block";
-    backBB.style.display = "none";
-}
-backBBset.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(bbSettingsPage, BBPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backBB.style.display = "block";
-    backBBset.style.display = "none";
-}
-backHAT.onclick = function () {
-    openPage(HATPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backProgram.style.display = "block";
-    backHAT.style.display = "none";
-}
-hatSettings.onclick = function () {
-    openPage(HATPage, hatSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backHATset.style.display = "block";
-    backHAT.style.display = "none";
-}
-backHATset.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(hatSettingsPage, HATPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backHAT.style.display = "block";
-    backHATset.style.display = "none";
-}
-
-backHATC.onclick = function () {
-    openPage(HATCPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backProgram.style.display = "block";
-    backHATC.style.display = "none";
-}
-hatcSettings.onclick = function () {
-    openPage(HATCPage, hatcSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backHATCset.style.display = "block";
-    backHATC.style.display = "none";
-}
-backHATCset.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(hatcSettingsPage, HATCPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backHATC.style.display = "block";
-    backHATCset.style.display = "none";
-}
-
-backAHAT.onclick = function () {
-    openPage(AHATPage, programPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backProgram.style.display = "block";
-    backAHAT.style.display = "none";
-}
-ahatSettings.onclick = function () {
-    openPage(AHATPage, hatSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backAHAT.style.display = "none";
-    backAHATset.style.display = "block";
-}
-backAHATset.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(ahatSettingsPage, AHATPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backAHAT.style.display = "block";
-    backAHATset.style.display = "none";
 }
 backLungs.onclick = function () {
     openPage(lungsPage, programPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backLungs.style.display = "none";
+    backProgram.style.display = "block";
+}
+backLungs2.onclick = function () {
+    openPage(lungsPage, programPage2, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backLungs2.style.display = "none";
+    backProgram2.style.display = "block";
 }
 breathHoldsLink.onclick = function () {
     openPage(homePage, BHPage, 'slideLeft');
@@ -1305,416 +1203,7 @@ backPRANA.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     backPRANA.style.display = "none";
 }
-APLink.onclick = function () {
-    openPage(BHPage, APPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backAP.style.display = "block";
-    backBH.style.display = "none";
-}
-backAP.onclick = function () {
-    openPage(APPage, BHPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backAP.style.display = "none";
-    backBH.style.display = "block";
-}
-APSettings.onclick = function () {
-    openPage(APPage, APSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backAP.style.display = "none";
-    backAPSet.style.display = "block";
-}
-backAPSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(APSettingsPage, APPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backAP.style.display = "block";
-    backAPSet.style.display = "none";
-}
-co2o2Link.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(BHPage, O2Page, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backBH.style.display = "none";
-        backO2.style.display = "block";
-    } else {
-        openModal();
-    }
-}
-backO2.onclick = function () {
-    openPage(O2Page, BHPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backBH.style.display = "block";
-    backO2.style.display = "none";
-}
-O2Settings.onclick = function () {
-    openPage(O2Page, O2SettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backO2.style.display = "none";
-    backO2Set.style.display = "block";
-}
-backO2Set.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(O2SettingsPage, O2Page, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backO2.style.display = "block";
-    backO2Set.style.display = "none";
-}
-CO2Btn.onclick = function () {
-    document.getElementById("O2Table").style.display = 'block';
-    document.getElementById("CO2Table").style.display = 'none';
-}
-O2Btn.onclick = function () {
-    document.getElementById("CO2Table").style.display = 'block';
-    document.getElementById("O2Table").style.display = 'none';
-}
-WHLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(BHPage, WHPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backBH.style.display = "none";
-        backWH.style.display = "block";
-    } else {
-        openModal();
-    }
-}
-backWH.onclick = function () {
-    openPage(WHPage, BHPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backBH.style.display = "block";
-    backWH.style.display = "none";
-}
-WHSettings.onclick = function () {
-    openPage(WHPage, WHSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backWHSet.style.display = "block";
-    backWH.style.display = "none";
-}
-backWHSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(WHSettingsPage, WHPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backWH.style.display = "block";
-    backWHSet.style.display = "none";
-}
-CTLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(BHPage, CTPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backCT.style.display = "block";
-        backBH.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backCT.onclick = function () {
-    openPage(CTPage, BHPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backBH.style.display = "block";
-    backCT.style.display = "none";
-}
-CTSettings.onclick = function () {
-    openPage(CTPage, CTSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backCTSet.style.display = "block";
-    backCT.style.display = "none";
-}
-backCTSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(CTSettingsPage, CTPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backCT.style.display = "block";
-    backCTSet.style.display = "none";
-}
-UBLink.onclick = function () {
-    openPage(PRANAPage, UBPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backUB.style.display = "block";
-    backPRANA.style.display = "none";
-}
-backUB.onclick = function () {
-    openPage(UBPage, PRANAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backPRANA.style.display = "block";
-    backUB.style.display = "none";
-}
-UBSettings.onclick = function () {
-    openPage(UBPage, UBSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backUBSet.style.display = "block";
-    backUB.style.display = "none";
-}
-backUBSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(UBSettingsPage, UBPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backUB.style.display = "block";
-    backUBSet.style.display = "none";
-}
-KBLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(PRANAPage, KBPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backKB.style.display = "block";
-        backPRANA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backKB.onclick = function () {
-    openPage(KBPage, PRANAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backPRANA.style.display = "block";
-    backKB.style.display = "none";
-}
-KBSettings.onclick = function () {
-    openPage(KBPage, KBSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backKBSet.style.display = "block";
-    backKB.style.display = "none";
-}
-backKBSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(KBSettingsPage, KBPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backKB.style.display = "block";
-    backKBSet.style.display = "none";
-}
-BOXLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(PRANAPage, BOXPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backBOX.style.display = "block";
-        backPRANA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backBOX.onclick = function () {
-    openPage(BOXPage, PRANAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backPRANA.style.display = "block";
-    backBOX.style.display = "none";
-}
-BOXSettings.onclick = function () {
-    openPage(BOXPage, BOXSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backBOXSet.style.display = "block";
-    backBOX.style.display = "none";
-}
-backBOXSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(BOXSettingsPage, BOXPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backBOX.style.display = "block";
-    backBOXSet.style.display = "none";
-}
-NBLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(PRANAPage, NBPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backNB.style.display = "block";
-        backPRANA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backNB.onclick = function () {
-    openPage(NBPage, PRANAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backPRANA.style.display = "block";
-    backNB.style.display = "none";
-}
-NBSettings.onclick = function () {
-    openPage(NBPage, NBSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backNBSet.style.display = "block";
-    backNB.style.display = "none";
-}
-backNBSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(NBSettingsPage, NBPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backNB.style.display = "block";
-    backNBSet.style.display = "none";
-}
-CBLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(PRANAPage, CBPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backCB.style.display = "block";
-        backPRANA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backCB.onclick = function () {
-    openPage(CBPage, PRANAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backPRANA.style.display = "block";
-    backCB.style.display = "none";
-}
-CBSettings.onclick = function () {
-    openPage(CBPage, CBSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backCBSet.style.display = "block";
-    backCB.style.display = "none";
-}
-backCBSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(CBSettingsPage, CBPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backCB.style.display = "block";
-    backCBSet.style.display = "none";
-}
-SBLink.onclick = function () {
-        if (isUserActiveSubscriber) {
-        openPage(PRANAPage, SBPage, 'slideLeft');
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            backSB.style.display = "block";
-            backPRANA.style.display = "none";
-        }
-        else {
-            openModal();
-        }
-}
-backSB.onclick = function () {
-    openPage(SBPage, PRANAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backPRANA.style.display = "block";
-    backSB.style.display = "none";
-}
-SBSettings.onclick = function () {
-    openPage(SBPage, SBSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backSBSet.style.display = "block";
-    backSB.style.display = "none";
-}
-backSBSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(SBSettingsPage, SBPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backSB.style.display = "block";
-    backSBSet.style.display = "none";
-}
 
-RBLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(PRANAPage, RBPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backRB.style.display = "block";
-        backPRANA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backRB.onclick = function () {
-    openPage(RBPage, PRANAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backPRANA.style.display = "block";
-    backRB.style.display = "none";
-}
-RBSettings.onclick = function () {
-    openPage(RBPage, RBSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backRBSet.style.display = "block";
-    backRB.style.display = "none";
-}
-backRBSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(RBSettingsPage, RBPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backRB.style.display = "block";
-    backRBSet.style.display = "none";
-}
-HUMLink.onclick = function () {
-    if (isUserActiveSubscriber) {
-        openPage(PRANAPage, HUMPage, 'slideLeft');
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        backHUM.style.display = "block";
-        backPRANA.style.display = "none";
-    } else {
-        openModal();
-    }
-}
-backHUM.onclick = function () {
-    openPage(HUMPage, PRANAPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    backPRANA.style.display = "block";
-    backHUM.style.display = "none";
-}
-humSettings.onclick = function () {
-    openPage(HUMPage, humSettingsPage, 'slideLeft');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "block";
-    backHUMSet.style.display = "block";
-    backHUM.style.display = "none";
-}
-backHUMSet.onclick = function () {
-    if (!audioPlayerBRT.muted) {
-        audioPlayerBRT.pause();
-    }
-    audioPlayerBRT.currentTime = 0;
-    openPage(humSettingsPage, HUMPage, 'slideRight');
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    selectSongsList.style.display = "none";
-    backHUM.style.display = "block";
-    backHUMSet.style.display = "none";
-}
 backBRTresults.onclick = function () {
     openPage(BRTresultPage, resultsPage, 'slideRight');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1848,4 +1337,10 @@ backCO2results.onclick = function () {
     CO2resultDateHeader.innerHTML = '';
     CO2resultSessions.innerHTML = '';
     backCO2results.style.display = "none";
+}
+lungsLink3.onclick = function () {
+    openPage(programPage2, lungsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backLungs2.style.display = "block";
+    backProgram2.style.display = "none";
 }

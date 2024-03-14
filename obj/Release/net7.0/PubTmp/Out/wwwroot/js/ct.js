@@ -25,21 +25,105 @@ for (let CTi = 2; CTi <= 60; CTi++) { // assuming 1 to 60 minutes
     CTtimeInput.appendChild(CToption);
 }
 
-const CTmodal = document.getElementById("CTmodal");
-const CTcloseModal = document.getElementById("CTcloseModal");
-const CTBTN = document.getElementById("CTBTN");
+//CT Modal
+const modalCT = document.getElementById("myModalCT");
+const closeModalCTButton = document.getElementById("closeModalCT");
+var CTquestion = document.getElementById("CTquestion");
 
-function CTopenmodal() {
-    CTmodal.style.display = "block";
-    audioObjects.exhale.load();
-    audioObjects.inhale.load();
-    audioObjects.hold.load();
-    audioObjects.normalbreath.load();
+function openModalCT() {
+    modalCT.style.display = "block";
+    showSlides(slideIndex, 'CTslides');
+}
+
+// Function to close the modalCT
+function closeModalCT() {
+    modalCT.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalCT
+closeModalCTButton.addEventListener("click", closeModalCT);
+
+// Close the modalCT if the user clicks outside the modalCT content
+window.addEventListener("click", function (event) {
+    if (event.target === modalCT) {
+        closeModalCT();
+    }
+});
+CTquestion.onclick = function () {
+    openModalCT();
+}
+CTLink.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(BHPage, CTPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backCT.style.display = "block";
+        backBH.style.display = "none";
+        audioObjects.exhale.load();
+        audioObjects.inhale.load();
+        audioObjects.hold.load();
+        audioObjects.normalbreath.load();
+    } else {
+        openModal();
+    }
+}
+CTLink3.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(programPage2, CTPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backCT3.style.display = "block";
+        backProgram2.style.display = "none";
+        audioObjects.exhale.load();
+        audioObjects.inhale.load();
+        audioObjects.hold.load();
+        audioObjects.normalbreath.load();
+    } else {
+        openModal();
+    }
+}
+backCT.onclick = function () {
+    openPage(CTPage, BHPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backBH.style.display = "block";
+    backCT.style.display = "none";
+    CTclose();
+}
+backCT2.onclick = function () {
+    openPage(CTPage, programPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram.style.display = "block";
+    backCT2.style.display = "none";
+    CTclose();
+}
+backCT3.onclick = function () {
+    openPage(CTPage, programPage2, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backProgram2.style.display = "block";
+    backCT3.style.display = "none";
+    CTclose();
+}
+CTSettings.onclick = function () {
+    openPage(CTPage, CTSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backCTSet.style.display = "block";
+    backCT.style.display = "none";
+}
+backCTSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(CTSettingsPage, CTPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backCT.style.display = "block";
+    backCTSet.style.display = "none";
 }
 // Function to close the modal
 function CTclose() {
     isCTon = false;
-    CTmodal.style.display = "none";
     clearInterval(intCT);
     [secondsCT, minutesCT, hoursCT] = [0, 0, 0];
     timerRefCT.value = '00 : 00 : 00';
@@ -65,11 +149,7 @@ function CTclose() {
     CTcountdownDisplay.classList.add('CountdownHidden');
     CTchangeBall(1, 1);
 }
-// Event listener for closing the modal
-CTcloseModal.addEventListener("click", CTclose);
-CTBTN.onclick = function () {
-    CTopenmodal();
-}
+
 document.getElementById('CTDate').value = date;
 $(function () {
     $('#CTForm').on('submit', function (e) {

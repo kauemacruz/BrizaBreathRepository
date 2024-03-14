@@ -25,20 +25,78 @@ for (let CBi = 2; CBi <= 60; CBi++) { // assuming 1 to 60 minutes
     CBtimeInput.appendChild(CBoption);
 }
 
-const CBmodal = document.getElementById("CBmodal");
-const CBcloseModal = document.getElementById("CBcloseModal");
-const CBBTN = document.getElementById("CBBTN");
+//CB Modal
+const modalCB = document.getElementById("myModalCB");
+const closeModalCBButton = document.getElementById("closeModalCB");
+var CBquestion = document.getElementById("CBquestion");
 
-function CBopenmodal() {
-    CBmodal.style.display = "block";
-    audioObjects.exhale.load();
-    audioObjects.inhale.load();
-    audioObjects.normalbreath.load();
+function openModalCB() {
+    modalCB.style.display = "block";
+    showSlides(slideIndex, 'CBslides');
 }
+
+// Function to close the modalCB
+function closeModalCB() {
+    modalCB.style.display = "none";
+    slideIndex = 1;
+
+}
+
+// Event listener for closing the modalCB
+closeModalCBButton.addEventListener("click", closeModalCB);
+
+// Close the modalCB if the user clicks outside the modalCB content
+window.addEventListener("click", function (event) {
+    if (event.target === modalCB) {
+        closeModalCB();
+    }
+});
+CBquestion.onclick = function () {
+    openModalCB();
+}
+
+CBLink.onclick = function () {
+    if (isUserActiveSubscriber) {
+        openPage(PRANAPage, CBPage, 'slideLeft');
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        backCB.style.display = "block";
+        backPRANA.style.display = "none";
+        audioObjects.exhale.load();
+        audioObjects.inhale.load();
+        audioObjects.normalbreath.load();
+    } else {
+        openModal();
+    }
+}
+backCB.onclick = function () {
+    openPage(CBPage, PRANAPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    backPRANA.style.display = "block";
+    backCB.style.display = "none";
+    CBclose();
+}
+CBSettings.onclick = function () {
+    openPage(CBPage, CBSettingsPage, 'slideLeft');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "block";
+    backCBSet.style.display = "block";
+    backCB.style.display = "none";
+}
+backCBSet.onclick = function () {
+    if (!audioPlayerBRT.muted) {
+        audioPlayerBRT.pause();
+    }
+    audioPlayerBRT.currentTime = 0;
+    openPage(CBSettingsPage, CBPage, 'slideRight');
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    selectSongsList.style.display = "none";
+    backCB.style.display = "block";
+    backCBSet.style.display = "none";
+}
+
 // Function to close the modal
 function CBclose() {
     isCBon = false;
-    CBmodal.style.display = "none";
     clearInterval(intCB);
     [secondsCB, minutesCB, hoursCB] = [0, 0, 0];
     timerRefCB.value = '00 : 00 : 00';
@@ -65,11 +123,7 @@ function CBclose() {
     CBcountdownDisplay.classList.add('CountdownHidden');
     CBchangeBall(1, 1);
 }
-// Event listener for closing the modal
-CBcloseModal.addEventListener("click", CBclose);
-CBBTN.onclick = function () {
-    CBopenmodal();
-}
+
 $(function () {
     $('#CBForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
