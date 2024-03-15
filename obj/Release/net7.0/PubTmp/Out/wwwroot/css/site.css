@@ -845,6 +845,8 @@ video[poster] {
 .breathingpages h2 {
     text-align: center;
     margin-bottom: 0;
+    padding-left:10px;
+    padding-right: 10px;
 }
 .breathingpages h3 {
     text-align: center;
