@@ -7,9 +7,7 @@ body {
     -webkit-touch-callout: none; /* Disable long tap callout menu on iOS */
     -webkit-user-drag: none; /* Disable dragging on iOS */
     -webkit-tap-highlight-color: transparent; /* Disable tap highlight color on iOS */
-}
-.ios-webview{
-    padding-top: 200px;
+    padding-top:30px;
 }
 /* CSS for the loading indicator */
 #loadingIndicator {

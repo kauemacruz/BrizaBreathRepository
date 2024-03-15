@@ -267,9 +267,6 @@ window.addEventListener('load', function () {
             alert('Congratulations! Your purchase has been successfully processed. You now have full access to all features of the Briza App')
         }
     }
-    if (window.navigator.standalone === true) {
-        document.body.classList.add('ios-webview');
-    }
 });
 window.addEventListener('offline', function (e) {
     alert("You are currently offline. Some features may not be available. And you will not be able to save your results");
