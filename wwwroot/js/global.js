@@ -228,6 +228,22 @@ var homePage = document.getElementById("homePage"),
     selectSongsList = document.getElementById("selectSongsList");
 
 window.addEventListener('load', function () {
+    if ('serviceWorker' in navigator) {
+        // Determine the base URL based on the current location
+        const baseUrl = window.location.href.split('/').slice(0, 3).join('/');
+
+        // Construct the full path to the service worker script
+        const serviceWorkerPath = `${baseUrl}/js/service-worker.js`;
+
+        // Register the service worker
+        navigator.serviceWorker.register(serviceWorkerPath)
+            .then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+                console.error('Service Worker registration failed:', error);
+            });
+    }
     // Hide the loading indicator
     var loadingIndicator = document.getElementById('loadingIndicator');
     loadingIndicator.style.display = 'none';

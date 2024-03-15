@@ -15,27 +15,6 @@
     </noscript>
     <link rel="stylesheet" href="~/BrizaBreath.styles.css" asp-append-version="true" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Specify the service worker registration dynamically based on the current URL -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                // Determine the base URL based on the current location
-                const baseUrl = window.location.href.split('/').slice(0, 3).join('/');
-
-                // Construct the full path to the service worker script
-                const serviceWorkerPath = `${baseUrl}/js/service-worker.js`;
-
-                // Register the service worker
-                navigator.serviceWorker.register(serviceWorkerPath)
-                    .then(registration => {
-                        console.log('Service Worker registered with scope:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.error('Service Worker registration failed:', error);
-                    });
-            });
-        }
-    </script>
     <script>
         @if (ViewData["IsActiveSubscriber"] is bool isActive)
         {
