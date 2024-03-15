@@ -8,6 +8,9 @@ body {
     -webkit-user-drag: none; /* Disable dragging on iOS */
     -webkit-tap-highlight-color: transparent; /* Disable tap highlight color on iOS */
 }
+.ios-webview{
+    padding-top: 20px;
+}
 /* CSS for the loading indicator */
 #loadingIndicator {
     display: flex;
