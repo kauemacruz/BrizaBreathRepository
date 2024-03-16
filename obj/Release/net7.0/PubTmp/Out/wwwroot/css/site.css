@@ -647,7 +647,7 @@ hr {
 /*Pages transition style*/
 .open {
     visibility: visible;
-    margin-top: 100px !important;
+    margin-top: 90px !important;
 }
 
 .hidden {
@@ -3311,6 +3311,7 @@ li::marker {
 .exercisesContent {
     text-align: center;
     color: #0661AA;
+    margin-top: 140px !important;
 }
 #brtPage {
     margin-top: 80px;
