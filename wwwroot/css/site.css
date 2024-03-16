@@ -647,7 +647,7 @@ hr {
 /*Pages transition style*/
 .open {
     visibility: visible;
-    margin-top: 100px !important;
+    margin-top: 90px !important;
 }
 
 .hidden {
