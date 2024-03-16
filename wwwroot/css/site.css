@@ -176,15 +176,16 @@ iframe {
     display: none;
     justify-content: space-between; /* Aligns children (back buttons, logo, placeholder) with space between them */
     align-items: center; /* Centers items vertically */
-    padding: 0 10px; /* Adjusts padding as needed */
+    padding-top: 40px;
     background-color: white;
     height: 70px;
     top: 0;
     width: 100%;
     text-align: center;
     box-shadow: 0 4px 6px -6px rgba(0,0,0,0.2);
+    position: fixed;
+    z-index: 1;
 }
-
 .back-buttons, .logo-container, .placeholder {
     flex: 1; /* Each child takes up equal space */
 }
@@ -646,6 +647,7 @@ hr {
 /*Pages transition style*/
 .open {
     visibility: visible;
+    margin-top: 120px;
 }
 
 .hidden {
