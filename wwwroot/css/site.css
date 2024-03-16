@@ -185,6 +185,8 @@ iframe {
     box-shadow: 0 4px 6px -6px rgba(0,0,0,0.2);
     position: fixed;
     z-index: 1;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .back-buttons, .logo-container, .placeholder {
     flex: 1; /* Each child takes up equal space */
@@ -3313,9 +3315,7 @@ li::marker {
     color: #0661AA;
     margin-top: 140px !important;
 }
-#brtPage {
-    margin-top: 80px;
-}
+
 #programPage2 {
     margin-bottom: 40px;
 }
@@ -3349,20 +3349,4 @@ input#intervalDurationInputCB {
     width: 50px;
     margin-left: 0.5rem;
 }
-/* Overlay styling */
-.dimmer {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dim effect */
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 2s; /* Smooth transition */
-}
-.dimmer.active {
-    display: block;
-    opacity: 1;
-}
+

@@ -1,29 +1,4 @@
-﻿let timer;
-
-const debouncedResetTimer = () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-        document.getElementById('dimmer').classList.add('active');
-    }, 30000); // 30 seconds
-
-    const dimmer = document.getElementById('dimmer');
-    if (dimmer.classList.contains('active')) {
-        dimmer.classList.remove('active');
-        // Reset opacity instantly when activity resumes
-        dimmer.style.opacity = 0;
-    }
-};
-
-// Minimal event listeners
-document.addEventListener('mousemove', debouncedResetTimer);
-document.addEventListener('click', debouncedResetTimer);
-
-// Handle "wake up" by clicking on the dimmer
-document.getElementById('dimmer').addEventListener('click', () => {
-    debouncedResetTimer(); // This hides the dimmer and resets the timer
-});
-
-//stop any exercise if they ARE ON WHEN SCREEN LOCK HAPPENS
+﻿//stop any exercise if they ARE ON WHEN SCREEN LOCK HAPPENS
 document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === 'hidden') {
         if (isAHATon) {
