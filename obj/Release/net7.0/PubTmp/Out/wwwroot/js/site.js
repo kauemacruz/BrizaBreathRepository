@@ -1,28 +1,27 @@
 ﻿let timer;
 
-function resetTimer() {
+const debouncedResetTimer = () => {
     clearTimeout(timer);
-    timer = setTimeout(dimScreen, 30000); // 30 seconds
+    timer = setTimeout(() => {
+        document.getElementById('dimmer').classList.add('active');
+    }, 30000); // 30 seconds
 
-    // Hide overlay if it's visible
-    document.getElementById('dimOverlay').style.display = 'none';
-}
-
-function dimScreen() {
-    // Show the overlay
-    document.getElementById('dimOverlay').style.display = 'block';
-}
-document.getElementById('dimOverlay').onclick = function () {
-    resetTimer(); // This will also hide the overlay
+    const dimmer = document.getElementById('dimmer');
+    if (dimmer.classList.contains('active')) {
+        dimmer.classList.remove('active');
+        // Reset opacity instantly when activity resumes
+        dimmer.style.opacity = 0;
+    }
 };
 
-// Listen for any of these events to reset the timer
-window.onload = resetTimer;
-window.onmousemove = resetTimer;
-window.onmousedown = resetTimer;  // Catches touchscreen presses
-window.onclick = resetTimer;      // Catches touchpad clicks
-window.onscroll = resetTimer;     // Catches scrolling with arrow keys
-window.onkeypress = resetTimer;
+// Minimal event listeners
+document.addEventListener('mousemove', debouncedResetTimer);
+document.addEventListener('click', debouncedResetTimer);
+
+// Handle "wake up" by clicking on the dimmer
+document.getElementById('dimmer').addEventListener('click', () => {
+    debouncedResetTimer(); // This hides the dimmer and resets the timer
+});
 
 //stop any exercise if they ARE ON WHEN SCREEN LOCK HAPPENS
 document.addEventListener("visibilitychange", function () {
