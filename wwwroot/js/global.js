@@ -227,7 +227,7 @@ var homePage = document.getElementById("homePage"),
     humSettingsPage = document.getElementById("humSettingsPage"),
     selectSongsList = document.getElementById("selectSongsList");
 
-window.addEventListener('load', function () {
+document.addEventListener('DOMContentLoaded', function () {
     // Hide the loading indicator
     var loadingIndicator = document.getElementById('loadingIndicator');
     loadingIndicator.style.display = 'none';

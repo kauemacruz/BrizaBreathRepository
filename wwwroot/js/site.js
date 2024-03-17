@@ -1,4 +1,24 @@
-﻿//stop any exercise if they ARE ON WHEN SCREEN LOCK HAPPENS
+﻿let timer;
+
+function resetTimer() {
+    clearTimeout(timer);
+    timer = setTimeout(dimScreen, 40000); // 40 seconds
+}
+
+function dimScreen() {
+    // Show the overlay
+    document.getElementById('dimOverlay').style.display = 'block';
+}
+
+// Listen for any of these events to reset the timer
+window.onmousedown = resetTimer;  // Catches touchscreen presses
+window.onclick = resetTimer;      // Catches touchpad clicks
+
+document.getElementById('dimOverlay').addEventListener('click', function () {
+    document.getElementById('dimOverlay').style.display = 'none';
+});
+
+//stop any exercise if they ARE ON WHEN SCREEN LOCK HAPPENS
 document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === 'hidden') {
         if (isAHATon) {

@@ -114,7 +114,7 @@ public class BlobStorageService
     public async Task SetCacheControlOnBlobsAsync()
     {
         var connectionString = _configuration.GetConnectionString("AzureBlobStorage");
-        var containers = new List<string> { "images", "videos", "videospt", "sounds", "audio" };
+        var containers = new List<string> { "images", "sounds", "audio" };
         var cacheControlValue = "public, max-age=31536000"; // 1 year cache
 
         var blobServiceClient = new BlobServiceClient(connectionString);
