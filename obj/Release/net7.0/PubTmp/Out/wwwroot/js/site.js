@@ -1,4 +1,10 @@
-﻿let timer;
+﻿import { Browser } from '@capacitor/browser';
+
+async function openStripeCheckout(checkouturl) {
+    await Browser.open({ url: checkouturl });
+}
+
+let timer;
 
 function resetTimer() {
     clearTimeout(timer);
@@ -523,15 +529,6 @@ subscriptionBtn2.onclick = function () {
 $(function () {
     $('#subscriptionForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
-        document.getElementById("mainHeader").style.display = "none";
-        //loading indicator
-        var loadingIndicator = document.getElementById('loadingIndicator');
-        loadingIndicator.style.display = 'flex';
-
-        // Display the content
-        closeModal2();
-        profilePage.classList.remove('open');
-        profilePage.classList.add('hidden');
 
         var formData = new FormData(this);
         $.ajax({
@@ -543,13 +540,13 @@ $(function () {
             success: function (response) {
                 console.log(response);
                 if (priceChoice.value == 3) {
-                    window.location.href = "https://pay.brizabreath.com/b/14k9B4ah70zH5i0cMT?prefilled_email=" + response;
+                    openStripeCheckout("https://pay.brizabreath.com/b/14k9B4ah70zH5i0cMT?prefilled_email=" + response);
                 } else if (priceChoice.value == 4) {
-                    window.location.href = "https://pay.brizabreath.com/b/00g3cG2OF2HP39S7sy?prefilled_email=" + response;
+                    openStripeCheckout("https://pay.brizabreath.com/b/00g3cG2OF2HP39S7sy?prefilled_email=" + response);
                 } else if (priceChoice.value == 5) {
-                    window.location.href = "https://pay.brizabreath.com/b/8wM5kO74V1DLeSA28c?prefilled_email=" + response + "&locale=pt-BR";
+                    openStripeCheckout("https://pay.brizabreath.com/b/8wM5kO74V1DLeSA28c?prefilled_email=" + response + "&locale=pt-BR");
                 } else if (priceChoice.value == 6) {
-                    window.location.href = "https://pay.brizabreath.com/b/28o28CdtjdmtcKs9AF?prefilled_email=" + response + "&locale=pt-BR";
+                    openStripeCheckout("https://pay.brizabreath.com/b/28o28CdtjdmtcKs9AF?prefilled_email=" + response + "&locale=pt-BR");
                 } else {
                     console.log("No Memberships with this id");
                 }
@@ -563,15 +560,6 @@ $(function () {
 $(function () {
     $('#manageSubscriptionForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
-        document.getElementById("mainHeader").style.display = "none";
-        //loading indicator
-        var loadingIndicator = document.getElementById('loadingIndicator');
-        loadingIndicator.style.display = 'flex';
-
-        // Display the content
-        closeModal2();
-        profilePage.classList.remove('open');
-        profilePage.classList.add('hidden');
 
         var formData = new FormData(this);
 
@@ -583,7 +571,7 @@ $(function () {
             contentType: false,
             success: function (response) {
                 if (response.success) {
-                    window.location.href = response.url; // Redirect the browser to the Stripe portal
+                    openStripeCheckout(response.url);
                 } else {
                     console.error("Failed to get Stripe URL:", response);
                 }
