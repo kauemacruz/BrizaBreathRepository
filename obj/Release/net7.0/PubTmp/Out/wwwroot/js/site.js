@@ -1,5 +1,5 @@
 ﻿function openStripeCheckout(checkouturl) {
-    window.open(checkouturl);
+    window.open(checkouturl, "_self");
 }
 
 let timer;

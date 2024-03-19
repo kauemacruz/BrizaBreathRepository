@@ -1,8 +1,4 @@
-﻿function openStripeCheckout(checkouturl) {
-    window.open(checkouturl);
-}
-
-let timer;
+﻿let timer;
 
 function resetTimer() {
     clearTimeout(timer);
@@ -538,13 +534,13 @@ $(function () {
             success: function (response) {
                 console.log(response);
                 if (priceChoice.value == 3) {
-                    openStripeCheckout("https://pay.brizabreath.com/b/14k9B4ah70zH5i0cMT?prefilled_email=" + response);
+                    window.location.href = "https://pay.brizabreath.com/b/14k9B4ah70zH5i0cMT?prefilled_email=" + response;
                 } else if (priceChoice.value == 4) {
-                    openStripeCheckout("https://pay.brizabreath.com/b/00g3cG2OF2HP39S7sy?prefilled_email=" + response);
+                    window.location.href = "https://pay.brizabreath.com/b/00g3cG2OF2HP39S7sy?prefilled_email=" + response;
                 } else if (priceChoice.value == 5) {
-                    openStripeCheckout("https://pay.brizabreath.com/b/8wM5kO74V1DLeSA28c?prefilled_email=" + response + "&locale=pt-BR");
+                    window.location.href = "https://pay.brizabreath.com/b/8wM5kO74V1DLeSA28c?prefilled_email=" + response + "&locale=pt-BR";
                 } else if (priceChoice.value == 6) {
-                    openStripeCheckout("https://pay.brizabreath.com/b/28o28CdtjdmtcKs9AF?prefilled_email=" + response + "&locale=pt-BR");
+                    window.location.href = "https://pay.brizabreath.com/b/28o28CdtjdmtcKs9AF?prefilled_email=" + response + "&locale=pt-BR";
                 } else {
                     console.log("No Memberships with this id");
                 }
@@ -569,7 +565,7 @@ $(function () {
             contentType: false,
             success: function (response) {
                 if (response.success) {
-                    openStripeCheckout(response.url);
+                    window.location.href = response.url;
                 } else {
                     console.error("Failed to get Stripe URL:", response);
                 }

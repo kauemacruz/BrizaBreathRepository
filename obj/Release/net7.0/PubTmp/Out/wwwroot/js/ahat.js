@@ -54,7 +54,7 @@ AHATLink2.onclick = function () {
     audioObjects.normalbreath.load();
 }
 ahatSettings.onclick = function () {
-    openPage(AHATPage, hatSettingsPage, 'slideLeft');
+    openPage(AHATPage, ahatSettingsPage, 'slideLeft');
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "block";
     backAHAT.style.display = "none";
