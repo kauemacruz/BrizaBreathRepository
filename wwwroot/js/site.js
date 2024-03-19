@@ -1,12 +1,5 @@
-﻿async function openStripeCheckout(checkouturl) {
-    if (Capacitor.isNativePlatform()) {
-        // Capacitor is running in a native environment; use the plugin
-        const { Browser } = Capacitor.Plugins;
-        Browser.open({ url: checkouturl });
-    } else {
-        // Capacitor is not running in a native environment; fallback to web behavior
-        window.open('checkouturl', '_blank');
-    }
+﻿function openStripeCheckout(checkouturl) {
+    window.open(checkouturl);
 }
 
 let timer;

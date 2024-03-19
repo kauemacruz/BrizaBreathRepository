@@ -824,17 +824,6 @@ hr {
     font-weight: bold;
 }
 
-video {
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
-    max-height: 300px;
-}
-
-video[poster] {
-    object-fit: cover;
-}
-
 .breathingpages p {
     padding-left: 20px;
     padding-right: 20px;
