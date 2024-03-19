@@ -56,6 +56,7 @@ hatSettings.onclick = function () {
     selectSongsList.style.display = "block";
     backHATset.style.display = "block";
     backHAT.style.display = "none";
+    backHAT2.style.display = "none";
 }
 backHATset.onclick = function () {
     if (!audioPlayerBRT.muted) {

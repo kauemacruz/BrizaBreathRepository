@@ -230,6 +230,27 @@ backBRT.onclick = function () {
     backBRT.style.display = "none";
 }
 backBRT2.onclick = function () {
+    $.ajax({
+        url: "/?fetchData=true",
+        type: 'GET',
+        success: function (data) {
+            fetchedDataArray = data;
+            // Check if there is at least one non-empty and non-null BRTtimeString
+            var hasNonEmptyTimeStrings = fetchedDataArray.some(function (BRTresultData) {
+                var BRTtimeString = BRTresultData.brtResultScore;
+                return BRTtimeString !== undefined && BRTtimeString !== '' && BRTtimeString !== null;
+            });
+
+            if (hasNonEmptyTimeStrings) {
+                BRTupdateChart(BRTstartDate, BRTendDate);
+            }
+            BRTupdateOverview();
+
+        },
+        error: function (error) {
+            console.error("Error fetching data:", error);
+        }
+    });
     isBRTon = false;
     openPage(brtPage, programPage, 'slideRight');
     clearInterval(brtInt);
@@ -258,6 +279,7 @@ brtSettings.onclick = function () {
     selectSongsList.style.display = "block";
     backBRTset.style.display = "block";
     backBRT.style.display = "none";
+    backBRT2.style.display = "none";
 }
 backBRTset.onclick = function () {
     if (!audioPlayerBRT.muted) {

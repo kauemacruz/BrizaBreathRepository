@@ -85,6 +85,7 @@ breSettings.onclick = function () {
     selectSongsList.style.display = "block";
     backBREset.style.display = "block";
     backBRE.style.display = "none";
+    backBRE2.style.display = "none";
 }
 backBREset.onclick = function () {
     if (!audioPlayerBRT.muted) {
