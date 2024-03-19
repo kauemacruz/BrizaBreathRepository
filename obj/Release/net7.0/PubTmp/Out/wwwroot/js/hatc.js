@@ -58,6 +58,7 @@ hatcSettings.onclick = function () {
     selectSongsList.style.display = "block";
     backHATCset.style.display = "block";
     backHATC.style.display = "none";
+    backHATC2.style.display = "none";
 }
 backHATCset.onclick = function () {
     if (!audioPlayerBRT.muted) {

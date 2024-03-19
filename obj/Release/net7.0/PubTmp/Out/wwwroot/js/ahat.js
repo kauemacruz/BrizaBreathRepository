@@ -58,6 +58,7 @@ ahatSettings.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "block";
     backAHAT.style.display = "none";
+    backAHAT2.style.display = "none";
     backAHATset.style.display = "block";
 }
 backAHATset.onclick = function () {

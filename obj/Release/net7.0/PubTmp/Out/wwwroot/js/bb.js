@@ -85,6 +85,7 @@ BBSettings.onclick = function () {
     selectSongsList.style.display = "block";
     backBBset.style.display = "block";
     backBB.style.display = "none";
+    backBB2.style.display = "none";
 }
 backBBset.onclick = function () {
     if (!audioPlayerBRT.muted) {

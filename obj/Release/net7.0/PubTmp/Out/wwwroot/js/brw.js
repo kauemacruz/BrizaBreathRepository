@@ -86,6 +86,7 @@ brwSettings.onclick = function () {
     selectSongsList.style.display = "block";
     backBRWset.style.display = "block";
     backBRW.style.display = "none";
+    backBRW2.style.display = "none";
 }
 backBRWset.onclick = function () {
     if (!audioPlayerBRT.muted) {

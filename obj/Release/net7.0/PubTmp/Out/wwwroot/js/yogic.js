@@ -84,6 +84,8 @@ YBSettings.onclick = function () {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     selectSongsList.style.display = "block";
     backYBSet.style.display = "block";
+    backYB.style.display = "none";
+    backYB2.style.display = "none";
 }
 backYBSet.onclick = function () {
     if (!audioPlayerBRT.muted) {

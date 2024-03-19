@@ -162,7 +162,7 @@ function KBholdFunction() {
         displayTimerKB();
     }, 3000);
 }
-var KBcountdown = 15;
+var KBcountdown = 30;
 function KBanimate2() {
     if (KBcountdown < 1) {
         clearTimeout(KBmyTimeout2);
@@ -177,7 +177,7 @@ function KBnextRound() {
     timerKB.isBreak2KB = false;
     timerKB.isBreak3KB = false;
     timerKB.isBreakKB = true;
-    KBcountdown = 15;
+    KBcountdown = 30;
     KBmyTimeout2 = null;
     if (!ismuteKB) {
         audioObjects.nextRound.muted = false;
@@ -376,7 +376,7 @@ volumeSongKB.addEventListener('input', function () {
 
 
 var inhaleKB = 9999;
-var holdHW = 15;
+var holdHW = 30;
 var exhaleKB = 9999;
 setTimerSettingsKB(9999, inhaleKB, true, holdHW, true, exhaleKB);
 initializeTimerControlsKB();

@@ -97,6 +97,8 @@ WHSettings.onclick = function () {
     selectSongsList.style.display = "block";
     backWHSet.style.display = "block";
     backWH.style.display = "none";
+    backWH2.style.display = "none";
+    backWH3.style.display = "none";
 }
 backWHSet.onclick = function () {
     if (!audioPlayerBRT.muted) {

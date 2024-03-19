@@ -109,6 +109,8 @@ CTSettings.onclick = function () {
     selectSongsList.style.display = "block";
     backCTSet.style.display = "block";
     backCT.style.display = "none";
+    backCT2.style.display = "none";
+    backCT3.style.display = "none";
 }
 backCTSet.onclick = function () {
     if (!audioPlayerBRT.muted) {
@@ -185,6 +187,7 @@ $(function () {
         timerControlsButtonsCT.stopCT.style.color = "rgb(177, 177, 177)";
         CBtimeInput.classList.remove('CountdownHidden');
         CBcountdownDisplay.classList.add('CountdownHidden');
+        setTimerSettingsCT(9999, inhaleCT, true, holdCT, true, exhaleCT);
     });
 });
 
