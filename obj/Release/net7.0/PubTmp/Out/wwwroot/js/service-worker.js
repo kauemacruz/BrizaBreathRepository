@@ -12,6 +12,7 @@ const URLS_TO_CACHE = [
     '/lib/bootstrap/dist/js/bootstrap.bundle.min.js',
     'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js',
     '/js/global.js',
+    '/js/browser.js',
     '/dist/js/site.min.js',
 ];
 

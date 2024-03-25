@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "v1xzVdA2AJJZBL5J9SIZkXsZdvxw2Mz4sjFpqlwynTc=",
+  "Hash": "Z7CokHhoTbtvd5auLCkCiC4VmJuwqDjTSG1ynhiJOKI=",
   "Source": "BrizaBreath",
   "BasePath": "_content/BrizaBreath",
   "Mode": "Default",
@@ -1139,6 +1139,40 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\appstore.svg",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "images/appstore.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\appstore.svg"
+    },
+    {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\googleplay.png",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "images/googleplay.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\googleplay.png"
+    },
+    {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\icon.png",
       "SourceId": "BrizaBreath",
       "SourceType": "Discovered",
@@ -1256,6 +1290,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\bre.js"
+    },
+    {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\browser.js",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "js/browser.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\browser.js"
     },
     {
       "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\brt.js",
@@ -2582,6 +2633,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manifest.json"
+    },
+    {
+      "Identity": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\videos\\awake.mp4",
+      "SourceId": "BrizaBreath",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\",
+      "BasePath": "_content/BrizaBreath",
+      "RelativePath": "videos/awake.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\videos\\awake.mp4"
     }
   ]
 }

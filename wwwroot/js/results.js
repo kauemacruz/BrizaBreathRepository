@@ -730,6 +730,12 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backWH2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.fullyin.load();
+                            audioObjects.fullyout.load();
+                            audioObjects.letgoandhold.load();
+                            audioObjects.fullyinHold.load();
+                            audioObjects.normalbreath.load();
+                            audioObjects.nextRound.load();
                             break;
                     }
                 });
@@ -779,6 +785,12 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backWH2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.fullyin.load();
+                            audioObjects.fullyout.load();
+                            audioObjects.letgoandhold.load();
+                            audioObjects.fullyinHold.load();
+                            audioObjects.normalbreath.load();
+                            audioObjects.nextRound.load();
                             break;
                         case 'BRWLink':
                             openPage(programPage, BRWPage, 'slideLeft');
@@ -818,6 +830,10 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backCT2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.exhale.load();
+                            audioObjects.inhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'HATLink':
                             openPage(programPage, HATPage, 'slideLeft');
@@ -876,6 +892,12 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backWH2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.fullyin.load();
+                            audioObjects.fullyout.load();
+                            audioObjects.letgoandhold.load();
+                            audioObjects.fullyinHold.load();
+                            audioObjects.normalbreath.load();
+                            audioObjects.nextRound.load();
                             break;
                         case 'BRWLink':
                             openPage(programPage, BRWPage, 'slideLeft');
@@ -915,6 +937,10 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backCT2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.exhale.load();
+                            audioObjects.inhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'HATLink':
                             openPage(programPage, HATPage, 'slideLeft');
@@ -1088,7 +1114,7 @@ function BRTupdateOverview() {
                 BRTinfoOverview.innerHTML = BRTinnerText;
                 personalTraining.innerHTML = "";
                 personalTraining.innerHTML += '<div class="breathingpages">' +
-                    '<h2>Your BRT seu is: </h2>' +
+                    '<h2>Your BRT score is: </h2>' +
                     '<h2>' + BRTlatestResult + ' seconds</h2>' +
                     '<p> Routine to improve your breathing efficiency</p> ' +
                     '<div class="BHGrid"> ' +
@@ -1179,6 +1205,12 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backWH2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.fullyin.load();
+                            audioObjects.fullyout.load();
+                            audioObjects.letgoandhold.load();
+                            audioObjects.fullyinHold.load();
+                            audioObjects.normalbreath.load();
+                            audioObjects.nextRound.load();
                             break;
                     }
                 });
@@ -1228,6 +1260,12 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backWH2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.fullyin.load();
+                            audioObjects.fullyout.load();
+                            audioObjects.letgoandhold.load();
+                            audioObjects.fullyinHold.load();
+                            audioObjects.normalbreath.load();
+                            audioObjects.nextRound.load();
                             break;
                         case 'BRWLink':
                             openPage(programPage, BRWPage, 'slideLeft');
@@ -1267,6 +1305,10 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backCT2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.exhale.load();
+                            audioObjects.inhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'HATLink':
                             openPage(programPage, HATPage, 'slideLeft');
@@ -1325,6 +1367,12 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backWH2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.fullyin.load();
+                            audioObjects.fullyout.load();
+                            audioObjects.letgoandhold.load();
+                            audioObjects.fullyinHold.load();
+                            audioObjects.normalbreath.load();
+                            audioObjects.nextRound.load();
                             break;
                         case 'BRWLink':
                             openPage(programPage, BRWPage, 'slideLeft');
@@ -1364,6 +1412,10 @@ function BRTupdateOverview() {
                             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             backCT2.style.display = "block";
                             backProgram.style.display = "none";
+                            audioObjects.exhale.load();
+                            audioObjects.inhale.load();
+                            audioObjects.hold.load();
+                            audioObjects.normalbreath.load();
                             break;
                         case 'HATLink':
                             openPage(programPage, HATPage, 'slideLeft');
@@ -8803,8 +8855,10 @@ function WHfindMaxAverage() {
             var highestResult = WHgetAverage(WHtimeString);
             var seconds = parseTimeToSeconds(highestResult);
             WHmaxResult = Math.max(WHmaxResult, seconds);
-            WHlongestAverageDate = WHdateString;
             WHLongestAverageIntervals = WHrounds;
+            if (seconds === WHmaxResult) {
+                WHlongestAverageDate = WHdateString;
+            }
         }
     });
     return WHmaxResult;

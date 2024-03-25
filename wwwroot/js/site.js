@@ -1,8 +1,30 @@
-﻿let timer;
+﻿if ('wakeLock' in navigator) {
+    try {
+        const wakeLock = await navigator.wakeLock.request('screen');
+        console.log('Screen Wake Lock is active');
+
+        // Remember to release the wake lock when it's no longer needed
+        wakeLock.addEventListener('release', () => {
+            console.log('Screen Wake Lock was released');
+        });
+
+        document.addEventListener('visibilitychange', async () => {
+            if (wakeLock !== null && document.visibilityState === 'visible') {
+                await wakeLock.request('screen');
+            }
+        });
+    } catch (err) {
+        console.error(`${err.name}, ${err.message}`);
+    }
+} else {
+    console.log('Screen Wake Lock API not supported in this browser.');
+}
+
+let timer;
 
 function resetTimer() {
     clearTimeout(timer);
-    timer = setTimeout(dimScreen, 40000); // 40 seconds
+    timer = setTimeout(dimScreen, 60000); // 60 seconds
 }
 
 function dimScreen() {

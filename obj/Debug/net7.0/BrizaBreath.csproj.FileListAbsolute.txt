@@ -288,11 +288,9 @@ C:\Users\kaue_\source\repos\BrizaBreath\obj\Debug\net7.0\ref\BrizaBreath.dll
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\package-lock.json
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\package.json
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\Stripe.net.dll
-C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\capacitor.config.json
-C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\ios\App\App\Assets.xcassets\AppIcon.appiconset\Contents.json
-C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\ios\App\App\Assets.xcassets\Contents.json
-C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\ios\App\App\Assets.xcassets\Splash.imageset\Contents.json
-C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\ios\App\App\capacitor.config.json
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\Azure.Storage.Blobs.dll
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\Azure.Storage.Common.dll
 C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\System.IO.Hashing.dll
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\briza-app\capacitor.config.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\briza-app\package.json
+C:\Users\kaue_\source\repos\BrizaBreath\bin\Debug\net7.0\briza-app\src\manifest.json

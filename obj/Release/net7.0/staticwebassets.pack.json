@@ -21,6 +21,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\appstore.svg",
+      "PackagePath": "staticwebassets\\images\\appstore.svg"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\googleplay.png",
+      "PackagePath": "staticwebassets\\images\\googleplay.png"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\images\\icon.png",
       "PackagePath": "staticwebassets\\images\\icon.png"
     },
@@ -47,6 +55,10 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\bre.js",
       "PackagePath": "staticwebassets\\js\\bre.js"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\browser.js",
+      "PackagePath": "staticwebassets\\js\\browser.js"
     },
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\brt.js",
@@ -359,6 +371,10 @@
     {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\manifest.json",
       "PackagePath": "staticwebassets\\manifest.json"
+    },
+    {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\videos\\awake.mp4",
+      "PackagePath": "staticwebassets\\videos\\awake.mp4"
     },
     {
       "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.BrizaBreath.Microsoft.AspNetCore.StaticWebAssets.props",

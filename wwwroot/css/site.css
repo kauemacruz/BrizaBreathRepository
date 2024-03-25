@@ -7,7 +7,6 @@ body {
     -webkit-touch-callout: none; /* Disable long tap callout menu on iOS */
     -webkit-user-drag: none; /* Disable dragging on iOS */
     -webkit-tap-highlight-color: transparent; /* Disable tap highlight color on iOS */
-    padding-top:30px;
 }
 /* CSS for the loading indicator */
 #loadingIndicator {
@@ -176,9 +175,9 @@ iframe {
     display: none;
     justify-content: space-between; /* Aligns children (back buttons, logo, placeholder) with space between them */
     align-items: center; /* Centers items vertically */
-    padding-top: 50px;
+    padding-top: 10px;
     background-color: white;
-    height: 110px;
+    height: 70px;
     top: 0;
     width: 100%;
     text-align: center;
@@ -649,7 +648,7 @@ hr {
 /*Pages transition style*/
 .open {
     visibility: visible;
-    margin-top: 90px !important;
+    margin-top: 75px !important;
 }
 
 .hidden {
@@ -1060,7 +1059,8 @@ input#timerDisplayLungs {
 }
 
 .settingButtons img {
-    height: 35px;
+    height: 45px;
+    margin-top: 4px;
 }
 /*
 * Timer status
@@ -3350,4 +3350,36 @@ input#intervalDurationInputCB {
     background-color: rgba(0, 0, 0, 0.5); /* Adjust darkness here */
     z-index: 1000;
     display: none;
+}
+.instruction {
+    display: none;
+    text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.instructions p{
+    padding-top: 20px;
+}
+.instruction h2 {
+    margin-bottom: 30px;
+}
+.instruction h3 {
+    padding-top: 20px;
+}
+.qr-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+#qrcode {
+    margin-top: 30px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a.instImg img {
+    margin-bottom: 30px;
+    width: 150px;
 }

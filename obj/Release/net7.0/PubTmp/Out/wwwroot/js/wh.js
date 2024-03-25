@@ -226,7 +226,7 @@ function WHnextRound() {
     }, 2000); 
     setTimeout(() => {
         WHanimate();
-    }, 3000); 
+    }, 3500); 
 }
 $(function () {
     $('#WHForm').on('submit', function (e) {

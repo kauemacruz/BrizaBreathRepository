@@ -267,7 +267,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Service Worker registration failed:', error);
             });
     }
+    if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("portrait-primary").catch(function (error) {
+            console.warn("Screen orientation lock failed: ", error);
+        });
+    }
 });
 window.addEventListener('offline', function (e) {
     alert("You are currently offline. Some features may not be available. And you will not be able to save your results");
 });
+//document.addEventListener('contextmenu', function (e) {
+  //  e.preventDefault();
+//}, false);

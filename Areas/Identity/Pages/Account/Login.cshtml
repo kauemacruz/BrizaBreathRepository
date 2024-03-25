@@ -14,56 +14,95 @@
     <link rel="manifest" href="~/manifest.json" />
     <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
     <title>@ViewData["Title"] Briza Breath & Performance</title>
-    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet' />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="~/dist/css/site.min.css">
+    <noscript>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    </noscript>
     <link rel="stylesheet" href="~/BrizaBreath.styles.css" asp-append-version="true" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.28/ua-parser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-    <div class="logo">
-        <img src="https://brizastorage.blob.core.windows.net/images/brizalogo.png" width="250" height="100" />
-    </div>
-    <div class="row">
-        <div class="col-md-8">
-            <form id="account" method="post">
-                <h4 id="loginText">Login</h4>
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Email" />
-                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    <div id="loginPage">
+        <div class="logo">
+            <img src="https://brizastorage.blob.core.windows.net/images/brizalogo.png" width="250" height="100" />
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <form id="account" method="post">
+                    <h4 id="loginText">Login</h4>
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Email" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Password" />
-                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Password" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="checkbox mb-3">
-                    <label asp-for="Input.RememberMe" class="form-label">
-                        <input class="form-check-input" asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                    </label>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <button id="login-submit" type="submit" class="btn btn-default">Log in</button>
+                    <div class="checkbox mb-3">
+                        <label asp-for="Input.RememberMe" class="form-label">
+                            <input class="form-check-input" asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
                     </div>
-                </div>
-                <div>
-                    <p class="loginText">
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                    </p>
-                    <p class="loginText">
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                    </p>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button id="login-submit" type="submit" class="btn btn-default">Log in</button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="loginText">
+                            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        </p>
+                        <p class="loginText">
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+    <div id="androidInstructions" class="instruction">
+        <div class="logo">
+            <img src="https://brizastorage.blob.core.windows.net/images/brizalogo.png" width="250" height="100" />
+        </div>
+        <h2>Download the Briza Breath & Performance App</h2>
+        <a class="instImg"><img src="~/images/googleplay.png" /></a>
+        <p>Briza Breath & Performance, the ultimate destination for anyone looking to transform their breathing techniques and elevate their overall wellness and athletic performance. Our app is designed with both beginners and seasoned athletes in mind, providing a comprehensive toolkit to enhance your breathing, focus, and performance through scientifically-backed methods and easy-to-follow guides</p>
+    </div>
+
+    <div id="iosInstructions" class="instruction">
+        <div class="logo">
+            <img src="https://brizastorage.blob.core.windows.net/images/brizalogo.png" width="250" height="100" />
+        </div>
+        <h2>Download the Briza Breath & Performance App</h2>
+        <a class="instImg"><img src="~/images/appstore.svg" /></a>
+        <p>Briza Breath & Performance, the ultimate destination for anyone looking to transform their breathing techniques and elevate their overall wellness and athletic performance. Our app is designed with both beginners and seasoned athletes in mind, providing a comprehensive toolkit to enhance your breathing, focus, and performance through scientifically-backed methods and easy-to-follow guides</p>
+    </div>
+
+    <div id="desktopInstructions" class="instruction">
+        <div class="logo">
+            <img src="https://brizastorage.blob.core.windows.net/images/brizalogo.png" width="250" height="100" />
+        </div>
+        <h2>Install on Your Mobile Device</h2>
+        <p>Briza Breath & Performance, the ultimate destination for anyone looking to transform their breathing techniques and elevate their overall wellness and athletic performance. Our app is designed with both beginners and seasoned athletes in mind, providing a comprehensive toolkit to enhance your breathing, focus, and performance through scientifically-backed methods and easy-to-follow guides</p>
+        <h3>Scan this QR code with your mobile device to try the app</h3>
+        <div class="qr-container">
+            <div id="qrcode"></div>
+        </div>
+    </div>
+    <div id="loadingIndicator">
+        <img src="https://brizastorage.blob.core.windows.net/images/brizalogo.png" alt="Loading...">
+    </div>
+    <script src="~/js/browser.js" asp-append-version="true"></script>
 
     @section Scripts {
         <partial name="_ValidationScriptsPartial" />
