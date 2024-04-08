@@ -365,6 +365,7 @@ function setFormDisabledStateCB(disabled) {
 }
 
 function startTimerCB() {
+    requestWakeLock();
     isCBon = true;
     if (intCB !== null) {
         clearInterval(intCB);

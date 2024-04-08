@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BrizaBreath.Services;
-using Stripe;
 using Microsoft.Extensions.Options;
 using Azure.Storage.Blobs;
 using Microsoft.Extensions.Configuration;
@@ -22,13 +21,10 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax; // or SameSiteMode.Strict
     options.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.Always; // Enforce HTTPS
-    // Other cookie settings...
+    options.ExpireTimeSpan = TimeSpan.FromDays(60); // Set the cookie to expire in 60 days
+    options.SlidingExpiration = true; // Extend the cookie life on each request
 });
 
-StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
-
-// Configure Stripe with the API Key from appsettings or environment variable
-//StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
@@ -70,7 +66,7 @@ app.UseStaticFiles();
 // Add redirection middleware
 app.Use(async (context, next) =>
 {
-    var allowedPaths = new[] { "/", "/Results", "/Results/CreateBR", "/Identity/Account/Login", "/Identity/Account/Register", "/Identity/Account/ForgotPassword", "/Identity/Account/ForgotPasswordConfirmation", "/Identity/Account/ResetPassword", "/Identity/Account/ResetPasswordConfirmation", "/Identity/Account/Logout", "/Identity/Account/DeletePersonalData", "/Identity/Account/ChangePassword" };
+    var allowedPaths = new[] { "/", "/Results", "/Results/CreateBR", "/Identity/Account/Login", "/Identity/Account/Register", "/Identity/Account/ForgotPassword", "/Identity/Account/ForgotPasswordConfirmation", "/Identity/Account/ResetPassword", "/Identity/Account/ResetPasswordConfirmation", "/Identity/Account/Logout", "/Identity/Account/ChangePassword", "/Identity/Account/ChangeEmail" };
 
     if (!allowedPaths.Contains(context.Request.Path.Value, StringComparer.OrdinalIgnoreCase))
     {

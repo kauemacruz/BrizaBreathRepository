@@ -1022,6 +1022,7 @@ function initializeTimerSettingsFormO2() {
   }
 
 function startTimerO2() {
+    requestWakeLock();
     isO2on = true;
     if(intO2!==null){
       clearInterval(intO2);

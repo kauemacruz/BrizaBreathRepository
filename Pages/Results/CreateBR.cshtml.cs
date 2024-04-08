@@ -4,8 +4,7 @@ using BrizaBreath.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Stripe.Checkout;
-using Stripe;
+
 
 namespace BrizaBreath.Pages.Results
 {
@@ -40,6 +39,7 @@ namespace BrizaBreath.Pages.Results
                     .Where(a => a.UserId == HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value)
                     .ToListAsync();
             }
+            /*
             if (HttpContext.Request.Query.ContainsKey("session_id"))
             {
                 var sessionId = HttpContext.Request.Query["session_id"].ToString();
@@ -70,12 +70,14 @@ namespace BrizaBreath.Pages.Results
                     }
                 }
             }
+            */
             // Check if the request includes the 'fetchData' query parameter
             if (HttpContext.Request.Query.ContainsKey("fetchData"))
             {
                 return new JsonResult(GetResult);
             }
-            bool isActiveSubscriber = IsUserActiveSubscriber(ResultUser);
+            //bool isActiveSubscriber = IsUserActiveSubscriber(ResultUser);
+            bool isActiveSubscriber = true;
             // Pass the isActiveSubscriber flag to your Razor Page
             ViewData["IsActiveSubscriber"] = isActiveSubscriber;
             return Page();
@@ -137,6 +139,7 @@ namespace BrizaBreath.Pages.Results
                 return new JsonResult(new { success = false, message = "An error occurred while deleting the result." });
             }
         }
+        /*
         public bool IsUserActiveSubscriber(string userId)
         {
             StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
@@ -313,7 +316,7 @@ namespace BrizaBreath.Pages.Results
                             var options = new Stripe.BillingPortal.SessionCreateOptions
                             {
                                 Customer = customerId,
-                                ReturnUrl = "https://brizabreathappservice.azurewebsites.net/Results/CreateBR",  // The URL to which the user will be redirected when they're done
+                                ReturnUrl = "https://app.brizabreath.com/Results/CreateBR",  // The URL to which the user will be redirected when they're done
                             };
 
                             var billingPortalService = new Stripe.BillingPortal.SessionService();
@@ -340,6 +343,6 @@ namespace BrizaBreath.Pages.Results
                 Console.WriteLine("Error adding subscription: " + ex.Message);
                 return new JsonResult(new { success = false, message = "An error occurred while adding the membership" });
             }
-        }
+        }*/
     }
 }

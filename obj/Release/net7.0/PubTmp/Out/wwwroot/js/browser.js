@@ -1,53 +1,42 @@
-var parser = new UAParser();
-var result = parser.getResult();
-
-function isStandalone() {
-    return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone) || document.referrer.includes('android-app://') || (window.Capacitor && window.Capacitor.isNative);
+function isNativeApp() {
+    // Explicitly check for Capacitor and that it's running in a native platform
+    return typeof Capacitor !== 'undefined' && Capacitor.isNativePlatform();
 }
-function displayInstructions() {
 
-    if (isStandalone()) {
-        if (result.os.name === 'iOS') {
-            // Show iOS instructions
-            document.getElementById('iosInstructions').style.display = 'none';
-            document.getElementById('loginPage').style.display = 'block';
-            document.getElementById('loadingIndicator').style.display = 'none';
-        } else if (result.os.name === 'Android') {
-            // Show Android instructions
-            document.getElementById('androidInstructions').style.display = 'none';
-            document.getElementById('loginPage').style.display = 'block';
-            document.getElementById('loadingIndicator').style.display = 'none';
-        } else {
-            // Assume desktop or other OS; show QR code or generic instructions
-            document.getElementById('iosInstructions').style.display = 'none';
-            document.getElementById('androidInstructions').style.display = 'none';
-            document.getElementById('loginPage').style.display = 'none';
-            document.getElementById('desktopInstructions').style.display = 'block';
-            document.getElementById('loadingIndicator').style.display = 'none';
-        }
+function displayInstructions() {
+    var nativeApp = isNativeApp();
+    if (nativeApp) {
+        // Running as a native app
+        document.getElementById('iosInstructions').style.display = 'none';
+        document.getElementById('androidInstructions').style.display = 'none';
+        document.getElementById('desktopInstructions').style.display = 'none';
+        document.getElementById('loginPage').style.display = 'block';
+        document.getElementById('loadingIndicator').style.display = 'none';
     } else {
+        // Determine the platform from the user agent if not running as a native app
+        var result = new UAParser().getResult();
+
         if (result.os.name === 'iOS') {
-            // Show iOS instructions
-            document.getElementById('iosInstructions').style.display = 'block';
-            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('iosInstructions').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'block';
             document.getElementById('loadingIndicator').style.display = 'none';
         } else if (result.os.name === 'Android') {
-            // Show Android instructions
             document.getElementById('androidInstructions').style.display = 'block';
+            // Hide the login page if not running as a native app
             document.getElementById('loginPage').style.display = 'none';
             document.getElementById('loadingIndicator').style.display = 'none';
         } else {
-            // Assume desktop or other OS; show QR code or generic instructions
+            // Default to desktop instructions for other platforms
             document.getElementById('desktopInstructions').style.display = 'block';
-            document.getElementById('iosInstructions').style.display = 'none';
-            document.getElementById('androidInstructions').style.display = 'none';
+            // Hide the login page if not running as a native app
             document.getElementById('loginPage').style.display = 'none';
             document.getElementById('loadingIndicator').style.display = 'none';
         }
     }
 }
 
-document.addEventListener('DOMContentLoaded', displayInstructions);
+displayInstructions();
+
 
 var qrcode = new QRCode(document.getElementById("qrcode"), {
     text: "app.brizabreath.com",

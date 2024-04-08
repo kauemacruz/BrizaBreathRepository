@@ -400,6 +400,7 @@ function setFormDisabledStateRB(disabled) {
 }
 
 function startTimerRB() {
+    requestWakeLock();
     isRBon = true;
     if (intRB !== null) {
         clearInterval(intRB);

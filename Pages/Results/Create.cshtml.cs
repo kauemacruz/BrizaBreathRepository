@@ -4,8 +4,7 @@ using BrizaBreath.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Stripe.Checkout;
-using Stripe;
+
 
 namespace BrizaBreath.Pages.Results
 {
@@ -40,6 +39,7 @@ namespace BrizaBreath.Pages.Results
                     .Where(a => a.UserId == HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value)
                     .ToListAsync();
             }
+            /*
             if (HttpContext.Request.Query.ContainsKey("session_id"))
             {
                 var sessionId = HttpContext.Request.Query["session_id"].ToString();
@@ -70,17 +70,18 @@ namespace BrizaBreath.Pages.Results
                     }
                 }
             }
+            */
             // Check if the request includes the 'fetchData' query parameter
             if (HttpContext.Request.Query.ContainsKey("fetchData"))
             {
                 return new JsonResult(GetResult);
             }
             bool isActiveSubscriber = IsUserActiveSubscriber(ResultUser);
+            //bool isActiveSubscriber = true;
             // Pass the isActiveSubscriber flag to your Razor Page
             ViewData["IsActiveSubscriber"] = isActiveSubscriber;
             return Page();
         }
-
 
         [BindProperty]
         public Result Result { get; set; } = default!;
@@ -138,117 +139,23 @@ namespace BrizaBreath.Pages.Results
                 return new JsonResult(new { success = false, message = "An error occurred while deleting the result." });
             }
         }
+        
         public bool IsUserActiveSubscriber(string userId)
         {
-            StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
-            var isStripeActive = _context.BrizaSubscription
-                .Where(s => s.UserId == userId && s.StripeCustID != null && s.IsActive == true)
+            var userSubscription = _context.BrizaSubscription
+                .Where(s => s.UserId == userId && s.IsActive == true)
                 .FirstOrDefault();
-            if (isStripeActive != null)
+
+            if (userSubscription != null)
             {
-                var CheckService = new SessionService();
-                var CheckSession = CheckService.Get(isStripeActive.StripeCustID);
-                if (CheckSession != null)
-                {
-                    var subscriptionId = CheckSession.SubscriptionId;
-                    var subscriptionService = new SubscriptionService();
-                    Subscription subscription = subscriptionService.Get(subscriptionId);
-                    string status = subscription.Status;
-                    if (status == "canceled")
-                    {
-                        var userSubscription = _context.BrizaSubscription.FirstOrDefault(sub => sub.StripeCustID == CheckSession.Id);
-                        
-                        if (userSubscription != null)
-                        {
-                            userSubscription.IsActive = false;
-                            _context.Update(userSubscription);
-                            _context.SaveChanges();
-                            return false;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
-                    else
-                    {
-                        var userSubscription = _context.BrizaSubscription.FirstOrDefault(sub => sub.StripeCustID == CheckSession.Id);
-
-                        if (userSubscription != null)
-                        {
-                            var customerId = CheckSession.CustomerId;
-
-                            var customerService = new CustomerService();
-                            var stripeCustomer = customerService.Get(customerId);
-                            var stripeEmail = stripeCustomer.Email;
-
-                            var userEmailClaim = User.FindFirst(ClaimTypes.Email);
-
-                            if (userEmailClaim == null)
-                            {
-                                return false;
-                            }
-                            else
-                            {
-                                var userInDb = _context.Users.FirstOrDefault(u => u.Id == userId); 
-
-                                if (userInDb != null && userInDb.Email != stripeEmail)
-                                {
-                                    var emailExists = _context.Users.Any(u => u.Email == stripeEmail);
-
-                                    if (!emailExists)
-                                    {
-                                        userInDb.Email = stripeEmail;
-                                        userInDb.NormalizedEmail = stripeEmail.ToUpper();
-                                        userInDb.UserName = stripeEmail;
-                                        userInDb.NormalizedUserName = stripeEmail.ToUpper();
-                                        _context.Update(userInDb);
-                                        _context.SaveChanges();
-                                        ViewData["UserEmail"] = stripeEmail;
-                                    }
-                                    else
-                                    {
-                                        try
-                                        {
-                                            var options = new CustomerUpdateOptions
-                                            {
-                                                Email = userInDb.Email,
-                                            };
-                                            var customer = customerService.UpdateAsync(customerId, options);
-                                            ViewData["UserEmail"] = options.Email;
-                                            ViewData["AlertMessage"] = "This email already exists in the database. We've reverted to your original email (" + options.Email + ")";
-
-                                        }
-                                        catch (StripeException ex)
-                                        {
-                                            Console.WriteLine($"Stripe API error: {ex.Message}");
-                                        }
-                                    }
-                                }
-
-                                userSubscription.IsActive = true;
-                                _context.Update(userSubscription);
-                                _context.SaveChanges();
-                                return true;
-                            }
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
             else
             {
                 return false;
             }
         }
-
+        /*
         public async Task<IActionResult> OnPostSignMembershipAsync()
         {
             try
@@ -313,7 +220,7 @@ namespace BrizaBreath.Pages.Results
                             var options = new Stripe.BillingPortal.SessionCreateOptions
                             {
                                 Customer = customerId,
-                                ReturnUrl = "https://brizabreathappservice.azurewebsites.net/",  // The URL to which the user will be redirected when they're done
+                                ReturnUrl = "https://app.brizabreath.com/",  // The URL to which the user will be redirected when they're done
                             };
 
                             var billingPortalService = new Stripe.BillingPortal.SessionService();
@@ -341,5 +248,6 @@ namespace BrizaBreath.Pages.Results
                 return new JsonResult(new { success = false, message = "An error occurred while adding the membership" });
             }
         }
+        */
     }
 }

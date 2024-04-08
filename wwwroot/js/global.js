@@ -1,3 +1,8 @@
+//check what type of device they are using
+var parser = new UAParser();
+var result = parser.getResult();
+var devicePlatform = result.os.name;
+
 var currentUrl = window.location.href;
 // Define a function to check if the URL contains a specific keyword
 function checkUrl() {
@@ -272,7 +277,26 @@ document.addEventListener('DOMContentLoaded', function () {
             console.warn("Screen orientation lock failed: ", error);
         });
     }
+    if (devicePlatform === 'Android') {
+        var elements = document.getElementsByClassName('navbar');
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.height = '80px';
+        }
+    }
 });
+let wakeLock = null;
+
+async function requestWakeLock() {
+    try {
+        wakeLock = await navigator.wakeLock.request('screen');
+        wakeLock.addEventListener('release', () => {
+            console.log('Screen Wake Lock was released');
+        });
+        console.log('Screen Wake Lock is active');
+    } catch (err) {
+        console.error(`${err.name}, ${err.message}`);
+    }
+}
 window.addEventListener('offline', function (e) {
     alert("You are currently offline. Some features may not be available. And you will not be able to save your results");
 });

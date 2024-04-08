@@ -464,6 +464,7 @@ function setFormDisabledStateBOX(disabled) {
 }
 
 function startTimerBOX() {
+    requestWakeLock();
     isBOXon = true;
     if (intBOX !== null) {
         clearInterval(intBOX);

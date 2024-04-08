@@ -468,6 +468,7 @@ function setFormDisabledStateYB(disabled) {
 }
 
 function startTimerYB() {
+    requestWakeLock();
     isYBon = true;
     if (intYB !== null) {
         clearInterval(intYB);

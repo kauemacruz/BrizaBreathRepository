@@ -467,6 +467,7 @@ function setFormDisabledStateNB(disabled) {
 }
 
 function startTimerNB() {
+    requestWakeLock();
     isNBon = true;
     if (intNB !== null) {
         clearInterval(intNB);

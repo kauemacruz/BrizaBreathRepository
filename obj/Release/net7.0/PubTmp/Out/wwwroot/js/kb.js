@@ -475,6 +475,7 @@ function setFormDisabledStateKB(disabled) {
 }
 var musicIsOnKB = false;
 function startTimerKB() {
+    requestWakeLock();
     isKBon = true;
     timerKB.isBreakKB = true;
     timerKB.isBreak2KB = false;
@@ -545,11 +546,14 @@ function stopTimerKB() {
     if (document.getElementById("KBResults").innerHTML !== "") {
         document.getElementById('KBSave').disabled = false;
         document.getElementById('KBSave').style.color = '#49B79D';
-        timerControlsButtonsKB.stopKB.style.display = "none";
-        document.getElementById('resetBtnKB').style.display = 'inline';
-        document.getElementById('resetBtnKB').style.color = '#990000';
         setTimerControlsDisabledStateKB(true, true, true);
         timerControlsButtonsKB.startKB.style.color = "rgb(177, 177, 177)";
+        setTimeout(function () {
+            timerControlsButtonsKB.stopKB.style.display = "none";
+            document.getElementById('resetBtnKB').style.display = 'inline';
+            document.getElementById('resetBtnKB').style.color = '#990000';
+        }, 2500);
+        
     } else {
         setTimerControlsDisabledStateKB(false, true, true);
         timerControlsButtonsKB.startKB.style.color = '#49B79D';

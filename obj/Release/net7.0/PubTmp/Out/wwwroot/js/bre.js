@@ -499,6 +499,7 @@ function setFormDisabledStateBRE(disabled) {
     plusBtnBRE.disabled = disabled;
 }
 function startTimerBRE() {
+    requestWakeLock();
     isBREon = true;
     if (intBRE !== null) {
         clearInterval(intBRE);

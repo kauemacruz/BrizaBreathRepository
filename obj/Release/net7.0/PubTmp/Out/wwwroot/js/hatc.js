@@ -368,6 +368,7 @@ function setFormDisabledStateHATC(disabled) {
 }
 var isFirstTimeHATC = true;
 function startTimerHATC() {
+    requestWakeLock();
     isHATCon = true;
     setFormDisabledStateHATC(true);
     setTimerControlsDisabledStateHATC(false, true, false);

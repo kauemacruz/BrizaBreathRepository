@@ -500,6 +500,7 @@ function setFormDisabledStateBRW(disabled) {
     plusBtnBRW.disabled = disabled;
 }
 function startTimerBRW() {
+    requestWakeLock();
     isBRWon = true;
     if (intBRW !== null) {
         clearInterval(intBRW);

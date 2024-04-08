@@ -31,7 +31,6 @@
         <button type="button" id="subscriptionBtn2">Saiba Mais</button>
         <form method="post" id="subscriptionForm">
             <input id="SUBuserInput" type="hidden" asp-for="BrizaSubscription.UserId" class="form-control" value="@Model.ResultUser" readonly/>
-            <input id="priceChoice" value="3" type="hidden" asp-for="BrizaSubscription.PlanId" readonly/>
             <input id="SUBActive" value="0" type="hidden" asp-for="BrizaSubscription.IsActive" readonly/>
             <input type="submit" value="Assine Agora" id="subscriptionBtn3" class="subscriptionBtn2" readonly/>
         </form>
@@ -47,9 +46,7 @@
     <div class="modal-content">
         <span class="close" id="closeModal2">&times;</span>
         <p class="manageSubsModal">Sua assinatura começa assim que você configura o pagamento. Sua cobrança automática mensal/anual ocorrerá no último dia do período de faturamento atual. Nós renovaremos sua assinatura para você (a menos que você tenha cancelado sua assinatura na página de perfil 24 horas antes do final do ciclo de faturamento)</p>
-        <form method="post" id="manageSubscriptionForm">
-            <input type="submit" value="Gerenciar Assinatura" id="subscriptionBtn4" class="subscriptionBtn2" readonly/>
-        </form>
+        <input type="submit" value="Gerenciar Assinatura" id="subscriptionBtn4" class="subscriptionBtn2" readonly/>
     </div>
 </div>
 <div id="loadingIndicator">
@@ -814,8 +811,9 @@
 <div id="profilePage" class="hidden">
     <div class="breathingpages">
         <h1>Conta</h1>
-        <div class="profile">
-            @ViewData["UserEmail"]
+        <div class="flexProfile">
+            <div>@ViewData["UserEmail"]</div>
+            <a id="changeAccountBtn2" href="/Identity/Account/ChangeEmail">TROCAR EMAIL</a>
         </div>
         <div class="flexProfile">
             <a id="changeAccountBtn" href="/Identity/Account/ChangePassword">TROCAR SENHA</a>
@@ -829,7 +827,7 @@
         <h2>Assinatura</h2>
             <div id="manageMembership">
                 <button type="button" id="subscriptionBtn" class="subscriptionBtn">GERENCIAR ASSINATURA</button>
-                <p id="subscribeNow2">Gerencie sua assinatura. Atualize os detalhes de pagamento, atualize seu plano ou cancele a qualquer momento</p>
+                <p id="subscribeNow2">Gerencie sua assinatura, atualize os detalhes de pagamento ou cancele a qualquer momento</p>
             </div>
             <div id="noActiveMembership">
                 <button type="button" id="getSubscriptionBtn" class="subscriptionBtn">OBTER ASSINATURA</button>
@@ -859,10 +857,6 @@
                 <p>Instagram</p>
                 <a href="https://www.instagram.com/brizabreath/" target="_blank">brizabreath</a>
             </div>
-        </div>
-        <hr />
-        <div class="profile">
-            <a id="deleteAccountBtn" href="/Identity/Account/DeletePersonalData" class="btn btn-danger">Deletar Assinatura</a>
         </div>
         <hr />
         <div class="profile termsPrivacyBtn">

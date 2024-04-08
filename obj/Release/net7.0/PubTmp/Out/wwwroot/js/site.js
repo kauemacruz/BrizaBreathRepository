@@ -519,7 +519,7 @@ window.addEventListener("click", function (event) {
 subscriptionBtn2.onclick = function () {
     openModal3();
 }
-
+/*
 $(function () {
     $('#subscriptionForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -576,6 +576,22 @@ $(function () {
         })
     });
 });
+*/
+document.getElementById("subscriptionBtn4").onclick = function () {
+    let url = '';
+    if (devicePlatform === 'iOS') {
+        url = 'https://apps.apple.com/account/subscriptions';
+    } else if (devicePlatform === 'Android') {
+       url = 'https://play.google.com/store/account/subscriptions';
+    } else {
+        alert("Device not supported");
+    }
+    if (window.Capacitor && window.Capacitor.isNative) {
+        window.Capacitor.Plugins.Browser.open({ url: url });
+    } else {
+        window.open(url, '_blank').focus();
+    }
+}
 let audioObjects = {};
 const soundNames = ['bell', 'breathedeeply', 'exhale', 'exhaleLeft', 'exhaleRight', 'fullyin', 'fullyinHold', 'fullyout', 'fullyout2', 'hold', 'hum', 'inhale', 'inhaleLeft', 'inhaleRight', 'letGo', 'letgoandhold', 'lightNasal', 'normalbreath', 'nextRound', 'pinchRun', 'pinchWalk', 'recover'];
 soundNames.forEach((name) => {

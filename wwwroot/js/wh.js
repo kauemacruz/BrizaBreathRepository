@@ -535,6 +535,7 @@ function setFormDisabledStateWH(disabled) {
 }
 var musicIsOnWH = false;
 function startTimerWH() {
+    requestWakeLock();
     isWHon = true;
     timerWH.isBreakWH = true;
     timerWH.isBreak2WH = false;
@@ -605,11 +606,13 @@ function stopTimerWH() {
     if (document.getElementById("WHResults").innerHTML !== "") {
         document.getElementById('WHSave').disabled = false;
         document.getElementById('WHSave').style.color = '#49B79D';
-        timerControlsButtonsWH.stopWH.style.display = "none";
-        document.getElementById('resetBtnWH').style.display = 'inline';
-        document.getElementById('resetBtnWH').style.color = '#990000';
         setTimerControlsDisabledStateWH(true, true, true);
         timerControlsButtonsWH.startWH.style.color = "rgb(177, 177, 177)";
+        setTimeout(function () {
+            timerControlsButtonsWH.stopWH.style.display = "none";
+            document.getElementById('resetBtnWH').style.display = 'inline';
+            document.getElementById('resetBtnWH').style.color = '#990000';
+        }, 2500);
     } else {
         setTimerControlsDisabledStateWH(false, true, true);
         timerControlsButtonsWH.startWH.style.color = '#49B79D';

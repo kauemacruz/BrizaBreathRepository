@@ -220,7 +220,8 @@ iframe {
 #registerForm,
 #passwordForm,
 #change-password-form,
-#delete-user {
+#delete-user,
+#changeEmailForm {
     text-align: center;
     color: #49B79D !important;
     font-size: 18px;
@@ -269,7 +270,8 @@ p.loginText a {
 #registerSubmit,
 #forgotBtn,
 #passwordBtn,
-#changePassBtn {
+#changePassBtn,
+#changeEmailSubmit {
     width: 80%;
     font-size: 25px;
     background-color: #0661AA;
@@ -324,6 +326,14 @@ p.loginText a {
     border: none;
     background-color: white;
     text-decoration: none;
+}
+#changeAccountBtn2 {
+    color: #49B79D;
+    border: none;
+    background-color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+    margin-top: 4px;
 }
 .flexProfile {
     display: flex;
@@ -401,7 +411,8 @@ hr {
     #registerSubmit,
     #forgotBtn,
     #passwordBtn,
-    #changePassBtn {
+    #changePassBtn,
+    #changeEmailSubmit {
         width: 450px !important;
     }
     .col-md-offset-2 {
@@ -3356,6 +3367,7 @@ input#intervalDurationInputCB {
     text-align: center;
     padding-left: 2rem;
     padding-right: 2rem;
+    margin-bottom: 100px;
 }
 .instructions p{
     padding-top: 20px;

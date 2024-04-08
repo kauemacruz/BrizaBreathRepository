@@ -9,8 +9,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Stripe;
-using Stripe.Checkout;
 
 
 namespace BrizaBreath.Areas.Identity.Pages.Account
@@ -97,6 +95,7 @@ namespace BrizaBreath.Areas.Identity.Pages.Account
                 }
 
             }
+            /*
             StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
             var isStripeActive = _context.BrizaSubscription
                 .Where(s => s.UserId == user.Id && s.StripeCustID != null && s.IsActive == true)
@@ -136,7 +135,7 @@ namespace BrizaBreath.Areas.Identity.Pages.Account
             {
                 _context.BrizaSubscription.Remove(subscription3);
             }
-
+            */
             // Save changes to the database
             _context.SaveChanges();
             var result = await _userManager.DeleteAsync(user);

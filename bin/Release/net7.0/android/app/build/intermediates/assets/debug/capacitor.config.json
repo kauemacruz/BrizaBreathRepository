@@ -1,0 +1,14 @@
+{
+	"appId": "com.brizabreath.app",
+	"appName": "Briza",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "wwwroot",
+	"cordova": {},
+	"server": {
+		"url": "https://brizabreathappservice.azurewebsites.net",
+		"allowNavigation": [
+			"brizabreathappservice.azurewebsites.net"
+		]
+	}
+}

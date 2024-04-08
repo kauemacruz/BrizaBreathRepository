@@ -88,6 +88,7 @@ document.getElementById('brtStop').style.color = 'rgb(177, 177, 177)';
 document.getElementById('brtSave').disabled = true;
 document.getElementById('brtSave').style.color = 'rgb(177, 177, 177)';
 startBtnBRT.addEventListener('click', () => {
+    requestWakeLock();
     isBRTon = true;
     if (brtInt !== null) {
         clearInterval(brtInt);

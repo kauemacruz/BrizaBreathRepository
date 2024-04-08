@@ -422,6 +422,7 @@ function setFormDisabledStateAP(disabled) {
 }
 
 function startTimerAP() {
+    requestWakeLock();
     isAPon = true;
     if (intAP !== null) {
         clearInterval(intAP);

@@ -1,9 +1,14 @@
 {
   "appId": "com.brizabreath.app",
-  "appName": "Briza Breath & Performance",
-  "webDir": "www",
+  "appName": "Briza",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "wwwroot",
+  "cordova": {},
   "server": {
     "url": "https://brizabreathappservice.azurewebsites.net",
-    "allowNavigation": [ "brizabreathappservice.azurewebsites.net" ]
+    "allowNavigation": [
+      "brizabreathappservice.azurewebsites.net"
+    ]
   }
 }

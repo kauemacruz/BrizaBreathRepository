@@ -433,6 +433,7 @@ function setFormDisabledStateCT(disabled) {
 }
 
 function startTimerCT() {
+    requestWakeLock();
     isCTon = true;
     if (intCT !== null) {
         clearInterval(intCT);

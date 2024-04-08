@@ -432,6 +432,7 @@ function setFormDisabledStateSB(disabled) {
 }
 
 function startTimerSB() {
+    requestWakeLock();
     isSBon = true;
     if (intSB !== null) {
         clearInterval(intSB);

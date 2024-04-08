@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\kaue_\source\repos\BrizaBreath\androidsetup</_PublishTargetUrl>
-    <History>True|2024-03-22T03:20:01.9679611Z;</History>
+    <_PublishTargetUrl>C:\Users\kaue_\source\repos\BrizaBreath\bin\Release\net7.0\publish\www</_PublishTargetUrl>
+    <History>True|2024-03-26T02:07:38.9872575Z;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

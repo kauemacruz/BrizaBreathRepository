@@ -372,6 +372,7 @@ function setFormDisabledStateAHAT(disabled) {
 }
 var isFirstTimeAHAT = true;
 function startTimerAHAT() {
+    requestWakeLock();
     isAHATon = true;
     setFormDisabledStateAHAT(true);
     setTimerControlsDisabledStateAHAT(false, true, false);

@@ -463,6 +463,7 @@ function setFormDisabledStateHUM(disabled) {
 }
 
 function startTimerHUM() {
+    requestWakeLock();
     isHUMon = true;
     if (intHUM !== null) {
         clearInterval(intHUM);

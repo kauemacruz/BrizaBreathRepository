@@ -1,0 +1,16 @@
+{
+  "name": "Briza Breath & Performance",
+  "short_name": "Briza",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/images/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

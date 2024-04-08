@@ -939,6 +939,7 @@ function initializeTimerSettingsFormCO2() {
   }
 
 function startTimerCO2() {
+    requestWakeLock();
     isCO2on = true;
     if(intCO2!==null){
       clearInterval(intCO2);

@@ -11,9 +11,7 @@ namespace BrizaBreath.Data
         {
         }
         public DbSet<BrizaBreath.Models.Result> Result { get; set; } = default!;
-        public DbSet<BrizaBreath.Models.MembershipPlan> MembershipPlan { get; set; } = default!;
         public DbSet<BrizaBreath.Models.BrizaSubscription> BrizaSubscription { get; set; } = default!;
-
     }
 
 }

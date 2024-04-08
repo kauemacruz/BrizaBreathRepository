@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\images\\medit.png"
     },
     {
+      "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
       "Id": "C:\\Users\\kaue_\\source\\repos\\BrizaBreath\\wwwroot\\js\\ahat.js",
       "PackagePath": "staticwebassets\\js\\ahat.js"
     },

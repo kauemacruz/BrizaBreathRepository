@@ -461,6 +461,7 @@ function setFormDisabledStateUB(disabled) {
 }
 
 function startTimerUB() {
+    requestWakeLock();
     isUBon = true;
     if (intUB !== null) {
         clearInterval(intUB);

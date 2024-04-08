@@ -101,38 +101,38 @@ namespace BrizaBreath.Areas.Identity.Pages.Account
         }
 
         public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
-{
-    returnUrl ??= Url.Content("~/");
-    ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-    if (ModelState.IsValid)
-    {
-        var user = CreateUser();
-
-        await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-        await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-        var result = await _userManager.CreateAsync(user, Input.Password);
-
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User created a new account with password.");
-
-                    // Set EmailConfirmed as true
-                    user.EmailConfirmed = true;
-                    await _dbContext.SaveChangesAsync();
-
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
-                }
-
-                foreach (var error in result.Errors)
         {
-            ModelState.AddModelError(string.Empty, error.Description);
-        }
-    }
+            returnUrl ??= Url.Content("~/");
+            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            if (ModelState.IsValid)
+            {
+                var user = CreateUser();
 
-    // If we got this far, something failed, redisplay the form
-    return Page();
-}
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                var result = await _userManager.CreateAsync(user, Input.Password);
+
+                        if (result.Succeeded)
+                        {
+                            _logger.LogInformation("User created a new account with password.");
+
+                            // Set EmailConfirmed as true
+                            user.EmailConfirmed = true;
+                            await _dbContext.SaveChangesAsync();
+
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            return LocalRedirect(returnUrl);
+                        }
+
+                        foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+
+            // If we got this far, something failed, redisplay the form
+            return Page();
+        }
 
 
         private IdentityUser CreateUser()
