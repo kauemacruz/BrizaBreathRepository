@@ -429,7 +429,6 @@ const radioOption1 = document.getElementById("option1");
 const radioOption2 = document.getElementById("option2");
 const radioOption3 = document.getElementById("option3");
 const radioOption4 = document.getElementById("option4");
-const priceChoice = document.getElementById("priceChoice");
 const monthlyBox = document.getElementById("monthlyBox");
 const yearlyBox = document.getElementById("yearlyBox");
 
@@ -441,19 +440,9 @@ function radioButtonChangeHandler() {
         // A radio button has been checked
         const selectedValue = this.id;
         if (selectedValue == "option1") {
-            if (isPortuguese) {
-                priceChoice.value = 5;
-            } else {
-                priceChoice.value = 3;
-            }
             monthlyBox.style.backgroundColor = "aliceblue";
             yearlyBox.style.backgroundColor = "white";
         } else {
-            if (isPortuguese) {
-                priceChoice.value = 6;
-            } else {
-                priceChoice.value = 4;
-            }
             yearlyBox.style.backgroundColor = "aliceblue";
             monthlyBox.style.backgroundColor = "white";
         }
@@ -466,11 +455,6 @@ monthlyBox.onclick = function () {
     if (!radioOption1.checked) {
         radioOption2.checked = false;
         radioOption1.checked = true;
-        if (isPortuguese) {
-            priceChoice.value = 5;
-        } else {
-            priceChoice.value = 3;
-        }
         monthlyBox.style.backgroundColor = "aliceblue";
         yearlyBox.style.backgroundColor = "white";
     }
@@ -479,11 +463,6 @@ yearlyBox.onclick = function () {
     if (!radioOption2.checked) {
         radioOption2.checked = true;
         radioOption1.checked = false;
-        if (isPortuguese) {
-            priceChoice.value = 6;
-        } else {
-            priceChoice.value = 4;
-        }
         yearlyBox.style.backgroundColor = "aliceblue";
         monthlyBox.style.backgroundColor = "white";
     }
@@ -519,7 +498,6 @@ window.addEventListener("click", function (event) {
 subscriptionBtn2.onclick = function () {
     openModal3();
 }
-/*
 $(function () {
     $('#subscriptionForm').on('submit', function (e) {
         e.preventDefault(); // Prevent the default form submission
@@ -533,16 +511,15 @@ $(function () {
             contentType: false,
             success: function (response) {
                 console.log(response);
-                if (priceChoice.value == 3) {
-                    window.location.href = "https://pay.brizabreath.com/b/14k9B4ah70zH5i0cMT?prefilled_email=" + response;
-                } else if (priceChoice.value == 4) {
-                    window.location.href = "https://pay.brizabreath.com/b/00g3cG2OF2HP39S7sy?prefilled_email=" + response;
-                } else if (priceChoice.value == 5) {
-                    window.location.href = "https://pay.brizabreath.com/b/8wM5kO74V1DLeSA28c?prefilled_email=" + response + "&locale=pt-BR";
-                } else if (priceChoice.value == 6) {
-                    window.location.href = "https://pay.brizabreath.com/b/28o28CdtjdmtcKs9AF?prefilled_email=" + response + "&locale=pt-BR";
-                } else {
-                    console.log("No Memberships with this id");
+                if (devicePlatform === 'iOS') {
+                    alert('no payment set up yet for IOS')
+                    location.reload();
+                } else if (devicePlatform === 'Android') {
+                    alert('no payment set up yet for Android')
+                    location.reload();
+                }else {
+                    alert("Device not supported");
+                    location.reload();
                 }
             },
             error: function (error) {
@@ -551,32 +528,6 @@ $(function () {
         })
     });
 });
-$(function () {
-    $('#manageSubscriptionForm').on('submit', function (e) {
-        e.preventDefault(); // Prevent the default form submission
-
-        var formData = new FormData(this);
-
-        $.ajax({
-            url: "/?handler=RedirectToStripePortal",
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                if (response.success) {
-                    window.location.href = response.url;
-                } else {
-                    console.error("Failed to get Stripe URL:", response);
-                }
-            },
-            error: function (error) {
-                console.error("Error adding membership:", error);
-            }
-        })
-    });
-});
-*/
 document.getElementById("subscriptionBtn4").onclick = function () {
     let url = '';
     if (devicePlatform === 'iOS') {

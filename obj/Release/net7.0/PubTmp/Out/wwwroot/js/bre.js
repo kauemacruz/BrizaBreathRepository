@@ -150,7 +150,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0
         timerControlsButtonsBRE.pauseBRE.style.display = 'none';
         timerControlsButtonsBRE.startBRE.style.display = 'inline';
-        timerControlsButtonsBB.startBRE.style.color = '#0661AA';
+        timerControlsButtonsBRE.startBRE.style.color = '#0661AA';
         setFormDisabledStateBRE(false);
         setTimerControlsDisabledStateBRE(false, true, true);
         timerControlsButtonsBRE.stopBRE.style.color = "rgb(177, 177, 177)";

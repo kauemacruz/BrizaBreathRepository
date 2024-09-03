@@ -147,7 +147,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0
         timerControlsButtonsBOX.pauseBOX.style.display = 'none';
         timerControlsButtonsBOX.startBOX.style.display = 'inline';
-        timerControlsButtonsBB.startBOX.style.color = '#0661AA';
+        timerControlsButtonsBOX.startBOX.style.color = '#0661AA';
         setFormDisabledStateBOX(false);
         setTimerControlsDisabledStateBOX(false, true, true);
         timerControlsButtonsBOX.stopBOX.style.color = "rgb(177, 177, 177)";

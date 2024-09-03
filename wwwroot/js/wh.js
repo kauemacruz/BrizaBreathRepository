@@ -633,8 +633,10 @@ function stopTimerWH() {
     WHbreaths = formSettingsFieldsWH.breakDuration2WH.value;
     WHballText.textContent = WHbreaths;
     if (!ismuteWH) {
-        audioObjects.normalbreath.muted = false;
-        audioObjects.normalbreath.play();
+        setTimeout(function () {
+            audioObjects.normalbreath.muted = false;
+            audioObjects.normalbreath.play();
+        }, 1000);
     }
     clearTimeout(WHmyTimeout);
     WHmyTimeout = null;
@@ -645,8 +647,8 @@ function stopTimerWH() {
     timerWH.isBreakWH = false;
     WHchangeBall(1.5, 1);
     WHballText.textContent = formSettingsFieldsWH.breakDuration2WH.value;
-
 }
+
 document.getElementById('resetBtnWH').addEventListener('click', function () {
     resetTimerWH();
     setTimerControlsDisabledStateWH(false, true, true);

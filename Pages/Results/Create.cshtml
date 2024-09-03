@@ -31,7 +31,7 @@
         <button type="button" id="subscriptionBtn2">Learn More</button>
         <form method="post" id="subscriptionForm">
             <input id="SUBuserInput" type="hidden" asp-for="BrizaSubscription.UserId" class="form-control" value="@Model.ResultUser" readonly/>
-            <input id="SUBActive" value="0" type="hidden" asp-for="BrizaSubscription.IsActive" readonly/>
+            <input id="SUBActive" value="True" type="hidden" asp-for="BrizaSubscription.IsActive" readonly/>
             <input type="submit" value="Subscribe Now" id="subscriptionBtn3" class="subscriptionBtn2" readonly/>
         </form>
         <div id="myModal3" class="modal">
@@ -909,81 +909,86 @@
         <span class="close" id="closeModalBP">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade BPslides">
-                <div class="numbertext">Intro</div>
-                <img src="images/medit.png">
-                <div class="text">
-                    <p>The Briza Program consists of a series of breathing and breath-holding exercises designed to enhance your breathing efficiency during intense workouts. To maximize the benefits of this program, it is crucial to consistently breathe through your nose and engage your diaphragm</p>
-                    <p>The Briza Retention Test will be the measuremnt of your progress within this program. In a few months your score can go over 40 seconds if exercises are consistently done. The program might change depending on your Briza Retention Test results</p>
-                </div>
-            </div>
-            <div class="mySlides fade BPslides">
-                <div class="numbertext">Nasal Breathing</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Ensure nasal breathing at all times
-                        Here are some of the benefits of nasal breathing:
+                    The Briza Program is a collection of breathing and breath-holding exercises tailored to improve your breathing efficiency, especially during intense workouts. For optimal results, it's essential to consistently breathe through your nose and use your diaphragm
                     </p>
-                    <ul>Filters, warms and humidifies the air</ul>
-                    <ul>Increases oxygen uptake</ul>
-                    <ul>Enhances lung function</ul>
-                    <ul>Reduces stress and anxiety</ul>
-                    <ul>Improves sleep</ul>
-                    <ul>Increases production of nitric oxide</ul>
-                    <ul>Activates the diaphragm</ul>
-                </div>
-            </div>
-            <div class="mySlides fade BPslides">
-                <div class="numbertext">Diaphragm</div>
-                <img src="images/medit.png">
-                <div class="text">
                     <p>
-                        The diaphragm is a large, dome-shaped muscle located at the base of the lungs that plays a crucial role in breathing by contracting and relaxing to allow air to enter and exit the lungs.
-                        Learn how to use your diaphragm:
+                    Your progress in the program will be tracked using the Briza Retention Test. With regular practice, it's possible to extend your score beyond 40 seconds in just a few months. Based on your BRT results, the program may be adjusted to better suit your needs
                     </p>
-                    <ul>Place a hand on your belly and gently press it</ul>
-                    <ul>As you breathe in, feel your belly pushing your hand</ul>
-                    <ul>As you breathe out, feel your belly going down</ul>
-                    <ul>Your shoulder should not move as you inhale</ul>
-                    <ul>Focus on breathing to expand your belly and ribs cage</ul>
                 </div>
             </div>
             <div class="mySlides fade BPslides">
-                <div class="numbertext">Mouth Taping</div>
+                <div class="numbertext">NASAL BREATHING</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Tape your mouth in your sleep
+                        Ensure to breathe through your nose at all times.
+                        Nasal breathing comes with many benefits, including:
                     </p>
-                    <ul>Use mycropore tape or something similar</ul>
-                    <ul>Tape the middle of your mouth and leave a gap on the sides in case you need to use your mouth to breathe</ul>
-                    <ul>Do it every night. You may feel a disconfort on the few first nights, but when you get used to it, you will have a deep and restful sleep </ul>
+                    <ul>Filtering, warming, and humidifying the air</ul>
+                    <ul>Increasing oxygen uptake</ul>
+                    <ul>Enhancing lung function</ul>
+                    <ul>Engaging the diaphragm</ul>
+                    <ul>Decreasing stress and anxiety</ul>
+                    <ul>Improving sleep quality</ul>
+                    <ul>Boosting nitric oxide production, a gas that helps widen blood vessels, improving blood flow and lowering blood pressure</ul>
                 </div>
             </div>
             <div class="mySlides fade BPslides">
-                <div class="numbertext">Nose Unblocking</div>
+                <div class="numbertext">DIAPHRAGM</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        In case you cannot use your nose because it is blocked, do the following technique before doing your breating exercises
+                        The diaphragm is a big, dome-shaped muscle found at the bottom of the lungs. It's very important for breathing because it contracts and relaxes to let air move in and out of the lungs.
+                        Here's how to correctly use your diaphragm for breathing:
+                    </p>
+                    <ul>Put one hand on your belly and press gently</ul>
+                    <ul>When you breathe in, your belly should push against your hand</ul>
+                    <ul>As you breathe out, you'll feel your belly lower</ul>
+                    <ul>Make sure your shoulders stay still when you breathe in</ul>
+                    <ul>Try to breathe in a way that makes your belly and rib cage expand</ul>
+                </div>
+            </div>
+            <div class="mySlides fade BPslides">
+                <div class="numbertext">NOSE UNBLOCKING</div>
+                <img src="images/medit.png">
+                <div class="text">
+                    <p>
+                        If your nose is blocked for any reason and you can't use it, try this technique before starting your breathing exercises:
                     </p>
                     <ul>Fully exhale and pinch your nose</ul>
-                    <ul>Nod your head in a fast pace as you hold your breath</ul>
-                    <ul>Once you feel an urge to breathe, inhale and recover your breath</ul>
-                    <ul>Repeat from 4 to 6 times to fully unblock your nose</ul>
+                    <ul>Nod your head quickly while holding your breath</ul>
+                    <ul>When you start to feel the need to breathe, inhale, and catch your breath</ul>
+                    <ul> Do this 4 to 6 times until your nose feels clear</ul>
                 </div>
             </div>
             <div class="mySlides fade BPslides">
-                <div class="numbertext">Benefits of this program</div>
+                <div class="numbertext">MOUTH TAPING</div>
                 <img src="images/medit.png">
                 <div class="text">
-                    <ul>Easier breathing</ul>
-                    <ul>Better cardio</ul>
-                    <ul>More energy</ul>
-                    <ul>Better awareness</ul>
-                    <ul>Fast healing</ul>
-                    <ul>Better sleep</ul>
-                    <ul>Easier oxygenation of organs and muscles</ul>
+                    <p>
+                        Consider taping your mouth during sleep. Use micropore tape or a similar gentle tape
+                    </p>
+                    <p>
+                        Apply the tape to the center of your mouth, leaving gaps at the sides so you can breathe through your mouth if necessary.
+                        Do this every night. It might feel uncomfortable for the first few nights, but as you get accustomed to it, you'll experience deeper and more restful sleep
+                    </p>
+                </div>
+            </div>
+            <div class="mySlides fade BPslides">
+                <div class="numbertext">BENEFITS OF THIS PROGRAM</div>
+                <img src="images/medit.png">
+                <div class="text">
+                    <ul>Enhanced breathing: breathe more easily and efficiently</ul>
+                    <ul>Improved cardiovascular Health: boost your heart health and stamina</ul>
+                    <ul>Increased energy: feel more energetic throughout the day</ul>
+                    <ul>Heightened awareness: sharpen your focus and mindfulness</ul>
+                    <ul>Accelerated healing: speed up your body's natural recovery processes</ul>
+                    <ul>Improved sleep quality: enjoy a deeper, more restful sleep</ul>
+                    <ul>Optimized oxygenation: ensure better oxygen supply to your organs and muscles</ul>
                 </div>
             </div>
             <!-- Next and previous buttons -->
@@ -1042,47 +1047,47 @@
         <span class="close" id="closeModalBRT">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade BRTslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
-                    <p>Briza Retention Test is a measure of breath-holding time and can provide insights into a person's breathing efficiency and tolerance to carbon dioxide (CO2)</p>
-                    <p>Do this test every morning as soon as you wake up. Results may vary when done on different hours of the day</p>
+                    <p>The Breath Retention Test (BRT) measures the breath-holding time with empty lungs, offering insights into your breathing efficiency and tolerance to carbon dioxide (CO2)</p>
+                    <p>Perform this test every morning as soon as you wake up. Results may vary if conducted at different times of the day</p>
                 </div>
             </div>
             <div class="mySlides fade BRTslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Find a comfortable seat and take a couple of light breaths through the nose
+                       Find a comfortable seat and take a few gentle breaths through your nose
                     </p>
                 </div>
             </div>
             <div class="mySlides fade BRTslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        EXHALE and pinch your nose, after the exhalation press 'Start' and hold your breath
+                        Exhale gently and pinch your nose. After the exhalation, press ‘Start’ and hold your breatH
                     </p>
                 </div>
             </div>
             <div class="mySlides fade BRTslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Press 'Pause' as soon as you feel a first urge to breathe and get back to your normal breathing, which should be calm and controlled. If first few breaths are not calm that means you held your breath for too long and should do it again to have a more accurate result.
+                        Press 'Pause' the moment you feel the first urge to breathe, then return to your normal breathing pattern, which should be calm and controlled. If your initial breaths are not calm, it indicates you held your breath too long. If so, re-do the test for a more accurate result
                     </p>
-                    <p>Save your score to keep track of your progress.</p>
+                    <p>Remember to save your score to monitor your progress</p>
                 </div>
             </div>
             <div class="mySlides fade BRTslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Remember, this is not a competition. Pause the timer as soon as you fell a gentle urge to breathe to ensure accurate results
+                        Keep in mind, this isn't a competition. Stop the timer the moment you feel the slightest urge to breathe, to guarantee precise results
                     </p>
                 </div>
             </div>
@@ -1232,46 +1237,48 @@
         <span class="close" id="closeModalYB">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade YBslides">
-                <div class="numbertext">Intro</div>
-                <img src="images/medit.png">
-                <div class="text">
-                    <p>Yogic breathing involves conscious control of the breath, through specific patterns of 3 parts: filling the belly, ribs and chest, and exhaling from the chest, ribs and belly last</p>
-                    <p>Do this exercise for 5 to 10 minutes</p>
-                </div>
-            </div>
-            <div class="mySlides fade YBslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Find a comfortable seat or lay down. Relax your shoulders, face muscles and jaw. Place your tongue on the roof of your mouth, its tip should touch the top of your front teeth
+                        Yogic breathing is a mindful practice that involves breathing in three parts: first filling the belly, then the ribs, and finally the chest. When exhaling, you reverse the order, starting from the chest, moving to the ribs, and finishing with the belly. This technique helps in controlling breath and improving oxygen flow
                     </p>
                 </div>
             </div>
             <div class="mySlides fade YBslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Choose a ratio that you are comfortable with, but still pushes your comfortable zone. You can also choose how long you want to do it for (5 to 10 minutes is recommended)
+Find a comfortable seat or lie down. Relax your shoulders, facial muscles, and jaw. Place your tongue on the roof of your mouth, with its tip gently touching your upper front teeth                    </p>
+                </div>
+            </div>
+            <div class="mySlides fade YBslides">
+                <div class="numbertext">STEP 2</div>
+                <img src="images/medit.png">
+                <div class="text">
+                    <p>
+                        Select a breathing count that feels manageable yet gently extends your limits. Also, choose your session's duration, ideally 5 to 10 minutes, gradually increasing your breath's length for deeper practice                    </p>
+                </div>
+            </div>
+            <div class="mySlides fade YBslides">
+                <div class="numbertext">STEP 3</div>
+                <img src="images/medit.png">
+                <div class="text">
+                    <p>
+                        Press 'Start' to begin the guided exercise
+                    </p>
+                    <p>
+                        In the end, save your results to track your improvement over time
                     </p>
                 </div>
             </div>
             <div class="mySlides fade YBslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Press 'Start' and follow the guided technique. Save your results at the end
-                    </p>
-                </div>
-            </div>
-            <div class="mySlides fade YBslides">
-                <div class="numbertext">Note</div>
-                <img src="images/medit.png">
-                <div class="text">
-                    <p>
-                        If the ratio chosen is making your heart beat acelerate and you finding it too hard, stop doing it and choose a lower ratio
+                        If you notice your heartbeat speeding up or the practice becomes too difficult with your chosen breath count, pause and select a more suitable option for you                    
                     </p>
                 </div>
             </div>
@@ -1434,7 +1441,7 @@
         <span class="close" id="closeModalBRE">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade BREslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>Simple exercise that can be used to recover your breath after a physical activity</p>
@@ -1442,7 +1449,7 @@
                 </div>
             </div>
             <div class="mySlides fade BREslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -1451,7 +1458,7 @@
                 </div>
             </div>
             <div class="mySlides fade BREslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -1460,7 +1467,7 @@
                 </div>
             </div>
             <div class="mySlides fade BREslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -1469,7 +1476,7 @@
                 </div>
             </div>
             <div class="mySlides fade BREslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -1622,7 +1629,7 @@
                     <div class="saveBtn">
                         <input type="submit" value="Save" id="BRWSave" />
                     </div>
-                    <div class="roundbox">BRWP
+                    <div class="roundbox">
                         <div>Rounds:<input id="intervalsDoneBRW" asp-for="Result.BRWIntervals" readonly value="0" /></div>
                         <div>Total time:<input id="timerDisplayBRW" asp-for="Result.BRWTotalTime" readonly value="00 : 00 : 00" /></div>
                     </div>
@@ -1637,49 +1644,50 @@
         <span class="close" id="closeModalBRW">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade BRWslides">
-                <div class="numbertext">Intro</div>
-                <img src="images/medit.png">
-                <div class="text">
-                    <p>Simple exercise that can be used to recover your breath after a physical activity</p>
-                    <p>Do this exercise for 4 to 5 minutes</p>
-                </div>
-            </div>
-            <div class="mySlides fade BRWslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Start walking, but remember to breathe light. If you can't, walk slower or go back to the sitting breath recovery exercise. If that is easy, start walking faster. Your breath will determine your pace
+                        This is a simple exercise designed for breath recovery after any physical activity. Perform this exercise for 4 to 5 minutes
                     </p>
                 </div>
             </div>
             <div class="mySlides fade BRWslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Choose the appropriated breath hold time from 2 to 5 seconds
+                        Choose a suitable duration for your breath hold. If this is your first attempt, we recommend starting with a 2-second hold. As you become more comfortable with this recovery exercise, you may increase the hold duration to up to 5 seconds                    
                     </p>
                     <p>
-                        Breathe light on the inhalation and exhalation
-                    </p>
-                </div>
-            </div>
-            <div class="mySlides fade BRWslides">
-                <div class="numbertext">Step 3</div>
-                <img src="images/medit.png">
-                <div class="text">
-                    <p>
-                        Hold your breath after the exhalation and keep walking
+                        The practice of holding your breath enhances CO2 tolerance in your bloodstream and aids in muscle recovery
                     </p>
                 </div>
             </div>
             <div class="mySlides fade BRWslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        If you fell that the breath hold time chosen is too hard, stop doing it and choose a lower breath hold time
+                        Press ‘start’ when you are ready to follow the exercise.
+                     </p>
+                </div>
+            </div>
+            <div class="mySlides fade BRWslides">
+                <div class="numbertext">STEP 3</div>
+                <img src="images/medit.png">
+                <div class="text">
+                    <p>
+                        Allow your breathing to dictate the pace of your walk, ensuring that your breathing remains light as you move with ease
+                    </p>
+                </div>
+            </div>
+            <div class="mySlides fade BRWslides">
+                <div class="numbertext">KEEP IN MIND</div>
+                <img src="images/medit.png">
+                <div class="text">
+                    <p>
+                        If you fell that the chosen breath hold time is too hard, stop doing it and lower breath hold time
                     </p>
                 </div>
             </div>
@@ -1829,7 +1837,7 @@
         <span class="close" id="closeModalHUM">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade HUMslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -1840,7 +1848,7 @@
                 </div>
             </div>
             <div class="mySlides fade HUMslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -1849,7 +1857,7 @@
                 </div>
             </div>
             <div class="mySlides fade HUMslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -1858,7 +1866,7 @@
                 </div>
             </div>
             <div class="mySlides fade HUMslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -1867,7 +1875,7 @@
                 </div>
             </div>
             <div class="mySlides fade HUMslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2018,49 +2026,54 @@
         <span class="close" id="closeModalBB">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade BBslides">
-                <div class="numbertext">Intro</div>
-                <img src="images/medit.png">
-                <div class="text">
-                    <p>Learn how to breathe so light that if you had a feather under your nose it would not move</p>
-                    <p>Do this exercise twice a day from 5 to 15 minutes each session</p>
-                </div>
-            </div>
-            <div class="mySlides fade BBslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        Find a comfortable seat or lay down. Relax your shoulders, face muscles and jaw. Place your tongue on the roof of your mouth, its tip should touch the top of your front teeth
+                        Learn how to breathe so gently and lightly that a feather placed beneath your nose would remain still                    
+                    </p>
+                    <p>
+                        Practice this exercise twice daily, dedicating 5 to 15 minutes to each session
                     </p>
                 </div>
             </div>
             <div class="mySlides fade BBslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        You cannot change the ratio of this exercise, what is gonna make it harder or easier is how much air and how fast you are breathing
-                    </p>
-                    <p>
-                        Breathe light on the inhalation and exhalation reducing the volume of air that you are breathing, so light that you can barely feel or hear your breath. Sustain an air hunger for the whole session
+                    Find a comfortable seat or lie down. Ease your shoulders, facial muscles, and jaw into relaxation. Let your tongue rest on the roof of your mouth, with its tip lightly touching your upper front teeth.
                     </p>
                 </div>
             </div>
             <div class="mySlides fade BBslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        If the air hunger is way too much, keep following the guidance but breathing normally until you can reduce the volume air again                    
+                    The ratio of this exercise is fixed. What makes it harder or easier is how much air you breathe in and how fast you are breathing. Press ‘start’ when you are ready.
+                    Breathe in and out very gently, using so little air that you can hardly notice your own breathing. Aim to feel a slight need for more air throughout the entire session
+                    </p>
+                    <p>
+                    Breathe light on the inhalation and exhalation reducing the volume of air that you are breathing so light that you can barely feel or hear your breath. Sustain an air hunger for the whole session.
                     </p>
                 </div>
             </div>
             <div class="mySlides fade BBslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
-                        For this techinique to be effective, it is important that you sustain an air hunger for the entire session 
+                    If the sensation of needing more air gets too strong, stick to the instructions, but allow yourself to breathe naturally. Once you feel comfortable, try reducing your breath's volume again.
+                    </p>
+                </div>
+            </div>
+            <div class="mySlides fade BBslides">
+                <div class="numbertext">KEEP IN MIND</div>
+                <img src="images/medit.png">
+                <div class="text">
+                    <p>
+                    For this technique to work effectively, maintaining a slight air hunger throughout the session is key
                     </p>
                 </div>
             </div>
@@ -2166,7 +2179,7 @@
         <span class="close" id="closeModalHAT">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade HATslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>High altitude environments can help to improve cardiovascular fitness, strengthen muscles, stimulate the production of red blood cells, and stimulate the production of certain immune cells</p>
@@ -2174,7 +2187,7 @@
                 </div>
             </div>
             <div class="mySlides fade HATslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2187,7 +2200,7 @@
                 </div>
             </div>
             <div class="mySlides fade HATslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2196,7 +2209,7 @@
                 </div>
             </div>
             <div class="mySlides fade HATslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2205,7 +2218,7 @@
                 </div>
             </div>
             <div class="mySlides fade HATslides">
-                <div class="numbertext">Step 4</div>
+                <div class="numbertext">STEP 4</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2316,7 +2329,7 @@
         <span class="close" id="closeModalHATC">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade HATCslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>Bring your high altitude training to another level</p>
@@ -2324,7 +2337,7 @@
                 </div>
             </div>
             <div class="mySlides fade HATCslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2339,7 +2352,7 @@
                 </div>
             </div>
             <div class="mySlides fade HATCslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2348,7 +2361,7 @@
                 </div>
             </div>
             <div class="mySlides fade HATCslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2357,7 +2370,7 @@
                 </div>
             </div>
             <div class="mySlides fade HATCslides">
-                <div class="numbertext">Step 4</div>
+                <div class="numbertext">STEP 4</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2367,7 +2380,7 @@
                 </div>
             </div>
             <div class="mySlides fade HATCslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2477,7 +2490,7 @@
         <span class="close" id="closeModalAHAT">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade AHATslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>Bring your high altitude training to another level</p>
@@ -2485,7 +2498,7 @@
                 </div>
             </div>
             <div class="mySlides fade AHATslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2500,7 +2513,7 @@
                 </div>
             </div>
             <div class="mySlides fade AHATslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2509,7 +2522,7 @@
                 </div>
             </div>
             <div class="mySlides fade AHATslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2518,7 +2531,7 @@
                 </div>
             </div>
             <div class="mySlides fade AHATslides">
-                <div class="numbertext">Step 4</div>
+                <div class="numbertext">STEP 4</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2527,7 +2540,7 @@
                 </div>
             </div>
             <div class="mySlides fade AHATslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2571,7 +2584,7 @@
         <span class="close" id="closeModalBH">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade BHslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">Breath-holding exercises offer a range of benefits that can significantly enhance performance, particularly for athletes, swimmers, free divers and individuals seeking to improve their overall health and well-being. Explore our breath-holding exercises and get many potential benefits out of it</div>
             </div>
@@ -2628,7 +2641,7 @@
         <span class="close" id="closeModalPRANA">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade PRANAslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">Pranayama (Prana = life force, Yama = control), a key component of yoga, involves the control and regulation of breath and is known for its profound impact on physical, mental, and emotional well-being. Incorporating pranayama exercises into one's routine can significantly improve performance across various sports</div>
             </div>
@@ -2783,14 +2796,14 @@
         <span class="close" id="closeModalAP">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade APslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>This apnea breathing technique is based on the principles of deep breathing and diaphragmatic breathing, allowing you to use the full capacity of your lungs and create more tolerance to breath-holding exercises. Start with small intervals until you are used to this technique</p>
                 </div>
             </div>
             <div class="mySlides fade APslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2799,7 +2812,7 @@
                 </div>
             </div>
             <div class="mySlides fade APslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2808,7 +2821,7 @@
                 </div>
             </div>
             <div class="mySlides fade APslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -2817,7 +2830,7 @@
                 </div>
             </div>
             <div class="mySlides fade APslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3340,7 +3353,7 @@
         <span class="close" id="closeModalO2">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade O2slides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>The O2 table helps the body to get used to low levels of oxygen, by increasing the breath hold times</p>
@@ -3349,7 +3362,7 @@
                 </div>
             </div>
             <div class="mySlides fade O2slides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3358,7 +3371,7 @@
                 </div>
             </div>
             <div class="mySlides fade O2slides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3367,7 +3380,7 @@
                 </div>
             </div>
             <div class="mySlides fade O2slides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3376,7 +3389,7 @@
                 </div>
             </div>
             <div class="mySlides fade O2slides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3531,14 +3544,14 @@
         <span class="close" id="closeModalWH">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade WHslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>This controlled hyperventilation breathing technique, followed by a breath hold is based on the principles of diaphragmatic and circular breathing, allowing you to fully oxygenate your body and hold your breath with no air in the lungs. Do it for around 3 to 4 rounds</p>
                 </div>
             </div>
             <div class="mySlides fade WHslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3547,7 +3560,7 @@
                 </div>
             </div>
             <div class="mySlides fade WHslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3559,7 +3572,7 @@
                 </div>
             </div>
             <div class="mySlides fade WHslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3568,7 +3581,7 @@
                 </div>
             </div>
             <div class="mySlides fade WHslides">
-                <div class="numbertext">Step 4</div>
+                <div class="numbertext">STEP 4</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3577,7 +3590,7 @@
                 </div>
             </div>
             <div class="mySlides fade WHslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3716,14 +3729,14 @@
         <span class="close" id="closeModalCT">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade CTslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>The CO2 Tolerance Training is based on the principles of allowing your body to get used to low levels of oxygen and high levels of carbon dioxide. Do this technique for about 5 to 10 minutes</p>
                 </div>
             </div>
             <div class="mySlides fade CTslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3732,7 +3745,7 @@
                 </div>
             </div>
             <div class="mySlides fade CTslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3741,7 +3754,7 @@
                 </div>
             </div>
             <div class="mySlides fade CTslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3750,7 +3763,7 @@
                 </div>
             </div>
             <div class="mySlides fade CTslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3904,14 +3917,14 @@
         <span class="close" id="closeModalUB">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade UBslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>Ujjayi breathing is a yogic breathing technique that is also known as ocean breath. It involves breathing in and out through the nose while creating a soft, whispering sound in the back of the throat. Ujjayi breathing is often used in yoga practice to help calm the mind, deepen the breath, and build internal heat. It can also help regulate the nervous system and increase focus and concentration</p>
                 </div>
             </div>
             <div class="mySlides fade UBslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3920,7 +3933,7 @@
                 </div>
             </div>
             <div class="mySlides fade UBslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3929,7 +3942,7 @@
                 </div>
             </div>
             <div class="mySlides fade UBslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -3938,7 +3951,7 @@
                 </div>
             </div>
             <div class="mySlides fade UBslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4081,14 +4094,14 @@
         <span class="close" id="closeModalKB">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade KBslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>Kapalabhati is a yogic breathing technique that involves rapid and forceful exhalations followed by passive inhalations. It's important to note that kapalabhati should be practiced on an empty stomach and should be avoided by those with high blood pressure, heart disease, or any other medical conditions</p>
                 </div>
             </div>
             <div class="mySlides fade KBslides">
-                <div class="numbertext">Intro 2/2</div>
+                <div class="numbertext">INTRO 2/2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>Kapalabhati helps to strengthen the respiratory muscles and increase lung capacity, which can improve breathing and respiratory function. The rapid and forceful exhalations in Kapalabhati help to stimulate the sympathetic nervous system, which can increase energy and vitality.
@@ -4096,7 +4109,7 @@
                 </div>
             </div>
             <div class="mySlides fade KBslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4105,7 +4118,7 @@
                 </div>
             </div>
             <div class="mySlides fade KBslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4113,7 +4126,7 @@
                 </div>
             </div>
             <div class="mySlides fade KBslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4122,7 +4135,7 @@
                 </div>
             </div>
             <div class="mySlides fade KBslides">
-                <div class="numbertext">Step 4</div>
+                <div class="numbertext">STEP 4</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4131,7 +4144,7 @@
                 </div>
             </div>
             <div class="mySlides fade KBslides">
-                <div class="numbertext">Step 5</div>
+                <div class="numbertext">STEP 5</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4140,7 +4153,7 @@
                 </div>
             </div>
             <div class="mySlides fade KBslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                      <p>
@@ -4297,14 +4310,14 @@
         <span class="close" id="closeModalBOX">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade BOXslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>The Box Breathing technique is based on the principles of deep breathing and diaphragmatic breathing</p>
                 </div>
             </div>
             <div class="mySlides fade BOXslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4313,7 +4326,7 @@
                 </div>
             </div>
             <div class="mySlides fade BOXslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4322,7 +4335,7 @@
                 </div>
             </div>
             <div class="mySlides fade BOXslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4331,7 +4344,7 @@
                 </div>
             </div>
             <div class="mySlides fade BOXslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4485,14 +4498,14 @@
         <span class="close" id="closeModalNB">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade NBslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>Nadi Shodhana breathing technique is based on the principles of alternating the sides of your nostrils that you breathing. It bring balance to the body and mind</p>
                 </div>
             </div>
             <div class="mySlides fade NBslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4501,7 +4514,7 @@
                 </div>
             </div>
             <div class="mySlides fade NBslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4510,7 +4523,7 @@
                 </div>
             </div>
             <div class="mySlides fade NBslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4519,7 +4532,7 @@
                 </div>
             </div>
             <div class="mySlides fade NBslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4642,7 +4655,7 @@
         <span class="close" id="closeModalCB">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade CBslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>Coherent breathing is a breathing technique that involves inhaling and exhaling for a count of 5.5 seconds each, resulting in a breathing rate of around 5.5 breaths per minute</p>
@@ -4651,7 +4664,7 @@
                 </div>
             </div>
             <div class="mySlides fade CBslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4660,7 +4673,7 @@
                 </div>
             </div>
             <div class="mySlides fade CBslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4801,14 +4814,14 @@
         <span class="close" id="closeModalSB">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade SBslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>Sitali breathing is a yogic breathing technique that involves inhaling cool air through the mouth making a "U" shape with your tongue and exhaling slowly through the nose. It is also known as the cooling breath. If you are unable to curl your tongue, you can still practice sitali breathing by gently parting your lips and inhaling through your teeth</p>
                 </div>
             </div>
             <div class="mySlides fade SBslides">
-                <div class="numbertext">Intro 2/2</div>
+                <div class="numbertext">INTRO 2/2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>Sitali breathing is often used in yoga practice to cool the body and calm the mind. It may have several potential benefits, including: reducing stress and anxiety,
@@ -4816,7 +4829,7 @@
                 </div>
             </div>
             <div class="mySlides fade SBslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4825,7 +4838,7 @@
                 </div>
             </div>
             <div class="mySlides fade SBslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4834,7 +4847,7 @@
                 </div>
             </div>
             <div class="mySlides fade SBslides">
-                <div class="numbertext">Step 3</div>
+                <div class="numbertext">STEP 3</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4843,7 +4856,7 @@
                 </div>
             </div>
             <div class="mySlides fade SBslides">
-                <div class="numbertext">Note</div>
+                <div class="numbertext">KEEP IN MIND</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4981,7 +4994,7 @@
         <span class="close" id="closeModalRB">&times;</span>
         <div class="slideshow-container">
             <div class="mySlides fade RBslides">
-                <div class="numbertext">Intro</div>
+                <div class="numbertext">INTRO</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>The 478 breathing technique is based on the principles of deep breathing and diaphragmatic breathing, which have been shown to reduce stress and anxiety by activating the body's relaxation response. 
@@ -4990,7 +5003,7 @@
                     </div>
             </div>
             <div class="mySlides fade RBslides">
-                <div class="numbertext">Step 1</div>
+                <div class="numbertext">STEP 1</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>
@@ -4999,7 +5012,7 @@
                 </div>
             </div>
             <div class="mySlides fade RBslides">
-                <div class="numbertext">Step 2</div>
+                <div class="numbertext">STEP 2</div>
                 <img src="images/medit.png">
                 <div class="text">
                     <p>

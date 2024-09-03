@@ -39,45 +39,12 @@ namespace BrizaBreath.Pages.Results
                     .Where(a => a.UserId == HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value)
                     .ToListAsync();
             }
-            /*
-            if (HttpContext.Request.Query.ContainsKey("session_id"))
-            {
-                var sessionId = HttpContext.Request.Query["session_id"].ToString();
-
-                if (!string.IsNullOrEmpty(sessionId))
-                {
-                    StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
-                    var service = new SessionService();
-                    var session = await service.GetAsync(sessionId);
-
-                    if (session != null)
-                    {
-                        var noSubscriptionYet = _context.BrizaSubscription
-                            .Where(s => s.UserId == ResultUser && s.StripeCustID == null)
-                            .FirstOrDefault();
-                        if (noSubscriptionYet != null)
-                        {
-                            noSubscriptionYet.IsActive = true;
-                            noSubscriptionYet.StripeCustID = sessionId;
-                            _context.Update(noSubscriptionYet);
-                            await _context.SaveChangesAsync();
-                        }
-                    }
-                    else
-                    {
-                        // Invalid session, handle this case
-                        ViewData["ErrorMessage"] = "Invalid session!";
-                    }
-                }
-            }
-            */
             // Check if the request includes the 'fetchData' query parameter
             if (HttpContext.Request.Query.ContainsKey("fetchData"))
             {
                 return new JsonResult(GetResult);
             }
             bool isActiveSubscriber = IsUserActiveSubscriber(ResultUser);
-            //bool isActiveSubscriber = true;
             // Pass the isActiveSubscriber flag to your Razor Page
             ViewData["IsActiveSubscriber"] = isActiveSubscriber;
             return Page();
@@ -155,7 +122,6 @@ namespace BrizaBreath.Pages.Results
                 return false;
             }
         }
-        /*
         public async Task<IActionResult> OnPostSignMembershipAsync()
         {
             try
@@ -191,63 +157,6 @@ namespace BrizaBreath.Pages.Results
                 return new JsonResult(new { success = false, message = "An error occurred while adding the membership" });
             }
         }
-        public async Task<IActionResult> OnPostRedirectToStripePortalAsync()
-        {
-            try
-            {
-                ResultUser = User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
 
-                if (ResultUser == null)
-                {
-                    return new JsonResult(new { success = false, message = "User not added." });
-                }
-                else
-                {
-                    StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("StripeApiKey");
-                    var latestSubscription = _context.BrizaSubscription
-                    .Where(s => s.UserId == ResultUser && s.StripeCustID != null)
-                    .OrderByDescending(s => s.Id)
-                    .FirstOrDefault();
-
-                    if (latestSubscription != null)
-                    {
-                        var sessionId = latestSubscription.StripeCustID;
-                        var service = new SessionService();
-                        var session = await service.GetAsync(sessionId);
-                        if(session != null)
-                        {
-                            var customerId = session.CustomerId;
-                            var options = new Stripe.BillingPortal.SessionCreateOptions
-                            {
-                                Customer = customerId,
-                                ReturnUrl = "https://app.brizabreath.com/",  // The URL to which the user will be redirected when they're done
-                            };
-
-                            var billingPortalService = new Stripe.BillingPortal.SessionService();
-                            var portalSession = billingPortalService.Create(options);
-
-
-                            return new JsonResult(new { success = true, url = portalSession.Url });
-                        }
-                        else
-                        {
-                            return new JsonResult(new { success = false, message = "User not added." });
-                        }
-                    }
-                    else
-                    {
-                        return new JsonResult(new { success = false, message = "User not added." });
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log the exception for debugging purposes
-                Console.WriteLine("Error adding subscription: " + ex.Message);
-                return new JsonResult(new { success = false, message = "An error occurred while adding the membership" });
-            }
-        }
-        */
     }
 }

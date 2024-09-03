@@ -147,7 +147,7 @@ $(function () {
         audioPlayerBRT.currentTime = 0
         timerControlsButtonsSB.pauseSB.style.display = 'none';
         timerControlsButtonsSB.startSB.style.display = 'inline';
-        timerControlsButtonsAHAT.startSB.style.color = "#0661AA";
+        timerControlsButtonsSB.startSB.style.color = "#0661AA";
         setFormDisabledStateSB(false);
         setTimerControlsDisabledStateSB(false, true, true);
         timerControlsButtonsSB.stopSB.style.color = "rgb(177, 177, 177)";

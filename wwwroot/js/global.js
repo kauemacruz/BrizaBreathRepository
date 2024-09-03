@@ -25,9 +25,9 @@ if (storedValue === null) {
 
 if (storedValue == 'true' && !isPortuguese) {
     // Check if the user is already on the Portuguese page. If not, redirect them.
-    window.location.href = "https://brizabreathappservice.azurewebsites.net/Results/CreateBR";
+    window.location.href = "https://app.brizabreath.com/Results/CreateBR";
 } else if (storedValue == 'false' && isPortuguese) {
-    window.location.href = "https://brizabreathappservice.azurewebsites.net/";
+    window.location.href = "https://app.brizabreath.com/";
 } else {
     //do nothing
 }
